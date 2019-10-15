@@ -27,7 +27,7 @@ public class CondemItemsHandler {
         HashMap map = new HashMap();
         List<HashMap> list = new ArrayList();
 
-        map.put("ID", "(SELECT MAX(ID) FROM "+Database.Inventory.itemCondemMaster+")");
+        map.put("ID", "(SELECT NVL(MAX(ID), 0) + 1 ID FROM "+Database.Inventory.itemCondemMaster+")");
         map.put("REQUEST_BY", "'" + obj.getRequestedBy() + "'");
         map.put("STORE_ID", "'" + obj.getStoreId() + "'");
         map.put("ORDER_STATUS_ID", "'" + obj.getOrderStatusId() + "'");
@@ -101,20 +101,20 @@ public class CondemItemsHandler {
                 + " OSI.DESCRIPTION ORDER_STATUS,                   \n"
                 + " CM.CRTD_BY,                                     \n"
                 + " CRU.NAME CRTD_USER,                             \n"
-                + " TO_CHAR(CM.CRTD_DATE, 'DD-MON-YY') CRTD_DATE,           \n"
-                + "         CM.CRTD_TERMINAL_ID  FROM                       \n"
-                + Database.Inventory.itemCondemMaster + " CM,               \n"
-                + Database.DCMS.users + " RES,                              \n"
-                + Database.DCMS.store + " STR,                              \n"
-                + Database.DCMS.definitionTypeDetail + " OSI,               \n"
-                + Database.DCMS.users + " CRU                               \n"
-                + " WHERE 1=1                                               \n";
+                + " TO_CHAR(CM.CRTD_DATE, 'DD-MON-YY') CRTD_DATE,   \n"
+                + " CM.CRTD_TERMINAL_ID  FROM                       \n"
+                + Database.Inventory.itemCondemMaster + " CM,       \n"
+                + Database.DCMS.users + " RES,                      \n"
+                + Database.DCMS.store + " STR,                      \n"
+                + Database.DCMS.definitionTypeDetail + " OSI,       \n"
+                + Database.DCMS.users + " CRU                       \n"
+                + " WHERE 1=1                                       \n";
         if (objSrch.getCondemId().length() != 0) {
-            query += " AND CM.ID = " + objSrch.getCondemId() + "            \n"
+            query += " AND CM.ID = " + objSrch.getCondemId() + "    \n"
                     + " AND CM.ORDER_STATUS_ID = "+ Status.admissionRequest +"\n";
         }
         if (objSrch.getCondemId().length() == 0) {
-            query += " AND CM.CRTD_BY = '"+objSrch.getRequestedBy()+"'      \n"
+            query += " AND CM.CRTD_BY = '"+objSrch.getRequestedBy()+"'\n"
                    + " AND CM.ORDER_STATUS_ID = " + objSrch.getOrderStatusId() + "\n";
         }
 

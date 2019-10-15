@@ -33,7 +33,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
         btnApprove.setEnabled(false);
         btnReject.setEnabled(false);
         checkInprogressRequest();
-        
+
     }
 
     CondemItemsController ctlCondemItems = new CondemItemsController();
@@ -721,8 +721,8 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
     private void tblCondumDetailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblCondumDetailKeyReleased
         // TODO add your handling code here:
         CondemItems objChk = listCondumDetail.get(tblCondumDetail.getSelectedRow()); // 
-        if(Integer.parseInt(objChk.getRequestedQuantity()) < 
-                Integer.parseInt(tblCondumDetail.getValueAt(tblCondumDetail.getSelectedRow(), 2).toString())){
+        if (Integer.parseInt(objChk.getRequestedQuantity())
+                < Integer.parseInt(tblCondumDetail.getValueAt(tblCondumDetail.getSelectedRow(), 2).toString())) {
             JOptionPane.showMessageDialog(null, "Quantity not gratter than Requested quantity");
         }
     }//GEN-LAST:event_tblCondumDetailKeyReleased
@@ -923,7 +923,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
             txtReqBy.setText(objCondemItems.getRequestedByName());
             srchCondemItems.setCondemId(objCondemItems.getCondemId());
         }
-        
+        txtItemName.requestFocus();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -976,22 +976,21 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
         if (!confirmation()) {
             return;
         }
-        
+
         objCondemItems.setItemId(itemId);
         objCondemItems.setOrderStatusId(Status.admissionRequest);
-        
-        
-        try{
+
+        try {
             Integer.parseInt(txtReqQuantity.getText().trim());
-            
-        }catch(Exception ex){
+
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Kindly enter correct quantity.");
             txtReqQuantity.setText("");
             txtReqQuantity.requestFocus();
             return;
         }
         objCondemItems.setRequestedQuantity(txtReqQuantity.getText().trim());
-        
+
         if (ctlCondemItems.insertCondumDetail(objCondemItems)) {
             selectCondumDetail();
         } else {
@@ -1033,7 +1032,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
 
     private boolean confirmation() {
         boolean ret = true;
-        if (txtItemName.getText().length() == 0) {
+        if (itemId.length() == 0) {
             JOptionPane.showMessageDialog(null, "Kindly Select Item.",
                     "Condem Item",
                     JOptionPane.INFORMATION_MESSAGE);
@@ -1148,26 +1147,26 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
     }
 
     private void checkInprogressRequest() {
-        
+
         srchCondemItems.setCondemId("");
         srchCondemItems.setRequestedBy(Constants.userId);
         srchCondemItems.setStoreId(Constants.storeId);
         srchCondemItems.setOrderStatusId(Status.admissionRequest);
         listCondumMaster = ctlCondemItems.selectCondemMaster(srchCondemItems);
-        if(!listCondumMaster.isEmpty()){
+        if (!listCondumMaster.isEmpty()) {
             txtRequestBy.setEditable(false);
             txtStore.setEditable(false);
             txtCondumId.setEditable(false);
             txtReqBy.setEditable(false);
             txtItemName.setEditable(true);
             txtReqQuantity.setEditable(true);
-            
+
             objCondemItems = listCondumMaster.get(0);
             srchCondemItems.setCondemId(objCondemItems.getCondemId());
             listCondumDetail = ctlCondemItems.selectCondemDetail(
                     srchCondemItems.getCondemId(), statusId);
             searchDetail();
-        }else{
+        } else {
             txtCondumId.setEditable(false);
             txtReqBy.setEditable(false);
             txtItemName.setEditable(false);
