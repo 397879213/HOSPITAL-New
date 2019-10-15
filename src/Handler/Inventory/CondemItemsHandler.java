@@ -156,34 +156,30 @@ public class CondemItemsHandler {
             "REJECT_REMARKS"};
 
         String query
-                = "SELECT ICD.CONDEM_ID,                                        \n"
-                + "         ICD.ITEM_ID,                                        \n"
-                + "         ICM.STORE_ID,                                       \n"
-                + "         ITM.DESCRIPTION ITEM_DESC,                          \n"
-                + "         ICD.REQUESTED_QTY,                                  \n"
-                + "     NVL(ICD.APPROVED_QTY, 0) APPROVED_QTY,                  \n"
-                + "         ICD.ORDER_STATUS_ID,                                \n"
-                + "         STS.DESCRIPTION ORDER_STATUS,                       \n"
-                + "         NVL(ICD.REJECT_BY, ' ') REJECT_BY,                  \n"
+                = " SELECT ICD.CONDEM_ID, ICD.ITEM_ID,                                        \n"
+                + " ICM.STORE_ID, ITM.DESCRIPTION ITEM_DESC,                          \n"
+                + " ICD.REQUESTED_QTY, NVL(ICD.APPROVED_QTY, 0) APPROVED_QTY,                  \n"
+                + " ICD.ORDER_STATUS_ID, STS.DESCRIPTION ORDER_STATUS,                       \n"
+                + " NVL(ICD.REJECT_BY, ' ') REJECT_BY,                  \n"
                 //+ "         NVL(RJB.NAME, ' ') REJECT_BY_NAME,                \n"
-                + "         NVL(ICD.REJECT_DATE, SYSDATE) REJECT_DATE,          \n"
-                + "         NVL(ICD.REJECT_TERMINAL_ID, ' ') REJECT_TERMINAL_ID,\n"
-                + "         NVL(ICD.REJECT_REMARKS, ' ') REJECT_REMARKS   FROM  \n"
-                + Database.Inventory.itemCondemMaster + " ICM,                  \n"
-                + Database.Inventory.itemCondemDetail + " ICD,                  \n"
-                + Database.DCMS.definitionTypeDetail + " STS,                   \n"
-                + Database.DCMS.item + " ITM                                    \n"
-                + " WHERE 1 = 1                                                 \n";
+                + " NVL(ICD.REJECT_DATE, SYSDATE) REJECT_DATE,          \n"
+                + " NVL(ICD.REJECT_TERMINAL_ID, ' ') REJECT_TERMINAL_ID,\n"
+                + " NVL(ICD.REJECT_REMARKS, ' ') REJECT_REMARKS   FROM  \n"
+                + Database.Inventory.itemCondemMaster + " ICM,          \n"
+                + Database.Inventory.itemCondemDetail + " ICD,          \n"
+                + Database.DCMS.definitionTypeDetail + " STS,           \n"
+                + Database.DCMS.item + " ITM                            \n"
+                + " WHERE 1 = 1                                         \n";
         if (condemId.length() != 0) {
-            query += " AND  ICD.CONDEM_ID =  " + condemId + "                   \n";
+            query += " AND  ICD.CONDEM_ID =  " + condemId + "           \n";
         }
         if (statusId.length() != 0) {
-            query += "  AND ICD.ORDER_STATUS_ID = " + statusId + "              \n";
+            query += "  AND ICD.ORDER_STATUS_ID = " + statusId + "      \n";
         }
-        query += " AND ICD.CONDEM_ID = ICM.ID                                   \n"
-                + " AND ICD.ITEM_ID = ITM.ID                                    \n"
-                + " AND ICD.ORDER_STATUS_ID = STS.ID                            \n";
-//                + " AND ICD.REJECT_BY = RJB.USER_NAME                    \n";
+        query += " AND ICD.CONDEM_ID = ICM.ID                           \n"
+                + " AND ICD.ITEM_ID = ITM.ID                            \n"
+                + " AND ICD.ORDER_STATUS_ID = STS.ID                    \n";
+//                + " AND ICD.REJECT_BY = RJB.USER_NAME                 \n";
 
         List selectInvoice = Constants.dao.selectDatainList(query, selectColumns);
 

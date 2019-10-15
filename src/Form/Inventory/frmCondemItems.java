@@ -1186,7 +1186,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
             objCondemItems = listCondumMaster.get(0);
             txtCondumId.setText(objCondemItems.getCondemId());
             txtReqBy.setText(objCondemItems.getRequestedByName());
-            
+            srchCondemItems.setCondemId(objCondemItems.getCondemId());
             listCondumDetail = ctlCondemItems.selectCondemDetail(
                     objCondemItems.getCondemId(), Status.admissionRequest);
             selectCondumDetail();
