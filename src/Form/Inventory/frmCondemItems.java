@@ -103,7 +103,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle(Constants.title+"Condum Items");
         setFrameIcon(null);
-        setPreferredSize(new java.awt.Dimension(880, 710));
+        setPreferredSize(new java.awt.Dimension(880, 730));
         setRequestFocusEnabled(false);
 
         pnlPL.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -665,18 +665,18 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
     private void txtItemNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtItemNameActionPerformed
         // TODO add your handling code here:
         String query = "SELECT ITM.ID, ITM.DESCRIPTION ||' ('|| SWI.QTY || ')' "
-                + " DESCRIPTION FROM                 \n"
-                + Database.DCMS.storeWiseItems + "  SWI,                    \n"
-                + Database.DCMS.item + "  ITM                               \n"
-                + " WHERE SWI.STORE_ID = " + storeId + "                    \n"
-                + " AND SWI.ITEM_ID = ITM.ID                                \n"
+                + " DESCRIPTION FROM                            \n"
+                + Database.DCMS.storeWiseItems + "  SWI,        \n"
+                + Database.DCMS.item + "  ITM                   \n"
+                + " WHERE SWI.STORE_ID = " + storeId + "        \n"
+                + " AND SWI.ITEM_ID = ITM.ID                    \n"
                 + " AND UPPER(ITM.DESCRIPTION) LIKE '%"
-                + txtItemName.getText().toUpperCase().trim() + "%'          \n"
+                + txtItemName.getText().toUpperCase().trim() + "%'\n"
                 + " AND ITM.ID NOT IN ( SELECT ITEM_ID FROM "
-                + Database.Inventory.itemCondemDetail + "                   \n"
-                + " WHERE CONDEM_ID = " + condemId + ")                       \n"
-                + " AND SWI.ACTIVE = 'Y'                                    \n"
-                + " ORDER BY ITM.DESCRIPTION                                \n";
+                + Database.Inventory.itemCondemDetail + "    \n"
+                + " WHERE CONDEM_ID = " + condemId + ")      \n"
+                + " AND SWI.ACTIVE = 'Y'                     \n"
+                + " ORDER BY ITM.DESCRIPTION                 \n";
 
         lov.LOVSelection(query, this);
         if (Constants.lovID.equalsIgnoreCase("ID")) {
