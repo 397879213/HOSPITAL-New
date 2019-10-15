@@ -209,6 +209,15 @@ public class CondemItemsHandler {
         }
         return list;
     }
+    
+    public boolean cancelCondemItem(CondemItems objDlt) {
+        String query
+                = " DELETE FROM  " + Database.Inventory.itemCondemMaster + "\n"
+                + " SET ORDER_STATUS_ID =  " + Status.canceled + "          \n"
+                + " AND ID =  " + objDlt.getCondemId()+ "                   \n";
+
+        return Constants.dao.executeUpdate(query, false);
+    }
 
     public boolean deleteCondemDetailItem(CondemItems objDlt) {
         String query

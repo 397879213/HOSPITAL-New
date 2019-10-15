@@ -148,4 +148,15 @@ public class CondemItemsController {
         }
         return ret;
     }
+    
+    public boolean cancelCondemItem(CondemItems objDlt) {
+        boolean ret = hdlCondemItems.cancelCondemItem(objDlt);
+        if (ret) {
+            Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
 }
