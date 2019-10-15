@@ -156,12 +156,11 @@ public class CondemItemsHandler {
             "REJECT_REMARKS"};
 
         String query
-                = " SELECT ICD.CONDEM_ID, ICD.ITEM_ID,                                        \n"
-                + " ICM.STORE_ID, ITM.DESCRIPTION ITEM_DESC,                          \n"
-                + " ICD.REQUESTED_QTY, NVL(ICD.APPROVED_QTY, 0) APPROVED_QTY,                  \n"
-                + " ICD.ORDER_STATUS_ID, STS.DESCRIPTION ORDER_STATUS,                       \n"
+                = " SELECT ICD.CONDEM_ID, ICD.ITEM_ID,                  \n"
+                + " ICM.STORE_ID, ITM.DESCRIPTION ITEM_DESC,            \n"
+                + " ICD.REQUESTED_QTY, NVL(ICD.APPROVED_QTY, 0) APPROVED_QTY,\n"
+                + " ICD.ORDER_STATUS_ID, STS.DESCRIPTION ORDER_STATUS,  \n"
                 + " NVL(ICD.REJECT_BY, ' ') REJECT_BY,                  \n"
-                //+ "         NVL(RJB.NAME, ' ') REJECT_BY_NAME,                \n"
                 + " NVL(ICD.REJECT_DATE, SYSDATE) REJECT_DATE,          \n"
                 + " NVL(ICD.REJECT_TERMINAL_ID, ' ') REJECT_TERMINAL_ID,\n"
                 + " NVL(ICD.REJECT_REMARKS, ' ') REJECT_REMARKS   FROM  \n"

@@ -591,10 +591,10 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(134, 134, 134)
+                .addGap(126, 126, 126)
                 .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -610,12 +610,12 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnClear)
                     .addComponent(btnApprove)
                     .addComponent(btnReject)
                     .addComponent(btnExit)
                     .addComponent(btnRequest)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(btnClear))
                 .addGap(9, 9, 9))
         );
 
@@ -798,6 +798,8 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
 
         if (ctlCondemItems.updateRequestStoreStocks(listApprove, storeId,
                 Stores.condemStore, "Y")) {
+            txtCondumId.setText("");
+            txtReqBy.setText("");
             condemId = "";
             listCondumDetail.clear();
             tblCondumItem.setModel(new CondemItemsTableModel(listCondumDetail));
