@@ -2,7 +2,6 @@ package Form.Inventory;
 
 import BO.Inventory.CondemItems;
 import Controller.Inventory.CondemItemsController;
-import Form.general.*;
 import TableModel.Inventory.CondemDetailTableModel;
 import TableModel.Inventory.CondemItemsTableModel;
 import TableModel.Inventory.CondemMasterTableModel;
@@ -11,13 +10,11 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableColumn;
-import sun.security.util.PropertyExpander;
 import utilities.Constants;
 import utilities.Database;
 import utilities.DisplayLOV;
 import utilities.Status;
 import utilities.Stores;
-import utilities.TypeDetailId;
 
 public class frmCondemItems extends javax.swing.JInternalFrame {
 
