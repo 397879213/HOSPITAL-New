@@ -28,7 +28,6 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
 
         initComponents();
         this.setSize(Constants.xSize - 145, Constants.ySize - 10);
-        condemId = ctlCondemItems.condemId();
         btnRequest.setEnabled(false);
         btnApprove.setEnabled(false);
         btnReject.setEnabled(false);
@@ -91,6 +90,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
         btnReject = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
         btnRequest = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102)));
@@ -577,13 +577,19 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(153, 0, 0));
+        jButton2.setText("Cancel");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(150, 150, 150)
+                .addGap(134, 134, 134)
                 .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
                 .addGap(18, 18, 18)
                 .addComponent(btnRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -603,8 +609,9 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
                     .addComponent(btnApprove)
                     .addComponent(btnReject)
                     .addComponent(btnExit)
-                    .addComponent(btnRequest))
-                .addGap(10, 10, 10))
+                    .addComponent(btnRequest)
+                    .addComponent(jButton2))
+                .addGap(9, 9, 9))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -936,6 +943,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnRequest;
     private javax.swing.JComboBox<String> cboStatus;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -1004,7 +1012,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
     }
 
     private void selectCondumDetail() {
-        statusId = Status.admissionRequest;
+        
         listCondumDetail = ctlCondemItems.selectCondemDetail(condemId, statusId);
         tblCondumItem.setModel(new CondemItemsTableModel(listCondumDetail));
         ListSelectionModel selectionModel = tblCondumItem.getSelectionModel();
@@ -1162,11 +1170,18 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
             txtReqQuantity.setEditable(true);
 
             objCondemItems = listCondumMaster.get(0);
-            srchCondemItems.setCondemId(objCondemItems.getCondemId());
+            txtCondumId.setText(objCondemItems.getCondemId());
+            txtReqBy.setText(objCondemItems.getRequestedByName());
+            
             listCondumDetail = ctlCondemItems.selectCondemDetail(
-                    srchCondemItems.getCondemId(), statusId);
-            searchDetail();
+                    objCondemItems.getCondemId(), Status.admissionRequest);
+            selectCondumDetail();
+            btnRequest.setEnabled(true);
+            btnApprove.setEnabled(false);
+            btnReject.setEnabled(false);
         } else {
+            txtRequestBy.setEditable(true);
+            txtStore.setEditable(true);
             txtCondumId.setEditable(false);
             txtReqBy.setEditable(false);
             txtItemName.setEditable(false);

@@ -174,7 +174,6 @@ public class CondemItemsHandler {
                 + Database.DCMS.definitionTypeDetail + " STS,                   \n"
                 + Database.DCMS.item + " ITM                                    \n"
                 + " WHERE 1 = 1                                                 \n";
-        //                + Database.DCMS.users + " RJB                 \n"
         if (condemId.length() != 0) {
             query += " AND  ICD.CONDEM_ID =  " + condemId + "                   \n";
         }
