@@ -114,7 +114,7 @@ public class CondemItemsHandler {
                     + " AND CM.ORDER_STATUS_ID = "+ Status.admissionRequest +"\n";
         }
         if (objSrch.getCondemId().length() == 0) {
-            query += " AND CM.REQUEST_BY = '"+objSrch.getRequestedBy()+"'   \n"
+            query += " AND CM.CRTD_BY = '"+objSrch.getRequestedBy()+"'      \n"
                    + " AND CM.ORDER_STATUS_ID = " + objSrch.getOrderStatusId() + "\n";
         }
 

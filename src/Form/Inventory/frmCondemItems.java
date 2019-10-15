@@ -908,7 +908,6 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
         objCondemItems.setStoreId(storeId);
         objCondemItems.setRequestedBy(userId);
         objCondemItems.setOrderStatusId(Status.admissionRequest);
@@ -917,6 +916,12 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
             txtReqBy.setEditable(false);
             txtItemName.setEditable(true);
             txtReqQuantity.setEditable(true);
+            listCondumMaster = ctlCondemItems.selectCondemMaster(srchCondemItems);
+            objCondemItems = listCondumMaster.get(0);
+            srchCondemItems.setCondemId(objCondemItems.getCondemId());
+            txtCondumId.setText(objCondemItems.getCondemId());
+            txtReqBy.setText(objCondemItems.getRequestedByName());
+            srchCondemItems.setCondemId(objCondemItems.getCondemId());
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
