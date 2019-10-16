@@ -1009,6 +1009,9 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         condemId = txtCondumId.getText().trim();
         statusId = Status.admissionRequest;
+        btnRequest.setEnabled(false);
+        btnReject.setEnabled(false);
+        btnApprove.setEnabled(false);
         selectCondumDetail();
     }//GEN-LAST:event_txtCondumIdActionPerformed
 
