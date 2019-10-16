@@ -749,8 +749,8 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
 
     private void tblCondumMasterMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCondumMasterMouseReleased
 
-        if(tblCondumMaster.getSelectedRow() < 0 &&  ){
-            
+        if(tblCondumMaster.getSelectedRow() < 0 || listCondumMaster.isEmpty()){
+            return;
         }
         CondemItems obj = listCondumMaster.get(tblCondumMaster.getSelectedRow());
         condemId = obj.getCondemId();
