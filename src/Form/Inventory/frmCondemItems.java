@@ -1233,6 +1233,8 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
         srchCondemItems.setOrderStatusId(Status.pending);
         listCondumMaster = ctlCondemItems.selectCondemMaster(srchCondemItems);
         if (!listCondumMaster.isEmpty()) {
+            txtRequestBy.setEditable(false);
+            txtStore.setEditable(false);
             txtCondumId.setEditable(false);
             txtReqBy.setEditable(false);
             txtItemName.setEditable(true);
