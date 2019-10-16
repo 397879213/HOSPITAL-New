@@ -1002,7 +1002,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
         }
 
         objCondemItems.setItemId(itemId);
-        objCondemItems.setOrderStatusId(Status.admissionRequest);
+        objCondemItems.setOrderStatusId(Status.pending);
 
         try {
             Integer.parseInt(txtReqQuantity.getText().trim());
@@ -1175,7 +1175,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
         srchCondemItems.setCondemId("");
         srchCondemItems.setRequestedBy(Constants.userId);
         srchCondemItems.setStoreId(Constants.storeId);
-        srchCondemItems.setOrderStatusId(Status.admissionRequest);
+        srchCondemItems.setOrderStatusId(Status.pending);
         listCondumMaster = ctlCondemItems.selectCondemMaster(srchCondemItems);
         if (!listCondumMaster.isEmpty()) {
             txtRequestBy.setEditable(false);
@@ -1190,7 +1190,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
             txtReqBy.setText(objCondemItems.getRequestedByName());
             srchCondemItems.setCondemId(objCondemItems.getCondemId());
             listCondumDetail = ctlCondemItems.selectCondemDetail(
-                    objCondemItems.getCondemId(), Status.admissionRequest);
+                    objCondemItems.getCondemId(), Status.pending);
             selectCondumDetail();
             btnRequest.setEnabled(true);
             btnApprove.setEnabled(false);

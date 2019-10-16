@@ -43,6 +43,7 @@ public class Status {
     public static String crossMatched = "5206";
     public static String notCrossMatched = "5207";
     public static String pendingCrossMatched = "5470";
+    public static String pending = "15946";
     public static String backToAvailableProduct = "5471";
     public static String transfusionReaction = "5498";
 
