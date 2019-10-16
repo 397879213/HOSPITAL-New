@@ -5,6 +5,7 @@ import Controller.Inventory.CondemItemsController;
 import TableModel.Inventory.CondemDetailTableModel;
 import TableModel.Inventory.CondemItemsTableModel;
 import TableModel.Inventory.CondemMasterTableModel;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -28,6 +29,14 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
 
         initComponents();
         this.setSize(Constants.xSize - 150, Constants.ySize - 40);
+        btnAdd.setMnemonic(KeyEvent.VK_A);
+        btnExit.setMnemonic(KeyEvent.VK_X);
+        btnClear.setMnemonic(KeyEvent.VK_C);
+        btnRequest.setMnemonic(KeyEvent.VK_R);
+        btnApprove.setMnemonic(KeyEvent.VK_P);
+        btnReject.setMnemonic(KeyEvent.VK_J);
+        btnCancel.setMnemonic(KeyEvent.VK_C);
+        btnSave.setMnemonic(KeyEvent.VK_S);
         btnRequest.setEnabled(false);
         btnApprove.setEnabled(false);
         btnReject.setEnabled(false);
@@ -90,7 +99,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
         btnReject = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
         btnRequest = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102)));
@@ -583,12 +592,12 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(153, 0, 0));
-        jButton2.setText("Cancel");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnCancel.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnCancel.setForeground(new java.awt.Color(153, 0, 0));
+        btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnCancelActionPerformed(evt);
             }
         });
 
@@ -600,7 +609,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
                 .addGap(126, 126, 126)
                 .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -620,7 +629,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
                     .addComponent(btnReject)
                     .addComponent(btnExit)
                     .addComponent(btnRequest)
-                    .addComponent(jButton2)
+                    .addComponent(btnCancel)
                     .addComponent(btnClear))
                 .addGap(8, 8, 8))
         );
@@ -979,7 +988,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
         txtItemName.requestFocus();
     }//GEN-LAST:event_btnSaveActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
         if (listApprove.isEmpty()) {
             JOptionPane.showConfirmDialog(null, "Please enter Indent to Cancel.");
@@ -1003,7 +1012,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Unable to cancel succcessfully");
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnCancelActionPerformed
 
     private void txtCondumIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCondumIdActionPerformed
         // TODO add your handling code here:
@@ -1019,13 +1028,13 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnApprove;
+    private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnReject;
     private javax.swing.JButton btnRequest;
     private javax.swing.JButton btnSave;
     private javax.swing.JComboBox<String> cboStatus;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
