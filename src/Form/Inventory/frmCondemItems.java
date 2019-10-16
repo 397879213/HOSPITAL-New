@@ -1088,6 +1088,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
     }
 
     private void searchData() {
+        srchCondemItems.setCondemId(condemId);
         setStatusData();
         listCondumMaster = ctlCondemItems.selectCondemMaster(srchCondemItems);
         if(listCondumMaster.isEmpty()){
