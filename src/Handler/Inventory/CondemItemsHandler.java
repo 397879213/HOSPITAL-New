@@ -215,7 +215,7 @@ public class CondemItemsHandler {
                 = " UPDATE  " + Database.Inventory.itemCondemDetail + "\n"
                 + " SET ORDER_STATUS_ID =  " + Status.canceled + ", \n"
                 + " ACTION_BY = '"+ Constants.userId +"',           \n"
-                + " ACTION_DATE,"+ Constants.today +",              \n"
+                + " ACTION_DATE = "+ Constants.today +",              \n"
                 + " ACTION_TERMINAL_ID = '"+ Constants.terminalId +"' \n"
                 + " AND ID =  " + objDlt.getCondemId()+ "            \n";
 
