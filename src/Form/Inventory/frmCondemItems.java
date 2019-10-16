@@ -924,7 +924,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         objCondemItems.setStoreId(storeId);
         objCondemItems.setRequestedBy(userId);
-        objCondemItems.setOrderStatusId(Status.admissionRequest);
+        objCondemItems.setOrderStatusId(Status.pending);
         if (ctlCondemItems.insertCondumMaster(objCondemItems)) {
             txtCondumId.setEditable(false);
             txtReqBy.setEditable(false);
