@@ -749,7 +749,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
 
     private void tblCondumMasterMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCondumMasterMouseReleased
 
-        if(tblCondumMaster.getSelectedRow() < 0 || listCondumMaster.isEmpty()){
+        if (tblCondumMaster.getSelectedRow() < 0 || listCondumMaster.isEmpty()) {
             return;
         }
         CondemItems obj = listCondumMaster.get(tblCondumMaster.getSelectedRow());
@@ -791,6 +791,10 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
 
     private void btnRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestActionPerformed
         // TODO add your handling code here:
+        if (listApprove.isEmpty()) {
+            JOptionPane.showConfirmDialog(null, "Please enter Indent to Request.");
+            return;
+        }
         int confirmation = JOptionPane.showConfirmDialog(null, "You Are Going "
                 + "To Request the item(s).");
         if (confirmation != 0) {
@@ -811,7 +815,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Items Request Successfully.");
         } else {
             JOptionPane.showMessageDialog(null, "Unable to Request Successfully.");
-        }     
+        }
     }//GEN-LAST:event_btnRequestActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
@@ -843,6 +847,10 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
         // TODO add your handling code here:
+        if (listCondumMaster.isEmpty()) {
+            JOptionPane.showConfirmDialog(null, "Please select Indent to Approve.");
+            return;
+        }
         int confirmation = JOptionPane.showConfirmDialog(null, "You Are Going "
                 + "To Approve the item(s).");
         if (confirmation != 0) {
@@ -869,6 +877,10 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
         // TODO add your handling code here:
+        if (listCondumMaster.isEmpty()) {
+            JOptionPane.showConfirmDialog(null, "Please enter Indent to Reject.");
+            return;
+        }
         if (txtRejectRemarks.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Kindly Enter Reject Remarks.",
                     "Condem Item",
@@ -930,6 +942,10 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
         objCondemItems.setRequestedBy(userId);
         objCondemItems.setOrderStatusId(Status.pending);
         if (ctlCondemItems.insertCondumMaster(objCondemItems)) {
+            txtStore.setText("");
+            txtRequestBy.setText("");
+            txtStore.setEditable(false);
+            txtRequestBy.setEditable(false);
             txtCondumId.setEditable(false);
             txtReqBy.setEditable(false);
             txtItemName.setEditable(true);
@@ -941,22 +957,25 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
             txtReqBy.setText(objCondemItems.getRequestedByName());
             srchCondemItems.setCondemId(objCondemItems.getCondemId());
         }
-        txtStore.setText("");
-        txtRequestBy.setText("");
+
         txtItemName.requestFocus();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        if (listApprove.isEmpty()) {
+            JOptionPane.showConfirmDialog(null, "Please enter Indent to Cancel.");
+            return;
+        }
         int confirmation = JOptionPane.showConfirmDialog(null, "You Are Going "
                 + "To Cancel the item(s).\n"
                 + "Do you want to Cancel?");
         if (confirmation != 0) {
             return;
         }
-        if(ctlCondemItems.cancelCondemItem(listApprove)){
+        if (ctlCondemItems.cancelCondemItem(listApprove)) {
             JOptionPane.showMessageDialog(null, "Cancelled succcessfully");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Unable to cancel succcessfully");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -1040,9 +1059,9 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
     }
 
     private void selectCondumDetail() {
-        
+
         listApprove = ctlCondemItems.selectCondemDetail(condemId, statusId);
-        if(listApprove.isEmpty()){
+        if (listApprove.isEmpty()) {
             List<CondemItems> listApprove = new ArrayList();
             tblCondumItem.setModel(new CondemItemsTableModel(listApprove));
         }
@@ -1093,7 +1112,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
         srchCondemItems.setCondemId(condemId);
         setStatusData();
         listCondumMaster = ctlCondemItems.selectCondemMaster(srchCondemItems);
-        if(listCondumMaster.isEmpty()){
+        if (listCondumMaster.isEmpty()) {
             List<CondemItems> listCondumMaster = new ArrayList();
             tblCondumMaster.setModel(new CondemItemsTableModel(listCondumMaster));
         }
@@ -1178,7 +1197,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
     }
 
     private void searchDetail() {
-        if(listCondumDetail.isEmpty()){
+        if (listCondumDetail.isEmpty()) {
             List<CondemItems> listCondumMaster = new ArrayList();
             tblCondumDetail.setModel(new CondemItemsTableModel(listCondumDetail));
         }
