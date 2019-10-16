@@ -340,7 +340,7 @@ public class CondemItemsHandler {
 
             String query
                     = " UPDATE " + Database.Inventory.storeWiseItems + " SWI    \n";
-            if (isRequseted.length() == 0) {
+            if (isRequseted.length() != 0) {
                 query += " SET SWI.QTY = SWI.QTY - "
                         + objUpdate.getRequestedQuantity() + " \n";
             } else {
@@ -364,7 +364,7 @@ public class CondemItemsHandler {
 
             String query
                     = " UPDATE " + Database.Inventory.storeWiseItems + " SWI    \n";
-            if (isRequseted.length() == 0) {
+            if (isRequseted.length() != 0) {
                 query += " SET SWI.QTY = SWI.QTY + "
                         + objUpdate.getRequestedQuantity() + " \n";
             } else {
