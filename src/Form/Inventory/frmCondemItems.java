@@ -27,7 +27,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
     public frmCondemItems() {
 
         initComponents();
-        this.setSize(Constants.xSize - 145, Constants.ySize - 10);
+        this.setSize(Constants.xSize - 120, Constants.ySize - 10);
         btnRequest.setEnabled(false);
         btnApprove.setEnabled(false);
         btnReject.setEnabled(false);
@@ -937,6 +937,8 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
             txtReqBy.setText(objCondemItems.getRequestedByName());
             srchCondemItems.setCondemId(objCondemItems.getCondemId());
         }
+        txtStore.setText("");
+        txtRequestBy.setText("");
         txtItemName.requestFocus();
     }//GEN-LAST:event_jButton1ActionPerformed
 
