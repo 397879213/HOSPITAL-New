@@ -753,7 +753,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
             return;
         }
         CondemItems obj = listCondumMaster.get(tblCondumMaster.getSelectedRow());
-        listCondumDetail = ctlCondemItems.selectCondemDetail(condemId,
+        listCondumDetail = ctlCondemItems.selectCondemDetail(obj.getCondemId(),
                 statusId);
         searchDetail();
     }//GEN-LAST:event_tblCondumMasterMouseReleased
