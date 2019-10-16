@@ -213,10 +213,7 @@ public class CondemItemsHandler {
 
             String query
                 = " UPDATE  " + Database.Inventory.itemCondemDetail + " \n"
-                + " SET ORDER_STATUS_ID =  " + Status.canceled + ",     \n"
-                + " ACTION_BY = '"+ Constants.userId +"',               \n"
-                + " ACTION_DATE = "+ Constants.today +",                \n"
-                + " ACTION_TERMINAL_ID = '"+ Constants.terminalId +"'   \n"
+                + " SET ORDER_STATUS_ID =  " + Status.canceled + "      \n"
                 + " WHERE CONDEM_ID =  " + objDlt.getCondemId()+ "      \n";
 
             ret = Constants.dao.executeUpdate(query, false);
