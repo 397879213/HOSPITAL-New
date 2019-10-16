@@ -155,8 +155,12 @@ public class CondemItemsController {
         return ret;
     }
 
-    public boolean cancelCondemItem(CondemItems objDlt) {
-        boolean ret = hdlCondemItems.cancelCondemItem(objDlt);
+    public boolean cancelCondemItem(List<CondemItems> listDlt) {
+        CondemItems objDlt = listDlt.get(0);
+        boolean ret = hdlCondemItems.cancelCondemItemDetail(listDlt);
+        if(ret){
+            ret = hdlCondemItems.cancelCondemItemMaster(objDlt);
+        }
         if (ret) {
             Constants.dao.commitTransaction();
         }

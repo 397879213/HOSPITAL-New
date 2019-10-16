@@ -942,7 +942,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        if(ctlCondemItems.cancelCondemItem(objCondemItems)){
+        if(ctlCondemItems.cancelCondemItem(listApprove)){
             JOptionPane.showMessageDialog(null, "Cancelled succcessfully");
         }else{
             JOptionPane.showMessageDialog(null, "Unable to cancel succcessfully");

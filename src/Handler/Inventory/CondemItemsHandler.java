@@ -205,14 +205,30 @@ public class CondemItemsHandler {
         return list;
     }
     
-    public boolean cancelCondemItem(CondemItems objDlt) {
-        String query
-                = " DELETE FROM  " + Database.Inventory.itemCondemMaster + "\n"
+    public boolean cancelCondemItemDetail(List<CondemItems> listDlt) {
+        
+        boolean ret = true;
+        for (int i = 0; i < listDlt.size(); i++) {
+            CondemItems objDlt = listDlt.get(i);
+
+            String query
+                = " UPDATE  " + Database.Inventory.itemCondemDetail + "\n"
                 + " SET ORDER_STATUS_ID =  " + Status.canceled + ", \n"
                 + " ACTION_BY = '"+ Constants.userId +"',           \n"
                 + " ACTION_DATE,"+ Constants.today +",              \n"
                 + " ACTION_TERMINAL_ID = '"+ Constants.terminalId +"' \n"
                 + " AND ID =  " + objDlt.getCondemId()+ "            \n";
+
+            ret = Constants.dao.executeUpdate(query, false);
+        }
+        return ret;
+    }
+    
+    public boolean cancelCondemItemMaster(CondemItems objUpdate) {
+        String query
+                = " UPDATE " + Database.Inventory.itemCondemMaster + " \n"
+                + " SET ORDER_STATUS_ID  = " + Status.canceled + "     \n"
+                + " WHERE ID =  " + objUpdate.getCondemId() + "        \n";
 
         return Constants.dao.executeUpdate(query, false);
     }
