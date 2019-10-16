@@ -100,7 +100,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle(Constants.title+"Condum Items");
         setFrameIcon(null);
-        setPreferredSize(new java.awt.Dimension(880, 730));
+        setPreferredSize(new java.awt.Dimension(886, 730));
         setRequestFocusEnabled(false);
 
         pnlPL.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -810,7 +810,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Items Request Successfully.");
         } else {
             JOptionPane.showMessageDialog(null, "Unable to Request Successfully.");
-        }
+        }     
     }//GEN-LAST:event_btnRequestActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
