@@ -831,6 +831,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
 
     private void txtCondumSrchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCondumSrchActionPerformed
         // TODO add your handling code here:
+        condemId = txtCondumSrch.getText().trim();
         searchData();
 
     }//GEN-LAST:event_txtCondumSrchActionPerformed
@@ -859,7 +860,8 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
             }
             JOptionPane.showMessageDialog(null, listApprove.size() + " Items(s) "
                     + "Approved Successfully.");
-            searchData();
+            listCondumDetail.clear();
+            tblCondumDetail.setModel(new CondemDetailTableModel(listCondumDetail));
         } else {
             JOptionPane.showMessageDialog(null, "Unable to Approve.");
         }
