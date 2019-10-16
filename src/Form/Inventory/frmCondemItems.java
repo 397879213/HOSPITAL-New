@@ -753,8 +753,6 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
             return;
         }
         CondemItems obj = listCondumMaster.get(tblCondumMaster.getSelectedRow());
-        condemId = obj.getCondemId();
-        System.err.println("cond idd " + condemId);
         listCondumDetail = ctlCondemItems.selectCondemDetail(condemId,
                 statusId);
         searchDetail();
@@ -1042,6 +1040,10 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
     private void selectCondumDetail() {
         
         listApprove = ctlCondemItems.selectCondemDetail(condemId, statusId);
+        if(listApprove.isEmpty()){
+            List<CondemItems> listApprove = new ArrayList();
+            tblCondumItem.setModel(new CondemItemsTableModel(listApprove));
+        }
         tblCondumItem.setModel(new CondemItemsTableModel(listApprove));
         ListSelectionModel selectionModel = tblCondumItem.getSelectionModel();
         tblCondumItem.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -1088,6 +1090,10 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
     private void searchData() {
         setStatusData();
         listCondumMaster = ctlCondemItems.selectCondemMaster(srchCondemItems);
+        if(listCondumMaster.isEmpty()){
+            List<CondemItems> listCondumMaster = new ArrayList();
+            tblCondumMaster.setModel(new CondemItemsTableModel(listCondumMaster));
+        }
         tblCondumMaster.setModel(new CondemMasterTableModel(listCondumMaster));
         ListSelectionModel selectionModel = tblCondumMaster.getSelectionModel();
         tblCondumMaster.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -1169,6 +1175,10 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
     }
 
     private void searchDetail() {
+        if(listCondumDetail.isEmpty()){
+            List<CondemItems> listCondumMaster = new ArrayList();
+            tblCondumDetail.setModel(new CondemItemsTableModel(listCondumDetail));
+        }
         tblCondumDetail.setModel(new CondemDetailTableModel(listCondumDetail));
         tblCondumDetail.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         ListSelectionModel selectionModel = tblCondumDetail.getSelectionModel();
