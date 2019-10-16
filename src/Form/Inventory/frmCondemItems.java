@@ -810,6 +810,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
         if (ctlCondemItems.updateRequestStoreStocks(listApprove, storeId,
                 Stores.condemStore, "Y")) {
             txtCondumId.setText("");
+            txtCondumId.setEditable(true);
             txtReqBy.setText("");
             condemId = "";
             listCondumDetail.clear();
