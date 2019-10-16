@@ -985,6 +985,12 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
             return;
         }
         if (ctlCondemItems.cancelCondemItem(listApprove)) {
+            txtReqBy.setText("");
+            txtCondumId.setText("");
+            listApprove.clear();
+            tblCondumItem.setModel(new CondemItemsTableModel(listApprove));
+            txtRequestBy.setEditable(true);
+            txtStore.setEditable(true);
             JOptionPane.showMessageDialog(null, "Cancelled succcessfully");
         } else {
             JOptionPane.showMessageDialog(null, "Unable to cancel succcessfully");
