@@ -985,6 +985,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
             return;
         }
         if (ctlCondemItems.cancelCondemItem(listApprove)) {
+            srchCondemItems.setCondemId("");
             txtReqBy.setText("");
             txtCondumId.setText("");
             listApprove.clear();
