@@ -749,6 +749,9 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
 
     private void tblCondumMasterMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCondumMasterMouseReleased
 
+        if(tblCondumMaster.getSelectedRow() < 0 &&  ){
+            
+        }
         CondemItems obj = listCondumMaster.get(tblCondumMaster.getSelectedRow());
         condemId = obj.getCondemId();
         System.err.println("cond idd " + condemId);
@@ -890,7 +893,8 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
             }
             JOptionPane.showMessageDialog(null, listApprove.size() + " Items(s) "
                     + "Rejected Successfully.");
-            
+            listCondumDetail.clear();
+            tblCondumDetail.setModel(new CondemDetailTableModel(listCondumDetail));
         } else {
             JOptionPane.showMessageDialog(null, "Unable to Approve.");
         }
