@@ -473,6 +473,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtCondumId">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCondumIdActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel10">
               <Properties>

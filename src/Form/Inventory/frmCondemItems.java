@@ -267,6 +267,12 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("Condemetion Id : ");
 
+        txtCondumId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCondumIdActionPerformed(evt);
+            }
+        });
+
         jLabel10.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(102, 0, 0));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -997,6 +1003,13 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Unable to cancel succcessfully");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtCondumIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCondumIdActionPerformed
+        // TODO add your handling code here:
+        condemId = txtCondumId.getText().trim();
+        statusId = Status.admissionRequest;
+        selectCondumDetail();
+    }//GEN-LAST:event_txtCondumIdActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
