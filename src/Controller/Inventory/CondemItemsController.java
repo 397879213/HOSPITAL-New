@@ -9,6 +9,7 @@ import BO.Inventory.CondemItems;
 import Handler.Inventory.CondemItemsHandler;
 import java.util.List;
 import utilities.Constants;
+import utilities.Stores;
 
 /**
  *
@@ -90,7 +91,7 @@ public class CondemItemsController {
             ret = hdlCondemItems.updateStoreStock(listUpdate, lessStoreId, isRequseted);
         }
         if (ret) {
-            ret = hdlCondemItems.updateForDiscartedItem(listUpdate, addStoreId,
+            ret = hdlCondemItems.updateForAddStock(listUpdate, addStoreId,
                     isRequseted);
         }
         if (ret) {
@@ -109,11 +110,15 @@ public class CondemItemsController {
             String lessStoreId, String addStoreId, String isRequseted) {
         boolean ret = hdlCondemItems.updateRejectRequest(listUpdate);
         if (ret) {
+            ret = hdlCondemItems.updateForAddStock(listUpdate, Stores.discartedStore,
+                    isRequseted);
+        }
+        if (ret) {
             ret = hdlCondemItems.updateStoreStock(listUpdate, lessStoreId,
                     isRequseted);
         }
         if (ret) {
-            ret = hdlCondemItems.updateForDiscartedItem(listUpdate, addStoreId,
+            ret = hdlCondemItems.updateForAddStock(listUpdate, addStoreId,
                     isRequseted);
         }
         if (ret) {
@@ -140,7 +145,7 @@ public class CondemItemsController {
                     isRequseted);
         }
         if (ret) {
-            ret = hdlCondemItems.updateForDiscartedItem(listUpdate, addStoreId,
+            ret = hdlCondemItems.updateForAddStock(listUpdate, addStoreId,
                     isRequseted);
         }
         if (ret) {

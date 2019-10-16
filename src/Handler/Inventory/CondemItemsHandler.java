@@ -356,24 +356,23 @@ public class CondemItemsHandler {
         return ret;
     }
 
-    public boolean updateForDiscartedItem(List<CondemItems> listUpdate,
+    public boolean updateForAddStock(List<CondemItems> listUpdate,
             String addStoreId, String isRequseted) {
         boolean ret = true;
         for (int i = 0; i < listUpdate.size(); i++) {
             CondemItems objUpdate = listUpdate.get(i);
 
             String query
-                    = " UPDATE " + Database.Inventory.storeWiseItems + " SWI    \n";
+                    = " UPDATE " + Database.Inventory.storeWiseItems + " SWI \n";
             if (isRequseted.length() != 0) {
                 query += " SET SWI.QTY = SWI.QTY + "
-                        + objUpdate.getRequestedQuantity() + " \n";
+                        + objUpdate.getRequestedQuantity() + "          \n";
             } else {
                 query += " SET SWI.QTY = SWI.QTY + "
-                        + objUpdate.getApprovedQuantity() + " \n";
+                        + objUpdate.getApprovedQuantity() + "           \n";
             }
-            query += " WHERE SWI.STORE_ID =  " + addStoreId + "     \n"
-                    + " AND SWI.ITEM_ID =  " + objUpdate.getItemId() + "        \n";
-            System.out.println("ADD STORE UPDATE,,/,//./....");
+            query += " WHERE SWI.STORE_ID =  " + addStoreId + "         \n"
+                    + " AND SWI.ITEM_ID =  " + objUpdate.getItemId() + "\n";
             ret = Constants.dao.executeUpdate(query, false);
         }
         return ret;

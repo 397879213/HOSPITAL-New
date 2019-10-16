@@ -890,7 +890,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
             }
             JOptionPane.showMessageDialog(null, listApprove.size() + " Items(s) "
                     + "Rejected Successfully.");
-            searchData();
+            
         } else {
             JOptionPane.showMessageDialog(null, "Unable to Approve.");
         }
@@ -944,6 +944,12 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        int confirmation = JOptionPane.showConfirmDialog(null, "You Are Going "
+                + "To Cancel the item(s).\n"
+                + "Do you want to Cancel?");
+        if (confirmation != 0) {
+            return;
+        }
         if(ctlCondemItems.cancelCondemItem(listApprove)){
             JOptionPane.showMessageDialog(null, "Cancelled succcessfully");
         }else{
