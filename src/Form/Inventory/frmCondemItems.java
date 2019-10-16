@@ -56,7 +56,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
         txtStore = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtRequestBy = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane11 = new javax.swing.JScrollPane();
         tblCondumItem = new javax.swing.JTable();
@@ -157,11 +157,11 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton1.setText("Save");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSave.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnSaveActionPerformed(evt);
             }
         });
 
@@ -181,7 +181,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtRequestBy)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)))
+                        .addComponent(btnSave)))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -195,7 +195,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtRequestBy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(btnSave))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -936,8 +936,18 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
         tblCondumMaster.setModel(new CondemMasterTableModel(listCondumMaster));
     }//GEN-LAST:event_btnClearActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
+        if(storeId.length() == 0){
+            JOptionPane.showConfirmDialog(null, "Please Select Store.");
+            txtStore.requestFocus();
+            return;
+        }
+        if(userId.length() == 0){
+            JOptionPane.showConfirmDialog(null, "Please Select Requested User.");
+            txtRequestBy.requestFocus();
+            return;
+        }
         objCondemItems.setStoreId(storeId);
         objCondemItems.setRequestedBy(userId);
         objCondemItems.setOrderStatusId(Status.pending);
@@ -946,6 +956,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
             txtRequestBy.setText("");
             txtStore.setEditable(false);
             txtRequestBy.setEditable(false);
+            
             txtCondumId.setEditable(false);
             txtReqBy.setEditable(false);
             txtItemName.setEditable(true);
@@ -959,7 +970,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
         }
 
         txtItemName.requestFocus();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnSaveActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -988,8 +999,8 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnReject;
     private javax.swing.JButton btnRequest;
+    private javax.swing.JButton btnSave;
     private javax.swing.JComboBox<String> cboStatus;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel13;
@@ -1222,8 +1233,6 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
         srchCondemItems.setOrderStatusId(Status.pending);
         listCondumMaster = ctlCondemItems.selectCondemMaster(srchCondemItems);
         if (!listCondumMaster.isEmpty()) {
-            txtRequestBy.setEditable(false);
-            txtStore.setEditable(false);
             txtCondumId.setEditable(false);
             txtReqBy.setEditable(false);
             txtItemName.setEditable(true);
