@@ -130,9 +130,15 @@ public class CondemItemsController {
 
     public boolean updateRequestStoreStocks(List<CondemItems> listUpdate,
             String lessStoreId, String addStoreId, String isRequseted) {
-        System.out.println("MAIN UPDATE,,/,//./....");
-        boolean ret = hdlCondemItems.updateStoreStock(listUpdate, lessStoreId,
-                isRequseted);
+        CondemItems condemItem = listUpdate.get(0);
+        boolean ret = hdlCondemItems.updateForRequestInMaster(condemItem);
+        if (ret) {
+            ret = hdlCondemItems.updateForRequestInDetail(listUpdate);
+        }
+        if (ret) {
+            hdlCondemItems.updateStoreStock(listUpdate, lessStoreId,
+                    isRequseted);
+        }
         if (ret) {
             ret = hdlCondemItems.updateForDiscartedItem(listUpdate, addStoreId,
                     isRequseted);
@@ -148,7 +154,7 @@ public class CondemItemsController {
         }
         return ret;
     }
-    
+
     public boolean cancelCondemItem(CondemItems objDlt) {
         boolean ret = hdlCondemItems.cancelCondemItem(objDlt);
         if (ret) {

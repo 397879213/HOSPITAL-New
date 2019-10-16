@@ -271,6 +271,32 @@ public class CondemItemsHandler {
         return Constants.dao.executeUpdate(query, false);
     }
 
+    public boolean updateForRequestInMaster(CondemItems objUpdate) {
+        String query
+                = " UPDATE " + Database.Inventory.itemCondemMaster + "          \n"
+                + " SET ORDER_STATUS_ID  = " + Status.admissionRequest + "              \n"
+                + " WHERE ID =  " + objUpdate.getCondemId() + "                 \n"
+                + " AND ORDER_STATUS_ID = " + Status.pending + "       \n";
+
+        return Constants.dao.executeUpdate(query, false);
+    }
+    
+    public boolean updateForRequestInDetail(List<CondemItems> listUpdate) {
+        boolean ret = true;
+        for (int i = 0; i < listUpdate.size(); i++) {
+            CondemItems objUpdate = listUpdate.get(i);
+
+            String query
+                    = " UPDATE " + Database.Inventory.itemCondemDetail + "      \n"
+                    + " SET ORDER_STATUS_ID  = '" + Status.admissionRequest + "',       \n"
+                    + " REJECT_REMARKS  = '" + objUpdate.getRejectRemarks() + "'\n"
+                    + " WHERE CONDEM_ID =  " + objUpdate.getCondemId() + "      \n"
+                    + " AND ITEM_ID =  " + objUpdate.getItemId() + "            \n";
+            ret = Constants.dao.executeUpdate(query, false);
+        }
+        return ret;
+    }
+    
     public boolean updateRejectRequest(List<CondemItems> listUpdate) {
         boolean ret = true;
         for (int i = 0; i < listUpdate.size(); i++) {
