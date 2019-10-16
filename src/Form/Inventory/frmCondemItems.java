@@ -1029,8 +1029,8 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
 
     private void selectCondumDetail() {
         
-        listCondumDetail = ctlCondemItems.selectCondemDetail(condemId, statusId);
-        tblCondumItem.setModel(new CondemItemsTableModel(listCondumDetail));
+        listApprove = ctlCondemItems.selectCondemDetail(condemId, statusId);
+        tblCondumItem.setModel(new CondemItemsTableModel(listApprove));
         ListSelectionModel selectionModel = tblCondumItem.getSelectionModel();
         tblCondumItem.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         setCondumDetailColumnsWidths();
@@ -1189,7 +1189,9 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
             txtCondumId.setText(objCondemItems.getCondemId());
             txtReqBy.setText(objCondemItems.getRequestedByName());
             srchCondemItems.setCondemId(objCondemItems.getCondemId());
-            listCondumDetail = ctlCondemItems.selectCondemDetail(
+            condemId = objCondemItems.getCondemId();
+            storeId = objCondemItems.getStoreId();
+            listApprove = ctlCondemItems.selectCondemDetail(
                     objCondemItems.getCondemId(), Status.pending);
             selectCondumDetail();
             btnRequest.setEnabled(true);
