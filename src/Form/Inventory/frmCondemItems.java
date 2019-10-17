@@ -846,6 +846,23 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
 
     private void txtStoreSrchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStoreSrchActionPerformed
         // TODO add your handling code here:
+        String query = "SELECT ID, DESCRIPTION FROM                         \n"
+                + Database.DCMS.store + "                                   \n"
+                + " WHERE UPPER(DESCRIPTION) LIKE '%"
+                + txtStoreSrch.getText().toUpperCase().trim() + "%'             \n"
+                + " AND ID IN (SELECT STORE_ID FROM "
+                + Database.Inventory.itemCondemMaster + ""
+                + " WHERE CRTD_BY = '"+ Constants.userId +"')"
+                + " AND ACTIVE = 'Y'";
+
+        lov.LOVSelection(query, this);
+        if (Constants.lovID.equalsIgnoreCase("ID")) {
+            return;
+        } else {
+            srchCondemItems.setStoreId(Constants.lovID);
+            txtStoreSrch.setText(Constants.lovDescription);
+            searchData();
+        }
         searchData();
     }//GEN-LAST:event_txtStoreSrchActionPerformed
 
@@ -954,12 +971,12 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        if(storeId.length() == 0){
+        if (storeId.length() == 0) {
             JOptionPane.showConfirmDialog(null, "Please Select Store.");
             txtStore.requestFocus();
             return;
         }
-        if(userId.length() == 0){
+        if (userId.length() == 0) {
             JOptionPane.showConfirmDialog(null, "Please Select Requested User.");
             txtRequestBy.requestFocus();
             return;
@@ -972,7 +989,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
             txtRequestBy.setText("");
             txtStore.setEditable(false);
             txtRequestBy.setEditable(false);
-            
+
             txtCondumId.setEditable(false);
             txtReqBy.setEditable(false);
             txtItemName.setEditable(true);
@@ -1155,7 +1172,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
     private void searchData() {
         srchCondemItems.setCondemId(condemId);
         setStatusData();
-        listCondumMaster = ctlCondemItems.selectCondemMaster(srchCondemItems);
+        listCondumMaster = ctlCondemItems.searchCondemMaster(srchCondemItems);
         if (listCondumMaster.isEmpty()) {
             List<CondemItems> listCondumMaster = new ArrayList();
             tblCondumMaster.setModel(new CondemItemsTableModel(listCondumMaster));

@@ -85,6 +85,65 @@ public class CondemItemsHandler {
         List<HashMap> list = Constants.dao.selectDatainList(query, columns);
         return list.get(0).get("ID").toString();
     }
+    
+    public List<CondemItems> searchCondemMaster(CondemItems objSrch) {
+
+        String[] selectColumns = {"-", "ID", "REQUEST_BY", "REQUETED_USER_NAME",
+            "STORE_ID", "STORE_DESC", "ORDER_STATUS_ID", "ORDER_STATUS", "CRTD_BY",
+            "CRTD_USER", "CRTD_DATE", "CRTD_TERMINAL_ID"};
+
+        String query
+                = " SELECT CM.ID, CM.REQUEST_BY,                    \n"
+                + " RES.NAME REQUETED_USER_NAME,                    \n"
+                + " CM.STORE_ID,                                    \n"
+                + " STR.DESCRIPTION STORE_DESC,                     \n"
+                + " CM.ORDER_STATUS_ID,                             \n"
+                + " OSI.DESCRIPTION ORDER_STATUS,                   \n"
+                + " CM.CRTD_BY,                                     \n"
+                + " CRU.NAME CRTD_USER,                             \n"
+                + " TO_CHAR(CM.CRTD_DATE, 'DD-MON-YY') CRTD_DATE,   \n"
+                + " CM.CRTD_TERMINAL_ID  FROM                       \n"
+                + Database.Inventory.itemCondemMaster + " CM,       \n"
+                + Database.DCMS.users + " RES,                      \n"
+                + Database.DCMS.store + " STR,                      \n"
+                + Database.DCMS.definitionTypeDetail + " OSI,       \n"
+                + Database.DCMS.users + " CRU                       \n"
+                + " WHERE 1=1                                       \n";
+        if (objSrch.getCondemId().length() != 0) {
+            query += " AND CM.ID = " + objSrch.getCondemId() + "    \n";
+        }
+        if (objSrch.getStoreId().length() != 0) {
+            query += " AND CM.STORE_ID = '"+objSrch.getStoreId()+"'\n";
+        }
+
+        query  += " AND CM.REQUEST_BY = RES.USER_NAME              \n"
+                + " AND CM.STORE_ID = STR.ID                       \n"
+                + " AND CM.ORDER_STATUS_ID = OSI.ID                \n"
+                + " AND CM.CRTD_BY = CRU.USER_NAME                 \n"
+                + " ORDER BY CM.ID                                 \n";
+
+        List selectInvoice = Constants.dao.selectDatainList(query, selectColumns);
+
+        List<CondemItems> list = new ArrayList();
+        for (int i = 0; i < selectInvoice.size(); i++) {
+            HashMap map = (HashMap) selectInvoice.get(i);
+            CondemItems setCondem = new CondemItems();
+
+            setCondem.setCondemId(map.get("ID").toString());
+            setCondem.setRequestedBy(map.get("REQUEST_BY").toString());
+            setCondem.setRequestedByName(map.get("REQUETED_USER_NAME").toString());
+            setCondem.setStoreId(map.get("STORE_ID").toString());
+            setCondem.setStoreDescription(map.get("STORE_DESC").toString());
+            setCondem.setOrderStatusId(map.get("ORDER_STATUS_ID").toString());
+            setCondem.setOrderStatusDesc(map.get("ORDER_STATUS").toString());
+            setCondem.setCrtdBy(map.get("CRTD_BY").toString());
+            setCondem.setCrtdByName(map.get("CRTD_USER").toString());
+            setCondem.setCrtdDate(map.get("CRTD_DATE").toString());
+            setCondem.setCrtdTerminalId(map.get("CRTD_TERMINAL_ID").toString());
+            list.add(setCondem);
+        }
+        return list;
+    }
 
     public List<CondemItems> selectCondemMaster(CondemItems objSrch) {
 

@@ -27,6 +27,10 @@ public class CondemItemsController {
             String statusId) {
         return hdlCondemItems.selectCondemDetail(condemId, statusId);
     }
+    
+    public List<CondemItems> searchCondemMaster(CondemItems objSrch) {
+        return hdlCondemItems.searchCondemMaster(objSrch);
+    }
 
     public String condemId() {
         return hdlCondemItems.condemId();
