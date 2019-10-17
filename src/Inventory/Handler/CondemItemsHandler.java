@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Handler.Inventory;
+package Inventory.Handler;
 
-import BO.Inventory.CondemItems;
+import Inventory.BO.CondemItems;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,10 +13,6 @@ import utilities.Constants;
 import utilities.Database;
 import utilities.Status;
 
-/**
- *
- * @author Talha Khan
- */
 public class CondemItemsHandler {
 
     public boolean insertCondumMaster(CondemItems obj) {

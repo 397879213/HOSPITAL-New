@@ -2,9 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package TableModel.Inventory;
+package Inventory.TableModel;
 
-import BO.Inventory.CondemItems;
+import Inventory.BO.CondemItems;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 

@@ -4,7 +4,7 @@
  */
 package TableModel.Inventory;
 
-import BO.Inventory.CondemItems;
+import Inventory.BO.CondemItems;
 import Inventory.BO.PathCptWiseTubes;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;

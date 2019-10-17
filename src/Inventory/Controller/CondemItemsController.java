@@ -1,20 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Controller.Inventory;
 
-import BO.Inventory.CondemItems;
-import Handler.Inventory.CondemItemsHandler;
+package Inventory.Controller;
+
+import Inventory.BO.CondemItems;
+import Inventory.Handler.CondemItemsHandler;
 import java.util.List;
 import utilities.Constants;
 import utilities.Stores;
 
-/**
- *
- * @author Talha Khan
- */
+
 public class CondemItemsController {
 
     CondemItemsHandler hdlCondemItems = new CondemItemsHandler();
