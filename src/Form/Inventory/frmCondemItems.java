@@ -1268,11 +1268,6 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
         setDetailColumnsWidths();
         selectionModel.setSelectionInterval(0, 0);
         Constants.tablelook.setJTableEnvironment(tblCondumDetail);
-        CondemItems objSet = listCondumDetail.get(0);
-        storeId = objSet.getStoreId();
-        txtStore.setText(objSet.getStoreDescription());
-        txtReqBy.setText(objSet.getRequestedByName());
-        txtCondumId.setText(objSet.getCondemId());
     }
 
     private void checkInprogressRequest() {
