@@ -948,25 +948,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
-        txtCondumSrch.setText("");
-        txtItemName.setText("");
-        txtRejectRemarks.setText("");
-        txtReqQuantity.setText("");
-        txtStore.setText("");
-        txtStoreSrch.setText("");
-        cboStatus.setSelectedIndex(0);
-
-        storeId = "";
-        itemId = "";
-        userId = "";
-        statusId = "";
-
-        listApprove.clear();
-        listCondumDetail.clear();
-        listCondumMaster.clear();
-        tblCondumItem.setModel(new CondemItemsTableModel(listCondumDetail));
-        tblCondumDetail.setModel(new CondemDetailTableModel(listCondumDetail));
-        tblCondumMaster.setModel(new CondemMasterTableModel(listCondumMaster));
+        clear();
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -1018,11 +1000,7 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
             return;
         }
         if (ctlCondemItems.cancelCondemItem(listApprove)) {
-            srchCondemItems.setCondemId("");
-            txtReqBy.setText("");
-            txtCondumId.setText("");
-            listApprove.clear();
-            tblCondumItem.setModel(new CondemItemsTableModel(listApprove));
+            clear();
             txtRequestBy.setEditable(true);
             txtStore.setEditable(true);
             JOptionPane.showMessageDialog(null, "Cancelled succcessfully");
@@ -1312,5 +1290,27 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
             txtItemName.setEditable(false);
             txtReqQuantity.setEditable(false);
         }
+    }
+
+    private void clear() {
+        txtCondumSrch.setText("");
+        txtItemName.setText("");
+        txtRejectRemarks.setText("");
+        txtReqQuantity.setText("");
+        txtStore.setText("");
+        txtStoreSrch.setText("");
+        cboStatus.setSelectedIndex(0);
+
+        storeId = "";
+        itemId = "";
+        userId = "";
+        statusId = "";
+
+        listApprove.clear();
+        listCondumDetail.clear();
+        listCondumMaster.clear();
+        tblCondumItem.setModel(new CondemItemsTableModel(listCondumDetail));
+        tblCondumDetail.setModel(new CondemDetailTableModel(listCondumDetail));
+        tblCondumMaster.setModel(new CondemMasterTableModel(listCondumMaster));
     }
 }
