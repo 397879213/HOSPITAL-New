@@ -801,7 +801,6 @@ public class frmCondemItems extends javax.swing.JInternalFrame {
             userId = Constants.lovID;
             txtRequestBy.setText(Constants.lovDescription);
         }
-        txtItemName.requestFocus();
     }//GEN-LAST:event_txtRequestByActionPerformed
 
     private void btnRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestActionPerformed
