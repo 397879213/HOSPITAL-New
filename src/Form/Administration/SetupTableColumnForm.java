@@ -1,4 +1,4 @@
-  package Form.Administration;
+package Form.Administration;
 
 import BO.Administration.SetupTableColumnBO;
 import Controller.Administration.SetupTableColumnController;
@@ -50,7 +50,7 @@ public class SetupTableColumnForm extends javax.swing.JInternalFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtSearchProperty = new javax.swing.JTextField();
-        cboProperty = new javax.swing.JComboBox<>();
+        cboProperty = new javax.swing.JComboBox<String>();
         jPanel6 = new javax.swing.JPanel();
         lblProperty = new javax.swing.JLabel();
         jScrollPane10 = new javax.swing.JScrollPane();
@@ -62,10 +62,10 @@ public class SetupTableColumnForm extends javax.swing.JInternalFrame {
         txtPropertyName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtDescription = new javax.swing.JTextField();
-        cboActive = new javax.swing.JComboBox<>();
+        cboActive = new javax.swing.JComboBox<String>();
         btnSaveProperty = new javax.swing.JButton();
         btnUpdateProperty = new javax.swing.JButton();
-        cboPropType = new javax.swing.JComboBox<>();
+        cboPropType = new javax.swing.JComboBox<String>();
         btnSearchProperty = new javax.swing.JButton();
         jPanel15 = new javax.swing.JPanel();
         btnSave = new javax.swing.JButton();
@@ -164,6 +164,7 @@ public class SetupTableColumnForm extends javax.swing.JInternalFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Property : ");
 
+        txtSearchProperty.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtSearchProperty.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSearchPropertyActionPerformed(evt);
@@ -273,6 +274,7 @@ public class SetupTableColumnForm extends javax.swing.JInternalFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Name : ");
 
+        txtPropertyName.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtPropertyName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPropertyNameActionPerformed(evt);
@@ -284,6 +286,7 @@ public class SetupTableColumnForm extends javax.swing.JInternalFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Description : ");
 
+        txtDescription.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtDescription.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDescriptionActionPerformed(evt);
@@ -628,7 +631,7 @@ public class SetupTableColumnForm extends javax.swing.JInternalFrame {
         if (confirmation != 0) {
             return;
         }
-        
+
         if (ctlSetupTableColumn.saveProperty(objBO, setupId)) {
             JOptionPane.showMessageDialog(null, "Property added successfully");
         } else {
@@ -718,7 +721,13 @@ public class SetupTableColumnForm extends javax.swing.JInternalFrame {
     }
 
     private void searchSetupTableColumn() {
-        listSetupTableColumn = ctlSetupTableColumn.selectSetupTableColumn(propertyId, propertyTypeId);
+        listSetupTableColumn = ctlSetupTableColumn.selectSetupTableColumn(
+                propertyId, propertyTypeId);
+        if (listSetupTableColumn.isEmpty()) {
+            List<SetupTableColumnBO> listSetupTableColumn = new ArrayList();
+            tblProperties.setModel(new SetupTableColumnTableModel(listSetupTableColumn));
+            return;
+        }
         tblProperties.setModel(new SetupTableColumnTableModel(listSetupTableColumn));
         ListSelectionModel selectionModel = tblProperties.getSelectionModel();
         tblProperties.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -750,6 +759,11 @@ public class SetupTableColumnForm extends javax.swing.JInternalFrame {
     private void selectProperty() {
         listProperty = ctlSetupTableColumn.selectSetupTableColumnProperty(setupId,
                 txtPropertyName.getText().trim().toUpperCase());
+        if(listProperty.isEmpty()){
+            List<SetupTableColumnBO> listProperty = new ArrayList();
+            tblProperty.setModel(new SetupPropertyTableModel(listProperty));
+            return;
+        }
         tblProperty.setModel(new SetupPropertyTableModel(listProperty));
         ListSelectionModel selectionModel = tblProperty.getSelectionModel();
         tblProperty.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
