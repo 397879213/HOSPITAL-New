@@ -771,7 +771,7 @@ public class frmCompoundingStore extends javax.swing.JInternalFrame {
             unitQuantity = txtUnitQuantity.getText().trim();
             currentUnitStock = Integer.parseInt(unitQuantity) * Integer.parseInt(
                     storeStock.trim());
-            lblStockInQuantity.setText(String.valueOf(unitCost + "/ " 
+            lblStockInQuantity.setText(String.valueOf(currentUnitStock + "/ " 
                     + cboItemType.getSelectedItem()));
     }
 
