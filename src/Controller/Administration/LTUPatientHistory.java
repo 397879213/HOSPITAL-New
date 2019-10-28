@@ -153,7 +153,7 @@ public class LTUPatientHistory {
             HashMap map = (HashMap) listmap.get(i);
             LTUPatientHistoryBO objData = new LTUPatientHistoryBO();
 
-            objData.setAdmissionNo(map.get("AMOUNT").toString());
+            objData.setAdmissionExpense(map.get("AMOUNT").toString());
 
             lisVerRep.add(objData);
         }
