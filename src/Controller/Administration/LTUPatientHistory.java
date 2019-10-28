@@ -30,7 +30,7 @@ public class LTUPatientHistory {
                 + "FROM " + Database.DCMS.ltuPatientHistory + " OPC     \n"
                 + " ORDER BY PATIENT_ID, ADMISSION_NO                   \n";
 
-        System.out.println("query" + query);
+//        System.out.println("query" + query);
         List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
         List<LTUPatientHistoryBO> lisVerRep = new ArrayList<>();
 
@@ -62,7 +62,7 @@ public class LTUPatientHistory {
                 + "'HUMAID.AHMAD', 'M.TAQI')\n"
                 + " ORDER BY OPC.CONSULTANT_ID, OPC.CONSULTANCY_DATE DESC \n";
 
-        System.out.println("query" + query);
+//        System.out.println("query" + query);
         List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
         List<LTUPatientHistoryBO> lisVerRep = new ArrayList<>();
 
@@ -90,7 +90,7 @@ public class LTUPatientHistory {
                 + " AND OPP.ADMISSION_NO = '" + obj.getAdmissionNo() + "'\n"
                 + " AND OPP.CPT_ID = CPT.CPT_ID";
 
-        System.out.println("query" + query);
+//        System.out.println("query" + query);
         List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
         List<LTUPatientHistoryBO> lisVerRep = new ArrayList<>();
 
@@ -118,7 +118,7 @@ public class LTUPatientHistory {
                 + " AND BTH.WARD_ID = WIN.ID                            \n"
                 + "AND BTH.WARD_OUT = WOT.ID                            \n";
 
-        System.out.println("query" + query);
+//        System.out.println("query" + query);
         List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
         List<LTUPatientHistoryBO> lisVerRep = new ArrayList<>();
 
@@ -135,29 +135,65 @@ public class LTUPatientHistory {
         }
         return lisVerRep;
     }
-    
-    public List<LTUPatientHistoryBO> selectaAdmissionExpense(LTUPatientHistoryBO obj) {
+
+    public String selectaAdmissionExpense(LTUPatientHistoryBO obj) {
 
         String columns[] = {"-", "AMOUNT"};
 
-        String query = " SELECT SUM(IV.PAYABLE_AMOUNT - IV.REFUND_AMOUNT) AMOUNT\n"
-                + " FROM " + Database.DCMS.invoiceMaster + " IV        \n"
-                + " WHERE IV.PATIENT_ID = '" + obj.getPatientId() + "'\n"
-                + " AND IV.ADMISSION_NO = '" + obj.getAdmissionNo() + "'\n";
+        String query = " SELECT NVL(SUM(IV.PAYABLE_AMOUNT - IV.REFUND_AMOUNT), 0)"
+                + " AMOUNT                                                  \n"
+                + " FROM " + Database.DCMS.invoiceMaster + " IV             \n"
+                + " WHERE IV.PATIENT_ID = '" + obj.getPatientId() + "'      \n"
+                + " AND IV.ADMISSION_NO = '" + obj.getAdmissionNo() + "'    \n";
 
         System.out.println("query" + query);
         List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
-        List<LTUPatientHistoryBO> lisVerRep = new ArrayList<>();
-
-        for (int i = 0; i < listmap.size(); i++) {
-            HashMap map = (HashMap) listmap.get(i);
-            LTUPatientHistoryBO objData = new LTUPatientHistoryBO();
-
-            objData.setAdmissionExpense(map.get("AMOUNT").toString());
-
-            lisVerRep.add(objData);
+//        HashMap map = new HashMap();
+        if (listmap.isEmpty()) {
+            return "0";
+        } else {
+            return listmap.get(0).get("AMOUNT").toString();
         }
-        return lisVerRep;
+    }
+
+    public String selectaDischargeDate(LTUPatientHistoryBO obj) {
+
+        String columns[] = {"-", "DISCHARGE_DATE"};
+
+        String query = " SELECT TO_CHAR(IV.DISCHARGE_DATE, 'DD-MON-YY') DISCHARGE_DATE\n"
+                + " FROM " + Database.DCMS.patientAdmissionHistory + " IV   \n"
+                + " WHERE IV.PATIENT_ID = '" + obj.getPatientId() + "'      \n"
+                + " AND IV.ID = '" + obj.getAdmissionNo() + "'              \n";
+
+        System.out.println("query" + query);
+        List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
+//        HashMap map = new HashMap();
+        if (listmap.isEmpty()) {
+            return "";
+        } else {
+            return listmap.get(0).get("DISCHARGE_DATE").toString();
+        }
+    }
+
+    public boolean updateAdmissionExpense(String amount, LTUPatientHistoryBO objRv) {
+
+        String query
+                = " UPDATE " + Database.DCMS.ltuPatientHistory + "      \n"
+                + " SET TOTAL_AMOUNT = '" + amount + "'                 \n"
+                + "WHERE PATIENT_ID = '" + objRv.getPatientId() + "'    \n"
+                + "AND ADMISSION_NO = '" + objRv.getAdmissionNo() + "'  \n";
+        System.err.println(query);
+        return Constants.dao.executeUpdate(query, false);
+    }
+
+    public boolean updateDiscgargeDate(String dischagDate, LTUPatientHistoryBO objRv) {
+
+        String query
+                = " UPDATE " + Database.DCMS.ltuPatientHistory + "      \n"
+                + " SET DISCHARGE_DATE = TO_DATE('" + dischagDate + "') \n"
+                + "WHERE PATIENT_ID = '" + objRv.getPatientId() + "'    \n"
+                + "AND ADMISSION_NO = '" + objRv.getAdmissionNo() + "'  \n";
+        return Constants.dao.executeUpdate(query, false);
     }
 
     public boolean updateConsDate(String date, LTUPatientHistoryBO objRv) {
@@ -167,7 +203,7 @@ public class LTUPatientHistory {
                 + " SET OPD_VISIT_DATE =TO_DATE('" + date + "')  \n"
                 + "WHERE PATIENT_ID = '" + objRv.getPatientId() + "'          \n"
                 + "AND ADMISSION_NO = '" + objRv.getAdmissionNo() + "'        \n";
-        System.out.println("\n" + query);
+//        System.out.println("\n" + query);
         return Constants.dao.executeUpdate(query, false);
 
     }
@@ -179,7 +215,7 @@ public class LTUPatientHistory {
                 + " SET WARD_TRANSFER = '" + ward + "'  \n"
                 + "WHERE PATIENT_ID = '" + objRv.getPatientId() + "'          \n"
                 + "AND ADMISSION_NO = '" + objRv.getAdmissionNo() + "'        \n";
-        System.out.println("\n" + query);
+//        System.out.println("\n" + query);
         return Constants.dao.executeUpdate(query, false);
 
     }
@@ -191,7 +227,7 @@ public class LTUPatientHistory {
                 + " SET OT_CPT_ID = '" + cptId + "'  \n"
                 + "WHERE PATIENT_ID = '" + objRv.getPatientId() + "'          \n"
                 + "AND ADMISSION_NO = '" + objRv.getAdmissionNo() + "'        \n";
-        System.out.println("\n" + query);
+//        System.out.println("\n" + query);
         return Constants.dao.executeUpdate(query, false);
 
     }
@@ -211,17 +247,16 @@ public class LTUPatientHistory {
 //                ret = updateConsDate(objDate.getOpdConsDate(), obj);
 //            }
 
-            listProcedures = selectCPTId(obj);
-            if (listProcedures.isEmpty()) {
-                System.err.println("No Procedure Perform.");
-            } else {
-                for (int j = 0; j < listProcedures.size(); j++) {
-                    LTUPatientHistoryBO objProce = listProcedures.get(j);
-                    procedure = objProce.getCptId() + ", " + procedure;
-                }
-                ret = updateCPTId(procedure, obj);
-            }
-
+//            listProcedures = selectCPTId(obj);
+//            if (listProcedures.isEmpty()) {
+//                System.err.println("No Procedure Perform.");
+//            } else {
+//                for (int j = 0; j < listProcedures.size(); j++) {
+//                    LTUPatientHistoryBO objProce = listProcedures.get(j);
+//                    procedure = objProce.getCptId() + ", " + procedure;
+//                }
+//                ret = updateCPTId(procedure, obj);
+//            }
 //            listMovement = selectWardTransfer(obj);
 //            if (listConsDate.isEmpty()) {
 //                continue;
@@ -233,6 +268,10 @@ public class LTUPatientHistory {
 //                }
 //                ret = updateConsDate(ward, obj);
 //            }
+            ret = updateAdmissionExpense(selectaAdmissionExpense(obj), obj);
+            if (ret) {
+                ret = updateDiscgargeDate(selectaDischargeDate(obj), obj);
+            }
             if (ret) {
                 Constants.dao.commitTransaction();
             }
