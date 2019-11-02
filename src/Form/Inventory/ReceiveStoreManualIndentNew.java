@@ -524,7 +524,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
             return;
         }
         if (ctlManualIndent.UpdateItemQtyDetail(listRequest, indent.getManualIndentId(),
-                Status.requested)) {
+                Status.requested, listItemHistory)) {
             JOptionPane.showMessageDialog(null, "Indent Request Successfully.");
             listRequest.clear();
             tbRequestedItem.setModel(new ManualIndentItemsTableModel(listRequest));
@@ -648,7 +648,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
             return;
         }
         if (ctlManualIndent.UpdateItemQtyDetail(listRequest, indent.getManualIndentId(),
-                Status.Approved)) {
+                Status.Approved, listItemHistory)) {
             setPendingIndent();
             JOptionPane.showMessageDialog(null, "Items Indent Approved Successfully.");
             indentId = "";
@@ -672,7 +672,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
             return;
         }
         if (ctlManualIndent.UpdateItemQtyDetail(listRequest, indent.getManualIndentId(),
-                Status.forwarded)) {
+                Status.forwarded, listItemHistory)) {
             setPendingIndent();
             JOptionPane.showMessageDialog(null, "Items Indent Forward Successfully.");
             indentId = "";

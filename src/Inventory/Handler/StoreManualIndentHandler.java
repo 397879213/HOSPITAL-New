@@ -41,10 +41,11 @@ public class StoreManualIndentHandler {
     }
 
     public boolean insertIssueRequestHistory(List<StoreManualIndent> list) {
-        String[] columns = {Database.Inventory.issueRequestDetail,
-            "ISSUE_REQUEST_NO", "SERIAL_NO", "ITEM_ID", "QTY", "RCV_QTY",
-            "REQUESTED_QTY", "CLOSING_QTY", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
         
+        String[] columns = {Database.DCMS.indentRequestEditHist, "ISSUE_REQUEST_NO", 
+            "SERIAL_NO", "ITEM_ID", "QTY", "RCV_QTY", "REQUESTED_QTY", 
+            "CLOSING_QTY", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
+
         List lstInr = new ArrayList();
         for (int i = 0; i < list.size(); i++) {
             StoreManualIndent obj = list.get(i);
@@ -61,8 +62,15 @@ public class StoreManualIndentHandler {
             map.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
             lstInr.add(map);
         }
-        return Constants.dao.insertData(list, columns);
+        return Constants.dao.insertData(lstInr, columns);
     }
+        
+        String[] columns = {Database.Inventory.issueRequestDetail,
+            "ISSUE_REQUEST_NO", "SERIAL_NO", "ITEM_ID", "QTY", "RCV_QTY",
+            "REQUESTED_QTY", "CLOSING_QTY", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
+        
+     
+        
 
     public StoreManualIndent selectManualIndentMaster() {
 

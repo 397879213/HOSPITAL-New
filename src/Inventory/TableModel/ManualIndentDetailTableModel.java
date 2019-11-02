@@ -8,18 +8,23 @@ import javax.swing.table.AbstractTableModel;
 public class ManualIndentDetailTableModel extends AbstractTableModel {
 
     private final String[] columnNames
-            = {"Sr.", "Item name", "Indent Quantity"};
+            = {"Sr.", "Item Name", "Opening Bal.", "Consumed Qty", "Closing Bal.",
+                "Req. Qty.", "Approved Qty."};
 
     private Object[][] data;
 
     public ManualIndentDetailTableModel(List<StoreManualIndent> li) {
         data = new Object[li.size()][columnNames.length];
         for (int i = 0; i < li.size(); i++) {
-            StoreManualIndent comp = li.get(i);
+            StoreManualIndent indt = li.get(i);
             data[i][0] = (i + 1);
-            data[i][1] = comp.getItemDescription();
-            data[i][2] = comp.getQuantity();
-
+//            data[i][0] = comp.getItemId();
+            data[i][1] = indt.getItemDescription();
+            data[i][2] = indt.getOpeningBalance();
+            data[i][3] = indt.getConsumedQty();
+            data[i][4] = indt.getClosingBalance();
+            data[i][5] = indt.getRequiredQty();
+            data[i][6] = indt.getApprovedQty();
         }
     }
 

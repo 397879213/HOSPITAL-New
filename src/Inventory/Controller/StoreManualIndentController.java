@@ -30,17 +30,6 @@ public class StoreManualIndentController {
         }
         return ret;
     }
-    
-    public boolean insertIssueRequestHistory(List<StoreManualIndent> list) {
-        boolean ret = hdlOutreachPath.insertIssueRequestHistory(list);
-        if (ret) {
-            Constants.dao.commitTransaction();
-        }
-        if (!ret) {
-            Constants.dao.rollBack();
-        }
-        return ret;
-    }
 
 //    public boolean insertManualIndentDetail(StoreManualIndent obj) {
 //        boolean ret = hdlOutreachPath.insertManualIndentDetail(obj);
@@ -62,10 +51,13 @@ public class StoreManualIndentController {
     }
     
     public boolean UpdateItemQtyDetail(List<StoreManualIndent> listUpdt,
-            String indentId, String status) {
+            String indentId, String status, List<StoreManualIndent> listHis) {
         boolean ret = hdlOutreachPath.UpdateItemQtyDetail(listUpdt);
         if(ret){
             ret = hdlOutreachPath.updateIndentStatus(indentId, status);
+        }
+        if(ret){
+            ret = hdlOutreachPath.insertIssueRequestHistory(listHis);
         }
         if (ret) {
             Constants.dao.commitTransaction();
