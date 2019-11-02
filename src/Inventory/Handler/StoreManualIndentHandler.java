@@ -40,24 +40,27 @@ public class StoreManualIndentHandler {
         return Constants.dao.insertData(list, columns);
     }
 
-    public boolean insertissueRequestHistory(StoreManualIndent obj) {
+    public boolean insertissueRequestHistory(List<StoreManualIndent> list) {
         String[] columns = {Database.Inventory.issueRequestDetail,
-            "ISSUE_REQUEST_NO", "SERIAL_NO","ITEM_ID", "QTY", "RCV_QTY", 
+            "ISSUE_REQUEST_NO", "SERIAL_NO", "ITEM_ID", "QTY", "RCV_QTY",
             "REQUESTED_QTY", "CLOSING_QTY", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
-
-        HashMap map = new HashMap();
-        List<HashMap> list = new ArrayList();
-        map.put("ISSUE_REQUEST_NO", obj.getManualIndentId());
-        map.put("SERIAL_NO", "'" + obj.getItemId() + "'");
-        map.put("ITEM_ID", "'" + obj.getItemId() + "'");
-        map.put("QTY", "'" + obj.getQuantity() + "'");
-        map.put("RCV_QTY", "'" + obj.getApprovedQty()+ "'");
-        map.put("REQUESTED_QTY", "'" + obj.getRequiredQty()+ "'");
-        map.put("CLOSING_QTY", "'" + obj.getClosingBalance()+ "'");
-        map.put("CRTD_BY", "'" + Constants.userId + "'");
-        map.put("CRTD_DATE", Constants.today);
-        map.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
-        list.add(map);
+        
+        List lstInr = new ArrayList();
+        for (int i = 0; i < list.size(); i++) {
+            StoreManualIndent obj = list.get(i);
+            HashMap map = new HashMap();
+            map.put("ISSUE_REQUEST_NO", obj.getManualIndentId());
+            map.put("SERIAL_NO", "'" + obj.getItemId() + "'");
+            map.put("ITEM_ID", "'" + obj.getItemId() + "'");
+            map.put("QTY", "'" + obj.getQuantity() + "'");
+            map.put("RCV_QTY", "'" + obj.getApprovedQty() + "'");
+            map.put("REQUESTED_QTY", "'" + obj.getRequiredQty() + "'");
+            map.put("CLOSING_QTY", "'" + obj.getClosingBalance() + "'");
+            map.put("CRTD_BY", "'" + Constants.userId + "'");
+            map.put("CRTD_DATE", Constants.today);
+            map.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
+            lstInr.add(map);
+        }
         return Constants.dao.insertData(list, columns);
     }
 
@@ -199,7 +202,7 @@ public class StoreManualIndentHandler {
 
         return Constants.dao.executeUpdate(query, false);
     }
-    
+
     public StoreManualIndent checkManualBookIndentNo(String indentNo,
             String indentId) {
 
