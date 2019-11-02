@@ -16,8 +16,9 @@ public class StoreManualIndentHandler {
 
     public boolean insertManualIndentMaster(StoreManualIndent obj) {
         String[] columns = {Database.Inventory.issueRequestMaster, "ISSUE_REQUEST_NO",
-            "CLOSING_DATE", "STATUS", "FROM_STORE_ID", "TO_STORE_ID","INDENT_TYPE",
-            "INDENT_MONTH", "REMARKS", "CRTD_BY","CRTD_TERMINAL_ID", "CRTD_DATE"};
+            "CLOSING_DATE", "STATUS", "FROM_STORE_ID", "TO_STORE_ID", "INDENT_TYPE",
+            "INDENT_MONTH", "REMARKS", "CRTD_BY", "CRTD_TERMINAL_ID", "CRTD_DATE",
+            "REQUEST_TYPE"};
 
         HashMap map = new HashMap();
         List<HashMap> list = new ArrayList();
@@ -92,7 +93,7 @@ public class StoreManualIndentHandler {
                 + Database.DCMS.definitionTypeDetail + " STS,               \n"
                 + Database.DCMS.definitionTypeDetail + " IRQ                \n"
                 + " WHERE MIM.FROM_STORE_ID = '" + Constants.storeId + "'   \n"
-                + " AND MIM.CRTD_BY = 'STORE.SAAD'                          \n" //" + Constants.userId + "
+                + " AND MIM.CRTD_BY = '"+ Constants.userId +"'              \n"
                 + " AND MIM.STATUS = '" + Status.entered + "'               \n"
                 + " AND MIM.FROM_STORE_ID = FSI.ID                          \n"
                 + " AND MIM.TO_STORE_ID = TSI.ID                            \n"
@@ -178,8 +179,8 @@ public class StoreManualIndentHandler {
 
             String query
                     = " UPDATE  " + Database.Inventory.issueRequestDetail + "\n"
-//                    + "  OPENING_BALANCE =  " + objUpdt.getOpeningBalance() + ",\n"
-//                    + " CONSUMED_QTY =  " + objUpdt.getConsumedQty() + ",  \n"
+                    //                    + "  OPENING_BALANCE =  " + objUpdt.getOpeningBalance() + ",\n"
+                    //                    + " CONSUMED_QTY =  " + objUpdt.getConsumedQty() + ",  \n"
                     + " SET CLOSING_QTY =  " + objUpdt.getClosingBalance() + ",\n"
                     + " REQUESTED_QTY =  " + objUpdt.getRequiredQty() + ",  \n"
                     + " RCV_QTY =  " + objUpdt.getApprovedQty() + "   \n"
