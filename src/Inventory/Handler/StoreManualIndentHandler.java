@@ -182,9 +182,9 @@ public class StoreManualIndentHandler {
             StoreManualIndent objUpdt = listUpdt.get(i);
 
             String query
-                    = " UPDATE  " + Database.Inventory.issueRequestDetail + " \n"
+                    = " UPDATE  " + Database.Inventory.issueRequestDetail + "\n"
                     + " SET OPENING_BALANCE =  " + objUpdt.getOpeningBalance() + ",\n"
-                    + " CONSUMED_QTY =  " + objUpdt.getConsumedQty() + ",   \n"
+                    + " CONSUMED_QTY =  " + objUpdt.getConsumedQty() + ",  \n"
                     + " CLOSING_BALANCE =  " + objUpdt.getClosingBalance() + ",\n"
                     + " REQUIRED_QTY =  " + objUpdt.getRequiredQty() + ",  \n"
                     + " APPROVED_QTY =  " + objUpdt.getApprovedQty() + "   \n"
@@ -200,7 +200,7 @@ public class StoreManualIndentHandler {
         String query
                 = " UPDATE " + Database.Inventory.issueRequestMaster + "\n"
                 + " SET STATUS = " + status + "               \n"
-                + " WHERE ISSUE_NOTE_NO = " + indentId + "    \n";
+                + " WHERE ISSUE_REQUEST_NO = " + indentId + " \n";
         return Constants.dao.executeUpdate(query, false);
     }
 
