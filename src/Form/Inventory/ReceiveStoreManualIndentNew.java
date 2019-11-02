@@ -469,19 +469,25 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
 
     private void tbRequestedItemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbRequestedItemKeyReleased
         // TODO add your handling code here:
-        StoreManualIndent obj = listRequest.get(tbRequestedItem.getSelectedRow());
-        tbRequestedItem.setValueAt(tbRequestedItem.getValueAt(
-                tbRequestedItem.getSelectedRow(), 4), tbRequestedItem.getSelectedRow(),
-                2);
-        obj.setOpeningBalance(tbRequestedItem.getValueAt(
-                tbRequestedItem.getSelectedRow(), 4).toString());
-        obj.setClosingBalance(tbRequestedItem.getValueAt(
-                tbRequestedItem.getSelectedRow(), 4).toString());
-        obj.setRequiredQty(tbRequestedItem.getValueAt(
-                tbRequestedItem.getSelectedRow(), 5).toString());
-        obj.setApprovedQty(tbRequestedItem.getValueAt(
-                tbRequestedItem.getSelectedRow(), 6).toString());
-        listItemHistory.add(obj);
+        if (listRequest.isEmpty()) {
+
+        }
+        if (!listRequest.isEmpty()) {
+            StoreManualIndent obj = listRequest.get(tbRequestedItem.getSelectedRow());
+            tbRequestedItem.setValueAt(tbRequestedItem.getValueAt(
+                    tbRequestedItem.getSelectedRow(), 4), tbRequestedItem.getSelectedRow(),
+                    2);
+            obj.setOpeningBalance(tbRequestedItem.getValueAt(
+                    tbRequestedItem.getSelectedRow(), 4).toString());
+            obj.setClosingBalance(tbRequestedItem.getValueAt(
+                    tbRequestedItem.getSelectedRow(), 4).toString());
+            obj.setRequiredQty(tbRequestedItem.getValueAt(
+                    tbRequestedItem.getSelectedRow(), 5).toString());
+            obj.setApprovedQty(tbRequestedItem.getValueAt(
+                    tbRequestedItem.getSelectedRow(), 6).toString());
+            listItemHistory.add(obj);
+        }
+
     }//GEN-LAST:event_tbRequestedItemKeyReleased
 
     private void txtIndentMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIndentMonthActionPerformed
@@ -683,8 +689,6 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
     private javax.swing.JTextArea txtRemarks;
     // End of variables declaration//GEN-END:variables
 
-   
-
     private void selectRequestItems(String indentId, String status) {
         listRequest = ctlManualIndent.selectManualIndentDetail(indentId);
         if (listRequest.isEmpty()) {
@@ -815,23 +819,23 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-            if(indent.getOrderStatusId().equalsIgnoreCase(Status.entered)){
+            if (indent.getOrderStatusId().equalsIgnoreCase(Status.entered)) {
                 btnSave.setEnabled(false);
                 btnApprove.setEnabled(false);
                 btnForward.setEnabled(false);
             }
-            if(indent.getOrderStatusId().equalsIgnoreCase(Status.requested)){
+            if (indent.getOrderStatusId().equalsIgnoreCase(Status.requested)) {
                 btnSave.setEnabled(false);
                 btnCancel.setEnabled(false);
                 btnRequest.setEnabled(false);
                 btnApprove.setEnabled(false);
             }
-            if(indent.getOrderStatusId().equalsIgnoreCase(Status.forwarded)){
+            if (indent.getOrderStatusId().equalsIgnoreCase(Status.forwarded)) {
                 btnSave.setEnabled(false);
                 btnCancel.setEnabled(false);
                 btnRequest.setEnabled(false);
             }
-            
+
             cboIndent.setEnabled(false);
             cboIndentType.setEnabled(false);
             txtIndentClosingDate.setEditable(false);
