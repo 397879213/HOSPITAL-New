@@ -175,7 +175,7 @@
                           <Group type="102" attributes="0">
                               <Component id="btnSave" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="btnEdit" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnCancel" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="txtIndentClosingDate" max="32767" attributes="0"/>
                       </Group>
@@ -217,7 +217,7 @@
                                   <Component id="jLabel12" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                                   <Component id="txtIndentDate" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnSave" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnEdit" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnCancel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
@@ -263,7 +263,7 @@
                 <Property name="text" type="java.lang.String" value="Store Name :  "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnEdit">
+            <Component class="javax.swing.JButton" name="btnCancel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="12" style="1"/>
@@ -271,7 +271,7 @@
                 <Property name="text" type="java.lang.String" value="Cancel"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtFromStoreName">
@@ -490,12 +490,10 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
-                  <Component id="btnCancelIndent" min="-2" pref="84" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
                   <Component id="btnClear" min="-2" pref="84" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnReceived" min="-2" pref="101" max="-2" attributes="0"/>
+                  <Component id="btnRequest" min="-2" pref="101" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnForward" min="-2" pref="89" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -515,9 +513,8 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnClear" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnExit" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnReceived" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnRequest" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnLocationWiseReport" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnCancelIndent" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnApprove" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnForward" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -552,7 +549,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExitActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnReceived">
+        <Component class="javax.swing.JButton" name="btnRequest">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="1"/>
@@ -560,7 +557,7 @@
             <Property name="text" type="java.lang.String" value="Request"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReceivedActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRequestActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnLocationWiseReport">
@@ -575,17 +572,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLocationWiseReportActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnCancelIndent">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Arial" size="12" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Cancel"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelIndentActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnApprove">

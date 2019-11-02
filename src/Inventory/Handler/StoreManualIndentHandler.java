@@ -24,7 +24,7 @@ public class StoreManualIndentHandler {
         List<HashMap> list = new ArrayList();
         map.put("ISSUE_REQUEST_NO", "(SELECT NVL(MAX(ISSUE_REQUEST_NO)+1, 1) FROM "
                 + Database.Inventory.issueRequestMaster + ")");
-        System.err.println(" \n Reqq\n "+ obj.getRequestTypeId());
+        System.err.println(" \n Reqq\n " + obj.getRequestTypeId());
         map.put("REQUEST_TYPE", "'" + obj.getRequestTypeId() + "'");
         map.put("CLOSING_DATE", "TO_DATE('"
                 + obj.getIndentClosingDate().toUpperCase() + "', 'DD-MON-YYYY') ");
@@ -94,7 +94,7 @@ public class StoreManualIndentHandler {
                 + Database.DCMS.definitionTypeDetail + " STS,               \n"
                 + Database.DCMS.definitionTypeDetail + " IRQ                \n"
                 + " WHERE MIM.FROM_STORE_ID = '" + Constants.storeId + "'   \n"
-                + " AND MIM.CRTD_BY = '"+ Constants.userId +"'              \n"
+                + " AND MIM.CRTD_BY = '" + Constants.userId + "'              \n"
                 + " AND MIM.STATUS = '" + Status.entered + "'               \n"
                 + " AND MIM.FROM_STORE_ID = FSI.ID                          \n"
                 + " AND MIM.TO_STORE_ID = TSI.ID                            \n"
@@ -167,6 +167,45 @@ public class StoreManualIndentHandler {
             } else {
                 setItems.setApprovedQty(map.get("RCV_QTY").toString());
             }
+            listItems.add(setItems);
+        }
+        return listItems;
+    }
+
+    public List<StoreManualIndent> selectCCItems(String itemType) {
+
+        String[] cols = {"-", "ITEM_ID", "ITEM_NAME", "OPENING_BALANCE",
+            "CLOSING_QTY", "REQUESTED_QTY", "RCV_QTY", "CONSUMED_QTY"};
+
+        String query
+                = "SELECT CI.ITEM_ID,               \n"
+                + "       ITM.DESCRIPTION ITEM_NAME,\n"
+                + "       '0' OPENING_BALANCE,      \n"
+                + "       '0' CONSUMED_QTY,         \n"
+                + "       '0' CLOSING_QTY,          \n"
+                + "       '0' REQUESTED_QTY,        \n"
+                + "       '0' RCV_QTY               \n"
+                + "  FROM                           \n"
+                + Database.DCMS.item + " ITM,       \n"
+                + Database.Inventory.ccItemConfiguration + " CI \n"
+                + " WHERE CI.ITEM_TYPE = '" + itemType + "'\n"
+                + "   AND ITM.ID = CI.ITEM_ID       \n";
+
+        List<HashMap> list = Constants.dao.selectDatainList(query, cols);
+
+        List<StoreManualIndent> listItems = new ArrayList();
+        for (int i = 0; i < list.size(); i++) {
+            HashMap map = list.get(i);
+
+            StoreManualIndent setItems = new StoreManualIndent();
+            setItems.setItemId(map.get("ITEM_ID").toString());
+            setItems.setItemDescription(map.get("ITEM_NAME").toString());
+            setItems.setOpeningBalance(map.get("OPENING_BALANCE").toString());
+            setItems.setClosingBalance(map.get("CLOSING_QTY").toString());
+            setItems.setRequiredQty(map.get("REQUESTED_QTY").toString());
+            setItems.setApprovedQty(map.get("REQUESTED_QTY").toString());
+            setItems.setConsumedQty(map.get("CONSUMED_QTY").toString());
+            setItems.setApprovedQty(map.get("RCV_QTY").toString());
             listItems.add(setItems);
         }
         return listItems;

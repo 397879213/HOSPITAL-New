@@ -30,16 +30,6 @@ public class StoreManualIndentController {
         return ret;
     }
 
-//    public boolean insertManualIndentDetail(StoreManualIndent obj) {
-//        boolean ret = hdlOutreachPath.insertManualIndentDetail(obj);
-//        if (ret) {
-//            Constants.dao.commitTransaction();
-//        }
-//        if (!ret) {
-//            Constants.dao.rollBack();
-//        }
-//        return ret;
-//    }
     public StoreManualIndent selectManualIndentMaster() {
         return hdlOutreachPath.selectManualIndentMaster();
     }
@@ -48,6 +38,10 @@ public class StoreManualIndentController {
         return hdlOutreachPath.selectManualIndentDetail(manualIndentId);
     }
 
+    public List<StoreManualIndent> selectCCItems(String itemType) {
+        return hdlOutreachPath.selectCCItems(itemType);
+    }
+    
     public boolean UpdateItemQtyDetail(List<StoreManualIndent> listUpdt,
             String indentId, String status, List<StoreManualIndent> listHis) {
         boolean ret = hdlOutreachPath.UpdateItemQtyDetail(listUpdt);

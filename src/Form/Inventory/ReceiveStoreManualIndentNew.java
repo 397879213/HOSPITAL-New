@@ -31,7 +31,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
     StoreManualIndent currentIndent = new StoreManualIndent();
     StoreManualIndent objSearch = new StoreManualIndent();
     List<StoreManualIndent> listItemHistory = new ArrayList();
-    List<StoreManualIndent> listManualIndentDetail = new ArrayList();
+    List<StoreManualIndent> listCCItems = new ArrayList();
     List<StoreManualIndent> listRequest = new ArrayList();
     DisplayLOV lov = new DisplayLOV();
     private String storeId = "";
@@ -40,10 +40,10 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
 
         initComponents();
         this.setSize(Constants.xSize + 30, Constants.ySize + 10);
-        btnEdit.setMnemonic(KeyEvent.VK_A);
+        btnCancel.setMnemonic(KeyEvent.VK_A);
         btnExit.setMnemonic(KeyEvent.VK_X);
         btnClear.setMnemonic(KeyEvent.VK_C);
-        btnReceived.setMnemonic(KeyEvent.VK_R);
+        btnRequest.setMnemonic(KeyEvent.VK_R);
         setDate();
         setPendingIndent();
     }
@@ -57,7 +57,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         txtIndentMonth = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        btnEdit = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
         txtFromStoreName = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         btnSave = new javax.swing.JButton();
@@ -77,9 +77,8 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         btnClear = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
-        btnReceived = new javax.swing.JButton();
+        btnRequest = new javax.swing.JButton();
         btnLocationWiseReport = new javax.swing.JButton();
-        btnCancelIndent = new javax.swing.JButton();
         btnApprove = new javax.swing.JButton();
         btnForward = new javax.swing.JButton();
 
@@ -119,11 +118,11 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("Store Name :  ");
 
-        btnEdit.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnEdit.setText("Cancel");
-        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+        btnCancel.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditActionPerformed(evt);
+                btnCancelActionPerformed(evt);
             }
         });
 
@@ -242,7 +241,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(btnSave)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEdit))
+                        .addComponent(btnCancel))
                     .addComponent(txtIndentClosingDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -275,7 +274,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtIndentDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnSave)
-                            .addComponent(btnEdit))
+                            .addComponent(btnCancel))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(5, 5, 5))
         );
@@ -366,11 +365,11 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
             }
         });
 
-        btnReceived.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnReceived.setText("Request");
-        btnReceived.addActionListener(new java.awt.event.ActionListener() {
+        btnRequest.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnRequest.setText("Request");
+        btnRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReceivedActionPerformed(evt);
+                btnRequestActionPerformed(evt);
             }
         });
 
@@ -380,14 +379,6 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         btnLocationWiseReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLocationWiseReportActionPerformed(evt);
-            }
-        });
-
-        btnCancelIndent.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnCancelIndent.setText("Cancel");
-        btnCancelIndent.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelIndentActionPerformed(evt);
             }
         });
 
@@ -412,12 +403,10 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addComponent(btnCancelIndent, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(139, 139, 139)
                 .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnReceived, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRequest, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnForward, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -435,9 +424,8 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClear)
                     .addComponent(btnExit)
-                    .addComponent(btnReceived)
+                    .addComponent(btnRequest)
                     .addComponent(btnLocationWiseReport)
-                    .addComponent(btnCancelIndent)
                     .addComponent(btnApprove)
                     .addComponent(btnForward))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -505,7 +493,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btnExitActionPerformed
 
-    private void btnReceivedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReceivedActionPerformed
+    private void btnRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestActionPerformed
 
         if (indent == null) {
             JOptionPane.showMessageDialog(null, "Kindly Make Indent To Request the Indent.");
@@ -525,9 +513,9 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Unable to Request Successfully.");
         }
-    }//GEN-LAST:event_btnReceivedActionPerformed
+    }//GEN-LAST:event_btnRequestActionPerformed
 
-    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
         if (indent == null) {
             JOptionPane.showMessageDialog(null, "No Indent to Cancel.");
@@ -549,7 +537,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Indent can not cancel. Kindly conact support team.");
         }
 
-    }//GEN-LAST:event_btnEditActionPerformed
+    }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         // TODO add your handling code here:
@@ -568,27 +556,6 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
     private void txtIndentClosingDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIndentClosingDateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIndentClosingDateActionPerformed
-
-    private void btnCancelIndentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelIndentActionPerformed
-        // TODO add your handling code here:
-
-        if (indent.getManualIndentId().trim().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Kindly Select Indent to Cancel.");
-            return;
-        }
-        int i = JOptionPane.showConfirmDialog(null,
-                "you are going to cancel selected Indent");
-        if (i != 0) {
-            return;
-        }
-        if (ctlManualIndent.cancelManualIndent(indent.getManualIndentId())) {
-            JOptionPane.showMessageDialog(null, "Indent Cancel Successfully.");
-            clearForm();
-        } else {
-            JOptionPane.showMessageDialog(null, "Unable to Save Record, "
-                    + "Kindly Contact Support Team");
-        }
-    }//GEN-LAST:event_btnCancelIndentActionPerformed
 
     private void txtIndentByActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIndentByActionPerformed
         // TODO add your handling code here:
@@ -686,13 +653,12 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApprove;
-    private javax.swing.JButton btnCancelIndent;
+    private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnClear;
-    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnForward;
     private javax.swing.JButton btnLocationWiseReport;
-    private javax.swing.JButton btnReceived;
+    private javax.swing.JButton btnRequest;
     private javax.swing.JButton btnSave;
     private javax.swing.JComboBox cboIndent;
     private javax.swing.JComboBox cboIndentType;
@@ -722,8 +688,15 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
     private void selectRequestItems(String indentId, String status) {
         listRequest = ctlManualIndent.selectManualIndentDetail(indentId);
         if (listRequest.isEmpty()) {
-            List<StoreManualIndent> listRequest = new ArrayList();
-            tbRequestedItem.setModel(new ManualIndentItemsTableModel(listRequest));
+//            List<StoreManualIndent> listRequest = new ArrayList();
+//            tbRequestedItem.setModel(new ManualIndentItemsTableModel(listRequest));
+            listCCItems = ctlManualIndent.selectCCItems(indent.getRequestTypeId());
+            tbRequestedItem.setModel(new ManualIndentItemsTableModel(listCCItems));
+            ListSelectionModel selectionModel = tbRequestedItem.getSelectionModel();
+            tbRequestedItem.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            setRerquestItemsColumnsWidths();
+            selectionModel.setSelectionInterval(0, 0);
+            Constants.tablelook.setJTableEnvironment(tbRequestedItem);
         } else {
             tbRequestedItem.setModel(new ManualIndentItemsTableModel(listRequest));
             ListSelectionModel selectionModel = tbRequestedItem.getSelectionModel();
@@ -805,7 +778,6 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
 //        txtQty.setText("");
         txtIndentMonth.setText("");
 //        txtSearchToStore.setText("");
-        listManualIndentDetail.clear();
         listItemHistory.clear();
         listRequest.clear();
         tbRequestedItem.setModel(new ManualIndentItemsTableModel(listRequest));
@@ -843,7 +815,23 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-            btnSave.setEnabled(false);
+            if(indent.getOrderStatusId().equalsIgnoreCase(Status.entered)){
+                btnSave.setEnabled(false);
+                btnApprove.setEnabled(false);
+                btnForward.setEnabled(false);
+            }
+            if(indent.getOrderStatusId().equalsIgnoreCase(Status.requested)){
+                btnSave.setEnabled(false);
+                btnCancel.setEnabled(false);
+                btnRequest.setEnabled(false);
+                btnApprove.setEnabled(false);
+            }
+            if(indent.getOrderStatusId().equalsIgnoreCase(Status.forwarded)){
+                btnSave.setEnabled(false);
+                btnCancel.setEnabled(false);
+                btnRequest.setEnabled(false);
+            }
+            
             cboIndent.setEnabled(false);
             cboIndentType.setEnabled(false);
             txtIndentClosingDate.setEditable(false);

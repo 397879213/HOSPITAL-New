@@ -667,6 +667,7 @@ public class Database {
         public static final String storeWiseIndent = DAO.usernameEmr + ".STORE_WISE_INDENT  ";
         public static final String issueRequestDetail = DAO.usernameEmr + ".ISSUE_REQUEST_DETAIL  ";
         public static final String issueRequestMaster = DAO.usernameEmr + ".ISSUE_REQUEST_MASTER  ";
+        public static final String ccItemConfiguration = DAO.usernameEmr + ".CC_ITEM_CONFIGURATION  ";
         public static final String issueNoteDetail = DAO.usernameEmr + ".ISSUE_NOTE_DETAIL  ";
         public static final String issueNoteMaster = DAO.usernameEmr + ".ISSUE_NOTE_MASTER  ";
         public static final String receiveDetail = DAO.usernameEmr + ".RECEIVE_DETAIL  ";
