@@ -41,7 +41,25 @@ public class StoreManualIndentController {
     public List<StoreManualIndent> selectCCItems(String itemType) {
         return hdlOutreachPath.selectCCItems(itemType);
     }
-    
+
+    public boolean insertRequest(String indentId, String status,
+            List<StoreManualIndent> listHis) {
+        boolean ret = hdlOutreachPath.insertIssueRequestDetail(listHis);
+        if (ret) {
+            ret = hdlOutreachPath.insertIssueRequestHistory(listHis);
+        }
+        if (ret) {
+            ret = hdlOutreachPath.updateIndentStatus(indentId, status);
+        }
+        if (ret) {
+            Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
+
     public boolean UpdateItemQtyDetail(List<StoreManualIndent> listUpdt,
             String indentId, String status, List<StoreManualIndent> listHis) {
         boolean ret = hdlOutreachPath.UpdateItemQtyDetail(listUpdt);

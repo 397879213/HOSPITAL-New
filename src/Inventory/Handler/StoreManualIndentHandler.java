@@ -63,6 +63,31 @@ public class StoreManualIndentHandler {
         return Constants.dao.insertData(lstInr, columns);
     }
 
+    public boolean insertIssueRequestDetail(List<StoreManualIndent> list) {
+
+        String[] columns = {Database.Inventory.issueRequestDetail,
+            "ISSUE_REQUEST_NO", "SERIAL_NO", "ITEM_ID", "QTY", "RCV_QTY", "ID",
+            "REQUESTED_QTY", "CLOSING_QTY",};
+
+        List lstInr = new ArrayList();
+        for (int i = 0; i < list.size(); i++) {
+            StoreManualIndent obj = list.get(i);
+            HashMap map = new HashMap();
+            map.put("ISSUE_REQUEST_NO", obj.getManualIndentId());
+            map.put("SERIAL_NO", "'" + (i + 1) + "'");
+            map.put("ITEM_ID", "'" + obj.getApprovedQty() + "'");
+            map.put("QTY", "'" + obj.getApprovedQty() + "'");
+            map.put("RCV_QTY", "'" + obj.getApprovedQty() + "'");
+            map.put("ID", "(SELECT MAX(ID)+1 FROM "
+                    + Database.Inventory.issueRequestDetail + ")");
+            map.put("REQUESTED_QTY", "'" + obj.getRequiredQty() + "'");
+            map.put("CLOSING_QTY", "'" + obj.getRequiredQty() + "'");
+
+            lstInr.add(map);
+        }
+        return Constants.dao.insertData(lstInr, columns);
+    }
+
     public StoreManualIndent selectManualIndentMaster() {
 
         String[] selectColumns = {"-", "ID", "CLOSING_DATE", "STATUS",

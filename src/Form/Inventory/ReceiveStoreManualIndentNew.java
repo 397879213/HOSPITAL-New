@@ -483,6 +483,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
                     tbRequestedItem.getSelectedRow(), 5).toString());
             obj.setApprovedQty(tbRequestedItem.getValueAt(
                     tbRequestedItem.getSelectedRow(), 6).toString());
+            obj.setManualIndentId(indentId);
             listItemHistory.add(obj);
         }
         if (!listRequest.isEmpty()) {
@@ -524,8 +525,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         if (confirmation != 0) {
             return;
         }
-        if (ctlManualIndent.UpdateItemQtyDetail(listRequest, indent.getManualIndentId(),
-                Status.requested, listItemHistory)) {
+        if (ctlManualIndent.insertRequest(indentId, title, listItemHistory)) {
             JOptionPane.showMessageDialog(null, "Indent Request Successfully.");
             listRequest.clear();
             tbRequestedItem.setModel(new ManualIndentItemsTableModel(listRequest));
