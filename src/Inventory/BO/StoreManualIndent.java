@@ -14,8 +14,8 @@ public class StoreManualIndent {
     private String remarks = "";
     private String itemId = "";
     private String itemDescription = "";
-    private String storeId = "";
-    private String storeName = "";
+    private String toStoreId = "";
+    private String toStoreName = "";
     private String orderStatusId = "";
     private String orderStatus = "";
     private String quantity = "";
@@ -158,6 +158,8 @@ public class StoreManualIndent {
         this.fromDate = fromDate;
     }
 
+     
+
     public String getToDate() {
         return toDate;
     }
@@ -214,20 +216,20 @@ public class StoreManualIndent {
         this.itemDescription = itemDescription;
     }
 
-    public String getStoreId() {
-        return storeId;
+    public String getToStoreId() {
+        return toStoreId;
     }
 
-    public void setStoreId(String storeId) {
-        this.storeId = storeId;
+    public void setToStoreId(String toStoreId) {
+        this.toStoreId = toStoreId;
     }
 
-    public String getStoreName() {
-        return storeName;
+    public String getToStoreName() {
+        return toStoreName;
     }
 
-    public void setStoreName(String storeName) {
-        this.storeName = storeName;
+    public void setToStoreName(String toStoreName) {
+        this.toStoreName = toStoreName;
     }
 
     public String getQuantity() {

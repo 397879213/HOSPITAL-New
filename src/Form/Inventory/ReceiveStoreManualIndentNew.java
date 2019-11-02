@@ -797,7 +797,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         currentIndent.setIndentMonth(txtIndentMonth.getText().trim());
         currentIndent.setFromStoreId(Constants.storeId);
         currentIndent.setIndenType(cboIndentType.getSelectedItem().toString().toUpperCase());
-        currentIndent.setStoreId(storeId);
+        currentIndent.setToStoreId(storeId);
         currentIndent.setRemarks(txtRemarks.getText().trim());
 
         if (ctlManualIndent.insertManualIndentMaster(currentIndent)) {
@@ -840,7 +840,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
                 cboIndent.setSelectedIndex(1);
                 cboIndentType.setSelectedIndex(1);
             }
-            if (indent.getStoreId().equalsIgnoreCase(Stores.ERStore)) { //SET INFDENT TYPE
+            if (indent.getToStoreId().equalsIgnoreCase(Stores.ERStore)) { //SET INFDENT TYPE
                 cboIndentType.setSelectedIndex(2);
             }
             try {

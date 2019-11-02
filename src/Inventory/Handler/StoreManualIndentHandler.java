@@ -15,23 +15,23 @@ import utilities.Status;
 public class StoreManualIndentHandler {
 
     public boolean insertManualIndentMaster(StoreManualIndent obj) {
-        String[] columns = {Database.Inventory.manualIndentMaster, "ID",
-            "INDENT_REQUEST", "INDENT_CLOSING_DATE", "STATUS_ID", "STORE_ID",
-            "INDENT_TYPE", "INDENT_TO", "INDENT_MONTH", "REMARKS", "CRTD_BY",
-            "CRTD_TERMINAL_ID", "CRTD_DATE"};
+        String[] columns = {Database.Inventory.issueRequestMaster, "ID",
+            "INDENT_REQUEST", "CLOSING_DATE", "STATUS ", "FROM_STORE_ID",
+            "TO_STORE_ID","INDENT_TYPE", "INDENT_MONTH", 
+            "REMARKS", "CRTD_BY","CRTD_TERMINAL_ID", "CRTD_DATE"};
 
         HashMap map = new HashMap();
         List<HashMap> list = new ArrayList();
         map.put("ID", "(SELECT NVL(MAX(ID)+1, 1) FROM "
-                + Database.Inventory.manualIndentMaster + ")");
-        map.put("INDENT_REQUEST", "'" + obj.getIndentRequestId() + "'");
-        map.put("INDENT_CLOSING_DATE", "TO_DATE('"
+                + Database.Inventory.issueRequestMaster + ")");
+        map.put("REQUEST_TYPE", "'" + obj.getIndentRequestId() + "'");
+        map.put("CLOSING_DATE", "TO_DATE('"
                 + obj.getIndentClosingDate().toUpperCase() + "', 'DD-MON-YYYY') ");
-        map.put("STATUS_ID", "'" + Status.entered + "'");
-        map.put("STORE_ID", "'" + obj.getFromStoreId() + "'");
+        map.put("STATUS", "'" + Status.entered + "'");
+        map.put("FROM_STORE_ID", "'" + obj.getFromStoreId() + "'");
+        map.put("TO_STORE_ID", "'" + obj.getToStoreId() + "'");
         map.put("INDENT_TYPE", "'" + obj.getIndenType() + "'");
-        map.put("INDENT_TO", "'" + obj.getStoreId() + "'");
-        map.put("INDENT_MONTH", "'" + obj.getIndentMonth() + "'");
+         map.put("INDENT_MONTH", "'" + obj.getIndentMonth() + "'");
         map.put("REMARKS", "'" + obj.getRemarks() + "'");
         map.put("CRTD_BY", "'" + Constants.userId + "'");
         map.put("CRTD_DATE", Constants.today);
@@ -61,10 +61,6 @@ public class StoreManualIndentHandler {
         }
         return Constants.dao.insertData(lstInr, columns);
     }
-
-    String[] columns = {Database.Inventory.issueRequestDetail,
-        "ISSUE_REQUEST_NO", "SERIAL_NO", "ITEM_ID", "QTY", "RCV_QTY",
-        "REQUESTED_QTY", "CLOSING_QTY", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
 
     public StoreManualIndent selectManualIndentMaster() {
 
@@ -117,8 +113,8 @@ public class StoreManualIndentHandler {
         indent.setManualBookIndentDate(map.get("CLOSING_DATE").toString());
         indent.setIndenType(map.get("INDENT_TYPE").toString());
         indent.setIndentMonth(map.get("INDENT_MONTH").toString());
-        indent.setStoreId(map.get("TO_STORE_ID").toString());
-        indent.setStoreName(map.get("TO_STORE_NAME").toString());
+        indent.setToStoreId(map.get("TO_STORE_ID").toString());
+        indent.setToStoreName(map.get("TO_STORE_NAME").toString());
         indent.setFromStoreId(map.get("FROM_STORE_ID").toString());
         indent.setFromStoreName(map.get("FROM_STORE_NAME").toString());
         indent.setOrderStatusId(map.get("STATUS").toString());
@@ -234,7 +230,7 @@ public class StoreManualIndentHandler {
         indent.setCrtdByName(map.get("USER_NAME").toString());
         indent.setManualBookIndentNo(map.get("MANUAL_INDENT_NO").toString());
         indent.setManualBookIndentDate(map.get("CRTD_DATE").toString());
-        indent.setStoreName(map.get("STORE_NAME").toString());
+        indent.setToStoreName(map.get("STORE_NAME").toString());
         return indent;
     }
 
@@ -267,7 +263,7 @@ public class StoreManualIndentHandler {
         out.put("QTY_IN", "" + 0);
         out.put("QTY_OUT", "" + item.getQuantity());
         out.put("VALUE_IN", "" + 0);
-        out.put("REF_STORE_ID", "" + indent.getStoreId());
+        out.put("REF_STORE_ID", "" + indent.getToStoreId());
         out.put("VALUE_OUT", "" + indent.getValue()
                 * Integer.parseInt(item.getQuantity()));
         out.put("COST", "" + item.getValue());
@@ -280,7 +276,7 @@ public class StoreManualIndentHandler {
         in.put("TRANSACTION_NO", "" + indent.getManualIndentId());
         in.put("TRANSACTION_TYPE_ID", "'" + Status.ledgerIn + "'");
         in.put("ITEM_ID", "" + item.getItemId());
-        in.put("STORE_ID", "" + indent.getStoreId());
+        in.put("STORE_ID", "" + indent.getToStoreId());
         in.put("QTY_IN", "" + item.getQuantity());
         in.put("QTY_OUT", "" + 0);
         in.put("VALUE_IN", "" + indent.getValue()

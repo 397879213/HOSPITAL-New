@@ -76,7 +76,7 @@ public class StoreManualIndentController {
             String query
                     = " UPDATE " + Database.Inventory.storeWiseItems + " SWI\n"
                     + " SET SWI.QTY = SWI.QTY + " + indent.getQuantity() + "\n"
-                    + " WHERE SWI.STORE_ID =  " + master.getStoreId() + "   \n"
+                    + " WHERE SWI.STORE_ID =  " + master.getToStoreId() + "   \n"
                     + " AND SWI.ITEM_ID =  " + indent.getItemId() + "       \n";
             listUpdates.add(query);
 
@@ -147,7 +147,7 @@ public class StoreManualIndentController {
                 + " MANUAL_INDENT_DATE =TO_DATE('"
                 + indent.getManualBookIndentDate() + "','DD-MON-YYYY'), \n"
                 + " FROM_STORE_ID =" + indent.getFromStoreId() + ",     \n"
-                + " TO_STORE_ID =" + indent.getStoreId() + "            \n"
+                + " TO_STORE_ID =" + indent.getToStoreId() + "            \n"
                 + " WHERE ID = " + indent.getManualIndentId() + "       \n";
         return Constants.dao.executeUpdate(query, true);
     }

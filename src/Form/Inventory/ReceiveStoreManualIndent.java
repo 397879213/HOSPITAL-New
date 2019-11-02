@@ -67,7 +67,7 @@ public class ReceiveStoreManualIndent extends javax.swing.JInternalFrame {
         txtFromDate.setDate(date);
         txtToDate.setDate(date);
         txtManualIndentDate.setDate(date);
-        objSearch.setStoreId(inStoreId);
+        objSearch.setToStoreId(inStoreId);
         objSearch.setOrderStatusId(Status.entered);
 //        List<StoreManualIndent> list
 //                = ctlManualIndent.selectManualIndentMaster(objSearch);
@@ -811,7 +811,7 @@ public class ReceiveStoreManualIndent extends javax.swing.JInternalFrame {
                 + " DESCRIPTION FROM                 \n"
                 + Database.DCMS.storeWiseItems + "  SWI,                    \n"
                 + Database.DCMS.item + "  ITM                               \n"
-                + " WHERE SWI.STORE_ID = " + currentIndent.getStoreId() + " \n"
+                + " WHERE SWI.STORE_ID = " + currentIndent.getToStoreId() + " \n"
                 + " AND SWI.ITEM_ID = ITM.ID                                \n"
                 + " AND ITM.ID NOT IN ( SELECT ITEM_ID FROM                 \n"
                 + Database.Inventory.manualIndentDetail + "                 \n"
@@ -964,7 +964,7 @@ public class ReceiveStoreManualIndent extends javax.swing.JInternalFrame {
         }
         currentIndent.setManualBookIndentNo(txtManualIndentNo.getText().trim());
         currentIndent.setOrderStatusId(Status.entered);
-        currentIndent.setStoreId(inStoreId);
+        currentIndent.setToStoreId(inStoreId);
         currentIndent.setManualBookIndentDate(manualIndentDate.toUpperCase());
         currentIndent.setFromStoreId(fromStoreId);
         if (chkMove.isSelected()
@@ -1259,12 +1259,12 @@ public class ReceiveStoreManualIndent extends javax.swing.JInternalFrame {
         currentIndent.setManualIndentId(indentId);
         currentIndent.setItemId(itemId);
         currentIndent.setQuantity(txtQty.getText().trim());
-        if (ctlManualIndent.insertManualIndentDetail(currentIndent)) {
-            selectRequestItems(indentId);
-        } else {
-            JOptionPane.showMessageDialog(null, "Unable to add item. \n"
-                    + "Kindly contact Administrator.");
-        }
+//        if (ctlManualIndent.insertManualIndentDetail(currentIndent)) {
+//            selectRequestItems(indentId);
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Unable to add item. \n"
+//                    + "Kindly contact Administrator.");
+//        }
         txtItemName.setText("");
         txtQty.setText("");
         txtItemName.requestFocus();
@@ -1326,7 +1326,7 @@ public class ReceiveStoreManualIndent extends javax.swing.JInternalFrame {
             toDate = "";
         }
         objSearch.setItemId(searchItemId);
-        objSearch.setStoreId(searchToStoreId);
+        objSearch.setToStoreId(searchToStoreId);
         objSearch.setFromStoreId(searchFromStoreId);
         objSearch.setManualBookIndentNo(txtSearchManualIndentNo.getText().trim());
 //        listManualIndentMaster = ctlManualIndent.selectManualIndentMaster(objSearch);
@@ -1427,7 +1427,7 @@ public class ReceiveStoreManualIndent extends javax.swing.JInternalFrame {
         }
         currentIndent.setManualBookIndentNo(txtManualIndentNo.getText().trim());
         currentIndent.setOrderStatusId(Status.entered);
-        currentIndent.setStoreId(inStoreId);
+        currentIndent.setToStoreId(inStoreId);
         currentIndent.setManualBookIndentDate(manualIndentDate);
         currentIndent.setFromStoreId(fromStoreId);
         if (chkMove.isSelected()
