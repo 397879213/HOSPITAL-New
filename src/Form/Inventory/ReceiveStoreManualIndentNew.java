@@ -14,7 +14,6 @@ import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableColumn;
 import utilities.Constants;
-import utilities.Database;
 import utilities.DisplayLOV;
 //import utilities.LocationProperties;
 import utilities.Status;
@@ -38,7 +37,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
     StoreManualIndent indent = new StoreManualIndent();
     StoreManualIndent currentIndent = new StoreManualIndent();
     StoreManualIndent objSearch = new StoreManualIndent();
-    List<StoreManualIndent> listManualIndentMaster = new ArrayList();
+    List<StoreManualIndent> listItemHistory = new ArrayList();
     List<StoreManualIndent> listManualIndentDetail = new ArrayList();
     List<StoreManualIndent> listRequest = new ArrayList();
     DisplayLOV lov = new DisplayLOV();
@@ -501,6 +500,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
                 tbRequestedItem.getSelectedRow(), 5).toString());
         obj.setApprovedQty(tbRequestedItem.getValueAt(
                 tbRequestedItem.getSelectedRow(), 6).toString());
+        listItemHistory.add(obj);
     }//GEN-LAST:event_tbRequestedItemKeyReleased
 
     private void txtIndentMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIndentMonthActionPerformed
@@ -815,7 +815,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         txtIndentMonth.setText("");
 //        txtSearchToStore.setText("");
         listManualIndentDetail.clear();
-        listManualIndentMaster.clear();
+        listItemHistory.clear();
         listRequest.clear();
         tbRequestedItem.setModel(new ManualIndentItemsTableModel(listRequest));
 
