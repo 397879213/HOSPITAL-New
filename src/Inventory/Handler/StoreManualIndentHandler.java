@@ -183,12 +183,12 @@ public class StoreManualIndentHandler {
 
             String query
                     = " UPDATE  " + Database.Inventory.issueRequestDetail + "\n"
-                    + " SET OPENING_BALANCE =  " + objUpdt.getOpeningBalance() + ",\n"
-                    + " CONSUMED_QTY =  " + objUpdt.getConsumedQty() + ",  \n"
-                    + " CLOSING_BALANCE =  " + objUpdt.getClosingBalance() + ",\n"
-                    + " REQUIRED_QTY =  " + objUpdt.getRequiredQty() + ",  \n"
-                    + " APPROVED_QTY =  " + objUpdt.getApprovedQty() + "   \n"
-                    + " WHERE MANUAL_ID =  " + objUpdt.getManualIndentId() + "\n"
+//                    + "  OPENING_BALANCE =  " + objUpdt.getOpeningBalance() + ",\n"
+//                    + " CONSUMED_QTY =  " + objUpdt.getConsumedQty() + ",  \n"
+                    + " SET CLOSING_QTY =  " + objUpdt.getClosingBalance() + ",\n"
+                    + " REQUESTED_QTY =  " + objUpdt.getRequiredQty() + ",  \n"
+                    + " RCV_QTY =  " + objUpdt.getApprovedQty() + "   \n"
+                    + " WHERE ISSUE_REQUEST_NO =  " + objUpdt.getManualIndentId() + "\n"
                     + " AND ITEM_ID = '" + objUpdt.getItemId() + "'        \n";
 
             ret = Constants.dao.executeUpdate(query, false);
