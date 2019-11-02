@@ -23,14 +23,7 @@ import utilities.TypeDetailId;
 public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
 
     private String fromStoreId = Constants.storeId;
-    private String indentId = "";
-    private String manualIndentNo = "";
-    private String searchToStoreId = "";
-    private String searchFromStoreId = "";
-    private String searchItemId = "";
-    private String fromDate = "";
     private String indentClosingDate = "";
-    private String toDate = "";
 //    private LocationController ctlLocation = new LocationController();
     StoreManualIndentController ctlManualIndent
             = new StoreManualIndentController();
@@ -41,8 +34,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
     List<StoreManualIndent> listManualIndentDetail = new ArrayList();
     List<StoreManualIndent> listRequest = new ArrayList();
     DisplayLOV lov = new DisplayLOV();
-    private String storeId;
-    private String requestTypeId;
+    private String storeId = "";
 
     public ReceiveStoreManualIndentNew() {
 
@@ -580,7 +572,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
     private void btnCancelIndentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelIndentActionPerformed
         // TODO add your handling code here:
 
-        if (indentId.trim().length() == 0) {
+        if (indent.getManualIndentId().trim().length() == 0) {
             JOptionPane.showMessageDialog(null, "Kindly Select Indent to Cancel.");
             return;
         }
@@ -589,7 +581,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         if (i != 0) {
             return;
         }
-        if (ctlManualIndent.cancelManualIndent(indentId)) {
+        if (ctlManualIndent.cancelManualIndent(indent.getManualIndentId())) {
             JOptionPane.showMessageDialog(null, "Indent Cancel Successfully.");
             clearForm();
         } else {
@@ -652,7 +644,6 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
                 Status.Approved, listItemHistory)) {
             setPendingIndent();
             JOptionPane.showMessageDialog(null, "Items Indent Approved Successfully.");
-            indentId = "";
             listRequest.clear();
             tbRequestedItem.setModel(new ManualIndentItemsTableModel(listRequest));
         } else {
@@ -676,7 +667,6 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
                 Status.forwarded, listItemHistory)) {
             setPendingIndent();
             JOptionPane.showMessageDialog(null, "Items Indent Forward Successfully.");
-            indentId = "";
             listRequest.clear();
             tbRequestedItem.setModel(new ManualIndentItemsTableModel(listRequest));
         } else {
@@ -798,7 +788,6 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         currentIndent.setIndentMonth(txtIndentMonth.getText().trim());
         currentIndent.setFromStoreId(Constants.storeId);
         currentIndent.setIndenType(cboIndentType.getSelectedItem().toString().toUpperCase());
-        currentIndent.setRequestTypeId(requestTypeId);
         currentIndent.setToStoreId(storeId);
         currentIndent.setRemarks(txtRemarks.getText().trim());
 

@@ -24,6 +24,7 @@ public class StoreManualIndentHandler {
         List<HashMap> list = new ArrayList();
         map.put("ISSUE_REQUEST_NO", "(SELECT NVL(MAX(ISSUE_REQUEST_NO)+1, 1) FROM "
                 + Database.Inventory.issueRequestMaster + ")");
+        System.err.println(" \n Reqq\n "+ obj.getRequestTypeId());
         map.put("REQUEST_TYPE", "'" + obj.getRequestTypeId() + "'");
         map.put("CLOSING_DATE", "TO_DATE('"
                 + obj.getIndentClosingDate().toUpperCase() + "', 'DD-MON-YYYY') ");
