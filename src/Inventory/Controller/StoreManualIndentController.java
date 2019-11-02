@@ -20,7 +20,6 @@ public class StoreManualIndentController {
 
     public boolean insertManualIndentMaster(StoreManualIndent obj) {
 
-        obj.setManualIndentId(hdlOutreachPath.selectManualIndentMasterId());
         boolean ret = hdlOutreachPath.insertManualIndentMaster(obj);
         if (ret) {
             Constants.dao.commitTransaction();

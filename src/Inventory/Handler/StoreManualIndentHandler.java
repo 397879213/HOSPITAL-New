@@ -16,7 +16,7 @@ public class StoreManualIndentHandler {
 
     public boolean insertManualIndentMaster(StoreManualIndent obj) {
         String[] columns = {Database.Inventory.issueRequestMaster, "ISSUE_REQUEST_NO",
-            "CLOSING_DATE", "STATUS ", "FROM_STORE_ID", "TO_STORE_ID","INDENT_TYPE",
+            "CLOSING_DATE", "STATUS", "FROM_STORE_ID", "TO_STORE_ID","INDENT_TYPE",
             "INDENT_MONTH", "REMARKS", "CRTD_BY","CRTD_TERMINAL_ID", "CRTD_DATE"};
 
         HashMap map = new HashMap();
@@ -26,7 +26,7 @@ public class StoreManualIndentHandler {
         map.put("REQUEST_TYPE", "'" + obj.getRequestTypeId() + "'");
         map.put("CLOSING_DATE", "TO_DATE('"
                 + obj.getIndentClosingDate().toUpperCase() + "', 'DD-MON-YYYY') ");
-        map.put("STATUS", "'" + Status.entered + "'");
+        map.put("STATUS", "'" + obj.getOrderStatusId() + "'");
         map.put("FROM_STORE_ID", "'" + obj.getFromStoreId() + "'");
         map.put("TO_STORE_ID", "'" + obj.getToStoreId() + "'");
         map.put("INDENT_TYPE", "'" + obj.getIndenType() + "'");
