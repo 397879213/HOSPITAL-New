@@ -40,7 +40,7 @@ public class StoreManualIndentHandler {
         return Constants.dao.insertData(list, columns);
     }
 
-    public boolean insertissueRequestHistory(List<StoreManualIndent> list) {
+    public boolean insertIssueRequestHistory(List<StoreManualIndent> list) {
         String[] columns = {Database.Inventory.issueRequestDetail,
             "ISSUE_REQUEST_NO", "SERIAL_NO", "ITEM_ID", "QTY", "RCV_QTY",
             "REQUESTED_QTY", "CLOSING_QTY", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
