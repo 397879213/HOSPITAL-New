@@ -31,16 +31,16 @@ public class StoreManualIndentController {
         return ret;
     }
 
-    public boolean insertManualIndentDetail(StoreManualIndent obj) {
-        boolean ret = hdlOutreachPath.insertManualIndentDetail(obj);
-        if (ret) {
-            Constants.dao.commitTransaction();
-        }
-        if (!ret) {
-            Constants.dao.rollBack();
-        }
-        return ret;
-    }
+//    public boolean insertManualIndentDetail(StoreManualIndent obj) {
+//        boolean ret = hdlOutreachPath.insertManualIndentDetail(obj);
+//        if (ret) {
+//            Constants.dao.commitTransaction();
+//        }
+//        if (!ret) {
+//            Constants.dao.rollBack();
+//        }
+//        return ret;
+//    }
 
     public StoreManualIndent selectManualIndentMaster() {
         return hdlOutreachPath.selectManualIndentMaster();

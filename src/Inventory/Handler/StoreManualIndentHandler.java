@@ -40,15 +40,23 @@ public class StoreManualIndentHandler {
         return Constants.dao.insertData(list, columns);
     }
 
-    public boolean insertManualIndentDetail(StoreManualIndent obj) {
-        String[] columns = {Database.Inventory.manualIndentDetail,
-            "MANUAL_INDENT_ID", "ITEM_ID", "QTY"};
+    public boolean insertissueRequestHistory(StoreManualIndent obj) {
+        String[] columns = {Database.Inventory.issueRequestDetail,
+            "ISSUE_REQUEST_NO", "SERIAL_NO","ITEM_ID", "QTY", "RCV_QTY", 
+            "REQUESTED_QTY", "CLOSING_QTY", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
 
         HashMap map = new HashMap();
         List<HashMap> list = new ArrayList();
-        map.put("MANUAL_INDENT_ID", obj.getManualIndentId());
+        map.put("ISSUE_REQUEST_NO", obj.getManualIndentId());
+        map.put("SERIAL_NO", "'" + obj.getItemId() + "'");
         map.put("ITEM_ID", "'" + obj.getItemId() + "'");
         map.put("QTY", "'" + obj.getQuantity() + "'");
+        map.put("RCV_QTY", "'" + obj.getApprovedQty()+ "'");
+        map.put("REQUESTED_QTY", "'" + obj.getRequiredQty()+ "'");
+        map.put("CLOSING_QTY", "'" + obj.getClosingBalance()+ "'");
+        map.put("CRTD_BY", "'" + Constants.userId + "'");
+        map.put("CRTD_DATE", Constants.today);
+        map.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
         list.add(map);
         return Constants.dao.insertData(list, columns);
     }
