@@ -15,23 +15,22 @@ import utilities.Status;
 public class StoreManualIndentHandler {
 
     public boolean insertManualIndentMaster(StoreManualIndent obj) {
-        String[] columns = {Database.Inventory.issueRequestMaster, "ID",
-            "INDENT_REQUEST", "CLOSING_DATE", "STATUS ", "FROM_STORE_ID",
-            "TO_STORE_ID","INDENT_TYPE", "INDENT_MONTH", 
-            "REMARKS", "CRTD_BY","CRTD_TERMINAL_ID", "CRTD_DATE"};
+        String[] columns = {Database.Inventory.issueRequestMaster, "ISSUE_REQUEST_NO",
+            "CLOSING_DATE", "STATUS ", "FROM_STORE_ID", "TO_STORE_ID","INDENT_TYPE",
+            "INDENT_MONTH", "REMARKS", "CRTD_BY","CRTD_TERMINAL_ID", "CRTD_DATE"};
 
         HashMap map = new HashMap();
         List<HashMap> list = new ArrayList();
-        map.put("ID", "(SELECT NVL(MAX(ID)+1, 1) FROM "
+        map.put("ISSUE_REQUEST_NO", "(SELECT NVL(MAX(ISSUE_REQUEST_NO)+1, 1) FROM "
                 + Database.Inventory.issueRequestMaster + ")");
-        map.put("REQUEST_TYPE", "'" + obj.getIndentRequestId() + "'");
+        map.put("REQUEST_TYPE", "'" + obj.getRequestTypeId() + "'");
         map.put("CLOSING_DATE", "TO_DATE('"
                 + obj.getIndentClosingDate().toUpperCase() + "', 'DD-MON-YYYY') ");
         map.put("STATUS", "'" + Status.entered + "'");
         map.put("FROM_STORE_ID", "'" + obj.getFromStoreId() + "'");
         map.put("TO_STORE_ID", "'" + obj.getToStoreId() + "'");
         map.put("INDENT_TYPE", "'" + obj.getIndenType() + "'");
-         map.put("INDENT_MONTH", "'" + obj.getIndentMonth() + "'");
+        map.put("INDENT_MONTH", "'" + obj.getIndentMonth() + "'");
         map.put("REMARKS", "'" + obj.getRemarks() + "'");
         map.put("CRTD_BY", "'" + Constants.userId + "'");
         map.put("CRTD_DATE", Constants.today);
@@ -125,8 +124,8 @@ public class StoreManualIndentHandler {
         indent.setCrtdDate(map.get("CRTD_DATE").toString());
         indent.setCrtdTerminalId(map.get("CRTD_TERMINAL_ID").toString());
         indent.setClosingDay(map.get("CLOSING_DAY").toString());
-        indent.setIndentRequestId(map.get("REQUEST_TYPE").toString());
-        indent.setIndentRequestDesc(map.get("REQUEST_TYPE_DESC").toString());
+        indent.setRequestTypeId(map.get("REQUEST_TYPE").toString());
+        indent.setRequestTypeDesc(map.get("REQUEST_TYPE_DESC").toString());
         return indent;
     }
 

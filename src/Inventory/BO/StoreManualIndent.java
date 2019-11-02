@@ -8,8 +8,8 @@ public class StoreManualIndent {
     private String indentClosingDate = "";
     private String closingDay = "";
     private String indentMonth = "";
-    private String indentRequestId = "";
-    private String indentRequestDesc = "";
+    private String requestTypeId = "";
+    private String requestTypeDesc = "";
     private String indenType = "";
     private String remarks = "";
     private String itemId = "";
@@ -78,20 +78,20 @@ public class StoreManualIndent {
         this.approvedQty = approvedQty;
     }
     
-    public String getIndentRequestId() {
-        return indentRequestId;
+    public String getRequestTypeId() {
+        return requestTypeId;
     }
 
-    public void setIndentRequestId(String indentRequestId) {
-        this.indentRequestId = indentRequestId;
+    public void setRequestTypeId(String requestTypeId) {
+        this.requestTypeId = requestTypeId;
     }
 
-    public String getIndentRequestDesc() {
-        return indentRequestDesc;
+    public String getRequestTypeDesc() {
+        return requestTypeDesc;
     }
 
-    public void setIndentRequestDesc(String indentRequestDesc) {
-        this.indentRequestDesc = indentRequestDesc;
+    public void setRequestTypeDesc(String requestTypeDesc) {
+        this.requestTypeDesc = requestTypeDesc;
     }
     
     public String getClosingDay() {

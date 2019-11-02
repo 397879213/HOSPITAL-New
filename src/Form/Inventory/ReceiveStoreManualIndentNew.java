@@ -42,6 +42,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
     List<StoreManualIndent> listRequest = new ArrayList();
     DisplayLOV lov = new DisplayLOV();
     private String storeId;
+    private String requestTypeId;
 
     public ReceiveStoreManualIndentNew() {
 
@@ -615,7 +616,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
             }
         }
         if (cboIndentType.getSelectedIndex() == 2) { // Emergency Indent
-            storeId = "-4";
+            storeId = Stores.ERStore;
             txtIndentMonth.setText(df.format(cal.getTime()).toUpperCase());
             if (cboIndentType.getSelectedIndex() != 0) {
                 txtRemarks.setText("Short " + cboIndent.getSelectedItem());
@@ -626,12 +627,12 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
     private void cboIndentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboIndentActionPerformed
         // TODO add your handling code here:
         if (cboIndent.getSelectedIndex() == 1) { // Medical
-            storeId = "-6";
-            currentIndent.setIndentRequestId("10647");
+            storeId = Stores.ddrlStore;
+            currentIndent.setRequestTypeId(TypeDetailId.medicalSupplyIndent);
         }
         if (cboIndent.getSelectedIndex() == 2) { // Office
-            storeId = "-5";
-            currentIndent.setIndentRequestId("10648");
+            storeId = Stores.general;
+            currentIndent.setRequestTypeId(TypeDetailId.officeSupplyIndent);
         }
 
     }//GEN-LAST:event_cboIndentActionPerformed
@@ -797,6 +798,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         currentIndent.setIndentMonth(txtIndentMonth.getText().trim());
         currentIndent.setFromStoreId(Constants.storeId);
         currentIndent.setIndenType(cboIndentType.getSelectedItem().toString().toUpperCase());
+        currentIndent.setRequestTypeId(requestTypeId);
         currentIndent.setToStoreId(storeId);
         currentIndent.setRemarks(txtRemarks.getText().trim());
 
@@ -830,12 +832,12 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
             txtIndentBy.setText(indent.getCrtdByName());
             txtIndentDate.setText(indent.getCrtdDate());
 
-            if (indent.getIndentRequestId().equalsIgnoreCase(
+            if (indent.getRequestTypeId().equalsIgnoreCase(
                     TypeDetailId.officeSupplyIndent)) { //OFFICE SUPPLY
                 cboIndent.setSelectedIndex(2);
                 cboIndentType.setSelectedIndex(1);
             }
-            if (indent.getIndentRequestId().equalsIgnoreCase(
+            if (indent.getRequestTypeId().equalsIgnoreCase(
                     TypeDetailId.medicalSupplyIndent)) { //MEDICAL SUPPLY
                 cboIndent.setSelectedIndex(1);
                 cboIndentType.setSelectedIndex(1);
