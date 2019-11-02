@@ -35,6 +35,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
     List<StoreManualIndent> listRequest = new ArrayList();
     DisplayLOV lov = new DisplayLOV();
     private String storeId = "";
+    private String indentId = "";
 
     public ReceiveStoreManualIndentNew() {
 
@@ -470,7 +471,19 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
     private void tbRequestedItemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbRequestedItemKeyReleased
         // TODO add your handling code here:
         if (listRequest.isEmpty()) {
-
+            StoreManualIndent obj = listCCItems.get(tbRequestedItem.getSelectedRow());
+            tbRequestedItem.setValueAt(tbRequestedItem.getValueAt(
+                    tbRequestedItem.getSelectedRow(), 4), tbRequestedItem.getSelectedRow(),
+                    2);
+            obj.setOpeningBalance(tbRequestedItem.getValueAt(
+                    tbRequestedItem.getSelectedRow(), 4).toString());
+            obj.setClosingBalance(tbRequestedItem.getValueAt(
+                    tbRequestedItem.getSelectedRow(), 4).toString());
+            obj.setRequiredQty(tbRequestedItem.getValueAt(
+                    tbRequestedItem.getSelectedRow(), 5).toString());
+            obj.setApprovedQty(tbRequestedItem.getValueAt(
+                    tbRequestedItem.getSelectedRow(), 6).toString());
+            listItemHistory.add(obj);
         }
         if (!listRequest.isEmpty()) {
             StoreManualIndent obj = listRequest.get(tbRequestedItem.getSelectedRow());
@@ -485,6 +498,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
                     tbRequestedItem.getSelectedRow(), 5).toString());
             obj.setApprovedQty(tbRequestedItem.getValueAt(
                     tbRequestedItem.getSelectedRow(), 6).toString());
+            obj.setManualIndentId(indentId);
             listItemHistory.add(obj);
         }
 
@@ -791,6 +805,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
     private void setPendingIndent() {
         indent = ctlManualIndent.selectManualIndentMaster();
         if (indent != null) {
+            indentId = indent.getManualIndentId();
             txtFromStoreName.setText(indent.getFromStoreName());
             txtIndentMonth.setText(indent.getIndentMonth());
             txtRemarks.setText(indent.getRemarks());
