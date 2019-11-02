@@ -198,10 +198,9 @@ public class StoreManualIndentHandler {
 
     public boolean updateIndentStatus(String indentId, String status) {
         String query
-                = " UPDATE " + Database.Inventory.manualIndentMaster + "\n"
-                + " SET STATUS_ID = " + status + "               \n"
-                + " WHERE ID = " + indentId + "       \n";
-
+                = " UPDATE " + Database.Inventory.issueRequestMaster + "\n"
+                + " SET STATUS = " + status + "               \n"
+                + " WHERE ISSUE_NOTE_NO = " + indentId + "    \n";
         return Constants.dao.executeUpdate(query, false);
     }
 
