@@ -182,10 +182,10 @@ public class StoreManualIndentHandler {
             StoreManualIndent objUpdt = listUpdt.get(i);
 
             String query
-                    = " UPDATE  " + Database.Inventory.manualIndentDetail + " \n"
+                    = " UPDATE  " + Database.Inventory.issueRequestDetail + " \n"
                     + " SET OPENING_BALANCE =  " + objUpdt.getOpeningBalance() + ",\n"
                     + " CONSUMED_QTY =  " + objUpdt.getConsumedQty() + ",   \n"
-                    + " CLOSING_BALANCE =  " + objUpdt.getClosingBalance() + ", \n"
+                    + " CLOSING_BALANCE =  " + objUpdt.getClosingBalance() + ",\n"
                     + " REQUIRED_QTY =  " + objUpdt.getRequiredQty() + ",  \n"
                     + " APPROVED_QTY =  " + objUpdt.getApprovedQty() + "   \n"
                     + " WHERE MANUAL_ID =  " + objUpdt.getManualIndentId() + "\n"

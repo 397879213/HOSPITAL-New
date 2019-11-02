@@ -41,7 +41,6 @@ public class StoreManualIndentController {
 //        }
 //        return ret;
 //    }
-
     public StoreManualIndent selectManualIndentMaster() {
         return hdlOutreachPath.selectManualIndentMaster();
     }
@@ -49,15 +48,15 @@ public class StoreManualIndentController {
     public List<StoreManualIndent> selectManualIndentDetail(String manualIndentId) {
         return hdlOutreachPath.selectManualIndentDetail(manualIndentId);
     }
-    
+
     public boolean UpdateItemQtyDetail(List<StoreManualIndent> listUpdt,
             String indentId, String status, List<StoreManualIndent> listHis) {
         boolean ret = hdlOutreachPath.UpdateItemQtyDetail(listUpdt);
-        if(ret){
-            ret = hdlOutreachPath.updateIndentStatus(indentId, status);
-        }
-        if(ret){
+        if (ret) {
             ret = hdlOutreachPath.insertIssueRequestHistory(listHis);
+        }
+        if (ret) {
+            ret = hdlOutreachPath.updateIndentStatus(indentId, status);
         }
         if (ret) {
             Constants.dao.commitTransaction();
