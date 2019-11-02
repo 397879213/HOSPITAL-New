@@ -659,6 +659,7 @@ public class Database {
 
     public static class Inventory {
 
+        public static final String itemLedgers = DAO.usernameEmr + ".ITEM_LEDGER  ";
         public static final String purchaseOrderDetail = DAO.usernameEmr + ".PURCHASE_ORDER_DETAIL  ";
         public static final String purchaseOrderMaster = DAO.usernameEmr + ".PURCHASE_ORDER_MASTER  ";
         public static final String issueRequestDetailHistory = Database.usernameEmr + ".ISSUE_REQUEST_DETAIL_HISTORY  ";

@@ -14,6 +14,9 @@ public class TypeDetailId {
     public static final String male = "1";
     public static final String female = "2";
 
+    public static final String medicalSupplyIndent = "10647";
+    public static final String officeSupplyIndent = "10648";
+    
     public static final String radiologyResident = "135";
     public static final String radiologyConsultant = "134";
     public static final String cardiologyConsultant = "138";

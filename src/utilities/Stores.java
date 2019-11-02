@@ -12,6 +12,7 @@ package utilities;
  */
 public class Stores {
 
+    public static final String ERStore = "1";
     public static final String IPDPharmacy = "1";
     public static final String InsulineBank = "821";
     public static final String discartedStore = "-1";

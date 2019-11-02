@@ -85,7 +85,7 @@ public class Constants implements java.io.Serializable {
     public static String clientId = "";
     public static String clientName = "";
     //public static String itemLedgerId = "";
-    public static String storeId = "171341";
+    public static String storeId = "148";
 
     //********************  GUI DISPLAY ****************************//
     public static String modality = "";

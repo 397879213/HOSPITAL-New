@@ -18,6 +18,7 @@ public class Status {
     public static String teleTransferred = "9";
 
     //new ot status
+    public static String requested = "68";
     public static String releasePatient = "6114";
     public static String surgeryPlanned = "6109";
     public static String preOPPrepration = "6110";
