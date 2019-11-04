@@ -40,7 +40,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
     public ReceiveStoreManualIndentNew() {
 
         initComponents();
-        this.setSize(Constants.xSize + 30, Constants.ySize + 10);
+        this.setSize(Constants.xSize + 50, Constants.ySize + 10);
         btnCancel.setMnemonic(KeyEvent.VK_A);
         btnExit.setMnemonic(KeyEvent.VK_X);
         btnClear.setMnemonic(KeyEvent.VK_C);
@@ -804,7 +804,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
     }
 
     private void setPendingIndent() {
-        indent = ctlManualIndent.selectManualIndentMaster(currentIndent.getIndenType());
+        indent = ctlManualIndent.selectManualIndentMaster(currentIndent.getRequestTypeId());
         if (indent != null) {
             indentId = indent.getManualIndentId();
             txtFromStoreName.setText(indent.getFromStoreName());
