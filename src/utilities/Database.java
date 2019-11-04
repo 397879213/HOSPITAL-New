@@ -717,6 +717,7 @@ public class Database {
         
         public static final String manualIndentMaster = DAO.usernameEmr + "." + "MANUAL_INDENT_MASTER ";
         public static final String manualIndentDetail = DAO.usernameEmr + "." + "MANUAL_INDENT_DETAIL ";
+        public static final String manualIndentReport = DAO.usernameEmr + "." + "MANUAL_INDENT_REPORT ";
         public static final String pathCptWiseTubes = DAO.usernameEmr + "." + "PATH_CPT_WISE_ITEM ";
         public static final String pathCptWiseTubesHis = DAO.usernameEmr + "." + "PATH_CPT_WISE_ITEM_HISTORY ";
         public static final String cptWiseConsumableItems = DAO.usernameEmr + "." + "CPT_WISE_CONSUMABLE_ITEMS ";

@@ -88,6 +88,35 @@ public class StoreManualIndentHandler {
         return Constants.dao.insertData(lstInr, columns);
     }
 
+    public boolean insertManualIndentReport(List<StoreManualIndent> list) {
+
+        String[] columns = {Database.Inventory.manualIndentReport, "ID",
+            "INDENT_NO", "ITEM_ID", "OPENING_BALANCE", "MOVE_IN", "MOVE_OUT",
+            "CONSUMED_QTY", "CLOSING_BALANCE", "REQUIRED_QTY", "APPROVED_QTY",
+            "SUPPLIED_BY_STORE"};
+
+        List lstInr = new ArrayList();
+        for (int i = 0; i < list.size(); i++) {
+            StoreManualIndent obj = list.get(i);
+            HashMap map = new HashMap();
+            map.put("ID", "(SELECT MAX(ID)+1 FROM "
+                    + Database.Inventory.manualIndentReport + ")");
+            map.put("INDENT_NO", obj.getManualIndentId());
+            map.put("ITEM_ID", "'" + obj.getItemId() + "'");
+            map.put("OPENING_BALANCE", "'" + obj.getOpeningBalance() + "'");
+            map.put("MOVE_IN", "'0'");
+            map.put("MOVE_OUT", "'0'");
+            map.put("CONSUMED_QTY", "'" + obj.getConsumedQty() + "'");
+            map.put("CLOSING_BALANCE", "'" + obj.getClosingBalance() + "'");
+            map.put("REQUIRED_QTY", "'" + obj.getRequiredQty() + "'");
+            map.put("APPROVED_QTY", "'" + obj.getApprovedQty() + "'");
+            map.put("SUPPLIED_BY_STORE", "'" + obj.getApprovedQty() + "'");
+
+            lstInr.add(map);
+        }
+        return Constants.dao.insertData(lstInr, columns);
+    }
+
     public StoreManualIndent selectManualIndentMaster(String requestType) {
 
         String[] selectColumns = {"-", "ID", "CLOSING_DATE", "STATUS",
