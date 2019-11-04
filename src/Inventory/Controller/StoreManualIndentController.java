@@ -88,6 +88,9 @@ public class StoreManualIndentController {
             ret = hdlOutreachPath.insertIssueRequestHistory(listHis);
         }
         if (ret) {
+            ret = hdlOutreachPath.UpdateIndentReport(listHis);
+        }
+        if (ret) {
             ret = hdlOutreachPath.updateIndentStatus(indentId, status);
         }
         if (ret) {

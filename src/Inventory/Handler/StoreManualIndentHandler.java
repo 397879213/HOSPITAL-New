@@ -283,6 +283,23 @@ public class StoreManualIndentHandler {
         return ret;
     }
 
+    public boolean UpdateIndentReport(List<StoreManualIndent> listUpdt) {
+
+        boolean ret = true;
+        for (int i = 0; i < listUpdt.size(); i++) {
+            StoreManualIndent objUpdt = listUpdt.get(i);
+
+            String query
+                    = " UPDATE  " + Database.Inventory.issueRequestDetail + "\n"
+                    + " SET APPROVED_QTY =  " + objUpdt.getApprovedQty() + ",\n"
+                    + " SUPPLIED_BY_STORE =  " + objUpdt.getApprovedQty() + "\n"
+                    + " WHERE INDENT_NO =  " + objUpdt.getManualIndentId() + "\n"
+                    + " AND ITEM_ID = '" + objUpdt.getItemId() + "'          \n";
+            ret = Constants.dao.executeUpdate(query, false);
+        }
+        return ret;
+    }
+    
     public boolean UpdateItemQty(List<StoreManualIndent> listUpdt) {
 
         boolean ret = true;
