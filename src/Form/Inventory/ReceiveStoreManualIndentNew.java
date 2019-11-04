@@ -46,7 +46,6 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         btnClear.setMnemonic(KeyEvent.VK_C);
         btnRequest.setMnemonic(KeyEvent.VK_R);
         setDate();
-        setPendingIndent();
     }
 
     @SuppressWarnings("unchecked")
@@ -615,7 +614,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
             storeId = Stores.general;
             currentIndent.setRequestTypeId(TypeDetailId.officeSupplyIndent);
         }
-
+        setPendingIndent();
     }//GEN-LAST:event_cboIndentActionPerformed
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
