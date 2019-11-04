@@ -478,8 +478,8 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         if (listRequest.isEmpty()) {
             StoreManualIndent obj = listCCItems.get(tbRequestedItem.getSelectedRow());
             tbRequestedItem.setValueAt(tbRequestedItem.getValueAt(
-                    tbRequestedItem.getSelectedRow(), 4), tbRequestedItem.getSelectedRow(),
-                    2);
+                    tbRequestedItem.getSelectedRow(), 4), 
+                    tbRequestedItem.getSelectedRow(), 2);
             obj.setOpeningBalance(tbRequestedItem.getValueAt(
                     tbRequestedItem.getSelectedRow(), 4).toString());
             obj.setClosingBalance(tbRequestedItem.getValueAt(
