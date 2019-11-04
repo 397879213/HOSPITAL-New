@@ -101,6 +101,10 @@ public class StoreManualIndentController {
         }
         return ret;
     }
+    
+    public String selectPreviousQty(StoreManualIndent obj) {
+        return hdlOutreachPath.selectPreviousQty(obj);
+    }
 
     public boolean updateStoresStock(List<StoreManualIndent> listItems,
             StoreManualIndent master) {

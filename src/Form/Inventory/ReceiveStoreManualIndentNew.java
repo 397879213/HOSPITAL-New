@@ -475,9 +475,9 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
     private void tbRequestedItemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbRequestedItemKeyReleased
         // TODO add your handling code here:
         if (listRequest.isEmpty()) {
-            StoreManualIndent obj = listCCItems.get(tbRequestedItem.getSelectedRow());
+            StoreManualIndent obj = listRequest.get(tbRequestedItem.getSelectedRow());
             tbRequestedItem.setValueAt(tbRequestedItem.getValueAt(
-                    tbRequestedItem.getSelectedRow(), 4), 
+                    tbRequestedItem.getSelectedRow(), 4),
                     tbRequestedItem.getSelectedRow(), 2);
             obj.setOpeningBalance(tbRequestedItem.getValueAt(
                     tbRequestedItem.getSelectedRow(), 4).toString());
@@ -487,6 +487,11 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
                     tbRequestedItem.getSelectedRow(), 5).toString());
             obj.setApprovedQty(tbRequestedItem.getValueAt(
                     tbRequestedItem.getSelectedRow(), 6).toString());
+            obj.setConsumedQty(String.valueOf(Integer.parseInt(
+                    ctlManualIndent.selectPreviousQty(obj)) 
+                    - Integer.parseInt(tbRequestedItem.getValueAt(
+                            tbRequestedItem.getSelectedRow(), 4).toString()))
+                    );
             obj.setManualIndentId(indentId);
         }
         if (!listRequest.isEmpty()) {

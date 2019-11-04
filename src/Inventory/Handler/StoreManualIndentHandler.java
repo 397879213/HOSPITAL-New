@@ -426,4 +426,26 @@ public class StoreManualIndentHandler {
 
         return Constants.dao.executeUpdate(query, false);
     }
+    
+    public String selectPreviousQty(StoreManualIndent obj) {
+
+        String columns[] = {"-", "QTY"};
+
+        String query = " SELECT IRD.QTY FROM \n"
+                + Database.Inventory.issueRequestDetail + " IRD,   \n"
+                + Database.Inventory.issueRequestMaster + " IRM   \n"
+                + "WHERE  IRM.FROM_STORE_ID = "+ obj.getFromStoreId() +" \n"
+                + " AND IRD.ISSUE_REQUEST_NO = IRM.ISSUE_REQUEST_NO\n"
+                + " AND IRD.ITEM_ID = '" + obj.getItemId()+ "'\n"
+                + " AND IRM.INDENT_MONTH = '" + obj.getIndentMonth()+ "'\n";
+
+        System.out.println("query" + query);
+        List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
+
+        if (listmap.isEmpty()) {
+            return "0";
+        } else {
+            return listmap.get(0).get("QTY").toString();
+        }
+    }
 }
