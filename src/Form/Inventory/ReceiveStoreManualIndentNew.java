@@ -780,8 +780,6 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
     }
 
     private void clearForm() {
-//        txtItemName.setText("");
-//        txtQty.setText("");
         txtFromStoreName.setText("");
         txtIndentBy.setText("");
         txtIndentDate.setText("");
