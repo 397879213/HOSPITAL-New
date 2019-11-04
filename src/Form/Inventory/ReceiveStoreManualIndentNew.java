@@ -490,7 +490,6 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
             SimpleDateFormat df = new SimpleDateFormat("MMM-YY");
             Calendar cal = Calendar.getInstance();
             obj.setIndentMonth(df.format(cal.getTime()).toUpperCase());
-            System.err.println("month "+ obj.getIndentMonth());
             obj.setFromStoreId(Constants.storeId);
             obj.setConsumedQty(String.valueOf(Integer.parseInt(
                     ctlManualIndent.selectPreviousQty(obj))
@@ -796,6 +795,8 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         btnForward.setEnabled(true);
         btnRequest.setEnabled(true);
         btnSave.setEnabled(true);
+        cboIndent.setEnabled(true);
+        cboIndentType.setEnabled(true);
     }
 
     private void setPendingIndent() {
