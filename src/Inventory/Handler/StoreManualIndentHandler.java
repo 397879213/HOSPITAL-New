@@ -314,7 +314,7 @@ public class StoreManualIndentHandler {
                     = " UPDATE  " + Database.Inventory.issueRequestDetail + "\n"
                     // + "  OPENING_BALANCE =  " + objUpdt.getOpeningBalance() + ",\n"
                     // + " CONSUMED_QTY =  " + objUpdt.getConsumedQty() + ",  \n"
-                    + " SET RCV_QTY =  " + objUpdt.getRequiredQty() + ",  \n"
+                    + " SET RCV_QTY =  " + objUpdt.getRequiredQty() + "  \n"
                     + " WHERE ISSUE_REQUEST_NO =  " + objUpdt.getManualIndentId() + "\n"
                     + " AND ITEM_ID = '" + objUpdt.getItemId() + "'       \n";
 

@@ -31,7 +31,6 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
     StoreManualIndent currentIndent = new StoreManualIndent();
     StoreManualIndent objSearch = new StoreManualIndent();
     List<StoreManualIndent> listItemHistory = new ArrayList();
-    List<StoreManualIndent> listCCItems = new ArrayList();
     List<StoreManualIndent> listRequest = new ArrayList();
     DisplayLOV lov = new DisplayLOV();
     private String storeId = "";
@@ -535,6 +534,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Indent Request Successfully.");
             listRequest.clear();
             tbRequestedItem.setModel(new ManualIndentItemsTableModel(listRequest));
+            clearForm();
             setPendingIndent();
         } else {
             JOptionPane.showMessageDialog(null, "Unable to Request Successfully.");
@@ -554,10 +554,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         }
         if (ctlManualIndent.cancelIndent(indent)) {
             JOptionPane.showMessageDialog(null, "Indent has cancelled succefully.");
-            btnSave.setEnabled(true);
-            cboIndent.setEnabled(true);
-            cboIndentType.setEnabled(true);
-            txtIndentClosingDate.setEditable(true);
+            clearForm();
             setPendingIndent();
         } else {
             JOptionPane.showMessageDialog(null, "Indent can not cancel. Kindly conact support team.");
@@ -635,10 +632,9 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         }
         if (ctlManualIndent.UpdateApproveQty(listRequest, indent.getManualIndentId(),
                 Status.Approved, listItemHistory)) {
+            clearForm();
             setPendingIndent();
             JOptionPane.showMessageDialog(null, "Items Indent Approved Successfully.");
-            listRequest.clear();
-            tbRequestedItem.setModel(new ManualIndentItemsTableModel(listRequest));
         } else {
             JOptionPane.showMessageDialog(null, "Unable to Approved Indent. \n"
                     + "Kindly contact Support Team.");
@@ -658,10 +654,9 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         }
         if (ctlManualIndent.UpdateItemQtyDetail(listRequest, indent.getManualIndentId(),
                 Status.forwarded, listItemHistory)) {
+            clearForm();
             setPendingIndent();
             JOptionPane.showMessageDialog(null, "Items Indent Forward Successfully.");
-            listRequest.clear();
-            tbRequestedItem.setModel(new ManualIndentItemsTableModel(listRequest));
         } else {
             JOptionPane.showMessageDialog(null, "Unable to Approved Indent. \n"
                     + "Kindly contact Support Team.");
@@ -798,12 +793,19 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
     private void clearForm() {
 //        txtItemName.setText("");
 //        txtQty.setText("");
+        txtFromStoreName.setText("");
+        txtIndentBy.setText("");
+        txtIndentDate.setText("");
         txtIndentMonth.setText("");
-//        txtSearchToStore.setText("");
+        txtRemarks.setText("");
         listItemHistory.clear();
         listRequest.clear();
         tbRequestedItem.setModel(new ManualIndentItemsTableModel(listRequest));
-
+        btnApprove.setEnabled(true);
+        btnCancel.setEnabled(true);
+        btnForward.setEnabled(true);
+        btnRequest.setEnabled(true);
+        btnSave.setEnabled(true);
     }
 
     private void setPendingIndent() {
@@ -855,6 +857,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
                 btnCancel.setEnabled(false);
                 btnRequest.setEnabled(false);
                 btnApprove.setEnabled(true);
+                btnForward.setEnabled(true);
             }
 
             cboIndent.setEnabled(false);
