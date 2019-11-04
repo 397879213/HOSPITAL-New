@@ -712,8 +712,6 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
     private void selectRequestItems(String indentId, String status) {
         listRequest = ctlManualIndent.selectManualIndentDetail(indentId);
         if (listRequest.isEmpty()) {
-//            List<StoreManualIndent> listRequest = new ArrayList();
-//            tbRequestedItem.setModel(new ManualIndentItemsTableModel(listRequest));
             listRequest = ctlManualIndent.selectCCItems(indent.getRequestTypeId());
             tbRequestedItem.setModel(new ManualIndentItemsTableModel(listRequest));
             ListSelectionModel selectionModel = tbRequestedItem.getSelectionModel();
