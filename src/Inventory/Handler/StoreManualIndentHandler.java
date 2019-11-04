@@ -11,6 +11,7 @@ import utilities.Database;
 import utilities.GenerateKeys;
 import utilities.Keys;
 import utilities.Status;
+import utilities.Stores;
 
 public class StoreManualIndentHandler {
 
@@ -149,7 +150,9 @@ public class StoreManualIndentHandler {
                 + Database.DCMS.definitionTypeDetail + " IRQ                \n"
                 + " WHERE MIM.FROM_STORE_ID = '" + Constants.storeId + "'   \n"
                 + " AND MIM.CRTD_BY = '" + Constants.userId + "'            \n"
-                //                + " AND MIM.STATUS =  '" + Status.entered + "'              \n"
+                + " AND MIM.STATUS != '" + Status.Approved + "'            \n"
+                + " AND MIM.TO_STORE_ID IN ('" + Stores.general + "', '" + Stores.ddrlStore + "')\n"
+                // + " AND MIM.STATUS =  '" + Status.entered + "'              \n"
                 + " AND MIM.REQUEST_TYPE =  '" + requestType + "'           \n"
                 + " AND MIM.FROM_STORE_ID = FSI.ID                          \n"
                 + " AND MIM.TO_STORE_ID = TSI.ID                            \n"
@@ -299,7 +302,7 @@ public class StoreManualIndentHandler {
         }
         return ret;
     }
-    
+
     public boolean UpdateItemQty(List<StoreManualIndent> listUpdt) {
 
         boolean ret = true;
@@ -426,7 +429,7 @@ public class StoreManualIndentHandler {
 
         return Constants.dao.executeUpdate(query, false);
     }
-    
+
     public String selectPreviousQty(StoreManualIndent obj) {
 
         String columns[] = {"-", "QTY"};
@@ -434,10 +437,10 @@ public class StoreManualIndentHandler {
         String query = " SELECT IRD.QTY FROM \n"
                 + Database.Inventory.issueRequestDetail + " IRD,   \n"
                 + Database.Inventory.issueRequestMaster + " IRM   \n"
-                + "WHERE  IRM.FROM_STORE_ID = "+ obj.getFromStoreId() +" \n"
+                + "WHERE  IRM.FROM_STORE_ID = " + obj.getFromStoreId() + " \n"
                 + " AND IRD.ISSUE_REQUEST_NO = IRM.ISSUE_REQUEST_NO\n"
-                + " AND IRD.ITEM_ID = '" + obj.getItemId()+ "'\n"
-                + " AND IRM.INDENT_MONTH = '" + obj.getIndentMonth()+ "'\n";
+                + " AND IRD.ITEM_ID = '" + obj.getItemId() + "'\n"
+                + " AND IRM.INDENT_MONTH = '" + obj.getIndentMonth() + "'\n";
 
         System.out.println("query" + query);
         List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
