@@ -489,7 +489,6 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
             obj.setApprovedQty(tbRequestedItem.getValueAt(
                     tbRequestedItem.getSelectedRow(), 6).toString());
             obj.setManualIndentId(indentId);
-            listItemHistory.add(obj);
         }
         if (!listRequest.isEmpty()) {
             StoreManualIndent obj = listRequest.get(tbRequestedItem.getSelectedRow());
@@ -712,8 +711,8 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         if (listRequest.isEmpty()) {
 //            List<StoreManualIndent> listRequest = new ArrayList();
 //            tbRequestedItem.setModel(new ManualIndentItemsTableModel(listRequest));
-            listCCItems = ctlManualIndent.selectCCItems(indent.getRequestTypeId());
-            tbRequestedItem.setModel(new ManualIndentItemsTableModel(listCCItems));
+            listRequest = ctlManualIndent.selectCCItems(indent.getRequestTypeId());
+            tbRequestedItem.setModel(new ManualIndentItemsTableModel(listRequest));
             ListSelectionModel selectionModel = tbRequestedItem.getSelectionModel();
             tbRequestedItem.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
             setRerquestItemsColumnsWidths();
