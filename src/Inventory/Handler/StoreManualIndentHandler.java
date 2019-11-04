@@ -282,7 +282,7 @@ public class StoreManualIndentHandler {
             String query
                     = " UPDATE  " + Database.Inventory.issueRequestDetail + "\n"
                     + " SET RCV_QTY =  " + objUpdt.getApprovedQty() + ",   \n"
-                    + " QTY = RCV_QTY  +  " + objUpdt.getApprovedQty() + "  \n"
+                    + " QTY = CLOSING_QTY  +  " + objUpdt.getApprovedQty() + "  \n"
                     + " WHERE ISSUE_REQUEST_NO =  " + objUpdt.getManualIndentId() + "\n"
                     + " AND ITEM_ID = '" + objUpdt.getItemId() + "'         \n";
             ret = Constants.dao.executeUpdate(query, false);
