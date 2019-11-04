@@ -507,7 +507,6 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
             obj.setManualIndentId(indentId);
             listItemHistory.add(obj);
         }
-
     }//GEN-LAST:event_tbRequestedItemKeyReleased
 
     private void txtIndentMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIndentMonthActionPerformed
