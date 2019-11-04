@@ -155,6 +155,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
             }
         });
 
+        cboIndent.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         cboIndent.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select", "Medicl Supply", "Office Supply" }));
         cboIndent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,6 +168,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("Remarks :  ");
 
+        cboIndentType.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         cboIndentType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select", "Main Indent", "Emergency Indent" }));
         cboIndentType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,6 +177,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         });
 
         txtRemarks.setColumns(20);
+        txtRemarks.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtRemarks.setRows(5);
         jScrollPane1.setViewportView(txtRemarks);
 
@@ -189,6 +192,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         jLabel12.setText("Indent Date :  ");
 
         txtIndentBy.setEditable(false);
+        txtIndentBy.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtIndentBy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIndentByActionPerformed(evt);
@@ -196,6 +200,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         });
 
         txtIndentDate.setEditable(false);
+        txtIndentDate.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtIndentDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIndentDateActionPerformed(evt);
@@ -322,7 +327,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
+            .addComponent(jScrollPane11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -421,7 +426,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(8, 8, 8)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClear)
                     .addComponent(btnExit)
@@ -429,7 +434,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
                     .addComponent(btnLocationWiseReport)
                     .addComponent(btnApprove)
                     .addComponent(btnForward))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(8, 8, 8))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -525,7 +530,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         if (confirmation != 0) {
             return;
         }
-        if (ctlManualIndent.insertRequest(indentId, title, listItemHistory)) {
+        if (ctlManualIndent.insertRequest(indentId, Status.requested, listItemHistory)) {
             JOptionPane.showMessageDialog(null, "Indent Request Successfully.");
             listRequest.clear();
             tbRequestedItem.setModel(new ManualIndentItemsTableModel(listRequest));

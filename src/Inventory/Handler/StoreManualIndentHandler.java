@@ -120,7 +120,7 @@ public class StoreManualIndentHandler {
                 + Database.DCMS.definitionTypeDetail + " IRQ                \n"
                 + " WHERE MIM.FROM_STORE_ID = '" + Constants.storeId + "'   \n"
                 + " AND MIM.CRTD_BY = '" + Constants.userId + "'              \n"
-                + " AND MIM.STATUS = '" + Status.entered + "'               \n"
+//                + " AND MIM.STATUS = '" + Status.entered + "'               \n"
                 + " AND MIM.FROM_STORE_ID = FSI.ID                          \n"
                 + " AND MIM.TO_STORE_ID = TSI.ID                            \n"
                 + " AND MIM.CRTD_BY = USR.USER_NAME                         \n"
@@ -358,9 +358,9 @@ public class StoreManualIndentHandler {
 
     public boolean cancelIndent(StoreManualIndent indent) {
         String query
-                = " UPDATE " + Database.Inventory.manualIndentMaster + "\n"
-                + " SET STATUS_ID = " + Status.canceled + "               \n"
-                + " WHERE ID = " + indent.getManualIndentId() + "       \n";
+                = " UPDATE " + Database.Inventory.issueRequestMaster + "\n"
+                + " SET STATUS = " + Status.canceled + "                \n"
+                + " WHERE ISSUE_REQUEST_NO = " + indent.getManualIndentId() + "\n";
 
         return Constants.dao.executeUpdate(query, false);
     }
