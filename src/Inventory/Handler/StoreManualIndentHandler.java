@@ -244,8 +244,8 @@ public class StoreManualIndentHandler {
 
             String query
                     = " UPDATE  " + Database.Inventory.issueRequestDetail + "\n"
-                    //                    + "  OPENING_BALANCE =  " + objUpdt.getOpeningBalance() + ",\n"
-                    //                    + " CONSUMED_QTY =  " + objUpdt.getConsumedQty() + ",  \n"
+                    // + "  OPENING_BALANCE =  " + objUpdt.getOpeningBalance() + ",\n"
+                    // + " CONSUMED_QTY =  " + objUpdt.getConsumedQty() + ",  \n"
                     + " SET CLOSING_QTY =  " + objUpdt.getClosingBalance() + ",\n"
                     + " REQUESTED_QTY =  " + objUpdt.getRequiredQty() + ",  \n"
                     + " RCV_QTY =  " + objUpdt.getApprovedQty() + "   \n"
