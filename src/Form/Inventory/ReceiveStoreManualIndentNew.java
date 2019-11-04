@@ -628,7 +628,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         if (confirmation != 0) {
             return;
         }
-        if (ctlManualIndent.UpdateItemQtyDetail(listRequest, indent.getManualIndentId(),
+        if (ctlManualIndent.UpdateApproveQty(listRequest, indent.getManualIndentId(),
                 Status.Approved, listItemHistory)) {
             setPendingIndent();
             JOptionPane.showMessageDialog(null, "Items Indent Approved Successfully.");

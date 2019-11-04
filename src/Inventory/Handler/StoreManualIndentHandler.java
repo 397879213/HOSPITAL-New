@@ -254,7 +254,7 @@ public class StoreManualIndentHandler {
         return ret;
     }
 
-    public boolean UpdateIssueRequestHistory(List<StoreManualIndent> listUpdt) {
+    public boolean UpdateItemQty(List<StoreManualIndent> listUpdt) {
 
         boolean ret = true;
         for (int i = 0; i < listUpdt.size(); i++) {
@@ -264,15 +264,9 @@ public class StoreManualIndentHandler {
                     = " UPDATE  " + Database.Inventory.issueRequestDetail + "\n"
                     // + "  OPENING_BALANCE =  " + objUpdt.getOpeningBalance() + ",\n"
                     // + " CONSUMED_QTY =  " + objUpdt.getConsumedQty() + ",  \n"
-                    + " SET INDENT_NO =  " + objUpdt.getClosingBalance() + ",\n"
-                    + " REQUESTED_QTY =  " + objUpdt.getRequiredQty() + ",  \n"
-                    + " APPROVED_QTY =  " + objUpdt.getRequiredQty() + ",  \n"
-                    + " CRTD_BY =  " + objUpdt.getApprovedQty() + "   \n"
-                    + " CRTD_DATE =  " + objUpdt.getApprovedQty() + "   \n"
-                    + " CRTD_BY =  " + objUpdt.getApprovedQty() + "   \n"
+                    + " SET RCV_QTY =  " + objUpdt.getRequiredQty() + ",  \n"
                     + " WHERE ISSUE_REQUEST_NO =  " + objUpdt.getManualIndentId() + "\n"
-                    + " AND ITEM_ID = '" + objUpdt.getItemId() + "'        \n"
-                    + "ITEM_ID = '" + objUpdt.getItemId() + ",\n";
+                    + " AND ITEM_ID = '" + objUpdt.getItemId() + "'       \n";
 
             ret = Constants.dao.executeUpdate(query, false);
         }

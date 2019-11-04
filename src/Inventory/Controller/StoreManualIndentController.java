@@ -62,6 +62,24 @@ public class StoreManualIndentController {
 
     public boolean UpdateItemQtyDetail(List<StoreManualIndent> listUpdt,
             String indentId, String status, List<StoreManualIndent> listHis) {
+        boolean ret = hdlOutreachPath.UpdateItemQty(listUpdt);
+        if (ret) {
+            ret = hdlOutreachPath.insertIssueRequestHistory(listHis);
+        }
+        if (ret) {
+            ret = hdlOutreachPath.updateIndentStatus(indentId, status);
+        }
+        if (ret) {
+            Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
+    
+    public boolean UpdateApproveQty(List<StoreManualIndent> listUpdt,
+            String indentId, String status, List<StoreManualIndent> listHis) {
         boolean ret = hdlOutreachPath.UpdateApproveQty(listUpdt);
         if (ret) {
             ret = hdlOutreachPath.insertIssueRequestHistory(listHis);
