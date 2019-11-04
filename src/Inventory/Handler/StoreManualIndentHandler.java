@@ -245,13 +245,10 @@ public class StoreManualIndentHandler {
 
             String query
                     = " UPDATE  " + Database.Inventory.issueRequestDetail + "\n"
-                    // + "  OPENING_BALANCE =  " + objUpdt.getOpeningBalance() + ",\n"
-                    // + " CONSUMED_QTY =  " + objUpdt.getConsumedQty() + ",  \n"
-                    + " SET RCV_QTY =  " + objUpdt.getApprovedQty()  + ",   \n"
+                    + " SET RCV_QTY =  " + objUpdt.getApprovedQty() + ",   \n"
                     + " QTY = RCV_QTY  +  " + objUpdt.getApprovedQty() + "  \n"
                     + " WHERE ISSUE_REQUEST_NO =  " + objUpdt.getManualIndentId() + "\n"
                     + " AND ITEM_ID = '" + objUpdt.getItemId() + "'         \n";
-
             ret = Constants.dao.executeUpdate(query, false);
         }
         return ret;
@@ -276,7 +273,7 @@ public class StoreManualIndentHandler {
                     + " WHERE ISSUE_REQUEST_NO =  " + objUpdt.getManualIndentId() + "\n"
                     + " AND ITEM_ID = '" + objUpdt.getItemId() + "'        \n"
                     + "ITEM_ID = '" + objUpdt.getItemId() + ",\n";
-              
+
             ret = Constants.dao.executeUpdate(query, false);
         }
         return ret;
