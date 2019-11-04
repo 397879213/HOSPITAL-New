@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller.Inventory;
+package Inventory.Controller;
 
 import BO.Inventory.PartyTenderItems;
 import Handler.Inventory.PartyTenderItemsHandler;

@@ -1,7 +1,7 @@
 package Form.Inventory;
 
 import BO.Inventory.PartyTenderItems;
-import Controller.Inventory.PartyTenderItemsController;
+import Inventory.Controller.PartyTenderItemsController;
 import Form.general.*;
 import TableModel.Inventory.PartyWiseItemTableModel;
 import TableModel.Inventory.TenderWisePartyTableModel;

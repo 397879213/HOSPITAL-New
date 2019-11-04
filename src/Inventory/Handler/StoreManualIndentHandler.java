@@ -75,13 +75,13 @@ public class StoreManualIndentHandler {
             HashMap map = new HashMap();
             map.put("ISSUE_REQUEST_NO", obj.getManualIndentId());
             map.put("SERIAL_NO", "'" + (i + 1) + "'");
-            map.put("ITEM_ID", "'" + obj.getApprovedQty() + "'");
+            map.put("ITEM_ID", "'" + obj.getItemId()+ "'");
             map.put("QTY", "'" + obj.getApprovedQty() + "'");
             map.put("RCV_QTY", "'" + obj.getApprovedQty() + "'");
             map.put("ID", "(SELECT MAX(ID)+1 FROM "
                     + Database.Inventory.issueRequestDetail + ")");
             map.put("REQUESTED_QTY", "'" + obj.getRequiredQty() + "'");
-            map.put("CLOSING_QTY", "'" + obj.getRequiredQty() + "'");
+            map.put("CLOSING_QTY", "'" + obj.getClosingBalance()+ "'");
 
             lstInr.add(map);
         }
@@ -203,18 +203,18 @@ public class StoreManualIndentHandler {
             "CLOSING_QTY", "REQUESTED_QTY", "RCV_QTY", "CONSUMED_QTY"};
 
         String query
-                = "SELECT CI.ITEM_ID,               \n"
-                + "       ITM.DESCRIPTION ITEM_NAME,\n"
-                + "       '0' OPENING_BALANCE,      \n"
-                + "       '0' CONSUMED_QTY,         \n"
-                + "       '0' CLOSING_QTY,          \n"
-                + "       '0' REQUESTED_QTY,        \n"
-                + "       '0' RCV_QTY               \n"
-                + "  FROM                           \n"
-                + Database.DCMS.item + " ITM,       \n"
+                = "SELECT CI.ITEM_ID,         \n"
+                + " ITM.DESCRIPTION ITEM_NAME,\n"
+                + " '0' OPENING_BALANCE,      \n"
+                + " '0' CONSUMED_QTY,         \n"
+                + " '0' CLOSING_QTY,          \n"
+                + " '0' REQUESTED_QTY,        \n"
+                + " '0' RCV_QTY               \n"
+                + "  FROM                     \n"
+                + Database.DCMS.item + " ITM, \n"
                 + Database.Inventory.ccItemConfiguration + " CI \n"
                 + " WHERE CI.ITEM_TYPE = '" + itemType + "'\n"
-                + "   AND ITM.ID = CI.ITEM_ID       \n";
+                + "   AND ITM.ID = CI.ITEM_ID \n";
 
         List<HashMap> list = Constants.dao.selectDatainList(query, cols);
 
