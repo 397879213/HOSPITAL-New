@@ -473,7 +473,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
 
     private void tbRequestedItemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbRequestedItemKeyReleased
         // TODO add your handling code here:
-        if (listRequest.isEmpty()) {
+        if (!listRequest.isEmpty()) {
             StoreManualIndent obj = listRequest.get(tbRequestedItem.getSelectedRow());
             tbRequestedItem.setValueAt(tbRequestedItem.getValueAt(
                     tbRequestedItem.getSelectedRow(), 4),
@@ -489,23 +489,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
             obj.setConsumedQty(String.valueOf(Integer.parseInt(
                     ctlManualIndent.selectPreviousQty(obj)) 
                     - Integer.parseInt(tbRequestedItem.getValueAt(
-                            tbRequestedItem.getSelectedRow(), 4).toString()))
-                    );
-            obj.setManualIndentId(indentId);
-        }
-        if (!listRequest.isEmpty()) {
-            StoreManualIndent obj = listRequest.get(tbRequestedItem.getSelectedRow());
-            tbRequestedItem.setValueAt(tbRequestedItem.getValueAt(
-                    tbRequestedItem.getSelectedRow(), 4), tbRequestedItem.getSelectedRow(),
-                    2);
-            obj.setOpeningBalance(tbRequestedItem.getValueAt(
-                    tbRequestedItem.getSelectedRow(), 4).toString());
-            obj.setClosingBalance(tbRequestedItem.getValueAt(
-                    tbRequestedItem.getSelectedRow(), 4).toString());
-            obj.setRequiredQty(tbRequestedItem.getValueAt(
-                    tbRequestedItem.getSelectedRow(), 5).toString());
-            obj.setApprovedQty(tbRequestedItem.getValueAt(
-                    tbRequestedItem.getSelectedRow(), 6).toString());
+                            tbRequestedItem.getSelectedRow(), 4).toString())));
             obj.setManualIndentId(indentId);
         }
     }//GEN-LAST:event_tbRequestedItemKeyReleased
