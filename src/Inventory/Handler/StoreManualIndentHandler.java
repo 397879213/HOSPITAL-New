@@ -75,13 +75,13 @@ public class StoreManualIndentHandler {
             HashMap map = new HashMap();
             map.put("ISSUE_REQUEST_NO", obj.getManualIndentId());
             map.put("SERIAL_NO", "'" + (i + 1) + "'");
-            map.put("ITEM_ID", "'" + obj.getItemId()+ "'");
+            map.put("ITEM_ID", "'" + obj.getItemId() + "'");
             map.put("QTY", "'" + obj.getApprovedQty() + "'");
             map.put("RCV_QTY", "'" + obj.getApprovedQty() + "'");
             map.put("ID", "(SELECT MAX(ID)+1 FROM "
                     + Database.Inventory.issueRequestDetail + ")");
             map.put("REQUESTED_QTY", "'" + obj.getRequiredQty() + "'");
-            map.put("CLOSING_QTY", "'" + obj.getClosingBalance()+ "'");
+            map.put("CLOSING_QTY", "'" + obj.getClosingBalance() + "'");
 
             lstInr.add(map);
         }
@@ -120,7 +120,7 @@ public class StoreManualIndentHandler {
                 + Database.DCMS.definitionTypeDetail + " IRQ                \n"
                 + " WHERE MIM.FROM_STORE_ID = '" + Constants.storeId + "'   \n"
                 + " AND MIM.CRTD_BY = '" + Constants.userId + "'            \n"
-//                + " AND MIM.STATUS =  '" + Status.entered + "'              \n"
+                //                + " AND MIM.STATUS =  '" + Status.entered + "'              \n"
                 + " AND MIM.REQUEST_TYPE =  '" + requestType + "'           \n"
                 + " AND MIM.FROM_STORE_ID = FSI.ID                          \n"
                 + " AND MIM.TO_STORE_ID = TSI.ID                            \n"
@@ -237,7 +237,7 @@ public class StoreManualIndentHandler {
         return listItems;
     }
 
-    public boolean UpdateItemQtyDetail(List<StoreManualIndent> listUpdt) {
+    public boolean UpdateApproveQty(List<StoreManualIndent> listUpdt) {
 
         boolean ret = true;
         for (int i = 0; i < listUpdt.size(); i++) {
@@ -247,12 +247,36 @@ public class StoreManualIndentHandler {
                     = " UPDATE  " + Database.Inventory.issueRequestDetail + "\n"
                     // + "  OPENING_BALANCE =  " + objUpdt.getOpeningBalance() + ",\n"
                     // + " CONSUMED_QTY =  " + objUpdt.getConsumedQty() + ",  \n"
-                    + " SET CLOSING_QTY =  " + objUpdt.getClosingBalance() + ",\n"
-                    + " REQUESTED_QTY =  " + objUpdt.getRequiredQty() + ",  \n"
-                    + " RCV_QTY =  " + objUpdt.getApprovedQty() + "   \n"
+                    + " SET RCV_QTY =  " + objUpdt.getApprovedQty()  + ",   \n"
+                    + " QTY = RCV_QTY  +  " + objUpdt.getApprovedQty() + "  \n"
                     + " WHERE ISSUE_REQUEST_NO =  " + objUpdt.getManualIndentId() + "\n"
-                    + " AND ITEM_ID = '" + objUpdt.getItemId() + "'        \n";
+                    + " AND ITEM_ID = '" + objUpdt.getItemId() + "'         \n";
 
+            ret = Constants.dao.executeUpdate(query, false);
+        }
+        return ret;
+    }
+
+    public boolean UpdateIssueRequestHistory(List<StoreManualIndent> listUpdt) {
+
+        boolean ret = true;
+        for (int i = 0; i < listUpdt.size(); i++) {
+            StoreManualIndent objUpdt = listUpdt.get(i);
+
+            String query
+                    = " UPDATE  " + Database.Inventory.issueRequestDetail + "\n"
+                    // + "  OPENING_BALANCE =  " + objUpdt.getOpeningBalance() + ",\n"
+                    // + " CONSUMED_QTY =  " + objUpdt.getConsumedQty() + ",  \n"
+                    + " SET INDENT_NO =  " + objUpdt.getClosingBalance() + ",\n"
+                    + " REQUESTED_QTY =  " + objUpdt.getRequiredQty() + ",  \n"
+                    + " APPROVED_QTY =  " + objUpdt.getRequiredQty() + ",  \n"
+                    + " CRTD_BY =  " + objUpdt.getApprovedQty() + "   \n"
+                    + " CRTD_DATE =  " + objUpdt.getApprovedQty() + "   \n"
+                    + " CRTD_BY =  " + objUpdt.getApprovedQty() + "   \n"
+                    + " WHERE ISSUE_REQUEST_NO =  " + objUpdt.getManualIndentId() + "\n"
+                    + " AND ITEM_ID = '" + objUpdt.getItemId() + "'        \n"
+                    + "ITEM_ID = '" + objUpdt.getItemId() + ",\n";
+              
             ret = Constants.dao.executeUpdate(query, false);
         }
         return ret;

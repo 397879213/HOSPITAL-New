@@ -62,7 +62,7 @@ public class StoreManualIndentController {
 
     public boolean UpdateItemQtyDetail(List<StoreManualIndent> listUpdt,
             String indentId, String status, List<StoreManualIndent> listHis) {
-        boolean ret = hdlOutreachPath.UpdateItemQtyDetail(listUpdt);
+        boolean ret = hdlOutreachPath.UpdateApproveQty(listUpdt);
         if (ret) {
             ret = hdlOutreachPath.insertIssueRequestHistory(listHis);
         }
