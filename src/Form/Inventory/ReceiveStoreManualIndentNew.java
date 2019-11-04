@@ -848,11 +848,13 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
                 btnCancel.setEnabled(false);
                 btnRequest.setEnabled(false);
                 btnApprove.setEnabled(false);
+                btnForward.setEnabled(true);
             }
             if (indent.getOrderStatusId().equalsIgnoreCase(Status.forwarded)) {
                 btnSave.setEnabled(false);
                 btnCancel.setEnabled(false);
                 btnRequest.setEnabled(false);
+                btnApprove.setEnabled(true);
             }
 
             cboIndent.setEnabled(false);

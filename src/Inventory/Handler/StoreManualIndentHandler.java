@@ -68,7 +68,7 @@ public class StoreManualIndentHandler {
 
         String[] columns = {Database.Inventory.issueRequestDetail,
             "ISSUE_REQUEST_NO", "SERIAL_NO", "ITEM_ID", "QTY", "RCV_QTY", "ID",
-            "REQUESTED_QTY", "CLOSING_QTY",};
+            "REQUESTED_QTY", "CLOSING_QTY", "CONSUMED_QTY"};
 
         List lstInr = new ArrayList();
         for (int i = 0; i < list.size(); i++) {
@@ -79,6 +79,7 @@ public class StoreManualIndentHandler {
             map.put("ITEM_ID", "'" + obj.getItemId() + "'");
             map.put("QTY", "'" + obj.getApprovedQty() + "'");
             map.put("RCV_QTY", "'" + obj.getApprovedQty() + "'");
+            map.put("CONSUMED_QTY", "'" + obj.getConsumedQty() + "'");
             map.put("ID", "(SELECT MAX(ID)+1 FROM "
                     + Database.Inventory.issueRequestDetail + ")");
             map.put("REQUESTED_QTY", "'" + obj.getRequiredQty() + "'");
