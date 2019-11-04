@@ -504,7 +504,6 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
             obj.setApprovedQty(tbRequestedItem.getValueAt(
                     tbRequestedItem.getSelectedRow(), 6).toString());
             obj.setManualIndentId(indentId);
-            listItemHistory.add(obj);
         }
     }//GEN-LAST:event_tbRequestedItemKeyReleased
 
@@ -528,7 +527,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
         if (confirmation != 0) {
             return;
         }
-        if (ctlManualIndent.insertRequest(indentId, Status.requested, listItemHistory)) {
+        if (ctlManualIndent.insertRequest(indentId, Status.requested, listRequest)) {
             JOptionPane.showMessageDialog(null, "Indent Request Successfully.");
             listRequest.clear();
             tbRequestedItem.setModel(new ManualIndentItemsTableModel(listRequest));
