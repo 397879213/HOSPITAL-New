@@ -486,10 +486,16 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
                     tbRequestedItem.getSelectedRow(), 5).toString());
             obj.setApprovedQty(tbRequestedItem.getValueAt(
                     tbRequestedItem.getSelectedRow(), 6).toString());
+            obj.setManualIndentId(indent.getManualIndentId());
+            SimpleDateFormat df = new SimpleDateFormat("MMM-YY");
+            Calendar cal = Calendar.getInstance();
+            obj.setIndentMonth(df.format(cal.getTime()).toUpperCase());
+            System.err.println("month "+ obj.getIndentMonth());
+            obj.setFromStoreId(Constants.storeId);
             obj.setConsumedQty(String.valueOf(Integer.parseInt(
-                    ctlManualIndent.selectPreviousQty(obj)) 
+                    ctlManualIndent.selectPreviousQty(obj))
                     - Integer.parseInt(tbRequestedItem.getValueAt(
-                            tbRequestedItem.getSelectedRow(), 4).toString())));
+                                    tbRequestedItem.getSelectedRow(), 4).toString())));
             obj.setManualIndentId(indentId);
         }
     }//GEN-LAST:event_tbRequestedItemKeyReleased

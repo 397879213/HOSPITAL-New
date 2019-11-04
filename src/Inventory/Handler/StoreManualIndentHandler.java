@@ -193,11 +193,13 @@ public class StoreManualIndentHandler {
     public List<StoreManualIndent> selectManualIndentDetail(String manualIndentId) {
 
         String[] cols = {"-", "ISSUE_REQUEST_NO", "ITEM_ID", "ITEM_NAME", "STATUS",
-            "OPENING_BALANCE", "CLOSING_QTY", "REQUESTED_QTY", "RCV_QTY"}; //"CONSUMED_QTY",
+            "OPENING_BALANCE", "CLOSING_QTY", "REQUESTED_QTY", "CONSUMED_QTY", 
+            "RCV_QTY"}; 
 
         String query = "SELECT MID.ISSUE_REQUEST_NO, MID.ITEM_ID,MIM.STATUS,\n"
                 + " ITM.DESCRIPTION ITEM_NAME, MID.CLOSING_QTY OPENING_BALANCE,\n"
-                + "  MID.CLOSING_QTY, MID.REQUESTED_QTY, MID.RCV_QTY  FROM  \n"
+                + " MID.CLOSING_QTY, MID.REQUESTED_QTY, MID.RCV_QTY, MID.CONSUMED_QTY"
+                + " FROM                                            \n"
                 + Database.Inventory.issueRequestDetail + " MID,    \n"
                 + Database.Inventory.issueRequestMaster + " MIM,    \n"
                 + Database.DCMS.item + " ITM                        \n"
@@ -219,6 +221,7 @@ public class StoreManualIndentHandler {
             setItems.setOrderStatusId(map.get("STATUS").toString());
             setItems.setOpeningBalance(map.get("OPENING_BALANCE").toString());
             setItems.setConsumedQty("0");
+            setItems.setConsumedQty(map.get("CONSUMED_QTY").toString());
             setItems.setClosingBalance(map.get("CLOSING_QTY").toString());
             setItems.setRequiredQty(map.get("REQUESTED_QTY").toString());
             if (setItems.getOrderStatusId().equalsIgnoreCase(Status.entered)) {
