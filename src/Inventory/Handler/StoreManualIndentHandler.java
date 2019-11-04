@@ -120,7 +120,7 @@ public class StoreManualIndentHandler {
                 + Database.DCMS.definitionTypeDetail + " IRQ                \n"
                 + " WHERE MIM.FROM_STORE_ID = '" + Constants.storeId + "'   \n"
                 + " AND MIM.CRTD_BY = '" + Constants.userId + "'            \n"
-                + " AND MIM.STATUS =  '" + Status.entered + "'              \n"
+//                + " AND MIM.STATUS =  '" + Status.entered + "'              \n"
                 + " AND MIM.REQUEST_TYPE =  '" + requestType + "'           \n"
                 + " AND MIM.FROM_STORE_ID = FSI.ID                          \n"
                 + " AND MIM.TO_STORE_ID = TSI.ID                            \n"

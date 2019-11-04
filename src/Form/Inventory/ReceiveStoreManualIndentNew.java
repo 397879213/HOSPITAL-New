@@ -804,7 +804,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
     }
 
     private void setPendingIndent() {
-        indent = ctlManualIndent.selectManualIndentMaster();
+        indent = ctlManualIndent.selectManualIndentMaster(currentIndent.getIndenType());
         if (indent != null) {
             indentId = indent.getManualIndentId();
             txtFromStoreName.setText(indent.getFromStoreName());

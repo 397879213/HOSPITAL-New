@@ -30,8 +30,8 @@ public class StoreManualIndentController {
         return ret;
     }
 
-    public StoreManualIndent selectManualIndentMaster() {
-        return hdlOutreachPath.selectManualIndentMaster();
+    public StoreManualIndent selectManualIndentMaster(String requestType) {
+        return hdlOutreachPath.selectManualIndentMaster(requestType);
     }
 
     public List<StoreManualIndent> selectManualIndentDetail(String manualIndentId) {
