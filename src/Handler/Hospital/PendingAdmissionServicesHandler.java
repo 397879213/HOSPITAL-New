@@ -159,4 +159,46 @@ public class PendingAdmissionServicesHandler {
 
         return listMap.get(0).get("STATUS").toString();
     }
+    
+    public List<ManageAdmissionServices> selectAdmPatientDetail(String admissionNo, 
+            String departmentId) {
+
+        String[] selectColumns = {"-", "PATIENT_ID", "INVOICE_NO", "CPT_ID",
+            "CPT_NAME", "PAYABLE_AMOUNT", "DEPARTMENT_ID", "DEPARTMENT"};
+
+        String query
+                = " SELECT IVM.PATIENT_ID, IVM.INVOICE_NO,             \n"
+                + " IVD.CPT_ID, CPT.DESCRIPTION CPT_NAME,         \n"
+                + " IVD.PAYABLE_AMOUNT, IVD.DEPARTMENT_ID, "
+                + " DEP.DESCRIPTION DEPARTMENT       \n"
+                + "  FROM " + Database.DCMS.invoiceMaster + " IVM,      \n"
+                + Database.DCMS.invoiceDetail + " IVD,                  \n"
+                + Database.DCMS.definitionTypeDetail + " DEP,                  \n"
+                + Database.DCMS.CPT + " CPT                             \n"
+                + " WHERE PAH.IVM.ADMISSION_NO = '" + admissionNo + "'  \n"
+                + " WHERE PAH.IVM.DEPARTMENT_ID = '" + departmentId + "'\n"
+                + "   AND IVM.INVOICE_NO = IVD.INVOICE_NO               \n"
+                + "   AND IVD.DEPARTMENT_ID = DEP.ID                    \n"
+                + "   AND IVD.CPT_ID = CPT.CPT_ID                       \n";
+
+        System.out.println(query);
+        List selectInvoice = Constants.dao.selectDatainList(query, selectColumns);
+
+        List<ManageAdmissionServices> list = new ArrayList();
+        for (int i = 0; i < selectInvoice.size(); i++) {
+            HashMap map = (HashMap) selectInvoice.get(i);
+            ManageAdmissionServices setCompound = new ManageAdmissionServices();
+            
+            setCompound.setPatientId(map.get("PATIENT_ID").toString());
+            setCompound.setInvoiceNo(map.get("INVOICE_NO").toString());
+            setCompound.setCptId(map.get("CPT_ID").toString());
+            setCompound.setCptDesc(map.get("CPT_NAME").toString());
+            setCompound.setPrice(map.get("PAYABLE_AMOUNT").toString());
+            setCompound.setDepartmentId(map.get("DEPARTMENT_ID").toString());
+            setCompound.setDepartment(map.get("DEPARTMENT").toString());
+            list.add(setCompound);
+        }
+        return list;
+    }
+    
 }
