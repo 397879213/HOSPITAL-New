@@ -74,5 +74,53 @@ public class IpdDepWiseSummary {
         return list;
     }
     
+    public boolean insertIpdDepartmentDetail(List<PatientHospitalVisit> listComp) {
+
+        String[] columns = {Database.DCMS.compoundAdditiveDetail,
+            "COMPOUND_ID", "ADDITIVE_ID", "VOLUME_USED", "TYPE_ID"};
+
+        List lstInr = new ArrayList();
+        for (int i = 0; i < listComp.size(); i++) {
+            PatientHospitalVisit pat = listComp.get(i);
+            HashMap map = new HashMap();
+            map.put("ADMISSION_NO", "'" + pat.getAdmissionNumber()+ "'");
+            map.put("DEPARTMENT_ID", "'" + pat.getDepartmentId()+ "'");
+            map.put("ADMISSION_AMOUNT", "'" + pat.getAdmissionAmount()+ "'");
+            lstInr.add(map);
+        }
+        return Constants.dao.insertData(lstInr, columns);
+    }
+    
+    public boolean updateIpdRefundDepDetail(List<PatientHospitalVisit> listCompounding) {
+        boolean ret = true;
+
+        for (int i = 0; i < listCompounding.size(); i++) {
+            PatientHospitalVisit pat = listCompounding.get(i);
+
+            String query
+                    = " UPDATE " + Database.DCMS.storeWiseItems + "\n"
+                    + " SET REFUND_AMOUNT  = " + pat.getAdmissionAmount()+ "\n"
+                    + " WHERE ADMISSION_NO = '" + pat.getAdmissionNumber() + "'"
+                    + " AND DEPARTMENT_ID = '" + pat.getDepartmentId()+ "'";
+
+            ret = Constants.dao.executeUpdate(query, false);
+        }
+        return ret;
+    }
+    
+    private boolean runProcess(String admNo){
+        
+        boolean ret = insertIpdDepartmentDetail(selectAdmPatientSDepummary(admNo));
+        if(ret){
+            ret = updateIpdRefundDepDetail(selectAdmPatientRefundSummary(admNo));
+        }
+        if(ret){
+            Constants.dao.commitTransaction();
+        }
+        if(!ret){
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
     
 }
