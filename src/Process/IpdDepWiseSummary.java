@@ -76,7 +76,7 @@ public class IpdDepWiseSummary {
     
     public boolean insertIpdDepartmentDetail(List<PatientHospitalVisit> listComp) {
 
-        String[] columns = {Database.DCMS.compoundAdditiveDetail,
+        String[] columns = {Database.DCMS.ipdDepartmentWiseSummary,
             "COMPOUND_ID", "ADDITIVE_ID", "VOLUME_USED", "TYPE_ID"};
 
         List lstInr = new ArrayList();
@@ -98,7 +98,7 @@ public class IpdDepWiseSummary {
             PatientHospitalVisit pat = listCompounding.get(i);
 
             String query
-                    = " UPDATE " + Database.DCMS.storeWiseItems + "\n"
+                    = " UPDATE " + Database.DCMS.ipdDepartmentWiseSummary + "\n"
                     + " SET REFUND_AMOUNT  = " + pat.getAdmissionAmount()+ "\n"
                     + " WHERE ADMISSION_NO = '" + pat.getAdmissionNumber() + "'"
                     + " AND DEPARTMENT_ID = '" + pat.getDepartmentId()+ "'";
