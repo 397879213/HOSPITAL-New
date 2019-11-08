@@ -516,7 +516,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnExit" min="-2" pref="73" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnLocationWiseReport" min="-2" pref="191" max="-2" attributes="0"/>
+                  <Component id="btnLocationWiseReport" min="-2" pref="150" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -583,7 +583,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="66" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Location Wise Report"/>
+            <Property name="text" type="java.lang.String" value="Indent Report"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLocationWiseReportActionPerformed"/>

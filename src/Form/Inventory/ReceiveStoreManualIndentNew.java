@@ -379,7 +379,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
 
         btnLocationWiseReport.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnLocationWiseReport.setForeground(new java.awt.Color(102, 0, 0));
-        btnLocationWiseReport.setText("Location Wise Report");
+        btnLocationWiseReport.setText("Indent Report");
         btnLocationWiseReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLocationWiseReportActionPerformed(evt);
@@ -418,7 +418,7 @@ public class ReceiveStoreManualIndentNew extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnLocationWiseReport, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLocationWiseReport, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
