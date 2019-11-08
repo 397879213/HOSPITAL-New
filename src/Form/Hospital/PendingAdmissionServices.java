@@ -4,7 +4,7 @@ import BO.Hospital.ManageAdmissionServices;
 import BO.StudyData;
 import Controller.Hospital.PendingAdmissionServicesController;
 import TableModel.Hospital.AdmissionServicesTableModel;
-import TableModel.Hospital.IPDDepartmentDetailTableModel;
+import TableModel.Hospital.IpdDepWiseDetailTableModel;
 import TableModel.Hospital.PendingAdmissionServicesTableModel;
 import TableModel.Hospital.PendingRefundStatusTableModel;
 import java.util.ArrayList;
@@ -773,9 +773,9 @@ public class PendingAdmissionServices extends javax.swing.JInternalFrame {
     }
 
     private void setIpdDepWiseDetail() {
-        ipdDepWiseDetail = ctlPendingServices.selectAdmPatientDetail(admissionNo,
-                departmentId);
-        tblIpdDetail.setModel(new IPDDepartmentDetailTableModel(
+        ipdDepWiseDetail = ctlPendingServices.selectAdmPatientDetail("1950025",
+                "128");
+        tblIpdDetail.setModel(new IpdDepWiseDetailTableModel(
                     ipdDepWiseDetail));
         ListSelectionModel selectionModel = tblIpdDetail.getSelectionModel();
             tblIpdDetail.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

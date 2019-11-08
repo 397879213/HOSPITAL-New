@@ -168,17 +168,17 @@ public class PendingAdmissionServicesHandler {
             "INVOICE_DATE"};
 
         String query
-                = " SELECT IVM.PATIENT_ID, IVM.INVOICE_NO,             \n"
-                + " IVD.CPT_ID, CPT.DESCRIPTION CPT_NAME,         \n"
-                + " IVD.PAYABLE_AMOUNT, IVD.DEPARTMENT_ID, "
-                + " TO_CHAR(IVD.INVOICE_DATE, 'DD-MON-YY') INVOICE_DATE, "
-                + " DEP.DESCRIPTION DEPARTMENT       \n"
+                = " SELECT IVM.PATIENT_ID, IVM.INVOICE_NO,              \n"
+                + " IVD.CPT_ID, CPT.DESCRIPTION CPT_NAME,               \n"
+                + " IVD.PAYABLE_AMOUNT, IVD.DEPARTMENT_ID,              \n"
+                + " TO_CHAR(IVD.INVOICE_DATE, 'DD-MON-YY') INVOICE_DATE,\n"
+                + " DEP.DESCRIPTION DEPARTMENT                          \n"
                 + "  FROM " + Database.DCMS.invoiceMaster + " IVM,      \n"
                 + Database.DCMS.invoiceDetail + " IVD,                  \n"
-                + Database.DCMS.definitionTypeDetail + " DEP,                  \n"
+                + Database.DCMS.definitionTypeDetail + " DEP,           \n"
                 + Database.DCMS.CPT + " CPT                             \n"
                 + " WHERE PAH.IVM.ADMISSION_NO = '" + admissionNo + "'  \n"
-                + " WHERE PAH.IVM.DEPARTMENT_ID = '" + departmentId + "'\n"
+                + " WHERE PAH.IVM.DEPARTMENT_ID = " + departmentId + "  \n"
                 + "   AND IVM.INVOICE_NO = IVD.INVOICE_NO               \n"
                 + "   AND IVD.DEPARTMENT_ID = DEP.ID                    \n"
                 + "   AND IVD.CPT_ID = CPT.CPT_ID                       \n";
