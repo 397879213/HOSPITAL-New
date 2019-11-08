@@ -77,7 +77,7 @@ public class IpdDepWiseSummary {
     public boolean insertIpdDepartmentDetail(List<PatientHospitalVisit> listComp) {
 
         String[] columns = {Database.DCMS.ipdDepartmentWiseSummary,
-            "COMPOUND_ID", "ADDITIVE_ID", "VOLUME_USED", "TYPE_ID"};
+            "ADMISSION_NO", "DEPARTMENT_ID", "ADMISSION_AMOUNT"};
 
         List lstInr = new ArrayList();
         for (int i = 0; i < listComp.size(); i++) {
