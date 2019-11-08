@@ -4,6 +4,7 @@ import BO.Hospital.ManageAdmissionServices;
 import BO.StudyData;
 import Controller.Hospital.PendingAdmissionServicesController;
 import TableModel.Hospital.AdmissionServicesTableModel;
+import TableModel.Hospital.IPDDepartmentDetailTableModel;
 import TableModel.Hospital.PendingAdmissionServicesTableModel;
 import TableModel.Hospital.PendingRefundStatusTableModel;
 import java.util.ArrayList;
@@ -72,7 +73,8 @@ public class PendingAdmissionServices extends javax.swing.JInternalFrame {
         txtStatus = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         txtCancelReq = new javax.swing.JTextField();
-        jPanel4 = new javax.swing.JPanel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        tblIpdDetail = new javax.swing.JTable();
         jPanel10 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         txtPrimaryPhy = new javax.swing.JTextField();
@@ -267,20 +269,37 @@ public class PendingAdmissionServices extends javax.swing.JInternalFrame {
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel14.setText("Request By :  ");
 
-        jPanel4.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "s", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
-        jPanel4.setForeground(new java.awt.Color(102, 0, 0));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 232, Short.MAX_VALUE)
-        );
+        tblIpdDetail.setBackground(java.awt.SystemColor.activeCaption);
+        tblIpdDetail.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tblIpdDetail.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null,null,null,null,null}},
+            new String [] {
+                "CPT Name","requested By","Requested Status", "Date"
+            }
+        ));
+        tblIpdDetail.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblIpdDetailMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblIpdDetailMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tblIpdDetailMouseReleased(evt);
+            }
+        });
+        tblIpdDetail.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tblIpdDetailPropertyChange(evt);
+            }
+        });
+        tblIpdDetail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tblIpdDetailKeyPressed(evt);
+            }
+        });
+        jScrollPane10.setViewportView(tblIpdDetail);
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -300,8 +319,8 @@ public class PendingAdmissionServices extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel11Layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
+                            .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE))))
                 .addGap(4, 4, 4))
         );
         jPanel11Layout.setVerticalGroup(
@@ -309,7 +328,7 @@ public class PendingAdmissionServices extends javax.swing.JInternalFrame {
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -561,6 +580,26 @@ public class PendingAdmissionServices extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void tblIpdDetailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblIpdDetailMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblIpdDetailMouseClicked
+
+    private void tblIpdDetailMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblIpdDetailMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblIpdDetailMousePressed
+
+    private void tblIpdDetailMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblIpdDetailMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblIpdDetailMouseReleased
+
+    private void tblIpdDetailPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblIpdDetailPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblIpdDetailPropertyChange
+
+    private void tblIpdDetailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblIpdDetailKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblIpdDetailKeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cboDepartment;
@@ -577,11 +616,12 @@ public class PendingAdmissionServices extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JPanel pnlPL;
+    private javax.swing.JTable tblIpdDetail;
     private javax.swing.JTable tblPendingServices;
     private javax.swing.JTable tblRefundPendings;
     private javax.swing.JTextField txtAdmissionNumber;
@@ -735,6 +775,13 @@ public class PendingAdmissionServices extends javax.swing.JInternalFrame {
     private void setIpdDepWiseDetail() {
         ipdDepWiseDetail = ctlPendingServices.selectAdmPatientDetail(admissionNo,
                 departmentId);
+        tblIpdDetail.setModel(new IPDDepartmentDetailTableModel(
+                    ipdDepWiseDetail));
+        ListSelectionModel selectionModel = tblIpdDetail.getSelectionModel();
+            tblIpdDetail.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            setPendingRefundOrdersColumnsWidths();
+            selectionModel.setSelectionInterval(0, 0);
+            Constants.tablelook.setJTableEnvironment(tblIpdDetail);
     }
 
 }
