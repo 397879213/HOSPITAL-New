@@ -41,6 +41,7 @@ public class PendingAdmissionServices extends javax.swing.JInternalFrame {
         setPatientDemography(patientId);
         selectPendingServices();
         setPendingRefundOrders();
+        setIpdDepWiseDetail();
     }
 
     PendingAdmissionServicesController ctlPendingServices = new PendingAdmissionServicesController();
@@ -48,6 +49,7 @@ public class PendingAdmissionServices extends javax.swing.JInternalFrame {
     List<ManageAdmissionServices> listAdmittedPatient = new ArrayList();
     List<ManageAdmissionServices> listPendingsServices = new ArrayList();
     Vector<StudyData> listPendingRefundServices = new Vector();
+    List<ManageAdmissionServices> ipdDepWiseDetail = new ArrayList();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -728,6 +730,11 @@ public class PendingAdmissionServices extends javax.swing.JInternalFrame {
             tableName = Database.DCMS.CPT;
         }
         setPendingRefundOrders();
+    }
+
+    private void setIpdDepWiseDetail() {
+        ipdDepWiseDetail = ctlPendingServices.selectAdmPatientDetail(admissionNo,
+                departmentId);
     }
 
 }

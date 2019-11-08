@@ -31,4 +31,9 @@ public class PendingAdmissionServicesController {
     public String selectDepartmentStatus(String CON, String tableName) {
         return hdlPendingServices.selectDepartmentStatus(CON, tableName);
     }
+    
+    public List<ManageAdmissionServices> selectAdmPatientDetail(String admissionNo, 
+            String departmentId) {
+        return hdlPendingServices.selectAdmPatientDetail(admissionNo, departmentId);
+    }
 }
