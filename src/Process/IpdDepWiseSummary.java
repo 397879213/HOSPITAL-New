@@ -108,11 +108,32 @@ public class IpdDepWiseSummary {
         return ret;
     }
     
-    private boolean runProcess(String admNo){
-        
-        boolean ret = insertIpdDepartmentDetail(selectAdmPatientSDepummary(admNo));
+    public List<PatientHospitalVisit> selectAdmNo(String admNo) {
+
+        String[] columns = {"-", "ID"};
+        String query = " SELECT ID FROM     \n"
+                + Database.DCMS.patientAdmissionHistory + " "
+                + " WHERE P.ADMITTED_DATE > SYSDATE - 365   \n";
+
+        System.out.println(query);
+        List selectInvoice = Constants.dao.selectDatainList(query, columns);
+
+        List<PatientHospitalVisit> list = new ArrayList();
+        for (int i = 0; i < selectInvoice.size(); i++) {
+            HashMap map = (HashMap) selectInvoice.get(i);
+            PatientHospitalVisit setAdmNo = new PatientHospitalVisit();
+            setAdmNo.setAdmissionNumber(map.get("ID").toString());
+            list.add(setAdmNo);
+        }
+        return list;
+    }
+    
+    private boolean runProcess(List<String> admNo){
+        boolean ret = true;
+        for(int i =0; i < admNo.size(); i++){
+            ret = insertIpdDepartmentDetail(selectAdmPatientSDepummary(admNo.get(i)));
         if(ret){
-            ret = updateIpdRefundDepDetail(selectAdmPatientRefundSummary(admNo));
+            ret = updateIpdRefundDepDetail(selectAdmPatientRefundSummary(admNo.get(i)));
         }
         if(ret){
             Constants.dao.commitTransaction();
@@ -120,13 +141,16 @@ public class IpdDepWiseSummary {
         if(!ret){
             Constants.dao.rollBack();
         }
+        }
+        
         return ret;
     }
     
     public static void main(String[] args) {
         IpdDepWiseSummary ctl = new IpdDepWiseSummary();
-        String admNo = "";
-        if(ctl.runProcess(admNo)){
+        List<String> lisatAdmNo = new ArrayList();
+        lisatAdmNo = selectAdmNo();
+        if(ctl.runProcess(lisatAdmNo)){
             System.out.println("Process run successfully.");
         }else{
             System.err.println("Unable to run successfully!");
