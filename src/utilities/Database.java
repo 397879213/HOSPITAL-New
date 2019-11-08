@@ -296,6 +296,7 @@ public class Database {
         public static final String unmergePatientHistory = DAO.usernameEmr + ".UNMERGE_PAT_HISTORY   ";
         public static final String compoundAdditive = DAO.usernameEmr + ".COMPOUNDING_ADDITIVE   ";
         public static final String compoundAdditiveDetail = DAO.usernameEmr + ".COMPOUNDING_ADDITIVE_DETAIL   ";
+        public static final String ipdDepartmentWiseSummary = DAO.usernameEmr + ".IPD_DEP_PAT_DETAIL   ";
         public static final String indentRequestEditHist = DAO.usernameEmr + ".INDENT_REQUEST_EDIT_HISTORY   ";
 
         public static final String patientOldMRNO = DAO.usernameEmr + ".PATIENT_OLD_MRNO   ";

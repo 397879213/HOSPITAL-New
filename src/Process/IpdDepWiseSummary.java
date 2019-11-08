@@ -28,7 +28,7 @@ public class IpdDepWiseSummary {
                 + Database.DCMS.invoiceDetail + " IVD                  \n"
                 + " WHERE IVM.ADMISSION_NO = '" + admNo + "'  \n"
                 + "   AND IVM.INVOICE_NO = IVD.INVOICE_NO               \n"
-                + "   GROUP_BY IVD.DEPARTMENT_ID                \n";
+                + "   GROUP BY IVD.DEPARTMENT_ID                \n";
 
         System.out.println(query);
         List selectInvoice = Constants.dao.selectDatainList(query, selectColumns);
@@ -57,7 +57,7 @@ public class IpdDepWiseSummary {
                 + " WHERE IVM.ADMISSION_NO = '" + admNo + "'  \n"
                 + "   AND IVM.INVOICE_NO = RFM.INVOICE_NO               \n"
                 + "   AND RFM.REFUND_NO = RFD.REFUND_NO               \n"
-                + "   GROUP_BY RFD.DEPARTMENT_ID        \n";
+                + "   GROUP BY RFD.DEPARTMENT_ID        \n";
 
         System.out.println(query);
         List selectInvoice = Constants.dao.selectDatainList(query, selectColumns);
