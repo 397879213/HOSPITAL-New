@@ -283,6 +283,7 @@ public class PatientHospitalVisit implements java.io.Serializable {
     private String EDD = "";
     private String anyAbnormality = "";
     private String isFinal = "";
+    private String admissionAmount = "";
 
     public  PatientHospitalVisit(){
         
@@ -307,6 +308,14 @@ public class PatientHospitalVisit implements java.io.Serializable {
 
     public void setIsFinal(String isFinal) {
         this.isFinal = isFinal;
+    }
+
+    public String getAdmissionAmount() {
+        return admissionAmount;
+    }
+
+    public void setAdmissionAmount(String admissionAmount) {
+        this.admissionAmount = admissionAmount;
     }
     
     public String getReferenceId() {
