@@ -16,7 +16,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class IpdDepWiseDetailTableModel extends AbstractTableModel {
 
-    private final String[] columnNames = { "CPT Id","Perform Date","Health Facility"};
+    private final String[] columnNames = { "CPT Name","Invoice Date","Price"};
 
     private final Object[][] data;
 
@@ -24,9 +24,9 @@ public class IpdDepWiseDetailTableModel extends AbstractTableModel {
         data = new Object[li.size()][columnNames.length];
         for (int i = 0; i < li.size(); i++) {
             ManageAdmissionServices investigation = li.get(i);
-            data[i][0] = investigation.getTestName();
-            data[i][1] = investigation.getReportDate();
-            data[i][2] = investigation.getHealthCareFacilityDescription();
+            data[i][0] = investigation.getCptDesc();
+            data[i][1] = investigation.getInvoiceDate();
+            data[i][2] = investigation.getPrice();
         }
     }
 
