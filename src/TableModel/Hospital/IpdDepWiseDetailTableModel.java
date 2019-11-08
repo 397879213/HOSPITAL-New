@@ -4,28 +4,29 @@
  */
 package TableModel.Hospital;
 
-import BO.Hospital.AdvancePayment;
+import BO.Hospital.ManageAdmissionServices;
+import TableModel.OPD.*;
+import BO.OutsideInvestigation;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
-public class IPDDepartmentDetailTableModel extends AbstractTableModel {
+/**
+ *
+ * @author sibtain
+ */
+public class IpdDepWiseDetailTableModel extends AbstractTableModel {
 
-    private final String[] columnNames
-            = {"Sr.", "Department", "Refund"};
+    private final String[] columnNames = { "CPT Id","Perform Date","Health Facility"};
+
     private final Object[][] data;
 
-    public IPDDepartmentDetailTableModel(List<AdvancePayment> list) {
-        data = new Object[list.size()][columnNames.length];
-        int row = 0;
-        int i = 1;
-        
-        for (AdvancePayment advancePayment : list) {
-            AdvancePayment currentPayment
-                    = (AdvancePayment) advancePayment;
-            data[row][0] = i++;
-            data[row][1] = currentPayment.getDepartmentDescription();
-            data[row][2] = currentPayment.getDepartmentRefund();
-            row++;
+    public IpdDepWiseDetailTableModel(List<ManageAdmissionServices> li) {
+        data = new Object[li.size()][columnNames.length];
+        for (int i = 0; i < li.size(); i++) {
+            ManageAdmissionServices investigation = li.get(i);
+            data[i][0] = investigation.getTestName();
+            data[i][1] = investigation.getReportDate();
+            data[i][2] = investigation.getHealthCareFacilityDescription();
         }
     }
 
@@ -46,7 +47,6 @@ public class IPDDepartmentDetailTableModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int row, int col) {
-
         return data[row][col];
     }
 
@@ -67,6 +67,8 @@ public class IPDDepartmentDetailTableModel extends AbstractTableModel {
      */
     @Override
     public boolean isCellEditable(int row, int col) {
+        //Note that the data/cell address is constant,
+        //no matter where the cell appears onscreen.
         return false;
     }
 
@@ -74,7 +76,6 @@ public class IPDDepartmentDetailTableModel extends AbstractTableModel {
      * Don't need to implement this method unless your table's
      * data can change.
      */
-    
     private final boolean DEBUG = false;
 
     @Override
@@ -108,5 +109,4 @@ public class IPDDepartmentDetailTableModel extends AbstractTableModel {
         }
         System.out.println("--------------------------");
     }
-
 }

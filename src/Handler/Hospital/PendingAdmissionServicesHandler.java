@@ -164,12 +164,14 @@ public class PendingAdmissionServicesHandler {
             String departmentId) {
 
         String[] selectColumns = {"-", "PATIENT_ID", "INVOICE_NO", "CPT_ID",
-            "CPT_NAME", "PAYABLE_AMOUNT", "DEPARTMENT_ID", "DEPARTMENT"};
+            "CPT_NAME", "PAYABLE_AMOUNT", "DEPARTMENT_ID", "DEPARTMENT", 
+            "INVOICE_DATE"};
 
         String query
                 = " SELECT IVM.PATIENT_ID, IVM.INVOICE_NO,             \n"
                 + " IVD.CPT_ID, CPT.DESCRIPTION CPT_NAME,         \n"
                 + " IVD.PAYABLE_AMOUNT, IVD.DEPARTMENT_ID, "
+                + " TO_CHAR(IVD.INVOICE_DATE, 'DD-MON-YY') INVOICE_DATE, "
                 + " DEP.DESCRIPTION DEPARTMENT       \n"
                 + "  FROM " + Database.DCMS.invoiceMaster + " IVM,      \n"
                 + Database.DCMS.invoiceDetail + " IVD,                  \n"
@@ -193,6 +195,7 @@ public class PendingAdmissionServicesHandler {
             setCompound.setInvoiceNo(map.get("INVOICE_NO").toString());
             setCompound.setCptId(map.get("CPT_ID").toString());
             setCompound.setCptDesc(map.get("CPT_NAME").toString());
+            setCompound.setInvoiceDate(map.get("INVOICE_DATE").toString());
             setCompound.setPrice(map.get("PAYABLE_AMOUNT").toString());
             setCompound.setDepartmentId(map.get("DEPARTMENT_ID").toString());
             setCompound.setDepartment(map.get("DEPARTMENT").toString());
