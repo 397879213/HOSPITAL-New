@@ -774,8 +774,8 @@ public class PendingAdmissionServices extends javax.swing.JInternalFrame {
     }
 
     private void setIpdDepWiseDetail() {
-        ipdDepWiseDetail = ctlPendingServices.selectAdmPatientDetail("1950025",
-                "128");
+        ipdDepWiseDetail = ctlPendingServices.selectAdmPatientDetail("12663",
+                "33");
         tblIpdDetail.setModel(new IpdDepWiseDetailTableModel(
                     ipdDepWiseDetail));
         ListSelectionModel selectionModel = tblIpdDetail.getSelectionModel();
