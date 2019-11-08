@@ -33,6 +33,7 @@ public class PendingAdmissionServices extends javax.swing.JInternalFrame {
         setPatientDemography(patientId);
         selectPendingServices();
         displayRefundData();
+        setIpdDepWiseDetail();
     }
 
     public PendingAdmissionServices(String patientId) {

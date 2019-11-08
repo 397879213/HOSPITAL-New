@@ -178,7 +178,7 @@ public class PendingAdmissionServicesHandler {
                 + Database.DCMS.definitionTypeDetail + " DEP,           \n"
                 + Database.DCMS.CPT + " CPT                             \n"
                 + " WHERE PAH.IVM.ADMISSION_NO = '" + admissionNo + "'  \n"
-                + " WHERE PAH.IVM.DEPARTMENT_ID = " + departmentId + "  \n"
+                + "   AND PAH.IVM.DEPARTMENT_ID = " + departmentId + "  \n"
                 + "   AND IVM.INVOICE_NO = IVD.INVOICE_NO               \n"
                 + "   AND IVD.DEPARTMENT_ID = DEP.ID                    \n"
                 + "   AND IVD.CPT_ID = CPT.CPT_ID                       \n";
