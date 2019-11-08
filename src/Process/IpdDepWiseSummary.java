@@ -108,24 +108,19 @@ public class IpdDepWiseSummary {
         return ret;
     }
     
-    public List<PatientHospitalVisit> selectAdmNo(String admNo) {
-
+    public List<String> selectAdmNo() {
         String[] columns = {"-", "ID"};
         String query = " SELECT ID FROM     \n"
                 + Database.DCMS.patientAdmissionHistory + " "
-                + " WHERE P.ADMITTED_DATE > SYSDATE - 365   \n";
+                + " WHERE ADMITTED_DATE > SYSDATE - 365   \n";
 
-        System.out.println(query);
-        List selectInvoice = Constants.dao.selectDatainList(query, columns);
-
-        List<PatientHospitalVisit> list = new ArrayList();
-        for (int i = 0; i < selectInvoice.size(); i++) {
-            HashMap map = (HashMap) selectInvoice.get(i);
-            PatientHospitalVisit setAdmNo = new PatientHospitalVisit();
-            setAdmNo.setAdmissionNumber(map.get("ID").toString());
-            list.add(setAdmNo);
+        List<HashMap> list = Constants.dao.selectDatainList(query, columns);
+        List<String> listAdmNo = new ArrayList();
+        for (int i = 0; i < list.size(); i++) {
+            HashMap map = (HashMap) list.get(i);
+            listAdmNo.add(list.get(0).get("ID").toString());
         }
-        return list;
+        return listAdmNo;
     }
     
     private boolean runProcess(List<String> admNo){
@@ -149,7 +144,7 @@ public class IpdDepWiseSummary {
     public static void main(String[] args) {
         IpdDepWiseSummary ctl = new IpdDepWiseSummary();
         List<String> lisatAdmNo = new ArrayList();
-        lisatAdmNo = selectAdmNo();
+        lisatAdmNo = ctl.selectAdmNo();
         if(ctl.runProcess(lisatAdmNo)){
             System.out.println("Process run successfully.");
         }else{
