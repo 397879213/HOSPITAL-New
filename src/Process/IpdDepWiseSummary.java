@@ -123,4 +123,13 @@ public class IpdDepWiseSummary {
         return ret;
     }
     
+    public static void main(String[] args) {
+        IpdDepWiseSummary ctl = new IpdDepWiseSummary();
+        String admNo = "";
+        if(ctl.runProcess(admNo)){
+            System.out.println("Process run successfully.");
+        }else{
+            System.err.println("Unable to run successfully!");
+        }
+    }
 }
