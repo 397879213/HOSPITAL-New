@@ -38,6 +38,7 @@ public class IpdDepWiseSummary {
             HashMap map = (HashMap) selectInvoice.get(i);
             PatientHospitalVisit setCompound = new PatientHospitalVisit();
 
+            setCompound.setAdmissionNumber(admNo);
             setCompound.setAdmissionAmount(map.get("ADM_AMOUNT").toString());
             setCompound.setDepartmentId(map.get("DEPARTMENT_ID").toString());
             list.add(setCompound);
@@ -67,13 +68,13 @@ public class IpdDepWiseSummary {
             HashMap map = (HashMap) selectInvoice.get(i);
             PatientHospitalVisit setCompound = new PatientHospitalVisit();
 
-            setCompound.setAdmissionAmount(map.get("ADM_AMOUNT").toString());
+            setCompound.setAdmissionAmount(map.get("REFUND_AMOUNT").toString());
             setCompound.setDepartmentId(map.get("DEPARTMENT_ID").toString());
             list.add(setCompound);
         }
         return list;
     }
-    
+
     public boolean insertIpdDepartmentDetail(List<PatientHospitalVisit> listComp) {
 
         String[] columns = {Database.DCMS.ipdDepartmentWiseSummary,
@@ -83,14 +84,14 @@ public class IpdDepWiseSummary {
         for (int i = 0; i < listComp.size(); i++) {
             PatientHospitalVisit pat = listComp.get(i);
             HashMap map = new HashMap();
-            map.put("ADMISSION_NO", "'" + pat.getAdmissionNumber()+ "'");
-            map.put("DEPARTMENT_ID", "'" + pat.getDepartmentId()+ "'");
-            map.put("ADMISSION_AMOUNT", "'" + pat.getAdmissionAmount()+ "'");
+            map.put("ADMISSION_NO", "'" + pat.getAdmissionNumber() + "'");
+            map.put("DEPARTMENT_ID", "'" + pat.getDepartmentId() + "'");
+            map.put("ADMISSION_AMOUNT", "'" + pat.getAdmissionAmount() + "'");
             lstInr.add(map);
         }
         return Constants.dao.insertData(lstInr, columns);
     }
-    
+
     public boolean updateIpdRefundDepDetail(List<PatientHospitalVisit> listCompounding) {
         boolean ret = true;
 
@@ -99,55 +100,67 @@ public class IpdDepWiseSummary {
 
             String query
                     = " UPDATE " + Database.DCMS.ipdDepartmentWiseSummary + "\n"
-                    + " SET REFUND_AMOUNT  = " + pat.getAdmissionAmount()+ "\n"
+                    + " SET REFUND_AMOUNT  = " + pat.getAdmissionAmount() + "\n"
                     + " WHERE ADMISSION_NO = '" + pat.getAdmissionNumber() + "'"
-                    + " AND DEPARTMENT_ID = '" + pat.getDepartmentId()+ "'";
+                    + " AND DEPARTMENT_ID = '" + pat.getDepartmentId() + "'";
 
             ret = Constants.dao.executeUpdate(query, false);
         }
         return ret;
     }
-    
-    public List<String> selectAdmNo() {
+
+    public List<PatientHospitalVisit> selectAdmNo() {
+
         String[] columns = {"-", "ID"};
         String query = " SELECT ID FROM     \n"
                 + Database.DCMS.patientAdmissionHistory + " "
                 + " WHERE ADMITTED_DATE > SYSDATE - 365   \n";
 
-        List<HashMap> list = Constants.dao.selectDatainList(query, columns);
-        List<String> listAdmNo = new ArrayList();
-        for (int i = 0; i < list.size(); i++) {
-            HashMap map = (HashMap) list.get(i);
-            listAdmNo.add(list.get(0).get("ID").toString());
+        System.out.println(query);
+        List<HashMap> selectInvoice = Constants.dao.selectDatainList(query, columns);
+        System.err.println("main list"+ selectInvoice.size());
+        List<PatientHospitalVisit> list = new ArrayList();
+        for (int i = 0; i < selectInvoice.size(); i++) {
+            HashMap map = (HashMap) selectInvoice.get(i);
+            PatientHospitalVisit setAdmNo = new PatientHospitalVisit();
+            setAdmNo.setAdmissionNumber(map.get("ID").toString());
+            list.add(setAdmNo);
         }
-        return listAdmNo;
+        return list;
     }
-    
-    private boolean runProcess(List<String> admNo){
+
+    private boolean runProcess(List<PatientHospitalVisit> listAdmNo) {
         boolean ret = true;
-        for(int i =0; i < admNo.size(); i++){
-            ret = insertIpdDepartmentDetail(selectAdmPatientSDepummary(admNo.get(i)));
-        if(ret){
-            ret = updateIpdRefundDepDetail(selectAdmPatientRefundSummary(admNo.get(i)));
+        for (int i = 0; i < listAdmNo.size(); i++) {
+            PatientHospitalVisit admNo = listAdmNo.get(i);
+            ret = insertIpdDepartmentDetail(selectAdmPatientSDepummary(
+                    admNo.getAdmissionNumber()));
+            if (ret) {
+                ret = updateIpdRefundDepDetail(selectAdmPatientRefundSummary(
+                        admNo.getAdmissionNumber()));
+            }
+            if (ret) {
+                Constants.dao.commitTransaction();
+            }
+            if (!ret) {
+                Constants.dao.rollBack();
+            }
         }
-        if(ret){
-            Constants.dao.commitTransaction();
-        }
-        if(!ret){
-            Constants.dao.rollBack();
-        }
-        }
-        
+
         return ret;
     }
-    
+
     public static void main(String[] args) {
         IpdDepWiseSummary ctl = new IpdDepWiseSummary();
-        List<String> lisatAdmNo = new ArrayList();
+        List<PatientHospitalVisit> lisatAdmNo = new ArrayList();
+        
+        lisatAdmNo.clear();
         lisatAdmNo = ctl.selectAdmNo();
-        if(ctl.runProcess(lisatAdmNo)){
+        
+        System.err.println("list sixe: " + lisatAdmNo.size());
+        if (ctl.runProcess(lisatAdmNo)) {
             System.out.println("Process run successfully.");
-        }else{
+        } else {
             System.err.println("Unable to run successfully!");
         }
     }

@@ -439,7 +439,7 @@ public class DAO implements java.io.Serializable {
                     //break;
                 }
                 query = query.substring(0, query.length() - 1) + ")";
-//                System.out.println(query);
+                System.out.println(query);
                 flag = this.executeUpdate(query, false);
             }
 
