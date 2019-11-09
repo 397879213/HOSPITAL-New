@@ -114,7 +114,7 @@ public class IpdDepWiseSummary {
         String[] columns = {"-", "ID"};
         String query = " SELECT ID FROM     \n"
                 + Database.DCMS.patientAdmissionHistory 
-                + " WHERE ADMITTED_DATE > SYSDATE - 365   \n";
+                + " WHERE ADMITTED_DATE > SYSDATE - 360   \n";
 
         System.out.println(query);
         List<HashMap> selectAdm = Constants.dao.selectDatainList(query, columns);
