@@ -1013,7 +1013,8 @@ public class SearchIPDPatientWithBill extends javax.swing.JInternalFrame {
             list.add(obj);
             tblsearchPatientHistory.setModel(new PatientDischargeStatusTableModel(list));
         } else {
-            tblsearchPatientHistory.setModel(new PatientDischargeStatusTableModel(listPatientHistory));
+            tblsearchPatientHistory.setModel(new PatientDischargeStatusTableModel(
+                    listPatientHistory));
 
         }
         ListSelectionModel selectionModel = tblsearchPatientHistory.getSelectionModel();
