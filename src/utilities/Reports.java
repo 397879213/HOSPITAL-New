@@ -240,6 +240,7 @@ public class Reports {
         public static final String inpatientWaiveOff = "316";
         public static final String patientDischargeReport = "304";
         public static final String deathCertificate = "351";
+        public static final String finalDischargeBill = "";
 
     }
 

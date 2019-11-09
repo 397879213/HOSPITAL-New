@@ -4,7 +4,7 @@
  */
 package TableModel.Hospital;
 
-import BO.Hospital.PatientAdmission;
+import BO.OPD.PatientHospitalVisit;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -14,23 +14,23 @@ import javax.swing.table.AbstractTableModel;
  */
 public class PatientDischargeStatusTableModel extends AbstractTableModel {
 
-    private final String[] columnNames = {"Sr.", "Adm No.","Patient Name", "Attending Physician","Admitted Date","Admitted By"};
+    private final String[] columnNames = {"Sr.", "Adm No.",
+        "Patient Name", "Attending Physician", "Admitted Date"};
 
     private Object[][] data;
 
-    public PatientDischargeStatusTableModel(List<PatientAdmission> li) {
+    public PatientDischargeStatusTableModel(List<PatientHospitalVisit> li) {
         data = new Object[li.size()][columnNames.length];
         for (int i = 0; i < li.size(); i++) {
-            PatientAdmission cp = li.get(i);
-            data[i][0] = (i+1);
-            if(cp.getPatientId().isEmpty()){
+            PatientHospitalVisit cp = li.get(i);
+            data[i][0] = (i + 1);
+            if (cp.getPatientId().isEmpty()) {
                 cp.setPatientId("       ");
             }
-            data[i][1] = cp.getAdmissionNo();
-            data[i][2] = cp.getFullName();
+            data[i][1] = cp.getAdmissionNumber();
+            data[i][2] = cp.getPatientName();
             data[i][3] = cp.getPrimaryPhysicianName();
             data[i][4] = cp.getAdmittedDate();
-            data[i][5] = cp.getAdmittedBy();
         }
     }
 

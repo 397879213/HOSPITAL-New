@@ -16,6 +16,7 @@ public class Status {
     public static String teleReportSave = "7";
     public static String teleFinalSign = "8";
     public static String teleTransferred = "9";
+    public static String dischargedWithoutCertificate = "";
 
     //new ot status
     public static String requested = "68";
