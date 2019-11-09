@@ -113,15 +113,15 @@ public class IpdDepWiseSummary {
 
         String[] columns = {"-", "ID"};
         String query = " SELECT ID FROM     \n"
-                + Database.DCMS.patientAdmissionHistory + " "
+                + Database.DCMS.patientAdmissionHistory 
                 + " WHERE ADMITTED_DATE > SYSDATE - 365   \n";
 
         System.out.println(query);
-        List<HashMap> selectInvoice = Constants.dao.selectDatainList(query, columns);
-        System.err.println("main list"+ selectInvoice.size());
+        List<HashMap> selectAdm = Constants.dao.selectDatainList(query, columns);
+        System.err.println("main list"+ selectAdm.size());
         List<PatientHospitalVisit> list = new ArrayList();
-        for (int i = 0; i < selectInvoice.size(); i++) {
-            HashMap map = (HashMap) selectInvoice.get(i);
+        for (int i = 0; i < selectAdm.size(); i++) {
+            HashMap map = (HashMap) selectAdm.get(i);
             PatientHospitalVisit setAdmNo = new PatientHospitalVisit();
             setAdmNo.setAdmissionNumber(map.get("ID").toString());
             list.add(setAdmNo);
