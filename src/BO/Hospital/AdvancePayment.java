@@ -64,11 +64,38 @@ public class AdvancePayment {
     private String totalReceived = "";
     private String totalBalanceAmount = "";
     private String cptId = "";
+    private String cptDescription = "";
     private String accountDescription = "";
     private String accountId = "";
     private String fromTransactionType = "";
     private String toTransactionType = "";
+    private String invoiceDate = "";
+    private String payableAmount = "";
 
+    public String getCptDescription() {
+        return cptDescription;
+    }
+
+    public void setCptDescription(String cptDescription) {
+        this.cptDescription = cptDescription;
+    }
+
+    public String getInvoiceDate() {
+        return invoiceDate;
+    }
+
+    public void setInvoiceDate(String invoiceDate) {
+        this.invoiceDate = invoiceDate;
+    }
+
+    public String getPayableAmount() {
+        return payableAmount;
+    }
+
+    public void setPayableAmount(String payableAmount) {
+        this.payableAmount = payableAmount;
+    }
+    
     public String getFromTransactionType() {
         return fromTransactionType;
     }

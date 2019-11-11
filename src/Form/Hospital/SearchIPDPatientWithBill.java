@@ -11,6 +11,7 @@ import Controller.Hospital.PatientDischargeStatusController;
 import TableModel.Hospital.AdvancePaymentTableModel;
 import TableModel.Hospital.DepartmentWiseBillTableModel;
 import TableModel.Hospital.DepartmentWiseRefundTableModel;
+import TableModel.Hospital.IpdDepWiseDetailTableModel;
 import TableModel.Hospital.PatientDischargeStatusTableModel;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class SearchIPDPatientWithBill extends javax.swing.JInternalFrame {
     public SearchIPDPatientWithBill() {
         initComponents();
         btnExit.setMnemonic(KeyEvent.VK_X);
+        setIpdDepWiseDetail();
     }
 
     @SuppressWarnings("unchecked")
@@ -75,7 +77,7 @@ public class SearchIPDPatientWithBill extends javax.swing.JInternalFrame {
         tblPaymentDetail = new javax.swing.JTable();
         pnlSearchUser5 = new javax.swing.JPanel();
         jScrollPane13 = new javax.swing.JScrollPane();
-        tblPaymentDetail1 = new javax.swing.JTable();
+        tblServicesDetail = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -170,7 +172,7 @@ public class SearchIPDPatientWithBill extends javax.swing.JInternalFrame {
         );
         pnlSearchUserLayout.setVerticalGroup(
             pnlSearchUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
+            .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
         );
 
         pnlClearandExit.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -444,7 +446,7 @@ public class SearchIPDPatientWithBill extends javax.swing.JInternalFrame {
         );
         pnlSearchUser3Layout.setVerticalGroup(
             pnlSearchUser3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+            .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
         );
 
         pnlSearchUser4.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -488,14 +490,14 @@ public class SearchIPDPatientWithBill extends javax.swing.JInternalFrame {
         );
         pnlSearchUser4Layout.setVerticalGroup(
             pnlSearchUser4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+            .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
         pnlSearchUser5.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
         pnlSearchUser5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Payment Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         pnlSearchUser5.setForeground(java.awt.SystemColor.activeCaption);
 
-        tblPaymentDetail1.setModel(new javax.swing.table.DefaultTableModel(
+        tblServicesDetail.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
                 {null,null, null,null,null,null}
@@ -506,23 +508,23 @@ public class SearchIPDPatientWithBill extends javax.swing.JInternalFrame {
 
             }
         ));
-        tblPaymentDetail1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblServicesDetail.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblPaymentDetail1MouseClicked(evt);
+                tblServicesDetailMouseClicked(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                tblPaymentDetail1MousePressed(evt);
+                tblServicesDetailMousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                tblPaymentDetail1MouseReleased(evt);
+                tblServicesDetailMouseReleased(evt);
             }
         });
-        tblPaymentDetail1.addKeyListener(new java.awt.event.KeyAdapter() {
+        tblServicesDetail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                tblPaymentDetail1KeyReleased(evt);
+                tblServicesDetailKeyReleased(evt);
             }
         });
-        jScrollPane13.setViewportView(tblPaymentDetail1);
+        jScrollPane13.setViewportView(tblServicesDetail);
 
         javax.swing.GroupLayout pnlSearchUser5Layout = new javax.swing.GroupLayout(pnlSearchUser5);
         pnlSearchUser5.setLayout(pnlSearchUser5Layout);
@@ -571,18 +573,17 @@ public class SearchIPDPatientWithBill extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlSearchUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(pnlSearchUser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(pnlSearchUser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(pnlSearchUser4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(pnlSearchUser4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlSearchUser5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlClearandExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19)
+                .addGap(10, 10, 10)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
         );
@@ -924,21 +925,21 @@ public class SearchIPDPatientWithBill extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tblsearchPatientHistoryMouseEntered
 
-    private void tblPaymentDetail1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPaymentDetail1MouseClicked
+    private void tblServicesDetailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblServicesDetailMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPaymentDetail1MouseClicked
+    }//GEN-LAST:event_tblServicesDetailMouseClicked
 
-    private void tblPaymentDetail1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPaymentDetail1MousePressed
+    private void tblServicesDetailMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblServicesDetailMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPaymentDetail1MousePressed
+    }//GEN-LAST:event_tblServicesDetailMousePressed
 
-    private void tblPaymentDetail1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPaymentDetail1MouseReleased
+    private void tblServicesDetailMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblServicesDetailMouseReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPaymentDetail1MouseReleased
+    }//GEN-LAST:event_tblServicesDetailMouseReleased
 
-    private void tblPaymentDetail1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblPaymentDetail1KeyReleased
+    private void tblServicesDetailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblServicesDetailKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPaymentDetail1KeyReleased
+    }//GEN-LAST:event_tblServicesDetailKeyReleased
 
     private void txtWardDescriptionHistory1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtWardDescriptionHistory1ActionPerformed
         // TODO add your handling code here:
@@ -972,7 +973,7 @@ public class SearchIPDPatientWithBill extends javax.swing.JInternalFrame {
     private javax.swing.JTable tblDepartmentWiseBill;
     private javax.swing.JTable tblDepartmentWiseRefund;
     private javax.swing.JTable tblPaymentDetail;
-    private javax.swing.JTable tblPaymentDetail1;
+    private javax.swing.JTable tblServicesDetail;
     private javax.swing.JTable tblsearchPatientHistory;
     private javax.swing.JTextField txtPatientIdHistory;
     private javax.swing.JTextField txtPrimaryPhysicianHistory;
@@ -986,6 +987,7 @@ public class SearchIPDPatientWithBill extends javax.swing.JInternalFrame {
     AdvancePaymentController ctlAdvancePayment = new AdvancePaymentController();
     List<PatientHospitalVisit> listPatient = new ArrayList<>();
     List<PatientHospitalVisit> listPatientHistory = new ArrayList<>();
+    List<AdvancePayment> ipdDepWiseDetail = new ArrayList<>();
     List<AdvancePayment> listDepartmentBillDetail = new ArrayList<>();
     List<AdvancePayment> listDepartmentRefundDetail = new ArrayList<>();
     AdvancePayment currentPayment = new AdvancePayment();
@@ -996,7 +998,6 @@ public class SearchIPDPatientWithBill extends javax.swing.JInternalFrame {
 //    AdvanceAdjustmentController ctlAdjustment = new AdvanceAdjustmentController();
     AdvancePaymentController ctlAp = new AdvancePaymentController();
     List<AdvancePayment> listPaymentDetails = new ArrayList<>();
-
 
     private void selectDischargedPatient() {
 
@@ -1025,9 +1026,6 @@ public class SearchIPDPatientWithBill extends javax.swing.JInternalFrame {
     }
 
 //    PatientTransferController ctlpatient = new PatientTransferController();
-
-    
-
     private void selectDepartmentWiseBill() {
 
         listDepartmentBillDetail = ctlAp.selectDepartmentWiseBill(currentDischarge.getAdmissionNumber());
@@ -1101,5 +1099,30 @@ public class SearchIPDPatientWithBill extends javax.swing.JInternalFrame {
         }
     }
 
-    
+    private void setIpdDepWiseDetail() {
+        ipdDepWiseDetail = ctlAdvancePayment.selectAdmPatientDetail("12663",
+                "33");
+        tblServicesDetail.setModel(new IpdDepWiseDetailTableModel(
+                ipdDepWiseDetail));
+        ListSelectionModel selectionModel = tblServicesDetail.getSelectionModel();
+        tblServicesDetail.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        setIpdDepWiseDetailColumnsWidths();
+        selectionModel.setSelectionInterval(0, 0);
+        Constants.tablelook.setJTableEnvironment(tblServicesDetail);
+    }
+
+    private void setIpdDepWiseDetailColumnsWidths() {
+        TableColumn column = null;
+        for (int i = 0; i < tblServicesDetail.getColumnCount(); i++) {
+            column = tblServicesDetail.getColumnModel().getColumn(i);
+            if (i == 0) {
+                column.setPreferredWidth(150);
+            } else if (i == 1) {
+                column.setPreferredWidth(80);
+            } else if (i == 2) {
+                column.setPreferredWidth(40);
+            }
+        }
+    }
+
 }

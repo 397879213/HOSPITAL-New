@@ -24,6 +24,12 @@ public class AdvancePaymentController {
     OrderHandler ctlOrderhandler = new OrderHandler();
     List<AdvancePayment> hdlReturn = new ArrayList();
     List<String> hdlReturnStr = new ArrayList();
+    
+    public List<AdvancePayment> selectAdmPatientDetail(String admissionNo, 
+            String departmentId) {
+        return hdlAp.selectAdmPatientDetail(admissionNo, departmentId);
+    }
+    
     public List<AdvancePayment>
             selectAdmittedPatient(String patientId) {
         return hdlReturn;

@@ -774,15 +774,15 @@ public class PendingAdmissionServices extends javax.swing.JInternalFrame {
     }
 
     private void setIpdDepWiseDetail() {
-        ipdDepWiseDetail = ctlPendingServices.selectAdmPatientDetail("12663",
-                "33");
-        tblIpdDetail.setModel(new IpdDepWiseDetailTableModel(
-                    ipdDepWiseDetail));
-        ListSelectionModel selectionModel = tblIpdDetail.getSelectionModel();
-            tblIpdDetail.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-            setPendingRefundOrdersColumnsWidths();
-            selectionModel.setSelectionInterval(0, 0);
-            Constants.tablelook.setJTableEnvironment(tblIpdDetail);
+//        ipdDepWiseDetail = ctlPendingServices.selectAdmPatientDetail("12663",
+//                "33");
+//        tblIpdDetail.setModel(new IpdDepWiseDetailTableModel(
+//                    ipdDepWiseDetail));
+//        ListSelectionModel selectionModel = tblIpdDetail.getSelectionModel();
+//            tblIpdDetail.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+//            setPendingRefundOrdersColumnsWidths();
+//            selectionModel.setSelectionInterval(0, 0);
+//            Constants.tablelook.setJTableEnvironment(tblIpdDetail);
     }
 
 }

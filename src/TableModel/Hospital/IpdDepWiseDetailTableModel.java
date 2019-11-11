@@ -4,9 +4,10 @@
  */
 package TableModel.Hospital;
 
+import BO.Hospital.AdvancePayment;
 import BO.Hospital.ManageAdmissionServices;
-import TableModel.OPD.*;
 import BO.OutsideInvestigation;
+import TableModel.OPD.*;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -19,15 +20,26 @@ public class IpdDepWiseDetailTableModel extends AbstractTableModel {
     private final String[] columnNames = { "CPT Name","Invoice Date","Price"};
 
     private final Object[][] data;
-
-    public IpdDepWiseDetailTableModel(List<ManageAdmissionServices> li) {
+    int sum = 0;
+    public IpdDepWiseDetailTableModel(List<AdvancePayment> li) {
+        
         data = new Object[li.size()][columnNames.length];
         for (int i = 0; i < li.size(); i++) {
-            ManageAdmissionServices investigation = li.get(i);
-            data[i][0] = investigation.getCptDesc();
+            AdvancePayment investigation = li.get(i);
+            sum = sum + Integer.parseInt(investigation.getPayableAmount());
+            data[i][0] = investigation.getCptDescription();
             data[i][1] = investigation.getInvoiceDate();
-            data[i][2] = investigation.getPrice();
+            data[i][2] = investigation.getPayableAmount();
+            setSum(sum);
         }
+    }
+
+    public int getSum() {
+        return sum;
+    }
+
+    public void setSum(int sum) {
+        this.sum = sum;
     }
 
     @Override
