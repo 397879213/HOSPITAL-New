@@ -22,70 +22,70 @@ public class AdvancePaymentController {
     AdvancePaymentHandler hdlAp = new AdvancePaymentHandler();
     OrderHandler ctlOrderhandler = new OrderHandler();
 
-    public List<AdvancePayment>
-            selectAdmittedPatient(String patientId) {
-        return hdlAp.selectAdmittedPatient(patientId);
-    }
-
-    public List<AdvancePayment>
-            selectPayment(String admissionNo, String available) {
-        return hdlAp.selectPaymentDetail(admissionNo, available);
-    }
-
-    public String
-            selectTotalAdvance(String admissionNo) {
-        return hdlAp.selectTotalAdvance(admissionNo);
-    }
-
-    public List<AdvancePayment>
-            selectDepartmentWiseBill(String admissionNo) {
-        return hdlAp.selectDepartmentWiseBill(admissionNo);
-    }
-
-    public String
-            selectPatientPayableBill(String admissionNo) {
-        return hdlAp.selectPatientPayableBill(admissionNo);
-    }
-
-    public List<AdvancePayment> selectCPTWiseBlockedServicesBill(String admissionNo) {
-
-        return hdlAp.selectCPTWiseBlockedServicesBill(admissionNo);
-    }
-
-    public List<AdvancePayment> selectCPTWiseBlockedServicesRefund(String admissionNo) {
-
-        return hdlAp.selectDepartmentWiseBlockedItemsRefund(admissionNo);
-    }
-
-    public List<AdvancePayment>
-            selectDepartmentWiseRefund(String admissionNo) {
-        return hdlAp.selectDepartmentWiseRefund(admissionNo);
-    }
-
-    public List<AdvancePayment> selectBlockedItemsDetailList(String admissionNo) {
-
-        return hdlAp.selectBlockedItemsDetailList(admissionNo);
-    }
-
-    public List<String> selectBlockedItemsInvoices(String admissionNo) {
-
-        return hdlAp.selectBlockedItemsInvoiceNo(admissionNo);
-    }
-
-    public boolean insertAdvancePayment(AdvancePayment advancePayment) {
-
-        boolean ret = hdlAp.insertAdvanceReceiveHistory(advancePayment);
-        if (ret) {
-            Constants.dao.commitTransaction();
-        } else {
-            Constants.dao.rollBack();
-        }
-        return ret;
-    }
-
-    public String selectTotalAmountForRefund(String account, String admissionNo) {
-        return hdlAp.selectTotalAmountForRefund(account, admissionNo);
-    }
+//    public List<AdvancePayment>
+//            selectAdmittedPatient(String patientId) {
+//        return hdlAp.selectAdmittedPatient(patientId);
+//    }
+//
+//    public List<AdvancePayment>
+//            selectPayment(String admissionNo, String available) {
+//        return hdlAp.selectPaymentDetail(admissionNo, available);
+//    }
+//
+//    public String
+//            selectTotalAdvance(String admissionNo) {
+//        return hdlAp.selectTotalAdvance(admissionNo);
+//    }
+//
+//    public List<AdvancePayment>
+//            selectDepartmentWiseBill(String admissionNo) {
+//        return hdlAp.selectDepartmentWiseBill(admissionNo);
+//    }
+//
+//    public String
+//            selectPatientPayableBill(String admissionNo) {
+//        return hdlAp.selectPatientPayableBill(admissionNo);
+//    }
+//
+//    public List<AdvancePayment> selectCPTWiseBlockedServicesBill(String admissionNo) {
+//
+//        return hdlAp.selectCPTWiseBlockedServicesBill(admissionNo);
+//    }
+//
+//    public List<AdvancePayment> selectCPTWiseBlockedServicesRefund(String admissionNo) {
+//
+//        return hdlAp.selectDepartmentWiseBlockedItemsRefund(admissionNo);
+//    }
+//
+//    public List<AdvancePayment>
+//            selectDepartmentWiseRefund(String admissionNo) {
+//        return hdlAp.selectDepartmentWiseRefund(admissionNo);
+//    }
+//
+//    public List<AdvancePayment> selectBlockedItemsDetailList(String admissionNo) {
+//
+//        return hdlAp.selectBlockedItemsDetailList(admissionNo);
+//    }
+//
+//    public List<String> selectBlockedItemsInvoices(String admissionNo) {
+//
+//        return hdlAp.selectBlockedItemsInvoiceNo(admissionNo);
+//    }
+//
+//    public boolean insertAdvancePayment(AdvancePayment advancePayment) {
+//
+//        boolean ret = hdlAp.insertAdvanceReceiveHistory(advancePayment);
+//        if (ret) {
+//            Constants.dao.commitTransaction();
+//        } else {
+//            Constants.dao.rollBack();
+//        }
+//        return ret;
+//    }
+//
+//    public String selectTotalAmountForRefund(String account, String admissionNo) {
+//        return hdlAp.selectTotalAmountForRefund(account, admissionNo);
+//    }
 
     public boolean updateDischargeRejectStatus(AdvancePayment selectedPatient) {
 
@@ -114,24 +114,24 @@ public class AdvancePaymentController {
         return ret;
     }
 
-    public boolean updateTransactionType(AdvancePayment selectedPatient) {
-
-        boolean ret = hdlAp.insertTransactionHistory(selectedPatient);
-        if (ret) {
-            if (ret) {
-                String query = " UPDATE " + Database.DCMS.advanceReceiveHistory
-                        + " SET TRANSACTION_TYPE = " + selectedPatient.getTransactionTypeId()
-                        + " \n WHERE VOUCHER_NO = " + selectedPatient.getVoucherNo();
-                ret = Constants.dao.executeUpdate(query, false);
-            }
-        }
-        if (ret) {
-            ret = Constants.dao.commitTransaction();
-        }
-        if (!ret) {
-            Constants.dao.rollBack();
-        }
-        return ret;
-    }
+//    public boolean updateTransactionType(AdvancePayment selectedPatient) {
+//
+//        boolean ret = hdlAp.insertTransactionHistory(selectedPatient);
+//        if (ret) {
+//            if (ret) {
+//                String query = " UPDATE " + Database.DCMS.advanceReceiveHistory
+//                        + " SET TRANSACTION_TYPE = " + selectedPatient.getTransactionTypeId()
+//                        + " \n WHERE VOUCHER_NO = " + selectedPatient.getVoucherNo();
+//                ret = Constants.dao.executeUpdate(query, false);
+//            }
+//        }
+//        if (ret) {
+//            ret = Constants.dao.commitTransaction();
+//        }
+//        if (!ret) {
+//            Constants.dao.rollBack();
+//        }
+//        return ret;
+//    }
 
 }
