@@ -109,27 +109,7 @@ public class IpdDepWiseSummary {
         return ret;
     }
 
-    public List<PatientHospitalVisit> selectAdmNo() {
-
-        String[] columns = {"-", "ID"};
-        String query = " SELECT ID FROM     \n"
-                + Database.DCMS.patientAdmissionHistory 
-                + " WHERE ADMITTED_DATE > SYSDATE - 360   \n";
-
-        System.out.println(query);
-        List<HashMap> selectAdm = Constants.dao.selectDatainList(query, columns);
-        System.err.println("main list"+ selectAdm.size());
-        List<PatientHospitalVisit> list = new ArrayList();
-        for (int i = 0; i < selectAdm.size(); i++) {
-            HashMap map = (HashMap) selectAdm.get(i);
-            PatientHospitalVisit setAdmNo = new PatientHospitalVisit();
-            setAdmNo.setAdmissionNumber(map.get("ID").toString());
-            list.add(setAdmNo);
-        }
-        return list;
-    }
-
-    private boolean runProcess(List<PatientHospitalVisit> listAdmNo) {
+    public boolean runProcess(List<PatientHospitalVisit> listAdmNo) {
         boolean ret = true;
         for (int i = 0; i < listAdmNo.size(); i++) {
             PatientHospitalVisit admNo = listAdmNo.get(i);
@@ -150,18 +130,18 @@ public class IpdDepWiseSummary {
         return ret;
     }
 
-    public static void main(String[] args) {
-        IpdDepWiseSummary ctl = new IpdDepWiseSummary();
-        List<PatientHospitalVisit> lisatAdmNo = new ArrayList();
-        
-        lisatAdmNo.clear();
-        lisatAdmNo = ctl.selectAdmNo();
-        
-        System.err.println("list sixe: " + lisatAdmNo.size());
-        if (ctl.runProcess(lisatAdmNo)) {
-            System.out.println("Process run successfully.");
-        } else {
-            System.err.println("Unable to run successfully!");
-        }
-    }
+//    public static void main(String[] args) {
+//        IpdDepWiseSummary ctl = new IpdDepWiseSummary();
+//        List<PatientHospitalVisit> lisatAdmNo = new ArrayList();
+//        
+//        lisatAdmNo.clear();
+//        lisatAdmNo = ctl.selectAdmNo();
+//        
+//        System.err.println("list sixe: " + lisatAdmNo.size());
+//        if (ctl.runProcess(lisatAdmNo)) {
+//            System.out.println("Process run successfully.");
+//        } else {
+//            System.err.println("Unable to run successfully!");
+//        }
+//    }
 }

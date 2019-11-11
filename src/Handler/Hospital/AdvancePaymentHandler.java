@@ -3,28 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Handler.Hospital;
 
 import BO.Hospital.AdvancePayment;
-import BO.Hospital.ManageAdmissionServices;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import utilities.Constants;
 import utilities.Database;
+import utilities.Status;
 
 /**
  *
  * @author raheelansari
  */
 public class AdvancePaymentHandler {
-    
-    public List<AdvancePayment> selectAdmPatientDetail(String admissionNo, 
-            String departmentId) {
+
+    public List<AdvancePayment> selectAdmPatientDetail(String admissionNo,
+            String departmentId, String isAdmitted) {
 
         String[] selectColumns = {"-", "PATIENT_ID", "INVOICE_NO", "CPT_ID",
-            "CPT_NAME", "PAYABLE_AMOUNT", "DEPARTMENT_ID", "DEPARTMENT", 
+            "CPT_NAME", "PAYABLE_AMOUNT", "DEPARTMENT_ID", "DEPARTMENT",
             "INVOICE_DATE"};
 
         String query
@@ -37,11 +36,17 @@ public class AdvancePaymentHandler {
                 + Database.DCMS.invoiceDetail + " IVD,                  \n"
                 + Database.DCMS.definitionTypeDetail + " DEP,           \n"
                 + Database.DCMS.CPT + " CPT                             \n"
-                + " WHERE IVM.ADMISSION_NO = '" + admissionNo + "'  \n"
-                + "   AND IVD.DEPARTMENT_ID = " + departmentId + "  \n"
-                + "   AND IVM.INVOICE_NO = IVD.INVOICE_NO               \n"
-                + "   AND IVD.DEPARTMENT_ID = DEP.ID                    \n"
-                + "   AND IVD.CPT_ID = CPT.CPT_ID                       \n";
+                + " WHERE IVM.ADMISSION_NO = '" + admissionNo + "'      \n"
+                + "   AND IVD.DEPARTMENT_ID = " + departmentId + "      \n";
+        if (isAdmitted.equalsIgnoreCase("Y")) {
+            query += " AND IVD.STATUS_ID = " + Status.refund + "        \n";
+        }
+        if (isAdmitted.equalsIgnoreCase("N")) {
+            query += " AND IVD.STATUS_ID != " + Status.refund + "       \n";
+        }
+        query += " AND IVM.INVOICE_NO = IVD.INVOICE_NO                  \n"
+                + " AND IVD.DEPARTMENT_ID = DEP.ID                      \n"
+                + " AND IVD.CPT_ID = CPT.CPT_ID                         \n";
 
         System.out.println(query);
         List selectInvoice = Constants.dao.selectDatainList(query, selectColumns);
@@ -50,7 +55,7 @@ public class AdvancePaymentHandler {
         for (int i = 0; i < selectInvoice.size(); i++) {
             HashMap map = (HashMap) selectInvoice.get(i);
             AdvancePayment setCompound = new AdvancePayment();
-            
+
             setCompound.setPatientId(map.get("PATIENT_ID").toString());
             setCompound.setInvoiceNo(map.get("INVOICE_NO").toString());
             setCompound.setCptId(map.get("CPT_ID").toString());

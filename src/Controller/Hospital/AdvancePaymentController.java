@@ -26,9 +26,10 @@ public class AdvancePaymentController {
     List<String> hdlReturnStr = new ArrayList();
     
     public List<AdvancePayment> selectAdmPatientDetail(String admissionNo, 
-            String departmentId) {
-        return hdlAp.selectAdmPatientDetail(admissionNo, departmentId);
+            String departmentId, String isRefund) {
+        return hdlAp.selectAdmPatientDetail(admissionNo, departmentId, isRefund);
     }
+    
     
     public List<AdvancePayment>
             selectAdmittedPatient(String patientId) {

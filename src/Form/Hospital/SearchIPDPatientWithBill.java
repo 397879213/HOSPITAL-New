@@ -6,8 +6,7 @@ import BO.Patient;
 //import Controller.AdvanceAdjustmentController;
 import Controller.Hospital.AdvancePaymentController;
 import Controller.Hospital.PatientDischargeStatusController;
-//import Controller.Hospital.PatientTransferController;
-//import Controller.Patient.PatientController;
+import Process.IpdDepWiseSummary;
 import TableModel.Hospital.AdvancePaymentTableModel;
 import TableModel.Hospital.DepartmentWiseBillTableModel;
 import TableModel.Hospital.DepartmentWiseRefundTableModel;
@@ -56,8 +55,9 @@ public class SearchIPDPatientWithBill extends javax.swing.JInternalFrame {
         btnDepartmentBill = new javax.swing.JButton();
         btnBillSummary = new javax.swing.JButton();
         btnFinalBillSummary = new javax.swing.JButton();
-        txtWardDescriptionHistory1 = new javax.swing.JTextField();
+        txtTotalBill = new javax.swing.JTextField();
         jLabel79 = new javax.swing.JLabel();
+        btnProcess = new javax.swing.JButton();
         pnlUserDetail2 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         txtPatientIdHistory = new javax.swing.JTextField();
@@ -224,10 +224,11 @@ public class SearchIPDPatientWithBill extends javax.swing.JInternalFrame {
             }
         });
 
-        txtWardDescriptionHistory1.setToolTipText("DD-MON-YY");
-        txtWardDescriptionHistory1.addActionListener(new java.awt.event.ActionListener() {
+        txtTotalBill.setEditable(false);
+        txtTotalBill.setToolTipText("DD-MON-YY");
+        txtTotalBill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtWardDescriptionHistory1ActionPerformed(evt);
+                txtTotalBillActionPerformed(evt);
             }
         });
 
@@ -236,38 +237,48 @@ public class SearchIPDPatientWithBill extends javax.swing.JInternalFrame {
         jLabel79.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel79.setText("Toal Bill :");
 
+        btnProcess.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnProcess.setText("Process");
+        btnProcess.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProcessActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlClearandExitLayout = new javax.swing.GroupLayout(pnlClearandExit);
         pnlClearandExit.setLayout(pnlClearandExitLayout);
         pnlClearandExitLayout.setHorizontalGroup(
             pnlClearandExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlClearandExitLayout.createSequentialGroup()
-                .addGap(84, 84, 84)
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(btnProcess)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDepartmentBill, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBillSummary, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnFinalBillSummary, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnDepartmentServicesBill, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(btnBillSummary, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnFinalBillSummary, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnDepartmentServicesBill, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel79, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtWardDescriptionHistory1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTotalBill, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(70, 70, 70))
         );
         pnlClearandExitLayout.setVerticalGroup(
             pnlClearandExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlClearandExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(jLabel79, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addComponent(txtWardDescriptionHistory1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlClearandExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(txtTotalBill, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(btnExit)
                 .addComponent(btnDepartmentServicesBill, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnDepartmentBill, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnFinalBillSummary, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnBillSummary, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnFinalBillSummary, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(btnDepartmentBill)
+                .addComponent(btnProcess))
         );
 
         pnlUserDetail2.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -541,28 +552,29 @@ public class SearchIPDPatientWithBill extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(pnlClearandExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(pnlClearandExit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnlSearchUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnlUserDetail2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(5, 5, 5)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(pnlSearchUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(pnlUserDetail2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(5, 5, 5)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(pnlSearchUser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(pnlSearchUser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(pnlSearchUser4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(pnlSearchUser5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(5, 5, 5)))
-                .addGap(5, 5, 5))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(pnlSearchUser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(pnlSearchUser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(pnlSearchUser4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(pnlSearchUser5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(5, 5, 5))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -834,6 +846,7 @@ public class SearchIPDPatientWithBill extends javax.swing.JInternalFrame {
 
     private void tblDepartmentWiseBillMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDepartmentWiseBillMouseReleased
         // TODO add your handling code here:
+        isRefund = "N";
     }//GEN-LAST:event_tblDepartmentWiseBillMouseReleased
 
     private void tblDepartmentWiseBillKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblDepartmentWiseBillKeyReleased
@@ -850,6 +863,7 @@ public class SearchIPDPatientWithBill extends javax.swing.JInternalFrame {
 
     private void tblDepartmentWiseRefundMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDepartmentWiseRefundMouseReleased
         // TODO add your handling code here:
+        isRefund = "Y";
     }//GEN-LAST:event_tblDepartmentWiseRefundMouseReleased
 
     private void tblDepartmentWiseRefundKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblDepartmentWiseRefundKeyReleased
@@ -941,9 +955,16 @@ public class SearchIPDPatientWithBill extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tblServicesDetailKeyReleased
 
-    private void txtWardDescriptionHistory1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtWardDescriptionHistory1ActionPerformed
+    private void txtTotalBillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalBillActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtWardDescriptionHistory1ActionPerformed
+        
+    }//GEN-LAST:event_txtTotalBillActionPerformed
+
+    private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
+        // TODO add your handling code here:
+        
+        ctlProcess.runProcess(listPatient);
+    }//GEN-LAST:event_btnProcessActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBillSummary;
@@ -951,6 +972,7 @@ public class SearchIPDPatientWithBill extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnDepartmentServicesBill;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnFinalBillSummary;
+    private javax.swing.JButton btnProcess;
     private javax.swing.JButton btnSearchDischarged;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel6;
@@ -977,12 +999,13 @@ public class SearchIPDPatientWithBill extends javax.swing.JInternalFrame {
     private javax.swing.JTable tblsearchPatientHistory;
     private javax.swing.JTextField txtPatientIdHistory;
     private javax.swing.JTextField txtPrimaryPhysicianHistory;
+    private javax.swing.JTextField txtTotalBill;
     private javax.swing.JTextField txtWardDescriptionHistory;
-    private javax.swing.JTextField txtWardDescriptionHistory1;
     // End of variables declaration//GEN-END:variables
 
     //new declarations.
     //   Patient patid = new Patient();
+    IpdDepWiseSummary ctlProcess = new IpdDepWiseSummary();
     PatientDischargeStatusController ctlpat = new PatientDischargeStatusController();
     AdvancePaymentController ctlAdvancePayment = new AdvancePaymentController();
     List<PatientHospitalVisit> listPatient = new ArrayList<>();
@@ -998,6 +1021,7 @@ public class SearchIPDPatientWithBill extends javax.swing.JInternalFrame {
 //    AdvanceAdjustmentController ctlAdjustment = new AdvanceAdjustmentController();
     AdvancePaymentController ctlAp = new AdvancePaymentController();
     List<AdvancePayment> listPaymentDetails = new ArrayList<>();
+    String isRefund = "";
 
     private void selectDischargedPatient() {
 
@@ -1101,7 +1125,7 @@ public class SearchIPDPatientWithBill extends javax.swing.JInternalFrame {
 
     private void setIpdDepWiseDetail() {
         ipdDepWiseDetail = ctlAdvancePayment.selectAdmPatientDetail("12663",
-                "33");
+                "33", "");
         tblServicesDetail.setModel(new IpdDepWiseDetailTableModel(
                 ipdDepWiseDetail));
         ListSelectionModel selectionModel = tblServicesDetail.getSelectionModel();
@@ -1109,6 +1133,8 @@ public class SearchIPDPatientWithBill extends javax.swing.JInternalFrame {
         setIpdDepWiseDetailColumnsWidths();
         selectionModel.setSelectionInterval(0, 0);
         Constants.tablelook.setJTableEnvironment(tblServicesDetail);
+        IpdDepWiseDetailTableModel cl = new IpdDepWiseDetailTableModel(ipdDepWiseDetail);
+        txtTotalBill.setText(String.valueOf(cl.getSum()));   
     }
 
     private void setIpdDepWiseDetailColumnsWidths() {
@@ -1116,7 +1142,7 @@ public class SearchIPDPatientWithBill extends javax.swing.JInternalFrame {
         for (int i = 0; i < tblServicesDetail.getColumnCount(); i++) {
             column = tblServicesDetail.getColumnModel().getColumn(i);
             if (i == 0) {
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(220);
             } else if (i == 1) {
                 column.setPreferredWidth(80);
             } else if (i == 2) {
