@@ -109,12 +109,46 @@ public class IpdDepWiseSummary {
         return ret;
     }
 
+    public List<PatientHospitalVisit> selectAdmNo() {
+
+        String[] selectColumns = {"-", "ID"};
+
+        String query
+                = " SELECT ID FROM\n"
+                + Database.DCMS.patientAdmissionHistory + "       \n"
+                + " WHERE  ADMITTED_DATE > SYSDATE - 360";
+
+        System.out.println(query);
+        List selectInvoice = Constants.dao.selectDatainList(query, selectColumns);
+
+        List<PatientHospitalVisit> list = new ArrayList();
+        for (int i = 0; i < selectInvoice.size(); i++) {
+            HashMap map = (HashMap) selectInvoice.get(i);
+            PatientHospitalVisit setCompound = new PatientHospitalVisit();
+
+            setCompound.setAdmissionNumber(map.get("ID").toString());
+            list.add(setCompound);
+        }
+        return list;
+    }
+
+    public boolean deleteDepartmentWiseSummary(String admissionNo) {
+        String query
+                = " DELETE FROM " + Database.DCMS.ipdDepartmentWiseSummary + "\n"
+                + " WHERE ADMISSION_NO = '" + admissionNo + "'";
+
+        return Constants.dao.executeUpdate(query, false);
+    }
+
     public boolean runProcess(List<PatientHospitalVisit> listAdmNo) {
         boolean ret = true;
         for (int i = 0; i < listAdmNo.size(); i++) {
             PatientHospitalVisit admNo = listAdmNo.get(i);
-            ret = insertIpdDepartmentDetail(selectAdmPatientSDepummary(
-                    admNo.getAdmissionNumber()));
+            ret = deleteDepartmentWiseSummary(admNo.getAdmissionNumber());
+            if (ret) {
+                ret = insertIpdDepartmentDetail(selectAdmPatientSDepummary(
+                        admNo.getAdmissionNumber()));
+            }
             if (ret) {
                 ret = updateIpdRefundDepDetail(selectAdmPatientRefundSummary(
                         admNo.getAdmissionNumber()));
@@ -130,18 +164,18 @@ public class IpdDepWiseSummary {
         return ret;
     }
 
-//    public static void main(String[] args) {
-//        IpdDepWiseSummary ctl = new IpdDepWiseSummary();
-//        List<PatientHospitalVisit> lisatAdmNo = new ArrayList();
-//        
-//        lisatAdmNo.clear();
-//        lisatAdmNo = ctl.selectAdmNo();
-//        
-//        System.err.println("list sixe: " + lisatAdmNo.size());
-//        if (ctl.runProcess(lisatAdmNo)) {
-//            System.out.println("Process run successfully.");
-//        } else {
-//            System.err.println("Unable to run successfully!");
-//        }
-//    }
+    public static void main(String[] args) {
+        IpdDepWiseSummary ctl = new IpdDepWiseSummary();
+        List<PatientHospitalVisit> lisatAdmNo = new ArrayList();
+
+        lisatAdmNo.clear();
+        lisatAdmNo = ctl.selectAdmNo();
+
+        System.err.println("list sixe: " + lisatAdmNo.size());
+        if (ctl.runProcess(lisatAdmNo)) {
+            System.out.println("Process run successfully.");
+        } else {
+            System.err.println("Unable to run successfully!");
+        }
+    }
 }

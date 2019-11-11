@@ -5,9 +5,6 @@
 package TableModel.Hospital;
 
 import BO.Hospital.AdvancePayment;
-import BO.Hospital.ManageAdmissionServices;
-import BO.OutsideInvestigation;
-import TableModel.OPD.*;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
