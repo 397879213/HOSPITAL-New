@@ -16,6 +16,7 @@ public class MonthlyLocationExpenseBO {
     private String expenseTypeId = "";
     private String expenseTypeDescription = "";
     private String locationId = "";
+    private String locationDescription = "";
     private String expenseMonth = "";
     private String closeStatus = "";
     private String active = "";

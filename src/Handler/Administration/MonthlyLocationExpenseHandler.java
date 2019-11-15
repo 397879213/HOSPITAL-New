@@ -111,14 +111,18 @@ public class MonthlyLocationExpenseHandler {
             HashMap map = (HashMap) listmap.get(i);
             MonthlyLocationExpenseBO objData = new MonthlyLocationExpenseBO();
 
-//            "EXP_MASTER_ID", "LOCATION_ID", "LOC_DESC",
-//            "EXPENSE_TYPE_ID", "EXP_NAME", "AMOUNT", "CLOSE_STATUS",
-//            "TOTAL_AMOUNT", "EXPENSE_MONTH
+//            "EXP_MASTER_ID", "LOCATION_ID", "",
+//            "EXPENSE_TYPE_ID", "EXP_NAME", "AMOUNT", "",
+//            "", "EXPENSE_MONTH
             
             objData.setExpenseMasterId(map.get("EXP_MASTER_ID").toString());
+            objData.setLocationId(map.get("LOCATION_ID").toString());
+            objData.setLocationDescription(map.get("LOC_DESC").toString());
             objData.setExpenseTypeId(map.get("EXPENSE_TYPE_ID").toString());
             objData.setExpenseTypeDescription(map.get("EXP_NAME").toString());
             objData.setAmount(map.get("AMOUNT").toString());
+            objData.setCloseStatus(map.get("CLOSE_STATUS").toString());
+            objData.setTotalAmount(map.get("TOTAL_AMOUNT").toString());
             objData.setExpenseMonth(map.get("EXPENSE_MONTH").toString());
 
             lisVerRep.add(objData);
