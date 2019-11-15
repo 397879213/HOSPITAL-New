@@ -30,7 +30,7 @@ public class MonthWiseExpenseTableModel extends AbstractTableModel {
             data[i][1] = dS.getExpenseTypeDescription();
             data[i][2] = dS.getExpenseMonth();
             data[i][3] = dS.getAmount();
-            data[i][3] = new Boolean(true);
+            data[i][4] = new Boolean(true);
             
         }
     }
@@ -68,7 +68,7 @@ public class MonthWiseExpenseTableModel extends AbstractTableModel {
     public boolean isCellEditable(int row, int col) {
         //Note that the data/cell address is constant,
         //no matter where the cell appears onscreen.
-        if(col == 2){
+        if(col == 2 && col == 4){
             return true;
         }
         return false;

@@ -516,7 +516,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
             Constants.tablelook.setJTableEnvironment(tblMonthWiseExpense);
         }
     }
-    
+
     private void setMonthWiseExpenseColumnsWidths() {
         TableColumn column = null;
         for (int i = 0; i < tblMonthWiseExpense.getColumnCount(); i++) {
@@ -528,6 +528,8 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
             } else if (i == 2) {
                 column.setPreferredWidth(50);
             } else if (i == 3) {
+                column.setPreferredWidth(50);
+            } else if (i == 4) {
                 column.setPreferredWidth(50);
             }
         }
