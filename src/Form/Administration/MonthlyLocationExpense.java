@@ -21,6 +21,9 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
     private String closeStatus = "N";
     private String fromDate = "";
     private String toDate = "";
+    
+    List<MonthlyLocationExpenseBO> list = new ArrayList();
+    
     DisplayLOV lov = new DisplayLOV();
     MonthlyLocationExpenseBO objMonthlyLoc = new MonthlyLocationExpenseBO();
 
