@@ -1,5 +1,6 @@
 package Form.Administration;
 
+import BO.Administration.MonthlyLocationExpenseBO;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -428,7 +429,8 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
 
     private void btnSaveExpenseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveExpenseActionPerformed
         // TODO add your handling code here:
-        objMonthlyLoc.setlo
+        objMonthlyLoc.setLocationId(Constants.locationId);
+        
 
     }//GEN-LAST:event_btnSaveExpenseActionPerformed
 
