@@ -25,13 +25,13 @@ public class MonthlyLocationExpenseHandler {
             "AMOUNT", "EXPENSE_MONTH"};
 
         String query
-                = "SELECT DTD.ID EXP_MASTER_ID,                     \n"
+                = "SELECT MEM.ID EXP_MASTER_ID,                     \n"
                 + " MED.EXPENSE_TYPE_ID,                            \n"
                 + " DTD.DESCRIPTION EXP_NAME,                       \n"
                 + " MED.AMOUNT,                                     \n"
                 + " MEM.EXPENSE_MONTH  FROM                         \n"
                 + Database.DCMS.locMonthlyExpDetail + " MED,        \n"
-                + Database.DCMS.locMonthlyExpDetail + " MEM,        \n"
+                + Database.DCMS.locMonthlyExpMaster + " MEM,        \n"
                 + Database.DCMS.definitionTypeDetail + " DTD        \n"
                 + " WHERE MED.EXP_MASTER_ID = '1'                   \n"
                 + " AND MEM.ID = MED.EXP_MASTER_ID                  \n";
