@@ -484,7 +484,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
     
 
     private void setMontlyExpense() {
-        listLocationExpense = ctlLocExpense.monthlyLocationExpense(expenseMonth,
+        listLocationExpense = ctlLocExpense.headWiseMonthlyExpense(expenseMonth,
                 "O");
         if (listLocationExpense.isEmpty()) {
             List<MonthlyLocationExpenseBO> list = new ArrayList();

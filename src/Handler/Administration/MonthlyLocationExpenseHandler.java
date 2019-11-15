@@ -18,7 +18,7 @@ import utilities.Database;
  */
 public class MonthlyLocationExpenseHandler {
 
-    public List<MonthlyLocationExpenseBO> monthlyLocationExpense(String expMonth,
+    public List<MonthlyLocationExpenseBO> headWiseMonthlyExpense(String expMonth,
             String closeStatus) {
 
         String columns[] = {"-", "EXP_MASTER_ID", "EXPENSE_TYPE_ID", "EXP_NAME",
