@@ -65,6 +65,9 @@ public class HeadExpenseMonthTableModel extends AbstractTableModel {
     public boolean isCellEditable(int row, int col) {
         //Note that the data/cell address is constant,
         //no matter where the cell appears onscreen.
+        if(col == 2){
+            return true;
+        }
         return false;
     }
 

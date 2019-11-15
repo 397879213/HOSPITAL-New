@@ -502,8 +502,8 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
 
     private void setMasterColumnsWidths() {
         TableColumn column = null;
-        for (int i = 0; i < tblIndentRequest.getColumnCount(); i++) {
-            column = tblIndentRequest.getColumnModel().getColumn(i);
+        for (int i = 0; i < tblHeadExpenseMonth.getColumnCount(); i++) {
+            column = tblHeadExpenseMonth.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(15);
             } else if (i == 1) {
