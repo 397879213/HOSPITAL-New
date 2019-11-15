@@ -6,7 +6,7 @@
 
 package Controller.Administration;
 
-import BO.Administration.MonthlyLocationExpense;
+import BO.Administration.MonthlyLocationExpenseBO;
 import Handler.Administration.MonthlyLocationExpenseHandler;
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class MonthlyLocationExpenseController {
     
     MonthlyLocationExpenseHandler hdlLocExpense = new MonthlyLocationExpenseHandler();
     
-    public List<MonthlyLocationExpense> monthlyLocationExpense(String expMonth,
+    public List<MonthlyLocationExpenseBO> monthlyLocationExpense(String expMonth,
             String closeStatus) {
         return hdlLocExpense.monthlyLocationExpense(expMonth, closeStatus);
     }

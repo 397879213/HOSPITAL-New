@@ -10,7 +10,7 @@ package BO.Administration;
  *
  * @author raheelansari
  */
-public class MonthlyLocationExpense {
+public class MonthlyLocationExpenseBO {
     
     private String expenseMasterId = "";
     private String expenseTypeId = "";

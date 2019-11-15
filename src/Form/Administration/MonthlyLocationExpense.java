@@ -21,7 +21,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
     private String fromDate = "";
     private String toDate = "";
     DisplayLOV lov = new DisplayLOV();
-    MonthlyLocationExpense objMonthlyLoc = new MonthlyLocationExpense();
+    MonthlyLocationExpenseBO objMonthlyLoc = new MonthlyLocationExpenseBO();
 
     public MonthlyLocationExpense() {
 
@@ -31,7 +31,6 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
         btnCloseExpense.setMnemonic(KeyEvent.VK_C);
         btnReOpenMonth.setMnemonic(KeyEvent.VK_R);
         btnSearch.setMnemonic(KeyEvent.VK_S);
-//        inStoreId = LocationProperties.locationDefaultStoreId;
         txtLocationName.setText(Constants.locationName);
     }
 
@@ -429,7 +428,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
 
     private void btnSaveExpenseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveExpenseActionPerformed
         // TODO add your handling code here:
-
+        objMonthlyLoc.setlo
 
     }//GEN-LAST:event_btnSaveExpenseActionPerformed
 

@@ -5,7 +5,7 @@
  */
 package Handler.Administration;
 
-import BO.Administration.MonthlyLocationExpense;
+import BO.Administration.MonthlyLocationExpenseBO;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,7 +18,7 @@ import utilities.Database;
  */
 public class MonthlyLocationExpenseHandler {
 
-    public List<MonthlyLocationExpense> monthlyLocationExpense(String expMonth,
+    public List<MonthlyLocationExpenseBO> monthlyLocationExpense(String expMonth,
             String closeStatus) {
 
         String columns[] = {"-", "EXP_MASTER_ID", "EXPENSE_TYPE_ID", "EXP_NAME",
@@ -48,12 +48,12 @@ public class MonthlyLocationExpenseHandler {
         List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
 
         System.out.println(" Data : " + listmap.size());
-        List<MonthlyLocationExpense> lisVerRep = new ArrayList<>();
+        List<MonthlyLocationExpenseBO> lisVerRep = new ArrayList<>();
 
         for (int i = 0; i < listmap.size(); i++) {
 
             HashMap map = (HashMap) listmap.get(i);
-            MonthlyLocationExpense objData = new MonthlyLocationExpense();
+            MonthlyLocationExpenseBO objData = new MonthlyLocationExpenseBO();
 
             objData.setExpenseMasterId(map.get("EXP_MASTER_ID").toString());
             objData.setExpenseTypeId(map.get("EXPENSE_TYPE_ID").toString());
