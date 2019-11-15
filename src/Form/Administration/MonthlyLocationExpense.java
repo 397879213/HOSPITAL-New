@@ -505,14 +505,12 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
         for (int i = 0; i < tblIndentRequest.getColumnCount(); i++) {
             column = tblIndentRequest.getColumnModel().getColumn(i);
             if (i == 0) {
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(15);
             } else if (i == 1) {
                 column.setPreferredWidth(150);
             } else if (i == 2) {
-                column.setPreferredWidth(130);
-            } else if (i == 3) {
-                column.setPreferredWidth(110);
-            }
+                column.setPreferredWidth(50);
+            } 
         }
     }
 }

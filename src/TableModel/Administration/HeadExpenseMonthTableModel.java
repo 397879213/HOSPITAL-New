@@ -17,7 +17,7 @@ import javax.swing.table.AbstractTableModel;
 public class HeadExpenseMonthTableModel extends AbstractTableModel {
 
     private final String[] columnNames = 
-                {"Sr.","Patient ID","Name","Consultant Date"," Room"};
+                {"Sr.","Exp. Head","Amount"};
 
     private Object[][] data;
 
