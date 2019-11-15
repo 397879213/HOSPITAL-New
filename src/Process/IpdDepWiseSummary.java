@@ -18,17 +18,17 @@ import utilities.Database;
  */
 public class IpdDepWiseSummary {
 
-    public List<PatientHospitalVisit> selectAdmPatientSDepummary(String admNo) {
+    public List<PatientHospitalVisit> selectAdmPatientDepSummary(String admNo) {
 
         String[] selectColumns = {"-", "DEPARTMENT_ID", "ADM_AMOUNT"};
 
         String query
                 = " SELECT IVD.DEPARTMENT_ID, SUM(IVD.PAYABLE_AMOUNT) ADM_AMOUNT\n"
                 + "  FROM " + Database.DCMS.invoiceMaster + " IVM,      \n"
-                + Database.DCMS.invoiceDetail + " IVD                  \n"
-                + " WHERE IVM.ADMISSION_NO = '" + admNo + "'  \n"
+                + Database.DCMS.invoiceDetail + " IVD                   \n"
+                + " WHERE IVM.ADMISSION_NO = '" + admNo + "'            \n"
                 + "   AND IVM.INVOICE_NO = IVD.INVOICE_NO               \n"
-                + "   GROUP BY IVD.DEPARTMENT_ID                \n";
+                + "   GROUP BY IVD.DEPARTMENT_ID                        \n";
 
         System.out.println(query);
         List selectInvoice = Constants.dao.selectDatainList(query, selectColumns);
@@ -114,9 +114,9 @@ public class IpdDepWiseSummary {
         String[] selectColumns = {"-", "ID"};
 
         String query
-                = " SELECT ID FROM\n"
-                + Database.DCMS.patientAdmissionHistory + "       \n"
-                + " WHERE  ADMITTED_DATE > SYSDATE - 360";
+                = " SELECT ADMISSION_NO ID FROM         \n"
+                + Database.DCMS.ltuPatientHistory + "   \n"
+                + " WHERE ROWNUM < 3                    \n";
 
         System.out.println(query);
         List selectInvoice = Constants.dao.selectDatainList(query, selectColumns);
@@ -146,7 +146,7 @@ public class IpdDepWiseSummary {
             PatientHospitalVisit admNo = listAdmNo.get(i);
             ret = deleteDepartmentWiseSummary(admNo.getAdmissionNumber());
             if (ret) {
-                ret = insertIpdDepartmentDetail(selectAdmPatientSDepummary(
+                ret = insertIpdDepartmentDetail(selectAdmPatientDepSummary(
                         admNo.getAdmissionNumber()));
             }
             if (ret) {

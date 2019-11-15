@@ -297,6 +297,7 @@ public class Database {
         public static final String compoundAdditive = DAO.usernameEmr + ".COMPOUNDING_ADDITIVE   ";
         public static final String compoundAdditiveDetail = DAO.usernameEmr + ".COMPOUNDING_ADDITIVE_DETAIL   ";
         public static final String ipdDepartmentWiseSummary = DAO.usernameEmr + ".IPD_DEP_PAT_DETAIL   ";
+        public static final String departmentWiseIpdBill = DAO.usernameEmr + ".DEPARTMENT_WISE_IPD_BILL   ";
         public static final String indentRequestEditHist = DAO.usernameEmr + ".INDENT_REQUEST_EDIT_HISTORY   ";
 
         public static final String patientOldMRNO = DAO.usernameEmr + ".PATIENT_OLD_MRNO   ";
@@ -497,6 +498,8 @@ public class Database {
 
         public static final String CPTBreakupItems = DAO.usernameEmr + ".CPT_BREAKUP_ITEMS  ";
         public static final String ActionWiseSMSEmailInfo = DAO.usernameEmr + ".ACTION_WISE_EMAILS  ";
+        public static final String locMonthlyExpDetail = DAO.usernameEmr + ".LOC_MONTHLY_EXP_DETAIL  ";
+        public static final String locMonthlyExpMaster = DAO.usernameEmr + ".LOC_MONTHLY_EXP_MASTER  ";
 
         public static final String transplantReviews = DAO.usernameEmr + ".TRANSPLANT_REVIEWS  ";
 

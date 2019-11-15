@@ -26,6 +26,7 @@ public class Departments {
     public static String NILGID = "35";
     public static String LiverTransplant = "36";
     public static String ophtomology = "37";
+    public static String outSide = "1835";
     public static String physiotherapy = "48";
     public static String anesthesiology = "1801";
     public static String occupationalTherapy = "1817";
@@ -44,6 +45,7 @@ public class Departments {
     public static String operationTheatre = "4863";
     public static String defualtDeptDescription = "RADIOLOGY";
     public static String pathologyName = "PATHOLOGY";
+    public static String dialysis = "7201";
 
     public void selectSection(String departmentId) {
 
