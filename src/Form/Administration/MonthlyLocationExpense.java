@@ -1,6 +1,7 @@
 package Form.Administration;
 
 import BO.Administration.MonthlyLocationExpenseBO;
+import Controller.Administration.MonthlyLocationExpenseController;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,10 +22,11 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
     private String closeStatus = "N";
     private String fromDate = "";
     private String toDate = "";
-    
-    List<MonthlyLocationExpenseBO> list = new ArrayList();
-    
+
+    List<MonthlyLocationExpenseBO> listLocationExpense = new ArrayList();
+
     DisplayLOV lov = new DisplayLOV();
+    MonthlyLocationExpenseController ctlLocExpense = new MonthlyLocationExpenseController();
     MonthlyLocationExpenseBO objMonthlyLoc = new MonthlyLocationExpenseBO();
 
     public MonthlyLocationExpense() {
@@ -36,6 +38,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
         btnReOpenMonth.setMnemonic(KeyEvent.VK_R);
         btnSearch.setMnemonic(KeyEvent.VK_S);
         txtLocationName.setText(Constants.locationName);
+        setMontlyExpense();
     }
 
     @SuppressWarnings("unchecked")
@@ -49,7 +52,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
         jComboBox1 = new javax.swing.JComboBox<String>();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane11 = new javax.swing.JScrollPane();
-        tbRequestedItem = new javax.swing.JTable();
+        tblHeadExpenseMonth = new javax.swing.JTable();
         jPanel11 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         btnSearch = new javax.swing.JButton();
@@ -122,8 +125,8 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Head Wise Month Expense ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel9.setForeground(new java.awt.Color(102, 0, 0));
 
-        tbRequestedItem.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        tbRequestedItem.setModel(new javax.swing.table.DefaultTableModel(
+        tblHeadExpenseMonth.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tblHeadExpenseMonth.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
                 {null,null, null, null}
@@ -131,23 +134,23 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
             new String [] {
                 "Item Id","Item Name","Request Quantity"}
         ));
-        tbRequestedItem.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblHeadExpenseMonth.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbRequestedItemMouseClicked(evt);
+                tblHeadExpenseMonthMouseClicked(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                tbRequestedItemMousePressed(evt);
+                tblHeadExpenseMonthMousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                tbRequestedItemMouseReleased(evt);
+                tblHeadExpenseMonthMouseReleased(evt);
             }
         });
-        tbRequestedItem.addKeyListener(new java.awt.event.KeyAdapter() {
+        tblHeadExpenseMonth.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                tbRequestedItemKeyReleased(evt);
+                tblHeadExpenseMonthKeyReleased(evt);
             }
         });
-        jScrollPane11.setViewportView(tbRequestedItem);
+        jScrollPane11.setViewportView(tblHeadExpenseMonth);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -377,22 +380,22 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tbRequestedItemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbRequestedItemMouseClicked
+    private void tblHeadExpenseMonthMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHeadExpenseMonthMouseClicked
 
 
-    }//GEN-LAST:event_tbRequestedItemMouseClicked
+    }//GEN-LAST:event_tblHeadExpenseMonthMouseClicked
 
-    private void tbRequestedItemMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbRequestedItemMousePressed
+    private void tblHeadExpenseMonthMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHeadExpenseMonthMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tbRequestedItemMousePressed
+    }//GEN-LAST:event_tblHeadExpenseMonthMousePressed
 
-    private void tbRequestedItemMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbRequestedItemMouseReleased
+    private void tblHeadExpenseMonthMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHeadExpenseMonthMouseReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tbRequestedItemMouseReleased
+    }//GEN-LAST:event_tblHeadExpenseMonthMouseReleased
 
-    private void tbRequestedItemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbRequestedItemKeyReleased
+    private void tblHeadExpenseMonthKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblHeadExpenseMonthKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tbRequestedItemKeyReleased
+    }//GEN-LAST:event_tblHeadExpenseMonthKeyReleased
 
     private void tblIndentRequestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblIndentRequestMouseClicked
         // TODO add your handling code here:
@@ -433,7 +436,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
     private void btnSaveExpenseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveExpenseActionPerformed
         // TODO add your handling code here:
         objMonthlyLoc.setLocationId(Constants.locationId);
-        
+
 
     }//GEN-LAST:event_btnSaveExpenseActionPerformed
 
@@ -457,7 +460,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
-    private javax.swing.JTable tbRequestedItem;
+    private javax.swing.JTable tblHeadExpenseMonth;
     private javax.swing.JTable tblIndentRequest;
     private javax.swing.JTextField txtLocationName;
     private javax.swing.JTextField txtToStoreName1;
@@ -465,8 +468,8 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
 
     private void setRerquestItemsColumnsWidths() {
         TableColumn column = null;
-        for (int i = 0; i < tbRequestedItem.getColumnCount(); i++) {
-            column = tbRequestedItem.getColumnModel().getColumn(i);
+        for (int i = 0; i < tblHeadExpenseMonth.getColumnCount(); i++) {
+            column = tblHeadExpenseMonth.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(50);
             } else if (i == 1) {
@@ -474,6 +477,25 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
             } else if (i == 2) {
                 column.setPreferredWidth(30);
             }
+        }
+    }
+
+    
+
+    private void setMontlyExpense() {
+        listLocationExpense = ctlLocExpense.monthlyLocationExpense(expenseMonth,
+                closeStatus);
+        if (listLocationExpense.isEmpty()) {
+            List<MonthlyLocationExpenseBO> list = new ArrayList();
+            list.add(new MonthlyLocationExpenseBO());
+            tblHeadExpenseMonth.setModel(new ItemServicesTableModel(list));
+        } else {
+            tblHeadExpenseMonth.setModel(new ConsumableItemsTableModel(listLocationExpense));
+            ListSelectionModel selectionModel = tblHeadExpenseMonth.getSelectionModel();
+            tblHeadExpenseMonth.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            setMasterColumnsWidths();
+            selectionModel.setSelectionInterval(0, 0);
+            Constants.tablelook.setJTableEnvironment(tblHeadExpenseMonth);
         }
     }
 
@@ -492,5 +514,4 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
             }
         }
     }
-
 }
