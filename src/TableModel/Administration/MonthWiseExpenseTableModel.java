@@ -17,7 +17,7 @@ import javax.swing.table.AbstractTableModel;
 public class MonthWiseExpenseTableModel extends AbstractTableModel {
 
     private final String[] columnNames = 
-                {"Sr.","Exp. Head","Amount"};
+                {"Exp. Id","Exp. Head", "Month","Amount"};
 
     private Object[][] data;
 
@@ -25,9 +25,11 @@ public class MonthWiseExpenseTableModel extends AbstractTableModel {
         data = new Object[li.size()][columnNames.length];
         for (int i = 0; i < li.size(); i++) {
             MonthlyLocationExpenseBO dS = li.get(i);
-            data[i][0] = (i+1);
+//            data[i][0] = (i+1);
+            data[i][0] = dS.getExpenseMasterId();
             data[i][1] = dS.getExpenseTypeDescription();
-            data[i][2] = dS.getAmount();
+            data[i][2] = dS.getExpenseMonth();
+            data[i][3] = dS.getAmount();
             
         }
     }
