@@ -467,22 +467,6 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtToStoreName1;
     // End of variables declaration//GEN-END:variables
 
-    private void setRerquestItemsColumnsWidths() {
-        TableColumn column = null;
-        for (int i = 0; i < tblHeadExpenseMonth.getColumnCount(); i++) {
-            column = tblHeadExpenseMonth.getColumnModel().getColumn(i);
-            if (i == 0) {
-                column.setPreferredWidth(50);
-            } else if (i == 1) {
-                column.setPreferredWidth(200);
-            } else if (i == 2) {
-                column.setPreferredWidth(30);
-            }
-        }
-    }
-
-    
-
     private void setMontlyExpense() {
         listLocationExpense = ctlLocExpense.headWiseMonthlyExpense(Constants.locationId,
                 expenseMonth, "O");
@@ -510,7 +494,21 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
                 column.setPreferredWidth(150);
             } else if (i == 2) {
                 column.setPreferredWidth(50);
-            } 
+            }
+        }
+    }
+
+    private void setRerquestItemsColumnsWidths() {
+        TableColumn column = null;
+        for (int i = 0; i < tblHeadExpenseMonth.getColumnCount(); i++) {
+            column = tblHeadExpenseMonth.getColumnModel().getColumn(i);
+            if (i == 0) {
+                column.setPreferredWidth(50);
+            } else if (i == 1) {
+                column.setPreferredWidth(200);
+            } else if (i == 2) {
+                column.setPreferredWidth(30);
+            }
         }
     }
 }
