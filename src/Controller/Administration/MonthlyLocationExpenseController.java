@@ -18,8 +18,8 @@ public class MonthlyLocationExpenseController {
     
     MonthlyLocationExpenseHandler hdlLocExpense = new MonthlyLocationExpenseHandler();
     
-    public List<MonthlyLocationExpenseBO> headWiseMonthlyExpense(String expMonth,
-            String closeStatus) {
-        return hdlLocExpense.headWiseMonthlyExpense(expMonth, closeStatus);
+    public List<MonthlyLocationExpenseBO> headWiseMonthlyExpense(String locationId,
+            String expMonth, String closeStatus) {
+        return hdlLocExpense.headWiseMonthlyExpense(locationId, expMonth, closeStatus);
     }
 }

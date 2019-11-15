@@ -18,8 +18,8 @@ import utilities.Database;
  */
 public class MonthlyLocationExpenseHandler {
 
-    public List<MonthlyLocationExpenseBO> headWiseMonthlyExpense(String expMonth,
-            String closeStatus) {
+    public List<MonthlyLocationExpenseBO> headWiseMonthlyExpense(String locationId,
+            String expMonth, String closeStatus) {
 
         String columns[] = {"-", "EXP_MASTER_ID", "EXPENSE_TYPE_ID", "EXP_NAME",
             "AMOUNT", "EXPENSE_MONTH"};
@@ -33,9 +33,9 @@ public class MonthlyLocationExpenseHandler {
                 + Database.DCMS.locMonthlyExpDetail + " MED,        \n"
                 + Database.DCMS.locMonthlyExpMaster + " MEM,        \n"
                 + Database.DCMS.definitionTypeDetail + " DTD        \n"
-                + " WHERE MED.EXP_MASTER_ID = '1'                   \n"
+                + " WHERE MEM.LOCATION_ID = '" + locationId + "'                   \n"
                 + " AND MEM.ID = MED.EXP_MASTER_ID                  \n";
-        
+
         if (!expMonth.equalsIgnoreCase("N")) {
             query += "AND MEM.EXPENSE_MONTH = '" + expMonth + "'    \n";
         }
