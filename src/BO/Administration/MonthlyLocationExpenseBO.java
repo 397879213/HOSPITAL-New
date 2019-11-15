@@ -33,6 +33,14 @@ public class MonthlyLocationExpenseBO {
     private String detailId = "";
     private String detailDescription = "";
 
+    public String getLocationDescription() {
+        return locationDescription;
+    }
+
+    public void setLocationDescription(String locationDescription) {
+        this.locationDescription = locationDescription;
+    }
+
     public String getExpenseTypeDescription() {
         return expenseTypeDescription;
     }

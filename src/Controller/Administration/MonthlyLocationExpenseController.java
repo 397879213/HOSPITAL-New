@@ -22,4 +22,9 @@ public class MonthlyLocationExpenseController {
             String expMonth, String closeStatus) {
         return hdlLocExpense.headWiseMonthlyExpense(locationId, expMonth, closeStatus);
     }
+    
+    public List<MonthlyLocationExpenseBO> monthWiseExpense(String locationId,
+            String expMonth, String closeStatus) {
+        return hdlLocExpense.monthWiseExpense(locationId, expMonth, closeStatus);
+    }
 }
