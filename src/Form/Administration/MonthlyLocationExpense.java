@@ -2,6 +2,7 @@ package Form.Administration;
 
 import BO.Administration.MonthlyLocationExpenseBO;
 import Controller.Administration.MonthlyLocationExpenseController;
+import TableModel.Administration.HeadExpenseMonthTableModel;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -484,7 +485,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
 
     private void setMontlyExpense() {
         listLocationExpense = ctlLocExpense.monthlyLocationExpense(expenseMonth,
-                closeStatus);
+                "O");
         if (listLocationExpense.isEmpty()) {
             List<MonthlyLocationExpenseBO> list = new ArrayList();
             list.add(new MonthlyLocationExpenseBO());
