@@ -488,9 +488,9 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
         if (listLocationExpense.isEmpty()) {
             List<MonthlyLocationExpenseBO> list = new ArrayList();
             list.add(new MonthlyLocationExpenseBO());
-            tblHeadExpenseMonth.setModel(new ItemServicesTableModel(list));
+            tblHeadExpenseMonth.setModel(new HeadExpenseMonthTableModel(list));
         } else {
-            tblHeadExpenseMonth.setModel(new ConsumableItemsTableModel(listLocationExpense));
+            tblHeadExpenseMonth.setModel(new HeadExpenseMonthTableModel(listLocationExpense));
             ListSelectionModel selectionModel = tblHeadExpenseMonth.getSelectionModel();
             tblHeadExpenseMonth.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
             setMasterColumnsWidths();

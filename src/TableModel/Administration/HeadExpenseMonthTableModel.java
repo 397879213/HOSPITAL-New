@@ -6,6 +6,7 @@ package TableModel.Administration;
 
 
 import BO.Administration.BOOPDConsultant;
+import BO.Administration.MonthlyLocationExpenseBO;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -20,15 +21,13 @@ public class HeadExpenseMonthTableModel extends AbstractTableModel {
 
     private Object[][] data;
 
-    public HeadExpenseMonthTableModel(List<BOOPDConsultant> li) {
+    public HeadExpenseMonthTableModel(List<MonthlyLocationExpenseBO> li) {
         data = new Object[li.size()][columnNames.length];
         for (int i = 0; i < li.size(); i++) {
-            BOOPDConsultant dS = li.get(i);
+            MonthlyLocationExpenseBO dS = li.get(i);
             data[i][0] = (i+1);
-            data[i][1] = dS.getPatientId();
-            data[i][2] = dS.getPatientName();
-            data[i][3] = dS.getInvoiceDate();
-            data[i][4] = dS.getConsultationRoom();
+            data[i][1] = dS.getExpenseTypeDescription();
+            data[i][2] = dS.getAmount();
             
         }
     }
