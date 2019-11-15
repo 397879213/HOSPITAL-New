@@ -16,18 +16,12 @@ import utilities.Stores;
 
 public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
 
-    private String inStoreId = "0";
-    private String fromStoreId = Stores.pathologyManualStore;
-    private String itemId = "0";
-    private String indentId = "";
-    private String manualIndentNo = "";
-    private String searchToStoreId = "";
-    private String searchFromStoreId = "";
-    private String searchItemId = "";
+    private String expenseMonth = "N";
+    private String closeStatus = "N";
     private String fromDate = "";
-    private String manualIndentDate = "";
     private String toDate = "";
     DisplayLOV lov = new DisplayLOV();
+    MonthlyLocationExpense objMonthlyLoc = new MonthlyLocationExpense();
 
     public MonthlyLocationExpense() {
 
@@ -38,8 +32,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
         btnReOpenMonth.setMnemonic(KeyEvent.VK_R);
         btnSearch.setMnemonic(KeyEvent.VK_S);
 //        inStoreId = LocationProperties.locationDefaultStoreId;
-//        txtToStoreName.setText(LocationProperties.locationDefaultStoreName);
-
+        txtLocationName.setText(Constants.locationName);
     }
 
     @SuppressWarnings("unchecked")
@@ -49,7 +42,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        txtToStoreName = new javax.swing.JTextField();
+        txtLocationName = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<String>();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane11 = new javax.swing.JScrollPane();
@@ -92,8 +85,8 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("Location : ");
 
-        txtToStoreName.setEditable(false);
-        txtToStoreName.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtLocationName.setEditable(false);
+        txtLocationName.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Month" }));
 
@@ -105,7 +98,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
                 .addGap(5, 5, 5)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtToStoreName, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtLocationName, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -116,7 +109,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
                 .addGap(8, 8, 8)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtToStoreName)
+                        .addComponent(txtLocationName)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -462,7 +455,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JTable tbRequestedItem;
     private javax.swing.JTable tblIndentRequest;
-    private javax.swing.JTextField txtToStoreName;
+    private javax.swing.JTextField txtLocationName;
     private javax.swing.JTextField txtToStoreName1;
     // End of variables declaration//GEN-END:variables
 
