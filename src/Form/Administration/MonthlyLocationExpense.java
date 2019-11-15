@@ -41,6 +41,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
         btnReOpenMonth.setMnemonic(KeyEvent.VK_R);
         btnSearch.setMnemonic(KeyEvent.VK_S);
         txtLocationName.setText(Constants.locationName);
+        txtLocDesc.setText(Constants.locationName);
         setMontlyExpense();
     }
 
@@ -59,7 +60,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
         jPanel11 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         btnSearch = new javax.swing.JButton();
-        txtToStoreName1 = new javax.swing.JTextField();
+        txtLocDesc = new javax.swing.JTextField();
         jComboBox2 = new javax.swing.JComboBox<String>();
         jComboBox3 = new javax.swing.JComboBox<String>();
         jPanel13 = new javax.swing.JPanel();
@@ -185,8 +186,8 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
             }
         });
 
-        txtToStoreName1.setEditable(false);
-        txtToStoreName1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtLocDesc.setEditable(false);
+        txtLocDesc.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Month" }));
 
@@ -200,7 +201,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtToStoreName1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtLocDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBox2, 0, 201, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -216,7 +217,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtToStoreName1)
+                    .addComponent(txtLocDesc)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -465,8 +466,8 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JTable tblHeadExpenseMonth;
     private javax.swing.JTable tblMonthWiseExpense;
+    private javax.swing.JTextField txtLocDesc;
     private javax.swing.JTextField txtLocationName;
-    private javax.swing.JTextField txtToStoreName1;
     // End of variables declaration//GEN-END:variables
 
     private void setMontlyExpense() {

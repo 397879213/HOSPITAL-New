@@ -296,7 +296,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel15" min="-2" pref="85" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtToStoreName1" min="-2" pref="144" max="-2" attributes="0"/>
+                      <Component id="txtLocDesc" min="-2" pref="144" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jComboBox2" pref="201" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -314,7 +314,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel15" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                           <Component id="btnSearch" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                          <Component id="txtToStoreName1" alignment="3" max="32767" attributes="0"/>
+                          <Component id="txtLocDesc" alignment="3" max="32767" attributes="0"/>
                           <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -344,7 +344,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSearchActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtToStoreName1">
+            <Component class="javax.swing.JTextField" name="txtLocDesc">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
