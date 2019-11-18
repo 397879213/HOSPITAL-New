@@ -5,6 +5,7 @@
  */
 package Handler.Administration;
 
+import BMT.BO.CompoundingBO;
 import BO.Administration.MonthlyLocationExpenseBO;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -125,6 +126,50 @@ public class MonthlyLocationExpenseHandler {
         }
 
         return lisVerRep;
+    }
+    
+    public boolean insertLocMonthlyExpMaster(CompoundingBO comp) {
+
+        String[] columns = {Database.DCMS.locMonthlyExpMaster, "ID", "LOCATION_ID", 
+            "EXPENSE_MONTH", "CLOSE_STATUS","ACTIVE", "TOTAL_AMOUNT", "CRTD_BY", 
+            "CRTD_DATE", "CRTD_TERMINAL_ID"};
+
+        HashMap map = new HashMap();
+        map.put("ID", "'" + comp.getStoreId() + "'");
+        map.put("LOCATION_ID", "'" + comp.getCompoundId() + "'");
+        map.put("EXPENSE_MONTH", "'" + comp.getCompoundId() + "'");
+        map.put("CLOSE_STATUS", "'" + comp.getCompoundId() + "'");
+        map.put("ACTIVE", "'" + comp.getCompoundId() + "'");
+        map.put("TOTAL_AMOUNT", "'" + comp.getCompoundId() + "'");
+        map.put("LOCATION_ID", "'" + comp.getCompoundId() + "'");
+        map.put("CRTD_BY", "'" + Constants.userId + "'");
+        map.put("CRTD_DATE", Constants.today);
+        map.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
+
+        List InsertEmp = new ArrayList();
+        InsertEmp.add(map);
+        return Constants.dao.insertData(InsertEmp, columns);
+    }
+    
+    public boolean insertLocMonthlyExpDetail(List<MonthlyLocationExpenseBO> listCopy) {
+
+        String[] columns = {Database.DCMS.locMonthlyExpDetail, "EXP_MASTER_ID", 
+            "EXPENSE_TYPE_ID", "AMOUNT", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
+
+        List lstInr = new ArrayList();
+        for (int i = 0; i < listCopy.size(); i++) {
+            MonthlyLocationExpenseBO comp = listCopy.get(i);
+            HashMap map = new HashMap();
+            map.put("EXP_MASTER_ID", "'" + comp.getExpenseMasterId()+ "'");
+            map.put("EXPENSE_TYPE_ID", "'" + comp.getExpenseTypeId()+ "'");
+            map.put("AMOUNT", "'" + comp.getAmount()+ "'");
+            map.put("CRTD_BY", "'" + Constants.userId + "'");
+            map.put("CRTD_DATE", Constants.today);
+            map.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
+
+            lstInr.add(map);
+        }
+        return Constants.dao.insertData(lstInr, columns);
     }
 
 }

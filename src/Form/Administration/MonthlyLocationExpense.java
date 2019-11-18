@@ -27,6 +27,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
 
     List<MonthlyLocationExpenseBO> listLocationExpense = new ArrayList();
     List<MonthlyLocationExpenseBO> listMonthWiseExpense = new ArrayList();
+    List<MonthlyLocationExpenseBO> listCopy = new ArrayList();
 
     DisplayLOV lov = new DisplayLOV();
     MonthlyLocationExpenseController ctlLocExpense = new MonthlyLocationExpenseController();
@@ -203,7 +204,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtLocDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox2, 0, 201, Short.MAX_VALUE)
+                .addComponent(jComboBox2, 0, 124, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -278,7 +279,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                .addGap(5, 5, 5))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -369,7 +370,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(5, 5, 5))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -423,6 +424,12 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnReOpenMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReOpenMonthActionPerformed
+        for (int i = 0; i < listMonthWiseExpense.size(); i++) {
+            if (tblMonthWiseExpense.getValueAt(WIDTH, 4).equals(true)) {
+                MonthlyLocationExpenseBO objSave = listMonthWiseExpense.get(i);
+                listCopy.add(objSave);
+            }
+        }
 
     }//GEN-LAST:event_btnReOpenMonthActionPerformed
 
@@ -434,7 +441,6 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
         searchMonthWiseExpense();
-
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnSaveExpenseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveExpenseActionPerformed
