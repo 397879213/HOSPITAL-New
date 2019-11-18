@@ -430,6 +430,13 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
                 listCopy.add(objSave);
             }
         }
+        setExpenseMaster();
+        if(ctlLocExpense.insertLocMonthlyExpense(listCopy, objMonthlyLoc)){
+            JOptionPane.showMessageDialog(null, "Expense Re-open successfully.");
+        }else{
+            JOptionPane.showMessageDialog(null, "Unable to Re-open the Expense.\n"
+                    + "Kindly contact Administrator.");
+        }
 
     }//GEN-LAST:event_btnReOpenMonthActionPerformed
 
@@ -540,5 +547,11 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
                 column.setPreferredWidth(50);
             }
         }
+    }
+
+    private void setExpenseMaster() {
+        objMonthlyLoc = new MonthlyLocationExpenseBO();
+        objMonthlyLoc.setCloseStatus("O");
+        objMonthlyLoc.setLocationId(Constants.locationId);
     }
 }
