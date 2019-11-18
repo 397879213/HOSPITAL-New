@@ -146,8 +146,8 @@ public class MonthlyLocationExpenseHandler {
         map.put("ID", "'" + id + "'");
         map.put("LOCATION_ID", "'" + comp.getLocationId()+ "'");
         map.put("EXPENSE_MONTH", "'" + comp.getExpenseMonth()+ "'");
-        map.put("CLOSE_STATUS", "'O'");
-        map.put("ACTIVE", "'Y'");
+        map.put("CLOSE_STATUS", "'" + comp.getCloseStatus()+ "'");
+        map.put("ACTIVE", "'" + comp.getActive()+ "'");
         map.put("TOTAL_AMOUNT", "'" + comp.getTotalAmount()+ "'");
         map.put("CRTD_BY", "'" + Constants.userId + "'");
         map.put("CRTD_DATE", Constants.today);

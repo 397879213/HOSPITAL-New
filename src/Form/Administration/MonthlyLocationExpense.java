@@ -552,6 +552,9 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
     private void setExpenseMaster() {
         objMonthlyLoc = new MonthlyLocationExpenseBO();
         objMonthlyLoc.setCloseStatus("O");
+        objMonthlyLoc.setActive("Y");
+        objMonthlyLoc.setExpenseMonth("O");
+        objMonthlyLoc.setTotalAmount("0");
         objMonthlyLoc.setLocationId(Constants.locationId);
     }
 }
