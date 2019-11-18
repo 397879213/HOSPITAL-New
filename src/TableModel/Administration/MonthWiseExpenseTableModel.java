@@ -30,7 +30,7 @@ public class MonthWiseExpenseTableModel extends AbstractTableModel {
             data[i][1] = dS.getExpenseTypeDescription();
             data[i][2] = dS.getExpenseMonth();
             data[i][3] = dS.getAmount();
-            data[i][4] = new Boolean(true);
+            data[i][4] = new Boolean(false);
             
         }
     }

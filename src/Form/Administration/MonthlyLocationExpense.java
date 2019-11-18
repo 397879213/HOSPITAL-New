@@ -440,7 +440,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
 
     private void btnReOpenMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReOpenMonthActionPerformed
         for (int i = 0; i < listMonthWiseExpense.size(); i++) {
-            if (tblMonthWiseExpense.getValueAt(WIDTH, 4).equals(true)) {
+            if (tblMonthWiseExpense.getValueAt(i, 4).equals(true)) {
                 MonthlyLocationExpenseBO objSave = listMonthWiseExpense.get(i);
                 listCopy.add(objSave);
             }
@@ -613,6 +613,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
             txtExpMonth.setDate(dateFormat.parse(month));
             txtFromExpMonth.setDate(dateFormat.parse(month));
             txtToExpMonth.setDate(dateFormat.parse(month));
+            expMonth = month;
         } catch (Exception ex) {
             ex.printStackTrace();
         }
