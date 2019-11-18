@@ -217,9 +217,9 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtLocDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtLocDesc)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtFromExpMonth, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtFromExpMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtToExpMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -446,9 +446,9 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
             }
         }
         setExpenseMaster();
-        if(ctlLocExpense.insertLocMonthlyExpense(listCopy, objMonthlyLoc)){
+        if (ctlLocExpense.insertLocMonthlyExpense(listCopy, objMonthlyLoc)) {
             JOptionPane.showMessageDialog(null, "Expense Re-open successfully.");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Unable to Re-open the Expense.\n"
                     + "Kindly contact Administrator.");
         }
@@ -462,9 +462,9 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
         if (confirmation != 0) {
             return;
         }
-        if(ctlLocExpense.updateTotalAmountStatus(title)){
+        if (ctlLocExpense.updateTotalAmountStatus(title)) {
             JOptionPane.showMessageDialog(null, "Expense Close successfully.");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Unable to Close the Expense.\n"
                     + "Kindly contact Administrator.");
         }
@@ -485,7 +485,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
     private void txtExpMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtExpMonthActionPerformed
         // TODO add your handling code here:
         if (txtExpMonth.getDate().getDate() == 0) {
-            JOptionPane.showMessageDialog(null, "Enter the Ultrasound E.D.D DD-MON-YY",
+            JOptionPane.showMessageDialog(null, "Enter the Date DD-MON-YY",
                     "Gaynee Parameter", JOptionPane.WARNING_MESSAGE);
             return;
         }
@@ -601,17 +601,18 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
         objMonthlyLoc.setTotalAmount("0");
         objMonthlyLoc.setLocationId(Constants.locationId);
     }
-    
+
     private void setDate(int day) {
         try {
+//            Calendar c = Calendar.getInstance();
+//            c.add(Calendar.DATE, day);
             Date date = new Date();
-            Calendar c = Calendar.getInstance();
-            c.add(Calendar.DATE, day);
-            SimpleDateFormat dateFormat = new SimpleDateFormat("MMM-yy");
-            Date date2 = dateFormat.parse(dateFormat.format(c.getTime()));
-            txtExpMonth.setDate(date2);
-            txtFromExpMonth.setDate(date2);
-            txtToExpMonth.setDate(date2);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM-yyyy");
+            String month = dateFormat.format(date);
+            System.err.println("ddd "+month);
+            txtExpMonth.setDate(dateFormat.parse(month));
+            txtFromExpMonth.setDate(dateFormat.parse(month));
+            txtToExpMonth.setDate(dateFormat.parse(month));
         } catch (Exception ex) {
             ex.printStackTrace();
         }
