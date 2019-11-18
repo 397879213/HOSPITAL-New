@@ -7,6 +7,7 @@ import TableModel.Administration.MonthWiseExpenseTableModel;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -32,6 +33,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
     DisplayLOV lov = new DisplayLOV();
     MonthlyLocationExpenseController ctlLocExpense = new MonthlyLocationExpenseController();
     MonthlyLocationExpenseBO objMonthlyLoc = new MonthlyLocationExpenseBO();
+    private String expMonth;
 
     public MonthlyLocationExpense() {
 
@@ -44,6 +46,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
         txtLocationName.setText(Constants.locationName);
         txtLocDesc.setText(Constants.locationName);
         setMontlyExpense();
+        setDate(0);
     }
 
     @SuppressWarnings("unchecked")
@@ -54,7 +57,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
         jPanel7 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         txtLocationName = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<String>();
+        txtExpMonth = new org.jdesktop.swingx.JXDatePicker();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane11 = new javax.swing.JScrollPane();
         tblHeadExpenseMonth = new javax.swing.JTable();
@@ -62,8 +65,8 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
         jLabel15 = new javax.swing.JLabel();
         btnSearch = new javax.swing.JButton();
         txtLocDesc = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox<String>();
-        jComboBox3 = new javax.swing.JComboBox<String>();
+        txtFromExpMonth = new org.jdesktop.swingx.JXDatePicker();
+        txtToExpMonth = new org.jdesktop.swingx.JXDatePicker();
         jPanel13 = new javax.swing.JPanel();
         jScrollPane12 = new javax.swing.JScrollPane();
         tblMonthWiseExpense = new javax.swing.JTable();
@@ -99,7 +102,11 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
         txtLocationName.setEditable(false);
         txtLocationName.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Month" }));
+        txtExpMonth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtExpMonthActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -109,20 +116,20 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
                 .addGap(5, 5, 5)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtLocationName, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtLocationName, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(txtExpMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 109, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(8, 8, 8)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtExpMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtLocationName)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtLocationName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -190,9 +197,17 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
         txtLocDesc.setEditable(false);
         txtLocDesc.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Month" }));
+        txtFromExpMonth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFromExpMonthActionPerformed(evt);
+            }
+        });
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Month" }));
+        txtToExpMonth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtToExpMonthActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -204,9 +219,9 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtLocDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox2, 0, 124, Short.MAX_VALUE)
+                .addComponent(txtFromExpMonth, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtToExpMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSearch)
                 .addContainerGap())
@@ -219,9 +234,9 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtLocDesc)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtFromExpMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtToExpMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         jPanel13.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -259,7 +274,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane12)
+            .addComponent(jScrollPane12, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -467,6 +482,25 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnSaveExpenseActionPerformed
 
+    private void txtExpMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtExpMonthActionPerformed
+        // TODO add your handling code here:
+        if (txtExpMonth.getDate().getDate() == 0) {
+            JOptionPane.showMessageDialog(null, "Enter the Ultrasound E.D.D DD-MON-YY",
+                    "Gaynee Parameter", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMM-yy");
+        expMonth = dateFormat.format(txtExpMonth.getDate());
+    }//GEN-LAST:event_txtExpMonthActionPerformed
+
+    private void txtFromExpMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFromExpMonthActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFromExpMonthActionPerformed
+
+    private void txtToExpMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtToExpMonthActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtToExpMonthActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCloseExpense;
@@ -474,9 +508,6 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnReOpenMonth;
     private javax.swing.JButton btnSaveExpense;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -489,8 +520,11 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JTable tblHeadExpenseMonth;
     private javax.swing.JTable tblMonthWiseExpense;
+    private org.jdesktop.swingx.JXDatePicker txtExpMonth;
+    private org.jdesktop.swingx.JXDatePicker txtFromExpMonth;
     private javax.swing.JTextField txtLocDesc;
     private javax.swing.JTextField txtLocationName;
+    private org.jdesktop.swingx.JXDatePicker txtToExpMonth;
     // End of variables declaration//GEN-END:variables
 
     private void setMontlyExpense() {
@@ -563,8 +597,23 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
         objMonthlyLoc = new MonthlyLocationExpenseBO();
         objMonthlyLoc.setCloseStatus("O");
         objMonthlyLoc.setActive("Y");
-        objMonthlyLoc.setExpenseMonth("O");
+        objMonthlyLoc.setExpenseMonth(expMonth);
         objMonthlyLoc.setTotalAmount("0");
         objMonthlyLoc.setLocationId(Constants.locationId);
+    }
+    
+    private void setDate(int day) {
+        try {
+            Date date = new Date();
+            Calendar c = Calendar.getInstance();
+            c.add(Calendar.DATE, day);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MMM-yy");
+            Date date2 = dateFormat.parse(dateFormat.format(c.getTime()));
+            txtExpMonth.setDate(date2);
+            txtFromExpMonth.setDate(date2);
+            txtToExpMonth.setDate(date2);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }
