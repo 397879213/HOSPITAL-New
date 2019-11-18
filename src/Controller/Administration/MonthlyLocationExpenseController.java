@@ -43,4 +43,15 @@ public class MonthlyLocationExpenseController {
         }
         return ret;
     }
+    
+    public boolean updateTotalAmountStatus(String id) {
+        boolean ret = hdlLocExpense.updateTotalAmountStatus(id);
+        if (ret) {
+            Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
 }

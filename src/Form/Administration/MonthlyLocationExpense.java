@@ -442,7 +442,17 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
 
     private void btnCloseExpenseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseExpenseActionPerformed
         // TODO add your handling code here:
-
+        int confirmation = JOptionPane.showConfirmDialog(null, "You Are Going "
+                + "To Close Month Expense. \nDo you want to Close?");
+        if (confirmation != 0) {
+            return;
+        }
+        if(ctlLocExpense.updateTotalAmountStatus(title)){
+            JOptionPane.showMessageDialog(null, "Expense Close successfully.");
+        }else{
+            JOptionPane.showMessageDialog(null, "Unable to Close the Expense.\n"
+                    + "Kindly contact Administrator.");
+        }
     }//GEN-LAST:event_btnCloseExpenseActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed

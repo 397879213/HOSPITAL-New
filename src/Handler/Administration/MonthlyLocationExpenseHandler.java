@@ -180,13 +180,14 @@ public class MonthlyLocationExpenseHandler {
         return Constants.dao.insertData(lstInr, columns);
     }
 
-    public boolean updateTotalAmount(String id) {
+    public boolean updateTotalAmountStatus(String id) {
         String query
                 = " UPDATE " + Database.DCMS.locMonthlyExpMaster + "\n"
-                + " SET STATUS = (SELECT  SUM(AMOUNT) FROM "
+                + " SET CLOSE_STATUS = 'C'                      \n"
+                + " TOTAL_AMOUNT = (SELECT  SUM(AMOUNT) FROM    \n"
                 + Database.DCMS.locMonthlyExpMaster 
-                + "WHERE EXP_MASTER_ID = "+ id +")\n"
-                + " WHERE ISSUE_REQUEST_NO = " + id + " \n";
+                + "WHERE EXP_MASTER_ID = "+ id +")              \n"
+                + " WHERE ISSUE_REQUEST_NO = " + id + "         \n";
         return Constants.dao.executeUpdate(query, false);
     }
     
