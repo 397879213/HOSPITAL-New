@@ -128,20 +128,27 @@ public class MonthlyLocationExpenseHandler {
         return lisVerRep;
     }
     
-    public boolean insertLocMonthlyExpMaster(CompoundingBO comp) {
+    public String selectMonthlyExpId() {
+        String[] columns = {"-", "ID"};
+        String query = " SELECT NVL(MAX(ID) + 1, 1) ID FROM \n"
+                + Database.DCMS.locMonthlyExpMaster + "     \n";
+        List<HashMap> list = Constants.dao.selectDatainList(query, columns);
+        return list.get(0).get("ID").toString();
+    }
+    
+    public boolean insertLocMonthlyExpMaster(MonthlyLocationExpenseBO comp, String id) {
 
         String[] columns = {Database.DCMS.locMonthlyExpMaster, "ID", "LOCATION_ID", 
             "EXPENSE_MONTH", "CLOSE_STATUS","ACTIVE", "TOTAL_AMOUNT", "CRTD_BY", 
             "CRTD_DATE", "CRTD_TERMINAL_ID"};
 
         HashMap map = new HashMap();
-        map.put("ID", "'" + comp.getStoreId() + "'");
-        map.put("LOCATION_ID", "'" + comp.getCompoundId() + "'");
-        map.put("EXPENSE_MONTH", "'" + comp.getCompoundId() + "'");
-        map.put("CLOSE_STATUS", "'" + comp.getCompoundId() + "'");
-        map.put("ACTIVE", "'" + comp.getCompoundId() + "'");
-        map.put("TOTAL_AMOUNT", "'" + comp.getCompoundId() + "'");
-        map.put("LOCATION_ID", "'" + comp.getCompoundId() + "'");
+        map.put("ID", "'" + id + "'");
+        map.put("LOCATION_ID", "'" + comp.getLocationId()+ "'");
+        map.put("EXPENSE_MONTH", "'" + comp.getExpenseMonth()+ "'");
+        map.put("CLOSE_STATUS", "'O'");
+        map.put("ACTIVE", "'Y'");
+        map.put("TOTAL_AMOUNT", "'" + comp.getTotalAmount()+ "'");
         map.put("CRTD_BY", "'" + Constants.userId + "'");
         map.put("CRTD_DATE", Constants.today);
         map.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
@@ -151,7 +158,8 @@ public class MonthlyLocationExpenseHandler {
         return Constants.dao.insertData(InsertEmp, columns);
     }
     
-    public boolean insertLocMonthlyExpDetail(List<MonthlyLocationExpenseBO> listCopy) {
+    public boolean insertLocMonthlyExpDetail(List<MonthlyLocationExpenseBO> listCopy, 
+            String id) {
 
         String[] columns = {Database.DCMS.locMonthlyExpDetail, "EXP_MASTER_ID", 
             "EXPENSE_TYPE_ID", "AMOUNT", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
@@ -160,7 +168,7 @@ public class MonthlyLocationExpenseHandler {
         for (int i = 0; i < listCopy.size(); i++) {
             MonthlyLocationExpenseBO comp = listCopy.get(i);
             HashMap map = new HashMap();
-            map.put("EXP_MASTER_ID", "'" + comp.getExpenseMasterId()+ "'");
+            map.put("EXP_MASTER_ID", "'" + id + "'");
             map.put("EXPENSE_TYPE_ID", "'" + comp.getExpenseTypeId()+ "'");
             map.put("AMOUNT", "'" + comp.getAmount()+ "'");
             map.put("CRTD_BY", "'" + Constants.userId + "'");
