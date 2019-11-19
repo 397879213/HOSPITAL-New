@@ -54,4 +54,15 @@ public class MonthlyLocationExpenseController {
         }
         return ret;
     }
+    
+    public boolean updateAmount(MonthlyLocationExpenseBO obj) {
+        boolean ret = hdlLocExpense.updateAmount(obj);
+        if (ret) {
+            Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
 }

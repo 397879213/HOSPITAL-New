@@ -30,11 +30,11 @@ public class MonthlyLocationExpenseHandler {
                 + " MED.EXPENSE_TYPE_ID,                            \n"
                 + " DTD.DESCRIPTION EXP_NAME,                       \n"
                 + " MED.AMOUNT,                                     \n"
-                + " MEM.EXPENSE_MONTH  FROM                         \n"
+                + " TO_CHAR(MEM.EXPENSE_MONTH, 'MON-YY') EXPENSE_MONTH FROM \n"
                 + Database.DCMS.locMonthlyExpDetail + " MED,        \n"
                 + Database.DCMS.locMonthlyExpMaster + " MEM,        \n"
                 + Database.DCMS.definitionTypeDetail + " DTD        \n"
-                + " WHERE MEM.LOCATION_ID = '" + locationId + "'                   \n"
+                + " WHERE MEM.LOCATION_ID = '" + locationId + "'    \n"
                 + " AND MEM.ID = MED.EXP_MASTER_ID                  \n";
 
         if (!expMonth.equalsIgnoreCase("N")) {
@@ -183,12 +183,20 @@ public class MonthlyLocationExpenseHandler {
     public boolean updateTotalAmountStatus(String id) {
         String query
                 = " UPDATE " + Database.DCMS.locMonthlyExpMaster + "\n"
-                + " SET CLOSE_STATUS = 'C'                      \n"
+                + " SET CLOSE_STATUS = 'C',                     \n"
                 + " TOTAL_AMOUNT = (SELECT  SUM(AMOUNT) FROM    \n"
-                + Database.DCMS.locMonthlyExpMaster 
+                + Database.DCMS.locMonthlyExpDetail 
                 + "WHERE EXP_MASTER_ID = "+ id +")              \n"
-                + " WHERE ISSUE_REQUEST_NO = " + id + "         \n";
+                + " WHERE ID = " + id + "         \n";
         return Constants.dao.executeUpdate(query, false);
     }
     
+    public boolean updateAmount(MonthlyLocationExpenseBO obj) {
+        String query
+                = " UPDATE " + Database.DCMS.locMonthlyExpDetail + "\n"
+                + " SET AMOUNT = '"+ obj.getAmount() +"'\n"
+                + " WHERE EXP_MASTER_ID = " + obj.getExpenseMasterId() + "\n"
+                + " AND EXPENSE_TYPE_ID = " + obj.getExpenseTypeId()+ "\n";
+        return Constants.dao.executeUpdate(query, false);
+    }
 }
