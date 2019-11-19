@@ -419,6 +419,8 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         MonthlyLocationExpenseBO obj = listLocationExpense.get(
                 tblHeadExpenseMonth.getSelectedRow());
+        obj.setAmount(tblHeadExpenseMonth.getValueAt(
+                tblHeadExpenseMonth.getSelectedRow(), 2).toString());
         ctlLocExpense.updateAmount(obj);
     }//GEN-LAST:event_tblHeadExpenseMonthKeyReleased
 
