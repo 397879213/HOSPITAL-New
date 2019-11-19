@@ -618,7 +618,7 @@ public class MonthlyLocationExpense extends javax.swing.JInternalFrame {
             SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM-yyyy");
             String month = dateFormat.format(date);
             System.err.println("ddd "+month);
-            txtExpMonth.setDate(dateFormat.parse(month));
+            txtExpMonth.setDate(dateFormat.parse(dateFormat.format(date)));
             txtFromExpMonth.setDate(dateFormat.parse(month));
             txtToExpMonth.setDate(dateFormat.parse(month));
             expMonth = month;
