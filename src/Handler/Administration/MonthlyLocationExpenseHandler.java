@@ -84,7 +84,7 @@ public class MonthlyLocationExpenseHandler {
                 + "       MED.AMOUNT,                               \n"
                 + "       MEM.CLOSE_STATUS,                         \n"
                 + "       MEM.TOTAL_AMOUNT,                         \n"
-                + "       MEM.EXPENSE_MONTH                         \n"
+                + " TO_CHAR(MEM.EXPENSE_MONTH, 'MON-YY') EXPENSE_MONTH\n"
                 + "  FROM " + Database.DCMS.locMonthlyExpDetail + " MED,\n"
                 + Database.DCMS.locMonthlyExpMaster + " MEM,           \n"
                 + Database.DCMS.definitionTypeDetail + " DTD,          \n"
