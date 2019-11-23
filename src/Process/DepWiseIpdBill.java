@@ -24,9 +24,8 @@ public class DepWiseIpdBill {
         String[] selectColumns = {"-", "ID"};
 
         String query
-                = " SELECT ADMISSION_NO ID FROM         \n"
-                + Database.DCMS.ltuPatientHistory + "   \n";
-//                + " WHERE ROWNUM < 3                    \n";
+                = " SELECT ADMISSION_NO ID FROM             \n"
+                + Database.DCMS.departmentWiseIpdBill + "   \n";
 
 //        System.out.println(query);
         List selectInvoice = Constants.dao.selectDatainList(query, selectColumns);
@@ -75,7 +74,8 @@ public class DepWiseIpdBill {
         boolean ret = true;
 
         String colName[] = {"-", "RADIOLOGY", "PATHOLOGY", "PHARMACY", "CARDIOLOGY",
-            "BLOOD_BANK", "INPATIENT", "NILGID", "DIALYSIS", "OT", "OUTSIDE"}; //, "LTU" ,"ER"
+            "BLOOD_BANK", "INPATIENT", "NILGID", "DIALYSIS", "OT", "OUTSIDE",
+            "LTU", "ER", "OPD", "OPTH", "NEPHRO"};
 
         for (int i = 0; i < listCompounding.size(); i++) {
             PatientHospitalVisit pat = listCompounding.get(i);
@@ -123,12 +123,21 @@ public class DepWiseIpdBill {
         if (pat.getDepartmentId().equalsIgnoreCase(Departments.outSide)) {
             index = 10;
         }
-//        if (pat.getDepartmentId().equalsIgnoreCase(Departments.LiverTransplant)) {
-//            index = 11;
-//        }
-//        if (pat.getDepartmentId().equalsIgnoreCase(Departments.emergency)) {
-//            index = 12;
-//        }
+        if (pat.getDepartmentId().equalsIgnoreCase(Departments.LiverTransplant)) {
+            index = 11;
+        }
+        if (pat.getDepartmentId().equalsIgnoreCase(Departments.emergency)) {
+            index = 12;
+        }
+        if (pat.getDepartmentId().equalsIgnoreCase(Departments.opd)) {
+            index = 13;
+        }
+        if (pat.getDepartmentId().equalsIgnoreCase(Departments.ophtomology)) {
+            index = 14;
+        }
+        if (pat.getDepartmentId().equalsIgnoreCase(Departments.nephrology)) {
+            index = 15;
+        }
     }
 
     int index = 0;
@@ -147,7 +156,7 @@ public class DepWiseIpdBill {
             if (!ret) {
                 Constants.dao.rollBack();
             }
-            System.out.println("Processing "+ (i+1) + " out of " + listAdmNo.size());
+            System.out.println("Processing " + (i + 1) + " out of " + listAdmNo.size());
         }
         return ret;
     }

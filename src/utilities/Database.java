@@ -5,15 +5,14 @@ public class Database {
     public static String usernameEmr = "EMR";
 
     public static final class DCMS {
-        
-        
+
         public static final String PofEmployee = DAO.usernameEmr + ".POF_EMPLOYEE   ";
         public static final String pofMapper = DAO.usernameEmr + ".POF_EMP_MAPPER   ";
         public static final String clientEmployeeDetail = DAO.usernameEmr + ".CLIENT_EMP_DETAIL   ";
-        
+
         public static final String medicineRequest = DAO.usernameEmr + ".MEDICINE_REQUEST   ";
         public static final String ltuPatientHistory = DAO.usernameEmr + ".LTU_PATIENT_HISTORY   ";
-        
+
         public static final String member = DAO.usernameEmr + ".MEMBER   ";
         public static final String bookIssueDetail = DAO.usernameEmr + ".BOOK_ISSUE_DETAIL   ";
         public static final String book = DAO.usernameEmr + ".BOOK   ";
@@ -21,8 +20,7 @@ public class Database {
         public static final String bookAuthor = DAO.usernameEmr + ".BOOK_AUTHOR   ";
         public static final String bookWiseAuthor = DAO.usernameEmr + ".BOOK_AUTHOR   ";
         public static final String returnbookhistroy = DAO.usernameEmr + ".BOOK_AUTHOR   ";
-        
-        
+
         public static final String userWiseGroupParameters = DAO.usernameEmr + ".USER_WISE_PARAMETERS   ";
         public static final String ipdMedicinePlan = DAO.usernameEmr + ".IPD_MEDICINE_PLAN   ";
         public static final String patientWiseSelectedParameters = DAO.usernameEmr + ".PAT_WISE_SELECTED_PARAMETER   ";
@@ -34,11 +32,11 @@ public class Database {
         public static final String treatmentOnDischargeHistory = DAO.usernameEmr + ".TREATMENT_ON_DISCHARGE_HISTORY   ";
         public static final String pathWidalReporting = DAO.usernameEmr + ".PATH_WIDAL_REPORTING   ";
         public static final String party = DAO.usernameEmr + ".PARTY   ";
-        
+
         public static final String gynaeParameters = DAO.usernameEmr + ".GYNAE_PARAMETERS   ";
         public static final String antenatalPatientInfo = DAO.usernameEmr + ".ANTENATAL_PATIENT_INFO   ";
         public static final String recordOfAntenatalVisits = DAO.usernameEmr + ".RECORD_OF_ANTENATAL_VISITS   ";
-        
+
         public static final String dialysisMaster = DAO.usernameEmr + ".DIALYSIS   ";
         public static final String dialysisItemDetail = DAO.usernameEmr + ".DIALYSIS_ITEM_DETAIL   ";
 
@@ -217,6 +215,8 @@ public class Database {
         public static final String gastroReportingDetail = DAO.usernameEmr + ".GASTRO_REPORTING_DETAIL";
         public static final String selectedTWiseMCode = DAO.usernameEmr + ".SELECTED_TWISE_MICDO_CODE  ";
         public static final String clientChangeHistory = DAO.usernameEmr + ".CLIENT_CHANGE_HISTORY  ";
+        public static final String clientWisePackage = DAO.username + ".CLIENT_WISE_PACKAGE   ";
+        public static final String cptPackageDetail = DAO.username + ".CPT_PACKAGE_DETAIL   ";
         public static final String echoReporting = DAO.usernameEmr + ".ECHO_REPORTING  ";
         public static final String equipmentStatus = DAO.usernameEmr + ".EQUIPMENT_STATUS  ";
         public static final String specialityWiseItem = DAO.usernameEmr + ".SPECIALITY_WISE_ITEM  ";
@@ -311,8 +311,6 @@ public class Database {
         public static final String holter = DAO.usernameEmr + ".HOLTER   ";
         public static final String tokenPrintHistory = DAO.usernameEmr + ".TOKEN_PRINT_HISTORY   ";
 
-        public static final String clientWisePackage = DAO.usernameEmr + ".CLIENT_WISE_PACKAGE   ";
-        public static final String cptPackageDetail = DAO.usernameEmr + ".CPT_PACKAGE_DETAIL   ";
         public static final String clientWiseLocation = DAO.usernameEmr + ".CLIENT_WISE_LOCATION   ";
         public static final String billingLedger = DAO.usernameEmr + ".BILLING_LEDGER   ";
         public static final String cancelReturnMaster = DAO.usernameEmr + ".CANCEL_RETURN_MASTER   ";
@@ -644,7 +642,7 @@ public class Database {
         public static final String ipdMedicinePlanMaster = DAO.usernameEmr + ".IPD_MEDICINE_PLAN_MASTER   ";
         public static final String ipdMedicinePlanDetail = DAO.usernameEmr + ".IPD_MEDICINE_PLAN_DETAIL   ";
 
-      //  
+        //  
     }
 
     public static final class PACS {
@@ -718,14 +716,13 @@ public class Database {
         public static final String storeWiseItemsDetail = DAO.usernameEmr + "." + "STORE_WISE_ITEMS_DETAIL ";
         public static final String itemCondemMaster = DAO.usernameEmr + "." + "ITEM_CONDEM_MASTER ";
         public static final String itemCondemDetail = DAO.usernameEmr + "." + "ITEM_CONDEM_DETAIL ";
-        
+
         public static final String manualIndentMaster = DAO.usernameEmr + "." + "MANUAL_INDENT_MASTER ";
         public static final String manualIndentDetail = DAO.usernameEmr + "." + "MANUAL_INDENT_DETAIL ";
         public static final String manualIndentReport = DAO.usernameEmr + "." + "MANUAL_INDENT_REPORT ";
         public static final String pathCptWiseTubes = DAO.usernameEmr + "." + "PATH_CPT_WISE_ITEM ";
         public static final String pathCptWiseTubesHis = DAO.usernameEmr + "." + "PATH_CPT_WISE_ITEM_HISTORY ";
         public static final String cptWiseConsumableItems = DAO.usernameEmr + "." + "CPT_WISE_CONSUMABLE_ITEMS ";
-        
 
     }
 }

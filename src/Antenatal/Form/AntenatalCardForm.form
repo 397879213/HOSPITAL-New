@@ -3048,7 +3048,7 @@
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel135" alignment="0" pref="21" max="32767" attributes="0"/>
+                                          <Component id="jLabel135" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jLabel133" alignment="0" max="32767" attributes="0"/>
                                           <Component id="txtUltraBiparietalDia" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
@@ -3060,7 +3060,7 @@
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabel131" alignment="0" pref="21" max="32767" attributes="0"/>
+                                          <Component id="jLabel131" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jLabel136" alignment="0" max="32767" attributes="0"/>
                                           <Component id="txtUltraGestationSac" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
@@ -3074,7 +3074,7 @@
                                       <Group type="102" attributes="0">
                                           <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel138" alignment="0" pref="21" max="32767" attributes="0"/>
+                                              <Component id="jLabel138" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jLabel139" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -3115,7 +3115,7 @@
                                   <Component id="jLabel142" alignment="3" pref="20" max="32767" attributes="0"/>
                                   <Component id="txtUltraGrade" alignment="3" max="32767" attributes="0"/>
                                   <Component id="jLabel143" alignment="3" pref="25" max="32767" attributes="0"/>
-                                  <Component id="txtUltrasoundEddDate" alignment="3" pref="22" max="32767" attributes="0"/>
+                                  <Component id="txtUltrasoundEddDate" alignment="3" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jScrollPane15" min="-2" pref="54" max="-2" attributes="0"/>
@@ -3621,7 +3621,7 @@
                               <Component id="jLabel69" min="-2" pref="23" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jScrollPane2" min="-2" pref="65" max="-2" attributes="0"/>
-                              <EmptySpace pref="12" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -4208,7 +4208,7 @@
                               </Group>
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel82" alignment="0" pref="18" max="32767" attributes="0"/>
+                                  <Component id="jLabel82" alignment="0" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="txtSetDob" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                                       <Component id="txtSetAge" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>

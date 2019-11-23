@@ -166,7 +166,7 @@ public class AntenatalCardForm extends javax.swing.JInternalFrame {
         jLabel108 = new javax.swing.JLabel();
         txtLMP = new javax.swing.JTextField();
         txtEdd = new javax.swing.JTextField();
-        cboRiskFactor = new javax.swing.JComboBox<String>();
+        cboRiskFactor = new javax.swing.JComboBox<>();
         jLabel144 = new javax.swing.JLabel();
         jPanel27 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -193,10 +193,10 @@ public class AntenatalCardForm extends javax.swing.JInternalFrame {
         jLabel57 = new javax.swing.JLabel();
         jLabel58 = new javax.swing.JLabel();
         txtOedema = new javax.swing.JTextField();
-        cboLie = new javax.swing.JComboBox<String>();
+        cboLie = new javax.swing.JComboBox<>();
         jLabel59 = new javax.swing.JLabel();
         txtNextVisitDate = new org.jdesktop.swingx.JXDatePicker();
-        cboPres = new javax.swing.JComboBox<String>();
+        cboPres = new javax.swing.JComboBox<>();
         jLabel47 = new javax.swing.JLabel();
         txtUsg = new org.jdesktop.swingx.JXDatePicker();
         jPanel17 = new javax.swing.JPanel();
@@ -244,14 +244,14 @@ public class AntenatalCardForm extends javax.swing.JInternalFrame {
         jLabel37 = new javax.swing.JLabel();
         txtGestationSac = new javax.swing.JTextField();
         jLabel38 = new javax.swing.JLabel();
-        cboCervix = new javax.swing.JComboBox<String>();
-        cboPlacenta = new javax.swing.JComboBox<String>();
+        cboCervix = new javax.swing.JComboBox<>();
+        cboPlacenta = new javax.swing.JComboBox<>();
         jLabel39 = new javax.swing.JLabel();
-        cboGrade = new javax.swing.JComboBox<String>();
+        cboGrade = new javax.swing.JComboBox<>();
         jLabel40 = new javax.swing.JLabel();
-        cboCord = new javax.swing.JComboBox<String>();
+        cboCord = new javax.swing.JComboBox<>();
         jLabel41 = new javax.swing.JLabel();
-        cboAmnioticFluidVolume = new javax.swing.JComboBox<String>();
+        cboAmnioticFluidVolume = new javax.swing.JComboBox<>();
         jLabel42 = new javax.swing.JLabel();
         txtNuchalTranslucency = new javax.swing.JTextField();
         jLabel43 = new javax.swing.JLabel();
@@ -260,16 +260,16 @@ public class AntenatalCardForm extends javax.swing.JInternalFrame {
         txtUltrasoundEdd = new org.jdesktop.swingx.JXDatePicker();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtConclusion = new javax.swing.JTextArea();
-        cboFetus = new javax.swing.JComboBox<String>();
-        cboFca = new javax.swing.JComboBox<String>();
+        cboFetus = new javax.swing.JComboBox<>();
+        cboFca = new javax.swing.JComboBox<>();
         jLabel60 = new javax.swing.JLabel();
         txtBiparietalDiameter = new javax.swing.JTextField();
         jLabel61 = new javax.swing.JLabel();
         txtCrl = new javax.swing.JTextField();
         jLabel62 = new javax.swing.JLabel();
-        cboLie1 = new javax.swing.JComboBox<String>();
-        cboPresentation = new javax.swing.JComboBox<String>();
-        cboLiquor = new javax.swing.JComboBox<String>();
+        cboLie1 = new javax.swing.JComboBox<>();
+        cboPresentation = new javax.swing.JComboBox<>();
+        cboLiquor = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         txtFemur = new javax.swing.JTextField();
         jLabel63 = new javax.swing.JLabel();
@@ -317,7 +317,7 @@ public class AntenatalCardForm extends javax.swing.JInternalFrame {
         jPanel7 = new javax.swing.JPanel();
         pnlUserDetail1 = new javax.swing.JPanel();
         jLabel64 = new javax.swing.JLabel();
-        cboGender = new javax.swing.JComboBox<String>();
+        cboGender = new javax.swing.JComboBox<>();
         jLabel65 = new javax.swing.JLabel();
         jLabel66 = new javax.swing.JLabel();
         jLabel67 = new javax.swing.JLabel();
@@ -338,7 +338,7 @@ public class AntenatalCardForm extends javax.swing.JInternalFrame {
         txtBirthWeight = new javax.swing.JTextField();
         txtPregnancyWeeks = new javax.swing.JTextField();
         txtDelivery = new javax.swing.JTextField();
-        cboPlace = new javax.swing.JComboBox<String>();
+        cboPlace = new javax.swing.JComboBox<>();
         jLabel75 = new javax.swing.JLabel();
         txtBFVaccination = new javax.swing.JTextField();
         jLabel76 = new javax.swing.JLabel();
@@ -378,9 +378,9 @@ public class AntenatalCardForm extends javax.swing.JInternalFrame {
         txtSetBabyName = new javax.swing.JTextField();
         txtSetDob = new org.jdesktop.swingx.JXDatePicker();
         txtSetAge = new javax.swing.JTextField();
-        cboSetGender = new javax.swing.JComboBox<String>();
+        cboSetGender = new javax.swing.JComboBox<>();
         jLabel82 = new javax.swing.JLabel();
-        cboBirthPlace = new javax.swing.JComboBox<String>();
+        cboBirthPlace = new javax.swing.JComboBox<>();
         jPanel13 = new javax.swing.JPanel();
         jPanel22 = new javax.swing.JPanel();
         txtHusbandName1 = new javax.swing.JTextField();
@@ -415,7 +415,7 @@ public class AntenatalCardForm extends javax.swing.JInternalFrame {
         txtA1 = new javax.swing.JTextField();
         jLabel109 = new javax.swing.JLabel();
         jLabel110 = new javax.swing.JLabel();
-        cboRiskFactor1 = new javax.swing.JComboBox<String>();
+        cboRiskFactor1 = new javax.swing.JComboBox<>();
         jPanel14 = new javax.swing.JPanel();
         jScrollPane16 = new javax.swing.JScrollPane();
         txtRiskFactorRemarks1 = new javax.swing.JTextArea();
@@ -2466,7 +2466,7 @@ public class AntenatalCardForm extends javax.swing.JInternalFrame {
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel135, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                            .addComponent(jLabel135, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel133, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtUltraBiparietalDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2475,7 +2475,7 @@ public class AntenatalCardForm extends javax.swing.JInternalFrame {
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel131, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                            .addComponent(jLabel131, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel136, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtUltraGestationSac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2486,7 +2486,7 @@ public class AntenatalCardForm extends javax.swing.JInternalFrame {
                         .addGroup(jPanel12Layout.createSequentialGroup()
                             .addGap(1, 1, 1)
                             .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel138, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                                .addComponent(jLabel138, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel139, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel12Layout.createSequentialGroup()
@@ -2516,7 +2516,7 @@ public class AntenatalCardForm extends javax.swing.JInternalFrame {
                     .addComponent(jLabel142, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
                     .addComponent(txtUltraGrade)
                     .addComponent(jLabel143, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                    .addComponent(txtUltrasoundEddDate, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE))
+                    .addComponent(txtUltrasoundEddDate))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -2894,7 +2894,7 @@ public class AntenatalCardForm extends javax.swing.JInternalFrame {
                 .addComponent(jLabel69, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -3177,7 +3177,7 @@ public class AntenatalCardForm extends javax.swing.JInternalFrame {
                     .addComponent(txtSetBabyName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel82, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
+                    .addComponent(jLabel82, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtSetDob, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtSetAge, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)

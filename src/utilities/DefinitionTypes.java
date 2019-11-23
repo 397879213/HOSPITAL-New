@@ -89,6 +89,7 @@ public class DefinitionTypes {
     public static final String patientVitalReports = "53";
 
 //new id
+    public static final String packages = "43";
     public static final String leaveHierarchy = "79";
     //
 

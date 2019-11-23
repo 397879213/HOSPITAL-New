@@ -26,6 +26,7 @@ public class Departments {
     public static String NILGID = "35";
     public static String LiverTransplant = "36";
     public static String ophtomology = "37";
+    public static String nephrology = "4859";
     public static String outSide = "1835";
     public static String physiotherapy = "48";
     public static String anesthesiology = "1801";
