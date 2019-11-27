@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import utilities.Constants;
 import utilities.Database;
+import utilities.DefinitionTypes;
 import utilities.DisplayLOV;
 import utilities.TypeDetailId;
 
@@ -22,6 +23,7 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
     private String consultantSurgeonId;
     private String consultantCardiologistId;
     private String admittingConsultantd;
+    private String categoryId;
 
     public CrdiacSurgeryForm() {
 
@@ -747,6 +749,9 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
 
     private void txtCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCategoryActionPerformed
         // TODO add your handling code here:
+        lov.LOVDefinitionSelection(DefinitionTypes.category, txtCategory.getText().trim(), this);
+        categoryId = Constants.lovID;
+        txtCategory.setText(Constants.lovDescription);
     }//GEN-LAST:event_txtCategoryActionPerformed
 
     private void txtAdmittingConsultantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAdmittingConsultantActionPerformed
@@ -848,11 +853,19 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
         cardiacSurgery.setPatientId(patientId);
         cardiacSurgery.getAdmissionNo();
         cardiacSurgery.setDateOfSurgery(surgeryDate);
-        cardiacSurgery.setCategoryId(surgeryDate);
-        cardiacSurgery.setWardId(surgeryDate);
-        cardiacSurgery.setConsultantCardiologistId(surgeryDate);
-        cardiacSurgery.setAdmittingConsultantId(surgeryDate);
+        cardiacSurgery.setCategoryId(categoryId);
+        cardiacSurgery.setWardId(wardId);
+        cardiacSurgery.setConsultantCardiologistId(consultantCardiologistId);
+        cardiacSurgery.setAdmittingConsultantId(admittingConsultantd);
+        cardiacSurgery.setConsultantSurgeonId(admittingConsultantd);
         cardiacSurgery.setRemarks(txtRemarks.getText().trim());
+        
+        if(ctlCardiacSurg.insertCardiacSurgeryMaster(cardiacSurgery)){
+            JOptionPane.showMessageDialog(null, "Surgery Information Save successfully.");
+        }else{
+            JOptionPane.showMessageDialog(null, "Unable to Save Surgery Information.\n"
+                    + "Kindly Contact Support Person.");
+        }
     }
 
 }
