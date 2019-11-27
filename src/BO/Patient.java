@@ -83,6 +83,35 @@ public class Patient implements java.io.Serializable {
     private String tableName = "";
     private String infoUpdated = "";
 
+    
+    private String cityId = "LOV";
+    private String religionId = "LOV";
+    private String companyId = "001";
+    private String clientId = "LOV";
+    private String typeId = "LOV";
+    private String bloodGroupId = "LOV";
+    private String titleId = "LOV";
+    private String locationId = "LOV";
+    private String genderId = "LOV";
+    private String searchGenderId = "LOV";
+    private String maritalStatusId = "LOV";
+    private String patientStatusId = "LOV";
+    private String cityDescription = "LOV";
+    private String religionDescription = "LOV";
+    private String companyDescription = "LOV";
+    private String clientDescription = "LOV";
+    private String clientTransactionType = "";
+    private String patientInfoUpdated = "LOV";
+    private String typeDescription = "LOV";
+    private String bloodGroupDescription = "LOV";
+    private String titleDescription = "LOV";
+    private String locationDescription = "LOV";
+    private String genderDescription = "LOV";
+    private String patientStatus = "LOV";
+    private String maritalStatusDescription = "LOV";
+    private String clientOpdVisitStatus = "";
+    
+    
     public String getDocTypeId() {
         return docTypeId;
     }
@@ -363,33 +392,7 @@ public class Patient implements java.io.Serializable {
     public void setEmpDesignation(String empDesignation) {
         this.empDesignation = empDesignation;
     }
-
-    private String cityId = "LOV";
-    private String religionId = "LOV";
-    private String companyId = "001";
-    private String clientId = "LOV";
-    private String typeId = "LOV";
-    private String bloodGroupId = "LOV";
-    private String titleId = "LOV";
-    private String locationId = "LOV";
-    private String genderId = "LOV";
-    private String searchGenderId = "LOV";
-    private String maritalStatusId = "LOV";
-    private String patientStatusId = "LOV";
-    private String cityDescription = "LOV";
-    private String religionDescription = "LOV";
-    private String companyDescription = "LOV";
-    private String clientDescription = "LOV";
-    private String clientTransactionType = "";
-    private String patientInfoUpdated = "LOV";
-    private String typeDescription = "LOV";
-    private String bloodGroupDescription = "LOV";
-    private String titleDescription = "LOV";
-    private String locationDescription = "LOV";
-    private String genderDescription = "LOV";
-    private String patientStatus = "LOV";
-    private String maritalStatusDescription = "LOV";
-    private String clientOpdVisitStatus = "";
+    
     private String guardianName = "";
 
     public String getGuardianName() {
