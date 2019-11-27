@@ -1,10 +1,11 @@
-package Form.general;
+package Form.Cardiology;
 
+import Form.general.*;
 import utilities.Constants;
 
-public class PlainForm extends javax.swing.JInternalFrame {
+public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
 
-    public PlainForm() {
+    public CrdiacSurgeryForm() {
 
         initComponents();
         this.setSize(Constants.xSize + 80, Constants.ySize - Constants.yExtension + 8);

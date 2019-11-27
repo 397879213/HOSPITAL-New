@@ -52,6 +52,7 @@ public class DepWiseIpdBill {
                 + " WHERE IVM.ADMISSION_NO = '" + admNo + "'            \n"
                 + "   AND IVM.INVOICE_NO = IVD.INVOICE_NO               \n"
                 + " AND IVM.ADMISSION_NO != 0                           \n"
+                + " AND IVM.STATUS_ID = 5                           \n"
                 + "   GROUP BY IVD.DEPARTMENT_ID                        \n";
 
 //        System.out.println(query);
