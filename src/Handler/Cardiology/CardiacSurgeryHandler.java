@@ -18,11 +18,10 @@ import utilities.Database;
  */
 public class CardiacSurgeryHandler {
 
-    public List<Patient> selectCptWiseReports(String patientId) {
+    public List<Patient> selectPateitnInformation(String patientId) {
 
         String columns[] = {"-", "PATIENT_ID", "FULL_NAME", "GENDER", "CONTACT_NO",
-            "ADDRESS", "CITY_ID", "CITY", "NATIONALITY_ID", "NATIONALITY", "AGE",
-            "", "", "", "", "", "", ""};
+            "ADDRESS", "CITY_ID", "CITY", "NATIONALITY_ID", "NATIONALITY", "AGE"};
 
         String query = "SELECT PAT.PATIENT_ID,                          \n"
                 + "        PAT.FULL_NAME,                               \n"
@@ -33,11 +32,11 @@ public class CardiacSurgeryHandler {
                 + "        CTY.DESCRIPTION CITY,                        \n"
                 + "        PAT.NATIONALITY_ID,                          \n"
                 + "        NAT.DESCRIPTION NATIONALITY,                 \n"
-                + "        trunc(months_between(sysdate, DOB) / 12) || ' (Y) ' ||   \n"
+                + "        trunc(months_between(sysdate, DOB) / 12) || ' (Y) ' ||\n"
                 + "        trunc(months_between(sysdate, DOB) - "
                 + " (trunc(months_between(sysdate, DOB) / 12) * 12)) || ' (M) ' ||\n"
                 + "        (trunc(sysdate) - add_months("
-                + " DOB, trunc(months_between(sysdate, DOB)))) || ' (D) ' AGE   \n"
+                + " DOB, trunc(months_between(sysdate, DOB)))) || ' (D) ' AGE \n"
                 + "   FROM " + Database.DCMS.patient + " PAT,           \n"
                 + Database.DCMS.definitionTypeDetail + " NAT,           \n"
                 + Database.DCMS.definitionTypeDetail + " GEN,           \n"
@@ -58,42 +57,18 @@ public class CardiacSurgeryHandler {
             Patient objData = new Patient();
 
             objData.setPatientId(map.get("PATIENT_ID").toString());
-            objData.setPatName(map.get("FULL_NAME").toString());
-            objData.setLabNo(map.get("GENDER").toString());
-            objData.setLabNo(map.get("AGE").toString());
-            objData.setSectionId(map.get("CONTACT_NO").toString());
-            objData.setSectionName(map.get("ADDRESS").toString());
-            objData.setReportDate(map.get("CITY").toString());
-            objData.setReportDate(map.get("NATIONALITY_ID").toString());
-            objData.setReportDate(map.get("NATIONALITY").toString());
-            objData.setReportDate(map.get("VERIFIED_DATE").toString());
-            objData.setReportDate(map.get("VERIFIED_DATE").toString());
+            objData.setFullName(map.get("FULL_NAME").toString());
+            objData.setGenderDescription(map.get("GENDER").toString());
+            objData.setAge(map.get("AGE").toString());
+            objData.setContactNo(map.get("CONTACT_NO").toString());
+            objData.setAddress(map.get("ADDRESS").toString());
+            objData.setCityDescription(map.get("CITY").toString());
+            objData.setNationalityId(map.get("NATIONALITY_ID").toString());
+            objData.setNationalityDescription(map.get("NATIONALITY").toString());
 
             lisVerRep.add(objData);
         }
 
         return lisVerRep;
     }
-
-    String s
-            = "SELECT PAT.PATIENT_ID,\n"
-            + "        PAT.FULL_NAME,\n"
-            + "        GEN.DESCRIPTION GENDER,\n"
-            + "        PAT.CONTACT_NO,\n"
-            + "        PAT.ADDRESS,\n"
-            + "        PAT.CITY_ID,\n"
-            + "        CTY.DESCRIPTION CITY,\n"
-            + "        PAT.NATIONALITY_ID,\n"
-            + "        NAT.DESCRIPTION NATIONALITY,\n"
-            + "        trunc(months_between(sysdate, DOB) / 12) || ' (Y) ' ||\n"
-            + "        trunc(months_between(sysdate, DOB) - (trunc(months_between(sysdate, DOB) / 12) * 12)) || ' (M) ' ||\n"
-            + "        (trunc(sysdate) - add_months(DOB, trunc(months_between(sysdate, DOB)))) || ' (D) ' AGE\n"
-            + "   FROM PATIENT                PAT,\n"
-            + "        DEFINITION_TYPE_DETAIL NAT,\n"
-            + "        DEFINITION_TYPE_DETAIL GEN,\n"
-            + "        DEFINITION_TYPE_DETAIL CTY\n"
-            + "  WHERE PATIENT_ID = '001000002663'\n"
-            + "    AND PAT.GENDER_ID = GEN.ID\n"
-            + "    AND PAT.NATIONALITY_ID = NAT.ID\n"
-            + "    AND PAT.CITY_ID = CTY.ID";
 }

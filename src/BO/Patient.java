@@ -110,6 +110,24 @@ public class Patient implements java.io.Serializable {
     private String patientStatus = "LOV";
     private String maritalStatusDescription = "LOV";
     private String clientOpdVisitStatus = "";
+    private String nationalityId = "";
+    private String nationalityDescription = "";
+
+    public String getNationalityId() {
+        return nationalityId;
+    }
+
+    public void setNationalityId(String nationalityId) {
+        this.nationalityId = nationalityId;
+    }
+
+    public String getNationalityDescription() {
+        return nationalityDescription;
+    }
+
+    public void setNationalityDescription(String nationalityDescription) {
+        this.nationalityDescription = nationalityDescription;
+    }
     
     
     public String getDocTypeId() {
