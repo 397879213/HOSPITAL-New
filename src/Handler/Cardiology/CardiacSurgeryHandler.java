@@ -5,6 +5,7 @@
  */
 package Handler.Cardiology;
 
+import BO.Cardiology.CardiacSurgeryBO;
 import BO.Patient;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -61,5 +62,37 @@ public class CardiacSurgeryHandler {
         objData.setNationalityId(map.get("NATIONALITY_ID").toString());
         objData.setNationalityDescription(map.get("NATIONALITY").toString());
         return objData;
+    }
+
+    public boolean compoundAdditiveMaster(CardiacSurgeryBO insert) {
+
+        String[] columns = {Database.DCMS.cardiacSurgeryMaster,
+            "ID", "PATIENT_ID", "INSTITUTE_ID", "ADMISSION_NO", "DATE_OF_SURGERY",
+            "WARD_ID", "CATEGORY_ID", "ADMITTING_CONSULTANT", "CONSULTANT_CARDIOLOGIST",
+            "IS_FINAL", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID", "FINAL_BY",
+            "FINAL_DATE", "FINAL_TERMINAL_ID", "REMARKS",};
+
+        HashMap map = new HashMap();
+        map.put("ID", "(SELECT MAX(ID) + 1 FROM " + Database.DCMS.cardiacSurgeryMaster + ")");
+        map.put("PATIENT_ID", "'" + insert.getPatientId() + "'");
+        map.put("INSTITUTE_ID", "'" + insert.getInstituteId() + "'");
+        map.put("ADMISSION_NO", "'" + insert.getAdmissionNo() + "'");
+        map.put("DATE_OF_SURGERY", "'" + insert.getDateOfSurgery() + "'");
+        map.put("WARD_ID", "'" + insert.getWardId() + "'");
+        map.put("CATEGORY_ID", "'" + insert.getCategoryId() + "'");
+        map.put("ADMITTING_CONSULTANT", "'" + insert.getAdmittingConsultant() + "'");
+        map.put("CONSULTANT_CARDIOLOGIST", "'" + insert.getConsultantCardiologist() + "'");
+        map.put("IS_FINAL", "'N'");
+        map.put("CRTD_BY", "'" + Constants.userId + "'");
+        map.put("CRTD_DATE", Constants.today);
+        map.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
+        map.put("FINAL_BY", "'" + insert.getFinalBy() + "'");
+        map.put("FINAL_DATE", "'" + insert.getFinalDate()+ "'");
+        map.put("FINAL_TERMINAL_ID", "'" + insert.getFinalTerminalId()+ "'");
+        map.put("REMARKS", "'" + insert.getRemarks()+ "'");
+
+        List InsertEmp = new ArrayList();
+        InsertEmp.add(map);
+        return Constants.dao.insertData(InsertEmp, columns);
     }
 }
