@@ -24,16 +24,14 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        txtMemberId = new javax.swing.JTextField();
+        txtPatientId = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        txtMemberId1 = new javax.swing.JTextField();
-        txtMemberId2 = new javax.swing.JTextField();
+        txtPatFullNmae = new javax.swing.JTextField();
+        txtAgeGender = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         txtMemberId3 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         txtMemberId4 = new javax.swing.JTextField();
-        txtMemberId5 = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         txtMemberId6 = new javax.swing.JTextField();
@@ -122,10 +120,11 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Patient Id : ");
 
-        txtMemberId.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtMemberId.addActionListener(new java.awt.event.ActionListener() {
+        txtPatientId.setEditable(false);
+        txtPatientId.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtPatientId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMemberIdActionPerformed(evt);
+                txtPatientIdActionPerformed(evt);
             }
         });
 
@@ -134,25 +133,28 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel11.setText("Full Name : ");
 
-        txtMemberId1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtMemberId1.addActionListener(new java.awt.event.ActionListener() {
+        txtPatFullNmae.setEditable(false);
+        txtPatFullNmae.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtPatFullNmae.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMemberId1ActionPerformed(evt);
+                txtPatFullNmaeActionPerformed(evt);
             }
         });
 
-        txtMemberId2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtMemberId2.addActionListener(new java.awt.event.ActionListener() {
+        txtAgeGender.setEditable(false);
+        txtAgeGender.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtAgeGender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMemberId2ActionPerformed(evt);
+                txtAgeGenderActionPerformed(evt);
             }
         });
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(102, 0, 0));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel12.setText("Age : ");
+        jLabel12.setText("Age/ Gender : ");
 
+        txtMemberId3.setEditable(false);
         txtMemberId3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtMemberId3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,24 +167,13 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel14.setText("Nationality :");
 
+        txtMemberId4.setEditable(false);
         txtMemberId4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtMemberId4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMemberId4ActionPerformed(evt);
             }
         });
-
-        txtMemberId5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtMemberId5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMemberId5ActionPerformed(evt);
-            }
-        });
-
-        jLabel15.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel15.setText("Gender : ");
 
         jLabel16.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(102, 0, 0));
@@ -194,6 +185,7 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel17.setText("City : ");
 
+        txtMemberId6.setEditable(false);
         txtMemberId6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtMemberId6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,6 +198,7 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel18.setText("Country : ");
 
+        txtMemberId7.setEditable(false);
         txtMemberId7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtMemberId7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -217,6 +210,7 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Address", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel9.setForeground(new java.awt.Color(102, 0, 0));
 
+        jTextArea2.setEditable(false);
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
@@ -246,34 +240,30 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
                             .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtMemberId, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                            .addComponent(txtPatientId, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
                             .addComponent(txtMemberId3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtMemberId1, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                            .addComponent(txtPatFullNmae, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
                             .addComponent(txtMemberId4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtMemberId2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtMemberId5, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtMemberId6, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtMemberId6, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtMemberId7, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(txtMemberId7, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtAgeGender))))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -282,13 +272,11 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMemberId, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPatientId, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMemberId1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPatFullNmae, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMemberId2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMemberId5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAgeGender, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -422,7 +410,7 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
                             .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -430,7 +418,7 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel5Layout.createSequentialGroup()
-                                        .addComponent(txtUsg, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
+                                        .addComponent(txtUsg, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                                         .addGap(5, 5, 5))
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addComponent(txtMemberId10)
@@ -620,15 +608,13 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(pnlPL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(10, 10, 10))
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -645,17 +631,17 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtMemberIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberIdActionPerformed
+    private void txtPatientIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientIdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMemberIdActionPerformed
+    }//GEN-LAST:event_txtPatientIdActionPerformed
 
-    private void txtMemberId1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId1ActionPerformed
+    private void txtPatFullNmaeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatFullNmaeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMemberId1ActionPerformed
+    }//GEN-LAST:event_txtPatFullNmaeActionPerformed
 
-    private void txtMemberId2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId2ActionPerformed
+    private void txtAgeGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAgeGenderActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMemberId2ActionPerformed
+    }//GEN-LAST:event_txtAgeGenderActionPerformed
 
     private void txtMemberId3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId3ActionPerformed
         // TODO add your handling code here:
@@ -664,10 +650,6 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
     private void txtMemberId4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMemberId4ActionPerformed
-
-    private void txtMemberId5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMemberId5ActionPerformed
 
     private void txtMemberId6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId6ActionPerformed
         // TODO add your handling code here:
@@ -728,7 +710,6 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -755,20 +736,19 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblPacsLink;
     private javax.swing.JPanel pnlPL;
+    private javax.swing.JTextField txtAgeGender;
     private javax.swing.JTextField txtConsultantCardiologist;
-    private javax.swing.JTextField txtMemberId;
-    private javax.swing.JTextField txtMemberId1;
     private javax.swing.JTextField txtMemberId10;
     private javax.swing.JTextField txtMemberId11;
     private javax.swing.JTextField txtMemberId12;
     private javax.swing.JTextField txtMemberId13;
-    private javax.swing.JTextField txtMemberId2;
     private javax.swing.JTextField txtMemberId3;
     private javax.swing.JTextField txtMemberId4;
-    private javax.swing.JTextField txtMemberId5;
     private javax.swing.JTextField txtMemberId6;
     private javax.swing.JTextField txtMemberId7;
     private javax.swing.JTextField txtMemberId9;
+    private javax.swing.JTextField txtPatFullNmae;
+    private javax.swing.JTextField txtPatientId;
     private org.jdesktop.swingx.JXDatePicker txtUsg;
     // End of variables declaration//GEN-END:variables
 
