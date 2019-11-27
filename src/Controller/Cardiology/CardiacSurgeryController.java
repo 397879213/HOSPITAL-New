@@ -5,10 +5,19 @@
  */
 package Controller.Cardiology;
 
+import BO.Patient;
+import Handler.Cardiology.CardiacSurgeryHandler;
+import java.util.List;
+
 /**
  *
  * @author admin
  */
 public class CardiacSurgeryController {
     
+    CardiacSurgeryHandler hdlCardiacSurg = new CardiacSurgeryHandler();
+    
+    public Patient selectPateitnInformation(String patientId) {
+        return hdlCardiacSurg.selectPateitnInformation(patientId);
+    }
 }

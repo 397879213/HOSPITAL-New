@@ -18,7 +18,7 @@ import utilities.Database;
  */
 public class CardiacSurgeryHandler {
 
-    public List<Patient> selectPateitnInformation(String patientId) {
+    public Patient selectPateitnInformation(String patientId) {
 
         String columns[] = {"-", "PATIENT_ID", "FULL_NAME", "GENDER", "CONTACT_NO",
             "ADDRESS", "CITY_ID", "CITY", "NATIONALITY_ID", "NATIONALITY", "AGE"};
@@ -48,27 +48,18 @@ public class CardiacSurgeryHandler {
 
         List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
 
-        System.out.println(" Data : " + listmap.size());
-        List<Patient> lisVerRep = new ArrayList<>();
+        HashMap map = (HashMap) listmap.get(0);
+        Patient objData = new Patient();
 
-        for (int i = 0; i < listmap.size(); i++) {
-
-            HashMap map = (HashMap) listmap.get(i);
-            Patient objData = new Patient();
-
-            objData.setPatientId(map.get("PATIENT_ID").toString());
-            objData.setFullName(map.get("FULL_NAME").toString());
-            objData.setGenderDescription(map.get("GENDER").toString());
-            objData.setAge(map.get("AGE").toString());
-            objData.setContactNo(map.get("CONTACT_NO").toString());
-            objData.setAddress(map.get("ADDRESS").toString());
-            objData.setCityDescription(map.get("CITY").toString());
-            objData.setNationalityId(map.get("NATIONALITY_ID").toString());
-            objData.setNationalityDescription(map.get("NATIONALITY").toString());
-
-            lisVerRep.add(objData);
-        }
-
-        return lisVerRep;
+        objData.setPatientId(map.get("PATIENT_ID").toString());
+        objData.setFullName(map.get("FULL_NAME").toString());
+        objData.setGenderDescription(map.get("GENDER").toString());
+        objData.setAge(map.get("AGE").toString());
+        objData.setContactNo(map.get("CONTACT_NO").toString());
+        objData.setAddress(map.get("ADDRESS").toString());
+        objData.setCityDescription(map.get("CITY").toString());
+        objData.setNationalityId(map.get("NATIONALITY_ID").toString());
+        objData.setNationalityDescription(map.get("NATIONALITY").toString());
+        return objData;
     }
 }
