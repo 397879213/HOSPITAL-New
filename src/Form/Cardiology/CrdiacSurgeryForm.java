@@ -9,21 +9,21 @@ import utilities.Constants;
 import utilities.Database;
 import utilities.DefinitionTypes;
 import utilities.DisplayLOV;
-import utilities.TypeDetailId;
 
 public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
 
-    String surgeryDate = "";
+    
     Patient patient = new Patient();
     DisplayLOV lov = new DisplayLOV();
     CardiacSurgeryBO cardiacSurgery = new CardiacSurgeryBO();
     CardiacSurgeryController ctlCardiacSurg = new CardiacSurgeryController();
+    private String surgeryDate = "";
     private String patientId = "001000002663";
-    private String wardId;
-    private String consultantSurgeonId;
-    private String consultantCardiologistId;
-    private String admittingConsultantd;
-    private String categoryId;
+    private String wardId = "";
+    private String consultantSurgeonId = "";
+    private String consultantCardiologistId = "";
+    private String admittingConsultantd = "";
+    private String categoryId = "";
 
     public CrdiacSurgeryForm() {
 
