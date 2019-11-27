@@ -198,7 +198,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="txtPatientId" pref="129" max="32767" attributes="3"/>
-                                  <Component id="txtMemberId3" max="32767" attributes="3"/>
+                                  <Component id="txtContactNo" max="32767" attributes="3"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -208,14 +208,14 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="txtPatFullNmae" pref="211" max="32767" attributes="3"/>
-                                  <Component id="txtMemberId4" max="32767" attributes="3"/>
+                                  <Component id="txtNationality" max="32767" attributes="3"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel17" min="-2" pref="50" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtMemberId6" min="-2" pref="75" max="-2" attributes="3"/>
+                                      <Component id="txtCity" min="-2" pref="75" max="-2" attributes="3"/>
                                   </Group>
                                   <Component id="jLabel12" max="32767" attributes="0"/>
                               </Group>
@@ -249,11 +249,11 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel16" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="txtMemberId3" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                          <Component id="txtContactNo" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           <Component id="jLabel14" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="txtMemberId4" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                          <Component id="txtNationality" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           <Component id="jLabel17" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="txtMemberId6" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                          <Component id="txtCity" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           <Component id="jLabel18" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                           <Component id="txtMemberId7" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                       </Group>
@@ -334,7 +334,7 @@
                 <Property name="text" type="java.lang.String" value="Age/ Gender : "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberId3">
+            <Component class="javax.swing.JTextField" name="txtContactNo">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -342,7 +342,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId3ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtContactNoActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel14">
@@ -357,7 +357,7 @@
                 <Property name="text" type="java.lang.String" value="Nationality :"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberId4">
+            <Component class="javax.swing.JTextField" name="txtNationality">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -365,7 +365,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId4ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNationalityActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel16">
@@ -392,7 +392,7 @@
                 <Property name="text" type="java.lang.String" value="City : "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberId6">
+            <Component class="javax.swing.JTextField" name="txtCity">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -400,7 +400,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId6ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCityActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel18">
@@ -464,7 +464,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="jTextArea2">
+                    <Component class="javax.swing.JTextArea" name="txtAddress">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
                         <Property name="columns" type="int" value="20"/>

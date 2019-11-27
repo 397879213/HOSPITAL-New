@@ -1,18 +1,22 @@
 package Form.Cardiology;
 
+import BO.Patient;
+import Controller.Cardiology.CardiacSurgeryController;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import utilities.Constants;
 
 public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
 
-    private String surgeryDate;
-
+    private String surgeryDate = "";
+    Patient patient = new Patient();
+    CardiacSurgeryController ctlCardiacSurg = new CardiacSurgeryController();
+    
     public CrdiacSurgeryForm() {
 
         initComponents();
         this.setSize(Constants.xSize + 80, Constants.ySize - Constants.yExtension + 8);
-
+        setPatientInfo("001000002663");
     }
 
     @SuppressWarnings("unchecked")
@@ -29,17 +33,17 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
         txtPatFullNmae = new javax.swing.JTextField();
         txtAgeGender = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        txtMemberId3 = new javax.swing.JTextField();
+        txtContactNo = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        txtMemberId4 = new javax.swing.JTextField();
+        txtNationality = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        txtMemberId6 = new javax.swing.JTextField();
+        txtCity = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         txtMemberId7 = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        txtAddress = new javax.swing.JTextArea();
         jPanel5 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         txtUsg = new org.jdesktop.swingx.JXDatePicker();
@@ -154,11 +158,11 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel12.setText("Age/ Gender : ");
 
-        txtMemberId3.setEditable(false);
-        txtMemberId3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtMemberId3.addActionListener(new java.awt.event.ActionListener() {
+        txtContactNo.setEditable(false);
+        txtContactNo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtContactNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMemberId3ActionPerformed(evt);
+                txtContactNoActionPerformed(evt);
             }
         });
 
@@ -167,11 +171,11 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel14.setText("Nationality :");
 
-        txtMemberId4.setEditable(false);
-        txtMemberId4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtMemberId4.addActionListener(new java.awt.event.ActionListener() {
+        txtNationality.setEditable(false);
+        txtNationality.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtNationality.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMemberId4ActionPerformed(evt);
+                txtNationalityActionPerformed(evt);
             }
         });
 
@@ -185,11 +189,11 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel17.setText("City : ");
 
-        txtMemberId6.setEditable(false);
-        txtMemberId6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtMemberId6.addActionListener(new java.awt.event.ActionListener() {
+        txtCity.setEditable(false);
+        txtCity.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtCity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMemberId6ActionPerformed(evt);
+                txtCityActionPerformed(evt);
             }
         });
 
@@ -210,10 +214,10 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Address", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel9.setForeground(new java.awt.Color(102, 0, 0));
 
-        jTextArea2.setEditable(false);
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        txtAddress.setEditable(false);
+        txtAddress.setColumns(20);
+        txtAddress.setRows(5);
+        jScrollPane2.setViewportView(txtAddress);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -241,7 +245,7 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtPatientId, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                            .addComponent(txtMemberId3))
+                            .addComponent(txtContactNo))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -249,13 +253,13 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtPatFullNmae, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-                            .addComponent(txtMemberId4))
+                            .addComponent(txtNationality))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtMemberId6, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -280,11 +284,11 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMemberId3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtContactNo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMemberId4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNationality, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMemberId6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMemberId7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -643,17 +647,17 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAgeGenderActionPerformed
 
-    private void txtMemberId3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId3ActionPerformed
+    private void txtContactNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContactNoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMemberId3ActionPerformed
+    }//GEN-LAST:event_txtContactNoActionPerformed
 
-    private void txtMemberId4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId4ActionPerformed
+    private void txtNationalityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNationalityActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMemberId4ActionPerformed
+    }//GEN-LAST:event_txtNationalityActionPerformed
 
-    private void txtMemberId6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId6ActionPerformed
+    private void txtCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCityActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMemberId6ActionPerformed
+    }//GEN-LAST:event_txtCityActionPerformed
 
     private void txtMemberId7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId7ActionPerformed
         // TODO add your handling code here:
@@ -663,7 +667,7 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         if (txtUsg.getDate().getDate() == 0) {
             JOptionPane.showMessageDialog(null, "Enter the Ultrasound E.D.D DD-MON-YY",
-                "Gaynee Parameter", JOptionPane.WARNING_MESSAGE);
+                    "Gaynee Parameter", JOptionPane.WARNING_MESSAGE);
             return;
         }
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
@@ -731,25 +735,36 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblPacsLink;
     private javax.swing.JPanel pnlPL;
+    private javax.swing.JTextArea txtAddress;
     private javax.swing.JTextField txtAgeGender;
+    private javax.swing.JTextField txtCity;
     private javax.swing.JTextField txtConsultantCardiologist;
+    private javax.swing.JTextField txtContactNo;
     private javax.swing.JTextField txtMemberId10;
     private javax.swing.JTextField txtMemberId11;
     private javax.swing.JTextField txtMemberId12;
     private javax.swing.JTextField txtMemberId13;
-    private javax.swing.JTextField txtMemberId3;
-    private javax.swing.JTextField txtMemberId4;
-    private javax.swing.JTextField txtMemberId6;
     private javax.swing.JTextField txtMemberId7;
     private javax.swing.JTextField txtMemberId9;
+    private javax.swing.JTextField txtNationality;
     private javax.swing.JTextField txtPatFullNmae;
     private javax.swing.JTextField txtPatientId;
     private org.jdesktop.swingx.JXDatePicker txtUsg;
     // End of variables declaration//GEN-END:variables
+
+    private void setPatientInfo(String patientId) {
+        patient = ctlCardiacSurg.selectPateitnInformation(patientId);
+        txtPatientId.setText(patient.getPatientId().substring(3));
+        txtPatFullNmae.setText(patient.getFullName());
+        txtAgeGender.setText(patient.getAge() +" / "+ patient.getGenderDescription());
+        txtContactNo.setText(patient.getContactNo());
+        txtAddress.setText(patient.getAddress());
+        txtNationality.setText(patient.getNationalityDescription());
+        txtCity.setText(patient.getCityDescription());
+    }
 
 }
