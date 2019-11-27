@@ -9,7 +9,7 @@ import utilities.Constants;
 
 public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
 
-    private String surgeryDate = "";
+    String surgeryDate = "";
     Patient patient = new Patient();
     CardiacSurgeryBO cardiacSurgery = new CardiacSurgeryBO();
     CardiacSurgeryController ctlCardiacSurg = new CardiacSurgeryController();
@@ -67,7 +67,7 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
         jButton7 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtRemarks = new javax.swing.JTextArea();
         jPanel8 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         txtMemberId13 = new javax.swing.JTextField();
@@ -393,9 +393,9 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Brief Remarks of Surgery", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel7.setForeground(new java.awt.Color(102, 0, 0));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtRemarks.setColumns(20);
+        txtRemarks.setRows(5);
+        jScrollPane1.setViewportView(txtRemarks);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -747,7 +747,6 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblPacsLink;
@@ -766,6 +765,7 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtNationality;
     private javax.swing.JTextField txtPatFullNmae;
     private javax.swing.JTextField txtPatientId;
+    private javax.swing.JTextArea txtRemarks;
     private org.jdesktop.swingx.JXDatePicker txtUsg;
     // End of variables declaration//GEN-END:variables
 
@@ -783,6 +783,12 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
     private void saveCardiacSurgeryInformation() {
         cardiacSurgery.setPatientId(patientId);
         cardiacSurgery.getAdmissionNo();
+        cardiacSurgery.setDateOfSurgery(surgeryDate);
+        cardiacSurgery.setCategoryId(surgeryDate);
+        cardiacSurgery.setWardId(surgeryDate);
+        cardiacSurgery.setConsultantCardiologistId(surgeryDate);
+        cardiacSurgery.setAdmittingConsultantId(surgeryDate);
+        cardiacSurgery.setRemarks(txtRemarks.getText().trim());
     }
 
 }

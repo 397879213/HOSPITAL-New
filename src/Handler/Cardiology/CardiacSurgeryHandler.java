@@ -80,8 +80,8 @@ public class CardiacSurgeryHandler {
         map.put("DATE_OF_SURGERY", "'" + insert.getDateOfSurgery() + "'");
         map.put("WARD_ID", "'" + insert.getWardId() + "'");
         map.put("CATEGORY_ID", "'" + insert.getCategoryId() + "'");
-        map.put("ADMITTING_CONSULTANT", "'" + insert.getAdmittingConsultant() + "'");
-        map.put("CONSULTANT_CARDIOLOGIST", "'" + insert.getConsultantCardiologist() + "'");
+        map.put("ADMITTING_CONSULTANT", "'" + insert.getAdmittingConsultantId() + "'");
+        map.put("CONSULTANT_CARDIOLOGIST", "'" + insert.getConsultantCardiologistId() + "'");
         map.put("IS_FINAL", "'N'");
         map.put("CRTD_BY", "'" + Constants.userId + "'");
         map.put("CRTD_DATE", Constants.today);

@@ -21,9 +21,12 @@ public class CardiacSurgeryBO {
     private String categoryId = "";
     private String categoryDescription = "";
     private String dateOfSurgery = "";
-    private String consultantSurgeon = "";
-    private String consultantCardiologist = "";
-    private String admittingConsultant = "";
+    private String consultantSurgeonId = "";
+    private String consultantSurgeonName = "";
+    private String consultantCardiologistId = "";
+    private String consultantCardiologistName = "";
+    private String admittingConsultantId = "";
+    private String admittingConsultantName = "";
     private String remarks = "";
     private String crtdBy = "";
     private String crtdDate = "";
@@ -32,6 +35,30 @@ public class CardiacSurgeryBO {
     private String finalBy = "";
     private String finalDate = "";
     private String finalTerminalId = "";
+
+    public String getConsultantSurgeonName() {
+        return consultantSurgeonName;
+    }
+
+    public void setConsultantSurgeonName(String consultantSurgeonName) {
+        this.consultantSurgeonName = consultantSurgeonName;
+    }
+
+    public String getConsultantCardiologistName() {
+        return consultantCardiologistName;
+    }
+
+    public void setConsultantCardiologistName(String consultantCardiologistName) {
+        this.consultantCardiologistName = consultantCardiologistName;
+    }
+
+    public String getAdmittingConsultantName() {
+        return admittingConsultantName;
+    }
+
+    public void setAdmittingConsultantName(String admittingConsultantName) {
+        this.admittingConsultantName = admittingConsultantName;
+    }
 
     public String getCategoryId() {
         return categoryId;
@@ -113,28 +140,28 @@ public class CardiacSurgeryBO {
         this.dateOfSurgery = dateOfSurgery;
     }
 
-    public String getConsultantSurgeon() {
-        return consultantSurgeon;
+    public String getConsultantSurgeonId() {
+        return consultantSurgeonId;
     }
 
-    public void setConsultantSurgeon(String consultantSurgeon) {
-        this.consultantSurgeon = consultantSurgeon;
+    public void setConsultantSurgeonId(String consultantSurgeonId) {
+        this.consultantSurgeonId = consultantSurgeonId;
     }
 
-    public String getConsultantCardiologist() {
-        return consultantCardiologist;
+    public String getConsultantCardiologistId() {
+        return consultantCardiologistId;
     }
 
-    public void setConsultantCardiologist(String consultantCardiologist) {
-        this.consultantCardiologist = consultantCardiologist;
+    public void setConsultantCardiologistId(String consultantCardiologistId) {
+        this.consultantCardiologistId = consultantCardiologistId;
     }
 
-    public String getAdmittingConsultant() {
-        return admittingConsultant;
+    public String getAdmittingConsultantId() {
+        return admittingConsultantId;
     }
 
-    public void setAdmittingConsultant(String admittingConsultant) {
-        this.admittingConsultant = admittingConsultant;
+    public void setAdmittingConsultantId(String admittingConsultantId) {
+        this.admittingConsultantId = admittingConsultantId;
     }
 
     public String getRemarks() {
