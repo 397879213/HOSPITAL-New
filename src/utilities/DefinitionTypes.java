@@ -272,5 +272,6 @@ public class DefinitionTypes {
     public static String medicalApprovalType = "350";// 
     public static final String consultationRooms = "374";
     //public static String OPDVisitCaseCategory = "370";// 
+    public static String category = "154";
 
 }
