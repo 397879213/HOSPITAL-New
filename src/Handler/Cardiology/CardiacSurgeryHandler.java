@@ -64,6 +64,65 @@ public class CardiacSurgeryHandler {
         return objData;
     }
 
+    public Patient selectCardiacSurgDetail(String patientId) {
+
+        String columns[] = {"-", "PATIENT_ID", "FULL_NAME", "GENDER", "CONTACT_NO",
+            "ADDRESS", "CITY_ID", "CITY", "NATIONALITY_ID", "NATIONALITY", "AGE"};
+
+        String query = "SELECT CSM.ID,                      \n"
+                + "       CSM.PATIENT_ID,                   \n"
+                + "       CSM.INSTITUTE_ID,                 \n"
+                + "       INS.DESCRIPTION INSTITUTE_DESC,   \n"
+                + "       CSM.ADMISSION_NO,                 \n"
+                + "       CSM.DATE_OF_SURGERY,              \n"
+                + "       CSM.WARD_ID,                      \n"
+                + "       WRD.DESCRIPTION WARD_DESC,        \n"
+                + "       CSM.CATEGORY_ID,                  \n"
+                + "       CTI.DESCRIPTION CATEGORY_DESC,    \n"
+                + "       CSM.ADMITTING_CONSULTANT,         \n"
+                + "       AMC.NAME ADMITTING_CONSULTANT_NAME,\n"
+                + "       CSM.CONSULTANT_CARDIOLOGIST,      \n"
+                + "       CCT.NAME CONSULTANT_CARDIOLOGIST_NAME,\n"
+                + "       CSM.CRTD_BY,                      \n"
+                + "       CRU.USER_NAME CRTD_BY_NAME CSM.CRTD_DATE,\n"
+                + "       CSM.CRTD_TERMINAL_ID,             \n"
+                + "       CSM.IS_FINAL,                     \n"
+                + "       CSM.FINAL_BY,                     \n"
+                + "       CSM.FINAL_DATE,                   \n"
+                + "       CSM.FINAL_TERMINAL_ID,            \n"
+                + "       CSM.REMARKS                       \n"
+                + "  FROM " + Database.DCMS.cardiacSurgeryMaster + " CSM,\n"
+                + Database.DCMS.definitionTypeDetail + " INS,\n"
+                + Database.DCMS.ward + " WRD,\n"
+                + Database.DCMS.definitionTypeDetail + " CTI,\n"
+                + Database.DCMS.users + " AMC,\n"
+                + Database.DCMS.users + " CCT,\n"
+                + Database.DCMS.users + " CRU\n"
+                + " WHERE ID = '" + patientId + "'\n"
+                + "   AND CSM.INSTITUTE_ID = INS.ID\n"
+                + "   AND CSM.WARD_ID = WRD.ID\n"
+                + "   AND CSM.CATEGORY_ID = CTI.ID\n"
+                + "   AND CSM.ADMITTING_CONSULTANT = AMC.USER_NAME\n"
+                + "   AND CSM.CONSULTANT_CARDIOLOGIST = CCT.USER_NAME\n"
+                + "   AND CSM.CRTD_BY = CRU.USER_NAME";
+
+        List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
+
+        HashMap map = (HashMap) listmap.get(0);
+        Patient objData = new Patient();
+
+        objData.setPatientId(map.get("PATIENT_ID").toString());
+        objData.setFullName(map.get("FULL_NAME").toString());
+        objData.setGenderDescription(map.get("GENDER").toString());
+        objData.setAge(map.get("AGE").toString());
+        objData.setContactNo(map.get("CONTACT_NO").toString());
+        objData.setAddress(map.get("ADDRESS").toString());
+        objData.setCityDescription(map.get("CITY").toString());
+        objData.setNationalityId(map.get("NATIONALITY_ID").toString());
+        objData.setNationalityDescription(map.get("NATIONALITY").toString());
+        return objData;
+    }
+
     public boolean insertCardiacSurgeryMaster(CardiacSurgeryBO insert) {
 
         String[] columns = {Database.DCMS.cardiacSurgeryMaster,
@@ -87,12 +146,33 @@ public class CardiacSurgeryHandler {
         map.put("CRTD_DATE", Constants.today);
         map.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
         map.put("FINAL_BY", "'" + insert.getFinalBy() + "'");
-        map.put("FINAL_DATE", "'" + insert.getFinalDate()+ "'");
-        map.put("FINAL_TERMINAL_ID", "'" + insert.getFinalTerminalId()+ "'");
-        map.put("REMARKS", "'" + insert.getRemarks()+ "'");
+        map.put("FINAL_DATE", "'" + insert.getFinalDate() + "'");
+        map.put("FINAL_TERMINAL_ID", "'" + insert.getFinalTerminalId() + "'");
+        map.put("REMARKS", "'" + insert.getRemarks() + "'");
 
         List InsertEmp = new ArrayList();
         InsertEmp.add(map);
         return Constants.dao.insertData(InsertEmp, columns);
     }
+
+    public boolean insertCardiacHistoryDetail(CardiacSurgeryBO insert) {
+
+        String[] columns = {Database.DCMS.cardiacHistoryDetail,
+            "CARDIAC_ID", "EXAM_TYPE_ID", "EXAM_DETAIL_ID", "REMARKS", "CRTD_BY",
+            "CRTD_DATE", "CRTD_TERMINAL_ID"};
+
+        HashMap map = new HashMap();
+        map.put("CARDIAC_ID", "'" + insert.getPatientId() + "'");
+        map.put("EXAM_TYPE_ID", "'" + insert.getPatientId() + "'");
+        map.put("EXAM_DETAIL_ID", "'" + insert.getInstituteId() + "'");
+        map.put("REMARKS", "'" + insert.getAdmissionNo() + "'");
+        map.put("CRTD_BY", "'" + Constants.userId + "'");
+        map.put("CRTD_DATE", Constants.today);
+        map.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
+
+        List InsertEmp = new ArrayList();
+        InsertEmp.add(map);
+        return Constants.dao.insertData(InsertEmp, columns);
+    }
+
 }
