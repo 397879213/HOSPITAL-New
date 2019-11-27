@@ -1,5 +1,6 @@
 package Form.Cardiology;
 
+import BO.Cardiology.CardiacSurgeryBO;
 import BO.Patient;
 import Controller.Cardiology.CardiacSurgeryController;
 import java.text.SimpleDateFormat;
@@ -10,13 +11,15 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
 
     private String surgeryDate = "";
     Patient patient = new Patient();
+    CardiacSurgeryBO cardiacSurgery = new CardiacSurgeryBO();
     CardiacSurgeryController ctlCardiacSurg = new CardiacSurgeryController();
+    private String patientId = "001000002663";
     
     public CrdiacSurgeryForm() {
 
         initComponents();
         this.setSize(Constants.xSize + 80, Constants.ySize - Constants.yExtension + 8);
-        setPatientInfo("001000002663");
+        setPatientInfo(patientId);
     }
 
     @SuppressWarnings("unchecked")
@@ -579,6 +582,11 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
         jButton3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(0, 204, 102));
         jButton3.setText("Save");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(204, 0, 0));
@@ -699,6 +707,11 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMemberId13ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        saveCardiacSurgeryInformation();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
@@ -765,6 +778,10 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
         txtAddress.setText(patient.getAddress());
         txtNationality.setText(patient.getNationalityDescription());
         txtCity.setText(patient.getCityDescription());
+    }
+
+    private void saveCardiacSurgeryInformation() {
+        cardiacSurgery.setPatientId(patientId);
     }
 
 }

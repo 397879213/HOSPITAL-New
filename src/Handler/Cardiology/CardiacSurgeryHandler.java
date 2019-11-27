@@ -64,7 +64,7 @@ public class CardiacSurgeryHandler {
         return objData;
     }
 
-    public boolean compoundAdditiveMaster(CardiacSurgeryBO insert) {
+    public boolean insertCardiacSurgeryMaster(CardiacSurgeryBO insert) {
 
         String[] columns = {Database.DCMS.cardiacSurgeryMaster,
             "ID", "PATIENT_ID", "INSTITUTE_ID", "ADMISSION_NO", "DATE_OF_SURGERY",

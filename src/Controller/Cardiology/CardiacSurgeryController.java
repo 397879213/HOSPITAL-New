@@ -5,9 +5,11 @@
  */
 package Controller.Cardiology;
 
+import BO.Cardiology.CardiacSurgeryBO;
 import BO.Patient;
 import Handler.Cardiology.CardiacSurgeryHandler;
 import java.util.List;
+import utilities.Constants;
 
 /**
  *
@@ -19,5 +21,16 @@ public class CardiacSurgeryController {
     
     public Patient selectPateitnInformation(String patientId) {
         return hdlCardiacSurg.selectPateitnInformation(patientId);
+    }
+    
+    public boolean insertCardiacSurgeryMaster(CardiacSurgeryBO insert) {
+        boolean ret = hdlCardiacSurg.insertCardiacSurgeryMaster(insert);
+        if(ret){
+            ret = Constants.dao.commitTransaction();
+        }
+        if(!ret){
+            Constants.dao.rollBack();
+        }
+        return ret;
     }
 }
