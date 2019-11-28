@@ -9,6 +9,8 @@ import BO.Cardiology.OutsidePatientRegistry;
 import Handler.Cardiology.OutsidePatientRegistryHandler;
 import java.util.List;
 import utilities.Constants;
+import utilities.GenerateKeys;
+import utilities.Keys;
 
 /**
  *
@@ -17,11 +19,11 @@ import utilities.Constants;
 public class OutsidePatientRegistryController {
 
     OutsidePatientRegistryHandler hdlPatRegistry = new OutsidePatientRegistryHandler();
- 
+    GenerateKeys key = new GenerateKeys();
  
     public boolean insertOutsidePatientRegister(OutsidePatientRegistry 
             outsidePatient) {
-        
+        outsidePatient.setId(key.generatePrimaryKey(Keys.outsidePatient, true));
         boolean ret = hdlPatRegistry.insertOutsidePatientRegister(outsidePatient);
         if (ret) {
             ret = hdlPatRegistry.insertOutsidePatientRegisterUpdate(outsidePatient);

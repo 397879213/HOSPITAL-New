@@ -24,8 +24,6 @@ public class OutsidePatientRegistryHandler {
     public boolean insertOutsidePatientRegister(OutsidePatientRegistry
             outsidePatient) {
         
-          GenerateKeys key = new GenerateKeys();
-          
          String[] columns = {Database.DCMS.outsidePatient,"ID", "PATIENT_ID",
             "FIRST_NAME", "LAST_NAME", "FULL_NAME", "FATHER_NAME",
             "HUSBAND_NAME","MARITAL_STATUS_ID","GENDER","AGE","CNIC","DOB",
@@ -34,7 +32,6 @@ public class OutsidePatientRegistryHandler {
             "CRTD_DATE","CRTD_BY","CRTD_TERMINAL_ID","GUARDIAN_NAME","RELATION_ID"
                  ,"PRI_PHYSICIAN","REG_DATE"
         };
-        outsidePatient.setId(key.generatePrimaryKey(Keys.outsidePatient, true));
         HashMap mapOutsidePat = new HashMap();
 
         //mapOutsidePat.put("ID", "'" + key.generatePrimaryKey(Keys.outsidePatient) + "'");
@@ -110,7 +107,7 @@ public class OutsidePatientRegistryHandler {
         mapOutsidePat.put("ADDRESS", "'" + outsidePatient.getAddress().replaceAll(",", " ") + "'");
         mapOutsidePat.put("RELATION_ID", "'" + outsidePatient.getRelationId()+ "'");
         mapOutsidePat.put("PRI_PHYSICIAN", "'" + outsidePatient.getPrimaryPhysician()+ "'");
-        mapOutsidePat.put("REG_DATE", "'" + outsidePatient.getRegistrationDate()+ "'");
+        mapOutsidePat.put("REG_DATE", "SYSDATE");
         mapOutsidePat.put("ORDER_STATUS_ID", "'" + outsidePatient.getOrderStatusId() + "'");       
         mapOutsidePat.put("CRTD_DATE", "" + Constants.today + "");
         mapOutsidePat.put("CRTD_BY", "'" + Constants.userId + "'");
