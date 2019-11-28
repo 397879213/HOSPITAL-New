@@ -120,14 +120,6 @@ public class OutsidePatientRegistryHandler {
         
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
     public List<OutsidePatientRegistry> searchPatient(String patientId,
             String contactNo,String patName,String cnic,String fromDate
             ,String toDate,String physician) {
@@ -140,7 +132,6 @@ public class OutsidePatientRegistryHandler {
              "BLOOD_GROUP","CONTACT_NO","ADDRESS","GUARDIAN_NAME",
             "PRI_PHYSICIAN","REG_DATE","RELATION_ID","RELATION",
             "CRTD_DATE","CRTD_BY","CRTD_TERMINAL"};
-        
         
         String query = " SELECT OSP.ID                  ID ,                \n"
                 + "  OSP.PATIENT_ID                     PATIENT_ID,         \n"
@@ -167,29 +158,31 @@ public class OutsidePatientRegistryHandler {
                 + "  BLD.DESCRIPTION                    BLOOD_GROUP,        \n"
                 + "  OSP.CONTACT_NO                     CONTACT_NO,         \n"
                 + "  NVL(OSP.ADDRESS, ' ')              ADDRESS,            \n"
-                + "  NVL(OSP.GUARDIAN_NAME, ' ')        GUARDIAN_NAME,       \n"
-                + "  NVL(OSP.PRI_PHYSICIAN, ' ')        PRI_PHYSICIAN,      \n"
+                + "  NVL(OSP.GUARDIAN_NAME, ' ')        GUARDIAN_NAME,      \n"
+                + "  PPI.NAME                           PRI_PHYSICIAN,      \n"
                 + "  TO_CHAR(OSP.REG_DATE, 'DD-MM-YY HH24:MI')  REG_DATE,   \n"
                 + "  NVL(OSP.RELATION_ID, '')           RELATION_ID,        \n"
                 + "  REL.DESCRIPTION                    RELATION,           \n"
                 + "  TO_CHAR(OSP.CRTD_DATE, 'DD-MM-YY HH24:MI')  CRTD_DATE, \n"
-                + "  OSP.CRTD_BY                        CRTD_BY ,           \n"
-                + "  OSP.CRTD_TERMINAL_ID               CRTD_TERMINAL       \n"
+                + "  OSP.CRTD_BY                        CRTD_BY ,       \n"
+                + "  OSP.CRTD_TERMINAL_ID               CRTD_TERMINAL   \n"
                 + "  FROM "
-                + Database.DCMS.outsidePatient + "              OSP,         \n" 
-                + Database.DCMS.definitionTypeDetail + "        MAR,         \n" 
-                + Database.DCMS.definitionTypeDetail + "        CTY,         \n" 
-                + Database.DCMS.definitionTypeDetail + "        INS,         \n" 
-                + Database.DCMS.definitionTypeDetail + "        RLG,         \n" 
-                + Database.DCMS.definitionTypeDetail + "        CAT,         \n" 
-                + Database.DCMS.definitionTypeDetail + "        REL,         \n" 
-                + Database.DCMS.definitionTypeDetail + "        BLD         \n"                
-                + " WHERE  OSP.MARITAL_STATUS_ID = MAR.ID                   \n"
+                + Database.DCMS.outsidePatient + "              OSP,    \n" 
+                + Database.DCMS.definitionTypeDetail + "        MAR,    \n" 
+                + Database.DCMS.definitionTypeDetail + "        CTY,    \n" 
+                + Database.DCMS.definitionTypeDetail + "        INS,    \n" 
+                + Database.DCMS.definitionTypeDetail + "        RLG,    \n" 
+                + Database.DCMS.definitionTypeDetail + "        CAT,    \n" 
+                + Database.DCMS.definitionTypeDetail + "        REL,    \n" 
+                + Database.DCMS.definitionTypeDetail + "        BLD,    \n"                
+                + Database.DCMS.users + "                       PPI     \n"                
+                + " WHERE  OSP.MARITAL_STATUS_ID = MAR.ID               \n"
                 + " AND   OSP.CITY_ID = CTY.ID                          \n"
                 + " AND   OSP.INSTITUTE_ID = INS.ID                     \n"
                 + " AND   OSP.RELIGION_ID =  RLG.ID                     \n"
                 + " AND   OSP.CATEGORY_ID =  CAT.ID                     \n"
                 + " AND   OSP.RELATION_ID =  REL.ID                     \n"
+                + " AND   NVL(OSP.PRI_PHYSICIAN, 'GENERAL') =  NVL(PPI.USER_NAME, 'GENERAL')  \n"
                 + " AND   OSP.BLOOD_GROUP_ID = BLD.ID                   \n";
                  
         
@@ -222,6 +215,7 @@ public class OutsidePatientRegistryHandler {
             pat.setPatientId(map.get("PATIENT_ID").toString());
             pat.setPatientFirstName(map.get("FIRST_NAME").toString());
             pat.setPatientLastName(map.get("LAST_NAME").toString());
+            pat.setPatientFullName(map.get("FULL_NAME").toString());
             pat.setAge(map.get("AGE").toString());
             pat.setDob(map.get("DOB").toString());
             pat.setGender(map.get("GENDER").toString());

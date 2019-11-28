@@ -1728,8 +1728,6 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
              JOptionPane.showMessageDialog(null, "Unable to Register Patient");
 
          }
-         
-        
      }
     
     
