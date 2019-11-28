@@ -44,7 +44,8 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
         btnRegister.setMnemonic(KeyEvent.VK_S);
         btnExit.setMnemonic(KeyEvent.VK_X);
         btnClear.setMnemonic(KeyEvent.VK_C);
-        setDate(0);
+        setDateOfBirth(0);
+        setDateOfRegistration(0);
     }
 
     @SuppressWarnings("unchecked")
@@ -1277,7 +1278,8 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
         instituteId = outsidePatRegistry.getInstituteId();
         categoryId = outsidePatRegistry.getCategoryId();
         priPhysicianId = outsidePatRegistry.getPrimaryPhysicianId();
-        setDate(Integer.parseInt(outsidePatRegistry.getDayOfBirth()));
+        setDateOfBirth(Integer.parseInt(outsidePatRegistry.getDayOfBirth()));
+        setDateOfRegistration(Integer.parseInt(outsidePatRegistry.getDayOfRegistration()));
         txtFirstName.setText(outsidePatRegistry.getPatientFirstName().trim());
         txtLastName.setText(outsidePatRegistry.getPatientLastName().trim());
         txtAge.setText(outsidePatRegistry.getAge().trim());
@@ -1792,7 +1794,7 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
         }
     }
 
-    private void setDate(int day) {
+    private void setDateOfBirth(int day) {
         try {
             Calendar c = Calendar.getInstance();
             c.add(Calendar.DATE, day);
@@ -1801,6 +1803,19 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
             txtDOB.setDate(date2);
             txtRegistrationDate.setDate(date2);
             dob = dateFormat.format(date2);
+            regDate = dateFormat.format(date2);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    private void setDateOfRegistration(int day) {
+        try {
+            Calendar c = Calendar.getInstance();
+            c.add(Calendar.DATE, day);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
+            Date date2 = dateFormat.parse(dateFormat.format(c.getTime()));
+            txtRegistrationDate.setDate(date2);
             regDate = dateFormat.format(date2);
         } catch (Exception ex) {
             ex.printStackTrace();
