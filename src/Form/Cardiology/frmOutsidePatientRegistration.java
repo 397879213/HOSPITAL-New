@@ -1515,11 +1515,11 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
 
     private void txtPriPhysicianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPriPhysicianActionPerformed
         // TODO add your handling code here:
-        String query = "SELECT USER_NAME ID, NAME DESCRIPTION FROM            \n"
-                + Database.DCMS.users + "                       \n"
+        String query = "SELECT USER_NAME ID, NAME DESCRIPTION FROM  \n"
+                + Database.DCMS.users + "                           \n"
                 + " WHERE UPPER(NAME) LIKE '%"
-                + txtPriPhysician.getText().toUpperCase().trim() + "%' \n"
-                + " AND ACTIVE = 'Y'                           \n";
+                + txtPriPhysician.getText().toUpperCase().trim() + "%'\n"
+                + " AND ACTIVE = 'Y'                                \n";
 
         lov.LOVSelection(query, this);
         if (Constants.lovID.equalsIgnoreCase("ID")) {
