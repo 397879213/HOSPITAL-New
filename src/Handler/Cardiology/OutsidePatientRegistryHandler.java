@@ -130,7 +130,7 @@ public class OutsidePatientRegistryHandler {
              ,"AGE","CNIC","DOB","DAY_OF_BIRTH","CITY_ID","CITY","INSTITUTE_ID","INSTITUTE",
              "RELIGION_ID","RELIGION","CATEGORY_ID","CATEGORY","BLOOD_GROUP_ID",
              "BLOOD_GROUP","CONTACT_NO","ADDRESS","GUARDIAN_NAME","PRI_PHYSICIAN_ID",
-            "PRI_PHYSICIAN","REG_DATE","RELATION_ID","RELATION",
+            "PRI_PHYSICIAN","REG_DATE","RELATION_ID","RELATION", "DAY_OF_REG",
             "CRTD_DATE","CRTD_BY","CRTD_TERMINAL"};
         
         String query = " SELECT OSP.ID                  ID ,                \n"
@@ -162,6 +162,7 @@ public class OutsidePatientRegistryHandler {
                 + "  NVL(OSP.GUARDIAN_NAME, ' ')        GUARDIAN_NAME,      \n"
                 + "  OSP.PRI_PHYSICIAN                  PRI_PHYSICIAN_ID,   \n"
                 + "  PPI.NAME                           PRI_PHYSICIAN,      \n"
+                + "  NVL(ROUND(OSP.REG_DATE - (SYSDATE+1)), 0) DAY_OF_REG,  \n"
                 + "  TO_CHAR(OSP.REG_DATE, 'DD-MM-YY HH24:MI')  REG_DATE,   \n"
                 + "  NVL(OSP.RELATION_ID, '')           RELATION_ID,        \n"
                 + "  REL.DESCRIPTION                    RELATION,           \n"
@@ -241,6 +242,7 @@ public class OutsidePatientRegistryHandler {
             pat.setGuardian(map.get("GUARDIAN_NAME").toString());
             pat.setInstituteId(map.get("INSTITUTE_ID").toString());
             pat.setInstitute(map.get("INSTITUTE").toString());
+            pat.setDayOfRegistration(map.get("DAY_OF_REG").toString());
             pat.setRegistrationDate(map.get("REG_DATE").toString());
             pat.setCategory(map.get("CATEGORY").toString());
             pat.setCategoryId(map.get("CATEGORY_ID").toString());
@@ -274,9 +276,9 @@ public class OutsidePatientRegistryHandler {
                      + " RELATION_ID  = '" + outsidePatRegistry.getRelationId() + "', \n"
                      + " INSTITUTE_ID  = '" + outsidePatRegistry.getInstituteId() + "', \n"
                      + " PRI_PHYSICIAN  = '" + outsidePatRegistry.getPrimaryPhysician() + "', \n"
-                     //+ " REG_DATE  = '" + outsidePatRegistry.getRegistrationDate() + "', \n"
+                     + " REG_DATE  = '" + outsidePatRegistry.getRegistrationDate() + "', \n"
                      + " CATEGORY_ID  = '" + outsidePatRegistry.getCategoryId() + "', \n"
-                     + " ADDRESS  = '" + outsidePatRegistry.getAddress() + "', \n"
+                     + " ADDRESS  = '" + outsidePatRegistry.getAddress() + "'  \n"
                      + " WHERE ID = '" + outsidePatRegistry.getId() + "'";
  
             return Constants.dao.executeUpdate(query, false);

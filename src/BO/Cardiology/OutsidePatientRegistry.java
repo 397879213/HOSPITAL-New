@@ -39,12 +39,21 @@ public class OutsidePatientRegistry {
     private String primaryPhysician = "";
     private String primaryPhysicianId = "";
     private String registrationDate = "";
+    private String dayOfRegistration = "";
     private String categoryId = "";
     private String category = "";
     private String address = "";
     private String orderStatusId = "";
     private String relationId = "";
     private String relation = "";
+
+    public String getDayOfRegistration() {
+        return dayOfRegistration;
+    }
+
+    public void setDayOfRegistration(String dayOfRegistration) {
+        this.dayOfRegistration = dayOfRegistration;
+    }
 
     public String getDayOfBirth() {
         return dayOfBirth;

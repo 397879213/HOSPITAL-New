@@ -411,7 +411,7 @@ public class GenerateKeys {
 
         String[] cols = {Database.DCMS.primaryKey,
             "KEY", "TYPE", "LENGTH", "SEQUENCE_NAME", "SEQ_ACTIVE", "YEAR"};
-        String query = "SELECT KEY , TYPE , LENGTH, "   
+        String query = "SELECT KEY , TYPE , LENGTH, SEQUENCE_NAME,"   
                 + " SEQ_ACTIVE, YEAR FROM  "
                 + Database.DCMS.primaryKey
                 + " WHERE UPPER(ID) = '" + tableName.trim().toUpperCase().trim() + "'";

@@ -1309,14 +1309,12 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
         outsidePatRegistry.setPatientLastName(txtLastName.getText());
         outsidePatRegistry.setAge(txtAge.getText());
         outsidePatRegistry.setDob(dob);
-        //outsidePatRegistry.setRegistrationDate(regDate);
-        outsidePatRegistry.setGender(cboGender.getSelectedItem().toString());
+        outsidePatRegistry.setRegistrationDate(regDate);
         outsidePatRegistry.setContactNo(txtContactNo.getText());
         outsidePatRegistry.setPatientId(txtPatientId.getText());
         outsidePatRegistry.setCnic(txtCNIC.getText());
         outsidePatRegistry.setFatherName(txtFatherName.getText());
         outsidePatRegistry.setHusbandName(txtHusbandName.getText());
-
         outsidePatRegistry.setMaritalStatusId(maritalStatusId);
         outsidePatRegistry.setBloodGroupId(bloodGroupId);
         outsidePatRegistry.setCityId(cityId);
@@ -1327,7 +1325,11 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
         outsidePatRegistry.setCategoryId(categoryId);
         outsidePatRegistry.setPrimaryPhysician(txtPriPhysician.getText());
         outsidePatRegistry.setAddress(txtAddress.getText());
-
+        if (cboGender.getSelectedIndex() == 0) {
+            outsidePatRegistry.setGender("1");
+        } else {
+            outsidePatRegistry.setGender("2");
+        }
         if (ctlPatRegistry.updateOutsidePatientData(outsidePatRegistry)) {
             JOptionPane.showMessageDialog(null, "Patient Data Successfully Updated");
 
@@ -1366,7 +1368,7 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         cnic = txtSearchCNIC.getText();
         searchPatient(patientId, contactNo, patName, cnic, fromDate, toDate,
-                 physician);
+                physician);
     }//GEN-LAST:event_txtSearchCNICActionPerformed
 
     private void cboAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboAgeActionPerformed
@@ -1707,7 +1709,9 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
         outsidePatient.setRelationId(relationId);
         outsidePatient.setRegistrationDate(regDate);
         outsidePatient.setPatientFullName(fullName);
-        if (cboGender.getSelectedIndex() == 1) {
+        if (cboGender.getSelectedIndex() == 0) {
+            outsidePatient.setGender("1");
+        } else {
             outsidePatient.setGender("2");
         }
 
@@ -1790,13 +1794,14 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
 
     private void setDate(int day) {
         try {
-            Date date = new Date();
             Calendar c = Calendar.getInstance();
             c.add(Calendar.DATE, day);
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
             Date date2 = dateFormat.parse(dateFormat.format(c.getTime()));
             txtDOB.setDate(date2);
+            txtRegistrationDate.setDate(date2);
             dob = dateFormat.format(date2);
+            regDate = dateFormat.format(date2);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
