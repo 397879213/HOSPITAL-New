@@ -1428,6 +1428,7 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
         dob = dateFormat.format(txtDOB.getDate());
+        System.err.println("DOB: " +dob);
         cboGender.requestFocus();
          
     }//GEN-LAST:event_txtDOBActionPerformed
@@ -1704,7 +1705,7 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
          outsidePatient.setFatherName(txtFatherName.getText());
          outsidePatient.setHusbandName(txtHusbandName.getText());
          outsidePatient.setAddress(txtAddress.getText());
-         outsidePatient.setPrimaryPhysician(txtPriPhysician.getText());
+         outsidePatient.setPrimaryPhysician(priPhysicianId);
          outsidePatient.setInstituteId(instituteId);
          outsidePatient.setReligionId(religionId);
          outsidePatient.setMaritalStatusId(maritalStatusId);

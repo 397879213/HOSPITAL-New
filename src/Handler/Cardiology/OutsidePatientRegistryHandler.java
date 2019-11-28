@@ -58,9 +58,10 @@ public class OutsidePatientRegistryHandler {
         mapOutsidePat.put("CONTACT_NO", "'" + outsidePatient.getContactNo() + "'");
         mapOutsidePat.put("ADDRESS", "'" + outsidePatient.getAddress().replaceAll(",", " ") + "'");
         mapOutsidePat.put("RELATION_ID", "'" + outsidePatient.getRelationId()+ "'");
-        mapOutsidePat.put("REG_DATE", "'" + outsidePatient.getRegistrationDate()+ "'");
+        mapOutsidePat.put("PRI_PHYSICIAN", "'" + outsidePatient.getPrimaryPhysician()+ "'");
+        mapOutsidePat.put("REG_DATE", "SYSDATE");
         mapOutsidePat.put("ORDER_STATUS_ID", "'" + outsidePatient.getOrderStatusId() + "'");       
-        mapOutsidePat.put("CRTD_DATE", "" + Constants.today + "");
+        mapOutsidePat.put("CRTD_DATE", "" + Constants.today );
         mapOutsidePat.put("CRTD_BY", "'" + Constants.userId + "'");
         mapOutsidePat.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
 
@@ -108,6 +109,7 @@ public class OutsidePatientRegistryHandler {
         mapOutsidePat.put("CONTACT_NO", "'" + outsidePatient.getContactNo() + "'");
         mapOutsidePat.put("ADDRESS", "'" + outsidePatient.getAddress().replaceAll(",", " ") + "'");
         mapOutsidePat.put("RELATION_ID", "'" + outsidePatient.getRelationId()+ "'");
+        mapOutsidePat.put("PRI_PHYSICIAN", "'" + outsidePatient.getPrimaryPhysician()+ "'");
         mapOutsidePat.put("REG_DATE", "'" + outsidePatient.getRegistrationDate()+ "'");
         mapOutsidePat.put("ORDER_STATUS_ID", "'" + outsidePatient.getOrderStatusId() + "'");       
         mapOutsidePat.put("CRTD_DATE", "" + Constants.today + "");
