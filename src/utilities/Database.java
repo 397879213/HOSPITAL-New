@@ -12,10 +12,12 @@ public class Database {
 
         public static final String medicineRequest = DAO.usernameEmr + ".MEDICINE_REQUEST   ";
         public static final String ltuPatientHistory = DAO.usernameEmr + ".LTU_PATIENT_HISTORY   ";
-        
+
         public static final String cardiacSurgeryMaster = DAO.usernameEmr + ".CARDIAC_SURGERY_MASTER   ";
         public static final String cardiacHistoryDetail = DAO.usernameEmr + ".CARDIAC_HISTORY_DETAIL   ";
         public static final String cardiacProcedureDetail = DAO.usernameEmr + ".CARDIAC_PROCEDURE_DETAIL   ";
+        public static String outsidePatient = DAO.username + "." + "OUTSIDE_PATIENT";
+        public static final String outsidePatientUpdate = DAO.username + ".UPDATE_OUTSIDE_PATIENT";
 
         public static final String member = DAO.usernameEmr + ".MEMBER   ";
         public static final String bookIssueDetail = DAO.usernameEmr + ".BOOK_ISSUE_DETAIL   ";

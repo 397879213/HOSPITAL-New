@@ -6,6 +6,7 @@ public class Keys {
     public static final String locWiseCashDetail = "LOC_WISE_CASH_DETAIL";
     public static final String bank = "BANK";
     public static final String otc = "OTC";
+    public static final String outsidePatient = "OTC";
 //NEW OT KEYS   
     public static String otProcedureTeam = "OT_PROCEDURE_TEAM";
     public static String clinicalProcedureTeam = "CLINICAL_PROCEDURE_TEAM";

@@ -10,6 +10,7 @@ public class DefinitionTypes {
     public static final String ngFoleys = "418";
     
     //NEW
+    public static final String institute = "82";
     public static final String outsideHospital = "249";
     public static final String generalReporting = "1361";
     public static final String numericReporting = "1362";
