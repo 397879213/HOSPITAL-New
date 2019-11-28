@@ -20,6 +20,7 @@ public class OutsidePatientRegistry {
     private String patientFullName = "";
     private String age = "";
     private String dob = "";
+    private String dayOfBirth = "";
     private String gender = "1";
     private String cnic = "";
     private String contactNo = "";
@@ -36,6 +37,7 @@ public class OutsidePatientRegistry {
     private String guardian = "";
     private String institute = "";
     private String primaryPhysician = "";
+    private String primaryPhysicianId = "";
     private String registrationDate = "";
     private String categoryId = "";
     private String category = "";
@@ -44,7 +46,21 @@ public class OutsidePatientRegistry {
     private String relationId = "";
     private String relation = "";
 
-     
+    public String getDayOfBirth() {
+        return dayOfBirth;
+    }
+
+    public void setDayOfBirth(String dayOfBirth) {
+        this.dayOfBirth = dayOfBirth;
+    }
+
+     public String getPrimaryPhysicianId() {
+        return primaryPhysicianId;
+    }
+
+    public void setPrimaryPhysicianId(String primaryPhysicianId) {
+        this.primaryPhysicianId = primaryPhysicianId;
+    }
 
     public String getRelation() {
         return relation;

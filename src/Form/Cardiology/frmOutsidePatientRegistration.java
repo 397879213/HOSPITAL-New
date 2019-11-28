@@ -11,6 +11,8 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
@@ -24,14 +26,11 @@ import utilities.Status;
 
 public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
 
-    
-
 //    Webcam webcam = null;
 //    WebcamPanel panel;
-    
     DisplayLOV lov = new DisplayLOV();
     private String priPhysicianId;
-    
+
     public frmOutsidePatientRegistration() {
 
         initComponents();
@@ -45,9 +44,7 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
         btnRegister.setMnemonic(KeyEvent.VK_S);
         btnExit.setMnemonic(KeyEvent.VK_X);
         btnClear.setMnemonic(KeyEvent.VK_C);
-  
-   
- 
+        setDate(0);
     }
 
     @SuppressWarnings("unchecked")
@@ -1064,7 +1061,7 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        
+
         if (txtFirstName.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Kindly Enter First Name ");
             txtFirstName.setBackground(Color.red);
@@ -1079,7 +1076,7 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
         }
         if (txtPatientId.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Kindly Enter Patient ID ");
-           txtPatientId.setBackground(Color.red);
+            txtPatientId.setBackground(Color.red);
 
             return;
 
@@ -1110,35 +1107,35 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void txtAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAgeActionPerformed
- 
+
         txtDOB.requestFocus();
 
     }//GEN-LAST:event_txtAgeActionPerformed
 
     private void txtFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFirstNameActionPerformed
-             txtLastName.requestFocus();
+        txtLastName.requestFocus();
      }//GEN-LAST:event_txtFirstNameActionPerformed
 
     private void txtLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLastNameActionPerformed
-      txtAge.requestFocus();
+        txtAge.requestFocus();
     }//GEN-LAST:event_txtLastNameActionPerformed
 
     private void txtCNICActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCNICActionPerformed
 
-       txtFatherName.requestFocus();
+        txtFatherName.requestFocus();
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCNICActionPerformed
 
     private void txtContactNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContactNoActionPerformed
-        
+
         txtPatientId.requestFocus();
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContactNoActionPerformed
 
     private void txtHusbandNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHusbandNameActionPerformed
-            
+
         txtReligion.requestFocus();
-       
+
         // TODO add your handling code here:
 }//GEN-LAST:event_txtHusbandNameActionPerformed
 
@@ -1163,18 +1160,18 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
             txtReligion.setText(Constants.lovDescription.toUpperCase());
         }
         //txtType.requestFocus();
-        
+
         txtMaritalStatus.requestFocus();
     }//GEN-LAST:event_txtReligionActionPerformed
 
     private void txtFatherNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFatherNameActionPerformed
-    txtHusbandName.requestFocus();
+        txtHusbandName.requestFocus();
 }//GEN-LAST:event_txtFatherNameActionPerformed
 
     private void txtMaritalStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaritalStatusActionPerformed
 
-         lov.LOVDefinitionSelection(DefinitionTypes.maritalStatus,
-                 txtMaritalStatus.getText().trim(), this);
+        lov.LOVDefinitionSelection(DefinitionTypes.maritalStatus,
+                txtMaritalStatus.getText().trim(), this);
 
         if (Constants.lovDescription.equalsIgnoreCase("DESCRIPTION")) {
             txtMaritalStatus.setText("");
@@ -1198,7 +1195,7 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
 
     private void txtBloodGroupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBloodGroupActionPerformed
 
-      lov.LOVDefinitionSelection(DefinitionTypes.bloodGroup, txtBloodGroup.getText().trim(), this);
+        lov.LOVDefinitionSelection(DefinitionTypes.bloodGroup, txtBloodGroup.getText().trim(), this);
 
         if (Constants.lovDescription.equalsIgnoreCase("DESCRIPTION")) {
             txtBloodGroup.setText("");
@@ -1209,7 +1206,7 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
             txtBloodGroup.setText(Constants.lovDescription.toUpperCase());
         }
         // TODO add your handling code here:
-        
+
         txtCity.requestFocus();
 }//GEN-LAST:event_txtBloodGroupActionPerformed
 
@@ -1223,7 +1220,7 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
 
     private void txtCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCityActionPerformed
 
-      lov.LOVDefinitionSelection(DefinitionTypes.city, txtCity.getText().trim(), this);
+        lov.LOVDefinitionSelection(DefinitionTypes.city, txtCity.getText().trim(), this);
 
         if (Constants.lovDescription.equalsIgnoreCase("DESCRIPTION")) {
             txtCity.setText("");
@@ -1238,7 +1235,7 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
 }//GEN-LAST:event_txtCityActionPerformed
 
     private void tblOutsidePatientsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblOutsidePatientsMouseClicked
-        
+
 }//GEN-LAST:event_tblOutsidePatientsMouseClicked
 
     private void tblOutsidePatientsKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblOutsidePatientsKeyReleased
@@ -1248,17 +1245,17 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
 }//GEN-LAST:event_tblOutsidePatientsKeyReleased
 
     private void btntsearchPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntsearchPatientActionPerformed
-        
-         patientId=txtSearchPatientId.getText();
-         contactNo=txtSearchContactNo.getText();
-         patientId=txtSearchPatientId.getText();
-         cnic=txtSearchCNIC.getText();
-         //SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
+
+        patientId = txtSearchPatientId.getText();
+        contactNo = txtSearchContactNo.getText();
+        patientId = txtSearchPatientId.getText();
+        cnic = txtSearchCNIC.getText();
+        //SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
 //         fromDate = dateFormat.format(txtSearchFromDate.getDate());
-         //SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
-         //toDate = dateFormat.format(txtSearchToDate.getDate());
-         physician=txtSearchPhysician.getText();
-         searchPatient(patientId, contactNo,patName,cnic,fromDate,toDate,physician);
+        //SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
+        //toDate = dateFormat.format(txtSearchToDate.getDate());
+        physician = txtSearchPhysician.getText();
+        searchPatient(patientId, contactNo, patName, cnic, fromDate, toDate, physician);
 
 
     }//GEN-LAST:event_btntsearchPatientActionPerformed
@@ -1268,10 +1265,10 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
         if (tblOutsidePatients.getSelectedRow() < 0 || listPatRegistryData.isEmpty()) {
             return;
         }
-        
+
         outsidePatRegistry = listPatRegistryData.get(
                 tblOutsidePatients.getSelectedRow());
-        Id = outsidePatRegistry.getId();      
+        Id = outsidePatRegistry.getId();
         religionId = outsidePatRegistry.getReligionId();
         cityId = outsidePatRegistry.getCityId();
         bloodGroupId = outsidePatRegistry.getBloodGroupId();
@@ -1279,7 +1276,8 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
         relationId = outsidePatRegistry.getRelationId();
         instituteId = outsidePatRegistry.getInstituteId();
         categoryId = outsidePatRegistry.getCategoryId();
-        
+        priPhysicianId = outsidePatRegistry.getPrimaryPhysicianId();
+        setDate(Integer.parseInt(outsidePatRegistry.getDayOfBirth()));
         txtFirstName.setText(outsidePatRegistry.getPatientFirstName().trim());
         txtLastName.setText(outsidePatRegistry.getPatientLastName().trim());
         txtAge.setText(outsidePatRegistry.getAge().trim());
@@ -1301,86 +1299,84 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
         txtInstitute.setText(outsidePatRegistry.getInstitute().trim());
         txtCategory.setText(outsidePatRegistry.getCategory().trim());
         //txtInstitute.setText(outsidePatRegistry.getInstitute().trim());
-  
+
     }//GEN-LAST:event_tblOutsidePatientsMouseReleased
 
     private void btnPatientUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatientUpdateActionPerformed
 
-       outsidePatRegistry.setId(Id);
-       outsidePatRegistry.setPatientFirstName(txtFirstName.getText());
-       outsidePatRegistry.setPatientLastName(txtLastName.getText());
-       outsidePatRegistry.setAge(txtAge.getText());
-       //outsidePatRegistry.setDob(dob);
-       //outsidePatRegistry.setRegistrationDate(regDate);
-       outsidePatRegistry.setGender(cboGender.getSelectedItem().toString());
-       outsidePatRegistry.setContactNo(txtContactNo.getText());
-       outsidePatRegistry.setPatientId(txtPatientId.getText());
-       outsidePatRegistry.setCnic(txtCNIC.getText());
-       outsidePatRegistry.setFatherName(txtFatherName.getText());
-       outsidePatRegistry.setHusbandName(txtHusbandName.getText());
-     
-       outsidePatRegistry.setMaritalStatusId(maritalStatusId);
-       outsidePatRegistry.setBloodGroupId(bloodGroupId);
-       outsidePatRegistry.setCityId(cityId);
-       outsidePatRegistry.setReligionId(religionId);
-       outsidePatRegistry.setGuardian(txtGuardian.getText());
-       outsidePatRegistry.setRelationId(relationId);
-       outsidePatRegistry.setInstituteId(instituteId);
-       outsidePatRegistry.setCategoryId(categoryId);
-       outsidePatRegistry.setPrimaryPhysician(txtPriPhysician.getText());
-       outsidePatRegistry.setAddress(txtAddress.getText());
-        
-      if(ctlPatRegistry.updateOutsidePatientData(outsidePatRegistry)){
-        JOptionPane.showMessageDialog(null, "Patient Data Successfully Updated");
+        outsidePatRegistry.setId(Id);
+        outsidePatRegistry.setPatientFirstName(txtFirstName.getText());
+        outsidePatRegistry.setPatientLastName(txtLastName.getText());
+        outsidePatRegistry.setAge(txtAge.getText());
+        outsidePatRegistry.setDob(dob);
+        //outsidePatRegistry.setRegistrationDate(regDate);
+        outsidePatRegistry.setGender(cboGender.getSelectedItem().toString());
+        outsidePatRegistry.setContactNo(txtContactNo.getText());
+        outsidePatRegistry.setPatientId(txtPatientId.getText());
+        outsidePatRegistry.setCnic(txtCNIC.getText());
+        outsidePatRegistry.setFatherName(txtFatherName.getText());
+        outsidePatRegistry.setHusbandName(txtHusbandName.getText());
 
-      }else{
-        JOptionPane.showMessageDialog(null, "Unable to Update Data" );
-  
-      }
-          
-      //clear();
-        
-        
+        outsidePatRegistry.setMaritalStatusId(maritalStatusId);
+        outsidePatRegistry.setBloodGroupId(bloodGroupId);
+        outsidePatRegistry.setCityId(cityId);
+        outsidePatRegistry.setReligionId(religionId);
+        outsidePatRegistry.setGuardian(txtGuardian.getText());
+        outsidePatRegistry.setRelationId(relationId);
+        outsidePatRegistry.setInstituteId(instituteId);
+        outsidePatRegistry.setCategoryId(categoryId);
+        outsidePatRegistry.setPrimaryPhysician(txtPriPhysician.getText());
+        outsidePatRegistry.setAddress(txtAddress.getText());
+
+        if (ctlPatRegistry.updateOutsidePatientData(outsidePatRegistry)) {
+            JOptionPane.showMessageDialog(null, "Patient Data Successfully Updated");
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Unable to Update Data");
+
+        }
+
+        //clear();
+
     }//GEN-LAST:event_btnPatientUpdateActionPerformed
 
     private void txtSearchPatientIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchPatientIdActionPerformed
-        
-         patientId = txtSearchPatientId.getText();
-        searchPatient(patientId,contactNo,patName,cnic,fromDate,toDate,physician);
-        
-        
+
+        patientId = txtSearchPatientId.getText();
+        searchPatient(patientId, contactNo, patName, cnic, fromDate, toDate, physician);
+
+
     }//GEN-LAST:event_txtSearchPatientIdActionPerformed
 
     private void txtSearchContactNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchContactNoActionPerformed
         contactNo = txtSearchContactNo.getText();
-        searchPatient(patientId, contactNo,patName,cnic,fromDate,toDate,physician);
-        
+        searchPatient(patientId, contactNo, patName, cnic, fromDate, toDate, physician);
+
     }//GEN-LAST:event_txtSearchContactNoActionPerformed
 
     private void txtSearchPatientNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchPatientNameActionPerformed
 
         patName = txtSearchPatientName.getText();
-        searchPatient(patientId, contactNo,patName,cnic,fromDate,toDate,physician);
+        searchPatient(patientId, contactNo, patName, cnic, fromDate, toDate, physician);
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSearchPatientNameActionPerformed
 
     private void txtSearchCNICActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchCNICActionPerformed
- 
+
         // TODO add your handling code here:
-        
         cnic = txtSearchCNIC.getText();
-        searchPatient(patientId, contactNo, patName,cnic,fromDate,toDate
-                ,physician);
+        searchPatient(patientId, contactNo, patName, cnic, fromDate, toDate,
+                 physician);
     }//GEN-LAST:event_txtSearchCNICActionPerformed
 
     private void cboAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboAgeActionPerformed
 //
-         // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_cboAgeActionPerformed
 
     private void txtPatientIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientIdActionPerformed
 
-      txtCNIC.requestFocus();
+        txtCNIC.requestFocus();
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPatientIdActionPerformed
 
@@ -1394,16 +1390,16 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
 
     private void txtSearchPhysicianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchPhysicianActionPerformed
         physician = txtSearchPhysician.getText();
-        searchPatient(patientId,contactNo,patName,cnic,fromDate,toDate,physician);
+        searchPatient(patientId, contactNo, patName, cnic, fromDate, toDate, physician);
 
-     
+
     }//GEN-LAST:event_txtSearchPhysicianActionPerformed
 
     private void txtInstituteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInstituteActionPerformed
         // TODO add your handling code here:
-        
-         lov.LOVDefinitionSelection(DefinitionTypes.institute,
-                 txtInstitute.getText().trim(), this);
+
+        lov.LOVDefinitionSelection(DefinitionTypes.institute,
+                txtInstitute.getText().trim(), this);
 
         if (Constants.lovDescription.equalsIgnoreCase("DESCRIPTION")) {
             txtInstitute.setText("");
@@ -1428,26 +1424,24 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
         dob = dateFormat.format(txtDOB.getDate());
-        System.err.println("DOB: " +dob);
+        System.err.println("DOB: " + dob);
         cboGender.requestFocus();
-         
+
     }//GEN-LAST:event_txtDOBActionPerformed
 
     private void txtSearchToDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchToDateActionPerformed
         // TODO add your handling code here:
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
         toDate = dateFormat.format(txtSearchToDate.getDate());
-        searchPatient(patientId, contactNo, patName, cnic,fromDate,
-                toDate,physician);
-        
+        searchPatient(patientId, contactNo, patName, cnic, fromDate,
+                toDate, physician);
+
     }//GEN-LAST:event_txtSearchToDateActionPerformed
 
     private void txtSearchFromDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchFromDateActionPerformed
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
         fromDate = dateFormat.format(txtSearchFromDate.getDate());
-        
-        
 
 // TODO add your handling code here:
     }//GEN-LAST:event_txtSearchFromDateActionPerformed
@@ -1459,23 +1453,23 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
     private void txtSearchInstitueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchInstitueActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSearchInstitueActionPerformed
-    private String regDate="";
+    private String regDate = "";
     private void txtRegistrationDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRegistrationDateActionPerformed
-        
-         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
         regDate = dateFormat.format(txtDOB.getDate());
         txtCategory.requestFocus();
-        
+
 // TODO add your handling code here:
     }//GEN-LAST:event_txtRegistrationDateActionPerformed
 
     private void txtGuardianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGuardianActionPerformed
         // TODO add your handling code here:
-        if(txtGuardian.getText().equalsIgnoreCase("")){
+        if (txtGuardian.getText().equalsIgnoreCase("")) {
             txtInstitute.requestFocus();
             txtRelation.setEditable(false);
-            
-        }else {
+
+        } else {
             txtRelation.setEditable(true);
             txtRelation.requestFocus();
         }
@@ -1491,9 +1485,9 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
 
     private void txtRelationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRelationActionPerformed
         // TODO add your handling code here:
-        
+
         lov.LOVDefinitionSelection(DefinitionTypes.relation,
-                 txtRelation.getText().trim(), this);
+                txtRelation.getText().trim(), this);
 
         if (Constants.lovDescription.equalsIgnoreCase("DESCRIPTION")) {
             txtRelation.setText("");
@@ -1541,10 +1535,10 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtPriPhysicianKeyTyped
 
     private void txtCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCategoryActionPerformed
-        
-    // TODO add your handling code here:
+
+        // TODO add your handling code here:
         lov.LOVDefinitionSelection(DefinitionTypes.category,
-                 txtCategory.getText().trim(), this);
+                txtCategory.getText().trim(), this);
 
         if (Constants.lovDescription.equalsIgnoreCase("DESCRIPTION")) {
             txtCategory.setText("");
@@ -1554,10 +1548,10 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
             categoryId = Constants.lovID;
             txtCategory.setText(Constants.lovDescription.toUpperCase());
         }
-        
+
         txtAddress.requestFocus();
-        
-          
+
+
     }//GEN-LAST:event_txtCategoryActionPerformed
 
     private void txtCategoryKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCategoryKeyPressed
@@ -1576,10 +1570,8 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
     private void btnExitFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitFormActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        
-        
-        
-         
+
+
     }//GEN-LAST:event_btnExitFormActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1679,94 +1671,90 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
     private String toDate = "";
     private String physician = "";
     private String fullName = "";
-    
+
     OutsidePatientRegistry outsidePatRegistry = new OutsidePatientRegistry();
-    
+
     OutsidePatientRegistryController ctlPatRegistry = new OutsidePatientRegistryController();
-    
+
     List<OutsidePatientRegistry> listPatRegistryData = new ArrayList<>();
 
-    
-    
     private void insertOutsidePatientRegister() {
-        
-         OutsidePatientRegistry outsidePatient = new OutsidePatientRegistry();
-         fullName=txtFirstName.getText()+"  "+txtLastName.getText(); 
-         if (outsidePatient.bloodGroupId.equalsIgnoreCase("LOV")) {
+
+        OutsidePatientRegistry outsidePatient = new OutsidePatientRegistry();
+        fullName = txtFirstName.getText() + "  " + txtLastName.getText();
+        if (outsidePatient.bloodGroupId.equalsIgnoreCase("LOV")) {
             outsidePatient.bloodGroupId = "52";
         }
-         outsidePatient.setId(Id);
-         outsidePatient.setPatientId(txtPatientId.getText());
-         outsidePatient.setPatientFirstName(txtFirstName.getText());
-         outsidePatient.setPatientLastName(txtLastName.getText());
-         outsidePatient.setAge(txtAge.getText());
-         outsidePatient.setDob(dob);
-         outsidePatient.setCnic(txtCNIC.getText());
-         outsidePatient.setFatherName(txtFatherName.getText());
-         outsidePatient.setHusbandName(txtHusbandName.getText());
-         outsidePatient.setAddress(txtAddress.getText());
-         outsidePatient.setPrimaryPhysician(priPhysicianId);
-         outsidePatient.setInstituteId(instituteId);
-         outsidePatient.setReligionId(religionId);
-         outsidePatient.setMaritalStatusId(maritalStatusId);
-         outsidePatient.setBloodGroupId(bloodGroupId);
-         outsidePatient.setCityId(cityId);
-         outsidePatient.setCategoryId(categoryId);
-         outsidePatient.setContactNo(txtContactNo.getText());
-         outsidePatient.setOrderStatusId(Status.entered);
-         outsidePatient.setRelationId(relationId);
-         outsidePatient.setRegistrationDate(regDate);
-         outsidePatient.setPatientFullName(fullName);
-         if(cboGender.getSelectedIndex() == 1){
-             outsidePatient.setGender("2");
-         }
-         
-         if(ctlPatRegistry.insertOutsidePatientRegister(outsidePatient)){
-             JOptionPane.showMessageDialog(null, "Patient Register Successfully");
-             clear();
-         }else{
-             JOptionPane.showMessageDialog(null, "Unable to Register Patient");
+        outsidePatient.setId(Id);
+        outsidePatient.setPatientId(txtPatientId.getText());
+        outsidePatient.setPatientFirstName(txtFirstName.getText());
+        outsidePatient.setPatientLastName(txtLastName.getText());
+        outsidePatient.setAge(txtAge.getText());
+        outsidePatient.setDob(dob);
+        outsidePatient.setCnic(txtCNIC.getText());
+        outsidePatient.setFatherName(txtFatherName.getText());
+        outsidePatient.setHusbandName(txtHusbandName.getText());
+        outsidePatient.setAddress(txtAddress.getText());
+        outsidePatient.setPrimaryPhysician(priPhysicianId);
+        outsidePatient.setInstituteId(instituteId);
+        outsidePatient.setReligionId(religionId);
+        outsidePatient.setMaritalStatusId(maritalStatusId);
+        outsidePatient.setBloodGroupId(bloodGroupId);
+        outsidePatient.setCityId(cityId);
+        outsidePatient.setCategoryId(categoryId);
+        outsidePatient.setContactNo(txtContactNo.getText());
+        outsidePatient.setOrderStatusId(Status.entered);
+        outsidePatient.setRelationId(relationId);
+        outsidePatient.setRegistrationDate(regDate);
+        outsidePatient.setPatientFullName(fullName);
+        if (cboGender.getSelectedIndex() == 1) {
+            outsidePatient.setGender("2");
+        }
 
-         }
-     }
-    
-    
-    public void clear(){
-        
-       txtFirstName.setText("");
-       txtFirstName.setText("");
-       txtLastName.setText("");
-       txtAge.setText("");
-       txtDOB.setDate(null);
-       txtContactNo.setText("");
-       txtHusbandName.setText("");
-       txtFatherName.setText("");
-       txtCNIC.setText("");
-       txtReligion.setText("");
-       txtMaritalStatus.setText("");
-       txtCity.setText("");
-       txtBloodGroup.setText("");
-       txtGuardian.setText("");
-       txtRelation.setText("");
-       txtInstitute.setText("");
-       txtPriPhysician.setText("");
-       txtCategory.setText("");
-       txtAddress.setText("");
-       txtRegistrationDate.setDate(null);
-       cboGender.setSelectedItem("");
-       txtPatientId.setText("");
-       //txtFirstName.setText("");
-       //txtFirstName.setText("");       
+        if (ctlPatRegistry.insertOutsidePatientRegister(outsidePatient)) {
+            JOptionPane.showMessageDialog(null, "Patient Register Successfully");
+            clear();
+        } else {
+            JOptionPane.showMessageDialog(null, "Unable to Register Patient");
+
+        }
     }
 
-    private void searchPatient(String patientId,String contactNo,
-            String patName,String cnic,String fromDate,String toDate,String 
-                    physician) {
-        
-       listPatRegistryData = ctlPatRegistry.searchPatient(patientId,
-               contactNo,patName,cnic,fromDate,toDate,physician);
-       
-       if (listPatRegistryData.isEmpty()) {
+    public void clear() {
+
+        txtFirstName.setText("");
+        txtFirstName.setText("");
+        txtLastName.setText("");
+        txtAge.setText("");
+        txtDOB.setDate(null);
+        txtContactNo.setText("");
+        txtHusbandName.setText("");
+        txtFatherName.setText("");
+        txtCNIC.setText("");
+        txtReligion.setText("");
+        txtMaritalStatus.setText("");
+        txtCity.setText("");
+        txtBloodGroup.setText("");
+        txtGuardian.setText("");
+        txtRelation.setText("");
+        txtInstitute.setText("");
+        txtPriPhysician.setText("");
+        txtCategory.setText("");
+        txtAddress.setText("");
+        txtRegistrationDate.setDate(null);
+        cboGender.setSelectedItem("");
+        txtPatientId.setText("");
+        //txtFirstName.setText("");
+        //txtFirstName.setText("");       
+    }
+
+    private void searchPatient(String patientId, String contactNo,
+            String patName, String cnic, String fromDate, String toDate, String physician) {
+
+        listPatRegistryData = ctlPatRegistry.searchPatient(patientId,
+                contactNo, patName, cnic, fromDate, toDate, physician);
+
+        if (listPatRegistryData.isEmpty()) {
 
             List list = new ArrayList();
             OutsidePatientRegistry usr = new OutsidePatientRegistry();
@@ -1783,27 +1771,35 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
         selectionModel.setSelectionInterval(0, 0);
         Constants.tablelook.setJTableEnvironment(tblOutsidePatients);
     }
-       public void setColumnsWidthsCwUModel() {
+
+    public void setColumnsWidthsCwUModel() {
         TableColumn column = null;
         for (int i = 0; i < tblOutsidePatients.getColumnCount(); i++) {
             column = tblOutsidePatients.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(100);
-             } else if (i == 1) {
+            } else if (i == 1) {
                 column.setPreferredWidth(300);
-            }   
-            else if (i == 2) {
+            } else if (i == 2) {
                 column.setPreferredWidth(100);
-            } 
-            else if (i == 3) {
+            } else if (i == 3) {
                 column.setPreferredWidth(100);
-            } 
+            }
         }
     }
-        
-       
-      
-       
-       
-     }
-     
+
+    private void setDate(int day) {
+        try {
+            Date date = new Date();
+            Calendar c = Calendar.getInstance();
+            c.add(Calendar.DATE, day);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
+            Date date2 = dateFormat.parse(dateFormat.format(c.getTime()));
+            txtDOB.setDate(date2);
+            dob = dateFormat.format(date2);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+}

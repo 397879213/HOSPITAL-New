@@ -127,9 +127,9 @@ public class OutsidePatientRegistryHandler {
         String[] columns = {"-", "ID", "PATIENT_ID",
             "FIRST_NAME", "LAST_NAME", "FULL_NAME", "FATHER_NAME",
             "HUSBAND_NAME","MARITAL_STATUS_ID","MARITAL_STATUS","GENDER"
-             ,"AGE","CNIC","DOB","CITY_ID","CITY","INSTITUTE_ID","INSTITUTE",
+             ,"AGE","CNIC","DOB","DAY_OF_BIRTH","CITY_ID","CITY","INSTITUTE_ID","INSTITUTE",
              "RELIGION_ID","RELIGION","CATEGORY_ID","CATEGORY","BLOOD_GROUP_ID",
-             "BLOOD_GROUP","CONTACT_NO","ADDRESS","GUARDIAN_NAME",
+             "BLOOD_GROUP","CONTACT_NO","ADDRESS","GUARDIAN_NAME","PRI_PHYSICIAN_ID",
             "PRI_PHYSICIAN","REG_DATE","RELATION_ID","RELATION",
             "CRTD_DATE","CRTD_BY","CRTD_TERMINAL"};
         
@@ -145,6 +145,7 @@ public class OutsidePatientRegistryHandler {
                 + "  OSP.GENDER                         GENDER,             \n"
                 + "  OSP.AGE                            AGE,                \n"
                 + "  OSP.CNIC                           CNIC ,              \n"
+                + "  NVL(ROUND(OSP.DOB - (SYSDATE+1)), 0) DAY_OF_BIRTH,     \n"
                 + "  TO_CHAR(OSP.DOB,'DD-MM-YY HH24:MI') DOB,               \n"
                 + "  NVL(OSP.CITY_ID,'')                CITY_ID,            \n"
                 + "  CTY.DESCRIPTION                    CITY,               \n"
@@ -159,6 +160,7 @@ public class OutsidePatientRegistryHandler {
                 + "  OSP.CONTACT_NO                     CONTACT_NO,         \n"
                 + "  NVL(OSP.ADDRESS, ' ')              ADDRESS,            \n"
                 + "  NVL(OSP.GUARDIAN_NAME, ' ')        GUARDIAN_NAME,      \n"
+                + "  OSP.PRI_PHYSICIAN                  PRI_PHYSICIAN_ID,   \n"
                 + "  PPI.NAME                           PRI_PHYSICIAN,      \n"
                 + "  TO_CHAR(OSP.REG_DATE, 'DD-MM-YY HH24:MI')  REG_DATE,   \n"
                 + "  NVL(OSP.RELATION_ID, '')           RELATION_ID,        \n"
@@ -217,6 +219,7 @@ public class OutsidePatientRegistryHandler {
             pat.setPatientLastName(map.get("LAST_NAME").toString());
             pat.setPatientFullName(map.get("FULL_NAME").toString());
             pat.setAge(map.get("AGE").toString());
+            pat.setDayOfBirth(map.get("DAY_OF_BIRTH").toString());
             pat.setDob(map.get("DOB").toString());
             pat.setGender(map.get("GENDER").toString());
             pat.setContactNo(map.get("CONTACT_NO").toString());
@@ -233,6 +236,7 @@ public class OutsidePatientRegistryHandler {
             pat.setBloodGroup(map.get("BLOOD_GROUP").toString());
             pat.setRelationId(map.get("RELATION_ID").toString());
             pat.setRelation(map.get("RELATION").toString());
+            pat.setPrimaryPhysicianId(map.get("PRI_PHYSICIAN_ID").toString());
             pat.setPrimaryPhysician(map.get("PRI_PHYSICIAN").toString());
             pat.setGuardian(map.get("GUARDIAN_NAME").toString());
             pat.setInstituteId(map.get("INSTITUTE_ID").toString());
@@ -273,10 +277,6 @@ public class OutsidePatientRegistryHandler {
                      //+ " REG_DATE  = '" + outsidePatRegistry.getRegistrationDate() + "', \n"
                      + " CATEGORY_ID  = '" + outsidePatRegistry.getCategoryId() + "', \n"
                      + " ADDRESS  = '" + outsidePatRegistry.getAddress() + "', \n"
-                     + " CRTD_TERMINAL_ID = '" + Constants.terminalId + "',\n"
-                     + " CRTD_BY  = '" + Constants.userId + "',\n"
-                     + " CRTD_DATE  = SYSDATE  \n"
-                
                      + " WHERE ID = '" + outsidePatRegistry.getId() + "'";
  
             return Constants.dao.executeUpdate(query, false);
