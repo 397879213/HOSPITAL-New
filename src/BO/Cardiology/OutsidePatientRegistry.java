@@ -20,7 +20,7 @@ public class OutsidePatientRegistry {
     private String patientFullName = "";
     private String age = "";
     private String dob = "";
-    private String gender = "";
+    private String gender = "1";
     private String cnic = "";
     private String contactNo = "";
     private String fatherName = "";
