@@ -17,6 +17,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.TableColumn;
 import net.sf.jasperreports.engine.JasperReport;
 import utilities.Constants;
+import utilities.Database;
 import utilities.DefinitionTypes;
 import utilities.DisplayLOV;
 import utilities.Status;
@@ -29,6 +30,7 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
 //    WebcamPanel panel;
     
     DisplayLOV lov = new DisplayLOV();
+    private String priPhysicianId;
     
     public frmOutsidePatientRegistration() {
 
@@ -1426,7 +1428,6 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
         dob = dateFormat.format(txtDOB.getDate());
-        
         cboGender.requestFocus();
          
     }//GEN-LAST:event_txtDOBActionPerformed
@@ -1514,6 +1515,19 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
 
     private void txtPriPhysicianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPriPhysicianActionPerformed
         // TODO add your handling code here:
+        String query = "SELECT USER_NAME ID, NAME DESCRIPTION FROM            \n"
+                + Database.DCMS.users + "                       \n"
+                + " WHERE UPPER(NAME) LIKE '%"
+                + txtPriPhysician.getText().toUpperCase().trim() + "%' \n"
+                + " AND ACTIVE = 'Y'                           \n";
+
+        lov.LOVSelection(query, this);
+        if (Constants.lovID.equalsIgnoreCase("ID")) {
+            priPhysicianId = "";
+            return;
+        }
+        txtPriPhysician.setText(Constants.lovDescription);
+        priPhysicianId = Constants.lovID;
         txtRegistrationDate.requestFocus();
     }//GEN-LAST:event_txtPriPhysicianActionPerformed
 
