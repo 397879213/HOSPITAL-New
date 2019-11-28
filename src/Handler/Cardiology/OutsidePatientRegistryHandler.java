@@ -56,7 +56,7 @@ public class OutsidePatientRegistryHandler {
         mapOutsidePat.put("CATEGORY_ID", "'" + outsidePatient.getCategoryId() + "'");
         mapOutsidePat.put("BLOOD_GROUP_ID", "'" + outsidePatient.getBloodGroupId() + "'");
         mapOutsidePat.put("CONTACT_NO", "'" + outsidePatient.getContactNo() + "'");
-        mapOutsidePat.put("ADDRESS", "'" + outsidePatient.getAddress() + "'");
+        mapOutsidePat.put("ADDRESS", "'" + outsidePatient.getAddress().replaceAll(",", " ") + "'");
         mapOutsidePat.put("RELATION_ID", "'" + outsidePatient.getRelationId()+ "'");
         mapOutsidePat.put("REG_DATE", "'" + outsidePatient.getRegistrationDate()+ "'");
         mapOutsidePat.put("ORDER_STATUS_ID", "'" + outsidePatient.getOrderStatusId() + "'");       
@@ -106,7 +106,7 @@ public class OutsidePatientRegistryHandler {
         mapOutsidePat.put("CATEGORY_ID", "'" + outsidePatient.getCategoryId() + "'");
         mapOutsidePat.put("BLOOD_GROUP_ID", "'" + outsidePatient.getBloodGroupId() + "'");
         mapOutsidePat.put("CONTACT_NO", "'" + outsidePatient.getContactNo() + "'");
-        mapOutsidePat.put("ADDRESS", "'" + outsidePatient.getAddress() + "'");
+        mapOutsidePat.put("ADDRESS", "'" + outsidePatient.getAddress().replaceAll(",", " ") + "'");
         mapOutsidePat.put("RELATION_ID", "'" + outsidePatient.getRelationId()+ "'");
         mapOutsidePat.put("REG_DATE", "'" + outsidePatient.getRegistrationDate()+ "'");
         mapOutsidePat.put("ORDER_STATUS_ID", "'" + outsidePatient.getOrderStatusId() + "'");       
@@ -179,7 +179,7 @@ public class OutsidePatientRegistryHandler {
                 + "  FROM "
                 + Database.DCMS.outsidePatient + "              OSP,         \n" 
                 + Database.DCMS.definitionTypeDetail + "        MAR,         \n" 
-                + Database.DCMS.city + "                        CTY,         \n" 
+                + Database.DCMS.definitionTypeDetail + "        CTY,         \n" 
                 + Database.DCMS.definitionTypeDetail + "        INS,         \n" 
                 + Database.DCMS.definitionTypeDetail + "        RLG,         \n" 
                 + Database.DCMS.definitionTypeDetail + "        CAT,         \n" 
