@@ -189,12 +189,11 @@ public class CardiacSurgeryHandler {
     
     public List<CardiacSurgeryBO> selectExamDetail() {
 
-        String columns[] = {"-", "PATIENT_ID", "FULL_NAME", "GENDER", "CONTACT_NO",
-            "ADDRESS", "CITY_ID", "CITY", "AGE", "GENDER_ID"}; //"NATIONALITY_ID", "NATIONALITY",
+        String columns[] = {"-", "ID", "DESCRIPTION"};
 
-        String query = "SELECT ID, DESCRIPTION FROM                     \n" 
-                + Database.DCMS.definitionTypeDetail + "                \n"
-                + "  WHERE ID > 436 AND ID < 455                        \n";
+        String query = "SELECT ID, DESCRIPTION FROM       \n" 
+                + Database.DCMS.definitionTypeDetail + "  \n"
+                + "  WHERE ID > 436 AND ID < 455          \n";
 
         List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
         List<CardiacSurgeryBO> lisExam = new ArrayList();
@@ -203,16 +202,8 @@ public class CardiacSurgeryHandler {
             HashMap map = (HashMap) listmap.get(i);
             CardiacSurgeryBO objData = new CardiacSurgeryBO();
 
-            objData.sete(map.get("PATIENT_ID").toString());
-            objData.setFullName(map.get("FULL_NAME").toString());
-            objData.setGenderId(map.get("GENDER_ID").toString());
-            objData.setGenderDescription(map.get("GENDER").toString());
-            objData.setAge(map.get("AGE").toString());
-            objData.setContactNo(map.get("CONTACT_NO").toString());
-            objData.setAddress(map.get("ADDRESS").toString());
-            objData.setCityDescription(map.get("CITY").toString());
-//        objData.setNationalityId(map.get("NATIONALITY_ID").toString());
-//        objData.setNationalityDescription(map.get("NATIONALITY").toString());
+            objData.setExamId(map.get("ID").toString());
+            objData.setExamDetailId(map.get("DESCRIPTION").toString());
             lisExam.add(objData);
         }
         return lisExam;
