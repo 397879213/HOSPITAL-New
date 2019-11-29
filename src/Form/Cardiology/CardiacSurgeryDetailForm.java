@@ -20,6 +20,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
         initComponents();
         this.setSize(Constants.xSize + 80, Constants.ySize - Constants.yExtension + 8);
+        listExamDetail = ctlCardiacSurg.selectExamDetail();
         setExamDetail();
     }
 
@@ -216,8 +217,8 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             lov.LOVDefinitionSelection(obj.getExamId(), "", this);
             obj.setExamDetailId(Constants.lovID);
             obj.setExamDetailDescription(Constants.lovDescription);
+            setExamDetail();
         }
-        setExamDetail();
     }//GEN-LAST:event_tblCardiacInfoMouseReleased
 
     private void tblCardiacInfoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblCardiacInfoKeyReleased
@@ -242,7 +243,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void setExamDetail() {
-        listExamDetail = ctlCardiacSurg.selectExamDetail();
+        
         if(listExamDetail.isEmpty()){
             List<CardiacSurgeryBO> list = new ArrayList<>();
             list.add(new CardiacSurgeryBO());
