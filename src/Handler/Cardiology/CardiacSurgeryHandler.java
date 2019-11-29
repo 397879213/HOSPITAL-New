@@ -144,7 +144,7 @@ public class CardiacSurgeryHandler {
             "FINAL_DATE", "FINAL_TERMINAL_ID", "REMARKS",};
 
         HashMap map = new HashMap();
-        map.put("ID", "(SELECT NVL(MAX(ID) + 1, 1) ID FROM " + Database.DCMS.cardiacSurgeryMaster + ")");
+        map.put("ID", "'" + insert.getPatientId() + "'");
         map.put("PATIENT_ID", "'" + insert.getPatientId() + "'");
         map.put("INSTITUTE_ID", "'" + insert.getInstituteId() + "'");
         map.put("ADMISSION_NO", "'" + insert.getAdmissionNo() + "'");

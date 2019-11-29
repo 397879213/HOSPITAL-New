@@ -27,7 +27,7 @@ public class CardiacSurgeryController {
     }
     
     public boolean insertCardiacSurgeryMaster(CardiacSurgeryBO insert) {
-        key.generatePrimaryKey(Keys.cardiacSurgeryPK, true);
+        insert.setId(key.generatePrimaryKey(Keys.cardiacSurgeryPK, true));
         boolean ret = hdlCardiacSurg.insertCardiacSurgeryMaster(insert);
         if(ret){
             ret = Constants.dao.commitTransaction();
