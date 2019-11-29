@@ -32,7 +32,6 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
     List<Patient> lisPatient = new ArrayList();
 
     public CrdiacSurgeryForm() {
-
         initComponents();
         this.setSize(Constants.xSize + 220, Constants.ySize - Constants.yExtension + 50);
         setPatientInfo(patientId);
