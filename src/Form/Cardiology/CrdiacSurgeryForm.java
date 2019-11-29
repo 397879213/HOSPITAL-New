@@ -33,7 +33,7 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
     public CrdiacSurgeryForm() {
 
         initComponents();
-        this.setSize(Constants.xSize + 220, Constants.ySize - Constants.yExtension + 50);
+        this.setSize(Constants.xSize + 190, Constants.ySize - Constants.yExtension + 50);
         setPatientInfo(patientId);
     }
 
