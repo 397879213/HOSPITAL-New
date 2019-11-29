@@ -22,6 +22,7 @@ import utilities.Constants;
 import utilities.Database;
 import utilities.DefinitionTypes;
 import utilities.DisplayLOV;
+import utilities.GUIUtils;
 import utilities.Status;
 
 public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
@@ -1293,7 +1294,6 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
 
         } else {
             JOptionPane.showMessageDialog(null, "Unable to Update Data");
-
         }
 
         //clear();
@@ -1301,11 +1301,12 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnPatientUpdateActionPerformed
 
     private void txtSearchPatientIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchPatientIdActionPerformed
-
-        patientId = txtSearchPatientId.getText();
-        searchPatient(patientId, contactNo, patName, cnic, fromDate, toDate, physician);
-
-
+        if (GUIUtils.completePatientId(txtSearchPatientId.getText().trim())) {
+            patientId = Constants.completePatientId;
+            searchPatient(patientId, contactNo, patName, cnic, fromDate, toDate, physician);
+        } else {
+            JOptionPane.showMessageDialog(null, "Kindly Enter Correct ID");
+        }
     }//GEN-LAST:event_txtSearchPatientIdActionPerformed
 
     private void txtSearchContactNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchContactNoActionPerformed
@@ -1710,22 +1711,22 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
 
     private void searchPatient(String patientId, String contactNo,
             String patName, String cnic, String fromDate, String toDate, String physician) {
-        if(txtSearchPatientId.getText().trim().length() == 0){
+        if (txtSearchPatientId.getText().trim().length() == 0) {
             patientId = "";
         } // 
-        if(txtSearchContactNo.getText().trim().length() == 0){
+        if (txtSearchContactNo.getText().trim().length() == 0) {
             contactNo = "";
         }
-        if(txtSearchPatientName.getText().trim().length() == 0){
+        if (txtSearchPatientName.getText().trim().length() == 0) {
             patName = "";
         }
-        if(txtSearchCNIC.getText().trim().length() == 0){
+        if (txtSearchCNIC.getText().trim().length() == 0) {
             cnic = "";
         }
-        if(txtSearchPhysician.getText().trim().length() == 0){
+        if (txtSearchPhysician.getText().trim().length() == 0) {
             physician = "";
         }
-        
+
         listPatRegistryData = ctlPatRegistry.searchPatient(patientId,
                 contactNo, patName, cnic, fromDate, toDate, physician);
 
@@ -1777,7 +1778,7 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
     }
-    
+
     private void setDateOfRegistration(int day) {
         try {
             Calendar c = Calendar.getInstance();
