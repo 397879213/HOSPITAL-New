@@ -15,7 +15,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     DisplayLOV lov = new DisplayLOV();
     CardiacSurgeryController ctlCardiacSurg = new CardiacSurgeryController();
     List<CardiacSurgeryBO> listExamDetail = new ArrayList();
-    
+
     public CardiacSurgeryDetailForm() {
 
         initComponents();
@@ -209,14 +209,16 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     private void tblCardiacInfoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCardiacInfoMouseReleased
 
-        if(tblCardiacInfo.getSelectedRow() < 0 || listExamDetail.isEmpty()){
+        if (tblCardiacInfo.getSelectedRow() < 0 || listExamDetail.isEmpty()) {
             return;
         }
         CardiacSurgeryBO obj = listExamDetail.get(tblCardiacInfo.getSelectedRow());
-        if(evt.getClickCount()%2 == 0){
+        if (evt.getClickCount() % 2 == 0) {
             lov.LOVDefinitionSelection(obj.getExamId(), "", this);
             obj.setExamDetailId(Constants.lovID);
             obj.setExamDetailDescription(Constants.lovDescription);
+            obj.setExamRemarks(String.valueOf(tblCardiacInfo.getValueAt(
+                    tblCardiacInfo.getSelectedRow(), 3)));
             setExamDetail();
         }
     }//GEN-LAST:event_tblCardiacInfoMouseReleased
@@ -243,8 +245,8 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void setExamDetail() {
-        
-        if(listExamDetail.isEmpty()){
+
+        if (listExamDetail.isEmpty()) {
             List<CardiacSurgeryBO> list = new ArrayList<>();
             list.add(new CardiacSurgeryBO());
             tblCardiacInfo.setModel(new ExamDetailTableModel(list));
