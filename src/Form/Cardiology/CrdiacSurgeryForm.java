@@ -14,6 +14,7 @@ import utilities.Constants;
 import utilities.Database;
 import utilities.DefinitionTypes;
 import utilities.DisplayLOV;
+import utilities.GUIUtils;
 
 public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
 
@@ -824,8 +825,8 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void tblPatientsListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientsListMouseClicked
-        
-        if(tblPatientsList.getSelectedRow() < 0 || lisPatient.isEmpty()){
+
+        if (tblPatientsList.getSelectedRow() < 0 || lisPatient.isEmpty()) {
             return;
         }
         patient = lisPatient.get(tblPatientsList.getSelectedRow());
@@ -858,7 +859,7 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
 
     private void txtFilterPatIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFilterPatIdActionPerformed
         // TODO add your handling code here:
-        setPatientInfo(patientId);
+        setPatientInfo(txtFilterPatId.getText().trim());
     }//GEN-LAST:event_txtFilterPatIdActionPerformed
 
 
@@ -924,7 +925,7 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
     private void setPatientInfo(String patientId) {
         lisPatient = ctlCardiacSurg.selectPateitnInformation(patientId,
                 txtFilterPatName.getText().trim());
-        if(lisPatient.isEmpty()){
+        if (lisPatient.isEmpty()) {
             List<Patient> lisPatient = new ArrayList<>();
             lisPatient.add(new Patient());
             tblPatientsList.setModel(new PatientListTableModel(lisPatient));
