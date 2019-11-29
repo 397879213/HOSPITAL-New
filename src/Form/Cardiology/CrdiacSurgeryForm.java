@@ -3,10 +3,12 @@ package Form.Cardiology;
 import BO.Cardiology.CardiacSurgeryBO;
 import BO.Patient;
 import Controller.Cardiology.CardiacSurgeryController;
+import TableModel.Cardiology.PatientListTableModel;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import utilities.Constants;
 import utilities.Database;
 import utilities.DefinitionTypes;
@@ -894,6 +896,20 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
 
     private void setPatientInfo(String patientId) {
         lisPatient = ctlCardiacSurg.selectPateitnInformation(patientId);
+        if(lisPatient.isEmpty()){
+            List<Patient> lisPatient = new ArrayList<>();
+            lisPatient.add(new Patient());
+            tblPatientsList.setModel(new PatientListTableModel(lisPatient));
+            return;
+        }
+        tblPatientsList.setModel(new PatientListTableModel(lisPatient));
+        ListSelectionModel selectionModel = tblPatientsList.getSelectionModel();
+        tblPatientsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        setPatientInfoColumnsWidths();
+        selectionModel.setSelectionInterval(0, 0);
+        Constants.tablelook.setJTableEnvironment(tblPatientsList);
+        
+        
         txtPatientId.setText(patient.getPatientId().substring(3));
         txtPatFullNmae.setText(patient.getFullName());
         txtAgeGender.setText(patient.getAge() + " / " + patient.getGenderDescription());
@@ -920,6 +936,10 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Unable to Save Surgery Information.\n"
                     + "Kindly Contact Support Person.");
         }
+    }
+
+    private void setPatientInfoColumnsWidths() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
