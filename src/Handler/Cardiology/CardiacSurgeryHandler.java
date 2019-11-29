@@ -38,7 +38,7 @@ public class CardiacSurgeryHandler {
                 + " (trunc(months_between(sysdate, DOB) / 12) * 12)) || ' (M) ' ||\n"
                 + "        (trunc(sysdate) - add_months("
                 + " DOB, trunc(months_between(sysdate, DOB)))) || ' (D) ' AGE \n"
-                + "   FROM " + Database.DCMS.patient + " PAT,           \n"
+                + "   FROM " + Database.DCMS.outsidePatient + " PAT,           \n"
                 + Database.DCMS.definitionTypeDetail + " NAT,           \n"
                 + Database.DCMS.definitionTypeDetail + " GEN,           \n"
                 + Database.DCMS.definitionTypeDetail + " CTY            \n"
