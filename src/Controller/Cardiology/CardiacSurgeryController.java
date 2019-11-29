@@ -37,4 +37,8 @@ public class CardiacSurgeryController {
         }
         return ret;
     }
+    
+    public List<CardiacSurgeryBO> selectExamDetail() {
+        return hdlCardiacSurg.selectExamDetail();
+    }
 }

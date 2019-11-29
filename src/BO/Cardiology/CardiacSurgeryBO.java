@@ -36,8 +36,26 @@ public class CardiacSurgeryBO {
     private String finalDate = "";
     private String finalTerminalId = "";
     private String examId = "";
+    private String examDescription = "";
     private String examDetailId = "";
+    private String examDetailDescription = "";
     private String examRemarks = "";
+
+    public String getExamDescription() {
+        return examDescription;
+    }
+
+    public void setExamDescription(String examDescription) {
+        this.examDescription = examDescription;
+    }
+
+    public String getExamDetailDescription() {
+        return examDetailDescription;
+    }
+
+    public void setExamDetailDescription(String examDetailDescription) {
+        this.examDetailDescription = examDetailDescription;
+    }
 
     public String getExamId() {
         return examId;

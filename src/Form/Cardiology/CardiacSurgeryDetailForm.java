@@ -1,15 +1,25 @@
 package Form.Cardiology;
 
-import Form.general.*;
+import BO.Cardiology.CardiacSurgeryBO;
+import Controller.Cardiology.CardiacSurgeryController;
+import TableModel.Cardiology.ExamDetailTableModel;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.TableColumn;
 import utilities.Constants;
 
 public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
+    
+    CardiacSurgeryController ctlCardiacSurg = new CardiacSurgeryController();
+    List<CardiacSurgeryBO> listExamDetail = new ArrayList();
+    
     public CardiacSurgeryDetailForm() {
 
         initComponents();
         this.setSize(Constants.xSize + 80, Constants.ySize - Constants.yExtension + 8);
-
+        setExamDetail();
     }
 
     @SuppressWarnings("unchecked")
@@ -223,5 +233,37 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     private javax.swing.JPanel pnlPL;
     private javax.swing.JTable tblCardiacInfo;
     // End of variables declaration//GEN-END:variables
+
+    private void setExamDetail() {
+        listExamDetail = ctlCardiacSurg.selectExamDetail();
+        if(listExamDetail.isEmpty()){
+            List<CardiacSurgeryBO> list = new ArrayList<>();
+            list.add(new CardiacSurgeryBO());
+            tblCardiacInfo.setModel(new ExamDetailTableModel(list));
+            return;
+        }
+        tblCardiacInfo.setModel(new ExamDetailTableModel(listExamDetail));
+        ListSelectionModel selectionModel = tblCardiacInfo.getSelectionModel();
+        tblCardiacInfo.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        setExamDetailColumnsWidths();
+        selectionModel.setSelectionInterval(0, 0);
+        Constants.tablelook.setJTableEnvironment(tblCardiacInfo);
+    }
+
+    private void setExamDetailColumnsWidths() {
+        TableColumn column = null;
+        for (int i = 0; i < tblCardiacInfo.getColumnCount(); i++) {
+            column = tblCardiacInfo.getColumnModel().getColumn(i);
+            if (i == 0) {
+                column.setPreferredWidth(30);
+            } else if (i == 1) {
+                column.setPreferredWidth(50);
+            } else if (i == 2) {
+                column.setPreferredWidth(120);
+            } else if (i == 3) {
+                column.setPreferredWidth(80);
+            }
+        }
+    }
 
 }
