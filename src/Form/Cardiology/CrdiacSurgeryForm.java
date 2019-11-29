@@ -4,6 +4,8 @@ import BO.Cardiology.CardiacSurgeryBO;
 import BO.Patient;
 import Controller.Cardiology.CardiacSurgeryController;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import utilities.Constants;
 import utilities.Database;
@@ -12,7 +14,6 @@ import utilities.DisplayLOV;
 
 public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
 
-    
     Patient patient = new Patient();
     DisplayLOV lov = new DisplayLOV();
     CardiacSurgeryBO cardiacSurgery = new CardiacSurgeryBO();
@@ -24,6 +25,7 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
     private String consultantCardiologistId = "";
     private String admittingConsultantd = "";
     private String categoryId = "";
+    List<Patient> lisPatient = new ArrayList<>();
 
     public CrdiacSurgeryForm() {
 
@@ -891,7 +893,7 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void setPatientInfo(String patientId) {
-        patient = ctlCardiacSurg.selectPateitnInformation(patientId);
+        lisPatient = ctlCardiacSurg.selectPateitnInformation(patientId);
         txtPatientId.setText(patient.getPatientId().substring(3));
         txtPatFullNmae.setText(patient.getFullName());
         txtAgeGender.setText(patient.getAge() + " / " + patient.getGenderDescription());
@@ -911,10 +913,10 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
         cardiacSurgery.setAdmittingConsultantId(admittingConsultantd);
         cardiacSurgery.setConsultantSurgeonId(admittingConsultantd);
         cardiacSurgery.setRemarks(txtRemarks.getText().trim());
-        
-        if(ctlCardiacSurg.insertCardiacSurgeryMaster(cardiacSurgery)){
+
+        if (ctlCardiacSurg.insertCardiacSurgeryMaster(cardiacSurgery)) {
             JOptionPane.showMessageDialog(null, "Surgery Information Save successfully.");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Unable to Save Surgery Information.\n"
                     + "Kindly Contact Support Person.");
         }

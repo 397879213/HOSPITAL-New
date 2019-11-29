@@ -19,7 +19,7 @@ public class CardiacSurgeryController {
     
     CardiacSurgeryHandler hdlCardiacSurg = new CardiacSurgeryHandler();
     
-    public Patient selectPateitnInformation(String patientId) {
+    public List<Patient> selectPateitnInformation(String patientId) {
         return hdlCardiacSurg.selectPateitnInformation(patientId);
     }
     
