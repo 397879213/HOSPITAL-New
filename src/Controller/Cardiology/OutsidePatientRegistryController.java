@@ -12,10 +12,7 @@ import utilities.Constants;
 import utilities.GenerateKeys;
 import utilities.Keys;
 
-/**
- *
- * @author Bilal
- */
+
 public class OutsidePatientRegistryController {
 
     OutsidePatientRegistryHandler hdlPatRegistry = new OutsidePatientRegistryHandler();
