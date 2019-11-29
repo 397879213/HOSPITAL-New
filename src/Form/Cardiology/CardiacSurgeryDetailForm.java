@@ -16,12 +16,13 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     DisplayLOV lov = new DisplayLOV();
     CardiacSurgeryController ctlCardiacSurg = new CardiacSurgeryController();
     List<CardiacSurgeryBO> listExamDetail = new ArrayList();
-
-    public CardiacSurgeryDetailForm() {
+    String id = "";
+    public CardiacSurgeryDetailForm(String id) {
 
         initComponents();
         this.setSize(Constants.xSize + 80, Constants.ySize - Constants.yExtension + 8);
         listExamDetail = ctlCardiacSurg.selectExamDetail();
+        this.id = id;
         setExamDetail();
     }
 

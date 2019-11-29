@@ -843,8 +843,9 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
 
     private void tblPatientsListMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientsListMouseReleased
 
+        Patient pat = lisPatient.get(tblPatientsList.getSelectedRow());
         if (evt.getClickCount() % 2 == 0) {
-            CardiacSurgeryDetailForm fm = new CardiacSurgeryDetailForm();
+            CardiacSurgeryDetailForm fm = new CardiacSurgeryDetailForm(pat.getId());
             DCMS_MDI.desktopPane.add(fm);
             Dimension desktopSize = DCMS_MDI.desktopPane.getSize();
             Dimension fmSize = fm.getSize();
