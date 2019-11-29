@@ -29,7 +29,7 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
     private String consultantCardiologistId = "";
     private String admittingConsultantd = "";
     private String categoryId = "";
-    List<Patient> lisPatient = new ArrayList<>();
+    List<Patient> lisPatient = new ArrayList();
 
     public CrdiacSurgeryForm() {
 
