@@ -5,6 +5,7 @@ import Controller.Cardiology.CardiacSurgeryController;
 import TableModel.Cardiology.ExamDetailTableModel;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableColumn;
 import utilities.Constants;
@@ -34,7 +35,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tblCardiacInfo = new javax.swing.JTable();
+        tblExamDetail = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         btnClear = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -82,28 +83,28 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cardiac Detail", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel5.setForeground(new java.awt.Color(102, 0, 0));
 
-        tblCardiacInfo.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        tblCardiacInfo.setModel(new javax.swing.table.DefaultTableModel(
+        tblExamDetail.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        tblExamDetail.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null,null,null,null }
             },
             new String [] {"Exam", "Exam Detail", "Remarks"}
         ));
-        tblCardiacInfo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tblCardiacInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblExamDetail.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tblExamDetail.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblCardiacInfoMouseClicked(evt);
+                tblExamDetailMouseClicked(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                tblCardiacInfoMouseReleased(evt);
+                tblExamDetailMouseReleased(evt);
             }
         });
-        tblCardiacInfo.addKeyListener(new java.awt.event.KeyAdapter() {
+        tblExamDetail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                tblCardiacInfoKeyReleased(evt);
+                tblExamDetailKeyReleased(evt);
             }
         });
-        jScrollPane3.setViewportView(tblCardiacInfo);
+        jScrollPane3.setViewportView(tblExamDetail);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -148,6 +149,11 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         jButton3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButton3.setForeground(new java.awt.Color(0, 204, 102));
         jButton3.setText("Save");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -200,36 +206,45 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tblCardiacInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCardiacInfoMouseClicked
+    private void tblExamDetailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblExamDetailMouseClicked
 
-        if (tblCardiacInfo.getSelectedRow() < 0) {
+        if (tblExamDetail.getSelectedRow() < 0) {
             return;
         }
-    }//GEN-LAST:event_tblCardiacInfoMouseClicked
+    }//GEN-LAST:event_tblExamDetailMouseClicked
 
-    private void tblCardiacInfoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCardiacInfoMouseReleased
+    private void tblExamDetailMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblExamDetailMouseReleased
 
-        if (tblCardiacInfo.getSelectedRow() < 0 || listExamDetail.isEmpty()) {
+        if (tblExamDetail.getSelectedRow() < 0 || listExamDetail.isEmpty()) {
             return;
         }
-        CardiacSurgeryBO obj = listExamDetail.get(tblCardiacInfo.getSelectedRow());
-        if (evt.getClickCount() % 2 == 0 && tblCardiacInfo.getSelectedColumn() == 2) {
+        CardiacSurgeryBO obj = listExamDetail.get(tblExamDetail.getSelectedRow());
+        if (evt.getClickCount() % 2 == 0 && tblExamDetail.getSelectedColumn() == 2) {
             lov.LOVDefinitionSelection(obj.getExamId(), "", this);
             obj.setExamDetailId(Constants.lovID);
             obj.setExamDetailDescription(Constants.lovDescription);
             setExamDetail();
         }
-        if (evt.getClickCount() % 2 == 0 && tblCardiacInfo.getSelectedColumn() == 3) {
-            obj.setExamRemarks(String.valueOf(tblCardiacInfo.getValueAt(
-                    tblCardiacInfo.getSelectedRow(), 3)));
+        if (evt.getClickCount() % 2 == 0 && tblExamDetail.getSelectedColumn() == 3) {
+            obj.setExamRemarks(String.valueOf(tblExamDetail.getValueAt(
+                    tblExamDetail.getSelectedRow(), 3)));
         }
-    }//GEN-LAST:event_tblCardiacInfoMouseReleased
+    }//GEN-LAST:event_tblExamDetailMouseReleased
 
-    private void tblCardiacInfoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblCardiacInfoKeyReleased
+    private void tblExamDetailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblExamDetailKeyReleased
         // this.currentRecord = tablePatients.getSelectedRow();
         // setRowData();
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblCardiacInfoKeyReleased
+    }//GEN-LAST:event_tblExamDetailKeyReleased
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        if(ctlCardiacSurg.insertExamDetail(listExamDetail)){
+            JOptionPane.showMessageDialog(null, "Record Save Successsfully.");
+        }else{
+            JOptionPane.showMessageDialog(null, "Unable to Save Record.");
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -243,7 +258,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblPacsLink;
     private javax.swing.JPanel pnlPL;
-    private javax.swing.JTable tblCardiacInfo;
+    private javax.swing.JTable tblExamDetail;
     // End of variables declaration//GEN-END:variables
 
     private void setExamDetail() {
@@ -251,21 +266,21 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         if (listExamDetail.isEmpty()) {
             List<CardiacSurgeryBO> list = new ArrayList<>();
             list.add(new CardiacSurgeryBO());
-            tblCardiacInfo.setModel(new ExamDetailTableModel(list));
+            tblExamDetail.setModel(new ExamDetailTableModel(list));
             return;
         }
-        tblCardiacInfo.setModel(new ExamDetailTableModel(listExamDetail));
-        ListSelectionModel selectionModel = tblCardiacInfo.getSelectionModel();
-        tblCardiacInfo.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tblExamDetail.setModel(new ExamDetailTableModel(listExamDetail));
+        ListSelectionModel selectionModel = tblExamDetail.getSelectionModel();
+        tblExamDetail.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         setExamDetailColumnsWidths();
         selectionModel.setSelectionInterval(0, 0);
-        Constants.tablelook.setJTableEnvironment(tblCardiacInfo);
+        Constants.tablelook.setJTableEnvironment(tblExamDetail);
     }
 
     private void setExamDetailColumnsWidths() {
         TableColumn column = null;
-        for (int i = 0; i < tblCardiacInfo.getColumnCount(); i++) {
-            column = tblCardiacInfo.getColumnModel().getColumn(i);
+        for (int i = 0; i < tblExamDetail.getColumnCount(); i++) {
+            column = tblExamDetail.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(30);
             } else if (i == 1) {

@@ -41,4 +41,16 @@ public class CardiacSurgeryController {
     public List<CardiacSurgeryBO> selectExamDetail() {
         return hdlCardiacSurg.selectExamDetail();
     }
+    
+    public boolean insertExamDetail(List<CardiacSurgeryBO> listExam) {
+        boolean ret = hdlCardiacSurg.insertExamDetail(listExam);
+        if(ret){
+            ret = Constants.dao.commitTransaction();
+        }
+        if(!ret){
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
+        
 }

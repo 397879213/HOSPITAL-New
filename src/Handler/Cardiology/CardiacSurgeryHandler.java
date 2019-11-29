@@ -206,5 +206,27 @@ public class CardiacSurgeryHandler {
         }
         return lisExam;
     }
+    
+    public boolean insertExamDetail(List<CardiacSurgeryBO> listExam) {
+
+        String[] columns = {Database.DCMS.compoundAdditiveDetail,
+            "CARDIAC_ID", "EXAM_TYPE_ID", "EXAM_DETAIL_ID", "REMARKS"};
+
+        List lstInr = new ArrayList();
+        for (int i = 0; i < listExam.size(); i++) {
+            CardiacSurgeryBO comp = listExam.get(i);
+            HashMap map = new HashMap();
+            map.put("CARDIAC_ID", "'" + comp.getId()+ "'");
+            map.put("EXAM_TYPE_ID", "'" + comp.getExamId()+ "'");
+            map.put("EXAM_DETAIL_ID", "'" + comp.getExamDetailId()+ "'");
+            map.put("REMARKS", "'" + comp.getExamRemarks()+ "'");
+            map.put("CRTD_BY", "'" + Constants.userId + "'");
+            map.put("CRTD_DATE", "SYSDATE");
+            map.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
+
+            lstInr.add(map);
+        }
+        return Constants.dao.insertData(lstInr, columns);
+    }
 
 }
