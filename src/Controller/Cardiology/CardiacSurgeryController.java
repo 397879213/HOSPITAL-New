@@ -19,8 +19,8 @@ public class CardiacSurgeryController {
     
     CardiacSurgeryHandler hdlCardiacSurg = new CardiacSurgeryHandler();
     
-    public List<Patient> selectPateitnInformation(String patientId) {
-        return hdlCardiacSurg.selectPateitnInformation(patientId);
+    public List<Patient> selectPateitnInformation(String patientId, String patientName) {
+        return hdlCardiacSurg.selectPateitnInformation(patientId, patientName);
     }
     
     public boolean insertCardiacSurgeryMaster(CardiacSurgeryBO insert) {

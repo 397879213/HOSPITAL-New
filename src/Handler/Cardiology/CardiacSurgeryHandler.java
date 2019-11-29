@@ -19,14 +19,14 @@ import utilities.Database;
  */
 public class CardiacSurgeryHandler {
 
-    public List<Patient> selectPateitnInformation(String patientId) {
+    public List<Patient> selectPateitnInformation(String patientId, String patientName) {
 
         String columns[] = {"-", "PATIENT_ID", "FULL_NAME", "GENDER", "CONTACT_NO",
             "ADDRESS", "CITY_ID", "CITY", "AGE", "GENDER_ID"}; //"NATIONALITY_ID", "NATIONALITY",
 
         String query = "SELECT PAT.PATIENT_ID,                          \n"
                 + "        PAT.FULL_NAME,                               \n"
-                + "        PAT.GENDER GENDER_ID,                      \n"
+                + "        PAT.GENDER GENDER_ID,                        \n"
                 + "        GEN.DESCRIPTION GENDER,                      \n"
                 + "        PAT.CONTACT_NO,                              \n"
                 + "        PAT.ADDRESS,                                 \n"
@@ -39,14 +39,20 @@ public class CardiacSurgeryHandler {
                 + " (trunc(months_between(sysdate, DOB) / 12) * 12)) || ' (M) ' ||\n"
                 + "        (trunc(sysdate) - add_months("
                 + " DOB, trunc(months_between(sysdate, DOB)))) || ' (D) ' AGE \n"
-                + "   FROM " + Database.DCMS.outsidePatient + " PAT,           \n"
+                + "   FROM " + Database.DCMS.outsidePatient + " PAT,     \n"
                 //                + Database.DCMS.definitionTypeDetail + " NAT,           \n"
                 + Database.DCMS.definitionTypeDetail + " GEN,           \n"
                 + Database.DCMS.definitionTypeDetail + " CTY            \n"
-                + "  WHERE PATIENT_ID = '" + patientId + "'             \n"
-                + "    AND PAT.GENDER = GEN.ID                       \n"
-                //                + "    AND PAT.NATIONALITY_ID = NAT.ID                  \n"
-                + "    AND PAT.CITY_ID = CTY.ID";
+                + "  WHERE 1 = 1                                        \n";
+                if(patientId.length() != 0){
+                    query += " AND PATIENT_ID = '" + patientId + "'     \n";
+                }
+                if(patientName.length() != 0){
+                    query += " AND FULL_NAME LIKE '%" + patientName + "%'\n";
+                }
+                query += "    AND PAT.GENDER = GEN.ID                    \n"
+                //                + "    AND PAT.NATIONALITY_ID = NAT.ID \n"
+                + "    AND PAT.CITY_ID = CTY.ID                          \n";
 
         List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
         List<Patient> lisPatient = new ArrayList();

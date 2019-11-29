@@ -858,6 +858,7 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
 
     private void txtFilterPatIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFilterPatIdActionPerformed
         // TODO add your handling code here:
+        setPatientInfo(patientId);
     }//GEN-LAST:event_txtFilterPatIdActionPerformed
 
 
@@ -921,7 +922,8 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void setPatientInfo(String patientId) {
-        lisPatient = ctlCardiacSurg.selectPateitnInformation(patientId);
+        lisPatient = ctlCardiacSurg.selectPateitnInformation(patientId,
+                txtFilterPatName.getText().trim());
         if(lisPatient.isEmpty()){
             List<Patient> lisPatient = new ArrayList<>();
             lisPatient.add(new Patient());
