@@ -106,7 +106,7 @@ public class OutsidePatientRegistryHandler {
         mapOutsidePat.put("CONTACT_NO", "'" + outsidePatient.getContactNo() + "'");
         mapOutsidePat.put("ADDRESS", "'" + outsidePatient.getAddress().replaceAll(",", " ") + "'");
         mapOutsidePat.put("RELATION_ID", "'" + outsidePatient.getRelationId()+ "'");
-        mapOutsidePat.put("PRI_PHYSICIAN", "'" + outsidePatient.getPrimaryPhysician()+ "'");
+        mapOutsidePat.put("PRI_PHYSICIAN", "'" + outsidePatient.getPrimaryPhysicianId()+ "'");
         mapOutsidePat.put("REG_DATE", "SYSDATE");
         mapOutsidePat.put("ORDER_STATUS_ID", "'" + outsidePatient.getOrderStatusId() + "'");       
         mapOutsidePat.put("CRTD_DATE", "" + Constants.today + "");
@@ -275,7 +275,7 @@ public class OutsidePatientRegistryHandler {
                      + " GUARDIAN_NAME  = '" + outsidePatRegistry.getGuardian() + "', \n"
                      + " RELATION_ID  = '" + outsidePatRegistry.getRelationId() + "', \n"
                      + " INSTITUTE_ID  = '" + outsidePatRegistry.getInstituteId() + "', \n"
-                     + " PRI_PHYSICIAN  = '" + outsidePatRegistry.getPrimaryPhysician() + "', \n"
+                     + " PRI_PHYSICIAN  = '" + outsidePatRegistry.getPrimaryPhysicianId()+ "', \n"
                      + " REG_DATE  = '" + outsidePatRegistry.getRegistrationDate() + "', \n"
                      + " CATEGORY_ID  = '" + outsidePatRegistry.getCategoryId() + "', \n"
                      + " ADDRESS  = '" + outsidePatRegistry.getAddress() + "'  \n"
@@ -308,7 +308,7 @@ public class OutsidePatientRegistryHandler {
                      + " GUARDIAN_NAME  = '" + outsidePatRegistry.getGuardian() + "', \n"
                      + " RELATION_ID  = '" + outsidePatRegistry.getRelationId() + "', \n"
                      + " INSTITUTE_ID  = '" + outsidePatRegistry.getInstituteId() + "', \n"
-                     + " PRI_PHYSICIAN  = '" + outsidePatRegistry.getPrimaryPhysician() + "', \n"
+                     + " PRI_PHYSICIAN  = '" + outsidePatRegistry.getPrimaryPhysicianId()+ "', \n"
                      //+ " REG_DATE  = '" + outsidePatRegistry.getRegistrationDate() + "', \n"
                      + " CATEGORY_ID  = '" + outsidePatRegistry.getCategoryId() + "', \n"
                      + " ADDRESS  = '" + outsidePatRegistry.getAddress() + "', \n"

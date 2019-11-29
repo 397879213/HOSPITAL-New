@@ -1699,7 +1699,7 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
         outsidePatient.setFatherName(txtFatherName.getText());
         outsidePatient.setHusbandName(txtHusbandName.getText());
         outsidePatient.setAddress(txtAddress.getText());
-        outsidePatient.setPrimaryPhysician(priPhysicianId);
+        outsidePatient.setPrimaryPhysicianId(priPhysicianId);
         outsidePatient.setInstituteId(instituteId);
         outsidePatient.setReligionId(religionId);
         outsidePatient.setMaritalStatusId(maritalStatusId);
