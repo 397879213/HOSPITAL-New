@@ -238,7 +238,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        if (ctlCardiacSurg.insertExamDetail(listExamDetail)) {
+        if (ctlCardiacSurg.insertExamDetail(listExamDetail, id)) {
             JOptionPane.showMessageDialog(null, "Record Save Successsfully.");
         } else {
             JOptionPane.showMessageDialog(null, "Unable to Save Record.");

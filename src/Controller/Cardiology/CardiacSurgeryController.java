@@ -42,8 +42,8 @@ public class CardiacSurgeryController {
         return hdlCardiacSurg.selectExamDetail();
     }
     
-    public boolean insertExamDetail(List<CardiacSurgeryBO> listExam) {
-        boolean ret = hdlCardiacSurg.insertExamDetail(listExam);
+    public boolean insertExamDetail(List<CardiacSurgeryBO> listExam, String id) {
+        boolean ret = hdlCardiacSurg.insertExamDetail(listExam, id);
         if(ret){
             ret = Constants.dao.commitTransaction();
         }

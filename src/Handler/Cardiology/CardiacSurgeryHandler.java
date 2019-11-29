@@ -210,7 +210,7 @@ public class CardiacSurgeryHandler {
         return lisExam;
     }
 
-    public boolean insertExamDetail(List<CardiacSurgeryBO> listExam) {
+    public boolean insertExamDetail(List<CardiacSurgeryBO> listExam, String id) {
 
         String[] columns = {Database.DCMS.cardiacHistoryDetail,
             "CARDIAC_ID", "EXAM_TYPE_ID", "EXAM_DETAIL_ID", "REMARKS", "CRTD_BY",
@@ -220,7 +220,7 @@ public class CardiacSurgeryHandler {
         for (int i = 0; i < listExam.size(); i++) {
             CardiacSurgeryBO comp = listExam.get(i);
             HashMap map = new HashMap();
-            map.put("CARDIAC_ID", "'" + comp.getId() + "'");
+            map.put("CARDIAC_ID", "'" +id + "'");
             map.put("EXAM_TYPE_ID", "'" + comp.getExamId() + "'");
             map.put("EXAM_DETAIL_ID", "'" + comp.getExamDetailId() + "'");
             map.put("REMARKS", "'" + comp.getExamRemarks() + "'");
