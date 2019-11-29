@@ -69,12 +69,8 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
         txtSearchPhysician = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
         txtSearchToDate = new org.jdesktop.swingx.JXDatePicker();
         txtSearchFromDate = new org.jdesktop.swingx.JXDatePicker();
-        jLabel34 = new javax.swing.JLabel();
-        txtSearchGender = new javax.swing.JTextField();
-        txtSearchInstitue = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblOutsidePatients = new javax.swing.JTable();
@@ -240,12 +236,6 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
         jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel32.setText("Between : ");
 
-        jLabel33.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
-        jLabel33.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel33.setText("Instittue : ");
-
         txtSearchToDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSearchToDateActionPerformed(evt);
@@ -258,24 +248,6 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel34.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
-        jLabel34.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel34.setText("Gender : ");
-
-        txtSearchGender.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSearchGenderActionPerformed(evt);
-            }
-        });
-
-        txtSearchInstitue.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSearchInstitueActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
@@ -285,35 +257,31 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
                     .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel29, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel34, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel29, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtSearchPhysician, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-                    .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txtSearchPatientName)
-                        .addComponent(txtSearchFromDate, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
-                        .addComponent(txtSearchPatientId))
-                    .addComponent(txtSearchGender))
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtSearchPatientName, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtSearchFromDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                            .addComponent(txtSearchPatientId, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)))
+                    .addComponent(txtSearchPhysician))
+                .addGap(7, 7, 7)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtSearchContactNo)
                             .addComponent(txtSearchCNIC)
-                            .addComponent(txtSearchToDate, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addComponent(txtSearchInstitue))
+                            .addComponent(txtSearchToDate, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btntsearchPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29))))
+                        .addGap(41, 41, 41))))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -340,23 +308,11 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
                             .addComponent(txtSearchToDate, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtSearchFromDate, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(10, 10, 10)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel29)
-                            .addComponent(txtSearchPhysician, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel34)
-                            .addComponent(txtSearchGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(26, Short.MAX_VALUE))
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel33)
-                            .addComponent(txtSearchInstitue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btntsearchPatient)
-                        .addGap(25, 25, 25))))
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel29)
+                    .addComponent(txtSearchPhysician, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btntsearchPatient))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         jPanel7.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -389,11 +345,11 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
         jPanel12.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -952,7 +908,7 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1393,7 +1349,19 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtPatientIdKeyTyped
 
     private void txtSearchPhysicianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchPhysicianActionPerformed
-        physician = txtSearchPhysician.getText();
+        String query = "SELECT USER_NAME ID, NAME DESCRIPTION FROM  \n"
+                + Database.DCMS.users + "                           \n"
+                + " WHERE UPPER(NAME) LIKE '%"
+                + txtSearchPhysician.getText().toUpperCase().trim() + "%'\n"
+                + " AND ACTIVE = 'Y'                                \n";
+
+        lov.LOVSelection(query, this);
+        if (Constants.lovID.equalsIgnoreCase("ID")) {
+            physician = "";
+            return;
+        }
+        txtSearchPhysician.setText(Constants.lovDescription);
+        physician = Constants.lovID;
         searchPatient(patientId, contactNo, patName, cnic, fromDate, toDate, physician);
 
 
@@ -1449,14 +1417,6 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
 
 // TODO add your handling code here:
     }//GEN-LAST:event_txtSearchFromDateActionPerformed
-
-    private void txtSearchGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchGenderActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearchGenderActionPerformed
-
-    private void txtSearchInstitueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchInstitueActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearchInstitueActionPerformed
     private String regDate = "";
     private void txtRegistrationDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRegistrationDateActionPerformed
 
@@ -1603,8 +1563,6 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
@@ -1651,8 +1609,6 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtSearchCNIC;
     private javax.swing.JTextField txtSearchContactNo;
     private org.jdesktop.swingx.JXDatePicker txtSearchFromDate;
-    private javax.swing.JTextField txtSearchGender;
-    private javax.swing.JTextField txtSearchInstitue;
     private javax.swing.JTextField txtSearchPatientId;
     private javax.swing.JTextField txtSearchPatientName;
     private javax.swing.JTextField txtSearchPhysician;
@@ -1754,7 +1710,22 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
 
     private void searchPatient(String patientId, String contactNo,
             String patName, String cnic, String fromDate, String toDate, String physician) {
-
+        if(txtSearchPatientId.getText().trim().length() == 0){
+            patientId = "";
+        } // 
+        if(txtSearchContactNo.getText().trim().length() == 0){
+            contactNo = "";
+        }
+        if(txtSearchPatientName.getText().trim().length() == 0){
+            patName = "";
+        }
+        if(txtSearchCNIC.getText().trim().length() == 0){
+            cnic = "";
+        }
+        if(txtSearchPhysician.getText().trim().length() == 0){
+            physician = "";
+        }
+        
         listPatRegistryData = ctlPatRegistry.searchPatient(patientId,
                 contactNo, patName, cnic, fromDate, toDate, physician);
 
