@@ -18,7 +18,7 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
     CardiacSurgeryBO cardiacSurgery = new CardiacSurgeryBO();
     CardiacSurgeryController ctlCardiacSurg = new CardiacSurgeryController();
     private String surgeryDate = "";
-    private String patientId = "001000002663";
+    private String patientId = "11254";
     private String wardId = "";
     private String consultantSurgeonId = "";
     private String consultantCardiologistId = "";

@@ -46,7 +46,7 @@ public class CardiacSurgeryHandler {
                 + Database.DCMS.definitionTypeDetail + " CTY            \n"
                 + "  WHERE PATIENT_ID = '" + patientId + "'             \n"
                 + "    AND PAT.GENDER = GEN.ID                       \n"
-                + "    AND PAT.NATIONALITY_ID = NAT.ID                  \n"
+//                + "    AND PAT.NATIONALITY_ID = NAT.ID                  \n"
                 + "    AND PAT.CITY_ID = CTY.ID";
 
         List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
