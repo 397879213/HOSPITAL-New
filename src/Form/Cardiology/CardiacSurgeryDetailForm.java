@@ -14,9 +14,11 @@ import utilities.DisplayLOV;
 public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     DisplayLOV lov = new DisplayLOV();
+    CardiacSurgeryBO objCardiacSurger = new CardiacSurgeryBO();
     CardiacSurgeryController ctlCardiacSurg = new CardiacSurgeryController();
     List<CardiacSurgeryBO> listExamDetail = new ArrayList();
     String id = "";
+
     public CardiacSurgeryDetailForm(String id) {
 
         initComponents();
@@ -219,30 +221,26 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         if (tblExamDetail.getSelectedRow() < 0 || listExamDetail.isEmpty()) {
             return;
         }
-        CardiacSurgeryBO obj = listExamDetail.get(tblExamDetail.getSelectedRow());
+        objCardiacSurger = listExamDetail.get(tblExamDetail.getSelectedRow());
         if (evt.getClickCount() % 2 == 0 && tblExamDetail.getSelectedColumn() == 2) {
-            lov.LOVDefinitionSelection(obj.getExamId(), "", this);
-            obj.setExamDetailId(Constants.lovID);
-            obj.setExamDetailDescription(Constants.lovDescription);
+            lov.LOVDefinitionSelection(objCardiacSurger.getExamId(), "", this);
+            objCardiacSurger.setExamDetailId(Constants.lovID);
+            objCardiacSurger.setExamDetailDescription(Constants.lovDescription);
             setExamDetail();
-        }
-        if (evt.getClickCount() % 2 == 0 && tblExamDetail.getSelectedColumn() == 3) {
-            obj.setExamRemarks(String.valueOf(tblExamDetail.getValueAt(
-                    tblExamDetail.getSelectedRow(), 3)));
         }
     }//GEN-LAST:event_tblExamDetailMouseReleased
 
     private void tblExamDetailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblExamDetailKeyReleased
-        // this.currentRecord = tablePatients.getSelectedRow();
-        // setRowData();
-        // TODO add your handling code here:
+
+        objCardiacSurger.setExamRemarks(String.valueOf(tblExamDetail.getValueAt(
+                tblExamDetail.getSelectedRow(), 3)));
     }//GEN-LAST:event_tblExamDetailKeyReleased
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        if(ctlCardiacSurg.insertExamDetail(listExamDetail)){
+        if (ctlCardiacSurg.insertExamDetail(listExamDetail)) {
             JOptionPane.showMessageDialog(null, "Record Save Successsfully.");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Unable to Save Record.");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
