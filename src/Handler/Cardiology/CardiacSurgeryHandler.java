@@ -44,13 +44,13 @@ public class CardiacSurgeryHandler {
                 + Database.DCMS.definitionTypeDetail + " GEN,           \n"
                 + Database.DCMS.definitionTypeDetail + " CTY            \n"
                 + "  WHERE 1 = 1                                        \n";
-                if(patientId.length() != 0){
-                    query += " AND PATIENT_ID = '" + patientId + "'     \n";
-                }
-                if(patientName.length() != 0){
-                    query += " AND FULL_NAME LIKE '%" + patientName + "%'\n";
-                }
-                query += "    AND PAT.GENDER = GEN.ID                    \n"
+        if (patientId.length() != 0) {
+            query += " AND PATIENT_ID = '" + patientId + "'     \n";
+        }
+        if (patientName.length() != 0) {
+            query += " AND FULL_NAME LIKE '%" + patientName + "%'\n";
+        }
+        query += "    AND PAT.GENDER = GEN.ID                    \n"
                 //                + "    AND PAT.NATIONALITY_ID = NAT.ID \n"
                 + "    AND PAT.CITY_ID = CTY.ID                          \n";
 
@@ -186,24 +186,22 @@ public class CardiacSurgeryHandler {
         InsertEmp.add(map);
         return Constants.dao.insertData(InsertEmp, columns);
     }
-    
+
     public List<CardiacSurgeryBO> selectExamDetail() {
 
         String columns[] = {"-", "ID", "DESCRIPTION"};
 
-        String query = "SELECT ID, DESCRIPTION FROM       \n" 
-                + Database.DCMS.definitionTypeDetail + "  \n"
-                + "  WHERE ID > 436 AND ID < 455          \n";
+        String query = "SELECT ID, DESCRIPTION FROM \n"
+                + Database.DCMS.definitionType + "  \n"
+                + "  WHERE ID > 436 AND ID < 455    \n";
 
         List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
         List<CardiacSurgeryBO> lisExam = new ArrayList();
         for (int i = 0; i < listmap.size(); i++) {
-
             HashMap map = (HashMap) listmap.get(i);
             CardiacSurgeryBO objData = new CardiacSurgeryBO();
-
             objData.setExamId(map.get("ID").toString());
-            objData.setExamDetailId(map.get("DESCRIPTION").toString());
+            objData.setExamDescription(map.get("DESCRIPTION").toString());
             lisExam.add(objData);
         }
         return lisExam;

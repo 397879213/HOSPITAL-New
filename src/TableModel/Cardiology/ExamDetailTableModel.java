@@ -11,7 +11,7 @@ import javax.swing.table.AbstractTableModel;
 public class ExamDetailTableModel extends AbstractTableModel {
 
     private final String[] columnNames
-            = {"Patient Id", "Name","Age", "Contact No"};
+            = {"Exam Id", "Exam Desc","Exam Detail", "Remarks"};
     private final Object[][] data;
 
     public ExamDetailTableModel(List<CardiacSurgeryBO> liInfo) {
@@ -20,9 +20,10 @@ public class ExamDetailTableModel extends AbstractTableModel {
         int row = 0;
 
         for (CardiacSurgeryBO currentinfo : liInfo) {
-            data[row][0] = currentinfo.getExamDescription();
-            data[row][1] = currentinfo.getExamDetailDescription();
-            data[row][2] = currentinfo.getExamRemarks();
+            data[row][0] = currentinfo.getExamId();
+            data[row][1] = currentinfo.getExamDescription();
+            data[row][2] = currentinfo.getExamDetailDescription();
+            data[row][3] = currentinfo.getExamRemarks();
             row++;
 
         }

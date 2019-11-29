@@ -8,10 +8,11 @@ import java.util.List;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableColumn;
 import utilities.Constants;
+import utilities.DisplayLOV;
 
 public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
-    
+    DisplayLOV lov = new DisplayLOV();
     CardiacSurgeryController ctlCardiacSurg = new CardiacSurgeryController();
     List<CardiacSurgeryBO> listExamDetail = new ArrayList();
     
@@ -203,14 +204,20 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         if (tblCardiacInfo.getSelectedRow() < 0) {
             return;
         }
-        
     }//GEN-LAST:event_tblCardiacInfoMouseClicked
 
     private void tblCardiacInfoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCardiacInfoMouseReleased
 
-        //        if (tblPatientsList.getSelectedRow() < 0 || listPatRegistryData.isEmpty()) {
-            //            return;
-            //        }
+        if(tblCardiacInfo.getSelectedRow() < 0 || listExamDetail.isEmpty()){
+            return;
+        }
+        CardiacSurgeryBO obj = listExamDetail.get(tblCardiacInfo.getSelectedRow());
+        if(evt.getClickCount()%2 == 0){
+            lov.LOVDefinitionSelection(obj.getExamId(), "", this);
+            obj.setExamDetailId(Constants.lovID);
+            obj.setExamDetailDescription(Constants.lovDescription);
+        }
+        setExamDetail();
     }//GEN-LAST:event_tblCardiacInfoMouseReleased
 
     private void tblCardiacInfoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblCardiacInfoKeyReleased
