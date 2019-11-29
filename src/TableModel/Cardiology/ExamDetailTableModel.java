@@ -67,8 +67,7 @@ public class ExamDetailTableModel extends AbstractTableModel {
     @Override
     public boolean isCellEditable(int row, int col) {
         //no matter where the cell appears onscreen
-        System.out.println("Current Col=" + col);
-        if (col == 3 || col == 2) {
+        if (col == 3) {
 
             return true;
         }

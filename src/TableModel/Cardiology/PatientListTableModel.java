@@ -67,15 +67,7 @@ public class PatientListTableModel extends AbstractTableModel {
      */
     @Override
     public boolean isCellEditable(int row, int col) {
-        //no matter where the cell appears onscreen
-        System.out.println("Current Col=" + col);
-        if (col == 3 || col == 2) {
-
-            return true;
-        }
-
         return false;
-
     }
     /*
      * Don't need to implement this method unless your table's

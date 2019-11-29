@@ -222,7 +222,6 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         if (evt.getClickCount() % 2 == 0 && tblCardiacInfo.getSelectedColumn() == 3) {
             obj.setExamRemarks(String.valueOf(tblCardiacInfo.getValueAt(
                     tblCardiacInfo.getSelectedRow(), 3)));
-            setExamDetail();
         }
     }//GEN-LAST:event_tblCardiacInfoMouseReleased
 
