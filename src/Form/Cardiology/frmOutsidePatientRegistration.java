@@ -40,7 +40,7 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
 //        txtAge.setText(patientAge.trim());
         txtFirstName.requestFocusInWindow();
         txtFirstName.setCaretPosition(0);
-        this.setSize(Constants.xSize + 250, Constants.ySize - 30);
+        this.setSize(Constants.xSize + 250, Constants.ySize - 170);
         btnRegister.setMnemonic(KeyEvent.VK_S);
         btnExit.setMnemonic(KeyEvent.VK_X);
         btnClear.setMnemonic(KeyEvent.VK_C);
