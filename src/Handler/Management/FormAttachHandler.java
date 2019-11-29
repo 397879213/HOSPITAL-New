@@ -63,7 +63,6 @@ public class FormAttachHandler {
             objBO.setDesktopEnabled(map.get("DESKTOP_ENABLED").toString());
             lisadd.add(objBO);
         }
-        
         return lisadd;
     }
 
