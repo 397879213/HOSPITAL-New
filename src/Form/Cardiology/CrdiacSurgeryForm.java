@@ -818,7 +818,18 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void tblPatientsListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientsListMouseClicked
-
+        
+        if(tblPatientsList.getSelectedRow() < 0 || lisPatient.isEmpty()){
+            return;
+        }
+        patient = lisPatient.get(tblPatientsList.getSelectedRow());
+        txtPatientId.setText(patient.getPatientId().substring(3));
+        txtPatFullNmae.setText(patient.getFullName());
+        txtAgeGender.setText(patient.getAge() + " / " + patient.getGenderDescription());
+        txtContactNo.setText(patient.getContactNo());
+        txtAddress.setText(patient.getAddress());
+        txtNationality.setText(patient.getNationalityDescription());
+        txtCity.setText(patient.getCityDescription());
     }//GEN-LAST:event_tblPatientsListMouseClicked
 
     private void tblPatientsListMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientsListMouseReleased
@@ -908,15 +919,6 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
         setPatientInfoColumnsWidths();
         selectionModel.setSelectionInterval(0, 0);
         Constants.tablelook.setJTableEnvironment(tblPatientsList);
-        
-        
-        txtPatientId.setText(patient.getPatientId().substring(3));
-        txtPatFullNmae.setText(patient.getFullName());
-        txtAgeGender.setText(patient.getAge() + " / " + patient.getGenderDescription());
-        txtContactNo.setText(patient.getContactNo());
-        txtAddress.setText(patient.getAddress());
-        txtNationality.setText(patient.getNationalityDescription());
-        txtCity.setText(patient.getCityDescription());
     }
 
     private void saveCardiacSurgeryInformation() {
