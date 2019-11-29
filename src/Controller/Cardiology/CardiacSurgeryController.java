@@ -10,6 +10,8 @@ import BO.Patient;
 import Handler.Cardiology.CardiacSurgeryHandler;
 import java.util.List;
 import utilities.Constants;
+import utilities.GenerateKeys;
+import utilities.Keys;
 
 /**
  *
@@ -17,6 +19,7 @@ import utilities.Constants;
  */
 public class CardiacSurgeryController {
     
+    GenerateKeys key = new GenerateKeys();
     CardiacSurgeryHandler hdlCardiacSurg = new CardiacSurgeryHandler();
     
     public List<Patient> selectPateitnInformation(String patientId, String patientName) {
@@ -24,6 +27,7 @@ public class CardiacSurgeryController {
     }
     
     public boolean insertCardiacSurgeryMaster(CardiacSurgeryBO insert) {
+        key.generatePrimaryKey(Keys.cardiacSurgeryPK, true);
         boolean ret = hdlCardiacSurg.insertCardiacSurgeryMaster(insert);
         if(ret){
             ret = Constants.dao.commitTransaction();
