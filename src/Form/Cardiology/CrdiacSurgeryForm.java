@@ -3,7 +3,10 @@ package Form.Cardiology;
 import BO.Cardiology.CardiacSurgeryBO;
 import BO.Patient;
 import Controller.Cardiology.CardiacSurgeryController;
+import Form.general.DCMS_MDI;
 import TableModel.Cardiology.PatientListTableModel;
+import TreatmentOnDischarge.Form.frmPatientWiseParameters;
+import java.awt.Dimension;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +17,6 @@ import utilities.Constants;
 import utilities.Database;
 import utilities.DefinitionTypes;
 import utilities.DisplayLOV;
-import utilities.GUIUtils;
 
 public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
 
@@ -840,9 +842,20 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
 
     private void tblPatientsListMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientsListMouseReleased
 
+        if (evt.getClickCount() % 2 == 0) {
+            CardiacSurgeryDetailForm fm = new CardiacSurgeryDetailForm();
+            DCMS_MDI.desktopPane.add(fm);
+            Dimension desktopSize = DCMS_MDI.desktopPane.getSize();
+            Dimension fmSize = fm.getSize();
+            fm.setLocation((desktopSize.width - fmSize.width) / 2,
+                    (desktopSize.height - fmSize.height) / 2);
+            fm.setVisible(true);
+        }
+
 //        if (tblPatientsList.getSelectedRow() < 0 || listPatRegistryData.isEmpty()) {
 //            return;
 //        }
+
     }//GEN-LAST:event_tblPatientsListMouseReleased
 
     private void tblPatientsListKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblPatientsListKeyReleased
