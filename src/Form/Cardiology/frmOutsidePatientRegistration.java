@@ -1301,12 +1301,8 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnPatientUpdateActionPerformed
 
     private void txtSearchPatientIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchPatientIdActionPerformed
-        if (GUIUtils.completePatientId(txtSearchPatientId.getText().trim())) {
-            patientId = Constants.completePatientId;
-            searchPatient(patientId, contactNo, patName, cnic, fromDate, toDate, physician);
-        } else {
-            JOptionPane.showMessageDialog(null, "Kindly Enter Correct ID");
-        }
+        patientId = txtSearchPatientId.getText().trim();
+        searchPatient(patientId, contactNo, patName, cnic, fromDate, toDate, physician);
     }//GEN-LAST:event_txtSearchPatientIdActionPerformed
 
     private void txtSearchContactNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchContactNoActionPerformed
