@@ -213,10 +213,13 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             return;
         }
         CardiacSurgeryBO obj = listExamDetail.get(tblCardiacInfo.getSelectedRow());
-        if (evt.getClickCount() % 2 == 0) {
+        if (evt.getClickCount() % 2 == 0 && tblCardiacInfo.getSelectedColumn() == 2) {
             lov.LOVDefinitionSelection(obj.getExamId(), "", this);
             obj.setExamDetailId(Constants.lovID);
             obj.setExamDetailDescription(Constants.lovDescription);
+            setExamDetail();
+        }
+        if (evt.getClickCount() % 2 == 0 && tblCardiacInfo.getSelectedColumn() == 3) {
             obj.setExamRemarks(String.valueOf(tblCardiacInfo.getValueAt(
                     tblCardiacInfo.getSelectedRow(), 3)));
             setExamDetail();
