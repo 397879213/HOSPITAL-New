@@ -1716,13 +1716,11 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
         } else {
             outsidePatient.setGender("2");
         }
-
         if (ctlPatRegistry.insertOutsidePatientRegister(outsidePatient)) {
             JOptionPane.showMessageDialog(null, "Patient Register Successfully");
             clear();
         } else {
             JOptionPane.showMessageDialog(null, "Unable to Register Patient");
-
         }
     }
 
