@@ -243,7 +243,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         }
         objCardiacSurger = listExamDetail.get(tblExamDetail.getSelectedRow());
         objCardiacSurger.setExamRemarks(String.valueOf(tblExamDetail.getValueAt(
-                tblExamDetail.getSelectedRow(), 3)));
+                tblExamDetail.getSelectedRow(), 3)).trim());
         objCardiacSurger.setId(id);
         if(ctlCardiacSurg.updateExamDetailRemarks(objCardiacSurger)){
                 System.out.println("Remarks Save Successfully.");
