@@ -38,8 +38,8 @@ public class CardiacSurgeryController {
         return ret;
     }
     
-    public List<CardiacSurgeryBO> selectExamDetail() {
-        return hdlCardiacSurg.selectExamDetail();
+    public List<CardiacSurgeryBO> selectExamDetail(String cardiacId) {
+        return hdlCardiacSurg.selectExamDetail(cardiacId);
     }
     
     public boolean insertExamDetail(List<CardiacSurgeryBO> listExam, String id) {

@@ -190,9 +190,9 @@ public class CardiacSurgeryHandler {
         return Constants.dao.insertData(InsertEmp, columns);
     }
 
-    public List<CardiacSurgeryBO> selectExamDetail() {
+    public List<CardiacSurgeryBO> selectExamDetail(String cardiacId) {
 
-        String columns[] = {"-", "CARDIAC_ID", "EXAM_TYPE_ID", "EXAM_TYPE_DESC", 
+        String columns[] = {"-", "CARDIAC_ID", "EXAM_TYPE_ID", "EXAM_TYPE_DESC",
             "EXAM_DETAIL_ID", "EXAM_DETAIL_DESC", "REMARKS"};
 
         String query
@@ -200,11 +200,11 @@ public class CardiacSurgeryHandler {
                 + "       DT.DESCRIPTION EXAM_TYPE_DESC,                \n"
                 + "       CHD.EXAM_DETAIL_ID,                           \n"
                 + "       DTD.DESCRIPTION EXAM_DETAIL_DESC,             \n"
-                + "       CHD.REMARKS                                   \n"
+                + "       CHD.REMARKS FROM                              \n"
                 + Database.DCMS.cardiacHistoryDetail + " CHD,           \n"
                 + Database.DCMS.definitionType + " DT,                  \n"
                 + Database.DCMS.definitionTypeDetail + " DTD            \n"
-                + " WHERE CHD.CARDIAC_ID = 1                            \n"
+                + " WHERE CHD.CARDIAC_ID = " + cardiacId + "            \n"
                 + "   AND NVL(CHD.EXAM_TYPE_ID, -1) = NVL(DT.ID, -1)    \n"
                 + "   AND NVL(CHD.EXAM_DETAIL_ID, -1) = NVL(DTD.ID, -1) \n"
                 + "   ORDER BY CHD.EXAM_TYPE_ID;";
@@ -262,7 +262,7 @@ public class CardiacSurgeryHandler {
     public boolean updateExamDetailRemarks(CardiacSurgeryBO cardiac) {
         String query
                 = " UPDATE " + Database.DCMS.cardiacHistoryDetail + "\n"
-                + " SET REMARKS  = '" + cardiac.getExamRemarks()+ "' \n"
+                + " SET REMARKS  = '" + cardiac.getExamRemarks() + "' \n"
                 + " WHERE ID = '" + cardiac.getId() + "'             \n"
                 + " AND EXAM_TYPE_ID = '" + cardiac.getExamId() + "' \n";
 

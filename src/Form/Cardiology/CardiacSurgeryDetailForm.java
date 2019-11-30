@@ -246,10 +246,10 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
                 tblExamDetail.getSelectedRow(), 3)));
         objCardiacSurger.setId(id);
         if(ctlCardiacSurg.updateExamDetailRemarks(objCardiacSurger)){
-                System.out.println("Records Save Successfully.");
+                System.out.println("Remarks Save Successfully.");
                 setExamDetail();
             }else{
-                JOptionPane.showMessageDialog(null, "Unable to save Exam Detail.");
+                JOptionPane.showMessageDialog(null, "Unable to save Remarks.");
             }
     }//GEN-LAST:event_tblExamDetailKeyReleased
 
@@ -278,7 +278,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void setExamDetail() {
-        listExamDetail = ctlCardiacSurg.selectExamDetail();
+        listExamDetail = ctlCardiacSurg.selectExamDetail(id);
         if (listExamDetail.isEmpty()) {
             List<CardiacSurgeryBO> list = new ArrayList<>();
             list.add(new CardiacSurgeryBO());
