@@ -253,7 +253,7 @@ public class CardiacSurgeryHandler {
         String query
                 = " UPDATE " + Database.DCMS.cardiacHistoryDetail + "        \n"
                 + " SET EXAM_DETAIL_ID  = '" + cardiac.getExamDetailId() + "'\n"
-                + " WHERE ID = '" + cardiac.getId() + "'                     \n"
+                + " WHERE CARDIAC_ID = '" + cardiac.getId() + "'             \n"
                 + " AND EXAM_TYPE_ID = '" + cardiac.getExamId() + "'         \n";
 
         return Constants.dao.executeUpdate(query, false);
@@ -262,8 +262,8 @@ public class CardiacSurgeryHandler {
     public boolean updateExamDetailRemarks(CardiacSurgeryBO cardiac) {
         String query
                 = " UPDATE " + Database.DCMS.cardiacHistoryDetail + "\n"
-                + " SET REMARKS  = '" + cardiac.getExamRemarks() + "' \n"
-                + " WHERE ID = '" + cardiac.getId() + "'             \n"
+                + " SET REMARKS  = '" + cardiac.getExamRemarks() + "'\n"
+                + " WHERE CARDIAC_ID = '" + cardiac.getId() + "'    \n"
                 + " AND EXAM_TYPE_ID = '" + cardiac.getExamId() + "' \n";
 
         return Constants.dao.executeUpdate(query, false);
