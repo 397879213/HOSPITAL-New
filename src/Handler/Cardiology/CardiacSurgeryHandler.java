@@ -232,5 +232,26 @@ public class CardiacSurgeryHandler {
         }
         return Constants.dao.insertData(lstInr, columns);
     }
+    
+    public boolean updateExamDetail(CardiacSurgeryBO cardiac) {
+        String query
+                = " UPDATE " + Database.DCMS.cardiacHistoryDetail + "\n"
+                + " SET EXAM_DETAIL_ID  = '" + cardiac.getExamDetailId()+ "'\n"
+                + " WHERE ID = '" + cardiac.getId()+ "'"
+                + " AND EXAM_TYPE_ID = '" + cardiac.getExamId()+ "'";
+
+        return Constants.dao.executeUpdate(query, false);
+    }
+    
+    public boolean updateExamDetailRemarks(CardiacSurgeryBO cardiac) {
+        String query
+                = " UPDATE " + Database.DCMS.cardiacHistoryDetail + "\n"
+                + " SET REMARKS  = '" + cardiac.getExamDetailId()+ "'\n"
+                + " WHERE ID = '" + cardiac.getId()+ "'"
+                + " AND EXAM_TYPE_ID = '" + cardiac.getExamId()+ "'";
+
+        return Constants.dao.executeUpdate(query, false);
+    }
+    
 
 }
