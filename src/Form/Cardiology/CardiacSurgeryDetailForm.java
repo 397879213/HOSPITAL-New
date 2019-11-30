@@ -226,7 +226,14 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             lov.LOVDefinitionSelection(objCardiacSurger.getExamId(), "", this);
             objCardiacSurger.setExamDetailId(Constants.lovID);
             objCardiacSurger.setExamDetailDescription(Constants.lovDescription);
-            setExamDetail();
+            objCardiacSurger.setId(id);
+            if(ctlCardiacSurg.updateExamDetail(objCardiacSurger)){
+                System.out.println("Recors Save Successfully.");
+                setExamDetail();
+            }else{
+                JOptionPane.showMessageDialog(null, "Unable to save Exam Detail.");
+            }
+            
         }
     }//GEN-LAST:event_tblExamDetailMouseReleased
 

@@ -52,5 +52,27 @@ public class CardiacSurgeryController {
         }
         return ret;
     }
+    
+    public boolean updateExamDetail(CardiacSurgeryBO cardiac) {
+        boolean ret = hdlCardiacSurg.updateExamDetail(cardiac);
+        if(ret){
+            ret = Constants.dao.commitTransaction();
+        }
+        if(!ret){
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
+        
+    public boolean updateExamDetailRemarks(CardiacSurgeryBO cardiac) {
+        boolean ret = hdlCardiacSurg.updateExamDetailRemarks(cardiac);
+        if(ret){
+            ret = Constants.dao.commitTransaction();
+        }
+        if(!ret){
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
         
 }
