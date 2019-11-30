@@ -23,7 +23,6 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
         initComponents();
         this.setSize(Constants.xSize + 80, Constants.ySize - Constants.yExtension + 8);
-        listExamDetail = ctlCardiacSurg.selectExamDetail();
         this.id = id;
         setExamDetail();
     }
@@ -268,7 +267,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void setExamDetail() {
-
+        listExamDetail = ctlCardiacSurg.selectExamDetail();
         if (listExamDetail.isEmpty()) {
             List<CardiacSurgeryBO> list = new ArrayList<>();
             list.add(new CardiacSurgeryBO());
