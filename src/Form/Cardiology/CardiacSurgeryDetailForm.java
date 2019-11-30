@@ -227,7 +227,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             objCardiacSurger.setExamDetailDescription(Constants.lovDescription);
             objCardiacSurger.setId(id);
             if(ctlCardiacSurg.updateExamDetail(objCardiacSurger)){
-                System.out.println("Recors Save Successfully.");
+                System.out.println("Records Save Successfully.");
                 setExamDetail();
             }else{
                 JOptionPane.showMessageDialog(null, "Unable to save Exam Detail.");
@@ -238,8 +238,19 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     private void tblExamDetailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblExamDetailKeyReleased
 
+        if (tblExamDetail.getSelectedRow() < 0 || listExamDetail.isEmpty()) {
+            return;
+        }
+        objCardiacSurger = listExamDetail.get(tblExamDetail.getSelectedRow());
         objCardiacSurger.setExamRemarks(String.valueOf(tblExamDetail.getValueAt(
                 tblExamDetail.getSelectedRow(), 3)));
+        objCardiacSurger.setId(id);
+        if(ctlCardiacSurg.updateExamDetailRemarks(objCardiacSurger)){
+                System.out.println("Records Save Successfully.");
+                setExamDetail();
+            }else{
+                JOptionPane.showMessageDialog(null, "Unable to save Exam Detail.");
+            }
     }//GEN-LAST:event_tblExamDetailKeyReleased
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
