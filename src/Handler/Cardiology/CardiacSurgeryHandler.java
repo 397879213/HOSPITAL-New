@@ -198,7 +198,7 @@ public class CardiacSurgeryHandler {
         String query
                 = "SELECT CHD.CARDIAC_ID, CHD.EXAM_TYPE_ID,             \n"
                 + "       DT.DESCRIPTION EXAM_TYPE_DESC,                \n"
-                + " NVL(CHD.EXAM_DETAIL_ID, ' ') EXAM_DETAIL_ID,        \n"
+                + " NVL(CHD.EXAM_DETAIL_ID, -1) EXAM_DETAIL_ID,         \n"
                 + " NVL(DTD.DESCRIPTION, ' ') EXAM_DETAIL_DESC,         \n"
                 + " NVL(CHD.REMARKS, ' ') REMARKS  FROM                 \n"
                 + Database.DCMS.cardiacHistoryDetail + " CHD,           \n"
