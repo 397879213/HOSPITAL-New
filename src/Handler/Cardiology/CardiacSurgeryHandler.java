@@ -198,16 +198,16 @@ public class CardiacSurgeryHandler {
         String query
                 = "SELECT CHD.CARDIAC_ID, CHD.EXAM_TYPE_ID,             \n"
                 + "       DT.DESCRIPTION EXAM_TYPE_DESC,                \n"
-                + "       CHD.EXAM_DETAIL_ID,                           \n"
-                + "       DTD.DESCRIPTION EXAM_DETAIL_DESC,             \n"
-                + "       CHD.REMARKS FROM                              \n"
+                + " NVL(CHD.EXAM_DETAIL_ID, ' ') EXAM_DETAIL_ID,        \n"
+                + " NVL(DTD.DESCRIPTION, ' ') EXAM_DETAIL_DESC,         \n"
+                + " NVL(CHD.REMARKS, ' ') REMARKS  FROM                 \n"
                 + Database.DCMS.cardiacHistoryDetail + " CHD,           \n"
                 + Database.DCMS.definitionType + " DT,                  \n"
                 + Database.DCMS.definitionTypeDetail + " DTD            \n"
                 + " WHERE CHD.CARDIAC_ID = " + cardiacId + "            \n"
                 + "   AND NVL(CHD.EXAM_TYPE_ID, -1) = NVL(DT.ID, -1)    \n"
                 + "   AND NVL(CHD.EXAM_DETAIL_ID, -1) = NVL(DTD.ID, -1) \n"
-                + "   ORDER BY CHD.EXAM_TYPE_ID;";
+                + "   ORDER BY CHD.EXAM_TYPE_ID                         \n";
         ;
 
         List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
