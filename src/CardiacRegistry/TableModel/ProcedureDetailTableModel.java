@@ -68,11 +68,6 @@ public class ProcedureDetailTableModel extends AbstractTableModel {
     @Override
     public boolean isCellEditable(int row, int col) {
         //no matter where the cell appears onscreen
-        if (col == 3) {
-
-            return true;
-        }
-
         return false;
 
     }

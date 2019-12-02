@@ -2028,7 +2028,7 @@
                               <Component id="btnFianlSign" min="-2" pref="113" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btnExit2" min="-2" pref="90" max="-2" attributes="0"/>
-                              <EmptySpace pref="165" max="32767" attributes="0"/>
+                              <EmptySpace pref="161" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2036,11 +2036,13 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btnSaveAntenatalVisit" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnClearAntenatalVisit" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnExit2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnFianlSign" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="btnFianlSign" alignment="1" max="32767" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                      <Component id="btnSaveAntenatalVisit" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnClearAntenatalVisit" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnExit2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>

@@ -297,7 +297,7 @@ public class CardiacSurgeryHandler {
     public boolean updateCardiacProcedureDetail(CardiacSurgeryBO cardiac) {
         String query
                 = " UPDATE " + Database.DCMS.cardiacProcedureDetail + "\n"
-                + " SET DATE_OF_PROCEDURE  = '" + cardiac.getDateOfSurgery() + "',\n"
+                + " SET DATE_OF_PROCEDURE  = '" + cardiac.getDateOfProcedure()+ "',\n"
                 + " INSTITUTE_ID  = '" + cardiac.getInstituteId() + "',\n"
                 + " PERFORMING_PHYSICIAN_ID  = '" + cardiac.getPerformingPhysicianId() + "',\n"
                 + " REMARKS  = '" + cardiac.getProcedureRemarks() + "' \n"

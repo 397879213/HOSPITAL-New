@@ -485,19 +485,19 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     private void tblProcedureDetailMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProcedureDetailMouseReleased
         // TODO add your handling code here:
+        objProcedure = listProcedure.get(tblProcedureDetail.getSelectedRow());
         if (evt.getClickCount() % 2 == 0) {
             int confirmation = JOptionPane.showConfirmDialog(null, "Do you want to Cancel?");
             if (confirmation != 0) {
                 return;
             }
-            if (ctlCardiacSurg.cancelProcedure(objCardiacSurger)) {
+            if (ctlCardiacSurg.cancelProcedure(objProcedure)) {
                 JOptionPane.showMessageDialog(null, "Record Cancel Successsfully.");
                 selectProcedureDetail();
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to Cancel Record.");
             }
         }
-        objProcedure = listProcedure.get(tblProcedureDetail.getSelectedRow());
         surgProcedureId = objProcedure.getProcedureId();
         procedureInstId = objProcedure.getInstituteId();
         procedurePerformingId = objProcedure.getPerformingPhysicianId();
@@ -691,5 +691,4 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
     }
-
 }
