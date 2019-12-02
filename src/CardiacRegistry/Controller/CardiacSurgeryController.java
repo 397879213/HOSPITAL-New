@@ -100,5 +100,16 @@ public class CardiacSurgeryController {
     public List<CardiacSurgeryBO> selectCardiacProcedureDetail(String cardiacId) {
         return hdlCardiacSurg.selectCardiacProcedureDetail(cardiacId);
     }
+    
+    public boolean cancelProcedure(CardiacSurgeryBO cardiac) {
+        boolean ret = hdlCardiacSurg.cancelProcedure(cardiac);
+        if(ret){
+            ret = Constants.dao.commitTransaction();
+        }
+        if(!ret){
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
         
 }

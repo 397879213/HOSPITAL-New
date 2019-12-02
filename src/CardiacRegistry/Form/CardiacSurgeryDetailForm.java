@@ -473,6 +473,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         setProecedureDetail();
         if (ctlCardiacSurg.insertcardiacProcedureDetail(objProcedure)) {
             JOptionPane.showMessageDialog(null, "Record Save Successsfully.");
+            selectProcedureDetail();
         } else {
             JOptionPane.showMessageDialog(null, "Unable to Save Record.");
         }
@@ -489,7 +490,12 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             if (confirmation != 0) {
                 return;
             }
-            
+            if (ctlCardiacSurg.cancelProcedure(objCardiacSurger)) {
+                JOptionPane.showMessageDialog(null, "Record Cancel Successsfully.");
+                selectProcedureDetail();
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to Cancel Record.");
+            }
         }
         objProcedure = listProcedure.get(tblProcedureDetail.getSelectedRow());
         surgProcedureId = objProcedure.getProcedureId();
@@ -562,6 +568,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         setProecedureDetail();
         if (ctlCardiacSurg.updateCardiacProcedureDetail(objProcedure)) {
             JOptionPane.showMessageDialog(null, "Record Update Successsfully.");
+            selectProcedureDetail();
         } else {
             JOptionPane.showMessageDialog(null, "Unable to Update Record.");
         }

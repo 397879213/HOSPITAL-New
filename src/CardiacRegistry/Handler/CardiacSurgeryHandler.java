@@ -370,4 +370,14 @@ public class CardiacSurgeryHandler {
         return lisExam;
     }
 
+    public boolean cancelProcedure(CardiacSurgeryBO cardiac) {
+        String query
+                = " UPDATE " + Database.DCMS.cardiacProcedureDetail + " \n"
+                + " SET ACTIVE  = 'N'                                   \n"
+                + " WHERE CARDIAC_ID = '" + cardiac.getId() + "'        \n"
+                + " AND PROCEDURE_ID = '" + cardiac.getProcedureId() + "' \n";
+
+        return Constants.dao.executeUpdate(query, false);
+    }
+    
 }
