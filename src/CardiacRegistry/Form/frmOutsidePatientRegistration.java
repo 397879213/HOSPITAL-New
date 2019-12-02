@@ -1,12 +1,12 @@
-package Form.Cardiology;
+package CardiacRegistry.Form;
 
-import BO.Cardiology.OutsidePatientRegistry;
-import Controller.Cardiology.OutsidePatientRegistryController;
+import CardiacRegistry.BO.OutsidePatientRegistry;
+import CardiacRegistry.Controller.OutsidePatientRegistryController;
 //import static Form.patient.frmPatientRegistration.patientAge;
 //import static Form.patient.frmPatientRegistration.patientContactNo;
 //import static Form.patient.frmPatientRegistration.patientFirstName;
 //import static Form.patient.frmPatientRegistration.patientLastName;
-import TableModel.Cardiology.OutsidePatientTableModel;
+import CardiacRegistry.TableModel.OutsidePatientTableModel;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
@@ -782,7 +782,7 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtPatientId)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                        .addComponent(txtAge)
+                        .addComponent(txtAge, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cboAge, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtFatherName)

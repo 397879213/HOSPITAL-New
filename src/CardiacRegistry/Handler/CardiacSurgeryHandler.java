@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Handler.Cardiology;
+package CardiacRegistry.Handler;
 
-import BO.Cardiology.CardiacSurgeryBO;
+import CardiacRegistry.BO.CardiacSurgeryBO;
 import BO.Patient;
 import java.util.ArrayList;
 import java.util.HashMap;

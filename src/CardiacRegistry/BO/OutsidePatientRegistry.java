@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package BO.Cardiology;
+package CardiacRegistry.BO;
 
 /**
  *

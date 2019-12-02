@@ -2,26 +2,27 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package TableModel.Cardiology;
+package CardiacRegistry.TableModel;
 
-import BO.Cardiology.OutsidePatientRegistry;
+import CardiacRegistry.BO.OutsidePatientRegistry;
+import BO.Patient;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
-public class OutsidePatientTableModel extends AbstractTableModel {
+public class PatientListTableModel extends AbstractTableModel {
 
     private final String[] columnNames
             = {"Patient Id", "Name","Age", "Contact No"};
     private final Object[][] data;
 
-    public OutsidePatientTableModel(List<OutsidePatientRegistry> liInfo) {
+    public PatientListTableModel(List<Patient> liInfo) {
         data = new Object[liInfo.size()][columnNames.length];
 
         int row = 0;
 
-        for (OutsidePatientRegistry currentinfo : liInfo) {
+        for (Patient currentinfo : liInfo) {
             data[row][0] = currentinfo.getPatientId();
-            data[row][1] = currentinfo.getPatientFullName();
+            data[row][1] = currentinfo.getFullName();
             data[row][2] = currentinfo.getAge();
             data[row][3] = currentinfo.getContactNo();
             row++;
@@ -66,15 +67,7 @@ public class OutsidePatientTableModel extends AbstractTableModel {
      */
     @Override
     public boolean isCellEditable(int row, int col) {
-        //no matter where the cell appears onscreen
-        System.out.println("Current Col=" + col);
-        if (col == 3 || col == 2) {
-
-            return true;
-        }
-
         return false;
-
     }
     /*
      * Don't need to implement this method unless your table's

@@ -1,4 +1,4 @@
-package Form.Cardiology;
+package Form.CardiacRegistry;
 
 import Form.general.*;
 import utilities.Constants;
@@ -332,7 +332,6 @@ public class frmEchoSSPS extends javax.swing.JInternalFrame {
     private javax.swing.JPanel pnlPL;
     private javax.swing.JTextField txtAgeGender;
     private javax.swing.JTextField txtContactNo;
-    private org.jdesktop.swingx.JXDatePicker txtIssueDate;
     private javax.swing.JTextField txtPatientId;
     private javax.swing.JTextField txtPatientId1;
     private javax.swing.JTextField txtPatientName;

@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller.Cardiology;
+package CardiacRegistry.Controller;
 
-import BO.Cardiology.OutsidePatientRegistry;
-import Handler.Cardiology.OutsidePatientRegistryHandler;
+import CardiacRegistry.BO.OutsidePatientRegistry;
+import CardiacRegistry.Handler.OutsidePatientRegistryHandler;
 import java.util.List;
 import utilities.Constants;
 import utilities.GenerateKeys;

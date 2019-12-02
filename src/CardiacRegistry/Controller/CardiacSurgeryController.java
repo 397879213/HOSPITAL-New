@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller.Cardiology;
+package CardiacRegistry.Controller;
 
-import BO.Cardiology.CardiacSurgeryBO;
+import CardiacRegistry.BO.CardiacSurgeryBO;
 import BO.Patient;
-import Handler.Cardiology.CardiacSurgeryHandler;
+import CardiacRegistry.Handler.CardiacSurgeryHandler;
 import java.util.List;
 import utilities.Constants;
 import utilities.GenerateKeys;
