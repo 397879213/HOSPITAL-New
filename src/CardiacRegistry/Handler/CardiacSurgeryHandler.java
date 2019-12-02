@@ -279,7 +279,7 @@ public class CardiacSurgeryHandler {
         HashMap map = new HashMap();
         map.put("CARDIAC_ID", "'" + insert.getId() + "'");
         map.put("PROCEDURE_TYPE", "'" + insert.getProcedureType() + "'");
-        map.put("PROCEDURE_ID", "'" + insert.getInstituteId() + "'");
+        map.put("PROCEDURE_ID", "'" + insert.getProcedureId()+ "'");
         map.put("DATE_OF_PROCEDURE", "'" + insert.getDateOfProcedure() + "'");
         map.put("INSTITUTE_ID", "'" + insert.getInstituteId() + "'");
         map.put("PERFORMING_PHYSICIAN_ID", "'" + insert.getPerformingPhysicianId() + "'");

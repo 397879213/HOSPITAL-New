@@ -72,7 +72,7 @@ public class frmCompoundingStore extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txtUnitQuantity = new javax.swing.JTextField();
-        cboItemType = new javax.swing.JComboBox<String>();
+        cboItemType = new javax.swing.JComboBox<>();
         btnUpdateItemInfo = new javax.swing.JButton();
         lblStock = new javax.swing.JLabel();
         lblStockInQuantity = new javax.swing.JLabel();
@@ -496,7 +496,7 @@ public class frmCompoundingStore extends javax.swing.JInternalFrame {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(0, 1, Short.MAX_VALUE)
+                            .addGap(0, 20, Short.MAX_VALUE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))

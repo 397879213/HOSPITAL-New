@@ -437,13 +437,13 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             objCardiacSurger.setExamDetailId(Constants.lovID);
             objCardiacSurger.setExamDetailDescription(Constants.lovDescription);
             objCardiacSurger.setId(id);
-            if(ctlCardiacSurg.updateExamDetail(objCardiacSurger)){
+            if (ctlCardiacSurg.updateExamDetail(objCardiacSurger)) {
                 System.out.println("Records Save Successfully.");
                 setExamDetail();
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Unable to save Exam Detail.");
             }
-            
+
         }
     }//GEN-LAST:event_tblExamDetailMouseReleased
 
@@ -456,17 +456,17 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         objCardiacSurger.setExamRemarks(String.valueOf(tblExamDetail.getValueAt(
                 tblExamDetail.getSelectedRow(), 3)).trim());
         objCardiacSurger.setId(id);
-        if(ctlCardiacSurg.updateExamDetailRemarks(objCardiacSurger)){
-                System.out.println("Remarks Save Successfully.");
-                setExamDetail();
-            }else{
-                JOptionPane.showMessageDialog(null, "Unable to save Remarks.");
-            }
+        if (ctlCardiacSurg.updateExamDetailRemarks(objCardiacSurger)) {
+            System.out.println("Remarks Save Successfully.");
+            setExamDetail();
+        } else {
+            JOptionPane.showMessageDialog(null, "Unable to save Remarks.");
+        }
     }//GEN-LAST:event_tblExamDetailKeyReleased
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        if(cboProcType.getSelectedIndex() == 0){
+        if (cboProcType.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "Please Select Procedure Type.");
             cboProcType.requestFocus();
         }
@@ -484,6 +484,13 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     private void tblProcedureDetailMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProcedureDetailMouseReleased
         // TODO add your handling code here:
+        if (evt.getClickCount() % 2 == 0) {
+            int confirmation = JOptionPane.showConfirmDialog(null, "Do you want to Cancel?");
+            if (confirmation != 0) {
+                return;
+            }
+            
+        }
         objProcedure = listProcedure.get(tblProcedureDetail.getSelectedRow());
         surgProcedureId = objProcedure.getProcedureId();
         procedureInstId = objProcedure.getInstituteId();
@@ -492,6 +499,8 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         txtProcedureInstitute.setText(objProcedure.getInstituteDescription());
         txtProcedureName.setText(objProcedure.getProcedureDescription());
         txtProcedurePerforming.setText(objProcedure.getPerformingPhysicianName());
+        cboProcType.setEnabled(false);
+        txtProcedureName.setEditable(false);
     }//GEN-LAST:event_tblProcedureDetailMouseReleased
 
     private void tblProcedureDetailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblProcedureDetailKeyReleased
@@ -502,7 +511,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         if (txtPerformDate.getDate().getDate() == 0) {
             JOptionPane.showMessageDialog(null, "Enter the Ultrasound E.D.D DD-MON-YY",
-                "Gaynee Parameter", JOptionPane.WARNING_MESSAGE);
+                    "Gaynee Parameter", JOptionPane.WARNING_MESSAGE);
             return;
         }
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
@@ -662,7 +671,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             }
         }
     }
-    
+
     private void setDateOfProcedure(int day) {
         try {
             Calendar c = Calendar.getInstance();
