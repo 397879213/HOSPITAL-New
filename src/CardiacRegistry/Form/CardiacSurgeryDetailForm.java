@@ -3,8 +3,11 @@ package CardiacRegistry.Form;
 import CardiacRegistry.BO.CardiacSurgeryBO;
 import CardiacRegistry.Controller.CardiacSurgeryController;
 import CardiacRegistry.TableModel.ExamDetailTableModel;
+import CardiacRegistry.TableModel.ProcedureDetailTableModel;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
@@ -34,6 +37,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         this.setSize(Constants.xSize + 80, Constants.ySize - Constants.yExtension + 8);
         this.id = id;
         setExamDetail();
+        setDateOfProcedure(0);
         selectProcedureDetail();
     }
 
@@ -51,7 +55,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         tblExamDetail = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        tblExamDetail1 = new javax.swing.JTable();
+        tblProcedureDetail = new javax.swing.JTable();
         cboProcType = new javax.swing.JComboBox<>();
         txtProcedureName = new javax.swing.JTextField();
         txtPerformDate = new org.jdesktop.swingx.JXDatePicker();
@@ -152,28 +156,28 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         jPanel2.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Procedure Info", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
 
-        tblExamDetail1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        tblExamDetail1.setModel(new javax.swing.table.DefaultTableModel(
+        tblProcedureDetail.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        tblProcedureDetail.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null,null,null,null }
             },
             new String [] {"Exam", "Exam Detail", "Remarks"}
         ));
-        tblExamDetail1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tblExamDetail1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblProcedureDetail.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tblProcedureDetail.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblExamDetail1MouseClicked(evt);
+                tblProcedureDetailMouseClicked(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                tblExamDetail1MouseReleased(evt);
+                tblProcedureDetailMouseReleased(evt);
             }
         });
-        tblExamDetail1.addKeyListener(new java.awt.event.KeyAdapter() {
+        tblProcedureDetail.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                tblExamDetail1KeyReleased(evt);
+                tblProcedureDetailKeyReleased(evt);
             }
         });
-        jScrollPane4.setViewportView(tblExamDetail1);
+        jScrollPane4.setViewportView(tblProcedureDetail);
 
         cboProcType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Surgery", "Intervention"}));
 
@@ -474,17 +478,22 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnAddActionPerformed
 
-    private void tblExamDetail1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblExamDetail1MouseClicked
+    private void tblProcedureDetailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProcedureDetailMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblExamDetail1MouseClicked
+    }//GEN-LAST:event_tblProcedureDetailMouseClicked
 
-    private void tblExamDetail1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblExamDetail1MouseReleased
+    private void tblProcedureDetailMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProcedureDetailMouseReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblExamDetail1MouseReleased
+        objProcedure = listProcedure.get(tblProcedureDetail.getSelectedRow());
+        surgProcedureId = objProcedure.getProcedureId();
+        procedureInstId = objProcedure.getInstituteId();
+        procedurePerformingId = objProcedure.getPerformingPhysicianId();
+        setDateOfProcedure(Integer.parseInt(objProcedure.getDayOfProcedure()));
+    }//GEN-LAST:event_tblProcedureDetailMouseReleased
 
-    private void tblExamDetail1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblExamDetail1KeyReleased
+    private void tblProcedureDetailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblProcedureDetailKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblExamDetail1KeyReleased
+    }//GEN-LAST:event_tblProcedureDetailKeyReleased
 
     private void txtPerformDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPerformDateActionPerformed
         // TODO add your handling code here:
@@ -571,7 +580,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblPacsLink;
     private javax.swing.JPanel pnlPL;
     private javax.swing.JTable tblExamDetail;
-    private javax.swing.JTable tblExamDetail1;
+    private javax.swing.JTable tblProcedureDetail;
     private org.jdesktop.swingx.JXDatePicker txtPerformDate;
     private javax.swing.JTextField txtProcedureInstitute;
     private javax.swing.JTextField txtProcedureName;
@@ -621,7 +630,47 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     private void selectProcedureDetail() {
         listProcedure = ctlCardiacSurg.selectCardiacProcedureDetail(id);
-        
+        if (listProcedure.isEmpty()) {
+            List<CardiacSurgeryBO> listProcedure = new ArrayList<>();
+            listProcedure.add(new CardiacSurgeryBO());
+            tblProcedureDetail.setModel(new ProcedureDetailTableModel(listProcedure));
+            return;
+        }
+        tblProcedureDetail.setModel(new ProcedureDetailTableModel(listProcedure));
+        ListSelectionModel selectionModel = tblProcedureDetail.getSelectionModel();
+        tblProcedureDetail.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        setProcedureDetailColumnsWidths();
+        selectionModel.setSelectionInterval(0, 0);
+        Constants.tablelook.setJTableEnvironment(tblProcedureDetail);
+    }
+
+    private void setProcedureDetailColumnsWidths() {
+        TableColumn column = null;
+        for (int i = 0; i < tblProcedureDetail.getColumnCount(); i++) {
+            column = tblProcedureDetail.getColumnModel().getColumn(i);
+            if (i == 0) {
+                column.setPreferredWidth(30);
+            } else if (i == 1) {
+                column.setPreferredWidth(50);
+            } else if (i == 2) {
+                column.setPreferredWidth(120);
+            } else if (i == 3) {
+                column.setPreferredWidth(80);
+            }
+        }
+    }
+    
+    private void setDateOfProcedure(int day) {
+        try {
+            Calendar c = Calendar.getInstance();
+            c.add(Calendar.DATE, day);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
+            Date date2 = dateFormat.parse(dateFormat.format(c.getTime()));
+            txtPerformDate.setDate(date2);
+            performDate = dateFormat.format(date2);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
 }

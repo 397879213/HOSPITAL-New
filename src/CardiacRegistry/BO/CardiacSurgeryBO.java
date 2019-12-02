@@ -29,6 +29,7 @@ public class CardiacSurgeryBO {
     private String admittingConsultantName = "";
     private String remarks = "";
     private String crtdBy = "";
+    private String crtdByName = "";
     private String crtdDate = "";
     private String crtdTerminalId = "";
     private String isFinal = "";
@@ -45,6 +46,7 @@ public class CardiacSurgeryBO {
     private String procedureId = "";
     private String procedureDescription = "";
     private String dateOfProcedure = "";
+    private String dayOfProcedure = "";
     private String performingPhysicianId = "";
     private String performingPhysicianName = "";
     private String procedureRemarks = "";
@@ -52,6 +54,22 @@ public class CardiacSurgeryBO {
     private String cancelDate = "";
     private String cancelTerminalId = "";
     private String active = "";
+
+    public String getDayOfProcedure() {
+        return dayOfProcedure;
+    }
+
+    public void setDayOfProcedure(String dayOfProcedure) {
+        this.dayOfProcedure = dayOfProcedure;
+    }
+
+    public String getCrtdByName() {
+        return crtdByName;
+    }
+
+    public void setCrtdByName(String crtdByName) {
+        this.crtdByName = crtdByName;
+    }
 
     public String getCancelBy() {
         return cancelBy;
