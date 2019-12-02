@@ -111,7 +111,7 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle(Constants.title+"Cardiac Surgery Form");
         setFrameIcon(null);
-        setPreferredSize(new java.awt.Dimension(880, 710));
+        setPreferredSize(new java.awt.Dimension(1220, 810));
         setRequestFocusEnabled(false);
 
         pnlPL.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
