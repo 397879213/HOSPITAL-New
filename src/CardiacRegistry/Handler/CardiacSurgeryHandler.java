@@ -326,7 +326,7 @@ public class CardiacSurgeryHandler {
                 + "       CPD.PERFORMING_PHYSICIAN_ID,              \n"
                 + "       PPI.NAME PERFORMING_PHY_NAME,             \n"
                 + "       CPD.ACTIVE,                               \n"
-                + "       CPD.REMARKS,                              \n"
+                + " NVL(CPD.REMARKS, ' ') REMARKS,                  \n"
                 + "       CPD.CRTD_BY,                              \n"
                 + " TO_CHAR(CPD.CRTD_DATE, 'DD-MON-YY') CRTD_DATE,  \n"
                 + "       CPD.CRTD_TERMINAL_ID,                     \n"
