@@ -21,6 +21,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     CardiacSurgeryBO objProcedure = new CardiacSurgeryBO();
     CardiacSurgeryController ctlCardiacSurg = new CardiacSurgeryController();
     List<CardiacSurgeryBO> listExamDetail = new ArrayList();
+    List<CardiacSurgeryBO> listProcedure = new ArrayList();
     String id = "";
     private String performDate;
     private String surgProcedureId;
@@ -33,6 +34,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         this.setSize(Constants.xSize + 80, Constants.ySize - Constants.yExtension + 8);
         this.id = id;
         setExamDetail();
+        selectProcedureDetail();
     }
 
     @SuppressWarnings("unchecked")
@@ -615,6 +617,11 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         objProcedure.setPerformingPhysicianId(procedurePerformingId);
         objProcedure.setDateOfProcedure(performDate);
         objProcedure.setProcedureId(surgProcedureId);
+    }
+
+    private void selectProcedureDetail() {
+        listProcedure = ctlCardiacSurg.selectCardiacProcedureDetail(id);
+        
     }
 
 }

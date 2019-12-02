@@ -277,18 +277,18 @@ public class CardiacSurgeryHandler {
             "CRTD_DATE", "CRTD_TERMINAL_ID", "ACTIVE"};
 
         HashMap map = new HashMap();
-        map.put("CARDIAC_ID", "'" + insert.getId()+ "'");
-        map.put("PROCEDURE_TYPE", "'" + insert.getProcedureType()+ "'");
+        map.put("CARDIAC_ID", "'" + insert.getId() + "'");
+        map.put("PROCEDURE_TYPE", "'" + insert.getProcedureType() + "'");
         map.put("PROCEDURE_ID", "'" + insert.getInstituteId() + "'");
-        map.put("DATE_OF_PROCEDURE", "'" + insert.getDateOfProcedure()+ "'");
-        map.put("INSTITUTE_ID", "'" + insert.getInstituteId()+ "'");
-        map.put("PERFORMING_PHYSICIAN_ID", "'" + insert.getPerformingPhysicianId()+ "'");
-        map.put("REMARKS", "'" + insert.getProcedureRemarks()+ "'");
+        map.put("DATE_OF_PROCEDURE", "'" + insert.getDateOfProcedure() + "'");
+        map.put("INSTITUTE_ID", "'" + insert.getInstituteId() + "'");
+        map.put("PERFORMING_PHYSICIAN_ID", "'" + insert.getPerformingPhysicianId() + "'");
+        map.put("REMARKS", "'" + insert.getProcedureRemarks() + "'");
         map.put("CRTD_BY", "'" + Constants.userId + "'");
         map.put("CRTD_DATE", Constants.today);
         map.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
-        map.put("ACTIVE", "'N'");
-        
+        map.put("ACTIVE", "'Y'");
+
         List InsertEmp = new ArrayList();
         InsertEmp.add(map);
         return Constants.dao.insertData(InsertEmp, columns);
@@ -297,14 +297,76 @@ public class CardiacSurgeryHandler {
     public boolean updateCardiacProcedureDetail(CardiacSurgeryBO cardiac) {
         String query
                 = " UPDATE " + Database.DCMS.cardiacProcedureDetail + "\n"
-                + " SET DATE_OF_PROCEDURE  = '" + cardiac.getDateOfSurgery()+ "',\n"
-                + " INSTITUTE_ID  = '" + cardiac.getInstituteId()+ "',\n"
-                + " PERFORMING_PHYSICIAN_ID  = '" + cardiac.getPerformingPhysicianId()+ "',\n"
-                + " REMARKS  = '" + cardiac.getProcedureRemarks()+ "' \n"
+                + " SET DATE_OF_PROCEDURE  = '" + cardiac.getDateOfSurgery() + "',\n"
+                + " INSTITUTE_ID  = '" + cardiac.getInstituteId() + "',\n"
+                + " PERFORMING_PHYSICIAN_ID  = '" + cardiac.getPerformingPhysicianId() + "',\n"
+                + " REMARKS  = '" + cardiac.getProcedureRemarks() + "' \n"
                 + " WHERE CARDIAC_ID = '" + cardiac.getId() + "'    \n"
-                + " AND PROCEDURE_ID = '" + cardiac.getProcedureId()+ "' \n";
+                + " AND PROCEDURE_ID = '" + cardiac.getProcedureId() + "' \n";
 
         return Constants.dao.executeUpdate(query, false);
     }
-    
+
+    public List<CardiacSurgeryBO> selectCardiacProcedureDetail(String cardiacId) {
+
+        String columns[] = {"-", "CARDIAC_ID", "PROCEDURE_TYPE", "PROCEDURE_ID",
+            "PROCEDURE_DESC", "DATE_OF_PROCEDURE", "INSTITUTE_ID", "INSTITUTE_DESC",
+            "PERFORMING_PHYSICIAN_ID", "PERFORMING_PHY_NAME", "REMARKS", "CRTD_BY",
+            "CRTD_DATE", "CRTD_TERMINAL_ID", "ACTIVE", "CRTD_BY_NAME"};
+
+        String query
+                = "SELECT CPD.CARDIAC_ID,                           \n"
+                + "       CPD.PROCEDURE_TYPE,                       \n"
+                + "       CPD.PROCEDURE_ID,                         \n"
+                + "       PCI.DESCRIPTION PROCEDURE_DESC,           \n"
+                + " TO_CHAR(CPD.DATE_OF_PROCEDURE, 'DD-MON-YY') DATE_OF_PROCEDURE,\n"
+                + "       CPD.INSTITUTE_ID,                         \n"
+                + "       INS.DESCRIPTION INSTITUTE_DESC,           \n"
+                + "       CPD.PERFORMING_PHYSICIAN_ID,              \n"
+                + "       PPI.NAME PERFORMING_PHY_NAME,             \n"
+                + "       CPD.ACTIVE,                               \n"
+                + "       CPD.REMARKS,                              \n"
+                + "       CPD.CRTD_BY,                              \n"
+                + " TO_CHAR(CPD.CRTD_DATE, 'DD-MON-YY') CRTD_DATE   \n"
+                + "       CPD.CRTD_TERMINAL_ID,                     \n"
+                + "       CRB.NAME  CRTD_BY_NAME FROM               \n"
+                + Database.DCMS.cardiacProcedureDetail + " CPD,     \n"
+                + Database.DCMS.definitionTypeDetail + " INS,       \n"
+                + Database.DCMS.definitionTypeDetail + " PCI,       \n"
+                + Database.DCMS.users + " CRB ,                     \n"
+                + Database.DCMS.users + " PPI                       \n"
+                + " WHERE CPD.CARDIAC_ID = " + cardiacId + "        \n"
+                + "   AND CPD.ACTIVE = 'Y'                          \n"
+                + "   AND CPD.PROCEDURE_ID = PCI.ID                 \n"
+                + "   AND CPD.INSTITUTE_ID = INS.ID                 \n"
+                + "   AND CPD.CRTD_BY = CRB.USER_NAME               \n"
+                + "   AND CPD.PERFORMING_PHYSICIAN_ID = PPI.USER_NAME\n";
+        ;
+
+        List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
+        List<CardiacSurgeryBO> lisExam = new ArrayList();
+        for (int i = 0; i < listmap.size(); i++) {
+            HashMap map = (HashMap) listmap.get(i);
+            CardiacSurgeryBO objData = new CardiacSurgeryBO();
+
+            objData.setId(map.get("CARDIAC_ID").toString());
+            objData.setExamId(map.get("PROCEDURE_TYPE").toString());
+            objData.setExamDescription(map.get("EXAM_TYPE_DESC").toString());
+            objData.setExamDetailId(map.get("PROCEDURE_ID").toString());
+            objData.setExamDetailDescription(map.get("PROCEDURE_DESC").toString());
+            objData.setExamRemarks(map.get("DATE_OF_PROCEDURE").toString());
+            objData.setExamRemarks(map.get("INSTITUTE_ID").toString());
+            objData.setExamRemarks(map.get("INSTITUTE_DESC").toString());
+            objData.setExamRemarks(map.get("PERFORMING_PHYSICIAN_ID").toString());
+            objData.setExamRemarks(map.get("REMARKS").toString());
+            objData.setExamRemarks(map.get("ACTIVE").toString());
+            objData.setExamRemarks(map.get("CRTD_BY").toString());
+            objData.setExamRemarks(map.get("CRTD_BY_NAME").toString());
+            objData.setExamRemarks(map.get("CRTD_DATE").toString());
+            objData.setExamRemarks(map.get("CRTD_TERMINAL_ID").toString());
+            lisExam.add(objData);
+        }
+        return lisExam;
+    }
+
 }

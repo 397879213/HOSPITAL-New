@@ -96,5 +96,9 @@ public class CardiacSurgeryController {
         }
         return ret;
     }
+    
+    public List<CardiacSurgeryBO> selectCardiacProcedureDetail(String cardiacId) {
+        return hdlCardiacSurg.selectCardiacProcedureDetail(cardiacId);
+    }
         
 }
