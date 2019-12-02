@@ -489,6 +489,9 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         procedureInstId = objProcedure.getInstituteId();
         procedurePerformingId = objProcedure.getPerformingPhysicianId();
         setDateOfProcedure(Integer.parseInt(objProcedure.getDayOfProcedure()));
+        txtProcedureInstitute.setText(objProcedure.getInstituteDescription());
+        txtProcedureName.setText(objProcedure.getProcedureDescription());
+        txtProcedurePerforming.setText(objProcedure.getPerformingPhysicianName());
     }//GEN-LAST:event_tblProcedureDetailMouseReleased
 
     private void tblProcedureDetailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblProcedureDetailKeyReleased
