@@ -269,7 +269,7 @@ public class CardiacSurgeryHandler {
         return Constants.dao.executeUpdate(query, false);
     }
 
-    public boolean insertcardiacProcedureDetail(CardiacSurgeryBO insert) {
+    public boolean insertCardiacProcedureDetail(CardiacSurgeryBO insert) {
 
         String[] columns = {Database.DCMS.cardiacProcedureDetail,
             "CARDIAC_ID", "PROCEDURE_TYPE", "PROCEDURE_ID", "DATE_OF_PROCEDURE",
@@ -294,4 +294,17 @@ public class CardiacSurgeryHandler {
         return Constants.dao.insertData(InsertEmp, columns);
     }
 
+    public boolean updateCardiacProcedureDetail(CardiacSurgeryBO cardiac) {
+        String query
+                = " UPDATE " + Database.DCMS.cardiacProcedureDetail + "\n"
+                + " SET DATE_OF_PROCEDURE  = '" + cardiac.getDateOfSurgery()+ "',\n"
+                + " INSTITUTE_ID  = '" + cardiac.getInstituteId()+ "',\n"
+                + " PERFORMING_PHYSICIAN_ID  = '" + cardiac.getPerformingPhysicianId()+ "',\n"
+                + " REMARKS  = '" + cardiac.getProcedureRemarks()+ "' \n"
+                + " WHERE CARDIAC_ID = '" + cardiac.getId() + "'    \n"
+                + " AND PROCEDURE_ID = '" + cardiac.getProcedureId()+ "' \n";
+
+        return Constants.dao.executeUpdate(query, false);
+    }
+    
 }
