@@ -40,6 +40,110 @@ public class CardiacSurgeryBO {
     private String examDetailId = "";
     private String examDetailDescription = "";
     private String examRemarks = "";
+    
+    private String procedureType = "";
+    private String procedureId = "";
+    private String procedureDescription = "";
+    private String dateOfProcedure = "";
+    private String performingPhysicianId = "";
+    private String performingPhysicianName = "";
+    private String procedureRemarks = "";
+    private String cancelBy = "";
+    private String cancelDate = "";
+    private String cancelTerminalId = "";
+    private String active = "";
+
+    public String getCancelBy() {
+        return cancelBy;
+    }
+
+    public void setCancelBy(String cancelBy) {
+        this.cancelBy = cancelBy;
+    }
+
+    public String getCancelDate() {
+        return cancelDate;
+    }
+
+    public void setCancelDate(String cancelDate) {
+        this.cancelDate = cancelDate;
+    }
+
+    public String getCancelTerminalId() {
+        return cancelTerminalId;
+    }
+
+    public void setCancelTerminalId(String cancelTerminalId) {
+        this.cancelTerminalId = cancelTerminalId;
+    }
+
+    public String getActive() {
+        return active;
+    }
+
+    public void setActive(String active) {
+        this.active = active;
+    }
+
+    
+    
+    public String getProcedureType() {
+        return procedureType;
+    }
+
+    public void setProcedureType(String procedureType) {
+        this.procedureType = procedureType;
+    }
+
+    public String getProcedureId() {
+        return procedureId;
+    }
+
+    public void setProcedureId(String procedureId) {
+        this.procedureId = procedureId;
+    }
+
+    public String getProcedureDescription() {
+        return procedureDescription;
+    }
+
+    public void setProcedureDescription(String procedureDescription) {
+        this.procedureDescription = procedureDescription;
+    }
+
+    public String getDateOfProcedure() {
+        return dateOfProcedure;
+    }
+
+    public void setDateOfProcedure(String dateOfProcedure) {
+        this.dateOfProcedure = dateOfProcedure;
+    }
+
+    public String getPerformingPhysicianId() {
+        return performingPhysicianId;
+    }
+
+    public void setPerformingPhysicianId(String performingPhysicianId) {
+        this.performingPhysicianId = performingPhysicianId;
+    }
+
+    public String getPerformingPhysicianName() {
+        return performingPhysicianName;
+    }
+
+    public void setPerformingPhysicianName(String performingPhysicianName) {
+        this.performingPhysicianName = performingPhysicianName;
+    }
+
+    public String getProcedureRemarks() {
+        return procedureRemarks;
+    }
+
+    public void setProcedureRemarks(String procedureRemarks) {
+        this.procedureRemarks = procedureRemarks;
+    }
+    
+    
 
     public String getExamDescription() {
         return examDescription;

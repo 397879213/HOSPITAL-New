@@ -269,4 +269,29 @@ public class CardiacSurgeryHandler {
         return Constants.dao.executeUpdate(query, false);
     }
 
+    public boolean insertcardiacProcedureDetail(CardiacSurgeryBO insert) {
+
+        String[] columns = {Database.DCMS.cardiacProcedureDetail,
+            "CARDIAC_ID", "PROCEDURE_TYPE", "PROCEDURE_ID", "DATE_OF_PROCEDURE",
+            "INSTITUTE_ID", "PERFORMING_PHYSICIAN_ID", "REMARKS", "CRTD_BY",
+            "CRTD_DATE", "CRTD_TERMINAL_ID", "ACTIVE"};
+
+        HashMap map = new HashMap();
+        map.put("CARDIAC_ID", "'" + insert.getId()+ "'");
+        map.put("PROCEDURE_TYPE", "'" + insert.getProcedureType()+ "'");
+        map.put("PROCEDURE_ID", "'" + insert.getInstituteId() + "'");
+        map.put("DATE_OF_PROCEDURE", "'" + insert.getDateOfProcedure()+ "'");
+        map.put("INSTITUTE_ID", "'" + insert.getInstituteId()+ "'");
+        map.put("PERFORMING_PHYSICIAN_ID", "'" + insert.getPerformingPhysicianId()+ "'");
+        map.put("REMARKS", "'" + insert.getProcedureRemarks()+ "'");
+        map.put("CRTD_BY", "'" + Constants.userId + "'");
+        map.put("CRTD_DATE", Constants.today);
+        map.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
+        map.put("ACTIVE", "'N'");
+        
+        List InsertEmp = new ArrayList();
+        InsertEmp.add(map);
+        return Constants.dao.insertData(InsertEmp, columns);
+    }
+
 }

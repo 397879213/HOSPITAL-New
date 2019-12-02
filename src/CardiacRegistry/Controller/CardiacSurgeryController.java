@@ -74,5 +74,16 @@ public class CardiacSurgeryController {
         }
         return ret;
     }
+    
+    public boolean insertcardiacProcedureDetail(CardiacSurgeryBO insert) {
+        boolean ret = hdlCardiacSurg.insertcardiacProcedureDetail(insert);
+        if(ret){
+            ret = Constants.dao.commitTransaction();
+        }
+        if(!ret){
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
         
 }
