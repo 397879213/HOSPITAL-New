@@ -34,7 +34,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     public CardiacSurgeryDetailForm(String id) {
 
         initComponents();
-        this.setSize(Constants.xSize - 80, Constants.ySize - Constants.yExtension + 8);
+        this.setSize(Constants.xSize - 200, Constants.ySize - Constants.yExtension + 8);
         this.id = id;
         setExamDetail();
         setDateOfProcedure(0);
