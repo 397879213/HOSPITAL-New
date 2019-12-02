@@ -34,7 +34,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     public CardiacSurgeryDetailForm(String id) {
 
         initComponents();
-        this.setSize(Constants.xSize + 80, Constants.ySize - Constants.yExtension + 8);
+        this.setSize(Constants.xSize - 80, Constants.ySize - Constants.yExtension + 8);
         this.id = id;
         setExamDetail();
         setDateOfProcedure(0);
@@ -400,8 +400,8 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlPL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -629,11 +629,11 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             if (i == 0) {
                 column.setPreferredWidth(30);
             } else if (i == 1) {
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(100);
             } else if (i == 2) {
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(100);
             } else if (i == 3) {
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(180);
             }
         }
     }
@@ -670,10 +670,12 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             if (i == 0) {
                 column.setPreferredWidth(30);
             } else if (i == 1) {
-                column.setPreferredWidth(50);
-            } else if (i == 2) {
                 column.setPreferredWidth(120);
+            } else if (i == 2) {
+                column.setPreferredWidth(60);
             } else if (i == 3) {
+                column.setPreferredWidth(80);
+            }else if (i == 4) {
                 column.setPreferredWidth(80);
             }
         }
