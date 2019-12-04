@@ -24,8 +24,9 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
     DisplayLOV lov = new DisplayLOV();
     CardiacSurgeryBO cardiacSurgery = new CardiacSurgeryBO();
     CardiacSurgeryController ctlCardiacSurg = new CardiacSurgeryController();
+    private String cardiacId = "";
     private String surgeryDate = "";
-    private String patientId = "11255";
+    private String patientId = "2254";
     private String wardId = "";
     private String consultantSurgeonId = "";
     private String consultantCardiologistId = "";
@@ -777,16 +778,11 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
 
     private void txtConsultantSurgeonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConsultantSurgeonActionPerformed
         // TODO add your handling code here:
-        String query = "SELECT USER_NAME ID, NAME DESCRIPTION FROM            \n"
-                + Database.DCMS.users + "                       \n"
-                + " WHERE UPPER(NAME) LIKE '%"
-                + txtConsultantSurgeon.getText().toUpperCase().trim() + "%' \n"
-                + " AND ACTIVE = 'Y'                           \n";
-
-        lov.LOVSelection(query, this);
-        if (Constants.lovID.equalsIgnoreCase("ID")) {
+        lov.LOVDefinitionSelection(DefinitionTypes.CardiacPerformingPhysician,
+                txtConsultantSurgeon.getText().trim(), this);
+        if (Constants.lovDescription.equalsIgnoreCase("DESCRIPTION")) {
+            txtConsultantSurgeon.setText("");
             consultantSurgeonId = "";
-            return;
         }
         txtConsultantSurgeon.setText(Constants.lovDescription);
         consultantSurgeonId = Constants.lovID;
@@ -795,13 +791,9 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
 
     private void txtConsultantCardiologistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConsultantCardiologistActionPerformed
         // TODO add your handling code here:
-        String query = "SELECT USER_NAME ID, NAME DESCRIPTION FROM            \n"
-                + Database.DCMS.users + "                       \n"
-                + " WHERE UPPER(NAME) LIKE '%"
-                + txtConsultantCardiologist.getText().toUpperCase().trim() + "%' \n"
-                + " AND ACTIVE = 'Y'                           \n";
-
-        lov.LOVSelection(query, this);
+        lov.LOVDefinitionSelection(DefinitionTypes.CardiacPerformingPhysician,
+                txtConsultantCardiologist.getText().trim(), this);
+        
         if (Constants.lovID.equalsIgnoreCase("ID")) {
             consultantCardiologistId = "";
             return;
@@ -838,13 +830,9 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
 
     private void txtAdmittingConsultantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAdmittingConsultantActionPerformed
         // TODO add your handling code here:
-        String query = "SELECT USER_NAME ID, NAME DESCRIPTION FROM            \n"
-                + Database.DCMS.users + "                       \n"
-                + " WHERE UPPER(NAME) LIKE '%"
-                + txtAdmittingConsultant.getText().toUpperCase().trim() + "%' \n"
-                + " AND ACTIVE = 'Y'                           \n";
+        lov.LOVDefinitionSelection(DefinitionTypes.CardiacPerformingPhysician,
+                txtAdmittingConsultant.getText().trim(), this);
 
-        lov.LOVSelection(query, this);
         if (Constants.lovID.equalsIgnoreCase("ID")) {
             admittingConsultantd = "";
             return;
@@ -869,6 +857,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
             return;
         }
         patient = lisPatient.get(tblPatientsList.getSelectedRow());
+        cardiacId = patient.getId();
         txtPatientId.setText(patient.getPatientId().substring(3));
         txtPatFullNmae.setText(patient.getFullName());
         txtAgeGender.setText(patient.getAge() + " / " + patient.getGenderDescription());
@@ -1002,6 +991,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
     }
 
     private void saveCardiacSurgeryInformation() {
+        cardiacSurgery.setId(cardiacId);
         cardiacSurgery.setPatientId(patientId);
         cardiacSurgery.getAdmissionNo();
         cardiacSurgery.setDateOfSurgery(surgeryDate);
