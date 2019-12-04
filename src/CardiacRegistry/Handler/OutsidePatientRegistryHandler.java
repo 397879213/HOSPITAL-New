@@ -161,7 +161,7 @@ public class OutsidePatientRegistryHandler {
                 + "  OSP.CONTACT_NO                     CONTACT_NO,         \n"
                 + "  NVL(OSP.ADDRESS, ' ')              ADDRESS,            \n"
                 + "  NVL(OSP.GUARDIAN_NAME, ' ')        GUARDIAN_NAME,      \n"
-                + "  NVL(OSP.PRI_PHYSICIAN, 'GENERAL')  PRI_PHYSICIAN_ID,   \n"
+                + "  NVL(OSP.PRI_PHYSICIAN_ID, 'GENERAL') PRI_PHYSICIAN_ID, \n"
                 + "  PPI.NAME                           PRI_PHYSICIAN,      \n"
                 + "  NVL(ROUND(OSP.REG_DATE - (SYSDATE+1)), 0) DAY_OF_REG,  \n"
                 + "  TO_CHAR(OSP.REG_DATE, 'DD-MM-YY HH24:MI')  REG_DATE,   \n"
@@ -179,34 +179,34 @@ public class OutsidePatientRegistryHandler {
                 + Database.DCMS.definitionTypeDetail + "        CAT,    \n" 
                 + Database.DCMS.definitionTypeDetail + "        REL,    \n" 
                 + Database.DCMS.definitionTypeDetail + "        BLD,    \n"                
-                + Database.DCMS.users + "                       PPI     \n"                
+                + Database.DCMS.definitionTypeDetail + "        PPI     \n"                
                 + " WHERE  OSP.MARITAL_STATUS_ID = MAR.ID               \n"
                 + " AND   OSP.CITY_ID = CTY.ID                          \n"
                 + " AND   OSP.INSTITUTE_ID = INS.ID                     \n"
                 + " AND   OSP.RELIGION_ID =  RLG.ID                     \n"
                 + " AND   OSP.CATEGORY_ID =  CAT.ID                     \n"
                 + " AND   OSP.RELATION_ID =  REL.ID                     \n"
-                + " AND   NVL(OSP.PRI_PHYSICIAN, 'GENERAL') =  NVL(PPI.USER_NAME, 'GENERAL')  \n"
+                + " AND   NVL(OSP.PRI_PHYSICIAN_ID, -1) =  NVL(PPI.ID, -1)\n"
                 + " AND   OSP.BLOOD_GROUP_ID = BLD.ID                   \n";
                  
         
          if (!patientId.equalsIgnoreCase("")) {
-            query += "AND OSP.PATIENT_ID = '" + patientId + "'              \n";
+            query += "AND OSP.PATIENT_ID = '" + patientId + "'          \n";
          }
          if (!contactNo.equalsIgnoreCase("")) {
-            query += "AND OSP.CONTACT_NO = '" + contactNo + "'              \n";
+            query += "AND OSP.CONTACT_NO = '" + contactNo + "'          \n";
          }
          if (!patName.equalsIgnoreCase("")) {
             query += " AND UPPER(OSP.FIRST_NAME) LIKE UPPER('%" + patName + "%')   \n";
         }
          if (!cnic.equalsIgnoreCase("")) {
-            query += "AND OSP.CNIC = '" + cnic + "'              \n";
+            query += "AND OSP.CNIC = '" + cnic + "'                     \n";
          }
          if (!fromDate.equalsIgnoreCase("")&&!toDate.equalsIgnoreCase("")) {
             query += " AND OSP.REG_DATE BETWEEN '" + fromDate + "' AND '" + toDate + "' \n";
         }
         if (!physician.equalsIgnoreCase("")) {
-            query += " AND UPPER(OSP.PRI_PHYSICIAN) LIKE UPPER('%" + physician + "%')   \n";
+            query += " AND UPPER(PPI.DESCRIPTION) LIKE UPPER('%" + physician + "%')   \n";
         }
          
         List list = Constants.dao.selectData(query, columns);
