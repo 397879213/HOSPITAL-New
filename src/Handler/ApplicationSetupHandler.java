@@ -65,6 +65,7 @@ public class ApplicationSetupHandler implements java.io.Serializable {
 
         System.out.println(query);
         Vector vec = Constants.dao.selectData(query, columns);
+        System.err.println("Vec"+vec);
         String applicationVersion = "";
         if (vec.isEmpty()) {
             Constants.terminalId = null;
