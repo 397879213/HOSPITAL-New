@@ -1470,16 +1470,11 @@ public class PatientRegistration extends javax.swing.JInternalFrame {
 
     private void txtPriPhysicianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPriPhysicianActionPerformed
         // TODO add your handling code here:
-        String query = "SELECT USER_NAME ID, NAME DESCRIPTION FROM  \n"
-                + Database.DCMS.users + "                           \n"
-                + " WHERE UPPER(NAME) LIKE '%"
-                + txtPriPhysician.getText().toUpperCase().trim() + "%'\n"
-                + " AND ACTIVE = 'Y'                                \n";
-
-        lov.LOVSelection(query, this);
-        if (Constants.lovID.equalsIgnoreCase("ID")) {
+        lov.LOVDefinitionSelection(DefinitionTypes.CardiacPerformingPhysician,
+                txtPriPhysician.getText().trim(), this);
+        if (Constants.lovDescription.equalsIgnoreCase("DESCRIPTION")) {
+            txtPriPhysician.setText("");
             priPhysicianId = "";
-            return;
         }
         txtPriPhysician.setText(Constants.lovDescription);
         priPhysicianId = Constants.lovID;
@@ -1499,7 +1494,7 @@ public class PatientRegistration extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         lov.LOVDefinitionSelection(DefinitionTypes.category,
                 txtCategory.getText().trim(), this);
-
+        
         if (Constants.lovDescription.equalsIgnoreCase("DESCRIPTION")) {
             txtCategory.setText("");
             categoryId = "";

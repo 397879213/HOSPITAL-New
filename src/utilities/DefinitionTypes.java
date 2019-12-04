@@ -274,5 +274,6 @@ public class DefinitionTypes {
     public static final String consultationRooms = "374";
     //public static String OPDVisitCaseCategory = "370";// 
     public static String category = "154";
+    public static String CardiacPerformingPhysician = "465";
 
 }

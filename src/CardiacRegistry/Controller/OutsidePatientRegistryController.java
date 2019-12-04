@@ -22,9 +22,9 @@ public class OutsidePatientRegistryController {
             outsidePatient) {
         outsidePatient.setId(key.generatePrimaryKey(Keys.outsidePatient, true));
         boolean ret = hdlPatRegistry.insertOutsidePatientRegister(outsidePatient);
-        if (ret) {
-            ret = hdlPatRegistry.insertOutsidePatientRegisterUpdate(outsidePatient);
-        }
+//        if (ret) {
+//            ret = hdlPatRegistry.insertOutsidePatientRegisterUpdate(outsidePatient);
+//        }
         if (ret) {
             ret = Constants.dao.commitTransaction();
 

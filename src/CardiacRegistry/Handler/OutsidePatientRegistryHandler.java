@@ -55,7 +55,7 @@ public class OutsidePatientRegistryHandler {
         mapOutsidePat.put("CONTACT_NO", "'" + outsidePatient.getContactNo() + "'");
         mapOutsidePat.put("ADDRESS", "'" + outsidePatient.getAddress().replaceAll(",", " ") + "'");
         mapOutsidePat.put("RELATION_ID", "'" + outsidePatient.getRelationId()+ "'");
-        mapOutsidePat.put("PRI_PHYSICIAN", "'" + outsidePatient.getPrimaryPhysician()+ "'");
+        mapOutsidePat.put("PRI_PHYSICIAN", "'" + outsidePatient.getPrimaryPhysicianId()+ "'");
         mapOutsidePat.put("REG_DATE", "SYSDATE");
         mapOutsidePat.put("ORDER_STATUS_ID", "'" + outsidePatient.getOrderStatusId() + "'");       
         mapOutsidePat.put("CRTD_DATE", "" + Constants.today );
@@ -161,7 +161,7 @@ public class OutsidePatientRegistryHandler {
                 + "  OSP.CONTACT_NO                     CONTACT_NO,         \n"
                 + "  NVL(OSP.ADDRESS, ' ')              ADDRESS,            \n"
                 + "  NVL(OSP.GUARDIAN_NAME, ' ')        GUARDIAN_NAME,      \n"
-                + "  OSP.PRI_PHYSICIAN                  PRI_PHYSICIAN_ID,   \n"
+                + "  NVL(OSP.PRI_PHYSICIAN, 'GENERAL')  PRI_PHYSICIAN_ID,   \n"
                 + "  PPI.NAME                           PRI_PHYSICIAN,      \n"
                 + "  NVL(ROUND(OSP.REG_DATE - (SYSDATE+1)), 0) DAY_OF_REG,  \n"
                 + "  TO_CHAR(OSP.REG_DATE, 'DD-MM-YY HH24:MI')  REG_DATE,   \n"
