@@ -13,7 +13,7 @@ public class ApplicationSetup {
 
         String mac = getMAC();
         if (DAO.ip.equalsIgnoreCase("127.0.0.1")) {
-            mac = "A0-48-1C-CE-3B-4E"; //68-17-29-E9-F5-D9
+            mac = "74-46-A0-A9-41-BA"; //68-17-29-E9-F5-D9
         }
 
         if (mac.length() == 0) {

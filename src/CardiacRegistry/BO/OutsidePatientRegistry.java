@@ -34,7 +34,7 @@ public class OutsidePatientRegistry {
     private String bloodGroup  = "";
     private String city = "";
     private String cityId = "";
-    private String guardian = "";
+    private String guardianNmae = "";
     private String institute = "";
     private String primaryPhysician = "";
     private String primaryPhysicianId = "";
@@ -278,12 +278,12 @@ public class OutsidePatientRegistry {
         this.city = city;
     }
 
-    public String getGuardian() {
-        return guardian;
+    public String getGuardianNmae() {
+        return guardianNmae;
     }
 
-    public void setGuardian(String guardian) {
-        this.guardian = guardian;
+    public void setGuardianNmae(String guardianNmae) {
+        this.guardianNmae = guardianNmae;
     }
 
     public String getInstitute() {

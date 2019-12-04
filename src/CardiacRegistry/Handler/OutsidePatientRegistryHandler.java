@@ -109,6 +109,7 @@ public class OutsidePatientRegistryHandler {
         mapOutsidePat.put("PRI_PHYSICIAN", "'" + outsidePatient.getPrimaryPhysicianId()+ "'");
         mapOutsidePat.put("REG_DATE", "SYSDATE");
         mapOutsidePat.put("ORDER_STATUS_ID", "'" + outsidePatient.getOrderStatusId() + "'");       
+        mapOutsidePat.put("GUARDIAN_NAME", "'" + outsidePatient.getGuardianNmae()+ "'");       
         mapOutsidePat.put("CRTD_DATE", "" + Constants.today + "");
         mapOutsidePat.put("CRTD_BY", "'" + Constants.userId + "'");
         mapOutsidePat.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
@@ -239,7 +240,7 @@ public class OutsidePatientRegistryHandler {
             pat.setRelation(map.get("RELATION").toString());
             pat.setPrimaryPhysicianId(map.get("PRI_PHYSICIAN_ID").toString());
             pat.setPrimaryPhysician(map.get("PRI_PHYSICIAN").toString());
-            pat.setGuardian(map.get("GUARDIAN_NAME").toString());
+            pat.setGuardianNmae(map.get("GUARDIAN_NAME").toString());
             pat.setInstituteId(map.get("INSTITUTE_ID").toString());
             pat.setInstitute(map.get("INSTITUTE").toString());
             pat.setDayOfRegistration(map.get("DAY_OF_REG").toString());
@@ -272,7 +273,7 @@ public class OutsidePatientRegistryHandler {
                      + " MARITAL_STATUS_ID  = '" + outsidePatRegistry.getMaritalStatusId() + "', \n"
                      + " BLOOD_GROUP_ID  = '" + outsidePatRegistry.getBloodGroupId() + "', \n"
                      + " CITY_ID  = '" + outsidePatRegistry.getCityId() + "', \n"
-                     + " GUARDIAN_NAME  = '" + outsidePatRegistry.getGuardian() + "', \n"
+                     + " GUARDIAN_NAME  = '" + outsidePatRegistry.getGuardianNmae() + "', \n"
                      + " RELATION_ID  = '" + outsidePatRegistry.getRelationId() + "', \n"
                      + " INSTITUTE_ID  = '" + outsidePatRegistry.getInstituteId() + "', \n"
                      + " PRI_PHYSICIAN  = '" + outsidePatRegistry.getPrimaryPhysicianId()+ "', \n"
@@ -305,7 +306,7 @@ public class OutsidePatientRegistryHandler {
                      + " MARITAL_STATUS_ID  = '" + outsidePatRegistry.getMaritalStatusId() + "', \n"
                      + " BLOOD_GROUP_ID  = '" + outsidePatRegistry.getBloodGroupId() + "', \n"
                      + " CITY_ID  = '" + outsidePatRegistry.getCityId() + "', \n"
-                     + " GUARDIAN_NAME  = '" + outsidePatRegistry.getGuardian() + "', \n"
+                     + " GUARDIAN_NAME  = '" + outsidePatRegistry.getGuardianNmae() + "', \n"
                      + " RELATION_ID  = '" + outsidePatRegistry.getRelationId() + "', \n"
                      + " INSTITUTE_ID  = '" + outsidePatRegistry.getInstituteId() + "', \n"
                      + " PRI_PHYSICIAN  = '" + outsidePatRegistry.getPrimaryPhysicianId()+ "', \n"

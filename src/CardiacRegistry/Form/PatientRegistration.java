@@ -25,14 +25,14 @@ import utilities.DisplayLOV;
 import utilities.GUIUtils;
 import utilities.Status;
 
-public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
+public class PatientRegistration extends javax.swing.JInternalFrame {
 
 //    Webcam webcam = null;
 //    WebcamPanel panel;
     DisplayLOV lov = new DisplayLOV();
     private String priPhysicianId;
 
-    public frmOutsidePatientRegistration() {
+    public PatientRegistration() {
 
         initComponents();
 //        txtFirstName.setText(patientFirstName.trim());
@@ -1252,7 +1252,7 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
         txtMaritalStatus.setText(outsidePatRegistry.getMaritalStatus().trim());
         txtCity.setText(outsidePatRegistry.getCity().trim());
         txtRelation.setText(outsidePatRegistry.getRelation().trim());
-        txtGuardian.setText(outsidePatRegistry.getGuardian().trim());
+        txtGuardian.setText(outsidePatRegistry.getGuardianNmae().trim());
         txtPriPhysician.setText(outsidePatRegistry.getPrimaryPhysician().trim());
         txtAddress.setText(outsidePatRegistry.getAddress().trim());
         txtInstitute.setText(outsidePatRegistry.getInstitute().trim());
@@ -1278,7 +1278,7 @@ public class frmOutsidePatientRegistration extends javax.swing.JInternalFrame {
         outsidePatRegistry.setBloodGroupId(bloodGroupId);
         outsidePatRegistry.setCityId(cityId);
         outsidePatRegistry.setReligionId(religionId);
-        outsidePatRegistry.setGuardian(txtGuardian.getText());
+        outsidePatRegistry.setGuardianNmae(txtGuardian.getText());
         outsidePatRegistry.setRelationId(relationId);
         outsidePatRegistry.setInstituteId(instituteId);
         outsidePatRegistry.setCategoryId(categoryId);

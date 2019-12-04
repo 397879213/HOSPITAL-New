@@ -18,7 +18,7 @@ import utilities.Database;
 import utilities.DefinitionTypes;
 import utilities.DisplayLOV;
 
-public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
+public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
 
     Patient patient = new Patient();
     DisplayLOV lov = new DisplayLOV();
@@ -34,7 +34,7 @@ public class CrdiacSurgeryForm extends javax.swing.JInternalFrame {
     List<Patient> lisPatient = new ArrayList();
     
 
-    public CrdiacSurgeryForm() {
+    public CardiacSurgeryRegistry() {
         initComponents();
         this.setSize(Constants.xSize + 220, Constants.ySize - 40);
         setPatientInfo(patientId);
