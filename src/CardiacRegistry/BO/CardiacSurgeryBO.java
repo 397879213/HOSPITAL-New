@@ -21,6 +21,7 @@ public class CardiacSurgeryBO {
     private String categoryId = "";
     private String categoryDescription = "";
     private String dateOfSurgery = "";
+    private String dayOfSurgery = "";
     private String consultantSurgeonId = "";
     private String consultantSurgeonName = "";
     private String consultantCardiologistId = "";
@@ -55,6 +56,14 @@ public class CardiacSurgeryBO {
     private String cancelTerminalId = "";
     private String active = "";
 
+    public String getDayOfSurgery() {
+        return dayOfSurgery;
+    }
+
+    public void setDayOfSurgery(String dayOfSurgery) {
+        this.dayOfSurgery = dayOfSurgery;
+    }
+    
     public String getDayOfProcedure() {
         return dayOfProcedure;
     }

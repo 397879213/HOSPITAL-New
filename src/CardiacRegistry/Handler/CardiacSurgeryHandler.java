@@ -76,7 +76,7 @@ public class CardiacSurgeryHandler {
         return lisPatient;
     }
 
-    public Patient selectCardiacSurgDetail(String patientId) {
+    public CardiacSurgeryBO selectCardiacSurgDetail(String patientId) {
 
         String columns[] = {"-", "ID", "PATIENT_ID", "INSTITUTE_ID", "INSTITUTE_DESC",
             "ADMISSION_NO", "DATE_OF_SURGERY", "DAY_OF_SURGERY", "WARD_ID", "WARD_DESC",
@@ -91,7 +91,7 @@ public class CardiacSurgeryHandler {
                 + "       INS.DESCRIPTION INSTITUTE_DESC,   \n"
                 + "       CSM.ADMISSION_NO,                 \n"
                 + "       CSM.DATE_OF_SURGERY,              \n"
-                + "       CSM.DAY_OF_SURGERY,              \n"
+                + " NVL(ROUND(CSM.DATE_OF_SURGER - (SYSDATE+1)), 0) DAY_OF_SURGERY,\n"
                 + "       CSM.WARD_ID,                      \n"
                 + "       WRD.DESCRIPTION WARD_DESC,        \n"
                 + "       CSM.CATEGORY_ID,                  \n"
@@ -127,32 +127,32 @@ public class CardiacSurgeryHandler {
         List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
 
         HashMap map = (HashMap) listmap.get(0);
-        Patient objData = new Patient();
+        CardiacSurgeryBO objData = new CardiacSurgeryBO();
 
-        objData.setPatientId(map.get("ID").toString());
+        objData.setId(map.get("ID").toString());
         objData.setPatientId(map.get("PATIENT_ID").toString());
-        objData.setFullName(map.get("INSTITUTE_ID").toString());
-        objData.setGenderDescription(map.get("INSTITUTE_DESC").toString());
-        objData.setAge(map.get("ADMISSION_NO").toString());
-        objData.setContactNo(map.get("DATE_OF_SURGERY").toString());
-        objData.setAddress(map.get("DAY_OF_SURGERY").toString());
-        objData.setCityDescription(map.get("WARD_ID").toString());
-        objData.setNationalityId(map.get("WARD_DESC").toString());
-        objData.setNationalityDescription(map.get("CATEGORY_ID").toString());
-        objData.setAction(map.get("CATEGORY_DESC").toString());
-        objData.setAction(map.get("ADMITTING_CONSULTANT").toString());
-        objData.setAction(map.get("ADMITTING_CONSULTANT_NAME").toString());
-        objData.setAction(map.get("CONSULTANT_CARDIOLOGIST").toString());
-        objData.setAction(map.get("CONSULTANT_CARDIOLOGIST_NAME").toString());
-        objData.setAction(map.get("CRTD_BY").toString());
-        objData.setAction(map.get("CRTD_BY_NAME").toString());
-        objData.setAction(map.get("CRTD_DATE").toString());
-        objData.setAction(map.get("CRTD_TERMINAL_ID").toString());
-        objData.setAction(map.get("IS_FINAL").toString());
-        objData.setAction(map.get("FINAL_BY").toString());
-        objData.setAction(map.get("FINAL_DATE").toString());
-        objData.setAction(map.get("FINAL_TERMINAL_ID").toString());
-        objData.setAction(map.get("REMARKS").toString());
+        objData.setInstituteId(map.get("INSTITUTE_ID").toString());
+        objData.setInstituteDescription(map.get("INSTITUTE_DESC").toString());
+        objData.setAdmissionNo(map.get("ADMISSION_NO").toString());
+        objData.setDateOfSurgery(map.get("DATE_OF_SURGERY").toString());
+        objData.setDayOfSurgery(map.get("DAY_OF_SURGERY").toString());
+        objData.setWardId(map.get("WARD_ID").toString());
+        objData.setWardDescription(map.get("WARD_DESC").toString());
+        objData.setCategoryId(map.get("CATEGORY_ID").toString());
+        objData.setCategoryDescription(map.get("CATEGORY_DESC").toString());
+        objData.setAdmittingConsultantId(map.get("ADMITTING_CONSULTANT").toString());
+        objData.setAdmittingConsultantName(map.get("ADMITTING_CONSULTANT_NAME").toString());
+        objData.setConsultantCardiologistId(map.get("CONSULTANT_CARDIOLOGIST").toString());
+        objData.setConsultantCardiologistName(map.get("CONSULTANT_CARDIOLOGIST_NAME").toString());
+        objData.setCrtdBy(map.get("CRTD_BY").toString());
+        objData.setCrtdByName(map.get("CRTD_BY_NAME").toString());
+        objData.setCrtdDate(map.get("CRTD_DATE").toString());
+        objData.setCrtdTerminalId(map.get("CRTD_TERMINAL_ID").toString());
+        objData.setIsFinal(map.get("IS_FINAL").toString());
+        objData.setFinalBy(map.get("FINAL_BY").toString());
+        objData.setFinalDate(map.get("FINAL_DATE").toString());
+        objData.setFinalTerminalId(map.get("FINAL_TERMINAL_ID").toString());
+        objData.setRemarks(map.get("REMARKS").toString());
         return objData;
     }
 
