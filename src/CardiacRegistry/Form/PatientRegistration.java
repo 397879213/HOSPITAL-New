@@ -312,8 +312,7 @@ public class PatientRegistration extends javax.swing.JInternalFrame {
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel29)
                     .addComponent(txtSearchPhysician, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btntsearchPatient))
-                .addContainerGap(36, Short.MAX_VALUE))
+                    .addComponent(btntsearchPatient)))
         );
 
         jPanel7.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -1651,7 +1650,7 @@ public class PatientRegistration extends javax.swing.JInternalFrame {
         outsidePatient.setCnic(txtCNIC.getText());
         outsidePatient.setFatherName(txtFatherName.getText());
         outsidePatient.setHusbandName(txtHusbandName.getText());
-        outsidePatient.setAddress(txtAddress.getText());
+        outsidePatient.setAddress(txtAddress.getText().trim());
         outsidePatient.setPrimaryPhysicianId(priPhysicianId);
         outsidePatient.setInstituteId(instituteId);
         outsidePatient.setReligionId(religionId);
@@ -1664,6 +1663,7 @@ public class PatientRegistration extends javax.swing.JInternalFrame {
         outsidePatient.setRelationId(relationId);
         outsidePatient.setRegistrationDate(regDate);
         outsidePatient.setPatientFullName(fullName);
+        outsidePatient.setGuardianNmae(txtGuardian.getText().trim());
         if (cboGender.getSelectedIndex() == 0) {
             outsidePatient.setGender("1");
         } else {
