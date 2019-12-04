@@ -47,10 +47,10 @@ public class OutsidePatientRegistryController {
     public boolean updateOutsidePatientData(OutsidePatientRegistry outsidePatRegistry) {
         
          boolean ret = hdlPatRegistry.updateOutsidePatientData(outsidePatRegistry);
-         if (ret) {
-            ret = hdlPatRegistry.updateOutsidePatientRegistryData(outsidePatRegistry);
-        }
-         
+//         if (ret) {
+//            ret = hdlPatRegistry.updateOutsidePatientRegistryData(outsidePatRegistry);
+//        }
+//         
         if (ret) {
             ret = Constants.dao.commitTransaction();
         }

@@ -1281,7 +1281,7 @@ public class PatientRegistration extends javax.swing.JInternalFrame {
         outsidePatRegistry.setRelationId(relationId);
         outsidePatRegistry.setInstituteId(instituteId);
         outsidePatRegistry.setCategoryId(categoryId);
-        outsidePatRegistry.setPrimaryPhysician(txtPriPhysician.getText());
+        outsidePatRegistry.setPrimaryPhysicianId(priPhysicianId);
         outsidePatRegistry.setAddress(txtAddress.getText());
         if (cboGender.getSelectedIndex() == 0) {
             outsidePatRegistry.setGender("1");
