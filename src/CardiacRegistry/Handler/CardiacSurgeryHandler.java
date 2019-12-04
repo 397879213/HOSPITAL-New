@@ -39,19 +39,19 @@ public class CardiacSurgeryHandler {
                 + " (trunc(months_between(sysdate, DOB) / 12) * 12)) || ' (M) ' ||\n"
                 + "        (trunc(sysdate) - add_months("
                 + " DOB, trunc(months_between(sysdate, DOB)))) || ' (D) ' AGE \n"
-                + "   FROM " + Database.DCMS.outsidePatient + " PAT,     \n"                //                + Database.DCMS.definitionTypeDetail + " NAT,           \n"
-                + Database.DCMS.definitionTypeDetail + " GEN,           \n"
-                + Database.DCMS.definitionTypeDetail + " CTY            \n"
-                + "  WHERE 1 = 1                                        \n";
+                + "   FROM " + Database.DCMS.outsidePatient + " PAT,     \n" //                + Database.DCMS.definitionTypeDetail + " NAT,           \n"
+                + Database.DCMS.definitionTypeDetail + " GEN,            \n"
+                + Database.DCMS.definitionTypeDetail + " CTY             \n"
+                + "  WHERE 1 = 1                                         \n";
         if (patientId.length() != 0) {
-            query += " AND PAT.PATIENT_ID = '" + patientId + "'     \n";
+            query += " AND PAT.PATIENT_ID = '" + patientId + "'          \n";
         }
         if (patientName.length() != 0) {
-            query += " AND PAT.FULL_NAME LIKE '%" + patientName + "%'\n";
+            query += " AND PAT.FULL_NAME LIKE '%" + patientName + "%'   \n";
         }
-        query += "    AND PAT.GENDER = GEN.ID                    \n"
+        query += "    AND PAT.GENDER = GEN.ID                           \n"
                 //                + "    AND PAT.NATIONALITY_ID = NAT.ID \n"
-                + "    AND PAT.CITY_ID = CTY.ID                          \n";
+                + "    AND PAT.CITY_ID = CTY.ID                         \n";
 
         List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
         List<Patient> lisPatient = new ArrayList();
@@ -78,8 +78,12 @@ public class CardiacSurgeryHandler {
 
     public Patient selectCardiacSurgDetail(String patientId) {
 
-        String columns[] = {"-", "PATIENT_ID", "FULL_NAME", "GENDER", "CONTACT_NO",
-            "ADDRESS", "CITY_ID", "CITY", "NATIONALITY_ID", "NATIONALITY", "AGE"};
+        String columns[] = {"-", "ID", "PATIENT_ID", "INSTITUTE_ID", "INSTITUTE_DESC",
+            "ADMISSION_NO", "DATE_OF_SURGERY", "DAY_OF_SURGERY", "WARD_ID", "WARD_DESC",
+            "CATEGORY_ID", "CATEGORY_DESC", "ADMITTING_CONSULTANT", "ADMITTING_CONSULTANT_NAME",
+            "CONSULTANT_CARDIOLOGIST", "CONSULTANT_CARDIOLOGIST_NAME", "CRTD_BY",
+            "CRTD_BY_NAME", "CRTD_DATE", "CRTD_TERMINAL_ID", "IS_FINAL", "FINAL_BY",
+            "FINAL_DATE", "FINAL_TERMINAL_ID", "REMARKS"};
 
         String query = "SELECT CSM.ID,                      \n"
                 + "       CSM.PATIENT_ID,                   \n"
@@ -87,16 +91,18 @@ public class CardiacSurgeryHandler {
                 + "       INS.DESCRIPTION INSTITUTE_DESC,   \n"
                 + "       CSM.ADMISSION_NO,                 \n"
                 + "       CSM.DATE_OF_SURGERY,              \n"
+                + "       CSM.DAY_OF_SURGERY,              \n"
                 + "       CSM.WARD_ID,                      \n"
                 + "       WRD.DESCRIPTION WARD_DESC,        \n"
                 + "       CSM.CATEGORY_ID,                  \n"
                 + "       CTI.DESCRIPTION CATEGORY_DESC,    \n"
                 + "       CSM.ADMITTING_CONSULTANT,         \n"
-                + "       AMC.NAME ADMITTING_CONSULTANT_NAME,\n"
+                + "       AMC.DESCRIPTION ADMITTING_CONSULTANT_NAME,\n"
                 + "       CSM.CONSULTANT_CARDIOLOGIST,      \n"
-                + "       CCT.NAME CONSULTANT_CARDIOLOGIST_NAME,\n"
+                + "       CCT.DESCRIPTION CONSULTANT_CARDIOLOGIST_NAME,\n"
                 + "       CSM.CRTD_BY,                      \n"
-                + "       CRU.USER_NAME CRTD_BY_NAME CSM.CRTD_DATE,\n"
+                + "       CRU.USER_NAME CRTD_BY_NAME        \n"
+                + "       CSM.CRTD_DATE,                    \n"
                 + "       CSM.CRTD_TERMINAL_ID,             \n"
                 + "       CSM.IS_FINAL,                     \n"
                 + "       CSM.FINAL_BY,                     \n"
@@ -105,33 +111,48 @@ public class CardiacSurgeryHandler {
                 + "       CSM.REMARKS                       \n"
                 + "  FROM " + Database.DCMS.cardiacSurgeryMaster + " CSM,\n"
                 + Database.DCMS.definitionTypeDetail + " INS,\n"
-                + Database.DCMS.ward + " WRD,\n"
+                + Database.DCMS.ward + " WRD,               \n"
                 + Database.DCMS.definitionTypeDetail + " CTI,\n"
-                + Database.DCMS.users + " AMC,\n"
-                + Database.DCMS.users + " CCT,\n"
-                + Database.DCMS.users + " CRU\n"
-                + " WHERE ID = '" + patientId + "'\n"
-                + "   AND CSM.INSTITUTE_ID = INS.ID\n"
-                + "   AND CSM.WARD_ID = WRD.ID\n"
-                + "   AND CSM.CATEGORY_ID = CTI.ID\n"
-                + "   AND CSM.ADMITTING_CONSULTANT = AMC.USER_NAME\n"
-                + "   AND CSM.CONSULTANT_CARDIOLOGIST = CCT.USER_NAME\n"
-                + "   AND CSM.CRTD_BY = CRU.USER_NAME";
+                + Database.DCMS.definitionTypeDetail + " AMC,\n"
+                + Database.DCMS.definitionTypeDetail + " CCT,\n"
+                + Database.DCMS.definitionTypeDetail + " CRU\n"
+                + " WHERE ID = '" + patientId + "'          \n"
+                + "   AND CSM.INSTITUTE_ID = INS.ID         \n"
+                + "   AND CSM.WARD_ID = WRD.ID              \n"
+                + "   AND CSM.CATEGORY_ID = CTI.ID          \n"
+                + "   AND CSM.ADMITTING_CONSULTANT = AMC.ID \n"
+                + "   AND CSM.CONSULTANT_CARDIOLOGIST = CCT.ID\n"
+                + "   AND CSM.CRTD_BY = CRU.USER_NAME       \n";
 
         List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
 
         HashMap map = (HashMap) listmap.get(0);
         Patient objData = new Patient();
 
+        objData.setPatientId(map.get("ID").toString());
         objData.setPatientId(map.get("PATIENT_ID").toString());
-        objData.setFullName(map.get("FULL_NAME").toString());
-        objData.setGenderDescription(map.get("GENDER").toString());
-        objData.setAge(map.get("AGE").toString());
-        objData.setContactNo(map.get("CONTACT_NO").toString());
-        objData.setAddress(map.get("ADDRESS").toString());
-        objData.setCityDescription(map.get("CITY").toString());
-        objData.setNationalityId(map.get("NATIONALITY_ID").toString());
-        objData.setNationalityDescription(map.get("NATIONALITY").toString());
+        objData.setFullName(map.get("INSTITUTE_ID").toString());
+        objData.setGenderDescription(map.get("INSTITUTE_DESC").toString());
+        objData.setAge(map.get("ADMISSION_NO").toString());
+        objData.setContactNo(map.get("DATE_OF_SURGERY").toString());
+        objData.setAddress(map.get("DAY_OF_SURGERY").toString());
+        objData.setCityDescription(map.get("WARD_ID").toString());
+        objData.setNationalityId(map.get("WARD_DESC").toString());
+        objData.setNationalityDescription(map.get("CATEGORY_ID").toString());
+        objData.setAction(map.get("CATEGORY_DESC").toString());
+        objData.setAction(map.get("ADMITTING_CONSULTANT").toString());
+        objData.setAction(map.get("ADMITTING_CONSULTANT_NAME").toString());
+        objData.setAction(map.get("CONSULTANT_CARDIOLOGIST").toString());
+        objData.setAction(map.get("CONSULTANT_CARDIOLOGIST_NAME").toString());
+        objData.setAction(map.get("CRTD_BY").toString());
+        objData.setAction(map.get("CRTD_BY_NAME").toString());
+        objData.setAction(map.get("CRTD_DATE").toString());
+        objData.setAction(map.get("CRTD_TERMINAL_ID").toString());
+        objData.setAction(map.get("IS_FINAL").toString());
+        objData.setAction(map.get("FINAL_BY").toString());
+        objData.setAction(map.get("FINAL_DATE").toString());
+        objData.setAction(map.get("FINAL_TERMINAL_ID").toString());
+        objData.setAction(map.get("REMARKS").toString());
         return objData;
     }
 
@@ -276,7 +297,7 @@ public class CardiacSurgeryHandler {
         HashMap map = new HashMap();
         map.put("CARDIAC_ID", "'" + insert.getId() + "'");
         map.put("PROCEDURE_TYPE", "'" + insert.getProcedureType() + "'");
-        map.put("PROCEDURE_ID", "'" + insert.getProcedureId()+ "'");
+        map.put("PROCEDURE_ID", "'" + insert.getProcedureId() + "'");
         map.put("DATE_OF_PROCEDURE", "'" + insert.getDateOfProcedure() + "'");
         map.put("INSTITUTE_ID", "'" + insert.getInstituteId() + "'");
         map.put("PERFORMING_PHYSICIAN_ID", "'" + insert.getPerformingPhysicianId() + "'");
@@ -294,7 +315,7 @@ public class CardiacSurgeryHandler {
     public boolean updateCardiacProcedureDetail(CardiacSurgeryBO cardiac) {
         String query
                 = " UPDATE " + Database.DCMS.cardiacProcedureDetail + "\n"
-                + " SET DATE_OF_PROCEDURE  = '" + cardiac.getDateOfProcedure()+ "',\n"
+                + " SET DATE_OF_PROCEDURE  = '" + cardiac.getDateOfProcedure() + "',\n"
                 + " INSTITUTE_ID  = '" + cardiac.getInstituteId() + "',\n"
                 + " PERFORMING_PHYSICIAN_ID  = '" + cardiac.getPerformingPhysicianId() + "',\n"
                 + " REMARKS  = '" + cardiac.getProcedureRemarks() + "' \n"
@@ -376,5 +397,5 @@ public class CardiacSurgeryHandler {
 
         return Constants.dao.executeUpdate(query, false);
     }
-    
+
 }
