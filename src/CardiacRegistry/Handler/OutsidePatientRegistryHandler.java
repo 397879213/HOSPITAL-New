@@ -125,14 +125,13 @@ public class OutsidePatientRegistryHandler {
             String contactNo,String patName,String cnic,String fromDate
             ,String toDate,String physician) {
         
-        String[] columns = {"-", "ID", "PATIENT_ID",
-            "FIRST_NAME", "LAST_NAME", "FULL_NAME", "FATHER_NAME",
-            "HUSBAND_NAME","MARITAL_STATUS_ID","MARITAL_STATUS","GENDER"
-             ,"AGE","CNIC","DOB","DAY_OF_BIRTH","CITY_ID","CITY","INSTITUTE_ID","INSTITUTE",
-             "RELIGION_ID","RELIGION","CATEGORY_ID","CATEGORY","BLOOD_GROUP_ID",
-             "BLOOD_GROUP","CONTACT_NO","ADDRESS","GUARDIAN_NAME","PRI_PHYSICIAN_ID",
-            "PRI_PHYSICIAN","REG_DATE","RELATION_ID","RELATION", "DAY_OF_REG",
-            "CRTD_DATE","CRTD_BY","CRTD_TERMINAL"};
+        String[] columns = {"-", "ID", "PATIENT_ID", "FIRST_NAME", "LAST_NAME", 
+            "FULL_NAME", "FATHER_NAME", "HUSBAND_NAME","MARITAL_STATUS_ID",
+            "MARITAL_STATUS","GENDER","AGE","CNIC","DOB","DAY_OF_BIRTH","CITY_ID",
+            "CITY","INSTITUTE_ID","INSTITUTE", "RELIGION_ID","RELIGION","CATEGORY_ID",
+            "CATEGORY","BLOOD_GROUP_ID", "BLOOD_GROUP","CONTACT_NO","ADDRESS",
+            "GUARDIAN_NAME","PRI_PHYSICIAN_ID", "PRI_PHYSICIAN","REG_DATE",
+            "RELATION_ID","RELATION", "DAY_OF_REG", "CRTD_DATE","CRTD_BY","CRTD_TERMINAL"};
         
         String query = " SELECT OSP.ID                  ID ,                \n"
                 + "  OSP.PATIENT_ID                     PATIENT_ID,         \n"
