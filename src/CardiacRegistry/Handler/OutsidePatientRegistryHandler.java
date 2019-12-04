@@ -197,7 +197,7 @@ public class OutsidePatientRegistryHandler {
             query += "AND OSP.CONTACT_NO = '" + contactNo + "'          \n";
          }
          if (!patName.equalsIgnoreCase("")) {
-            query += " AND UPPER(OSP.FIRST_NAME) LIKE UPPER('%" + patName + "%')   \n";
+            query += " AND UPPER(OSP.FIRST_NAME) LIKE UPPER('%" + patName + "%')\n";
         }
          if (!cnic.equalsIgnoreCase("")) {
             query += "AND OSP.CNIC = '" + cnic + "'                     \n";
@@ -206,7 +206,7 @@ public class OutsidePatientRegistryHandler {
             query += " AND OSP.REG_DATE BETWEEN '" + fromDate + "' AND '" + toDate + "' \n";
         }
         if (!physician.equalsIgnoreCase("")) {
-            query += " AND UPPER(PPI.DESCRIPTION) LIKE UPPER('%" + physician + "%')   \n";
+            query += " AND UPPER(PPI.DESCRIPTION) LIKE UPPER('%" + physician + "%')\n";
         }
          
         List list = Constants.dao.selectData(query, columns);
