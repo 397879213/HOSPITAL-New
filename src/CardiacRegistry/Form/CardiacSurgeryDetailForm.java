@@ -173,11 +173,11 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
         jPanel2.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -208,18 +208,21 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
         cboProcType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Surgery", "Intervention"}));
 
+        txtProcedureName.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtProcedureName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtProcedureNameActionPerformed(evt);
             }
         });
 
+        txtPerformDate.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtPerformDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPerformDateActionPerformed(evt);
             }
         });
 
+        txtProcedureInstitute.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtProcedureInstitute.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtProcedureInstituteActionPerformed(evt);
@@ -252,6 +255,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         btnAddProcedureName.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnAddProcedureName.setText("+");
 
+        txtProcedurePerforming.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtProcedurePerforming.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtProcedurePerformingActionPerformed(evt);
@@ -317,7 +321,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
                     .addComponent(btnAddProcePerforming)
                     .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel11.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -352,9 +356,14 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel26.setText("Medication : ");
 
+        jTextField3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
         btnAddProcePerforming2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnAddProcePerforming2.setText("+");
 
+        jTextField4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
+        txtPerformDate2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtPerformDate2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPerformDate2ActionPerformed(evt);
@@ -417,16 +426,14 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addGap(5, 5, 5))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -665,9 +672,9 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(5, 5, 5)
                 .addComponent(jTabbedPane1)
-                .addContainerGap())
+                .addGap(5, 5, 5))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -714,12 +721,12 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(172, 172, 172)
+                .addGap(289, 289, 289)
                 .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))

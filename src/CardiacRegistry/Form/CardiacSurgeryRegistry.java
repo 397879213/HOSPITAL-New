@@ -5,10 +5,11 @@ import BO.Patient;
 import CardiacRegistry.Controller.CardiacSurgeryController;
 import Form.general.DCMS_MDI;
 import CardiacRegistry.TableModel.PatientListTableModel;
-import TreatmentOnDischarge.Form.frmPatientWiseParameters;
 import java.awt.Dimension;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
@@ -23,6 +24,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
     Patient patient = new Patient();
     DisplayLOV lov = new DisplayLOV();
     CardiacSurgeryBO cardiacSurgery = new CardiacSurgeryBO();
+    CardiacSurgeryBO cardiacSurgeryDetail = new CardiacSurgeryBO();
     CardiacSurgeryController ctlCardiacSurg = new CardiacSurgeryController();
     private String cardiacId = "";
     private String surgeryDate = "";
@@ -39,6 +41,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         initComponents();
         this.setSize(Constants.xSize + 220, Constants.ySize - 40);
         setPatientInfo(patientId);
+        setCardiacSurgeryDetail();
     }
 
     @SuppressWarnings("unchecked")
@@ -65,9 +68,9 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         txtAddress = new javax.swing.JTextArea();
         jPanel8 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
-        txtMemberId13 = new javax.swing.JTextField();
+        txtContactPerName = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtContactPerContactNo = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
@@ -226,6 +229,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
 
         txtAddress.setEditable(false);
         txtAddress.setColumns(20);
+        txtAddress.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtAddress.setRows(5);
         jScrollPane2.setViewportView(txtAddress);
 
@@ -250,7 +254,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
                     .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
                             .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -258,7 +262,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
                             .addComponent(txtContactNo))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
                             .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -266,7 +270,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
                                 .addComponent(txtNationality, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                                 .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(txtPatFullNmae)
@@ -307,10 +311,10 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel24.setText("Full Name : ");
 
-        txtMemberId13.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtMemberId13.addActionListener(new java.awt.event.ActionListener() {
+        txtContactPerName.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtContactPerName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMemberId13ActionPerformed(evt);
+                txtContactPerNameActionPerformed(evt);
             }
         });
 
@@ -319,10 +323,14 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel25.setText("Contact No :");
 
+        txtContactPerContactNo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
         jLabel26.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(102, 0, 0));
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel26.setText("Address :");
+
+        jTextField2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         jPanel5.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Surgery Info", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
@@ -333,6 +341,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel13.setText("Adm. Date : ");
 
+        txtAdmissionDate.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtAdmissionDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAdmissionDateActionPerformed(evt);
@@ -419,6 +428,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         jPanel7.setForeground(new java.awt.Color(102, 0, 0));
 
         txtRemarks.setColumns(20);
+        txtRemarks.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtRemarks.setRows(5);
         jScrollPane1.setViewportView(txtRemarks);
 
@@ -512,17 +522,17 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel24)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtMemberId13, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtContactPerName, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel25)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtContactPerContactNo, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel26)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                .addComponent(jTextField2)
                 .addContainerGap())
             .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -534,9 +544,9 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtMemberId13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtContactPerName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtContactPerContactNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -574,17 +584,21 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel12.setText("Patient Id : ");
 
+        txtFilterPatId.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtFilterPatId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFilterPatIdActionPerformed(evt);
             }
         });
 
+        txtFilterPatName.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+
         jLabel15.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(102, 0, 0));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel15.setText("Institute : ");
 
+        txtFilterPatId1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtFilterPatId1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFilterPatId1ActionPerformed(evt);
@@ -842,9 +856,9 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         txtCategory.requestFocus();
     }//GEN-LAST:event_txtAdmittingConsultantActionPerformed
 
-    private void txtMemberId13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId13ActionPerformed
+    private void txtContactPerNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContactPerNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMemberId13ActionPerformed
+    }//GEN-LAST:event_txtContactPerNameActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -948,7 +962,6 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblPacsLink;
     private javax.swing.JPanel pnlPL;
@@ -962,10 +975,11 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtConsultantCardiologist;
     private javax.swing.JTextField txtConsultantSurgeon;
     private javax.swing.JTextField txtContactNo;
+    private javax.swing.JTextField txtContactPerContactNo;
+    private javax.swing.JTextField txtContactPerName;
     private javax.swing.JTextField txtFilterPatId;
     private javax.swing.JTextField txtFilterPatId1;
     private javax.swing.JTextField txtFilterPatName;
-    private javax.swing.JTextField txtMemberId13;
     private javax.swing.JTextField txtNationality;
     private javax.swing.JTextField txtPatFullNmae;
     private javax.swing.JTextField txtPatientId;
@@ -988,6 +1002,8 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         setPatientInfoColumnsWidths();
         selectionModel.setSelectionInterval(0, 0);
         Constants.tablelook.setJTableEnvironment(tblPatientsList);
+        Patient pat = lisPatient.get(0);
+        cardiacId = pat.getId();
     }
 
     private void saveCardiacSurgeryInformation() {
@@ -1023,6 +1039,35 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
             } else if (i == 3) {
                 column.setPreferredWidth(80);
             }
+        }
+    }
+
+    private void setCardiacSurgeryDetail() {
+        cardiacSurgeryDetail = ctlCardiacSurg.selectCardiacSurgDetail(cardiacId);
+        if(cardiacSurgeryDetail == null){
+            return;
+        }
+        txtContactPerName.setText(cardiacSurgeryDetail.getContactPerName());
+        txtContactPerContactNo.setText(cardiacSurgeryDetail.getContactPerContactNo());
+        txtConsultantCardiologist.setText(cardiacSurgeryDetail.getConsultantCardiologistName());
+        txtConsultantSurgeon.setText(cardiacSurgeryDetail.getConsultantSurgeonName());
+        txtAdmittingConsultant.setText(cardiacSurgeryDetail.getAdmittingConsultantName());
+        txtCategory.setText(cardiacSurgeryDetail.getCategoryDescription());
+        txtRemarks.setText(cardiacSurgeryDetail.getRemarks());
+        txtWard.setText(cardiacSurgeryDetail.getWardDescription());
+        setDateOfSurgery(Integer.parseInt(cardiacSurgeryDetail.getDayOfSurgery()));
+    }
+    
+    private void setDateOfSurgery(int day) {
+        try {
+            Calendar c = Calendar.getInstance();
+            c.add(Calendar.DATE, day);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
+            Date date2 = dateFormat.parse(dateFormat.format(c.getTime()));
+            txtAdmissionDate.setDate(date2);
+            surgeryDate = dateFormat.format(date2);
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 

@@ -208,7 +208,7 @@ public class OutsidePatientRegistryHandler {
             query += " AND UPPER(PPI.DESCRIPTION) LIKE UPPER('%" + physician + "%')\n";
         }
          
-        List list = Constants.dao.selectData(query, columns);
+        List list = Constants.dao.selectDatainList(query, columns);
          List<OutsidePatientRegistry> listPat = new ArrayList();
          for (int i = 0; i < list.size(); i++) {
 

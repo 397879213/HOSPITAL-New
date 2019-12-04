@@ -26,6 +26,10 @@ public class CardiacSurgeryController {
         return hdlCardiacSurg.selectPateitnInformation(patientId, patientName);
     }
     
+    public CardiacSurgeryBO selectCardiacSurgDetail(String id) {
+        return hdlCardiacSurg.selectCardiacSurgDetail(id);
+    }
+    
     public boolean insertCardiacSurgeryMaster(CardiacSurgeryBO insert) {
         insert.setId(key.generatePrimaryKey(Keys.cardiacSurgeryPK, true));
         boolean ret = hdlCardiacSurg.insertCardiacSurgeryMaster(insert);

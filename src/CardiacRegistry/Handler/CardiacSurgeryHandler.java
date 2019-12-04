@@ -76,7 +76,7 @@ public class CardiacSurgeryHandler {
         return lisPatient;
     }
 
-    public CardiacSurgeryBO selectCardiacSurgDetail(String patientId) {
+    public CardiacSurgeryBO selectCardiacSurgDetail(String id) {
 
         String columns[] = {"-", "ID", "PATIENT_ID", "INSTITUTE_ID", "INSTITUTE_DESC",
             "ADMISSION_NO", "DATE_OF_SURGERY", "DAY_OF_SURGERY", "WARD_ID", "WARD_DESC",
@@ -116,7 +116,7 @@ public class CardiacSurgeryHandler {
                 + Database.DCMS.definitionTypeDetail + " AMC,\n"
                 + Database.DCMS.definitionTypeDetail + " CCT,\n"
                 + Database.DCMS.definitionTypeDetail + " CRU\n"
-                + " WHERE ID = '" + patientId + "'          \n"
+                + " WHERE ID = '" + id + "'                 \n"
                 + "   AND CSM.INSTITUTE_ID = INS.ID         \n"
                 + "   AND CSM.WARD_ID = WRD.ID              \n"
                 + "   AND CSM.CATEGORY_ID = CTI.ID          \n"
@@ -153,6 +153,7 @@ public class CardiacSurgeryHandler {
         objData.setFinalDate(map.get("FINAL_DATE").toString());
         objData.setFinalTerminalId(map.get("FINAL_TERMINAL_ID").toString());
         objData.setRemarks(map.get("REMARKS").toString());
+        
         return objData;
     }
 

@@ -43,6 +43,8 @@ public class CardiacSurgeryBO {
     private String examDetailDescription = "";
     private String examRemarks = "";
     
+    private String contactPerName = "";
+    private String contactPerContactNo = "";
     private String procedureType = "";
     private String procedureId = "";
     private String procedureDescription = "";
@@ -56,6 +58,22 @@ public class CardiacSurgeryBO {
     private String cancelTerminalId = "";
     private String active = "";
 
+    public String getContactPerName() {
+        return contactPerName;
+    }
+
+    public void setContactPerName(String contactPerName) {
+        this.contactPerName = contactPerName;
+    }
+
+    public String getContactPerContactNo() {
+        return contactPerContactNo;
+    }
+
+    public void setContactPerContactNo(String contactPerContactNo) {
+        this.contactPerContactNo = contactPerContactNo;
+    }
+    
     public String getDayOfSurgery() {
         return dayOfSurgery;
     }
