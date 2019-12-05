@@ -10,6 +10,7 @@ import BO.Patient;
 import CardiacRegistry.Handler.CardiacSurgeryHandler;
 import java.util.List;
 import utilities.Constants;
+import utilities.Database;
 import utilities.GenerateKeys;
 import utilities.Keys;
 
@@ -44,6 +45,26 @@ public class CardiacSurgeryController {
 
     public boolean updateCardiacRegisteryMaster(CardiacSurgeryBO cardiac) {
         boolean ret = hdlCardiacSurg.updateCardiacRegisteryMaster(cardiac);
+        if (ret) {
+            ret = Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
+
+    public boolean FinalCardiacRegisteryMaster(CardiacSurgeryBO cardiac) {
+        boolean ret = hdlCardiacSurg.updateCardiacRegisteryMaster(cardiac);
+        if (ret) {
+            ret = String query
+                    = " UPDATE " + Database.DCMS.cardiacHistoryDetail + "        \n"
+                    + " SET EXAM_DETAIL_ID  = '" + cardiac.getExamDetailId() + "'\n"
+                    + " WHERE CARDIAC_ID = '" + cardiac.getId() + "'             \n"
+                    + " AND EXAM_TYPE_ID = '" + cardiac.getExamId() + "'         \n";
+
+            ret = Constants.dao.executeUpdate(query, false);
+        }
         if (ret) {
             ret = Constants.dao.commitTransaction();
         }

@@ -938,6 +938,11 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
 
     private void btnFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalActionPerformed
         // TODO add your handling code here:
+        int confirmation = JOptionPane.showConfirmDialog(null, "You Are Going "
+                + "To Final.\nDo you want to Final?");
+        if (confirmation != 0) {
+            return;
+        }
         saveCardiacSurgeryInformation();
         cardiacSurgery.setIsFinal("Y");
         cardiacSurgery.setFinalBy(Constants.userId);
@@ -954,7 +959,6 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-        
         saveCardiacSurgeryInformation();
         cardiacSurgery.setIsFinal("N");
         cardiacSurgery.setFinalBy("");
