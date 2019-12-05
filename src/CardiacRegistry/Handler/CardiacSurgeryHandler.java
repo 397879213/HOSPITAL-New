@@ -342,7 +342,7 @@ public class CardiacSurgeryHandler {
 
         String[] columns = {Database.DCMS.cardiacProcedureDetail,
             "CARDIAC_ID", "PROCEDURE_TYPE", "PROCEDURE_ID", "DATE_OF_PROCEDURE",
-            "INSTITUTE_ID", "PERFORMING_PHYSICIAN_ID", "REMARKS", "CRTD_BY",
+            "INSTITUTE", "PERFORMING_PHYSICIAN_ID", "REMARKS", "CRTD_BY",
             "CRTD_DATE", "CRTD_TERMINAL_ID", "ACTIVE"};
 
         HashMap map = new HashMap();
@@ -393,7 +393,7 @@ public class CardiacSurgeryHandler {
                 + "       CPD.INSTITUTE INSTITUTE_ID,               \n"
                 + "       INS.DESCRIPTION INSTITUTE_DESC,           \n"
                 + "       CPD.PERFORMING_PHYSICIAN_ID,              \n"
-                + "       PPI.NAME PERFORMING_PHY_NAME,             \n"
+                + "       PPI.DESCRIPTION PERFORMING_PHY_NAME,      \n"
                 + "       CPD.ACTIVE,                               \n"
                 + " NVL(CPD.REMARKS, ' ') REMARKS,                  \n"
                 + "       CPD.CRTD_BY,                              \n"
@@ -403,14 +403,14 @@ public class CardiacSurgeryHandler {
                 + Database.DCMS.cardiacProcedureDetail + " CPD,     \n"
                 + Database.DCMS.definitionTypeDetail + " INS,       \n"
                 + Database.DCMS.definitionTypeDetail + " PCI,       \n"
-                + Database.DCMS.users + " CRB ,                     \n"
-                + Database.DCMS.users + " PPI                       \n"
+                + Database.DCMS.definitionTypeDetail + " PPI,       \n"
+                + Database.DCMS.users + " CRB                       \n"
                 + " WHERE CPD.CARDIAC_ID = " + cardiacId + "        \n"
                 + "   AND CPD.ACTIVE = 'Y'                          \n"
                 + "   AND CPD.PROCEDURE_ID = PCI.ID                 \n"
-                + "   AND CPD.INSTITUTE = INS.ID                 \n"
+                + "   AND CPD.INSTITUTE = INS.ID                    \n"
                 + "   AND CPD.CRTD_BY = CRB.USER_NAME               \n"
-                + "   AND CPD.PERFORMING_PHYSICIAN_ID = PPI.USER_NAME\n";
+                + "   AND CPD.PERFORMING_PHYSICIAN_ID = PPI.ID      \n";
 
         List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
         List<CardiacSurgeryBO> lisExam = new ArrayList();
@@ -425,7 +425,7 @@ public class CardiacSurgeryHandler {
             objData.setDateOfProcedure(map.get("DATE_OF_PROCEDURE").toString());
             objData.setDayOfProcedure(map.get("DAY_OF_PROCEDURE").toString());
             objData.setInstituteId(map.get("INSTITUTE_ID").toString());
-//            objData.setInstituteDescription(map.get("INSTITUTE_DESC").toString());
+            objData.setInstituteDescription(map.get("INSTITUTE_DESC").toString());
             objData.setPerformingPhysicianId(map.get("PERFORMING_PHYSICIAN_ID").toString());
             objData.setPerformingPhysicianName(map.get("PERFORMING_PHY_NAME").toString());
             objData.setProcedureRemarks(map.get("REMARKS").toString());
