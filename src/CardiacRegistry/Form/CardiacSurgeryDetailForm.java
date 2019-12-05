@@ -32,6 +32,9 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     private String procedureInstId;
     private String procedurePerformingId;
     private String procedureType = "";
+    private String medId;
+    private String doseId;
+    private String timePeroid;
 
     public CardiacSurgeryDetailForm(String id) {
 
@@ -41,6 +44,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         setExamDetail();
         setDateOfProcedure(0);
         selectProcedureDetail();
+        setTmePeriod(0);
     }
 
     @SuppressWarnings("unchecked")
@@ -74,10 +78,10 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         jScrollPane7 = new javax.swing.JScrollPane();
         tblProcedureDetail3 = new javax.swing.JTable();
         jLabel26 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtMedication = new javax.swing.JTextField();
         btnAddProcePerforming2 = new javax.swing.JButton();
-        jTextField4 = new javax.swing.JTextField();
-        txtPerformDate2 = new org.jdesktop.swingx.JXDatePicker();
+        txtDose = new javax.swing.JTextField();
+        txtTimePeriod = new org.jdesktop.swingx.JXDatePicker();
         jLabel27 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
@@ -363,17 +367,27 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel26.setText("Medication : ");
 
-        jTextField3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtMedication.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtMedication.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMedicationActionPerformed(evt);
+            }
+        });
 
         btnAddProcePerforming2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnAddProcePerforming2.setText("+");
 
-        jTextField4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-
-        txtPerformDate2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtPerformDate2.addActionListener(new java.awt.event.ActionListener() {
+        txtDose.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtDose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPerformDate2ActionPerformed(evt);
+                txtDoseActionPerformed(evt);
+            }
+        });
+
+        txtTimePeriod.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtTimePeriod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTimePeriodActionPerformed(evt);
             }
         });
 
@@ -396,11 +410,11 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel11Layout.createSequentialGroup()
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtDose, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtPerformDate2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtTimePeriod, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                                .addComponent(jTextField3)
+                                .addComponent(txtMedication)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnAddProcePerforming2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(5, 5, 5))
@@ -410,12 +424,12 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMedication, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAddProcePerforming2))
                 .addGap(3, 3, 3)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPerformDate2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtDose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTimePeriod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -498,6 +512,12 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         jLabel28.setForeground(new java.awt.Color(102, 0, 0));
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel28.setText("Institute : ");
+
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
 
         tblProcedureDetail4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         tblProcedureDetail4.setModel(new javax.swing.table.DefaultTableModel(
@@ -863,6 +883,15 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         txtProcedureInstitute.setText(objProcedure.getInstituteDescription());
         txtProcedureName.setText(objProcedure.getProcedureDescription());
         txtProcedurePerforming.setText(objProcedure.getPerformingPhysicianName());
+        if(objProcedure.getProcedureType().equals("Surgery")){
+            cboProcType.setSelectedIndex(1);
+            procedureType = DefinitionTypes.cardiacSurgery;
+        }
+        if(objProcedure.getProcedureType().equals("Intervention")){
+            cboProcType.setSelectedIndex(2);
+            procedureType = DefinitionTypes.cardiacIntervention;
+        }
+        
         cboProcType.setEnabled(false);
         txtProcedureName.setEditable(false);
     }//GEN-LAST:event_tblProcedureDetailMouseReleased
@@ -947,9 +976,17 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tblProcedureDetail3KeyReleased
 
-    private void txtPerformDate2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPerformDate2ActionPerformed
+    private void txtTimePeriodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimePeriodActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPerformDate2ActionPerformed
+        if (txtPerformDate.getDate().getDate() == 0) {
+            JOptionPane.showMessageDialog(null, "Select the Time Period DD-MON-YY",
+                    "Pre Medication", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
+        timePeroid = dateFormat.format(txtPerformDate.getDate());
+        txtTimePeriod.requestFocus();
+    }//GEN-LAST:event_txtTimePeriodActionPerformed
 
     private void txtPerformDate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPerformDate1ActionPerformed
         // TODO add your handling code here:
@@ -994,6 +1031,37 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         txtProcedureName.requestFocus();
     }//GEN-LAST:event_cboProcTypeActionPerformed
 
+    private void txtMedicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMedicationActionPerformed
+        // TODO add your handling code here:
+        String query = "SELECT ID, DESCRIPTION FROM            \n"
+                + Database.DCMS.item + "                       \n"
+                + " WHERE UPPER(DESCRIPTION) LIKE '%"
+                + txtMedication.getText().toUpperCase().trim() + "%' \n"
+                + " AND ACTIVE = 'Y'                           \n";
+
+        lov.LOVSelection(query, this);
+        if (Constants.lovID.equalsIgnoreCase("ID")) {
+            medId = "";
+            return;
+        }
+        medId = Constants.lovID;
+        txtMedication.setText(Constants.lovDescription);
+        txtDose.requestFocus();
+    }//GEN-LAST:event_txtMedicationActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void txtDoseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDoseActionPerformed
+        // TODO add your handling code here:
+        lov.LOVDefinitionSelection(DefinitionTypes.doseQuantity, txtDose.getText().trim(), this);
+        doseId = Constants.lovID;
+        txtDose.setText(Constants.lovDescription);
+        txtTimePeriod.requestFocus();
+    }//GEN-LAST:event_txtDoseActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
@@ -1035,8 +1103,6 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel lblPacsLink;
     private javax.swing.JPanel pnlPL;
     private javax.swing.JTable tblExamDetail;
@@ -1045,12 +1111,14 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     private javax.swing.JTable tblProcedureDetail3;
     private javax.swing.JTable tblProcedureDetail4;
     private javax.swing.JTable tblProcedureDetail5;
+    private javax.swing.JTextField txtDose;
+    private javax.swing.JTextField txtMedication;
     private org.jdesktop.swingx.JXDatePicker txtPerformDate;
     private org.jdesktop.swingx.JXDatePicker txtPerformDate1;
-    private org.jdesktop.swingx.JXDatePicker txtPerformDate2;
     private javax.swing.JTextField txtProcedureInstitute;
     private javax.swing.JTextField txtProcedureName;
     private javax.swing.JTextField txtProcedurePerforming;
+    private org.jdesktop.swingx.JXDatePicker txtTimePeriod;
     // End of variables declaration//GEN-END:variables
 
     private void setExamDetail() {
@@ -1115,15 +1183,15 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         for (int i = 0; i < tblProcedureDetail.getColumnCount(); i++) {
             column = tblProcedureDetail.getColumnModel().getColumn(i);
             if (i == 0) {
-                column.setPreferredWidth(30);
+                column.setPreferredWidth(20);
             } else if (i == 1) {
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(160);
             } else if (i == 2) {
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(80);
             } else if (i == 3) {
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(120);
             } else if (i == 4) {
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(120);
             }
         }
     }
@@ -1136,6 +1204,19 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             Date date2 = dateFormat.parse(dateFormat.format(c.getTime()));
             txtPerformDate.setDate(date2);
             performDate = dateFormat.format(date2);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    private void setTmePeriod(int day) {
+        try {
+            Calendar c = Calendar.getInstance();
+            c.add(Calendar.DATE, day);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
+            Date date2 = dateFormat.parse(dateFormat.format(c.getTime()));
+            txtTimePeriod.setDate(date2);
+            timePeroid = dateFormat.format(date2);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
