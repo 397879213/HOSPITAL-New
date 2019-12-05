@@ -78,7 +78,7 @@ public class CardiacSurgeryHandler {
 
     public CardiacSurgeryBO selectCardiacSurgDetail(String id) {
 
-        String columns[] = {"-", "ID", "PATIENT_ID", "INSTITUTE_ID", "INSTITUTE_DESC",
+        String columns[] = {"-", "CARDIAC_ID", "PATIENT_ID", "INSTITUTE_ID", "INSTITUTE_DESC",
             "ADMISSION_NO", "DATE_OF_SURGERY", "DAY_OF_SURGERY", "WARD_ID", "WARD_DESC",
             "CATEGORY_ID", "CATEGORY_DESC", "ADMITTING_CONSULTANT", "ADMITTING_CONSULTANT_NAME",
             "CONSULTANT_CARDIOLOGIST", "CONSULTANT_CARDIOLOGIST_NAME", "CRTD_BY",
@@ -87,7 +87,7 @@ public class CardiacSurgeryHandler {
             "CONSULTANT_SURGEON_NAME", "CONTACT_PER_NAME", "CONTACT_PER_NUMBER",
             "CONTACT_PER_ADDRES"};
 
-        String query = "SELECT CSM.ID,                      \n"
+        String query = "SELECT CSM.CARDIAC_ID,                      \n"
                 + "       CSM.PATIENT_ID,                   \n"
                 + "       CSM.INSTITUTE_ID,                 \n"
                 + "       INS.DESCRIPTION INSTITUTE_DESC,   \n"
@@ -138,7 +138,7 @@ public class CardiacSurgeryHandler {
         HashMap map = (HashMap) listmap.get(0);
         CardiacSurgeryBO objData = new CardiacSurgeryBO();
 
-        objData.setId(map.get("ID").toString());
+        objData.setId(map.get("CARDIAC_ID").toString());
         objData.setPatientId(map.get("PATIENT_ID").toString());
         objData.setInstituteId(map.get("INSTITUTE_ID").toString());
         objData.setInstituteDescription(map.get("INSTITUTE_DESC").toString());
@@ -182,7 +182,7 @@ public class CardiacSurgeryHandler {
             "CONTACT_PER_ADDRES"};
 
         HashMap map = new HashMap();
-        map.put("ID", "'" + insert.getPatientId() + "'");
+        map.put("CARDIAC_ID", "'" + insert.getPatientId() + "'");
         map.put("PATIENT_ID", "'" + insert.getPatientId() + "'");
         map.put("INSTITUTE_ID", "'" + insert.getInstituteId() + "'");
         map.put("ADMISSION_NO", "'" + insert.getAdmissionNo() + "'");
@@ -225,8 +225,7 @@ public class CardiacSurgeryHandler {
                 + "CONTACT_PER_NAME  = '" + cardiac.getContactPerName() + "',\n"
                 + "CONTACT_PER_NUMBER  = '" + cardiac.getContactPerContactNo() + "',\n"
                 + "CONTACT_PER_ADDRES  = '" + cardiac.getContactPerAddress() + "' \n"
-                + " WHERE CARDIAC_ID = '" + cardiac.getId() + "'    \n"
-                + " AND PROCEDURE_ID = '" + cardiac.getProcedureId() + "' \n";
+                + " WHERE CARDIAC_ID = '" + cardiac.getId() + "'    \n";
 
         return Constants.dao.executeUpdate(query, false);
     }

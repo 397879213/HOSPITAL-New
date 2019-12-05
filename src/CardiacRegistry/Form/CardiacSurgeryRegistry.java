@@ -106,7 +106,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         btnClear = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        btnFinal = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102)));
@@ -691,12 +691,12 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(0, 204, 102));
-        jButton8.setText("Final");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        btnFinal.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnFinal.setForeground(new java.awt.Color(0, 204, 102));
+        btnFinal.setText("Final");
+        btnFinal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                btnFinalActionPerformed(evt);
             }
         });
 
@@ -710,7 +710,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -722,7 +722,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
-                    .addComponent(jButton8)
+                    .addComponent(btnFinal)
                     .addComponent(btnClear))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -863,6 +863,12 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         saveCardiacSurgeryInformation();
+        if (ctlCardiacSurg.insertCardiacRegisteryMaster(cardiacSurgery)) {
+            JOptionPane.showMessageDialog(null, "Surgery Information Save successfully.");
+        } else {
+            JOptionPane.showMessageDialog(null, "Unable to Save Surgery Information.\n"
+                    + "Kindly Contact Support Person.");
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void tblPatientsListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientsListMouseClicked
@@ -920,13 +926,21 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFilterPatId1ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void btnFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+        saveCardiacSurgeryInformation();
+        if (ctlCardiacSurg.insertCardiacRegisteryMaster(cardiacSurgery)) {
+            JOptionPane.showMessageDialog(null, "Surgery Information Save successfully.");
+        } else {
+            JOptionPane.showMessageDialog(null, "Unable to Save Surgery Information.\n"
+                    + "Kindly Contact Support Person.");
+        }
+    }//GEN-LAST:event_btnFinalActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnFinal;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -934,7 +948,6 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1017,13 +1030,6 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         cardiacSurgery.setAdmittingConsultantId(admittingConsultantd);
         cardiacSurgery.setConsultantSurgeonId(admittingConsultantd);
         cardiacSurgery.setRemarks(txtRemarks.getText().trim());
-
-        if (ctlCardiacSurg.insertCardiacRegisteryMaster(cardiacSurgery)) {
-            JOptionPane.showMessageDialog(null, "Surgery Information Save successfully.");
-        } else {
-            JOptionPane.showMessageDialog(null, "Unable to Save Surgery Information.\n"
-                    + "Kindly Contact Support Person.");
-        }
     }
 
     private void setPatientInfoColumnsWidths() {
