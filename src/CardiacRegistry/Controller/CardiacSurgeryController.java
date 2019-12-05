@@ -7,6 +7,7 @@ package CardiacRegistry.Controller;
 
 import CardiacRegistry.BO.CardiacSurgeryBO;
 import BO.Patient;
+import CardiacRegistry.BO.OutsidePatientRegistry;
 import CardiacRegistry.Handler.CardiacSurgeryHandler;
 import java.util.List;
 import utilities.Constants;
@@ -23,7 +24,7 @@ public class CardiacSurgeryController {
     GenerateKeys key = new GenerateKeys();
     CardiacSurgeryHandler hdlCardiacSurg = new CardiacSurgeryHandler();
 
-    public List<Patient> selectPateitnInformation(String patientId, String patientName) {
+    public List<OutsidePatientRegistry> selectPateitnInformation(String patientId, String patientName) {
         return hdlCardiacSurg.selectPateitnInformation(patientId, patientName);
     }
 
@@ -56,12 +57,20 @@ public class CardiacSurgeryController {
 
     public boolean FinalCardiacRegisteryMaster(CardiacSurgeryBO cardiac) {
         boolean ret = hdlCardiacSurg.updateCardiacRegisteryMaster(cardiac);
+//        if (ret) {
+//            String query
+//                    = " UPDATE " + Database.DCMS. + "        \n"
+//                    + " SET EXAM_DETAIL_ID  = '" + cardiac.getExamDetailId() + "'\n"
+//                    + " WHERE CARDIAC_ID = '" + cardiac.getId() + "'             \n"
+//                    + " AND EXAM_TYPE_ID = '" + cardiac.getExamId() + "'         \n";
+//
+//            ret = Constants.dao.executeUpdate(query, false);
+//        }
         if (ret) {
-            ret = String query
-                    = " UPDATE " + Database.DCMS.cardiacHistoryDetail + "        \n"
-                    + " SET EXAM_DETAIL_ID  = '" + cardiac.getExamDetailId() + "'\n"
-                    + " WHERE CARDIAC_ID = '" + cardiac.getId() + "'             \n"
-                    + " AND EXAM_TYPE_ID = '" + cardiac.getExamId() + "'         \n";
+            String query
+                    = " INSERT INTO " + Database.DCMS.cardiacProcedureDetail + "\n"
+                    + "(SELECT 1, DEF.ID,'','', '' FROM " + Database.DCMS.definitionTypeDetail + "\n"
+                    + "  WHERE DEF.COMMENTS = 'CARDIAC-REGISTRY')               \n";
 
             ret = Constants.dao.executeUpdate(query, false);
         }

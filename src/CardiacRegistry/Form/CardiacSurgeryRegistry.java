@@ -2,6 +2,7 @@ package CardiacRegistry.Form;
 
 import CardiacRegistry.BO.CardiacSurgeryBO;
 import BO.Patient;
+import CardiacRegistry.BO.OutsidePatientRegistry;
 import CardiacRegistry.Controller.CardiacSurgeryController;
 import Form.general.DCMS_MDI;
 import CardiacRegistry.TableModel.PatientListTableModel;
@@ -21,7 +22,7 @@ import utilities.DisplayLOV;
 
 public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
 
-    Patient patient = new Patient();
+    OutsidePatientRegistry patient = new OutsidePatientRegistry();
     DisplayLOV lov = new DisplayLOV();
     CardiacSurgeryBO cardiacSurgery = new CardiacSurgeryBO();
     CardiacSurgeryBO cardiacSurgeryDetail = new CardiacSurgeryBO();
@@ -34,12 +35,12 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
     private String consultantCardiologistId = "";
     private String admittingConsultantd = "";
     private String categoryId = "";
-    List<Patient> lisPatient = new ArrayList();
-    
+    List<OutsidePatientRegistry> lisPatient = new ArrayList();
 
     public CardiacSurgeryRegistry() {
         initComponents();
         this.setSize(Constants.xSize + 220, Constants.ySize - 40);
+        setDateOfSurgery(0);
         setPatientInfo(patientId);
         setCardiacRegistryDetail();
     }
@@ -80,7 +81,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         txtFilterPatId = new javax.swing.JTextField();
         txtFilterPatName = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        txtFilterPatId1 = new javax.swing.JTextField();
+        txtInstitute = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         txtAdmissionDate = new org.jdesktop.swingx.JXDatePicker();
@@ -412,10 +413,10 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel15.setText("Institute : ");
 
-        txtFilterPatId1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtFilterPatId1.addActionListener(new java.awt.event.ActionListener() {
+        txtInstitute.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtInstitute.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFilterPatId1ActionPerformed(evt);
+                txtInstituteActionPerformed(evt);
             }
         });
 
@@ -436,7 +437,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFilterPatId1)))
+                        .addComponent(txtInstitute)))
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
@@ -445,7 +446,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
                 .addGap(8, 8, 8)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFilterPatId1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtInstitute, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -817,7 +818,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         lov.LOVDefinitionSelection(DefinitionTypes.CardiacPerformingPhysician,
                 txtConsultantCardiologist.getText().trim(), this);
-        
+
         if (Constants.lovID.equalsIgnoreCase("ID")) {
             consultantCardiologistId = "";
             return;
@@ -889,25 +890,42 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         patient = lisPatient.get(tblPatientsList.getSelectedRow());
         cardiacId = patient.getId();
         txtPatientId.setText(patient.getPatientId().substring(3));
-        txtPatFullNmae.setText(patient.getFullName());
-        txtAgeGender.setText(patient.getAge() + " / " + patient.getGenderDescription());
+        txtPatFullNmae.setText(patient.getPatientFullName());
+        txtAgeGender.setText(patient.getAge() + " / " + patient.getGender());
         txtContactNo.setText(patient.getContactNo());
         txtAddress.setText(patient.getAddress());
-        txtNationality.setText(patient.getNationalityDescription());
-        txtCity.setText(patient.getCityDescription());
+        txtNationality.setText(patient.getCity());
+        txtCity.setText(patient.getCity());
+        txtInstitute.setText(patient.getInstituteDescription());
     }//GEN-LAST:event_tblPatientsListMouseClicked
 
     private void tblPatientsListMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientsListMouseReleased
 
-        Patient pat = lisPatient.get(tblPatientsList.getSelectedRow());
+        if (tblPatientsList.getSelectedRow() < 0) {
+            JOptionPane.showMessageDialog(null, "Please Registered the Patient.");
+            return;
+        }
+        OutsidePatientRegistry pat = lisPatient.get(tblPatientsList.getSelectedRow());
+
         if (evt.getClickCount() % 2 == 0) {
-            CardiacSurgeryDetailForm fm = new CardiacSurgeryDetailForm(pat.getId());
-            DCMS_MDI.desktopPane.add(fm);
-            Dimension desktopSize = DCMS_MDI.desktopPane.getSize();
-            Dimension fmSize = fm.getSize();
-            fm.setLocation((desktopSize.width - fmSize.width) / 2,
-                    (desktopSize.height - fmSize.height) / 2);
-            fm.setVisible(true);
+            if (cardiacSurgeryDetail == null) {
+                JOptionPane.showMessageDialog(null, "Please Final the Surgery "
+                        + "Information Prior to Examine the Patient.");
+                return;
+            }
+            if (cardiacSurgeryDetail.getIsFinal().equalsIgnoreCase("Y")) {
+                CardiacSurgeryDetailForm fm = new CardiacSurgeryDetailForm(pat.getId());
+                DCMS_MDI.desktopPane.add(fm);
+                Dimension desktopSize = DCMS_MDI.desktopPane.getSize();
+                Dimension fmSize = fm.getSize();
+                fm.setLocation((desktopSize.width - fmSize.width) / 2,
+                        (desktopSize.height - fmSize.height) / 2);
+                fm.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Please Final the Surgery "
+                        + "Information Prior to Examine the Patient.");
+            }
+
         }
 
 //        if (tblPatientsList.getSelectedRow() < 0 || listPatRegistryData.isEmpty()) {
@@ -932,9 +950,9 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         setPatientInfo(txtFilterPatId.getText().trim());
     }//GEN-LAST:event_txtFilterPatIdActionPerformed
 
-    private void txtFilterPatId1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFilterPatId1ActionPerformed
+    private void txtInstituteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInstituteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtFilterPatId1ActionPerformed
+    }//GEN-LAST:event_txtInstituteActionPerformed
 
     private void btnFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalActionPerformed
         // TODO add your handling code here:
@@ -962,13 +980,13 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         saveCardiacSurgeryInformation();
         cardiacSurgery.setIsFinal("N");
         cardiacSurgery.setFinalBy("");
-        cardiacSurgery.setFinalDate("");
+        cardiacSurgery.setFinalDate("''");
         cardiacSurgery.setFinalTerminalId("");
         if (ctlCardiacSurg.updateCardiacRegisteryMaster(cardiacSurgery)) {
-            JOptionPane.showMessageDialog(null, "Surgery Information Final successfully.");
+            JOptionPane.showMessageDialog(null, "Surgery Information Edit successfully.");
             setCardiacRegistryDetail();
         } else {
-            JOptionPane.showMessageDialog(null, "Unable to Final Surgery Information.\n"
+            JOptionPane.showMessageDialog(null, "Unable to Edit Surgery Information.\n"
                     + "Kindly Contact Support Person.");
         }
     }//GEN-LAST:event_btnEditActionPerformed
@@ -1028,8 +1046,8 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtContactPerContactNo;
     private javax.swing.JTextField txtContactPerName;
     private javax.swing.JTextField txtFilterPatId;
-    private javax.swing.JTextField txtFilterPatId1;
     private javax.swing.JTextField txtFilterPatName;
+    private javax.swing.JTextField txtInstitute;
     private javax.swing.JTextField txtNationality;
     private javax.swing.JTextField txtPatFullNmae;
     private javax.swing.JTextField txtPatientId;
@@ -1041,8 +1059,8 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         lisPatient = ctlCardiacSurg.selectPateitnInformation(patientId,
                 txtFilterPatName.getText().trim());
         if (lisPatient.isEmpty()) {
-            List<Patient> lisPatient = new ArrayList<>();
-            lisPatient.add(new Patient());
+            List<OutsidePatientRegistry> lisPatient = new ArrayList<>();
+            lisPatient.add(new OutsidePatientRegistry());
             tblPatientsList.setModel(new PatientListTableModel(lisPatient));
             return;
         }
@@ -1052,8 +1070,9 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         setPatientInfoColumnsWidths();
         selectionModel.setSelectionInterval(0, 0);
         Constants.tablelook.setJTableEnvironment(tblPatientsList);
-        Patient pat = lisPatient.get(0);
+        OutsidePatientRegistry pat = lisPatient.get(0);
         cardiacId = pat.getId();
+        txtInstitute.setText(pat.getInstituteDescription());
     }
 
     private void saveCardiacSurgeryInformation() {
@@ -1090,9 +1109,10 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
 
     private void setCardiacRegistryDetail() {
         cardiacSurgeryDetail = ctlCardiacSurg.selectCardiacSurgDetail(cardiacId);
-        if(cardiacSurgeryDetail == null){
+        if (cardiacSurgeryDetail == null) {
             return;
         }
+        txtContactPerAddress.setText(cardiacSurgeryDetail.getContactPerAddress());
         txtContactPerName.setText(cardiacSurgeryDetail.getContactPerName());
         txtContactPerContactNo.setText(cardiacSurgeryDetail.getContactPerContactNo());
         txtConsultantCardiologist.setText(cardiacSurgeryDetail.getConsultantCardiologistName());
@@ -1103,12 +1123,15 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         txtWard.setText(cardiacSurgeryDetail.getWardDescription());
         setDateOfSurgery(Integer.parseInt(cardiacSurgeryDetail.getDayOfSurgery()));
         cardiacId = cardiacSurgeryDetail.getId();
+        wardId = cardiacSurgeryDetail.getWardId();
+        categoryId = cardiacSurgeryDetail.getCategoryId();
+        System.err.println("Categry"+ categoryId);
         patientId = cardiacSurgeryDetail.getPatientId();
         consultantCardiologistId = cardiacSurgeryDetail.getConsultantCardiologistId();
         consultantSurgeonId = cardiacSurgeryDetail.getConsultantSurgeonId();
         admittingConsultantd = cardiacSurgeryDetail.getAdmittingConsultantId();
     }
-    
+
     private void setDateOfSurgery(int day) {
         try {
             Calendar c = Calendar.getInstance();

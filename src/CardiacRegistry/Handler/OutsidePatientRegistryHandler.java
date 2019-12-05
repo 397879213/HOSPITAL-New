@@ -241,7 +241,7 @@ public class OutsidePatientRegistryHandler {
             pat.setPrimaryPhysician(map.get("PRI_PHYSICIAN").toString());
             pat.setGuardianNmae(map.get("GUARDIAN_NAME").toString());
             pat.setInstituteId(map.get("INSTITUTE_ID").toString());
-            pat.setInstitute(map.get("INSTITUTE").toString());
+            pat.setInstituteDescription(map.get("INSTITUTE").toString());
             pat.setDayOfRegistration(map.get("DAY_OF_REG").toString());
             pat.setRegistrationDate(map.get("REG_DATE").toString());
             pat.setCategory(map.get("CATEGORY").toString());

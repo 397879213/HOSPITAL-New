@@ -5,7 +5,6 @@
 package CardiacRegistry.TableModel;
 
 import CardiacRegistry.BO.OutsidePatientRegistry;
-import BO.Patient;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -15,14 +14,14 @@ public class PatientListTableModel extends AbstractTableModel {
             = {"Patient Id", "Name","Age", "Contact No"};
     private final Object[][] data;
 
-    public PatientListTableModel(List<Patient> liInfo) {
+    public PatientListTableModel(List<OutsidePatientRegistry> liInfo) {
         data = new Object[liInfo.size()][columnNames.length];
 
         int row = 0;
 
-        for (Patient currentinfo : liInfo) {
+        for (OutsidePatientRegistry currentinfo : liInfo) {
             data[row][0] = currentinfo.getPatientId();
-            data[row][1] = currentinfo.getFullName();
+            data[row][1] = currentinfo.getPatientFullName();
             data[row][2] = currentinfo.getAge();
             data[row][3] = currentinfo.getContactNo();
             row++;

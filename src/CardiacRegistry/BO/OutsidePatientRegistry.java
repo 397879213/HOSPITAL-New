@@ -35,7 +35,7 @@ public class OutsidePatientRegistry {
     private String city = "";
     private String cityId = "";
     private String guardianNmae = "";
-    private String institute = "";
+    private String instituteDescription = "";
     private String primaryPhysician = "";
     private String primaryPhysicianId = "";
     private String registrationDate = "";
@@ -286,12 +286,12 @@ public class OutsidePatientRegistry {
         this.guardianNmae = guardianNmae;
     }
 
-    public String getInstitute() {
-        return institute;
+    public String getInstituteDescription() {
+        return instituteDescription;
     }
 
-    public void setInstitute(String institute) {
-        this.institute = institute;
+    public void setInstituteDescription(String instituteDescription) {
+        this.instituteDescription = instituteDescription;
     }
 
     public String getPrimaryPhysician() {

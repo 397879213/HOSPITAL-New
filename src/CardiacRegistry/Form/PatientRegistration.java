@@ -1254,7 +1254,7 @@ public class PatientRegistration extends javax.swing.JInternalFrame {
         txtGuardian.setText(outsidePatRegistry.getGuardianNmae().trim());
         txtPriPhysician.setText(outsidePatRegistry.getPrimaryPhysician().trim());
         txtAddress.setText(outsidePatRegistry.getAddress().trim());
-        txtInstitute.setText(outsidePatRegistry.getInstitute().trim());
+        txtInstitute.setText(outsidePatRegistry.getInstituteDescription().trim());
         txtCategory.setText(outsidePatRegistry.getCategory().trim());
         //txtInstitute.setText(outsidePatRegistry.getInstitute().trim());
 
