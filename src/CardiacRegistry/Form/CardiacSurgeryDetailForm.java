@@ -901,17 +901,8 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     private void txtProcedurePerformingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProcedurePerformingActionPerformed
         // TODO add your handling code here:
-        String query = "SELECT USER_NAME ID, NAME DESCRIPTION FROM            \n"
-                + Database.DCMS.users + "                       \n"
-                + " WHERE UPPER(NAME) LIKE '%"
-                + txtProcedurePerforming.getText().toUpperCase().trim() + "%' \n"
-                + " AND ACTIVE = 'Y'                           \n";
-
-        lov.LOVSelection(query, this);
-        if (Constants.lovID.equalsIgnoreCase("ID")) {
-            procedurePerformingId = "";
-            return;
-        }
+        lov.LOVDefinitionSelection(DefinitionTypes.CardiacPerformingPhysician, 
+                txtProcedureInstitute.getText().trim(), this);
         txtProcedurePerforming.setText(Constants.lovDescription);
         procedurePerformingId = Constants.lovID;
     }//GEN-LAST:event_txtProcedurePerformingActionPerformed
