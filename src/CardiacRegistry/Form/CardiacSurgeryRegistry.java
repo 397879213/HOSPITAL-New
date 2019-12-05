@@ -72,7 +72,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         jLabel25 = new javax.swing.JLabel();
         txtContactPerContactNo = new javax.swing.JTextField();
         jLabel26 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtContactPerAddress = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblPatientsList = new javax.swing.JTable();
@@ -331,7 +331,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel26.setText("Address :");
 
-        jTextField2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtContactPerAddress.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -349,14 +349,14 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel26)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2))
+                .addComponent(txtContactPerAddress))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtContactPerAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtContactPerName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -927,6 +927,10 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
     private void btnFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalActionPerformed
         // TODO add your handling code here:
         saveCardiacSurgeryInformation();
+        cardiacSurgery.setIsFinal("Y");
+        cardiacSurgery.setFinalBy(Constants.userId);
+        cardiacSurgery.setFinalDate(Constants.today);
+        cardiacSurgery.setFinalTerminalId(Constants.terminalId);
         if (ctlCardiacSurg.insertCardiacRegisteryMaster(cardiacSurgery)) {
             JOptionPane.showMessageDialog(null, "Surgery Information Save successfully.");
         } else {
@@ -973,7 +977,6 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblPacsLink;
     private javax.swing.JPanel pnlPL;
     private javax.swing.JTable tblPatientsList;
@@ -986,6 +989,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtConsultantCardiologist;
     private javax.swing.JTextField txtConsultantSurgeon;
     private javax.swing.JTextField txtContactNo;
+    private javax.swing.JTextField txtContactPerAddress;
     private javax.swing.JTextField txtContactPerContactNo;
     private javax.swing.JTextField txtContactPerName;
     private javax.swing.JTextField txtFilterPatId;
@@ -1026,8 +1030,11 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         cardiacSurgery.setWardId(wardId);
         cardiacSurgery.setConsultantCardiologistId(consultantCardiologistId);
         cardiacSurgery.setAdmittingConsultantId(admittingConsultantd);
-        cardiacSurgery.setConsultantSurgeonId(admittingConsultantd);
+        cardiacSurgery.setConsultantSurgeonId(consultantSurgeonId);
         cardiacSurgery.setRemarks(txtRemarks.getText().trim());
+        cardiacSurgery.setContactPerName(txtContactPerName.getText().trim());
+        cardiacSurgery.setContactPerContactNo(txtContactPerContactNo.getText().trim());
+        cardiacSurgery.setContactPerAddress(txtContactPerAddress.getText().trim());
     }
 
     private void setPatientInfoColumnsWidths() {
@@ -1062,6 +1069,9 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         setDateOfSurgery(Integer.parseInt(cardiacSurgeryDetail.getDayOfSurgery()));
         cardiacId = cardiacSurgeryDetail.getId();
         patientId = cardiacSurgeryDetail.getPatientId();
+        consultantCardiologistId = cardiacSurgeryDetail.getConsultantCardiologistId();
+        consultantSurgeonId = cardiacSurgeryDetail.getConsultantSurgeonId();
+        admittingConsultantd = cardiacSurgeryDetail.getAdmittingConsultantId();
     }
     
     private void setDateOfSurgery(int day) {
