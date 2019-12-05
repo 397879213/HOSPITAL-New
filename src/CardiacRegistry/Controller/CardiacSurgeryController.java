@@ -30,9 +30,9 @@ public class CardiacSurgeryController {
         return hdlCardiacSurg.selectCardiacSurgDetail(id);
     }
     
-    public boolean insertCardiacSurgeryMaster(CardiacSurgeryBO insert) {
+    public boolean insertCardiacRegisteryMaster(CardiacSurgeryBO insert) {
         insert.setId(key.generatePrimaryKey(Keys.cardiacSurgeryPK, true));
-        boolean ret = hdlCardiacSurg.insertCardiacSurgeryMaster(insert);
+        boolean ret = hdlCardiacSurg.insertCardiacRegisteryMaster(insert);
         if(ret){
             ret = Constants.dao.commitTransaction();
         }

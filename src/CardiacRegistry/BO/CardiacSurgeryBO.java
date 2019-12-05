@@ -43,6 +43,7 @@ public class CardiacSurgeryBO {
     private String examDetailDescription = "";
     private String examRemarks = "";
     
+    private String contactPerAddress = "";
     private String contactPerName = "";
     private String contactPerContactNo = "";
     private String procedureType = "";
@@ -57,6 +58,14 @@ public class CardiacSurgeryBO {
     private String cancelDate = "";
     private String cancelTerminalId = "";
     private String active = "";
+
+    public String getContactPerAddress() {
+        return contactPerAddress;
+    }
+
+    public void setContactPerAddress(String contactPerAddress) {
+        this.contactPerAddress = contactPerAddress;
+    }
 
     public String getContactPerName() {
         return contactPerName;

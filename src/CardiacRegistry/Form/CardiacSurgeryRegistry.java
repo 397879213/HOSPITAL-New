@@ -1018,7 +1018,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         cardiacSurgery.setConsultantSurgeonId(admittingConsultantd);
         cardiacSurgery.setRemarks(txtRemarks.getText().trim());
 
-        if (ctlCardiacSurg.insertCardiacSurgeryMaster(cardiacSurgery)) {
+        if (ctlCardiacSurg.insertCardiacRegisteryMaster(cardiacSurgery)) {
             JOptionPane.showMessageDialog(null, "Surgery Information Save successfully.");
         } else {
             JOptionPane.showMessageDialog(null, "Unable to Save Surgery Information.\n"
