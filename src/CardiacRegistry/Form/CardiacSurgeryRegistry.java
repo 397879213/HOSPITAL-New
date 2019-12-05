@@ -103,10 +103,11 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtRemarks = new javax.swing.JTextArea();
         jPanel6 = new javax.swing.JPanel();
-        btnClear = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         btnFinal = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102)));
@@ -668,8 +669,13 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel6.setForeground(new java.awt.Color(102, 0, 0));
 
-        btnClear.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnClear.setText("Clear");
+        btnEdit.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(0, 204, 102));
@@ -698,13 +704,18 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
             }
         });
 
+        btnClear.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnClear.setText("Clear");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(409, 409, 409)
+                .addGap(296, 296, 296)
                 .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -721,6 +732,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
                     .addComponent(jButton2)
                     .addComponent(jButton3)
                     .addComponent(btnFinal)
+                    .addComponent(btnEdit)
                     .addComponent(btnClear))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -931,17 +943,36 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         cardiacSurgery.setFinalBy(Constants.userId);
         cardiacSurgery.setFinalDate(Constants.today);
         cardiacSurgery.setFinalTerminalId(Constants.terminalId);
-        if (ctlCardiacSurg.insertCardiacRegisteryMaster(cardiacSurgery)) {
+        if (ctlCardiacSurg.updateCardiacRegisteryMaster(cardiacSurgery)) {
             JOptionPane.showMessageDialog(null, "Surgery Information Save successfully.");
+            setCardiacRegistryDetail();
         } else {
-            JOptionPane.showMessageDialog(null, "Unable to Save Surgery Information.\n"
+            JOptionPane.showMessageDialog(null, "Unable to Update Surgery Information.\n"
                     + "Kindly Contact Support Person.");
         }
     }//GEN-LAST:event_btnFinalActionPerformed
 
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+        
+        saveCardiacSurgeryInformation();
+        cardiacSurgery.setIsFinal("N");
+        cardiacSurgery.setFinalBy("");
+        cardiacSurgery.setFinalDate("");
+        cardiacSurgery.setFinalTerminalId("");
+        if (ctlCardiacSurg.updateCardiacRegisteryMaster(cardiacSurgery)) {
+            JOptionPane.showMessageDialog(null, "Surgery Information Final successfully.");
+            setCardiacRegistryDetail();
+        } else {
+            JOptionPane.showMessageDialog(null, "Unable to Final Surgery Information.\n"
+                    + "Kindly Contact Support Person.");
+        }
+    }//GEN-LAST:event_btnEditActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnFinal;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
