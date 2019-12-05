@@ -68,8 +68,9 @@ public class CardiacSurgeryController {
 //        }
         if (ret) {
             String query
-                    = " INSERT INTO " + Database.DCMS.cardiacProcedureDetail + "\n"
-                    + "(SELECT 1, DEF.ID,'','', '' FROM " + Database.DCMS.definitionTypeDetail + "\n"
+                    = " INSERT INTO " + Database.DCMS.cardiacHistoryDetail + "  \n"
+                    + "(SELECT " + cardiac.getId() + ", DEF.ID,'','', '' FROM   \n"
+                    + Database.DCMS.definitionType + " DEF                      \n"
                     + "  WHERE DEF.COMMENTS = 'CARDIAC-REGISTRY')               \n";
 
             ret = Constants.dao.executeUpdate(query, false);

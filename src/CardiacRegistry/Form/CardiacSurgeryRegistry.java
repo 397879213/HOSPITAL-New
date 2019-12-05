@@ -966,7 +966,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         cardiacSurgery.setFinalBy(Constants.userId);
         cardiacSurgery.setFinalDate(Constants.today);
         cardiacSurgery.setFinalTerminalId(Constants.terminalId);
-        if (ctlCardiacSurg.updateCardiacRegisteryMaster(cardiacSurgery)) {
+        if (ctlCardiacSurg.FinalCardiacRegisteryMaster(cardiacSurgery)) {
             JOptionPane.showMessageDialog(null, "Surgery Information Save successfully.");
             setCardiacRegistryDetail();
         } else {
