@@ -902,7 +902,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     private void txtProcedurePerformingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProcedurePerformingActionPerformed
         // TODO add your handling code here:
         lov.LOVDefinitionSelection(DefinitionTypes.CardiacPerformingPhysician, 
-                txtProcedureInstitute.getText().trim(), this);
+                txtProcedurePerforming.getText().trim(), this);
         txtProcedurePerforming.setText(Constants.lovDescription);
         procedurePerformingId = Constants.lovID;
     }//GEN-LAST:event_txtProcedurePerformingActionPerformed
@@ -991,6 +991,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         if (cboProcType.getSelectedIndex() == 2) {
             procedureType = DefinitionTypes.cardiacIntervention;
         }
+        txtProcedureName.requestFocus();
     }//GEN-LAST:event_cboProcTypeActionPerformed
 
 

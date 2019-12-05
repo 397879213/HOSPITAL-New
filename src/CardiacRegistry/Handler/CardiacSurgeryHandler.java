@@ -350,7 +350,7 @@ public class CardiacSurgeryHandler {
         map.put("PROCEDURE_TYPE", "'" + insert.getProcedureType() + "'");
         map.put("PROCEDURE_ID", "'" + insert.getProcedureId() + "'");
         map.put("DATE_OF_PROCEDURE", "'" + insert.getDateOfProcedure() + "'");
-        map.put("INSTITUTE_ID", "'" + insert.getInstituteId() + "'");
+        map.put("INSTITUTE", "'" + insert.getInstituteId() + "'");
         map.put("PERFORMING_PHYSICIAN_ID", "'" + insert.getPerformingPhysicianId() + "'");
         map.put("REMARKS", "'" + insert.getProcedureRemarks() + "'");
         map.put("CRTD_BY", "'" + Constants.userId + "'");
@@ -367,7 +367,7 @@ public class CardiacSurgeryHandler {
         String query
                 = " UPDATE " + Database.DCMS.cardiacProcedureDetail + "\n"
                 + " SET DATE_OF_PROCEDURE  = '" + cardiac.getDateOfProcedure() + "',\n"
-                + " INSTITUTE_ID  = '" + cardiac.getInstituteId() + "',\n"
+                + " INSTITUTE = '" + cardiac.getInstituteId() + "',\n"
                 + " PERFORMING_PHYSICIAN_ID  = '" + cardiac.getPerformingPhysicianId() + "',\n"
                 + " REMARKS  = '" + cardiac.getProcedureRemarks() + "' \n"
                 + " WHERE CARDIAC_ID = '" + cardiac.getId() + "'    \n"
@@ -379,7 +379,7 @@ public class CardiacSurgeryHandler {
     public List<CardiacSurgeryBO> selectCardiacProcedureDetail(String cardiacId) {
 
         String columns[] = {"-", "CARDIAC_ID", "PROCEDURE_TYPE", "PROCEDURE_ID",
-            "PROCEDURE_DESC", "DATE_OF_PROCEDURE", "INSTITUTE_ID",// "INSTITUTE_DESC",
+            "PROCEDURE_DESC", "DATE_OF_PROCEDURE", "INSTITUTE_ID", "INSTITUTE_DESC",
             "PERFORMING_PHYSICIAN_ID", "PERFORMING_PHY_NAME", "REMARKS", "CRTD_BY",
             "CRTD_DATE", "CRTD_TERMINAL_ID", "ACTIVE", "CRTD_BY_NAME", "DAY_OF_PROCEDURE"};
 
@@ -391,7 +391,7 @@ public class CardiacSurgeryHandler {
                 + " NVL(ROUND(CPD.DATE_OF_PROCEDURE - (SYSDATE+1)), 0) DAY_OF_PROCEDURE,\n"
                 + " TO_CHAR(CPD.DATE_OF_PROCEDURE, 'DD-MON-YY') DATE_OF_PROCEDURE,\n"
                 + "       CPD.INSTITUTE INSTITUTE_ID,               \n"
-//                + "       INS.DESCRIPTION INSTITUTE_DESC,           \n"
+                + "       INS.DESCRIPTION INSTITUTE_DESC,           \n"
                 + "       CPD.PERFORMING_PHYSICIAN_ID,              \n"
                 + "       PPI.NAME PERFORMING_PHY_NAME,             \n"
                 + "       CPD.ACTIVE,                               \n"
@@ -401,14 +401,14 @@ public class CardiacSurgeryHandler {
                 + "       CPD.CRTD_TERMINAL_ID,                     \n"
                 + "       CRB.NAME  CRTD_BY_NAME FROM               \n"
                 + Database.DCMS.cardiacProcedureDetail + " CPD,     \n"
-//                + Database.DCMS.definitionTypeDetail + " INS,       \n"
+                + Database.DCMS.definitionTypeDetail + " INS,       \n"
                 + Database.DCMS.definitionTypeDetail + " PCI,       \n"
                 + Database.DCMS.users + " CRB ,                     \n"
                 + Database.DCMS.users + " PPI                       \n"
                 + " WHERE CPD.CARDIAC_ID = " + cardiacId + "        \n"
                 + "   AND CPD.ACTIVE = 'Y'                          \n"
                 + "   AND CPD.PROCEDURE_ID = PCI.ID                 \n"
-//                + "   AND CPD.INSTITUTE_ID = INS.ID                 \n"
+                + "   AND CPD.INSTITUTE = INS.ID                 \n"
                 + "   AND CPD.CRTD_BY = CRB.USER_NAME               \n"
                 + "   AND CPD.PERFORMING_PHYSICIAN_ID = PPI.USER_NAME\n";
 
