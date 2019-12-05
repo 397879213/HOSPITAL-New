@@ -7,6 +7,7 @@ import CardiacRegistry.Controller.CardiacSurgeryController;
 import Form.general.DCMS_MDI;
 import CardiacRegistry.TableModel.PatientListTableModel;
 import java.awt.Dimension;
+import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -40,6 +41,11 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
     public CardiacSurgeryRegistry() {
         initComponents();
         this.setSize(Constants.xSize + 220, Constants.ySize - 40);
+        btnExit.setMnemonic(KeyEvent.VK_X);
+        btnEdit.setMnemonic(KeyEvent.VK_E);
+        btnFinal.setMnemonic(KeyEvent.VK_F);
+        btnClear.setMnemonic(KeyEvent.VK_C);
+        btnSave.setMnemonic(KeyEvent.VK_S);
         setDateOfSurgery(0);
         setPatientInfo(patientId);
         setCardiacRegistryDetail();
@@ -105,8 +111,8 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         txtRemarks = new javax.swing.JTextArea();
         jPanel6 = new javax.swing.JPanel();
         btnEdit = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
         btnFinal = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
 
@@ -678,21 +684,21 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 204, 102));
-        jButton3.setText("Save");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnSave.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnSave.setForeground(new java.awt.Color(0, 204, 102));
+        btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnSaveActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(204, 0, 0));
-        jButton2.setText("Exit");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnExit.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnExit.setForeground(new java.awt.Color(204, 0, 0));
+        btnExit.setText("Exit");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnExitActionPerformed(evt);
             }
         });
 
@@ -718,11 +724,11 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -730,8 +736,8 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
+                    .addComponent(btnExit)
+                    .addComponent(btnSave)
                     .addComponent(btnFinal)
                     .addComponent(btnEdit)
                     .addComponent(btnClear))
@@ -871,7 +877,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContactPerNameActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
         saveCardiacSurgeryInformation();
         if (ctlCardiacSurg.insertCardiacRegisteryMaster(cardiacSurgery)) {
@@ -880,7 +886,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Unable to Save Surgery Information.\n"
                     + "Kindly Contact Support Person.");
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnSaveActionPerformed
 
     private void tblPatientsListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientsListMouseClicked
 
@@ -888,15 +894,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
             return;
         }
         patient = lisPatient.get(tblPatientsList.getSelectedRow());
-        cardiacId = patient.getId();
-        txtPatientId.setText(patient.getPatientId().substring(3));
-        txtPatFullNmae.setText(patient.getPatientFullName());
-        txtAgeGender.setText(patient.getAge() + " / " + patient.getGender());
-        txtContactNo.setText(patient.getContactNo());
-        txtAddress.setText(patient.getAddress());
-        txtNationality.setText(patient.getCity());
-        txtCity.setText(patient.getCity());
-        txtInstitute.setText(patient.getInstituteDescription());
+        setPatientInfo(patient);
     }//GEN-LAST:event_tblPatientsListMouseClicked
 
     private void tblPatientsListMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientsListMouseReleased
@@ -927,11 +925,6 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
             }
 
         }
-
-//        if (tblPatientsList.getSelectedRow() < 0 || listPatRegistryData.isEmpty()) {
-//            return;
-//        }
-
     }//GEN-LAST:event_tblPatientsListMouseReleased
 
     private void tblPatientsListKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblPatientsListKeyReleased
@@ -940,10 +933,10 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tblPatientsListKeyReleased
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnExitActionPerformed
 
     private void txtFilterPatIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFilterPatIdActionPerformed
         // TODO add your handling code here:
@@ -995,10 +988,10 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnFinal;
+    private javax.swing.JButton btnSave;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -1071,8 +1064,8 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         selectionModel.setSelectionInterval(0, 0);
         Constants.tablelook.setJTableEnvironment(tblPatientsList);
         OutsidePatientRegistry pat = lisPatient.get(0);
-        cardiacId = pat.getId();
-        txtInstitute.setText(pat.getInstituteDescription());
+        setPatientInfo(pat);
+        
     }
 
     private void saveCardiacSurgeryInformation() {
@@ -1125,11 +1118,16 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         cardiacId = cardiacSurgeryDetail.getId();
         wardId = cardiacSurgeryDetail.getWardId();
         categoryId = cardiacSurgeryDetail.getCategoryId();
-        System.err.println("Categry"+ categoryId);
+        System.err.println("Categry" + categoryId);
         patientId = cardiacSurgeryDetail.getPatientId();
         consultantCardiologistId = cardiacSurgeryDetail.getConsultantCardiologistId();
         consultantSurgeonId = cardiacSurgeryDetail.getConsultantSurgeonId();
         admittingConsultantd = cardiacSurgeryDetail.getAdmittingConsultantId();
+        if (cardiacSurgeryDetail.getIsFinal().equalsIgnoreCase("Y")) {
+            btnEdit.setEnabled(false);
+            btnFinal.setEnabled(false);
+            btnSave.setEnabled(false);
+        }
     }
 
     private void setDateOfSurgery(int day) {
@@ -1143,6 +1141,19 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+    
+    private void setPatientInfo(OutsidePatientRegistry patient){
+        txtInstitute.setText(patient.getInstituteDescription());
+        cardiacId = patient.getId();
+        txtPatientId.setText(patient.getPatientId().substring(3));
+        txtPatFullNmae.setText(patient.getPatientFullName());
+        txtAgeGender.setText(patient.getAge() + " / " + patient.getGender());
+        txtContactNo.setText(patient.getContactNo());
+        txtAddress.setText(patient.getAddress());
+        txtNationality.setText(patient.getCity());
+        txtCity.setText(patient.getCity());
+        txtInstitute.setText(patient.getInstituteDescription());
     }
 
 }

@@ -4,6 +4,7 @@ import CardiacRegistry.BO.CardiacSurgeryBO;
 import CardiacRegistry.Controller.CardiacSurgeryController;
 import CardiacRegistry.TableModel.ExamDetailTableModel;
 import CardiacRegistry.TableModel.ProcedureDetailTableModel;
+import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -30,6 +31,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     private String surgProcedureId;
     private String procedureInstId;
     private String procedurePerformingId;
+    private String procedureType = "";
 
     public CardiacSurgeryDetailForm(String id) {
 
@@ -109,7 +111,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle(Constants.title+"Search Studies");
         setFrameIcon(null);
-        setPreferredSize(new java.awt.Dimension(880, 710));
+        setPreferredSize(new java.awt.Dimension(1080, 770));
         setRequestFocusEnabled(false);
 
         pnlPL.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -207,6 +209,11 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         jScrollPane4.setViewportView(tblProcedureDetail);
 
         cboProcType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Surgery", "Intervention"}));
+        cboProcType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboProcTypeActionPerformed(evt);
+            }
+        });
 
         txtProcedureName.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtProcedureName.addActionListener(new java.awt.event.ActionListener() {
@@ -306,7 +313,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cboProcType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboProcType, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtProcedureName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPerformDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -729,7 +736,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
                 .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(319, Short.MAX_VALUE))
+                .addContainerGap(312, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -878,7 +885,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     private void txtProcedureNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProcedureNameActionPerformed
         // TODO add your handling code here:
-        lov.LOVDefinitionSelection(DefinitionTypes.category, txtProcedureName.getText().trim(), this);
+        lov.LOVDefinitionSelection(procedureType, txtProcedureName.getText().trim(), this);
         surgProcedureId = Constants.lovID;
         txtProcedureName.setText(Constants.lovDescription);
         txtPerformDate.requestFocus();
@@ -886,7 +893,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     private void txtProcedureInstituteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProcedureInstituteActionPerformed
         // TODO add your handling code here:
-        lov.LOVDefinitionSelection(DefinitionTypes.category, txtProcedureInstitute.getText().trim(), this);
+        lov.LOVDefinitionSelection(DefinitionTypes.cardiacInstitutes, txtProcedureInstitute.getText().trim(), this);
         procedureInstId = Constants.lovID;
         txtProcedureInstitute.setText(Constants.lovDescription);
         txtProcedurePerforming.requestFocus();
@@ -984,6 +991,16 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void cboProcTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboProcTypeActionPerformed
+        // TODO add your handling code here:
+        if (cboProcType.getSelectedIndex() == 1) {
+            procedureType = DefinitionTypes.cardiacSurgery;
+        }
+        if (cboProcType.getSelectedIndex() == 2) {
+            procedureType = DefinitionTypes.cardiacIntervention;
+        }
+    }//GEN-LAST:event_cboProcTypeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1113,7 +1130,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
                 column.setPreferredWidth(60);
             } else if (i == 3) {
                 column.setPreferredWidth(80);
-            }else if (i == 4) {
+            } else if (i == 4) {
                 column.setPreferredWidth(80);
             }
         }
