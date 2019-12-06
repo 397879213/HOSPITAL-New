@@ -20,7 +20,8 @@ import utilities.Database;
  */
 public class CardiacSurgeryHandler {
 
-    public List<OutsidePatientRegistry> selectPateitnInformation(String patientId, String patientName) {
+    public List<OutsidePatientRegistry> selectPateitnInformation(String patientId,
+            String patientName, String instituteId) {
 
         String columns[] = {"-", "ID", "PATIENT_ID", "FULL_NAME", "GENDER", "CONTACT_NO",
             "ADDRESS", "CITY_ID", "CITY", "AGE", "GENDER_ID", "INSTITUTE_ID",
@@ -53,6 +54,9 @@ public class CardiacSurgeryHandler {
         }
         if (patientName.length() != 0) {
             query += " AND PAT.FULL_NAME LIKE '%" + patientName + "%'   \n";
+        }
+        if (instituteId.length() != 0) {
+            query += " AND PAT.INSTITUTE_ID = '" + instituteId + "'     \n";
         }
         query += "    AND PAT.GENDER = GEN.ID                           \n"
                 //                + "    AND PAT.NATIONALITY_ID = NAT.ID \n"
@@ -97,8 +101,8 @@ public class CardiacSurgeryHandler {
 
         String query = "SELECT CSM.CARDIAC_ID,                      \n"
                 + "       CSM.PATIENT_ID,                   \n"
-//                + "       CSM.INSTITUTE_ID,                 \n"
-//                + "       INS.DESCRIPTION INSTITUTE_DESC,   \n"
+                //                + "       CSM.INSTITUTE_ID,                 \n"
+                //                + "       INS.DESCRIPTION INSTITUTE_DESC,   \n"
                 + " NVL(CSM.ADMISSION_NO, 1) ADMISSION_NO,  \n"
                 + "       CSM.DATE_OF_SURGERY,              \n"
                 + " NVL(ROUND(CSM.DATE_OF_SURGERY - (SYSDATE+1)), 0) DAY_OF_SURGERY,\n"
@@ -449,4 +453,86 @@ public class CardiacSurgeryHandler {
         return Constants.dao.executeUpdate(query, false);
     }
 
+    public boolean insertPreMedications(CardiacSurgeryBO insert) {
+
+        String[] columns = {Database.DCMS.cardiacPreMedication,
+            "CARDIAC_ID", "MEDICINE_ID", "DOSE_ID", "TIME_PEROID", "CRTD_BY",
+            "CRTD_DATE", "CRTD_TERMINAL_ID", "ACTIVE"};
+
+        HashMap map = new HashMap();
+        map.put("CARDIAC_ID", "'" + insert.getId() + "'");
+        map.put("MEDICINE_ID", "'" + insert.getMedicineId() + "'");
+        map.put("DOSE_ID", "'" + insert.getDoseId() + "'");
+        map.put("TIME_PEROID", "'" + insert.getTimeTaking() + "'");
+        map.put("CRTD_BY", "'" + Constants.userId + "'");
+        map.put("CRTD_DATE", Constants.today);
+        map.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
+        map.put("ACTIVE", "'Y'");
+
+        List InsertEmp = new ArrayList();
+        InsertEmp.add(map);
+        return Constants.dao.insertData(InsertEmp, columns);
+    }
+
+    public boolean updatePreMedications(CardiacSurgeryBO cardiac) {
+        String query
+                = " UPDATE " + Database.DCMS.cardiacPreMedication + "   \n"
+                + " SET DOSE_ID  = '" + cardiac.getDoseId() + "',       \n"
+                + " TIME_PEROID = '" + cardiac.getTimeTaking() + "'     \n"
+                + " WHERE CARDIAC_ID = " + cardiac.getId() + "          \n"
+                + " AND MEDICINE_ID = '" + cardiac.getMedicineId()+ "' \n";
+
+        return Constants.dao.executeUpdate(query, false);
+    }
+
+    public List<CardiacSurgeryBO> selectPreMedications(String cardiacId) {
+
+        String columns[] = {"-", "CARDIAC_ID", "MEDICINE_ID", "MEDICINE_DESC",
+            "DOSE_ID", "DOSE_DESC", "TIME_PEROID", "CRTD_BY", "CRTD_DATE",
+            "CRTD_TERMINAL_ID", "ACTIVE", "CRTD_BY_NAME", "DAY_TIME_PEROID"};
+
+        String query
+                = "SELECT CPM.CARDIAC_ID,                   \n"
+                + "       CPM.MEDICINE_ID,                  \n"
+                + "       ITM.DESCRIPTION MEDICINE_DESC,    \n"
+                + "       CPM.DOSE_ID,                      \n"
+                + "       DOS.DESCRIPTION DOSE_DESC,        \n"
+                + " TO_CHAR(CPM.TIME_PEROID, 'DD-MON-YY') TIME_PEROID,\n"
+                + " NVL(ROUND(CPM.TIME_PEROID - (SYSDATE+1)), 0) DAY_TIME_PEROID,\n"
+                + "       CPM.ACTIVE,                       \n"
+                + "       CPM.CRTD_BY,                      \n"
+                + "       USR.NAME CRTD_BY_NAME,            \n"
+                + "       CPM.CRTD_DATE,                    \n"
+                + "       CPM.CRTD_TERMINAL_ID FROM         \n"
+                + Database.DCMS.cardiacPreMedication + " CPM,\n"
+                + Database.DCMS.item + " ITM,               \n"
+                + Database.DCMS.users + " USR,              \n"
+                + Database.DCMS.definitionTypeDetail + " DOS\n"
+                + " WHERE CPM.CARDIAC_ID = " + cardiacId + "\n"
+                + "   AND CPM.MEDICINE_ID = ITM.ID          \n"
+                + "   AND CPM.CRTD_BY = USR.USER_NAME       \n"
+                + "   AND CPM.DOSE_ID = DOS.ID              \n";
+
+        List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
+        List<CardiacSurgeryBO> lisExam = new ArrayList();
+        for (int i = 0; i < listmap.size(); i++) {
+            HashMap map = (HashMap) listmap.get(i);
+            CardiacSurgeryBO objData = new CardiacSurgeryBO();
+
+            objData.setId(map.get("CARDIAC_ID").toString());
+            objData.setMedicineId(map.get("MEDICINE_ID").toString());
+            objData.setMedicineDesc(map.get("MEDICINE_DESC").toString());
+            objData.setDoseId(map.get("DOSE_ID").toString());
+            objData.setDoseDesc(map.get("DOSE_DESC").toString());
+            objData.setTimeTaking(map.get("TIME_PEROID").toString());
+            objData.setDayTimeTaking(map.get("DAY_TIME_PEROID").toString());
+            objData.setActiveMedicine(map.get("ACTIVE").toString());
+            objData.setCrtdBy(map.get("CRTD_BY").toString());
+            objData.setCrtdByName(map.get("CRTD_BY_NAME").toString());
+            objData.setCrtdDate(map.get("CRTD_DATE").toString());
+            objData.setCrtdTerminalId(map.get("CRTD_TERMINAL_ID").toString());
+            lisExam.add(objData);
+        }
+        return lisExam;
+    }
 }

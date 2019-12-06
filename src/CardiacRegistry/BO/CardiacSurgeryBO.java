@@ -58,7 +58,72 @@ public class CardiacSurgeryBO {
     private String cancelDate = "";
     private String cancelTerminalId = "";
     private String active = "";
+    
+    
+    private String medicineId = "";
+    private String medicineDesc = "";
+    private String doseId = "";
+    private String doseDesc = "";
+    private String timeTaking = "";
+    private String dayTimeTaking = "";
+    private String activeMedicine = "";
 
+    public String getDayTimeTaking() {
+        return dayTimeTaking;
+    }
+
+    public void setDayTimeTaking(String dayTimeTaking) {
+        this.dayTimeTaking = dayTimeTaking;
+    }
+
+    public String getMedicineDesc() {
+        return medicineDesc;
+    }
+
+    public void setMedicineDesc(String medicineDesc) {
+        this.medicineDesc = medicineDesc;
+    }
+
+    public String getDoseDesc() {
+        return doseDesc;
+    }
+
+    public void setDoseDesc(String doseDesc) {
+        this.doseDesc = doseDesc;
+    }
+
+    public String getMedicineId() {
+        return medicineId;
+    }
+
+    public void setMedicineId(String medicineId) {
+        this.medicineId = medicineId;
+    }
+
+    public String getDoseId() {
+        return doseId;
+    }
+
+    public void setDoseId(String doseId) {
+        this.doseId = doseId;
+    }
+
+    public String getTimeTaking() {
+        return timeTaking;
+    }
+
+    public void setTimeTaking(String timeTaking) {
+        this.timeTaking = timeTaking;
+    }
+
+    public String getActiveMedicine() {
+        return activeMedicine;
+    }
+
+    public void setActiveMedicine(String activeMedicine) {
+        this.activeMedicine = activeMedicine;
+    }
+    
     public String getContactPerAddress() {
         return contactPerAddress;
     }
@@ -138,8 +203,6 @@ public class CardiacSurgeryBO {
     public void setActive(String active) {
         this.active = active;
     }
-
-    
     
     public String getProcedureType() {
         return procedureType;

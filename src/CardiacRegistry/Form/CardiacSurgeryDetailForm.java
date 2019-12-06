@@ -3,8 +3,8 @@ package CardiacRegistry.Form;
 import CardiacRegistry.BO.CardiacSurgeryBO;
 import CardiacRegistry.Controller.CardiacSurgeryController;
 import CardiacRegistry.TableModel.ExamDetailTableModel;
+import CardiacRegistry.TableModel.PreMedicationsTableModel;
 import CardiacRegistry.TableModel.ProcedureDetailTableModel;
-import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -23,10 +23,12 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     DisplayLOV lov = new DisplayLOV();
     CardiacSurgeryBO objCardiacSurger = new CardiacSurgeryBO();
     CardiacSurgeryBO objProcedure = new CardiacSurgeryBO();
+    CardiacSurgeryBO objPreMedication = new CardiacSurgeryBO();
     CardiacSurgeryController ctlCardiacSurg = new CardiacSurgeryController();
     List<CardiacSurgeryBO> listExamDetail = new ArrayList();
     List<CardiacSurgeryBO> listProcedure = new ArrayList();
-    String id = "";
+    List<CardiacSurgeryBO> listPreMedication = new ArrayList();
+    private String cardiacId = "";
     private String performDate;
     private String surgProcedureId;
     private String procedureInstId;
@@ -40,11 +42,12 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
         initComponents();
         this.setSize(Constants.xSize + 80, Constants.ySize - Constants.yExtension + 8);
-        this.id = id;
+        this.cardiacId = id;
         setExamDetail();
         setDateOfProcedure(0);
         selectProcedureDetail();
         setTmePeriod(0);
+        selectPreMedications();
     }
 
     @SuppressWarnings("unchecked")
@@ -76,13 +79,17 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         btnAddProcePerforming = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        tblProcedureDetail3 = new javax.swing.JTable();
+        tblPreMedications = new javax.swing.JTable();
         jLabel26 = new javax.swing.JLabel();
         txtMedication = new javax.swing.JTextField();
         btnAddProcePerforming2 = new javax.swing.JButton();
         txtDose = new javax.swing.JTextField();
         txtTimePeriod = new org.jdesktop.swingx.JXDatePicker();
         jLabel27 = new javax.swing.JLabel();
+        btnUpdtMed = new javax.swing.JButton();
+        btnSaveMed = new javax.swing.JButton();
+        jLabel29 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
@@ -179,7 +186,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 541, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -339,28 +346,28 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cureent Pre-Oper. Medication", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel11.setForeground(new java.awt.Color(102, 0, 0));
 
-        tblProcedureDetail3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        tblProcedureDetail3.setModel(new javax.swing.table.DefaultTableModel(
+        tblPreMedications.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        tblPreMedications.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null,null,null,null }
             },
             new String [] {"Exam", "Exam Detail", "Remarks"}
         ));
-        tblProcedureDetail3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tblProcedureDetail3.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblPreMedications.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tblPreMedications.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblProcedureDetail3MouseClicked(evt);
+                tblPreMedicationsMouseClicked(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                tblProcedureDetail3MouseReleased(evt);
+                tblPreMedicationsMouseReleased(evt);
             }
         });
-        tblProcedureDetail3.addKeyListener(new java.awt.event.KeyAdapter() {
+        tblPreMedications.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                tblProcedureDetail3KeyReleased(evt);
+                tblPreMedicationsKeyReleased(evt);
             }
         });
-        jScrollPane7.setViewportView(tblProcedureDetail3);
+        jScrollPane7.setViewportView(tblPreMedications);
 
         jLabel26.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(102, 0, 0));
@@ -396,6 +403,28 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel27.setText("Dose : ");
 
+        btnUpdtMed.setText("Edit");
+        btnUpdtMed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdtMedActionPerformed(evt);
+            }
+        });
+
+        btnSaveMed.setText("Save");
+        btnSaveMed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveMedActionPerformed(evt);
+            }
+        });
+
+        jLabel29.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel29.setText("Time Taking : ");
+
+        jButton3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jButton3.setText("+");
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
@@ -406,17 +435,24 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel11Layout.createSequentialGroup()
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel11Layout.createSequentialGroup()
-                                .addComponent(txtDose, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtTimePeriod, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                                .addComponent(txtMedication)
+                                .addComponent(txtMedication, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnAddProcePerforming2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(btnAddProcePerforming2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                                .addComponent(txtTimePeriod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnUpdtMed, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnSaveMed, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel11Layout.createSequentialGroup()
+                                .addComponent(txtDose, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addGap(5, 5, 5))
         );
         jPanel11Layout.setVerticalGroup(
@@ -426,13 +462,19 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
                     .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMedication, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAddProcePerforming2))
-                .addGap(3, 3, 3)
+                .addGap(2, 2, 2)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTimePeriod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTimePeriod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSaveMed)
+                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUpdtMed))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -475,7 +517,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 210, Short.MAX_VALUE)
+            .addGap(0, 213, Short.MAX_VALUE)
         );
 
         jPanel9.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -756,7 +798,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
                 .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(312, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -814,7 +856,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             lov.LOVDefinitionSelection(objCardiacSurger.getExamId(), "", this);
             objCardiacSurger.setExamDetailId(Constants.lovID);
             objCardiacSurger.setExamDetailDescription(Constants.lovDescription);
-            objCardiacSurger.setId(id);
+            objCardiacSurger.setId(cardiacId);
             if (ctlCardiacSurg.updateExamDetail(objCardiacSurger)) {
                 System.out.println("Records Save Successfully.");
                 setExamDetail();
@@ -833,7 +875,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         objCardiacSurger = listExamDetail.get(tblExamDetail.getSelectedRow());
         objCardiacSurger.setExamRemarks(String.valueOf(tblExamDetail.getValueAt(
                 tblExamDetail.getSelectedRow(), 3)).trim());
-        objCardiacSurger.setId(id);
+        objCardiacSurger.setId(cardiacId);
         if (ctlCardiacSurg.updateExamDetailRemarks(objCardiacSurger)) {
             System.out.println("Remarks Save Successfully.");
             setExamDetail();
@@ -964,17 +1006,23 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tblProcedureDetail2KeyReleased
 
-    private void tblProcedureDetail3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProcedureDetail3MouseClicked
+    private void tblPreMedicationsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPreMedicationsMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblProcedureDetail3MouseClicked
+    }//GEN-LAST:event_tblPreMedicationsMouseClicked
 
-    private void tblProcedureDetail3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProcedureDetail3MouseReleased
+    private void tblPreMedicationsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPreMedicationsMouseReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblProcedureDetail3MouseReleased
+        CardiacSurgeryBO obj = listPreMedication.get(tblPreMedications.getSelectedRow());
+        txtDose.setText(obj.getDoseDesc());
+        txtMedication.setText(obj.getMedicineDesc());
+        medId = obj.getMedicineId();
+        doseId = obj.getDoseId();
+        setTmePeriod(Integer.parseInt(obj.getDayTimeTaking()));
+    }//GEN-LAST:event_tblPreMedicationsMouseReleased
 
-    private void tblProcedureDetail3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblProcedureDetail3KeyReleased
+    private void tblPreMedicationsKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblPreMedicationsKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblProcedureDetail3KeyReleased
+    }//GEN-LAST:event_tblPreMedicationsKeyReleased
 
     private void txtTimePeriodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimePeriodActionPerformed
         // TODO add your handling code here:
@@ -986,6 +1034,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
         timePeroid = dateFormat.format(txtPerformDate.getDate());
         txtTimePeriod.requestFocus();
+        sevePreMedication();
     }//GEN-LAST:event_txtTimePeriodActionPerformed
 
     private void txtPerformDate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPerformDate1ActionPerformed
@@ -1062,6 +1111,25 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         txtTimePeriod.requestFocus();
     }//GEN-LAST:event_txtDoseActionPerformed
 
+    private void btnSaveMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveMedActionPerformed
+        // TODO add your handling code here:.
+        sevePreMedication();
+    }//GEN-LAST:event_btnSaveMedActionPerformed
+
+    private void btnUpdtMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdtMedActionPerformed
+        // TODO add your handling code here:
+        objPreMedication.setId(cardiacId);
+        objPreMedication.setMedicineId(medId);
+        objPreMedication.setDoseId(medId);
+        objPreMedication.setTimeTaking(timePeroid);
+        if(ctlCardiacSurg.updatePreMedications(objPreMedication)){
+            JOptionPane.showMessageDialog(null, "Medicine Info updated Successfuly.");
+        }else{
+            JOptionPane.showMessageDialog(null, "Unable to update Medication.\n"
+                    + "Kindly contact Administrator.");
+        }
+    }//GEN-LAST:event_btnUpdtMedActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
@@ -1072,7 +1140,10 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnExit;
+    private javax.swing.JButton btnSaveMed;
+    private javax.swing.JButton btnUpdtMed;
     private javax.swing.JComboBox<String> cboProcType;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -1082,6 +1153,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -1106,9 +1178,9 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblPacsLink;
     private javax.swing.JPanel pnlPL;
     private javax.swing.JTable tblExamDetail;
+    private javax.swing.JTable tblPreMedications;
     private javax.swing.JTable tblProcedureDetail;
     private javax.swing.JTable tblProcedureDetail2;
-    private javax.swing.JTable tblProcedureDetail3;
     private javax.swing.JTable tblProcedureDetail4;
     private javax.swing.JTable tblProcedureDetail5;
     private javax.swing.JTextField txtDose;
@@ -1122,7 +1194,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void setExamDetail() {
-        listExamDetail = ctlCardiacSurg.selectExamDetail(id);
+        listExamDetail = ctlCardiacSurg.selectExamDetail(cardiacId);
         if (listExamDetail.isEmpty()) {
             List<CardiacSurgeryBO> list = new ArrayList<>();
             list.add(new CardiacSurgeryBO());
@@ -1154,7 +1226,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     }
 
     private void setProecedureDetail() {
-        objProcedure.setId(id);
+        objProcedure.setId(cardiacId);
         objProcedure.setProcedureType(cboProcType.getSelectedItem().toString());
         objProcedure.setInstituteId(procedureInstId);
         objProcedure.setPerformingPhysicianId(procedurePerformingId);
@@ -1163,7 +1235,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     }
 
     private void selectProcedureDetail() {
-        listProcedure = ctlCardiacSurg.selectCardiacProcedureDetail(id);
+        listProcedure = ctlCardiacSurg.selectCardiacProcedureDetail(cardiacId);
         if (listProcedure.isEmpty()) {
             List<CardiacSurgeryBO> listProcedure = new ArrayList<>();
             listProcedure.add(new CardiacSurgeryBO());
@@ -1219,6 +1291,49 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             timePeroid = dateFormat.format(date2);
         } catch (Exception ex) {
             ex.printStackTrace();
+        }
+    }
+
+    private void sevePreMedication() {
+        objPreMedication.setId(cardiacId);
+        objPreMedication.setMedicineId(medId);
+        objPreMedication.setDoseId(medId);
+        objPreMedication.setTimeTaking(timePeroid);
+        if(ctlCardiacSurg.insertPreMedications(objPreMedication)){
+            JOptionPane.showMessageDialog(null, "Sve");
+        }else{
+            JOptionPane.showMessageDialog(null, "Unable to save Medication.\n"
+                    + "Kindly contact Administrator.");
+        }
+    }
+
+    private void selectPreMedications() {
+        listPreMedication = ctlCardiacSurg.selectPreMedications(cardiacId);
+        if (listProcedure.isEmpty()) {
+            List<CardiacSurgeryBO> listPreMedication = new ArrayList<>();
+            listProcedure.add(new CardiacSurgeryBO());
+            tblPreMedications.setModel(new PreMedicationsTableModel(listPreMedication));
+            return;
+        }
+        tblPreMedications.setModel(new PreMedicationsTableModel(listPreMedication));
+        ListSelectionModel selectionModel = tblPreMedications.getSelectionModel();
+        tblPreMedications.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        setPreMedicationsColumnsWidths();
+        selectionModel.setSelectionInterval(0, 0);
+        Constants.tablelook.setJTableEnvironment(tblPreMedications);
+    }
+    
+    private void setPreMedicationsColumnsWidths() {
+        TableColumn column = null;
+        for (int i = 0; i < tblProcedureDetail.getColumnCount(); i++) {
+            column = tblProcedureDetail.getColumnModel().getColumn(i);
+            if (i == 0) {
+                column.setPreferredWidth(120);
+            } else if (i == 1) {
+                column.setPreferredWidth(80);
+            } else if (i == 2) {
+                column.setPreferredWidth(80);
+            } 
         }
     }
 }

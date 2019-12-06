@@ -24,8 +24,9 @@ public class CardiacSurgeryController {
     GenerateKeys key = new GenerateKeys();
     CardiacSurgeryHandler hdlCardiacSurg = new CardiacSurgeryHandler();
 
-    public List<OutsidePatientRegistry> selectPateitnInformation(String patientId, String patientName) {
-        return hdlCardiacSurg.selectPateitnInformation(patientId, patientName);
+    public List<OutsidePatientRegistry> selectPateitnInformation(String patientId, 
+            String patientName, String instituteId) {
+        return hdlCardiacSurg.selectPateitnInformation(patientId, patientName, instituteId);
     }
 
     public CardiacSurgeryBO selectCardiacSurgDetail(String id) {
@@ -157,5 +158,33 @@ public class CardiacSurgeryController {
         }
         return ret;
     }
+    
+    // Pre Medications Work
+    
 
+    public boolean insertPreMedications(CardiacSurgeryBO cardiac) {
+        boolean ret = hdlCardiacSurg.insertPreMedications(cardiac);
+        if (ret) {
+            ret = Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
+    
+    public boolean updatePreMedications(CardiacSurgeryBO cardiac) {
+        boolean ret = hdlCardiacSurg.updatePreMedications(cardiac);
+        if (ret) {
+            ret = Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
+    
+    public List<CardiacSurgeryBO> selectPreMedications(String cardiacId) {
+        return hdlCardiacSurg.selectPreMedications(cardiacId);
+    }
 }

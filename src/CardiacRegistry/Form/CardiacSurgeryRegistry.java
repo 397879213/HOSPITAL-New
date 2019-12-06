@@ -37,6 +37,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
     private String admittingConsultantd = "";
     private String categoryId = "";
     List<OutsidePatientRegistry> lisPatient = new ArrayList();
+    private String instituteId = "";
 
     public CardiacSurgeryRegistry() {
         initComponents();
@@ -713,6 +714,11 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
 
         btnClear.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -945,6 +951,19 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
 
     private void txtInstituteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInstituteActionPerformed
         // TODO add your handling code here:
+        lov.LOVDefinitionSelection(DefinitionTypes.institute,
+                txtInstitute.getText().trim(), this);
+
+        if (Constants.lovDescription.equalsIgnoreCase("DESCRIPTION")) {
+            txtInstitute.setText("");
+            instituteId = "";
+            return;
+
+        } else {
+            instituteId = Constants.lovID;
+            txtInstitute.setText(Constants.lovDescription.toUpperCase());
+            setPatientInfo(patient);
+        }
     }//GEN-LAST:event_txtInstituteActionPerformed
 
     private void btnFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalActionPerformed
@@ -983,6 +1002,30 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
                     + "Kindly Contact Support Person.");
         }
     }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        // TODO add your handling code here:
+        txtAddress.setText("");
+        txtAdmittingConsultant.setText("");
+        txtAgeGender.setText("");
+        txtCategory.setText("");
+        txtCity.setText("");
+        txtConsultantCardiologist.setText("");
+        txtConsultantSurgeon.setText("");
+        txtContactNo.setText("");
+        txtContactPerAddress.setText("");
+        txtContactPerContactNo.setText("");
+        txtContactPerName.setText("");
+        txtFilterPatId.setText("");
+        txtFilterPatName.setText("");
+        txtInstitute.setText("");
+        txtNationality.setText("");
+        txtPatFullNmae.setText("");
+        txtRemarks.setText("");
+        txtWard.setText("");
+        lisPatient.clear();
+        tblPatientsList.setModel(new PatientListTableModel(lisPatient));
+    }//GEN-LAST:event_btnClearActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1050,7 +1093,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
 
     private void setPatientInfo(String patientId) {
         lisPatient = ctlCardiacSurg.selectPateitnInformation(patientId,
-                txtFilterPatName.getText().trim());
+                txtFilterPatName.getText().trim(), instituteId);
         if (lisPatient.isEmpty()) {
             List<OutsidePatientRegistry> lisPatient = new ArrayList<>();
             lisPatient.add(new OutsidePatientRegistry());
@@ -1065,7 +1108,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         Constants.tablelook.setJTableEnvironment(tblPatientsList);
         OutsidePatientRegistry pat = lisPatient.get(0);
         setPatientInfo(pat);
-        
+
     }
 
     private void saveCardiacSurgeryInformation() {
@@ -1142,8 +1185,8 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
     }
-    
-    private void setPatientInfo(OutsidePatientRegistry patient){
+
+    private void setPatientInfo(OutsidePatientRegistry patient) {
         txtInstitute.setText(patient.getInstituteDescription());
         cardiacId = patient.getId();
         txtPatientId.setText(patient.getPatientId().substring(3));
