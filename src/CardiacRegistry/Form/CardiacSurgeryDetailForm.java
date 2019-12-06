@@ -1120,7 +1120,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         objPreMedication.setId(cardiacId);
         objPreMedication.setMedicineId(medId);
-        objPreMedication.setDoseId(medId);
+        objPreMedication.setDoseId(doseId);
         objPreMedication.setTimeTaking(timePeroid);
         if(ctlCardiacSurg.updatePreMedications(objPreMedication)){
             JOptionPane.showMessageDialog(null, "Medicine Info updated Successfuly.");
@@ -1297,7 +1297,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     private void sevePreMedication() {
         objPreMedication.setId(cardiacId);
         objPreMedication.setMedicineId(medId);
-        objPreMedication.setDoseId(medId);
+        objPreMedication.setDoseId(doseId);
         objPreMedication.setTimeTaking(timePeroid);
         if(ctlCardiacSurg.insertPreMedications(objPreMedication)){
             JOptionPane.showMessageDialog(null, "Sve");
