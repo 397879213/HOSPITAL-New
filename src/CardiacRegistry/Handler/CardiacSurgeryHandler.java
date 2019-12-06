@@ -498,7 +498,7 @@ public class CardiacSurgeryHandler {
                 + "       CPM.DOSE_ID,                      \n"
                 + "       DOS.DESCRIPTION DOSE_DESC,        \n"
                 + " TO_CHAR(CPM.TIME_PEROID, 'DD-MON-YY') TIME_PEROID,\n"
-                + " NVL(ROUND(CPM.TIME_PEROID - (SYSDATE+1)), 0) DAY_TIME_PEROID,\n"
+                + " NVL(ROUND(CPM.TIME_PEROID - (SYSDATE - 1)), 0) DAY_TIME_PEROID,\n"
                 + "       CPM.ACTIVE,                       \n"
                 + "       CPM.CRTD_BY,                      \n"
                 + "       USR.NAME CRTD_BY_NAME,            \n"

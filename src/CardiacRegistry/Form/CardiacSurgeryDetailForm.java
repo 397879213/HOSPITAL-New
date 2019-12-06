@@ -925,15 +925,15 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         txtProcedureInstitute.setText(objProcedure.getInstituteDescription());
         txtProcedureName.setText(objProcedure.getProcedureDescription());
         txtProcedurePerforming.setText(objProcedure.getPerformingPhysicianName());
-        if(objProcedure.getProcedureType().equals("Surgery")){
+        if (objProcedure.getProcedureType().equals("Surgery")) {
             cboProcType.setSelectedIndex(1);
             procedureType = DefinitionTypes.cardiacSurgery;
         }
-        if(objProcedure.getProcedureType().equals("Intervention")){
+        if (objProcedure.getProcedureType().equals("Intervention")) {
             cboProcType.setSelectedIndex(2);
             procedureType = DefinitionTypes.cardiacIntervention;
         }
-        
+
         cboProcType.setEnabled(false);
         txtProcedureName.setEditable(false);
     }//GEN-LAST:event_tblProcedureDetailMouseReleased
@@ -972,7 +972,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     private void txtProcedurePerformingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProcedurePerformingActionPerformed
         // TODO add your handling code here:
-        lov.LOVDefinitionSelection(DefinitionTypes.CardiacPerformingPhysician, 
+        lov.LOVDefinitionSelection(DefinitionTypes.CardiacPerformingPhysician,
                 txtProcedurePerforming.getText().trim(), this);
         txtProcedurePerforming.setText(Constants.lovDescription);
         procedurePerformingId = Constants.lovID;
@@ -1100,7 +1100,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void txtDoseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDoseActionPerformed
@@ -1122,9 +1122,10 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         objPreMedication.setMedicineId(medId);
         objPreMedication.setDoseId(doseId);
         objPreMedication.setTimeTaking(timePeroid);
-        if(ctlCardiacSurg.updatePreMedications(objPreMedication)){
+        if (ctlCardiacSurg.updatePreMedications(objPreMedication)) {
             JOptionPane.showMessageDialog(null, "Medicine Info updated Successfuly.");
-        }else{
+            selectPreMedications();
+        } else {
             JOptionPane.showMessageDialog(null, "Unable to update Medication.\n"
                     + "Kindly contact Administrator.");
         }
@@ -1280,7 +1281,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
     }
-    
+
     private void setTmePeriod(int day) {
         try {
             Calendar c = Calendar.getInstance();
@@ -1299,9 +1300,10 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         objPreMedication.setMedicineId(medId);
         objPreMedication.setDoseId(doseId);
         objPreMedication.setTimeTaking(timePeroid);
-        if(ctlCardiacSurg.insertPreMedications(objPreMedication)){
+        if (ctlCardiacSurg.insertPreMedications(objPreMedication)) {
             JOptionPane.showMessageDialog(null, "Sve");
-        }else{
+            selectPreMedications();
+        } else {
             JOptionPane.showMessageDialog(null, "Unable to save Medication.\n"
                     + "Kindly contact Administrator.");
         }
@@ -1322,18 +1324,18 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         selectionModel.setSelectionInterval(0, 0);
         Constants.tablelook.setJTableEnvironment(tblPreMedications);
     }
-    
+
     private void setPreMedicationsColumnsWidths() {
         TableColumn column = null;
-        for (int i = 0; i < tblProcedureDetail.getColumnCount(); i++) {
-            column = tblProcedureDetail.getColumnModel().getColumn(i);
+        for (int i = 0; i < tblPreMedications.getColumnCount(); i++) {
+            column = tblPreMedications.getColumnModel().getColumn(i);
             if (i == 0) {
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(180);
             } else if (i == 1) {
                 column.setPreferredWidth(80);
             } else if (i == 2) {
                 column.setPreferredWidth(80);
-            } 
+            }
         }
     }
 }
