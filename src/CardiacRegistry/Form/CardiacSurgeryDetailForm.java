@@ -63,8 +63,6 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         setTmePeriod(0);
         setEchocardiography(0);
         selectPreMedications();
-        selectEchoValve();
-        selectEchoValveMeasurement();
         selectEchocardiographyMaster();
     }
 
