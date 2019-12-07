@@ -180,17 +180,19 @@ public class CardiacSurgeryController {
     }
 
     // Echo Cardiography
-    
     public List<CardiacSurgeryBO> selectEchocardiographyMaster(String cardiacId) {
         return hdlCardiacSurg.selectEchocardiographyMaster(cardiacId);
     }
-    
+
     public boolean insertEchocrdiographyMaster(CardiacSurgeryBO insert) {
+        String echoId = hdlCardiacSurg.echoId();
+        insert.setEchoId(echoId);
         boolean ret = hdlCardiacSurg.insertEchocrdiographyMaster(insert);
         if (ret) {
             String query
                     = " INSERT INTO " + Database.DCMS.echoCardiography + "      \n"
-                    + "(SELECT " + insert.getId() + ", DEF.ID,'','', '', '' FROM\n"
+                    + "(SELECT " + echoId + ", " + insert.getId() + ","
+                    + " DEF.ID,'','', '', '' FROM                               \n"
                     + Database.DCMS.definitionTypeDetail + " DEF                \n"
                     + "  WHERE DEF.DEF_TYPE_ID = " + DefinitionTypes.echoCardiacValves + ")\n";
 
@@ -199,8 +201,9 @@ public class CardiacSurgeryController {
         if (ret) {
             String query
                     = " INSERT INTO " + Database.DCMS.cardioEchoCardiographyDetail + "\n"
-                    + "(SELECT " + insert.getId() + ", DEF.ID,'','" + Constants.userId
-                    + "', SYSDATE, '" + Constants.terminalId + "' FROM          \n"
+                    + "(SELECT " + echoId + ", " + insert.getId() + ", DEF.ID,'',"
+                    + "'" + Constants.userId + "', SYSDATE, '" 
+                    + Constants.terminalId + "' FROM                            \n"
                     + Database.DCMS.definitionTypeDetail + " DEF                \n"
                     + "  WHERE DEF.DEF_TYPE_ID = " + DefinitionTypes.echoCardiacMeasurements + ")\n";
 
@@ -214,7 +217,7 @@ public class CardiacSurgeryController {
         }
         return ret;
     }
-    
+
     public boolean updateEchoCardiographyMaster(CardiacSurgeryBO cardiac) {
         boolean ret = hdlCardiacSurg.updateEchoCardiographyMaster(cardiac);
         if (ret) {
@@ -226,12 +229,12 @@ public class CardiacSurgeryController {
         return ret;
     }
 
-    public List<CardiacSurgeryBO> selectEchoValve(String cardiacId) {
-        return hdlCardiacSurg.selectEchoValve(cardiacId);
+    public List<CardiacSurgeryBO> selectEchoValve(String echoId) {
+        return hdlCardiacSurg.selectEchoValve(echoId);
     }
 
-    public List<CardiacSurgeryBO> selectEchoValveMeasurement(String cardiacId) {
-        return hdlCardiacSurg.selectEchoValveMeasurement(cardiacId);
+    public List<CardiacSurgeryBO> selectEchoValveMeasurement(String echoId) {
+        return hdlCardiacSurg.selectEchoValveMeasurement(echoId);
     }
 
     public boolean updateEchoValve(CardiacSurgeryBO cardiac) {

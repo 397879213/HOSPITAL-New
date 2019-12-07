@@ -537,20 +537,20 @@ public class CardiacSurgeryHandler {
     }
 
     // ECHO CARDIOGRAPHY
-    public List<CardiacSurgeryBO> selectEchoValve(String cardiacId) {
+    public List<CardiacSurgeryBO> selectEchoValve(String echoId) {
 
         String columns[] = {"-", "CARDIAC_ID", "VALVE_ID", "DESCRIPTION", "STENOSIS",
             "REGURGITATION", "GRADIENT", "PATHOLOGY"};
 
         String query
-                = "SELECT ECD.CARDIAC_ID, ECD.VALVE_ID, DTD.DESCRIPTION, \n"
-                + " NVL(ECD.STENOSIS, ' ') STENOSIS,\n"
-                + " NVL(ECD.REGURGITATION, ' ') REGURGITATION, \n"
-                + "NVL(ECD.GRADIENT, ' ') GRADIENT, \n"
-                + "NVL(ECD.PATHOLOGY, ' ') PATHOLOGY FROM     \n"
+                = "SELECT ECD.CARDIAC_ID, ECD.VALVE_ID, DTD.DESCRIPTION,    \n"
+                + " NVL(ECD.STENOSIS, ' ') STENOSIS,                        \n"
+                + " NVL(ECD.REGURGITATION, ' ') REGURGITATION,              \n"
+                + "NVL(ECD.GRADIENT, ' ') GRADIENT,                         \n"
+                + "NVL(ECD.PATHOLOGY, ' ') PATHOLOGY FROM                   \n"
                 + Database.DCMS.echoCardiography + " ECD,                   \n"
                 + Database.DCMS.definitionTypeDetail + " DTD                \n"
-                + " WHERE ECD.CARDIAC_ID = " + cardiacId + "                \n"
+                + " WHERE ECD.ECHO_ID = " + echoId + "                      \n"
                 + "   AND ECD.VALVE_ID = DTD.ID                             \n";
 
         List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
@@ -571,7 +571,7 @@ public class CardiacSurgeryHandler {
         return lisExam;
     }
 
-    public List<CardiacSurgeryBO> selectEchoValveMeasurement(String cardiacId) {
+    public List<CardiacSurgeryBO> selectEchoValveMeasurement(String echoId) {
 
         String columns[] = {"-", "CARDIAC_ID", "MEASUREMENT_ID", "DESCRIPTION", "VALUE"};
 
@@ -580,7 +580,7 @@ public class CardiacSurgeryHandler {
                 + "NVL(ECD.VALUE, ' ') VALUE FROM                           \n"
                 + Database.DCMS.cardioEchoCardiographyDetail + " ECD,       \n"
                 + Database.DCMS.definitionTypeDetail + " DTD                \n"
-                + " WHERE ECD.CARDIAC_ID = " + cardiacId + "                \n"
+                + " WHERE ECD.ECHO_ID = " + echoId + "                      \n"
                 + "   AND ECD.MEASUREMENT_ID = DTD.ID                       \n";
 
         List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
@@ -621,6 +621,16 @@ public class CardiacSurgeryHandler {
         return Constants.dao.executeUpdate(query, false);
     }
 
+    public String echoId() {
+
+        String[] columns = {"-", "ID"};
+        String query
+                = " SELECT NVL(MAX(ID)+1, 1) ID FROM          \n"
+                + Database.DCMS.echoCardiographyMaster + "        \n";
+        List<HashMap> list = Constants.dao.selectDatainList(query, columns);
+        return list.get(0).get("ID").toString();
+    }
+    
     public boolean insertEchocrdiographyMaster(CardiacSurgeryBO insert) {
 
         String[] columns = {Database.DCMS.echoCardiographyMaster, "ID", "CARDIAC_ID",
@@ -628,8 +638,7 @@ public class CardiacSurgeryHandler {
             "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
 
         HashMap map = new HashMap();
-        map.put("ID", "(SELECT NVL(MAX(ID)+1, 1) ID FROM "
-                + Database.DCMS.echoCardiographyMaster + ")");
+        map.put("ID", "'" + insert.getEchoId()+ "'");
         map.put("CARDIAC_ID", "'" + insert.getId() + "'");
         map.put("PERFORM_DATE", "'" + insert.getEchoPerformDate() + "'");
         map.put("PERFORMED_BY", "'" + insert.getPerformingPhysicianId() + "'");
@@ -654,7 +663,7 @@ public class CardiacSurgeryHandler {
             "INSTITUTE_ID", "INSTITUTE_DESC", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
 
         String query
-                = "SELECT ID, ECM.CARDIAC_ID,                   \n"
+                = "SELECT ECM.ID, ECM.CARDIAC_ID,               \n"
                 + "       TO_CHAR(ECM.PERFORM_DATE, 'DD-MON-YY') PERFORM_DATE,\n"
                 + " NVL(ROUND(ECM.PERFORM_DATE - (SYSDATE - 1)), 0) PERFORM_DAY,\n"
                 + "       ECM.PERFORMED_BY,                     \n"

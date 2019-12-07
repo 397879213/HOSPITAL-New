@@ -38,6 +38,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     List<CardiacSurgeryBO> listProcedure = new ArrayList();
     List<CardiacSurgeryBO> listPreMedication = new ArrayList();
 
+    private String echoId = "";
     private String cardiacId = "";
     private String performDate;
     private String surgProcedureId;
@@ -1128,6 +1129,9 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         echoInstId = objEcm.getInstituteId();
         echoPerformingId = objEcm.getPerformingPhysicianId();
         setEchocardiography(Integer.parseInt(objEcm.getEchoPerformDay()));
+        echoId = objEcm.getEchoId();
+        selectEchoValve();
+        selectEchoValveMeasurement();
     }//GEN-LAST:event_tblEchocardiographyMasterMouseReleased
 
     private void tblEchocardiographyMasterKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblEchocardiographyMasterKeyReleased
@@ -1479,7 +1483,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     }
 
     private void selectEchoValve() {
-        listEchoValve = ctlCardiacSurg.selectEchoValve(cardiacId);
+        listEchoValve = ctlCardiacSurg.selectEchoValve(echoId);
         if (listEchoValve.isEmpty()) {
             List<CardiacSurgeryBO> listEchoValve = new ArrayList<>();
             listEchoValve.add(new CardiacSurgeryBO());
@@ -1513,7 +1517,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     }
 
     private void selectEchoValveMeasurement() {
-        listEchoValveMeasurement = ctlCardiacSurg.selectEchoValveMeasurement(cardiacId);
+        listEchoValveMeasurement = ctlCardiacSurg.selectEchoValveMeasurement(echoId);
         if (listEchoValveMeasurement.isEmpty()) {
             List<CardiacSurgeryBO> listEchoValveMeasurement = new ArrayList<>();
             listEchoValveMeasurement.add(new CardiacSurgeryBO());
@@ -1549,6 +1553,8 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         if (ctlCardiacSurg.insertEchocrdiographyMaster(objEchocardiography)) {
             JOptionPane.showMessageDialog(null, "Record Save Successfully.");
             selectEchocardiographyMaster();
+            selectEchoValve();
+            selectEchoValveMeasurement();
         } else {
             JOptionPane.showMessageDialog(null, "Unable to save Information.\n"
                     + "Kindly contact information");
@@ -1570,6 +1576,8 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         setEchocardiographyMasterColumnsWidths();
         selectionModel.setSelectionInterval(0, 0);
         Constants.tablelook.setJTableEnvironment(tblEchocardiographyMaster);
+        CardiacSurgeryBO obj = listEchocardiographyMaster.get(0);
+        echoId = obj.getEchoId();
     }
 
     private void setEchocardiographyMasterColumnsWidths() {
