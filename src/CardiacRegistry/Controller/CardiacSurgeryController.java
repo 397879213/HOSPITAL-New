@@ -12,6 +12,7 @@ import CardiacRegistry.Handler.CardiacSurgeryHandler;
 import java.util.List;
 import utilities.Constants;
 import utilities.Database;
+import utilities.DefinitionTypes;
 import utilities.GenerateKeys;
 import utilities.Keys;
 
@@ -24,7 +25,7 @@ public class CardiacSurgeryController {
     GenerateKeys key = new GenerateKeys();
     CardiacSurgeryHandler hdlCardiacSurg = new CardiacSurgeryHandler();
 
-    public List<OutsidePatientRegistry> selectPateitnInformation(String patientId, 
+    public List<OutsidePatientRegistry> selectPateitnInformation(String patientId,
             String patientName, String instituteId) {
         return hdlCardiacSurg.selectPateitnInformation(patientId, patientName, instituteId);
     }
@@ -58,15 +59,7 @@ public class CardiacSurgeryController {
 
     public boolean FinalCardiacRegisteryMaster(CardiacSurgeryBO cardiac) {
         boolean ret = hdlCardiacSurg.updateCardiacRegisteryMaster(cardiac);
-//        if (ret) {
-//            String query
-//                    = " UPDATE " + Database.DCMS. + "        \n"
-//                    + " SET EXAM_DETAIL_ID  = '" + cardiac.getExamDetailId() + "'\n"
-//                    + " WHERE CARDIAC_ID = '" + cardiac.getId() + "'             \n"
-//                    + " AND EXAM_TYPE_ID = '" + cardiac.getExamId() + "'         \n";
-//
-//            ret = Constants.dao.executeUpdate(query, false);
-//        }
+
         if (ret) {
             String query
                     = " INSERT INTO " + Database.DCMS.cardiacHistoryDetail + "  \n"
@@ -158,10 +151,8 @@ public class CardiacSurgeryController {
         }
         return ret;
     }
-    
-    // Pre Medications Work
-    
 
+    // Pre Medications Work
     public boolean insertPreMedications(CardiacSurgeryBO cardiac) {
         boolean ret = hdlCardiacSurg.insertPreMedications(cardiac);
         if (ret) {
@@ -172,7 +163,7 @@ public class CardiacSurgeryController {
         }
         return ret;
     }
-    
+
     public boolean updatePreMedications(CardiacSurgeryBO cardiac) {
         boolean ret = hdlCardiacSurg.updatePreMedications(cardiac);
         if (ret) {
@@ -183,8 +174,85 @@ public class CardiacSurgeryController {
         }
         return ret;
     }
-    
+
     public List<CardiacSurgeryBO> selectPreMedications(String cardiacId) {
         return hdlCardiacSurg.selectPreMedications(cardiacId);
+    }
+
+    // Echo Cardiography
+    
+    public List<CardiacSurgeryBO> selectEchocardiographyMaster(String cardiacId) {
+        return hdlCardiacSurg.selectEchocardiographyMaster(cardiacId);
+    }
+    
+    public boolean insertEchocrdiographyMaster(CardiacSurgeryBO insert) {
+        boolean ret = hdlCardiacSurg.insertEchocrdiographyMaster(insert);
+        if (ret) {
+            String query
+                    = " INSERT INTO " + Database.DCMS.echoCardiography + "      \n"
+                    + "(SELECT " + insert.getId() + ", DEF.ID,'','', '', '' FROM\n"
+                    + Database.DCMS.definitionTypeDetail + " DEF                \n"
+                    + "  WHERE DEF.DEF_TYPE_ID = " + DefinitionTypes.echoCardiacValves + ")\n";
+
+            ret = Constants.dao.executeUpdate(query, false);
+        }
+        if (ret) {
+            String query
+                    = " INSERT INTO " + Database.DCMS.cardioEchoCardiographyDetail + "\n"
+                    + "(SELECT " + insert.getId() + ", DEF.ID,'','" + Constants.userId
+                    + "', SYSDATE, '" + Constants.terminalId + "' FROM          \n"
+                    + Database.DCMS.definitionTypeDetail + " DEF                \n"
+                    + "  WHERE DEF.DEF_TYPE_ID = " + DefinitionTypes.echoCardiacMeasurements + ")\n";
+
+            ret = Constants.dao.executeUpdate(query, false);
+        }
+        if (ret) {
+            ret = Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
+    
+    public boolean updateEchoCardiographyMaster(CardiacSurgeryBO cardiac) {
+        boolean ret = hdlCardiacSurg.updateEchoCardiographyMaster(cardiac);
+        if (ret) {
+            ret = Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
+
+    public List<CardiacSurgeryBO> selectEchoValve(String cardiacId) {
+        return hdlCardiacSurg.selectEchoValve(cardiacId);
+    }
+
+    public List<CardiacSurgeryBO> selectEchoValveMeasurement(String cardiacId) {
+        return hdlCardiacSurg.selectEchoValveMeasurement(cardiacId);
+    }
+
+    public boolean updateEchoValve(CardiacSurgeryBO cardiac) {
+        boolean ret = hdlCardiacSurg.updateEchoValve(cardiac);
+        if (ret) {
+            ret = Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
+
+    public boolean updateEchoMeasurement(CardiacSurgeryBO cardiac) {
+        boolean ret = hdlCardiacSurg.updateEchoValveMeasurement(cardiac);
+        if (ret) {
+            ret = Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
     }
 }

@@ -10,7 +10,7 @@ package CardiacRegistry.BO;
  * @author admin
  */
 public class CardiacSurgeryBO {
-    
+
     private String id = "";
     private String patientId = "";
     private String admissionNo = "";
@@ -34,15 +34,15 @@ public class CardiacSurgeryBO {
     private String crtdDate = "";
     private String crtdTerminalId = "";
     private String isFinal = "";
-    private String finalBy = "";
-    private String finalDate = "";
-    private String finalTerminalId = "";
+    private String finalBy = "''";
+    private String finalDate = "''";
+    private String finalTerminalId = "''";
     private String examId = "";
     private String examDescription = "";
     private String examDetailId = "";
     private String examDetailDescription = "";
     private String examRemarks = "";
-    
+
     private String contactPerAddress = "";
     private String contactPerName = "";
     private String contactPerContactNo = "";
@@ -58,8 +58,7 @@ public class CardiacSurgeryBO {
     private String cancelDate = "";
     private String cancelTerminalId = "";
     private String active = "";
-    
-    
+
     private String medicineId = "";
     private String medicineDesc = "";
     private String doseId = "";
@@ -67,6 +66,142 @@ public class CardiacSurgeryBO {
     private String timeTaking = "";
     private String dayTimeTaking = "";
     private String activeMedicine = "";
+
+    private String echoId = "";
+    private String columnName = "";
+    private String value = "";
+    private String valveId = "";
+    private String valveDescription = "";
+    private String valveMeasurementId = "";
+    private String valveMeasurementDescription = "";
+    private String stenosis = "";
+    private String regurgitation = "";
+    private String gradient = "";
+    private String pathology = "";
+    private String echoPerformDay = "";
+    private String echoPerformDate = "";
+    private String orderStatusId = "";
+    private String orderStatusDesc = "";
+
+    public String getEchoId() {
+        return echoId;
+    }
+
+    public void setEchoId(String echoId) {
+        this.echoId = echoId;
+    }
+
+    public String getEchoPerformDay() {
+        return echoPerformDay;
+    }
+
+    public void setEchoPerformDay(String echoPerformDay) {
+        this.echoPerformDay = echoPerformDay;
+    }
+
+    public String getOrderStatusDesc() {
+        return orderStatusDesc;
+    }
+
+    public void setOrderStatusDesc(String orderStatusDesc) {
+        this.orderStatusDesc = orderStatusDesc;
+    }
+
+    public String getOrderStatusId() {
+        return orderStatusId;
+    }
+
+    public void setOrderStatusId(String orderStatusId) {
+        this.orderStatusId = orderStatusId;
+    }
+
+    public String getEchoPerformDate() {
+        return echoPerformDate;
+    }
+
+    public void setEchoPerformDate(String echoPerformDate) {
+        this.echoPerformDate = echoPerformDate;
+    }
+
+    public String getStenosis() {
+        return stenosis;
+    }
+
+    public void setStenosis(String stenosis) {
+        this.stenosis = stenosis;
+    }
+
+    public String getRegurgitation() {
+        return regurgitation;
+    }
+
+    public void setRegurgitation(String regurgitation) {
+        this.regurgitation = regurgitation;
+    }
+
+    public String getGradient() {
+        return gradient;
+    }
+
+    public void setGradient(String gradient) {
+        this.gradient = gradient;
+    }
+
+    public String getPathology() {
+        return pathology;
+    }
+
+    public void setPathology(String pathology) {
+        this.pathology = pathology;
+    }
+
+    public String getColumnName() {
+        return columnName;
+    }
+
+    public void setColumnName(String columnName) {
+        this.columnName = columnName;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public String getValveId() {
+        return valveId;
+    }
+
+    public void setValveId(String valveId) {
+        this.valveId = valveId;
+    }
+
+    public String getValveDescription() {
+        return valveDescription;
+    }
+
+    public void setValveDescription(String valveDescription) {
+        this.valveDescription = valveDescription;
+    }
+
+    public String getValveMeasurementId() {
+        return valveMeasurementId;
+    }
+
+    public void setValveMeasurementId(String valveMeasurementId) {
+        this.valveMeasurementId = valveMeasurementId;
+    }
+
+    public String getValveMeasurementDescription() {
+        return valveMeasurementDescription;
+    }
+
+    public void setValveMeasurementDescription(String valveMeasurementDescription) {
+        this.valveMeasurementDescription = valveMeasurementDescription;
+    }
 
     public String getDayTimeTaking() {
         return dayTimeTaking;
@@ -123,7 +258,7 @@ public class CardiacSurgeryBO {
     public void setActiveMedicine(String activeMedicine) {
         this.activeMedicine = activeMedicine;
     }
-    
+
     public String getContactPerAddress() {
         return contactPerAddress;
     }
@@ -147,7 +282,7 @@ public class CardiacSurgeryBO {
     public void setContactPerContactNo(String contactPerContactNo) {
         this.contactPerContactNo = contactPerContactNo;
     }
-    
+
     public String getDayOfSurgery() {
         return dayOfSurgery;
     }
@@ -155,7 +290,7 @@ public class CardiacSurgeryBO {
     public void setDayOfSurgery(String dayOfSurgery) {
         this.dayOfSurgery = dayOfSurgery;
     }
-    
+
     public String getDayOfProcedure() {
         return dayOfProcedure;
     }
@@ -203,7 +338,7 @@ public class CardiacSurgeryBO {
     public void setActive(String active) {
         this.active = active;
     }
-    
+
     public String getProcedureType() {
         return procedureType;
     }
@@ -259,8 +394,6 @@ public class CardiacSurgeryBO {
     public void setProcedureRemarks(String procedureRemarks) {
         this.procedureRemarks = procedureRemarks;
     }
-    
-    
 
     public String getExamDescription() {
         return examDescription;
@@ -493,6 +626,5 @@ public class CardiacSurgeryBO {
     public void setFinalTerminalId(String finalTerminalId) {
         this.finalTerminalId = finalTerminalId;
     }
-    
-    
+
 }

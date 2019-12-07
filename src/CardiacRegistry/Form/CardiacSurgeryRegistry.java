@@ -990,10 +990,6 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
         saveCardiacSurgeryInformation();
-        cardiacSurgery.setIsFinal("N");
-        cardiacSurgery.setFinalBy("");
-        cardiacSurgery.setFinalDate("''");
-        cardiacSurgery.setFinalTerminalId("");
         if (ctlCardiacSurg.updateCardiacRegisteryMaster(cardiacSurgery)) {
             JOptionPane.showMessageDialog(null, "Surgery Information Edit successfully.");
             setCardiacRegistryDetail();
