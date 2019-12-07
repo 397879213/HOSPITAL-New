@@ -539,11 +539,11 @@ public class CardiacSurgeryHandler {
     // ECHO CARDIOGRAPHY
     public List<CardiacSurgeryBO> selectEchoValve(String echoId) {
 
-        String columns[] = {"-", "CARDIAC_ID", "VALVE_ID", "DESCRIPTION", "STENOSIS",
-            "REGURGITATION", "GRADIENT", "PATHOLOGY"};
+        String columns[] = {"-", "ECHO_ID", "CARDIAC_ID", "VALVE_ID", "DESCRIPTION",
+            "STENOSIS", "REGURGITATION", "GRADIENT", "PATHOLOGY"};
 
         String query
-                = "SELECT ECD.CARDIAC_ID, ECD.VALVE_ID, DTD.DESCRIPTION,    \n"
+                = "SELECT ECHO_ID, ECD.CARDIAC_ID, ECD.VALVE_ID, DTD.DESCRIPTION,\n"
                 + " NVL(ECD.STENOSIS, ' ') STENOSIS,                        \n"
                 + " NVL(ECD.REGURGITATION, ' ') REGURGITATION,              \n"
                 + "NVL(ECD.GRADIENT, ' ') GRADIENT,                         \n"
@@ -559,6 +559,7 @@ public class CardiacSurgeryHandler {
             HashMap map = (HashMap) listmap.get(i);
             CardiacSurgeryBO objData = new CardiacSurgeryBO();
 
+            objData.setEchoId(map.get("ECHO_ID").toString());
             objData.setId(map.get("CARDIAC_ID").toString());
             objData.setValveId(map.get("VALVE_ID").toString());
             objData.setValveDescription(map.get("DESCRIPTION").toString());
@@ -573,10 +574,10 @@ public class CardiacSurgeryHandler {
 
     public List<CardiacSurgeryBO> selectEchoValveMeasurement(String echoId) {
 
-        String columns[] = {"-", "CARDIAC_ID", "MEASUREMENT_ID", "DESCRIPTION", "VALUE"};
+        String columns[] = {"-", "ECHO_ID","CARDIAC_ID", "MEASUREMENT_ID", "DESCRIPTION", "VALUE"};
 
         String query
-                = "SELECT ECD.CARDIAC_ID, ECD.MEASUREMENT_ID, DTD.DESCRIPTION,\n"
+                = "SELECT ECHO_ID, ECD.CARDIAC_ID, ECD.MEASUREMENT_ID, DTD.DESCRIPTION,\n"
                 + "NVL(ECD.VALUE, ' ') VALUE FROM                           \n"
                 + Database.DCMS.cardioEchoCardiographyDetail + " ECD,       \n"
                 + Database.DCMS.definitionTypeDetail + " DTD                \n"
@@ -589,6 +590,7 @@ public class CardiacSurgeryHandler {
             HashMap map = (HashMap) listmap.get(i);
             CardiacSurgeryBO objData = new CardiacSurgeryBO();
 
+            objData.setEchoId(map.get("ECHO_ID").toString());
             objData.setId(map.get("CARDIAC_ID").toString());
             objData.setValveMeasurementId(map.get("MEASUREMENT_ID").toString());
             objData.setValveMeasurementDescription(map.get("DESCRIPTION").toString());

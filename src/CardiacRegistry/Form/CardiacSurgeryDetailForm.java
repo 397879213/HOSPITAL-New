@@ -1251,9 +1251,9 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         objEchocardiography.setEchoPerformDate(echoPerDate);
         objEchocardiography.setPerformingPhysicianId(echoPerformingId);
         objEchocardiography.setInstituteId(echoInstId);
-        if(ctlCardiacSurg.updateEchoCardiographyMaster(objCardiacSurger)){
+        if (ctlCardiacSurg.updateEchoCardiographyMaster(objCardiacSurger)) {
             selectEchocardiographyMaster();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Unable to Edit the Information");
         }
     }//GEN-LAST:event_btnEditEchoActionPerformed
@@ -1553,8 +1553,6 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         if (ctlCardiacSurg.insertEchocrdiographyMaster(objEchocardiography)) {
             JOptionPane.showMessageDialog(null, "Record Save Successfully.");
             selectEchocardiographyMaster();
-            selectEchoValve();
-            selectEchoValveMeasurement();
         } else {
             JOptionPane.showMessageDialog(null, "Unable to save Information.\n"
                     + "Kindly contact information");
@@ -1576,8 +1574,16 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         setEchocardiographyMasterColumnsWidths();
         selectionModel.setSelectionInterval(0, 0);
         Constants.tablelook.setJTableEnvironment(tblEchocardiographyMaster);
+        btnFinalEcho.setEnabled(true);
+        btnEditEcho.setEnabled(true);
         CardiacSurgeryBO obj = listEchocardiographyMaster.get(0);
+        if (obj.getOrderStatusId().equalsIgnoreCase(Status.verified)) {
+            btnFinalEcho.setEnabled(false);
+            btnEditEcho.setEnabled(false);
+        }
         echoId = obj.getEchoId();
+        selectEchoValve();
+        selectEchoValveMeasurement();
     }
 
     private void setEchocardiographyMasterColumnsWidths() {
