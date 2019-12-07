@@ -605,7 +605,7 @@ public class CardiacSurgeryHandler {
                 = " UPDATE " + Database.DCMS.echoCardiography + "   \n"
                 + " SET " + cols[Integer.parseInt(cardiac.getColumnName())]
                 + " = '" + cardiac.getValue() + "'\n"
-                + " WHERE CARDIAC_ID = " + cardiac.getId() + "      \n"
+                + " WHERE ECHO_ID = " + cardiac.getEchoId()+ "      \n"
                 + " AND VALVE_ID = '" + cardiac.getValveId() + "'   \n";
         System.err.println("upda:" + query);
         return Constants.dao.executeUpdate(query, false);
@@ -615,7 +615,7 @@ public class CardiacSurgeryHandler {
         String query
                 = " UPDATE " + Database.DCMS.cardioEchoCardiographyDetail + "\n"
                 + " SET VALUE = '" + cardiac.getValue() + "'  \n"
-                + " WHERE CARDIAC_ID = " + cardiac.getId() + "\n"
+                + " WHERE ECHO_ID = " + cardiac.getEchoId()+ "\n"
                 + " AND MEASUREMENT_ID = '" + cardiac.getValveMeasurementId() + "'\n";
 
         return Constants.dao.executeUpdate(query, false);
