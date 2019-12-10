@@ -17,7 +17,7 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
     public MedicineSearchForm() {
 
         initComponents();
-        this.setSize(Constants.xSize , Constants.ySize );
+        this.setSize(Constants.xSize - 220, Constants.ySize - 120  );
 
     }
 
@@ -107,7 +107,7 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
         jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(102, 0, 0));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel11.setText("Medicine Type :");
+        jLabel11.setText("Medicine Type : ");
 
         txtMedType.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtMedType.addActionListener(new java.awt.event.ActionListener() {
@@ -154,16 +154,16 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(3, 3, 3)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtGeneric)
-                    .addComponent(txtItem, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtItem, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                    .addComponent(txtGeneric))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtMedType)
-                    .addComponent(chkFormulary, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE))
+                    .addComponent(chkFormulary, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(5, 5, 5))
         );
         jPanel4Layout.setVerticalGroup(
@@ -222,7 +222,7 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE)
+            .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -272,7 +272,7 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addContainerGap(297, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -349,6 +349,11 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
     private void txtGenericActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGenericActionPerformed
         // TODO add your handling code here:
         lov.LOVDefinitionSelection(DefinitionTypes.generic, txtGeneric.getText().trim(), this);
+        if (Constants.lovID.equalsIgnoreCase("ID")) {
+            txtGeneric.setText("");
+            item.setGenericId("");
+            return;
+        }
         item.setGenericId(Constants.lovID);
         txtGeneric.setText(Constants.lovDescription);
         selectMedicineInfo();
@@ -404,8 +409,19 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void selectMedicineInfo() {
+        if(txtItem.getText().trim().length() == 0){
+            item.setId("");
+        }
+        if(txtMedType.getText().trim().length() == 0){
+            item.setItemTypeId("");
+        }
+        if(txtGeneric.getText().trim().length() == 0){
+            item.setGenericId("");
+        }
         listMedDetail = ctlMedSrch.searchMedicineDetail(item);
         if (listMedDetail.isEmpty()) {
+            List<Item> listMedDetail = new ArrayList();
+            listMedDetail.add(new Item());
             tblItemDetail.setModel(new ItemDetailTableModel(listMedDetail));
             return;
         }
