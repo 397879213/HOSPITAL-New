@@ -45,6 +45,24 @@ public class Item {
     private String crtdBy = "";
     private String crtdDate = "";
     private String unitPackSize = "";
+    private String value = "";
+    private String column = "";
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public String getColumn() {
+        return column;
+    }
+
+    public void setColumn(String column) {
+        this.column = column;
+    }
 
     public String getStrength() {
         return strength;

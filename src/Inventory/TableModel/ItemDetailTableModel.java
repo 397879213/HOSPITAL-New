@@ -68,8 +68,9 @@ public class ItemDetailTableModel extends AbstractTableModel {
      * editable.
      */
     public boolean isCellEditable(int row, int col) {
-        //Note that the data/cell address is constant,
-        //no matter where the cell appears onscreen.
+        if(col > 1){
+            return true;
+        }
         return false;
     }
 

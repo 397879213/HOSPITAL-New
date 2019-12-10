@@ -46,6 +46,7 @@ public class DefinitionTypes {
     public static final String cytoBiochemistry = "18";
     public static final String filmSize = "19";
     public static final String generic = "152";
+    public static final String group = "368";
 
     public static final String role = "21";
     public static final String maritalStatus = "22";

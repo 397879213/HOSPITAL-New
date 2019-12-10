@@ -3,27 +3,36 @@ package Form.Inventory;
 import Inventory.BO.Item;
 import Inventory.Controller.MedicineSearchController;
 import Inventory.TableModel.ItemDetailTableModel;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableColumn;
 import utilities.Constants;
 import utilities.Database;
 import utilities.DefinitionTypes;
 import utilities.DisplayLOV;
+import utilities.TypeDetailId;
 
 public class MedicineSearchForm extends javax.swing.JInternalFrame {
+
+    private String itemId;
 
     public MedicineSearchForm() {
 
         initComponents();
-        this.setSize(Constants.xSize - 40, Constants.ySize - 120  );
-
+        this.setSize(Constants.xSize + 50, Constants.ySize - 120);
+        btnExit.setMnemonic(KeyEvent.VK_X);
+        btnVerified.setMnemonic(KeyEvent.VK_V);
+        btnClear.setMnemonic(KeyEvent.VK_C);
+        selectMedicineInfo();
     }
 
     MedicineSearchController ctlMedSrch = new MedicineSearchController();
     private DisplayLOV lov = new DisplayLOV();
     Item item = new Item();
+    Item updateitem = new Item();
     List<Item> listMedDetail = new ArrayList();
 
     @SuppressWarnings("unchecked")
@@ -47,8 +56,8 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
         tblItemDetail = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         btnClear = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
+        btnVerified = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102)));
@@ -161,8 +170,8 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cboformulary, 0, 92, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(cboformulary, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,13 +258,18 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
         btnClear.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnClear.setText("Clear");
 
-        jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(204, 0, 0));
-        jButton2.setText("Exit");
+        btnExit.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnExit.setForeground(new java.awt.Color(204, 0, 0));
+        btnExit.setText("Exit");
 
-        jButton3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 204, 102));
-        jButton3.setText("Verfied");
+        btnVerified.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnVerified.setForeground(new java.awt.Color(0, 204, 102));
+        btnVerified.setText("Verfied");
+        btnVerified.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerifiedActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -265,9 +279,9 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
                 .addGap(382, 382, 382)
                 .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnVerified, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -276,8 +290,8 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClear)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(btnExit)
+                    .addComponent(btnVerified))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -313,9 +327,10 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
         String query
                 = " SELECT ID, DESCRIPTION  FROM               \n"
                 + Database.DCMS.item + "                       \n"
-                + " WHERE UPPER(DESCRIPTION) LIKE '%" 
+                + " WHERE UPPER(DESCRIPTION) LIKE '%"
                 + txtItem.getText().toUpperCase().trim() + "%' \n"
-                + " AND ACTIVE = 'Y'                           \n"
+                + " AND ACTIVE = 'Y'                         "
+                + " AND CATEGORY_ID = " + TypeDetailId.medicine + " \n"
                 + " ORDER BY ID                                \n";
 
         lov.LOVSelection(query, this);
@@ -365,32 +380,109 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
 
     private void tblItemDetailMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblItemDetailMouseReleased
 
+        Item item = listMedDetail.get(tblItemDetail.getSelectedRow());
+        item.setColumn(String.valueOf(tblItemDetail.getSelectedColumn()));
+        itemId = item.getId();
+        if (tblItemDetail.getSelectedColumn() == 2 || tblItemDetail.getSelectedColumn() == 3
+                || tblItemDetail.getSelectedColumn() == 6) {
+            if (evt.getClickCount() % 2 == 0) {
+                if (tblItemDetail.getSelectedColumn() == 2) {
+                    lov.LOVDefinitionSelection(DefinitionTypes.itemType, txtGeneric.getText().trim(), this);
+                    if (Constants.lovID.equalsIgnoreCase("ID")) {
+                        txtGeneric.setText("");
+                        item.setGenericId("");
+                        return;
+                    }
+                }
+                if (tblItemDetail.getSelectedColumn() == 3) { //GENERIC
+                    lov.LOVDefinitionSelection(DefinitionTypes.generic, txtGeneric.getText().trim(), this);
+                    if (Constants.lovID.equalsIgnoreCase("ID")) {
+                        txtGeneric.setText("");
+                        item.setGenericId("");
+                        return;
+                    }
+                }
+                if (tblItemDetail.getSelectedColumn() == 6) {
+                    lov.LOVDefinitionSelection(DefinitionTypes.group, txtGeneric.getText().trim(), this);
+                    if (Constants.lovID.equalsIgnoreCase("ID")) {
+                        txtGeneric.setText("");
+                        item.setGenericId("");
+                        return;
+                    }
+                }
+                item.setValue(Constants.lovID);
+                if (ctlMedSrch.updateMedicineInfo(item)) {
+                    selectMedicineInfo();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Unable to update "
+                            + item.getDescription() + " information.");
+                }
+            }
+        }
     }//GEN-LAST:event_tblItemDetailMouseReleased
 
     private void tblItemDetailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblItemDetailKeyReleased
         // TODO add your handling code here:
+        Item item = listMedDetail.get(tblItemDetail.getSelectedRow());
+        item.setColumn(String.valueOf(tblItemDetail.getSelectedColumn()));
+        itemId = item.getId();
+        if (tblItemDetail.getSelectedColumn() == 2 || tblItemDetail.getSelectedColumn() == 3
+                || tblItemDetail.getSelectedColumn() == 6) {
+            if (tblItemDetail.getSelectedColumn() == 4) {
+                item.setValue(tblItemDetail.getValueAt(tblItemDetail.getSelectedRow(), 4).toString());
+            }
+            if (tblItemDetail.getSelectedColumn() == 5) {
+                item.setValue(tblItemDetail.getValueAt(tblItemDetail.getSelectedRow(), 5).toString());
+            }
+
+            if (ctlMedSrch.updateMedicineInfo(item)) {
+                selectMedicineInfo();
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to update "
+                        + item.getDescription() + " information.");
+            }
+        }
     }//GEN-LAST:event_tblItemDetailKeyReleased
 
     private void cboformularyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboformularyActionPerformed
         // TODO add your handling code here:
-        if(cboformulary.getSelectedIndex() == 0){
+        if (cboformulary.getSelectedIndex() == 0) {
             item.setIsFormulary("");
         }
-        if(cboformulary.getSelectedIndex() == 1){
+        if (cboformulary.getSelectedIndex() == 1) {
             item.setIsFormulary("Y");
         }
-        if(cboformulary.getSelectedIndex() == 2){
+        if (cboformulary.getSelectedIndex() == 2) {
             item.setIsFormulary("N");
         }
         selectMedicineInfo();
     }//GEN-LAST:event_cboformularyActionPerformed
 
+    private void btnVerifiedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerifiedActionPerformed
+        // TODO add your handling code here:
+        if(itemId.length() == 0){
+            JOptionPane.showMessageDialog(null, "Kindly select Item to Verify");
+            return;
+        }
+        int confirmation = JOptionPane.showConfirmDialog(null, "You Are Going "
+                + "To Verified Medicine Information.\nDo you want to Verified?");
+        if (confirmation != 0) {
+            return;
+        }
+        if(ctlMedSrch.verifyItemInfo(itemId)){
+            JOptionPane.showMessageDialog(null, "Item Info. Verified successfully.");
+        }else{
+            JOptionPane.showMessageDialog(null, "Unable to Verify the information.\n"
+                    + "Kindly Contact Administrator.");
+        }
+    }//GEN-LAST:event_btnVerifiedActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnExit;
+    private javax.swing.JButton btnVerified;
     private javax.swing.JComboBox<String> cboformulary;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -409,13 +501,13 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void selectMedicineInfo() {
-        if(txtItem.getText().trim().length() == 0){
+        if (txtItem.getText().trim().length() == 0) {
             item.setId("");
         }
-        if(txtMedType.getText().trim().length() == 0){
+        if (txtMedType.getText().trim().length() == 0) {
             item.setItemTypeId("");
         }
-        if(txtGeneric.getText().trim().length() == 0){
+        if (txtGeneric.getText().trim().length() == 0) {
             item.setGenericId("");
         }
         listMedDetail = ctlMedSrch.searchMedicineDetail(item);
@@ -440,9 +532,9 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
             if (i == 0) {
                 column.setPreferredWidth(30);
             } else if (i == 1) {
-                column.setPreferredWidth(180);
+                column.setPreferredWidth(220);
             } else if (i == 2) {
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(60);
             } else if (i == 3) {
                 column.setPreferredWidth(120);
             } else if (i == 4) {
@@ -450,8 +542,8 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
             } else if (i == 5) {
                 column.setPreferredWidth(50);
             } else if (i == 6) {
-                column.setPreferredWidth(120);
-            } 
+                column.setPreferredWidth(140);
+            }
         }
     }
 
