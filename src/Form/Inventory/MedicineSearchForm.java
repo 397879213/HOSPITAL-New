@@ -17,7 +17,7 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
     public MedicineSearchForm() {
 
         initComponents();
-        this.setSize(Constants.xSize + 80, Constants.ySize - Constants.yExtension + 8);
+        this.setSize(Constants.xSize , Constants.ySize );
 
     }
 
