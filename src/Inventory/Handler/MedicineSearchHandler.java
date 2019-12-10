@@ -18,7 +18,7 @@ import utilities.Database;
  */
 public class MedicineSearchHandler {
 
-    public List<Item> searchCondemMaster(Item objSrch) {
+    public List<Item> searchMedicineDetail(Item objSrch) {
 
         String[] selectColumns = {"-", "ID", "ITEM_NAME", "ITEM_TYPE_ID",
             "ITEM_TYPE_DESC", "GENERIC_ID", "GENERIC_DESCRIPTION", 
