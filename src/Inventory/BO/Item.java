@@ -40,9 +40,27 @@ public class Item {
     private String manufactureDescription = "";
     private String Mnemonics = "";
     private String specialityDescription = "";//@Defualt is Not DEFINE
+    private String strength = "";//@Defualt is Not DEFINE
+    private String formulary = "";//@Defualt is Not DEFINE
     private String crtdBy = "";
     private String crtdDate = "";
     private String unitPackSize = "";
+
+    public String getStrength() {
+        return strength;
+    }
+
+    public void setStrength(String strength) {
+        this.strength = strength;
+    }
+
+    public String getFormulary() {
+        return formulary;
+    }
+
+    public void setFormulary(String formulary) {
+        this.formulary = formulary;
+    }
 
     public String getIsFormulary() {
         return isFormulary;

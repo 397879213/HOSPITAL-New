@@ -11,8 +11,10 @@ import CardiacRegistry.BO.OutsidePatientRegistry;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import org.apache.commons.math.stat.StatUtils;
 import utilities.Constants;
 import utilities.Database;
+import utilities.Status;
 
 /**
  *
@@ -574,7 +576,7 @@ public class CardiacSurgeryHandler {
 
     public List<CardiacSurgeryBO> selectEchoValveMeasurement(String echoId) {
 
-        String columns[] = {"-", "ECHO_ID","CARDIAC_ID", "MEASUREMENT_ID", "DESCRIPTION", "VALUE"};
+        String columns[] = {"-", "ECHO_ID", "CARDIAC_ID", "MEASUREMENT_ID", "DESCRIPTION", "VALUE"};
 
         String query
                 = "SELECT ECHO_ID, ECD.CARDIAC_ID, ECD.MEASUREMENT_ID, DTD.DESCRIPTION,\n"
@@ -607,7 +609,7 @@ public class CardiacSurgeryHandler {
                 = " UPDATE " + Database.DCMS.echoCardiography + "   \n"
                 + " SET " + cols[Integer.parseInt(cardiac.getColumnName())]
                 + " = '" + cardiac.getValue() + "'\n"
-                + " WHERE ECHO_ID = " + cardiac.getEchoId()+ "      \n"
+                + " WHERE ECHO_ID = " + cardiac.getEchoId() + "      \n"
                 + " AND VALVE_ID = '" + cardiac.getValveId() + "'   \n";
         System.err.println("upda:" + query);
         return Constants.dao.executeUpdate(query, false);
@@ -617,7 +619,7 @@ public class CardiacSurgeryHandler {
         String query
                 = " UPDATE " + Database.DCMS.cardioEchoCardiographyDetail + "\n"
                 + " SET VALUE = '" + cardiac.getValue() + "'  \n"
-                + " WHERE ECHO_ID = " + cardiac.getEchoId()+ "\n"
+                + " WHERE ECHO_ID = " + cardiac.getEchoId() + "\n"
                 + " AND MEASUREMENT_ID = '" + cardiac.getValveMeasurementId() + "'\n";
 
         return Constants.dao.executeUpdate(query, false);
@@ -632,7 +634,7 @@ public class CardiacSurgeryHandler {
         List<HashMap> list = Constants.dao.selectDatainList(query, columns);
         return list.get(0).get("ID").toString();
     }
-    
+
     public boolean insertEchocrdiographyMaster(CardiacSurgeryBO insert) {
 
         String[] columns = {Database.DCMS.echoCardiographyMaster, "ID", "CARDIAC_ID",
@@ -640,7 +642,7 @@ public class CardiacSurgeryHandler {
             "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
 
         HashMap map = new HashMap();
-        map.put("ID", "'" + insert.getEchoId()+ "'");
+        map.put("ID", "'" + insert.getEchoId() + "'");
         map.put("CARDIAC_ID", "'" + insert.getId() + "'");
         map.put("PERFORM_DATE", "'" + insert.getEchoPerformDate() + "'");
         map.put("PERFORMED_BY", "'" + insert.getPerformingPhysicianId() + "'");
@@ -720,6 +722,19 @@ public class CardiacSurgeryHandler {
                 + " PERFORMED_BY = '" + cardiac.getPerformingPhysicianId() + "',\n"
                 + " ORDER_STATUS_ID = '" + cardiac.getOrderStatusId() + "',\n"
                 + " INSTITUTE_ID = '" + cardiac.getInstituteId() + "' \n"
+                + " WHERE CARDIAC_ID = " + cardiac.getId() + "        \n"
+                + " AND ID = " + cardiac.getEchoId() + "              \n";
+
+        return Constants.dao.executeUpdate(query, false);
+    }
+
+    public boolean finalEchoCardiography(CardiacSurgeryBO cardiac) {
+        String query
+                = " UPDATE " + Database.DCMS.echoCardiographyMaster + "\n"
+                + " SET ORDER_STATUS_ID = '" + Status.verified + "',\n"
+                + " FINAL_BY = '" + Constants.userId + "',\n"
+                + " FINAL_DATE = SYSDATE,                               \n"
+                + " FINAL_TERMINAL_ID = '" + Constants.terminalId + "' \n"
                 + " WHERE CARDIAC_ID = " + cardiac.getId() + "        \n"
                 + " AND ID = " + cardiac.getEchoId() + "              \n";
 

@@ -1128,6 +1128,12 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         echoPerformingId = objEcm.getPerformingPhysicianId();
         setEchocardiography(Integer.parseInt(objEcm.getEchoPerformDay()));
         echoId = objEcm.getEchoId();
+        btnFinalEcho.setEnabled(true);
+        btnEditEcho.setEnabled(true);
+        if (objEcm.getOrderStatusId().equalsIgnoreCase(Status.verified)) {
+            btnFinalEcho.setEnabled(false);
+            btnEditEcho.setEnabled(false);
+        }
         selectEchoValve();
         selectEchoValveMeasurement();
     }//GEN-LAST:event_tblEchocardiographyMasterMouseReleased
@@ -1238,10 +1244,19 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     private void btnFinalEchoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalEchoActionPerformed
         // TODO add your handling code here:
-        objEchocardiography.setFinalBy(Constants.userId);
-        objEchocardiography.setFinalDate(Constants.today);
-        objEchocardiography.setFinalTerminalId(Constants.terminalId);
-        saveEchocardiographyMaster(Status.verified);
+        int confirmation = JOptionPane.showConfirmDialog(null, "You Are Going "
+                + "To Final.\nDo you want to Final?");
+        if (confirmation != 0) {
+            return;
+        }
+        objCardiacSurger.setId(cardiacId);
+        objCardiacSurger.setEchoId(echoId);
+        if(ctlCardiacSurg.finalEchoCardiography(objCardiacSurger)){
+            selectEchocardiographyMaster();
+            JOptionPane.showMessageDialog(null, "Record Final Successfully");
+        }else{
+            JOptionPane.showMessageDialog(null, "Unable to Final. Contact Support person.");
+        }
     }//GEN-LAST:event_btnFinalEchoActionPerformed
 
     private void btnEditEchoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditEchoActionPerformed

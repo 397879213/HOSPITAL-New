@@ -258,4 +258,15 @@ public class CardiacSurgeryController {
         }
         return ret;
     }
+    
+    public boolean finalEchoCardiography(CardiacSurgeryBO cardiac) {
+        boolean ret = hdlCardiacSurg.finalEchoCardiography(cardiac);
+        if (ret) {
+            ret = Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
 }
