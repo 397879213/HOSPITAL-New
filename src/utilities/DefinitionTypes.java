@@ -184,7 +184,7 @@ public class DefinitionTypes {
     public static final String storeType = "119";
     public static final String purchaseType = "120";
 
-    // public static String itemType = "151";
+     public static String itemType = "151";
     //for Inventory
     //define the categories of the item default is the medicine
     public static final String itemMedicine = "4450";

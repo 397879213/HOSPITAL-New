@@ -2,11 +2,14 @@ package Form.Inventory;
 
 import Inventory.BO.Item;
 import Inventory.Controller.MedicineSearchController;
+import Inventory.TableModel.ItemDetailTableModel;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.TableColumn;
 import utilities.Constants;
 import utilities.Database;
+import utilities.DefinitionTypes;
 import utilities.DisplayLOV;
 
 public class MedicineSearchForm extends javax.swing.JInternalFrame {
@@ -15,13 +18,14 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
 
         initComponents();
         this.setSize(Constants.xSize + 80, Constants.ySize - Constants.yExtension + 8);
-        
+
     }
 
     MedicineSearchController ctlMedSrch = new MedicineSearchController();
     private DisplayLOV lov = new DisplayLOV();
     Item item = new Item();
     List<Item> listMedDetail = new ArrayList();
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -310,24 +314,28 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
     private void txtItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtItemActionPerformed
         // TODO add your handling code here:
         String query
-                = " SELECT ID,DESCRIPTION                                    \n"
-                +"FROM                                                       \n" 
-                +Database.DCMS.item+ "                                       \n"
-                +"WHERE UPPER(DESCRIPTION) LIKE '%"+ txtItems.getText().toUpperCase().trim() +"%' \n"
-                +"AND ACTIVE = 'Y'                                           \n"
-                +" ORDER BY ID                                               \n";
-                 
+                = " SELECT ID,DESCRIPTION                      \n"
+                + " FROM                                       \n"
+                + Database.DCMS.item + "                       \n"
+                + " WHERE UPPER(DESCRIPTION) LIKE '%" 
+                + txtItem.getText().toUpperCase().trim() + "%' \n"
+                + " AND ACTIVE = 'Y'                           \n"
+                + " ORDER BY ID                                \n";
+
         lov.LOVSelection(query, this);
         if (Constants.lovID.equalsIgnoreCase("ID")) {
             return;
         }
         item.setId(Constants.lovID);
-        txtItems.setText(Constants.lovDescription);
+        txtItem.setText(Constants.lovDescription);
         selectMedicineInfo();
     }//GEN-LAST:event_txtItemActionPerformed
 
     private void txtMedTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMedTypeActionPerformed
         // TODO add your handling code here:
+        lov.LOVDefinitionSelection(DefinitionTypes.itemType, txtMedType.getText().trim(), this);
+        item.setItemTypeId(Constants.lovID);
+        txtMedType.setText(Constants.lovDescription);
     }//GEN-LAST:event_txtMedTypeActionPerformed
 
     private void txtGenericActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGenericActionPerformed
@@ -376,10 +384,10 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
     private void selectMedicineInfo() {
         listMedDetail = ctlMedSrch.searchMedicineDetail(item);
         if (listMedDetail.isEmpty()) {
-              tblItemDetail.setModel(new StoreStatusTableModel(listMedDetail));
-              return;
-        } 
-        tblItemDetail.setModel(new StoreStatusTableModel(listMedDetail));
+            tblItemDetail.setModel(new ItemDetailTableModel(listMedDetail));
+            return;
+        }
+        tblItemDetail.setModel(new ItemDetailTableModel(listMedDetail));
         ListSelectionModel selectionMod = tblItemDetail.getSelectionModel();
         tblItemDetail.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         setMedicineInfoColumnsWidths();
@@ -389,22 +397,24 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
 
     private void setMedicineInfoColumnsWidths() {
         TableColumn column = null;
-        for (int i = 0; i < tblStoreInfo.getColumnCount(); i++) {
-            column = tblStoreInfo.getColumnModel().getColumn(i);
+        for (int i = 0; i < tblItemDetail.getColumnCount(); i++) {
+            column = tblItemDetail.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(0);
             } else if (i == 1) {
                 column.setPreferredWidth(30);
             } else if (i == 2) {
-                column.setPreferredWidth(170);
+                column.setPreferredWidth(120);
             } else if (i == 3) {
-                column.setPreferredWidth(100);
+                column.setPreferredWidth(60);
             } else if (i == 4) {
-                column.setPreferredWidth(20);
+                column.setPreferredWidth(50);
             } else if (i == 5) {
                 column.setPreferredWidth(30);
             } else if (i == 6) {
-                column.setPreferredWidth(8);
+                column.setPreferredWidth(15);
+            } else if (i == 7) {
+                column.setPreferredWidth(60);
             }
         }
     }
