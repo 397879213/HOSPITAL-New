@@ -324,6 +324,8 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
 
         lov.LOVSelection(query, this);
         if (Constants.lovID.equalsIgnoreCase("ID")) {
+            txtItem.setText("");
+            item.setId("");
             return;
         }
         item.setId(Constants.lovID);
@@ -334,6 +336,11 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
     private void txtMedTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMedTypeActionPerformed
         // TODO add your handling code here:
         lov.LOVDefinitionSelection(DefinitionTypes.itemType, txtMedType.getText().trim(), this);
+        if (Constants.lovID.equalsIgnoreCase("ID")) {
+            txtMedType.setText("");
+            item.setItemTypeId("");
+            return;
+        }
         item.setItemTypeId(Constants.lovID);
         txtMedType.setText(Constants.lovDescription);
         selectMedicineInfo();
