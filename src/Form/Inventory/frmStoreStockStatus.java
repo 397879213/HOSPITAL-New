@@ -1,9 +1,5 @@
 package Form.Inventory;
 
-
-
-
-
 import BO.Inventory.StoreStockStatusBO;
 import Controller.Inventory.StoreStockStatusController;
 import TableModel.Inventory.StoreStatusTableModel;
@@ -24,24 +20,23 @@ import utilities.DisplayLOV;
 import utilities.GUIUtils;
 
 public class frmStoreStockStatus extends javax.swing.JInternalFrame {
-    
+
     private DisplayLOV lov = new DisplayLOV();
-      StoreStockStatusController itemClt = new StoreStockStatusController();
-      StoreStockStatusBO itemBo = new StoreStockStatusBO();
-    
-   List<StoreStockStatusBO> listFS = new ArrayList<>();
-    
-   
-   
-   private String itemId = "";
+    StoreStockStatusController itemClt = new StoreStockStatusController();
+    StoreStockStatusBO itemBo = new StoreStockStatusBO();
+
+    List<StoreStockStatusBO> listFS = new ArrayList<>();
+
+    private String itemId = "";
+
     ;
 
      public frmStoreStockStatus() {
         initComponents();
-       
+
         btnExit.setMnemonic(KeyEvent.VK_X);
         btnClear.setMnemonic(KeyEvent.VK_C);
- }
+    }
 
     @SuppressWarnings("unchecked")
 
@@ -261,12 +256,12 @@ public class frmStoreStockStatus extends javax.swing.JInternalFrame {
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
 
-        this.dispose();    
+        this.dispose();
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-       clearForm();
-      
+        clearForm();
+
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void tblStoreInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblStoreInfoMouseClicked
@@ -278,8 +273,8 @@ public class frmStoreStockStatus extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblStoreInfoMousePressed
 
     private void tblStoreInfoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblStoreInfoMouseReleased
-       
-     
+
+
     }//GEN-LAST:event_tblStoreInfoMouseReleased
 
     private void tblStoreInfoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblStoreInfoKeyReleased
@@ -287,14 +282,14 @@ public class frmStoreStockStatus extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblStoreInfoKeyReleased
 
     private void txtItemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtItemsActionPerformed
-           String query
+        String query
                 = " SELECT ID,DESCRIPTION                                    \n"
-                +"FROM                                                       \n" 
-                +Database.DCMS.item+ "                                       \n"
-                +"WHERE UPPER(DESCRIPTION) LIKE '%"+ txtItems.getText().toUpperCase().trim() +"%' \n"
-                +"AND ACTIVE = 'Y'                                           \n"
-                +" ORDER BY ID                                               \n";
-                 
+                + "FROM                                                       \n"
+                + Database.DCMS.item + "                                       \n"
+                + "WHERE UPPER(DESCRIPTION) LIKE '%" + txtItems.getText().toUpperCase().trim() + "%' \n"
+                + "AND ACTIVE = 'Y'                                           \n"
+                + " ORDER BY ID                                               \n";
+
         lov.LOVSelection(query, this);
         if (Constants.lovID.equalsIgnoreCase("ID")) {
             return;
@@ -302,8 +297,8 @@ public class frmStoreStockStatus extends javax.swing.JInternalFrame {
         itemId = Constants.lovID;
         txtItems.setText(Constants.lovDescription);
         selectUserInfo(itemId);
-        
-            
+
+
     }//GEN-LAST:event_txtItemsActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -320,19 +315,18 @@ public class frmStoreStockStatus extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtItems;
     // End of variables declaration//GEN-END:variables
 
-    
     private void selectUserInfo(String itemId) {
         listFS = itemClt.selectItemsSearch(itemId);
-        
+
         if (!listFS.isEmpty()) {
             itemBo = listFS.get(0);
         }
 
         if (listFS.isEmpty()) {
             listFS.clear();
-              tblStoreInfo.setModel(new StoreStatusTableModel(listFS));
-              JOptionPane.showMessageDialog(null, " Selected Medicine not Attached to Any Store ");
-              
+            tblStoreInfo.setModel(new StoreStatusTableModel(listFS));
+            JOptionPane.showMessageDialog(null, " Selected Medicine not Attached to Any Store ");
+
         } else {
             tblStoreInfo.setModel(new StoreStatusTableModel(listFS));
         }
@@ -341,20 +335,19 @@ public class frmStoreStockStatus extends javax.swing.JInternalFrame {
         setColumnsWidthsUserInfo();
         selectionMod.setSelectionInterval(0, 0);
         Constants.tablelook.setJTableEnvironment(tblStoreInfo);
-        
+
     }
-   
-   
-           public void setColumnsWidthsUserInfo() {
+
+    public void setColumnsWidthsUserInfo() {
 
         TableColumn column = null;
         for (int i = 0; i < tblStoreInfo.getColumnCount(); i++) {
             column = tblStoreInfo.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(0);
-            }else if (i == 1) {
+            } else if (i == 1) {
                 column.setPreferredWidth(30);
-            }else if (i == 2) {
+            } else if (i == 2) {
                 column.setPreferredWidth(170);
             } else if (i == 3) {
                 column.setPreferredWidth(100);
@@ -364,17 +357,18 @@ public class frmStoreStockStatus extends javax.swing.JInternalFrame {
                 column.setPreferredWidth(30);
             } else if (i == 6) {
                 column.setPreferredWidth(8);
+            }
         }
-    }}
-       
+    }
+
     private void clearForm() {
-        
+
         Vector<JComponent> comp = new Vector<JComponent>();
         comp.add(txtItems);
-       
+
         GUIUtils.setClear(comp);
-        
+
         listFS.clear();
         tblStoreInfo.setModel(new StoreStatusTableModel(listFS));
-   }
+    }
 }

@@ -1,9 +1,13 @@
 package Form.Inventory;
 
 import Inventory.BO.Item;
+import Inventory.Controller.MedicineSearchController;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.table.TableColumn;
 import utilities.Constants;
+import utilities.Database;
+import utilities.DisplayLOV;
 
 public class MedicineSearchForm extends javax.swing.JInternalFrame {
 
@@ -11,9 +15,11 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
 
         initComponents();
         this.setSize(Constants.xSize + 80, Constants.ySize - Constants.yExtension + 8);
-
+        
     }
 
+    MedicineSearchController ctlMedSrch = new MedicineSearchController();
+    private DisplayLOV lov = new DisplayLOV();
     Item item = new Item();
     List<Item> listMedDetail = new ArrayList();
     @SuppressWarnings("unchecked")
@@ -25,14 +31,16 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        txtMemberId = new javax.swing.JTextField();
+        txtItem = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        txtMemberId1 = new javax.swing.JTextField();
+        txtMedType = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        txtMemberId2 = new javax.swing.JTextField();
+        txtGeneric = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        chkFormulary = new javax.swing.JCheckBox();
         jPanel8 = new javax.swing.JPanel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        tblItemDetail = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         btnClear = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -85,10 +93,10 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Medicine Name :");
 
-        txtMemberId.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtMemberId.addActionListener(new java.awt.event.ActionListener() {
+        txtItem.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMemberIdActionPerformed(evt);
+                txtItemActionPerformed(evt);
             }
         });
 
@@ -97,10 +105,10 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel11.setText("Medicine Type :");
 
-        txtMemberId1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtMemberId1.addActionListener(new java.awt.event.ActionListener() {
+        txtMedType.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtMedType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMemberId1ActionPerformed(evt);
+                txtMedTypeActionPerformed(evt);
             }
         });
 
@@ -109,22 +117,22 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel12.setText("Generic :");
 
-        txtMemberId2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtMemberId2.addActionListener(new java.awt.event.ActionListener() {
+        txtGeneric.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtGeneric.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMemberId2ActionPerformed(evt);
+                txtGenericActionPerformed(evt);
             }
         });
 
         jLabel13.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(102, 0, 0));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel13.setText("Formualry : ");
+        jLabel13.setText("Formulary : ");
 
-        jCheckBox1.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
-        jCheckBox1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jCheckBox1.setForeground(new java.awt.Color(102, 0, 0));
-        jCheckBox1.setText("Formualry");
+        chkFormulary.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
+        chkFormulary.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        chkFormulary.setForeground(new java.awt.Color(102, 0, 0));
+        chkFormulary.setText("Formulary");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -137,16 +145,16 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(3, 3, 3)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtMemberId2)
-                    .addComponent(txtMemberId, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtGeneric)
+                    .addComponent(txtItem, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtMemberId1)
-                    .addComponent(jCheckBox1, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE))
+                    .addComponent(txtMedType)
+                    .addComponent(chkFormulary, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE))
                 .addGap(5, 5, 5))
         );
         jPanel4Layout.setVerticalGroup(
@@ -154,15 +162,15 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMemberId, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtItem, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMemberId1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMedType, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMemberId2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtGeneric, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox1))
+                    .addComponent(chkFormulary))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -170,15 +178,42 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Item Info", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel8.setForeground(new java.awt.Color(102, 0, 0));
 
+        tblItemDetail.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tblItemDetail.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+                {null,null, null, null}
+            },
+            new String [] {
+                "Sr No","Item ID","Item Name","Store Name","Quantity","Price","Status"}
+        ));
+        tblItemDetail.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblItemDetailMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblItemDetailMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tblItemDetailMouseReleased(evt);
+            }
+        });
+        tblItemDetail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblItemDetailKeyReleased(evt);
+            }
+        });
+        jScrollPane9.setViewportView(tblItemDetail);
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane9)
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 452, Short.MAX_VALUE)
+            .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -272,24 +307,55 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtMemberIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberIdActionPerformed
+    private void txtItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtItemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMemberIdActionPerformed
+        String query
+                = " SELECT ID,DESCRIPTION                                    \n"
+                +"FROM                                                       \n" 
+                +Database.DCMS.item+ "                                       \n"
+                +"WHERE UPPER(DESCRIPTION) LIKE '%"+ txtItems.getText().toUpperCase().trim() +"%' \n"
+                +"AND ACTIVE = 'Y'                                           \n"
+                +" ORDER BY ID                                               \n";
+                 
+        lov.LOVSelection(query, this);
+        if (Constants.lovID.equalsIgnoreCase("ID")) {
+            return;
+        }
+        item.setId(Constants.lovID);
+        txtItems.setText(Constants.lovDescription);
+        selectMedicineInfo();
+    }//GEN-LAST:event_txtItemActionPerformed
 
-    private void txtMemberId1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId1ActionPerformed
+    private void txtMedTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMedTypeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMemberId1ActionPerformed
+    }//GEN-LAST:event_txtMedTypeActionPerformed
 
-    private void txtMemberId2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId2ActionPerformed
+    private void txtGenericActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGenericActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMemberId2ActionPerformed
+    }//GEN-LAST:event_txtGenericActionPerformed
+
+    private void tblItemDetailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblItemDetailMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblItemDetailMouseClicked
+
+    private void tblItemDetailMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblItemDetailMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblItemDetailMousePressed
+
+    private void tblItemDetailMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblItemDetailMouseReleased
+
+    }//GEN-LAST:event_tblItemDetailMouseReleased
+
+    private void tblItemDetailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblItemDetailKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblItemDetailKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
+    private javax.swing.JCheckBox chkFormulary;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -298,11 +364,49 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JLabel lblPacsLink;
     private javax.swing.JPanel pnlPL;
-    private javax.swing.JTextField txtMemberId;
-    private javax.swing.JTextField txtMemberId1;
-    private javax.swing.JTextField txtMemberId2;
+    private javax.swing.JTable tblItemDetail;
+    private javax.swing.JTextField txtGeneric;
+    private javax.swing.JTextField txtItem;
+    private javax.swing.JTextField txtMedType;
     // End of variables declaration//GEN-END:variables
+
+    private void selectMedicineInfo() {
+        listMedDetail = ctlMedSrch.searchMedicineDetail(item);
+        if (listMedDetail.isEmpty()) {
+              tblItemDetail.setModel(new StoreStatusTableModel(listMedDetail));
+              return;
+        } 
+        tblItemDetail.setModel(new StoreStatusTableModel(listMedDetail));
+        ListSelectionModel selectionMod = tblItemDetail.getSelectionModel();
+        tblItemDetail.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        setMedicineInfoColumnsWidths();
+        selectionMod.setSelectionInterval(0, 0);
+        Constants.tablelook.setJTableEnvironment(tblItemDetail);
+    }
+
+    private void setMedicineInfoColumnsWidths() {
+        TableColumn column = null;
+        for (int i = 0; i < tblStoreInfo.getColumnCount(); i++) {
+            column = tblStoreInfo.getColumnModel().getColumn(i);
+            if (i == 0) {
+                column.setPreferredWidth(0);
+            } else if (i == 1) {
+                column.setPreferredWidth(30);
+            } else if (i == 2) {
+                column.setPreferredWidth(170);
+            } else if (i == 3) {
+                column.setPreferredWidth(100);
+            } else if (i == 4) {
+                column.setPreferredWidth(20);
+            } else if (i == 5) {
+                column.setPreferredWidth(30);
+            } else if (i == 6) {
+                column.setPreferredWidth(8);
+            }
+        }
+    }
 
 }
