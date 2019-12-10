@@ -16,7 +16,7 @@ import javax.swing.table.AbstractTableModel;
 public class ItemDetailTableModel extends AbstractTableModel {
 
     private final String[] columnNames = 
-                {"Sr.", "Item Id", "Item Name",  "Item Type", "Generic", "Strength",
+                {"Item Id", "Item Name",  "Item Type", "Generic", "Strength",
                 "Formulary", "Group"};
 
     private Object[][] data;
@@ -25,14 +25,14 @@ public class ItemDetailTableModel extends AbstractTableModel {
         data = new Object[li.size()][columnNames.length];
         for (int i = 0; i < li.size(); i++) {
             Item item = li.get(i);
-            data[i][0] = (i+1);
-            data[i][1] = item.getId();
-            data[i][2] = item.getDescription();
-            data[i][3] = item.getItemTypeDescription();
-            data[i][4] = item.getGenericDescription();
-            data[i][5] = item.getStrength();
-            data[i][6] = item.getFormulary();
-            data[i][7] = item.getGroupDescription();
+//            data[i][0] = (i+1);
+            data[i][0] = item.getId();
+            data[i][1] = item.getDescription();
+            data[i][2] = item.getItemTypeDescription();
+            data[i][3] = item.getGenericDescription();
+            data[i][4] = item.getStrength();
+            data[i][5] = item.getFormulary();
+            data[i][6] = item.getGroupDescription();
             
         }
     }

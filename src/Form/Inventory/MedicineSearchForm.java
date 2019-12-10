@@ -17,7 +17,7 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
     public MedicineSearchForm() {
 
         initComponents();
-        this.setSize(Constants.xSize - 220, Constants.ySize - 120  );
+        this.setSize(Constants.xSize - 40, Constants.ySize - 120  );
 
     }
 
@@ -40,8 +40,8 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
         txtMedType = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         txtGeneric = new javax.swing.JTextField();
+        cboformulary = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
-        chkFormulary = new javax.swing.JCheckBox();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane9 = new javax.swing.JScrollPane();
         tblItemDetail = new javax.swing.JTable();
@@ -95,7 +95,7 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
         jLabel10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(102, 0, 0));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel10.setText("Medicine Name :");
+        jLabel10.setText("Medicine : ");
 
         txtItem.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtItem.addActionListener(new java.awt.event.ActionListener() {
@@ -107,7 +107,7 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
         jLabel11.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(102, 0, 0));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel11.setText("Medicine Type : ");
+        jLabel11.setText("Type : ");
 
         txtMedType.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtMedType.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +119,7 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
         jLabel12.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(102, 0, 0));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel12.setText("Generic :");
+        jLabel12.setText("Generic : ");
 
         txtGeneric.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtGeneric.addActionListener(new java.awt.event.ActionListener() {
@@ -128,20 +128,18 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
             }
         });
 
+        cboformulary.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        cboformulary.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All", "Y", "N"}));
+        cboformulary.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboformularyActionPerformed(evt);
+            }
+        });
+
         jLabel13.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(102, 0, 0));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel13.setText("Formulary : ");
-
-        chkFormulary.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
-        chkFormulary.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        chkFormulary.setForeground(new java.awt.Color(102, 0, 0));
-        chkFormulary.setText("Formulary");
-        chkFormulary.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkFormularyActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -149,22 +147,22 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(3, 3, 3)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtItem, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
-                    .addComponent(txtGeneric))
+                .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(txtItem, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtMedType)
-                    .addComponent(chkFormulary, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(5, 5, 5))
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtMedType, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtGeneric, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cboformulary, 0, 92, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,14 +171,12 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtItem, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMedType, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtGeneric, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMedType, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chkFormulary))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtGeneric, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboformulary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5))
         );
 
         jPanel8.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -232,10 +228,10 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,20 +255,20 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
 
         jButton3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButton3.setForeground(new java.awt.Color(0, 204, 102));
-        jButton3.setText("Save");
+        jButton3.setText("Verfied");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(200, 200, 200)
+                .addGap(382, 382, 382)
                 .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGap(18, 18, 18)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(297, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -375,20 +371,24 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tblItemDetailKeyReleased
 
-    private void chkFormularyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkFormularyActionPerformed
+    private void cboformularyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboformularyActionPerformed
         // TODO add your handling code here:
-        if(chkFormulary.isSelected()){
+        if(cboformulary.getSelectedIndex() == 0){
+            item.setIsFormulary("");
+        }
+        if(cboformulary.getSelectedIndex() == 1){
             item.setIsFormulary("Y");
-        }else{
+        }
+        if(cboformulary.getSelectedIndex() == 2){
             item.setIsFormulary("N");
         }
         selectMedicineInfo();
-    }//GEN-LAST:event_chkFormularyActionPerformed
+    }//GEN-LAST:event_cboformularyActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
-    private javax.swing.JCheckBox chkFormulary;
+    private javax.swing.JComboBox<String> cboformulary;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel10;
@@ -438,22 +438,20 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
         for (int i = 0; i < tblItemDetail.getColumnCount(); i++) {
             column = tblItemDetail.getColumnModel().getColumn(i);
             if (i == 0) {
-                column.setPreferredWidth(0);
-            } else if (i == 1) {
                 column.setPreferredWidth(30);
+            } else if (i == 1) {
+                column.setPreferredWidth(180);
             } else if (i == 2) {
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(80);
             } else if (i == 3) {
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(120);
             } else if (i == 4) {
                 column.setPreferredWidth(50);
             } else if (i == 5) {
-                column.setPreferredWidth(30);
+                column.setPreferredWidth(50);
             } else if (i == 6) {
-                column.setPreferredWidth(15);
-            } else if (i == 7) {
-                column.setPreferredWidth(60);
-            }
+                column.setPreferredWidth(120);
+            } 
         }
     }
 
