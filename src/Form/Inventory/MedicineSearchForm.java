@@ -137,6 +137,11 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
         chkFormulary.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         chkFormulary.setForeground(new java.awt.Color(102, 0, 0));
         chkFormulary.setText("Formulary");
+        chkFormulary.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkFormularyActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -314,8 +319,7 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
     private void txtItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtItemActionPerformed
         // TODO add your handling code here:
         String query
-                = " SELECT ID,DESCRIPTION                      \n"
-                + " FROM                                       \n"
+                = " SELECT ID, DESCRIPTION  FROM               \n"
                 + Database.DCMS.item + "                       \n"
                 + " WHERE UPPER(DESCRIPTION) LIKE '%" 
                 + txtItem.getText().toUpperCase().trim() + "%' \n"
@@ -336,10 +340,15 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
         lov.LOVDefinitionSelection(DefinitionTypes.itemType, txtMedType.getText().trim(), this);
         item.setItemTypeId(Constants.lovID);
         txtMedType.setText(Constants.lovDescription);
+        selectMedicineInfo();
     }//GEN-LAST:event_txtMedTypeActionPerformed
 
     private void txtGenericActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGenericActionPerformed
         // TODO add your handling code here:
+        lov.LOVDefinitionSelection(DefinitionTypes.generic, txtGeneric.getText().trim(), this);
+        item.setGenericId(Constants.lovID);
+        txtGeneric.setText(Constants.lovDescription);
+        selectMedicineInfo();
     }//GEN-LAST:event_txtGenericActionPerformed
 
     private void tblItemDetailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblItemDetailMouseClicked
@@ -357,6 +366,16 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
     private void tblItemDetailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblItemDetailKeyReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_tblItemDetailKeyReleased
+
+    private void chkFormularyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkFormularyActionPerformed
+        // TODO add your handling code here:
+        if(chkFormulary.isSelected()){
+            item.setFormulary("Y");
+        }else{
+            item.setFormulary("Y");
+        }
+        selectMedicineInfo();
+    }//GEN-LAST:event_chkFormularyActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
