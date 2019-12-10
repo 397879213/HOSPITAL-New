@@ -20,9 +20,9 @@ public class Item {
     private String isFormulary = "";
     private String indentPackSize = "";
     private String salePrice = "0";
-    private String genericId = "4029";//N\A
+    private String genericId = "";//N\A
     private int brandId;//N\A
-    private String itemTypeId = "3026";//N\A
+    private String itemTypeId = "";//N\A
     private String categoryId = "4450";
     private String manufactureId = "1";
     private String groupId = "";

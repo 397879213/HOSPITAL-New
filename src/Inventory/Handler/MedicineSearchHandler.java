@@ -44,13 +44,13 @@ public class MedicineSearchHandler {
             query += " AND ITM.ID = " + objSrch.getId() + "    \n";
         }
         if (objSrch.getIsFormulary().length() != 0) {
-            query += " AND CM.FORMULARY = '" + objSrch.getIsFormulary() + "'\n";
+            query += " AND ITM.FORMULARY = '" + objSrch.getIsFormulary() + "'\n";
         }
         if (objSrch.getGenericId().length() != 0) {
-            query += " AND CM.GENERIC_ID = '" + objSrch.getGenericId() + "'\n";
+            query += " AND ITM.GENERIC_ID = '" + objSrch.getGenericId() + "'\n";
         }
         if (objSrch.getItemTypeId().length() != 0) {
-            query += " AND CM.ITEM_TYPE_ID = '" + objSrch.getItemTypeId() + "'\n";
+            query += " AND ITM.ITEM_TYPE_ID = '" + objSrch.getItemTypeId() + "'\n";
         }
         query += "   AND ITM.ITEM_TYPE_ID = ITT.ID\n"
                 + "   AND ITM.GENERIC_ID = GEN.ID\n"
