@@ -1,7 +1,16 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package BO.Administration;
 
+/**
+ *
+ * @author admin
+ */
 public class OrderProcessManager {
-
+    
     private String patientId = "";
     private String CON = "";
     private String ODI = "";
@@ -498,5 +507,4 @@ public class OrderProcessManager {
     public void setCrtdBy(String crtdBy) {
         this.crtdBy = crtdBy;
     }
-
 }

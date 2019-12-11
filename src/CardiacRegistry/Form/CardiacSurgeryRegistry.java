@@ -43,10 +43,10 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         initComponents();
         this.setSize(Constants.xSize + 220, Constants.ySize - 40);
         btnExit.setMnemonic(KeyEvent.VK_X);
-        btnEdit.setMnemonic(KeyEvent.VK_E);
-        btnFinal.setMnemonic(KeyEvent.VK_F);
         btnClear.setMnemonic(KeyEvent.VK_C);
         btnSave.setMnemonic(KeyEvent.VK_S);
+        btnEdit.setMnemonic(KeyEvent.VK_E);
+        btnFinal.setMnemonic(KeyEvent.VK_F);
         setDateOfSurgery(0);
         setPatientInfo(patientId);
         setCardiacRegistryDetail();
