@@ -168,7 +168,5 @@ public class DefineUserHandler {
              List lstMember = new ArrayList();
              lstMember.add(insertMem);
               return Constants.dao.insertData(lstMember, columns);
-            
-    
     }
 }

@@ -1,6 +1,10 @@
 package Form.Administration;
 
-import Form.general.*;
+import BO.Administration.ARCFitnessBO;
+import Controller.Administration.ARCFitnessController;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 import utilities.Constants;
 
 public class ARCFitnessForm extends javax.swing.JInternalFrame {
@@ -9,8 +13,14 @@ public class ARCFitnessForm extends javax.swing.JInternalFrame {
 
         initComponents();
         this.setSize(Constants.xSize + 80, Constants.ySize - Constants.yExtension + 8);
-
+        selectFitness();
     }
+
+    String con = "001112", odi = "1";
+    int height = 0, weight = 0, bmi = 0;
+    ARCFitnessController ctlFitness = new ARCFitnessController();
+    List<ARCFitnessBO> listFitness = new ArrayList();
+    ARCFitnessBO objFitness = new ARCFitnessBO();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -75,6 +85,8 @@ public class ARCFitnessForm extends javax.swing.JInternalFrame {
         jLabel35 = new javax.swing.JLabel();
         txtECG = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -511,6 +523,16 @@ public class ARCFitnessForm extends javax.swing.JInternalFrame {
         jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel36.setText("Serum Creatinine : ");
 
+        jLabel37.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel37.setText(" Kg ");
+
+        jLabel38.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel38.setText("Meter");
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -548,26 +570,30 @@ public class ARCFitnessForm extends javax.swing.JInternalFrame {
                             .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPrstMedCat, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(txtWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel37)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtMemberId10, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtBMI, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                                .addComponent(txtHeight, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtBMI, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtPulse, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(txtPrstMedCat, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtMemberId10, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtHeight, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtPulse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -629,7 +655,8 @@ public class ARCFitnessForm extends javax.swing.JInternalFrame {
                     .addComponent(txtHeight, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMemberId10, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -637,7 +664,8 @@ public class ARCFitnessForm extends javax.swing.JInternalFrame {
                     .addComponent(txtPulse, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtBMI, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -753,6 +781,11 @@ public class ARCFitnessForm extends javax.swing.JInternalFrame {
         jButton3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButton3.setForeground(new java.awt.Color(0, 204, 102));
         jButton3.setText("Save");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -846,7 +879,7 @@ public class ARCFitnessForm extends javax.swing.JInternalFrame {
 
     private void txtPrstMedCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrstMedCatActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_txtPrstMedCatActionPerformed
 
     private void txtMemberId10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId10ActionPerformed
@@ -855,6 +888,14 @@ public class ARCFitnessForm extends javax.swing.JInternalFrame {
 
     private void txtHeightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHeightActionPerformed
         // TODO add your handling code here:
+        try {
+            height = Integer.parseInt(txtHeight.getText());
+            height = (height * height);
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Kindly Enter Correct Height.");
+            txtHeight.requestFocus();
+            return;
+        }
         txtWeight.requestFocus();
     }//GEN-LAST:event_txtHeightActionPerformed
 
@@ -865,7 +906,17 @@ public class ARCFitnessForm extends javax.swing.JInternalFrame {
 
     private void txtWeightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtWeightActionPerformed
         // TODO add your handling code here:
-        txtPulse.requestFocus();
+        // BMI Formula: weight (kg) / [height (m)]2
+        try {
+            weight = Integer.parseInt(txtWeight.getText());
+            bmi = (weight / height);
+            txtBMI.setText(String.valueOf(bmi));
+            txtPulse.requestFocus();
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Kindly Enter Correct Weight.");
+            txtWeight.requestFocus();
+            return;
+        }
     }//GEN-LAST:event_txtWeightActionPerformed
 
     private void txtBMIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBMIActionPerformed
@@ -928,6 +979,37 @@ public class ARCFitnessForm extends javax.swing.JInternalFrame {
         txtSerumALT.requestFocus();
     }//GEN-LAST:event_txtECGActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        objFitness.setWeight(txtWeight.getText());
+        objFitness.setHeight(txtHeight.getText());
+        objFitness.setBMI(txtBMI.getText());
+        objFitness.setBloodCP(txtBloodCP.getText());
+        objFitness.setBloodSugarF(txtBloodSugar.getText());
+        objFitness.setDiastolic(txtDiastolic.getText());
+        objFitness.setDisabilityStatus(txtDisability.getText());
+        objFitness.setECG(txtECG.getText());
+        objFitness.setETTExTime(txtExTime.getText());
+        objFitness.setPresentMedCategory(txtPrstMedCat.getText());
+        objFitness.setPulse(txtPulse.getText());
+        objFitness.setSerumALT(txtSerumALT.getText());
+        objFitness.setSerumCholestrolF(txtSerumCholeStrolF.getText());
+        objFitness.setSerumCreatinine(txtSerumCreatinine.getText());
+        objFitness.setCigarettePerDay(txtSmokePerDay.getText());
+        objFitness.setCigaretteSince(txtSmokeSince.getText());
+        objFitness.setSystemicExam(txtSystemExam.getText());
+        objFitness.setSystolic(txtSystolic.getText());
+        objFitness.setUnderOverWeight(txtUnderOverWeight.getText());
+        objFitness.setUrineRE(txtUrineRE.getText());
+
+        if (ctlFitness.saveARCArmyFitness(objFitness)) {
+            JOptionPane.showMessageDialog(null, "Save succcessfully.");
+        } else {
+            JOptionPane.showMessageDialog(null, "Unable to save data. Kinly "
+                    + "contact Support Person.");
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
@@ -960,6 +1042,8 @@ public class ARCFitnessForm extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -1000,5 +1084,42 @@ public class ARCFitnessForm extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtUrineRE;
     private javax.swing.JTextField txtWeight;
     // End of variables declaration//GEN-END:variables
+
+    private void selectFitness() {
+        listFitness = ctlFitness.selectARCFitness(con, odi);
+        if (listFitness.isEmpty()) {
+            if (ctlFitness.insertARCArmyFitness(con, odi)) {
+                listFitness = ctlFitness.selectARCFitness(con, odi);
+            }
+        } else {
+
+//            objFitness = listFitness.get(0);
+//            txtDob.setText(objFitness.getd);
+//            txtFitnessNo.setText(objFitness.getf);
+//            txtRank.setText(objFitness.getr);
+//            txtFmn.setText(objFitness.getf);
+//            txtUnit.setText(objFitness.getu);
+            txtBMI.setText(objFitness.getBMI());
+            txtBloodCP.setText(objFitness.getBloodCP());
+            txtBloodSugar.setText(objFitness.getBloodSugarF());
+            txtDiastolic.setText(objFitness.getDiastolic());
+            txtDisability.setText(objFitness.getDisabilityStatus());
+            txtECG.setText(objFitness.getECG());
+            txtExTime.setText(objFitness.getETTExTime());
+            txtHeight.setText(objFitness.getHeight());
+            txtPrstMedCat.setText(objFitness.getPresentMedCategory());
+            txtPulse.setText(objFitness.getPulse());
+            txtSerumALT.setText(objFitness.getSerumALT());
+            txtSerumCholeStrolF.setText(objFitness.getSerumCholestrolF());
+            txtSerumCreatinine.setText(objFitness.getSerumCreatinine());
+            txtSmokePerDay.setText(objFitness.getCigarettePerDay());
+            txtSmokeSince.setText(objFitness.getCigaretteSince());
+            txtSystemExam.setText(objFitness.getSystemicExam());
+            txtSystolic.setText(objFitness.getSystolic());
+            txtUnderOverWeight.setText(objFitness.getUnderOverWeight());
+            txtUrineRE.setText(objFitness.getUrineRE());
+            txtWeight.setText(objFitness.getWeight());
+        }
+    }
 
 }
