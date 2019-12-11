@@ -143,15 +143,15 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jPanel4" alignment="0" min="-2" pref="887" max="-2" attributes="0"/>
                       <Component id="jPanel8" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel9" max="32767" attributes="0"/>
                       </Group>
+                      <Component id="jPanel4" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -224,10 +224,10 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtFullName" pref="328" max="32767" attributes="3"/>
-                          <Component id="txtUnit" max="32767" attributes="3"/>
+                          <Component id="txtUnit" pref="328" max="32767" attributes="3"/>
+                          <Component id="txtFullName" max="32767" attributes="3"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -426,7 +426,9 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel18" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtSmokeSince" min="-2" pref="133" max="-2" attributes="3"/>
+                              <Component id="txtSmokeSince" min="-2" pref="82" max="-2" attributes="3"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel39" min="-2" pref="46" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jLabel27" min="-2" pref="111" max="-2" attributes="0"/>
@@ -448,21 +450,24 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtPrstMedCat" min="-2" pref="152" max="-2" attributes="3"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="txtWeight" min="-2" pref="117" max="-2" attributes="3"/>
+                                  <Component id="txtPrstMedCat" alignment="0" min="-2" pref="152" max="-2" attributes="3"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="txtWeight" min="-2" pref="104" max="-2" attributes="3"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel24" max="32767" attributes="0"/>
-                                  <Component id="jLabel20" pref="129" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                      <Component id="jLabel24" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtMemberId10" alignment="0" min="-2" pref="148" max="-2" attributes="3"/>
+                                  <Component id="txtPerTempCate" alignment="0" min="-2" pref="148" max="-2" attributes="3"/>
                                   <Component id="txtBMI" alignment="1" min="-2" pref="148" max="-2" attributes="3"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -489,7 +494,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="txtSerumALT" min="-2" pref="148" max="-2" attributes="3"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel36" max="32767" attributes="0"/>
+                              <Component id="jLabel36" pref="160" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="txtSerumCreatinine" min="-2" pref="133" max="-2" attributes="3"/>
                           </Group>
@@ -531,7 +536,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -546,6 +551,7 @@
                           <Component id="jLabel17" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                           <Component id="txtSmokePerDay" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           <Component id="jLabel18" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
+                          <Component id="jLabel39" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -553,7 +559,7 @@
                           <Component id="txtPrstMedCat" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           <Component id="txtHeight" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           <Component id="jLabel20" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="txtMemberId10" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                          <Component id="txtPerTempCate" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           <Component id="jLabel21" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                           <Component id="jLabel38" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                       </Group>
@@ -706,17 +712,17 @@
                   <Color blue="0" green="0" red="66" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="4"/>
-                <Property name="text" type="java.lang.String" value="Date low temp : "/>
+                <Property name="text" type="java.lang.String" value="Perm/Temp Cate : "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberId10">
+            <Component class="javax.swing.JTextField" name="txtPerTempCate">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId10ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPerTempCateActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel21">
@@ -1096,6 +1102,18 @@
                 <Property name="text" type="java.lang.String" value="Meter"/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JLabel" name="jLabel39">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Arial" size="14" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="66" type="rgb"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="4"/>
+                <Property name="text" type="java.lang.String" value="Years"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel5">
@@ -1136,7 +1154,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="jTextArea1">
+                <Component class="javax.swing.JTextArea" name="txtConclusion">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
@@ -1184,7 +1202,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="jTextArea2">
+                <Component class="javax.swing.JTextArea" name="txtInstruction">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>

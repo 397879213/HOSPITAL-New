@@ -25,42 +25,41 @@ public class ARCFitnessHandler {
             "PERM_TEMP_CATEGORY", "HEIGHT", "WEIGHT", "BMI", "PULSE", "SYSTOLIC",
             "DIASTOLIC", "SYSTEMIC_EXAM", "UNDER_OVER_WEIGHT", "BLOOD_SUGAR_F",
             "URINE_RE", "SERUM_CHOLESTROL_F", "SERUM_CREATININE", "BLOOD_CP", "ECG",
-            "SERUM_ALT", "ETT_EX_TIME", "CONCLUSION, ", "MEDICAL_CATEGORY",
+            "SERUM_ALT", "ETT_EX_TIME", "CONCLUSION", "MEDICAL_CATEGORY",
             "INSTRUCTIONS", "CRTD_DATE", "CRTD_BY", "CRTD_TERMINAL_ID"};
 
         String query
-                = "SELECT AF.CON, AF.ODI,           \n"
-                + "       AF.CIGARETTES_PER_DAY,    \n"
-                + "       AF.CIGARETTES_SINCE_YEAR, \n"
-                + "       AF.DISABILITY_STATUS,     \n"
-                + "       AF.PRESENT_MED_CATEGORY,  \n"
-                + "       AF.PERM_TEMP_CATEGORY,    \n"
-                + "       AF.HEIGHT,                \n"
-                + "       AF.WEIGHT,                \n"
-                + "       AF.BMI,                   \n"
-                + "       AF.PULSE,                 \n"
-                + "       AF.SYSTOLIC,              \n"
-                + "       AF.DIASTOLIC,             \n"
-                + "       AF.SYSTEMIC_EXAM,         \n"
-                + "       AF.UNDER_OVER_WEIGHT,     \n"
-                + "       AF.BLOOD_SUGAR_F,         \n"
-                + "       AF.URINE_RE,              \n"
-                + "       AF.SERUM_CHOLESTROL_F,    \n"
-                + "       AF.SERUM_CREATININE,      \n"
-                + "       AF.BLOOD_CP,              \n"
-                + "       AF.ECG,                   \n"
-                + "       AF.SERUM_ALT,             \n"
-                + "       AF.ETT_EX_TIME,           \n"
-                + "       AF.CONCLUSION,            \n"
-                + "       AF.MEDICAL_CATEGORY,      \n"
-                + "       AF.INSTRUCTIONS,          \n"
-                + "       AF.CRTD_DATE,             \n"
-                + "       AF.CRTD_BY,               \n"
-                + "       AF.CRTD_TERMINAL_ID       \n"
-                + "  FROM " + Database.DCMS.ARCArmy + " AF\n"
-                + " WHERE AF.CON = '" + con + "'\n"
-                + " AND AF.ODI = '" + odi + "'\n";
-        ;
+                = "SELECT AF.CON, AF.ODI,                               \n"
+                + " NVL(AF.CIGARETTES_PER_DAY, 0) CIGARETTES_PER_DAY,   \n"
+                + " NVL(AF.CIGARETTES_SINCE_YEAR, 0) CIGARETTES_SINCE_YEAR,\n"
+                + " NVL(AF.DISABILITY_STATUS, ' ') DISABILITY_STATUS,   \n"
+                + " NVL(AF.PRESENT_MED_CATEGORY, ' ') PRESENT_MED_CATEGORY,\n"
+                + " NVL(AF.PERM_TEMP_CATEGORY, ' ') PERM_TEMP_CATEGORY, \n"
+                + " NVL(AF.HEIGHT, ' ') HEIGHT,                         \n"
+                + " NVL(AF.WEIGHT, ' ') WEIGHT,                         \n"
+                + " NVL(AF.BMI, ' ') BMI,                               \n"
+                + " NVL(AF.PULSE, 0) PULSE,                             \n"
+                + " NVL(AF.SYSTOLIC, 0) SYSTOLIC,                       \n"
+                + " NVL(AF.DIASTOLIC, 0) DIASTOLIC,                     \n"
+                + " NVL(AF.SYSTEMIC_EXAM, ' ') SYSTEMIC_EXAM,           \n"
+                + " NVL(AF.UNDER_OVER_WEIGHT, 0) UNDER_OVER_WEIGHT,     \n"
+                + " NVL(AF.BLOOD_SUGAR_F, 0) BLOOD_SUGAR_F,             \n"
+                + " NVL(AF.URINE_RE, ' ') URINE_RE,                     \n"
+                + " NVL(AF.SERUM_CHOLESTROL_F, 0) SERUM_CHOLESTROL_F,   \n"
+                + " NVL(AF.SERUM_CREATININE, ' ') SERUM_CREATININE,     \n"
+                + " NVL(AF.BLOOD_CP, ' ') BLOOD_CP,                     \n"
+                + " NVL(AF.ECG, ' ') ECG,                               \n"
+                + " NVL(AF.SERUM_ALT, ' ') SERUM_ALT,                   \n"
+                + " NVL(AF.ETT_EX_TIME, ' ') ETT_EX_TIME,               \n"
+                + " NVL(AF.CONCLUSION, ' ') CONCLUSION,                 \n"
+                + " NVL(AF.MEDICAL_CATEGORY, ' ') MEDICAL_CATEGORY,     \n"
+                + " NVL(AF.INSTRUCTIONS, ' ') INSTRUCTIONS,             \n"
+                + " NVL(AF.CRTD_DATE, '') CRTD_DATE,                    \n"
+                + " NVL(AF.CRTD_BY, ' ') CRTD_BY,                       \n"
+                + " NVL(AF.CRTD_TERMINAL_ID, ' ') CRTD_TERMINAL_ID      \n"
+                + "  FROM " + Database.DCMS.ARCArmy + " AF              \n"
+                + " WHERE AF.CON = '" + con + "'                        \n"
+                + " AND AF.ODI = '" + odi + "'                          \n";
 
         //System.out.println("query"+ query);
         List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
@@ -107,7 +106,7 @@ public class ARCFitnessHandler {
     public boolean saveARCArmyFitness(ARCFitnessBO objRv) {
 
         String query
-                = " UPDATE " + Database.DCMS.defineUsers + " \n"
+                = " UPDATE " + Database.DCMS.ARCArmy + " \n"
                 + " SET CIGARETTES_PER_DAY ='" + objRv.getCigarettePerDay()+ "',\n"
                 + " CIGARETTES_SINCE_YEAR = '" + objRv.getCigaretteSince()+ "',\n"
                 + " DISABILITY_STATUS = '" + objRv.getDisabilityStatus()+ "',\n"
@@ -142,7 +141,7 @@ public class ARCFitnessHandler {
     public boolean insertARCArmyFitness(String con, String odi) {
 
         String query = "INSERT INTO " + Database.DCMS.ARCArmy + " (CON, ODI) "
-                + " SELECT " + con+ ", "+ odi + " FROM DUAL";
+                + " SELECT '" + con+ "', "+ odi + " FROM DUAL";
         return Constants.dao.executeUpdate(query, false);
     }
 }
