@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller.Inventory;
+package Inventory.Controller;
 
-import BO.Inventory.MedicineRequestBO;
-import Handler.Inventory.MedicineRequestHandler;
+import Inventory.BO.MedicineRequestBO;
+import Inventory.Handler.MedicineRequestHandler;
 import java.util.List;
 import utilities.Constants;
 

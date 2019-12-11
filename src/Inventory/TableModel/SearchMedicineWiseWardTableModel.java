@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package TableModel.Inventory;
+package Inventory.TableModel;
 
-import BO.Inventory.MedicineRequestBO;
+import Inventory.BO.MedicineRequestBO;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 

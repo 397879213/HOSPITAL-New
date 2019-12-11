@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Handler.Inventory;
+package Inventory.Handler;
 
-import BO.Inventory.MedicineRequestBO;
+import Inventory.BO.MedicineRequestBO;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

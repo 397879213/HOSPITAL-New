@@ -1,9 +1,9 @@
 package Form.Inventory;
 
-import BO.Inventory.MedicineRequestBO;
-import Controller.Inventory.MedicineWiseWardController;
-import TableModel.Inventory.MedicineWiseWardTableModel;
-import TableModel.Inventory.SearchMedicineWiseWardTableModel;
+import Inventory.BO.MedicineRequestBO;
+import Inventory.Controller.MedicineWiseWardController;
+import Inventory.TableModel.MedicineWiseWardTableModel;
+import Inventory.TableModel.SearchMedicineWiseWardTableModel;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;

@@ -23,7 +23,7 @@
       <Image iconType="0" name="null"/>
     </Property>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[880, 710]"/>
+      <Dimension value="[1035, 710]"/>
     </Property>
     <Property name="requestFocusEnabled" type="boolean" value="false"/>
   </Properties>

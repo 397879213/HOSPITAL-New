@@ -67,7 +67,7 @@ public class MedicineSearchForm extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle(Constants.title+"Medicine Search");
         setFrameIcon(null);
-        setPreferredSize(new java.awt.Dimension(880, 710));
+        setPreferredSize(new java.awt.Dimension(1035, 710));
         setRequestFocusEnabled(false);
 
         pnlPL.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
