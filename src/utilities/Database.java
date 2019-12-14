@@ -23,6 +23,7 @@ public class Database {
         public static final String echoCardiographyMaster = DAO.username + ".ECHO_CARDIOGRAPHY_MASTER ";
         public static final String cardioEchoCardiographyDetail = DAO.username + ".ECHO_CARDIOGRAPHY_DETAIL ";
         public static final String echoCardiography = DAO.username + ".ECHO_CARDIOGRAPHY ";
+        public static final String perfusionBloodGases = DAO.username + ".BLOOD_GASES ";
 
         public static final String member = DAO.usernameEmr + ".MEMBER   ";
         public static final String bookIssueDetail = DAO.usernameEmr + ".BOOK_ISSUE_DETAIL   ";
