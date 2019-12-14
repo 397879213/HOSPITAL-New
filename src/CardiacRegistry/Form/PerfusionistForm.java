@@ -2664,6 +2664,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
 
         if (ctlPerfusionist.insertBloodGases(objPerfusionist)) {
             JOptionPane.showMessageDialog(null, "Record save successfully.");
+            clearBloodGases();
             selectBloodGases();
         } else {
             JOptionPane.showMessageDialog(null, "Uanble to save record.\n"
@@ -2918,6 +2919,28 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                 column.setPreferredWidth(60);
             }
         }
+    }
+
+    private void clearBloodGases() {
+        txtAct.setText("");
+        txtBE.setText("");
+        txtBloodFlow.setText("");
+        txtCA.setText("");
+        txtFio2.setText("");
+        txtGflow.setText("");
+        txtHb.setText("");
+        txtHco2.setText("");
+        txtHeparin.setText("");
+        txtK.setText("");
+        txtLac.setText("");
+        txtNa.setText("");
+        txtO2.setText("");
+        txtPH.setText("");
+        txtPco2.setText("");
+        txtPo2.setText("");
+        txtSugar.setText("");
+        txtTco2.setText("");
+        txtTemperature.setText("");
     }
 
 }

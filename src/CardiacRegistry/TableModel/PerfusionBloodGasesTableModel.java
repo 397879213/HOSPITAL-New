@@ -11,9 +11,9 @@ import javax.swing.table.AbstractTableModel;
 public class PerfusionBloodGasesTableModel extends AbstractTableModel {
 
     private final String[] columnNames
-            = {"ID", "B Flow", "Temperature", "FIO2", "G Flow", "PH", "PCO2", 
-                "PO2", "HCO2", "BE", "O2 Sat", "TCO2", "NA", "K", "CA", "LAC",
-                "HB", "SUGAR", "ACT", "Heparin Ku" };
+            = {"ID", "B Flow", "Temp.", "FiO2", "G Flow", "PH", "PCO2", 
+                "PO2", "HCO2", "BE", "O2 Sat", "TCO2", "NA", "K", "CA", "Lac",
+                "HB", "SUGAR", "ACT", "Hepar." };
     private final Object[][] data;
 
     public PerfusionBloodGasesTableModel(List<PerfusionistBO> liInfo) {
