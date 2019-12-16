@@ -16,6 +16,24 @@ public class DengueFeverAssesmentBO {
     private String detailId = "";
     private String detailDescription = "";
     private String additionlaInfo = "";
+    private String resultId = "";
+    private String result = "";
+
+    public String getResultId() {
+        return resultId;
+    }
+
+    public void setResultId(String resultId) {
+        this.resultId = resultId;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
 
     public String getDefTypeId() {
         return defTypeId;

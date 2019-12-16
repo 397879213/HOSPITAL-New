@@ -21,12 +21,17 @@ public class DengueFeverAssesmentHandler {
     public List<DengueFeverAssesmentBO> selectDengueDefinitions(String detailId) {
 
         String colums[] = {"-", "ID", "DEF_TYPE_ID", "DESCRIPTION",
-            "ADDITIONAL_INFO"};
+            "ADDITIONAL_INFO", "SELECTION", "RESULT"};
 
         String query
-                = " SELECT DTD.ID, DTD.DEF_TYPE_ID, DTD.DESCRIPTION, DTD.ADDITIONAL_INFO\n"
-                + " FROM " + Database.DCMS.definitionTypeDetail + " DTD \n"
-                + " WHERE DTD.DEF_TYPE_ID = " + detailId + "            \n";
+                = " SELECT DTD.ID, DTD.DEF_TYPE_ID, DTD.DESCRIPTION,    \n"
+                + "DTD.ADDITIONAL_INFO, Nvl(DAM.SELECTION, ' ') SELECTION,"
+                + " NVL(RES.DESCRIPTION, ' ') RESULT \n"
+                + " FROM " + Database.DCMS.definitionTypeDetail + " DTD,\n"
+                + Database.DCMS.dengueAssestmentMaster +" DAM,          \n"
+                + Database.DCMS.definitionTypeDetail +" RES             \n"
+                + " WHERE DAM.EXAMID = DTD.ID                           \n"
+                + " AND NVL(DAM.SELECTION, -1) = NVL(RES.ID, -1)        \n";
 
         List<HashMap> lis = Constants.dao.selectDatainList(query, colums);
         List<DengueFeverAssesmentBO> listParameter = new ArrayList<>();
@@ -38,6 +43,8 @@ public class DengueFeverAssesmentHandler {
             objParameter.setDefTypeId(map.get("DEF_TYPE_ID").toString());
             objParameter.setDetailDescription(map.get("DESCRIPTION").toString());
             objParameter.setAdditionlaInfo(map.get("ADDITIONAL_INFO").toString());
+            objParameter.setResultId(map.get("SELECTION").toString());
+            objParameter.setResult(map.get("RESULT").toString());
 
             listParameter.add(objParameter);
         }
