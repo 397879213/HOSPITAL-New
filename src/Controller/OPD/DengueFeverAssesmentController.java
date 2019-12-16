@@ -32,4 +32,15 @@ public class DengueFeverAssesmentController {
         }
         return ret;
     }
+    
+    public boolean updateRemarks(DengueFeverAssesmentBO objUpdt) {
+        boolean ret = hdlDengue.updateRemarks(objUpdt);
+        if (ret) {
+            Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
 }

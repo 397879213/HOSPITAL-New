@@ -671,6 +671,8 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
             if (tblMedicalHistory.getValueAt(tblMedicalHistory.getSelectedRow(), 3).equals(true)) {
                 obj.setSelection("Y");
             }
+            
+            
             if (ctlDengue.updateDengueAsst(obj)) {
                 setDengueInfo();
             } else {
@@ -683,15 +685,15 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         DengueFeverAssesmentBO obj = listDengue.get(tblMedicalHistory.getSelectedRow());
         if (tblMedicalHistory.getSelectedColumn() == 4) {
-        obj.setRemarks(tblMedicalHistory.getValueAt(
-                tblMedicalHistory.getSelectedRow(), 4).toString().trim());
-        if (ctlDengue.updateDengueAsst(obj)) {
-            setDengueInfo();
-        } else {
-            JOptionPane.showMessageDialog(null, "Unable to save info.");
+            obj.setRemarks(tblMedicalHistory.getValueAt(
+                    tblMedicalHistory.getSelectedRow(), 4).toString().trim());
+            if (ctlDengue.updateRemarks(obj)) {
+                setDengueInfo();
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to save info.");
+            }
         }
-        }
-        
+
     }//GEN-LAST:event_tblMedicalHistoryKeyReleased
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed

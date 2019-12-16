@@ -60,4 +60,15 @@ public class DengueFeverAssesmentHandler {
 
         return Constants.dao.executeUpdate(query, false);
     }
+    
+    public boolean updateRemarks(DengueFeverAssesmentBO objUpdt) {
+        String query
+                = " UPDATE " + Database.DCMS.dengueAssestmentMaster + "\n"
+                + " SET REMARKS = '" + objUpdt.getRemarks()+ "'\n"
+                + " WHERE CON = '" + objUpdt.getCON() + "'\n"
+                + " AND ODI = '" + objUpdt.getODI() + "'\n"
+                + " AND EXAM_ID = '" + objUpdt.getDetailId() + "'";
+
+        return Constants.dao.executeUpdate(query, false);
+    }
 }
