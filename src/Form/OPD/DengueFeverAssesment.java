@@ -1,6 +1,10 @@
 package Form.OPD;
 
+import BO.OPD.DengueFeverAssesmentBO;
+import Controller.OPD.DengueFeverAssesmentController;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.TableColumn;
 import utilities.Constants;
 import utilities.DisplayLOV;
@@ -8,6 +12,8 @@ import utilities.DisplayLOV;
 public class DengueFeverAssesment extends javax.swing.JInternalFrame {
 
     DisplayLOV lov = new DisplayLOV();
+    DengueFeverAssesmentController ctlDengue = new DengueFeverAssesmentController();
+    List<DengueFeverAssesmentBO> listDengue = new ArrayList();
 
     public DengueFeverAssesment() {
 
@@ -15,7 +21,7 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
         this.setSize(Constants.xSize - 45, Constants.ySize - 70);
         btnExit.setMnemonic(KeyEvent.VK_X);
         btnCloseExpense.setMnemonic(KeyEvent.VK_C);
-       
+       setDengueInfo();
     }
 
     @SuppressWarnings("unchecked")
@@ -850,6 +856,11 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
                 column.setPreferredWidth(30);
             }
         }
+    }
+
+    private void setDengueInfo() {
+        listDengue = ctlDengue.selectDengueDefinitions("469");
+        
     }
 
 
