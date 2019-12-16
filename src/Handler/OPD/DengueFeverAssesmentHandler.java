@@ -18,7 +18,7 @@ import utilities.Database;
  */
 public class DengueFeverAssesmentHandler {
 
-    public List<DengueFeverAssesmentBO> selectDengueDefinitions(String detailId) {
+    public List<DengueFeverAssesmentBO> selectDengueDefinitions(String defTypeId) {
 
         String colums[] = {"-", "CON", "ODI", "EXAM_ID", "DEF_TYPE_ID", "DESCRIPTION",
             "ADDITIONAL_INFO", "SELECTION", "REMARKS"};
@@ -28,7 +28,8 @@ public class DengueFeverAssesmentHandler {
                 + "DTD.ADDITIONAL_INFO, DAM.SELECTION, NVL(DAM.REMARKS, ' ') REMARKS\n"
                 + " FROM " + Database.DCMS.definitionTypeDetail + " DTD,\n"
                 + Database.DCMS.dengueAssestmentMaster + " DAM          \n"
-                + " WHERE DAM.EXAM_ID = DTD.ID                          \n";
+                + " WHERE DTD.DEF_TYPE_ID = " + defTypeId + "           \n"
+                + " AND DAM.EXAM_ID = DTD.ID                            \n";
 
         List<HashMap> lis = Constants.dao.selectDatainList(query, colums);
         List<DengueFeverAssesmentBO> listParameter = new ArrayList<>();
@@ -60,11 +61,11 @@ public class DengueFeverAssesmentHandler {
 
         return Constants.dao.executeUpdate(query, false);
     }
-    
+
     public boolean updateRemarks(DengueFeverAssesmentBO objUpdt) {
         String query
                 = " UPDATE " + Database.DCMS.dengueAssestmentMaster + "\n"
-                + " SET REMARKS = '" + objUpdt.getRemarks()+ "'\n"
+                + " SET REMARKS = '" + objUpdt.getRemarks() + "'\n"
                 + " WHERE CON = '" + objUpdt.getCON() + "'\n"
                 + " AND ODI = '" + objUpdt.getODI() + "'\n"
                 + " AND EXAM_ID = '" + objUpdt.getDetailId() + "'";

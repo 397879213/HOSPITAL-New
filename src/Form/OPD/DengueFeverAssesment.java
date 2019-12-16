@@ -7,18 +7,20 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableColumn;
 import utilities.Constants;
 import utilities.Database;
+import utilities.DefinitionTypes;
 import utilities.DisplayLOV;
 
 public class DengueFeverAssesment extends javax.swing.JInternalFrame {
 
     DisplayLOV lov = new DisplayLOV();
     DengueFeverAssesmentController ctlDengue = new DengueFeverAssesmentController();
-    List<DengueFeverAssesmentBO> listDengue = new ArrayList();
-    private String valueId;
+    List<DengueFeverAssesmentBO> listMedicalHist = new ArrayList();
+    List<DengueFeverAssesmentBO> listExamination = new ArrayList();
 
     public DengueFeverAssesment() {
 
@@ -26,7 +28,10 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
         this.setSize(Constants.xSize - 45, Constants.ySize - 70);
         btnExit.setMnemonic(KeyEvent.VK_X);
         btnCloseExpense.setMnemonic(KeyEvent.VK_C);
-        setDengueInfo();
+        listMedicalHist = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengMedicalHistory);
+        setDengueInfo(listMedicalHist, tblMedicalHistory);
+        listExamination = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueExamination);
+        setDengueInfo(listExamination, tblExamination);
     }
 
     @SuppressWarnings("unchecked")
@@ -63,7 +68,7 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
         tbRequestedItem2 = new javax.swing.JTable();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane13 = new javax.swing.JScrollPane();
-        tbRequestedItem1 = new javax.swing.JTable();
+        tblExamination = new javax.swing.JTable();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane11 = new javax.swing.JScrollPane();
         tblMedicalHistory = new javax.swing.JTable();
@@ -446,8 +451,8 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Examination", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel10.setForeground(new java.awt.Color(102, 0, 0));
 
-        tbRequestedItem1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        tbRequestedItem1.setModel(new javax.swing.table.DefaultTableModel(
+        tblExamination.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tblExamination.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
                 {null,null, null, null}
@@ -455,23 +460,23 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
             new String [] {
                 "Item Id","Item Name","Request Quantity"}
         ));
-        tbRequestedItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblExamination.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbRequestedItem1MouseClicked(evt);
+                tblExaminationMouseClicked(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                tbRequestedItem1MousePressed(evt);
+                tblExaminationMousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                tbRequestedItem1MouseReleased(evt);
+                tblExaminationMouseReleased(evt);
             }
         });
-        tbRequestedItem1.addKeyListener(new java.awt.event.KeyAdapter() {
+        tblExamination.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                tbRequestedItem1KeyReleased(evt);
+                tblExaminationKeyReleased(evt);
             }
         });
-        jScrollPane13.setViewportView(tbRequestedItem1);
+        jScrollPane13.setViewportView(tblExamination);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -665,22 +670,23 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
 
     private void tblMedicalHistoryMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMedicalHistoryMouseReleased
         // TODO add your handling code here:
-        DengueFeverAssesmentBO obj = listDengue.get(tblMedicalHistory.getSelectedRow());
+        DengueFeverAssesmentBO obj = listMedicalHist.get(tblMedicalHistory.getSelectedRow());
         if (tblMedicalHistory.getSelectedColumn() == 3) {
             obj.setSelection("N");
             if (tblMedicalHistory.getValueAt(tblMedicalHistory.getSelectedRow(), 3).equals(true)) {
                 obj.setSelection("Y");
             }
             if (ctlDengue.updateDengueAsst(obj)) {
-                setDengueInfo();
+                listMedicalHist = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengMedicalHistory);
+                setDengueInfo(listMedicalHist, tblMedicalHistory);
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to save info.");
             }
         }
 
-        if (tblMedicalHistory.getSelectedColumn() == 4 && 
-                !obj.getAdditionlaInfo().equalsIgnoreCase("RE") &&
-                evt.getClickCount() % 2 == 0) {
+        if (tblMedicalHistory.getSelectedColumn() == 4
+                && !obj.getAdditionlaInfo().equalsIgnoreCase("RE")
+                && evt.getClickCount() % 2 == 0) {
             String query = "SELECT ID,DESCRIPTION                       \n"
                     + " FROM " + Database.DCMS.definitionTypeDetail + " \n"
                     + "WHERE DEF_TYPE_ID = " + obj.getAdditionlaInfo() + "\n"
@@ -693,7 +699,8 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
             }
             obj.setRemarks(Constants.lovDescription);
             if (ctlDengue.updateRemarks(obj)) {
-                setDengueInfo();
+                listMedicalHist = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengMedicalHistory);
+                setDengueInfo(listMedicalHist, tblMedicalHistory);
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to save info.");
             }
@@ -703,12 +710,13 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
 
     private void tblMedicalHistoryKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblMedicalHistoryKeyReleased
         // TODO add your handling code here:
-        DengueFeverAssesmentBO obj = listDengue.get(tblMedicalHistory.getSelectedRow());
+        DengueFeverAssesmentBO obj = listMedicalHist.get(tblMedicalHistory.getSelectedRow());
         if (tblMedicalHistory.getSelectedColumn() == 4) {
             obj.setRemarks(tblMedicalHistory.getValueAt(
                     tblMedicalHistory.getSelectedRow(), 4).toString().trim());
             if (ctlDengue.updateRemarks(obj)) {
-                setDengueInfo();
+                listMedicalHist = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengMedicalHistory);
+                setDengueInfo(listMedicalHist, tblMedicalHistory);
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to save info.");
             }
@@ -740,21 +748,21 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtToStoreName4ActionPerformed
 
-    private void tbRequestedItem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbRequestedItem1MouseClicked
+    private void tblExaminationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblExaminationMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tbRequestedItem1MouseClicked
+    }//GEN-LAST:event_tblExaminationMouseClicked
 
-    private void tbRequestedItem1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbRequestedItem1MousePressed
+    private void tblExaminationMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblExaminationMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tbRequestedItem1MousePressed
+    }//GEN-LAST:event_tblExaminationMousePressed
 
-    private void tbRequestedItem1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbRequestedItem1MouseReleased
+    private void tblExaminationMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblExaminationMouseReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tbRequestedItem1MouseReleased
+    }//GEN-LAST:event_tblExaminationMouseReleased
 
-    private void tbRequestedItem1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbRequestedItem1KeyReleased
+    private void tblExaminationKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblExaminationKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tbRequestedItem1KeyReleased
+    }//GEN-LAST:event_tblExaminationKeyReleased
 
     private void tbRequestedItem2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbRequestedItem2MouseClicked
         // TODO add your handling code here:
@@ -879,9 +887,9 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane17;
     private javax.swing.JScrollPane jScrollPane18;
     private javax.swing.JScrollPane jScrollPane19;
-    private javax.swing.JTable tbRequestedItem1;
     private javax.swing.JTable tbRequestedItem2;
     private javax.swing.JTable tbRequestedItem3;
+    private javax.swing.JTable tblExamination;
     private javax.swing.JTable tblIndentRequest1;
     private javax.swing.JTable tblIndentRequest2;
     private javax.swing.JTable tblIndentRequest3;
@@ -908,27 +916,25 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
         }
     }
 
-    private void setDengueInfo() {
-        listDengue = ctlDengue.selectDengueDefinitions("469");
+    private void setDengueInfo(List<DengueFeverAssesmentBO> listDengue, JTable table) {
         if (listDengue.isEmpty()) {
-            List<DengueFeverAssesmentBO> listDengue = new ArrayList();
             listDengue.add(new DengueFeverAssesmentBO());
-            tblMedicalHistory.setModel(new DengueAssestmentTableModel(listDengue));
+            table.setModel(new DengueAssestmentTableModel(listDengue));
         } else {
-            tblMedicalHistory.setModel(new DengueAssestmentTableModel(listDengue));
-            ListSelectionModel selectionModel = tblMedicalHistory.getSelectionModel();
-            tblMedicalHistory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-            setItemsColumnsWidths();
+            table.setModel(new DengueAssestmentTableModel(listDengue));
+            ListSelectionModel selectionModel = table.getSelectionModel();
+            table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            setItemsColumnsWidths(table);
             selectionModel.setSelectionInterval(0, 0);
-            Constants.tablelook.setJTableEnvironment(tblMedicalHistory);
+            Constants.tablelook.setJTableEnvironment(table);
         }
 
     }
 
-    private void setItemsColumnsWidths() {
+    private void setItemsColumnsWidths(JTable table) {
         TableColumn column = null;
-        for (int i = 0; i < tblMedicalHistory.getColumnCount(); i++) {
-            column = tblMedicalHistory.getColumnModel().getColumn(i);
+        for (int i = 0; i < table.getColumnCount(); i++) {
+            column = table.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(30);
             } else if (i == 1) {

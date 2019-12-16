@@ -2,6 +2,9 @@ package utilities;
 
 public class DefinitionTypes {
 
+    public static final String dengMedicalHistory = "469";
+    public static final String dengExamination = "470";
+    
     // treatment oN DISCHARGE
     public static final String manufacturer = "80";
     public static final String ivdFluids = "415";

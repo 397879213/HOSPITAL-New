@@ -18,8 +18,8 @@ public class DengueFeverAssesmentController {
 
     DengueFeverAssesmentHandler hdlDengue = new DengueFeverAssesmentHandler();
 
-    public List<DengueFeverAssesmentBO> selectDengueDefinitions(String detailId) {
-        return hdlDengue.selectDengueDefinitions(detailId);
+    public List<DengueFeverAssesmentBO> selectDengueDefinitions(String defTypeId) {
+        return hdlDengue.selectDengueDefinitions(defTypeId);
     }
 
     public boolean updateDengueAsst(DengueFeverAssesmentBO objUpdt) {
