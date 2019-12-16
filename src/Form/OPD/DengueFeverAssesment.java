@@ -671,14 +671,34 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
             if (tblMedicalHistory.getValueAt(tblMedicalHistory.getSelectedRow(), 3).equals(true)) {
                 obj.setSelection("Y");
             }
-            
-            
             if (ctlDengue.updateDengueAsst(obj)) {
                 setDengueInfo();
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to save info.");
             }
         }
+
+        if (tblMedicalHistory.getSelectedColumn() == 4 && 
+                !obj.getAdditionlaInfo().equalsIgnoreCase("RE") &&
+                evt.getClickCount() % 2 == 0) {
+            String query = "SELECT ID,DESCRIPTION                       \n"
+                    + " FROM " + Database.DCMS.definitionTypeDetail + " \n"
+                    + "WHERE DEF_TYPE_ID = " + obj.getAdditionlaInfo() + "\n"
+                    + "ORDER BY ID                                      \n";
+
+            lov.LOVSelection(query, this);
+            if (Constants.lovID.equalsIgnoreCase("ID")) {
+                obj.setRemarks("");
+                return;
+            }
+            obj.setRemarks(Constants.lovDescription);
+            if (ctlDengue.updateRemarks(obj)) {
+                setDengueInfo();
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to save info.");
+            }
+        }
+
     }//GEN-LAST:event_tblMedicalHistoryMouseReleased
 
     private void tblMedicalHistoryKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblMedicalHistoryKeyReleased
