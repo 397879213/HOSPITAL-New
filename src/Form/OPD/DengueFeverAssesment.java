@@ -666,29 +666,32 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
     private void tblMedicalHistoryMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMedicalHistoryMouseReleased
         // TODO add your handling code here:
         DengueFeverAssesmentBO obj = listDengue.get(tblMedicalHistory.getSelectedRow());
-        obj.setSelection("N");
-        if(tblMedicalHistory.getValueAt(tblMedicalHistory.getSelectedRow(), 3).equals(true)){
-            obj.setSelection("Y");
-        }
-        if (ctlDengue.updateDengueAsst(obj)) {
-            setDengueInfo();
-        } else {
-            JOptionPane.showMessageDialog(null, "Unable to save info.");
+        if (tblMedicalHistory.getSelectedColumn() == 3) {
+            obj.setSelection("N");
+            if (tblMedicalHistory.getValueAt(tblMedicalHistory.getSelectedRow(), 3).equals(true)) {
+                obj.setSelection("Y");
+            }
+            if (ctlDengue.updateDengueAsst(obj)) {
+                setDengueInfo();
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to save info.");
+            }
         }
     }//GEN-LAST:event_tblMedicalHistoryMouseReleased
 
     private void tblMedicalHistoryKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblMedicalHistoryKeyReleased
         // TODO add your handling code here:
         DengueFeverAssesmentBO obj = listDengue.get(tblMedicalHistory.getSelectedRow());
-        valueId = tblMedicalHistory.getValueAt(
-                tblMedicalHistory.getSelectedRow(), 3).toString().trim();
-        obj.setSelection(valueId);
-        obj.setRemarks(valueId);
+        if (tblMedicalHistory.getSelectedColumn() == 4) {
+        obj.setRemarks(tblMedicalHistory.getValueAt(
+                tblMedicalHistory.getSelectedRow(), 4).toString().trim());
         if (ctlDengue.updateDengueAsst(obj)) {
             setDengueInfo();
         } else {
             JOptionPane.showMessageDialog(null, "Unable to save info.");
         }
+        }
+        
     }//GEN-LAST:event_tblMedicalHistoryKeyReleased
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed

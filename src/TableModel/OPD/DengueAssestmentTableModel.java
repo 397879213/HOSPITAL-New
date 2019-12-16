@@ -63,10 +63,10 @@ public class DengueAssestmentTableModel extends AbstractTableModel {
      * then the last column would contain text ("true"/"false"),
      * rather than a check box.
      */
-//    @Override
-//    public Class getColumnClass(int c) {
-//        return getValueAt(0, c).getClass();
-//    }
+    @Override
+    public Class getColumnClass(int c) {
+        return getValueAt(0, c).getClass();
+    }
 
     /*
      * Don't need to implement this method unless your table's
