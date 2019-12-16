@@ -681,8 +681,8 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
                     return;
                 }
                 valueId = Constants.lovID;
-                obj.setResultId(valueId);
-                obj.setResult(Constants.lovDescription);
+                obj.setSelection(valueId);
+                obj.setRemarks(Constants.lovDescription);
                 if (ctlDengue.updateDengueAsst(obj)) {
                     setDengueInfo();
                 } else {
@@ -696,13 +696,14 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
     private void tblMedicalHistoryKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblMedicalHistoryKeyReleased
         // TODO add your handling code here:
         DengueFeverAssesmentBO obj = listDengue.get(tblMedicalHistory.getSelectedRow());
-        valueId = tblMedicalHistory.getValueAt(tblMedicalHistory.getSelectedRow(), 3).toString();
-        obj.setResultId(valueId);
-        obj.setResult(valueId);
+        valueId = tblMedicalHistory.getValueAt(
+                tblMedicalHistory.getSelectedRow(), 3).toString().trim();
+        obj.setSelection(valueId);
+        obj.setRemarks(valueId);
         if (ctlDengue.updateDengueAsst(obj)) {
             setDengueInfo();
         } else {
-            JOptionPane.showMessageDialog(null, "Unab;e tyyo save info.");
+            JOptionPane.showMessageDialog(null, "Unable to save info.");
         }
     }//GEN-LAST:event_tblMedicalHistoryKeyReleased
 

@@ -18,8 +18,8 @@ public class DengueFeverAssesmentBO {
     private String detailId = "";
     private String detailDescription = "";
     private String additionlaInfo = "";
-    private String resultId = "";
-    private String result = "";
+    private String selection = "";
+    private String remarks = "";
 
     public String getCON() {
         return CON;
@@ -37,20 +37,20 @@ public class DengueFeverAssesmentBO {
         this.ODI = ODI;
     }
 
-    public String getResultId() {
-        return resultId;
+    public String getSelection() {
+        return selection;
     }
 
-    public void setResultId(String resultId) {
-        this.resultId = resultId;
+    public void setSelection(String selection) {
+        this.selection = selection;
     }
 
-    public String getResult() {
-        return result;
+    public String getRemarks() {
+        return remarks;
     }
 
-    public void setResult(String result) {
-        this.result = result;
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 
     public String getDefTypeId() {

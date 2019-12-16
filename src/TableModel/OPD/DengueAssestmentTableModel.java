@@ -11,7 +11,7 @@ import javax.swing.table.AbstractTableModel;
 public class DengueAssestmentTableModel extends AbstractTableModel {
 
     private final String[] columnNames
-            = {"Sr.", "Exam Id", "Description", "Remarks"};
+            = {"Sr.", "Exam Id", "Description", "Select", "Remarks"};
     private final Object[][] data;
 
     public DengueAssestmentTableModel(List<DengueFeverAssesmentBO> listParameter) {
@@ -25,7 +25,8 @@ public class DengueAssestmentTableModel extends AbstractTableModel {
             data[row][0] = i + 1;
             data[row][1] = objParameter.getDetailId();
             data[row][2] = objParameter.getDetailDescription();
-            data[row][3] = objParameter.getResult();
+            data[row][3] =  new Boolean(false);
+            data[row][4] = objParameter.getRemarks();
             row++;
         }
     }
@@ -68,7 +69,7 @@ public class DengueAssestmentTableModel extends AbstractTableModel {
      */
     @Override
     public boolean isCellEditable(int row, int col) {
-        if(col == 3){
+        if(col > 2){
             return true;
         }
         return false;

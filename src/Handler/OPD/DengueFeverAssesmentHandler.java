@@ -20,17 +20,15 @@ public class DengueFeverAssesmentHandler {
 
     public List<DengueFeverAssesmentBO> selectDengueDefinitions(String detailId) {
 
-        String colums[] = {"-", "CON", "ODI", "ID", "DEF_TYPE_ID", "DESCRIPTION",
-            "ADDITIONAL_INFO", "SELECTION", "RESULT"};
+        String colums[] = {"-", "CON", "ODI", "EXAM_ID", "DEF_TYPE_ID", "DESCRIPTION",
+            "ADDITIONAL_INFO", "SELECTION", "REMARKS"};
 
         String query
-                = " SELECT DAM.CON, DAM.ODI, DTD.ID, DTD.DEF_TYPE_ID, DTD.DESCRIPTION,    \n"
-                + "DTD.ADDITIONAL_INFO, Nvl(DAM.SELECTION, ' ') SELECTION,"
-                + " NVL(RES.DESCRIPTION, ' ') RESULT \n"
+                = " SELECT DAM.CON, DAM.ODI, DAM.EXAM_ID, DTD.DEF_TYPE_ID, DTD.DESCRIPTION,\n"
+                + "DTD.ADDITIONAL_INFO, DAM.SELECTION, NVL(DAM.REMARKS, ' ') REMARKS\n"
                 + " FROM " + Database.DCMS.definitionTypeDetail + " DTD,\n"
-                + Database.DCMS.dengueAssestmentMaster + " DAM,          \n"
-                + Database.DCMS.definitionTypeDetail + " RES             \n"
-                + " WHERE DAM.EXAMID = DTD.ID                           \n"
+                + Database.DCMS.dengueAssestmentMaster + " DAM          \n"
+                + " WHERE DAM.EXAM_ID = DTD.ID                          \n"
                 + " AND NVL(DAM.SELECTION, -1) = NVL(RES.ID, -1)        \n";
 
         List<HashMap> lis = Constants.dao.selectDatainList(query, colums);
@@ -41,17 +39,12 @@ public class DengueFeverAssesmentHandler {
 
             objParameter.setCON(map.get("CON").toString());
             objParameter.setODI(map.get("ODI").toString());
-            objParameter.setDetailId(map.get("ID").toString());
+            objParameter.setDetailId(map.get("EXAM_ID").toString());
             objParameter.setDefTypeId(map.get("DEF_TYPE_ID").toString());
             objParameter.setDetailDescription(map.get("DESCRIPTION").toString());
             objParameter.setAdditionlaInfo(map.get("ADDITIONAL_INFO").toString());
-            if (objParameter.getAdditionlaInfo().equalsIgnoreCase("RE")) {
-                objParameter.setResultId(map.get("SELECTION").toString());
-                objParameter.setResult(map.get("SELECTION").toString());
-            } else {
-                objParameter.setResultId(map.get("SELECTION").toString());
-                objParameter.setResult(map.get("RESULT").toString());
-            }
+            objParameter.setSelection(map.get("SELECTION").toString());
+            objParameter.setRemarks(map.get("REMARKS").toString());
 
             listParameter.add(objParameter);
         }
@@ -61,7 +54,7 @@ public class DengueFeverAssesmentHandler {
     public boolean updateDengueAsst(DengueFeverAssesmentBO objUpdt) {
         String query
                 = " UPDATE " + Database.DCMS.dengueAssestmentMaster + "\n"
-                + " SET SELECTION = '" + objUpdt.getResultId() + "'\n"
+                + " SET SELECTION = '" + objUpdt.getSelection() + "'\n"
                 + " WHERE CON = '" + objUpdt.getCON() + "'\n"
                 + " AND ODI = '" + objUpdt.getODI() + "'\n"
                 + " AND EXAM_ID = '" + objUpdt.getDetailId() + "'";
