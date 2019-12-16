@@ -666,30 +666,14 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
     private void tblMedicalHistoryMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMedicalHistoryMouseReleased
         // TODO add your handling code here:
         DengueFeverAssesmentBO obj = listDengue.get(tblMedicalHistory.getSelectedRow());
-        if (tblMedicalHistory.getSelectedColumn() == 3 && evt.getClickCount() == 2) {
-            if (obj.getAdditionlaInfo().equalsIgnoreCase("RE")) {
-                System.out.println("Remarks");
-            } else {
-                String query = "SELECT ID,DESCRIPTION                       \n"
-                        + " FROM " + Database.DCMS.definitionTypeDetail + " \n"
-                        + "WHERE DEF_TYPE_ID = " + obj.getAdditionlaInfo() + "\n"
-                        + "ORDER BY ID                                      \n";
-
-                lov.LOVSelection(query, this);
-                if (Constants.lovID.equalsIgnoreCase("ID")) {
-                    valueId = "";
-                    return;
-                }
-                valueId = Constants.lovID;
-                obj.setSelection(valueId);
-                obj.setRemarks(Constants.lovDescription);
-                if (ctlDengue.updateDengueAsst(obj)) {
-                    setDengueInfo();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Unab;e tyyo save info.");
-                }
-
-            }
+        obj.setSelection("N");
+        if(tblMedicalHistory.getValueAt(tblMedicalHistory.getSelectedRow(), 3).equals(true)){
+            obj.setSelection("Y");
+        }
+        if (ctlDengue.updateDengueAsst(obj)) {
+            setDengueInfo();
+        } else {
+            JOptionPane.showMessageDialog(null, "Unable to save info.");
         }
     }//GEN-LAST:event_tblMedicalHistoryMouseReleased
 

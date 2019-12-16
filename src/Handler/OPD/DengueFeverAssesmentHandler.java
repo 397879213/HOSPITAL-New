@@ -28,8 +28,7 @@ public class DengueFeverAssesmentHandler {
                 + "DTD.ADDITIONAL_INFO, DAM.SELECTION, NVL(DAM.REMARKS, ' ') REMARKS\n"
                 + " FROM " + Database.DCMS.definitionTypeDetail + " DTD,\n"
                 + Database.DCMS.dengueAssestmentMaster + " DAM          \n"
-                + " WHERE DAM.EXAM_ID = DTD.ID                          \n"
-                + " AND NVL(DAM.SELECTION, -1) = NVL(RES.ID, -1)        \n";
+                + " WHERE DAM.EXAM_ID = DTD.ID                          \n";
 
         List<HashMap> lis = Constants.dao.selectDatainList(query, colums);
         List<DengueFeverAssesmentBO> listParameter = new ArrayList<>();

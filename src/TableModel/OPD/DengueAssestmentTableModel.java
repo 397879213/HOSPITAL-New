@@ -25,7 +25,12 @@ public class DengueAssestmentTableModel extends AbstractTableModel {
             data[row][0] = i + 1;
             data[row][1] = objParameter.getDetailId();
             data[row][2] = objParameter.getDetailDescription();
-            data[row][3] =  new Boolean(false);
+            if(objParameter.getSelection().equalsIgnoreCase("N")){
+                data[row][3] =  new Boolean(false);
+            }else{
+                data[row][3] =  new Boolean(true);
+            }
+            
             data[row][4] = objParameter.getRemarks();
             row++;
         }
