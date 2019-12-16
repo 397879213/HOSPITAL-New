@@ -11,6 +11,8 @@ package BO.OPD;
  */
 public class DengueFeverAssesmentBO {
     
+    private String CON = "";
+    private String ODI = "";
     private String defTypeId = "";
     private String defTypeDescription = "";
     private String detailId = "";
@@ -18,6 +20,22 @@ public class DengueFeverAssesmentBO {
     private String additionlaInfo = "";
     private String resultId = "";
     private String result = "";
+
+    public String getCON() {
+        return CON;
+    }
+
+    public void setCON(String CON) {
+        this.CON = CON;
+    }
+
+    public String getODI() {
+        return ODI;
+    }
+
+    public void setODI(String ODI) {
+        this.ODI = ODI;
+    }
 
     public String getResultId() {
         return resultId;

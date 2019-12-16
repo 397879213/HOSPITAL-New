@@ -8,16 +8,28 @@ package Controller.OPD;
 import BO.OPD.DengueFeverAssesmentBO;
 import Handler.OPD.DengueFeverAssesmentHandler;
 import java.util.List;
+import utilities.Constants;
 
 /**
  *
  * @author admin
  */
 public class DengueFeverAssesmentController {
-    
+
     DengueFeverAssesmentHandler hdlDengue = new DengueFeverAssesmentHandler();
-    
+
     public List<DengueFeverAssesmentBO> selectDengueDefinitions(String detailId) {
         return hdlDengue.selectDengueDefinitions(detailId);
+    }
+
+    public boolean updateDengueAsst(DengueFeverAssesmentBO objUpdt) {
+        boolean ret = hdlDengue.updateDengueAsst(objUpdt);
+        if (ret) {
+            Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
     }
 }

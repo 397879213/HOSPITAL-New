@@ -6,6 +6,7 @@ import TableModel.OPD.DengueAssestmentTableModel;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableColumn;
 import utilities.Constants;
@@ -678,17 +679,31 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
                 if (Constants.lovID.equalsIgnoreCase("ID")) {
                     valueId = "";
                     return;
-
                 }
                 valueId = Constants.lovID;
+                obj.setResultId(valueId);
                 obj.setResult(Constants.lovDescription);
-                setDengueInfo();
+                if (ctlDengue.updateDengueAsst(obj)) {
+                    setDengueInfo();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Unab;e tyyo save info.");
+                }
+
             }
         }
     }//GEN-LAST:event_tblMedicalHistoryMouseReleased
 
     private void tblMedicalHistoryKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblMedicalHistoryKeyReleased
         // TODO add your handling code here:
+        DengueFeverAssesmentBO obj = listDengue.get(tblMedicalHistory.getSelectedRow());
+        valueId = tblMedicalHistory.getValueAt(tblMedicalHistory.getSelectedRow(), 3).toString();
+        obj.setResultId(valueId);
+        obj.setResult(valueId);
+        if (ctlDengue.updateDengueAsst(obj)) {
+            setDengueInfo();
+        } else {
+            JOptionPane.showMessageDialog(null, "Unab;e tyyo save info.");
+        }
     }//GEN-LAST:event_tblMedicalHistoryKeyReleased
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
