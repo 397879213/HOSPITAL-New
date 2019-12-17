@@ -18,10 +18,27 @@ public class DengueFeverAssesmentController {
 
     DengueFeverAssesmentHandler hdlDengue = new DengueFeverAssesmentHandler();
 
-    public List<DengueFeverAssesmentBO> selectDengueDefinitions(String defTypeId) {
-        return hdlDengue.selectDengueDefinitions(defTypeId);
+    public List<DengueFeverAssesmentBO> selectDengueAssetmentMaster(String con,
+            String odi) {
+        return hdlDengue.selectDengueAssetmentMaster(con, odi);
+    }
+    
+    public List<DengueFeverAssesmentBO> selectDengueDefinitions(String defTypeId,
+            String con, String odi) {
+        return hdlDengue.selectDengueDefinitions(defTypeId, con, odi);
     }
 
+    public boolean insertDefinitionsInDengueMaster(String con, String odi) {
+        boolean ret = hdlDengue.insertDefinitionsInDengueMaster(con, odi);
+        if (ret) {
+            Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
+    
     public boolean updateDengueAsst(DengueFeverAssesmentBO objUpdt) {
         boolean ret = hdlDengue.updateDengueAsst(objUpdt);
         if (ret) {

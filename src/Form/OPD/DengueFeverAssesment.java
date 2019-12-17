@@ -1,6 +1,7 @@
 package Form.OPD;
 
 import BO.OPD.DengueFeverAssesmentBO;
+import BO.OPD.PatientHospitalVisit;
 import Controller.OPD.DengueFeverAssesmentController;
 import TableModel.OPD.DengueAssestmentTableModel;
 import java.awt.event.KeyEvent;
@@ -18,7 +19,9 @@ import utilities.DisplayLOV;
 public class DengueFeverAssesment extends javax.swing.JInternalFrame {
 
     DisplayLOV lov = new DisplayLOV();
+    String con = "112", odi = "1";
     DengueFeverAssesmentController ctlDengue = new DengueFeverAssesmentController();
+    List<DengueFeverAssesmentBO> listDengueMaster = new ArrayList();
     List<DengueFeverAssesmentBO> listMedicalHist = new ArrayList();
     List<DengueFeverAssesmentBO> listExamination = new ArrayList();
     List<DengueFeverAssesmentBO> listLabInv = new ArrayList();
@@ -28,28 +31,13 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
     List<DengueFeverAssesmentBO> listERManagement = new ArrayList();
     List<DengueFeverAssesmentBO> listDisposal = new ArrayList();
 
-    public DengueFeverAssesment() {
+    public DengueFeverAssesment() {// PatientHospitalVisit pat
 
         initComponents();
         this.setSize(Constants.xSize - 45, Constants.ySize - 70);
         btnExit.setMnemonic(KeyEvent.VK_X);
-        btnCloseExpense.setMnemonic(KeyEvent.VK_C);
-        listMedicalHist = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengMedicalHistory);
-        setDengueInfo(listMedicalHist, tblMedicalHistory);
-        listExamination = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueExamination);
-        setDengueInfo(listExamination, tblExamination);
-        listLabInv = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueLabInvestigation);
-        setDengueInfo(listLabInv, tblLabInv);
-        listUltrasound = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueUltrasoundInves);
-        setDengueInfo(listUltrasound, tblUltrasound);
-        listWarningSign = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueWarningSigns);
-        setDengueInfo(listWarningSign, tblWarningSign);
-        listPresumtiveDiag = ctlDengue.selectDengueDefinitions(DefinitionTypes.denguePresumtiveDiagnosis);
-        setDengueInfo(listPresumtiveDiag, tblPresumtiveDiag);
-        listERManagement = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueEmergencyManag);
-        setDengueInfo(listERManagement, tblERManagment);
-        listDisposal = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueDisposal);
-        setDengueInfo(listDisposal, tblDisposal);
+//        setDemgraphy(pat);
+        checkDengueInfo();
     }
 
     @SuppressWarnings("unchecked")
@@ -59,11 +47,11 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
-        txtToStoreName1 = new javax.swing.JTextField();
-        txtToStoreName2 = new javax.swing.JTextField();
-        txtToStoreName3 = new javax.swing.JTextField();
-        txtToStoreName4 = new javax.swing.JTextField();
-        txtToStoreName5 = new javax.swing.JTextField();
+        txtPatientId = new javax.swing.JTextField();
+        txtPatientName = new javax.swing.JTextField();
+        txtAgeGen = new javax.swing.JTextField();
+        txtVisitNo = new javax.swing.JTextField();
+        txtVisitDate = new javax.swing.JTextField();
         jPanel13 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
         jScrollPane16 = new javax.swing.JScrollPane();
@@ -91,9 +79,7 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
         jScrollPane11 = new javax.swing.JScrollPane();
         tblMedicalHistory = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        btnCloseExpense = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
-        btnSaveExpense = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102)));
@@ -118,32 +104,28 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel15.setText("Patient Id : ");
 
-        txtToStoreName1.setEditable(false);
-        txtToStoreName1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtPatientId.setEditable(false);
+        txtPatientId.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        txtToStoreName2.setEditable(false);
-        txtToStoreName2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtToStoreName2.setText("Patient Name");
+        txtPatientName.setEditable(false);
+        txtPatientName.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        txtToStoreName3.setEditable(false);
-        txtToStoreName3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtToStoreName3.setText("Age/Gender");
+        txtAgeGen.setEditable(false);
+        txtAgeGen.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
-        txtToStoreName4.setEditable(false);
-        txtToStoreName4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtToStoreName4.setText("ER Visit No.");
-        txtToStoreName4.addActionListener(new java.awt.event.ActionListener() {
+        txtVisitNo.setEditable(false);
+        txtVisitNo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtVisitNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtToStoreName4ActionPerformed(evt);
+                txtVisitNoActionPerformed(evt);
             }
         });
 
-        txtToStoreName5.setEditable(false);
-        txtToStoreName5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtToStoreName5.setText("VIsit Date");
-        txtToStoreName5.addActionListener(new java.awt.event.ActionListener() {
+        txtVisitDate.setEditable(false);
+        txtVisitDate.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtVisitDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtToStoreName5ActionPerformed(evt);
+                txtVisitDateActionPerformed(evt);
             }
         });
 
@@ -155,15 +137,15 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtToStoreName1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPatientId, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtToStoreName2, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                .addComponent(txtPatientName, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtToStoreName3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtAgeGen, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtToStoreName4, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtVisitNo, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtToStoreName5, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtVisitDate, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
@@ -172,11 +154,11 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
                 .addGap(8, 8, 8)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtToStoreName1)
-                    .addComponent(txtToStoreName2)
-                    .addComponent(txtToStoreName3)
-                    .addComponent(txtToStoreName4)
-                    .addComponent(txtToStoreName5))
+                    .addComponent(txtPatientId)
+                    .addComponent(txtPatientName)
+                    .addComponent(txtAgeGen)
+                    .addComponent(txtVisitNo)
+                    .addComponent(txtVisitDate))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -604,14 +586,6 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        btnCloseExpense.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnCloseExpense.setText("Final");
-        btnCloseExpense.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCloseExpenseActionPerformed(evt);
-            }
-        });
-
         btnExit.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnExit.setForeground(new java.awt.Color(204, 0, 0));
         btnExit.setText("Exit");
@@ -621,36 +595,18 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
             }
         });
 
-        btnSaveExpense.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnSaveExpense.setText("Save");
-        btnSaveExpense.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveExpenseActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(258, 258, 258)
-                .addComponent(btnSaveExpense, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCloseExpense, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(413, 413, 413)
                 .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCloseExpense)
-                    .addComponent(btnSaveExpense)
-                    .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(5, 5, 5))
+            .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -695,7 +651,8 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
                 obj.setSelection("Y");
             }
             if (ctlDengue.updateDengueAsst(obj)) {
-                listMedicalHist = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengMedicalHistory);
+                listMedicalHist = ctlDengue.selectDengueDefinitions(
+                        DefinitionTypes.dengMedicalHistory, con, odi);
                 setDengueInfo(listMedicalHist, tblMedicalHistory);
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to save info.");
@@ -717,7 +674,8 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
             }
             obj.setRemarks(Constants.lovDescription);
             if (ctlDengue.updateRemarks(obj)) {
-                listMedicalHist = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengMedicalHistory);
+                listMedicalHist = ctlDengue.selectDengueDefinitions(
+                        DefinitionTypes.dengMedicalHistory, con, odi);
                 setDengueInfo(listMedicalHist, tblMedicalHistory);
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to save info.");
@@ -733,7 +691,8 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
             obj.setRemarks(tblMedicalHistory.getValueAt(
                     tblMedicalHistory.getSelectedRow(), 4).toString().trim());
             if (ctlDengue.updateRemarks(obj)) {
-                listMedicalHist = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengMedicalHistory);
+                listMedicalHist = ctlDengue.selectDengueDefinitions(
+                        DefinitionTypes.dengMedicalHistory, con, odi);
                 setDengueInfo(listMedicalHist, tblMedicalHistory);
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to save info.");
@@ -747,24 +706,13 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btnExitActionPerformed
 
-    private void btnCloseExpenseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseExpenseActionPerformed
+    private void txtVisitDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVisitDateActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_txtVisitDateActionPerformed
 
-    }//GEN-LAST:event_btnCloseExpenseActionPerformed
-
-    private void btnSaveExpenseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveExpenseActionPerformed
+    private void txtVisitNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVisitNoActionPerformed
         // TODO add your handling code here:
-
-
-    }//GEN-LAST:event_btnSaveExpenseActionPerformed
-
-    private void txtToStoreName5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtToStoreName5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtToStoreName5ActionPerformed
-
-    private void txtToStoreName4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtToStoreName4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtToStoreName4ActionPerformed
+    }//GEN-LAST:event_txtVisitNoActionPerformed
 
     private void tblExaminationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblExaminationMouseClicked
         // TODO add your handling code here:
@@ -783,7 +731,8 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
                 obj.setSelection("Y");
             }
             if (ctlDengue.updateDengueAsst(obj)) {
-                listExamination = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueExamination);
+                listExamination = ctlDengue.selectDengueDefinitions(
+                        DefinitionTypes.dengueExamination, con, odi);
                 setDengueInfo(listExamination, tblExamination);
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to save info.");
@@ -798,7 +747,8 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
             obj.setRemarks(tblExamination.getValueAt(
                     tblExamination.getSelectedRow(), 4).toString().trim());
             if (ctlDengue.updateRemarks(obj)) {
-                listExamination = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueExamination);
+                listExamination = ctlDengue.selectDengueDefinitions(
+                        DefinitionTypes.dengueExamination, con, odi);
                 setDengueInfo(listExamination, tblExamination);
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to save info.");
@@ -823,7 +773,8 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
                 obj.setSelection("Y");
             }
             if (ctlDengue.updateDengueAsst(obj)) {
-                listLabInv = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueLabInvestigation);
+                listLabInv = ctlDengue.selectDengueDefinitions(
+                        DefinitionTypes.dengueLabInvestigation, con, odi);
                 setDengueInfo(listLabInv, tblLabInv);
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to save info.");
@@ -838,7 +789,8 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
             obj.setRemarks(tblLabInv.getValueAt(
                     tblLabInv.getSelectedRow(), 4).toString().trim());
             if (ctlDengue.updateRemarks(obj)) {
-                listLabInv = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueLabInvestigation);
+                listLabInv = ctlDengue.selectDengueDefinitions(
+                        DefinitionTypes.dengueLabInvestigation, con, odi);
                 setDengueInfo(listLabInv, tblLabInv);
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to save info.");
@@ -863,7 +815,8 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
                 obj.setSelection("Y");
             }
             if (ctlDengue.updateDengueAsst(obj)) {
-                listUltrasound = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueUltrasoundInves);
+                listUltrasound = ctlDengue.selectDengueDefinitions(
+                        DefinitionTypes.dengueUltrasoundInves, con, odi);
                 setDengueInfo(listUltrasound, tblUltrasound);
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to save info.");
@@ -878,7 +831,8 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
             obj.setRemarks(tblUltrasound.getValueAt(
                     tblUltrasound.getSelectedRow(), 4).toString().trim());
             if (ctlDengue.updateRemarks(obj)) {
-                listUltrasound = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueUltrasoundInves);
+                listUltrasound = ctlDengue.selectDengueDefinitions(
+                        DefinitionTypes.dengueUltrasoundInves, con, odi);
                 setDengueInfo(listUltrasound, tblUltrasound);
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to save info.");
@@ -903,7 +857,8 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
                 obj.setSelection("Y");
             }
             if (ctlDengue.updateDengueAsst(obj)) {
-                listWarningSign = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueWarningSigns);
+                listWarningSign = ctlDengue.selectDengueDefinitions(
+                        DefinitionTypes.dengueWarningSigns, con, odi);
                 setDengueInfo(listWarningSign, tblWarningSign);
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to save info.");
@@ -918,7 +873,8 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
             obj.setRemarks(tblWarningSign.getValueAt(
                     tblWarningSign.getSelectedRow(), 4).toString().trim());
             if (ctlDengue.updateRemarks(obj)) {
-                listWarningSign = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueWarningSigns);
+                listWarningSign = ctlDengue.selectDengueDefinitions(
+                        DefinitionTypes.dengueWarningSigns, con, odi);
                 setDengueInfo(listWarningSign, tblWarningSign);
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to save info.");
@@ -943,7 +899,8 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
                 obj.setSelection("Y");
             }
             if (ctlDengue.updateDengueAsst(obj)) {
-                listPresumtiveDiag = ctlDengue.selectDengueDefinitions(DefinitionTypes.denguePresumtiveDiagnosis);
+                listPresumtiveDiag = ctlDengue.selectDengueDefinitions(
+                        DefinitionTypes.denguePresumtiveDiagnosis, con, odi);
                 setDengueInfo(listPresumtiveDiag, tblPresumtiveDiag);
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to save info.");
@@ -958,7 +915,8 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
             obj.setRemarks(tblPresumtiveDiag.getValueAt(
                     tblPresumtiveDiag.getSelectedRow(), 4).toString().trim());
             if (ctlDengue.updateRemarks(obj)) {
-                listPresumtiveDiag = ctlDengue.selectDengueDefinitions(DefinitionTypes.denguePresumtiveDiagnosis);
+                listPresumtiveDiag = ctlDengue.selectDengueDefinitions(
+                        DefinitionTypes.denguePresumtiveDiagnosis, con, odi);
                 setDengueInfo(listPresumtiveDiag, tblPresumtiveDiag);
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to save info.");
@@ -983,7 +941,8 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
                 obj.setSelection("Y");
             }
             if (ctlDengue.updateDengueAsst(obj)) {
-                listERManagement = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueEmergencyManag);
+                listERManagement = ctlDengue.selectDengueDefinitions(
+                        DefinitionTypes.dengueEmergencyManag, con, odi);
                 setDengueInfo(listERManagement, tblERManagment);
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to save info.");
@@ -998,7 +957,8 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
             obj.setRemarks(tblERManagment.getValueAt(
                     tblERManagment.getSelectedRow(), 4).toString().trim());
             if (ctlDengue.updateRemarks(obj)) {
-                listERManagement = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueEmergencyManag);
+                listERManagement = ctlDengue.selectDengueDefinitions(
+                        DefinitionTypes.dengueEmergencyManag, con, odi);
                 setDengueInfo(listERManagement, tblERManagment);
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to save info.");
@@ -1023,13 +983,14 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
                 obj.setSelection("Y");
             }
             if (ctlDengue.updateDengueAsst(obj)) {
-                listDisposal = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueDisposal);
+                listDisposal = ctlDengue.selectDengueDefinitions(
+                        DefinitionTypes.dengueDisposal, con, odi);
                 setDengueInfo(listDisposal, tblDisposal);
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to save info.");
             }
         }
-        
+
         if (tblDisposal.getSelectedColumn() == 4
                 && !obj.getAdditionlaInfo().equalsIgnoreCase("RE")
                 && evt.getClickCount() % 2 == 0) {
@@ -1045,7 +1006,8 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
             }
             obj.setRemarks(Constants.lovDescription);
             if (ctlDengue.updateRemarks(obj)) {
-                listDisposal = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueDisposal);
+                listDisposal = ctlDengue.selectDengueDefinitions(
+                        DefinitionTypes.dengueDisposal, con, odi);
                 setDengueInfo(listDisposal, tblDisposal);
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to save info.");
@@ -1060,7 +1022,8 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
             obj.setRemarks(tblDisposal.getValueAt(
                     tblDisposal.getSelectedRow(), 4).toString().trim());
             if (ctlDengue.updateRemarks(obj)) {
-                listDisposal = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueDisposal);
+                listDisposal = ctlDengue.selectDengueDefinitions(
+                        DefinitionTypes.dengueDisposal, con, odi);
                 setDengueInfo(listDisposal, tblDisposal);
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to save info.");
@@ -1070,9 +1033,7 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCloseExpense;
     private javax.swing.JButton btnExit;
-    private javax.swing.JButton btnSaveExpense;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -1103,26 +1064,12 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
     private javax.swing.JTable tblPresumtiveDiag;
     private javax.swing.JTable tblUltrasound;
     private javax.swing.JTable tblWarningSign;
-    private javax.swing.JTextField txtToStoreName1;
-    private javax.swing.JTextField txtToStoreName2;
-    private javax.swing.JTextField txtToStoreName3;
-    private javax.swing.JTextField txtToStoreName4;
-    private javax.swing.JTextField txtToStoreName5;
+    private javax.swing.JTextField txtAgeGen;
+    private javax.swing.JTextField txtPatientId;
+    private javax.swing.JTextField txtPatientName;
+    private javax.swing.JTextField txtVisitDate;
+    private javax.swing.JTextField txtVisitNo;
     // End of variables declaration//GEN-END:variables
-
-    private void setRerquestItemsColumnsWidths() {
-        TableColumn column = null;
-        for (int i = 0; i < tblMedicalHistory.getColumnCount(); i++) {
-            column = tblMedicalHistory.getColumnModel().getColumn(i);
-            if (i == 0) {
-                column.setPreferredWidth(50);
-            } else if (i == 1) {
-                column.setPreferredWidth(200);
-            } else if (i == 2) {
-                column.setPreferredWidth(30);
-            }
-        }
-    }
 
     private void setDengueInfo(List<DengueFeverAssesmentBO> listDengue, JTable table) {
         if (listDengue.isEmpty()) {
@@ -1146,13 +1093,64 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
             if (i == 0) {
                 column.setPreferredWidth(30);
             } else if (i == 1) {
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(50);
             } else if (i == 2) {
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(180);
             } else if (i == 3) {
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(80);
             }
         }
+    }
+
+    private void selectDengueAssestInfo() {
+        listMedicalHist = ctlDengue.selectDengueDefinitions(
+                DefinitionTypes.dengMedicalHistory, con, odi);
+        setDengueInfo(listMedicalHist, tblMedicalHistory);
+        listExamination = ctlDengue.selectDengueDefinitions(
+                DefinitionTypes.dengueExamination, con, odi);
+        setDengueInfo(listExamination, tblExamination);
+        listLabInv = ctlDengue.selectDengueDefinitions(
+                DefinitionTypes.dengueLabInvestigation, con, odi);
+        setDengueInfo(listLabInv, tblLabInv);
+        listUltrasound = ctlDengue.selectDengueDefinitions(
+                DefinitionTypes.dengueUltrasoundInves, con, odi);
+        setDengueInfo(listUltrasound, tblUltrasound);
+        listWarningSign = ctlDengue.selectDengueDefinitions(
+                DefinitionTypes.dengueWarningSigns, con, odi);
+        setDengueInfo(listWarningSign, tblWarningSign);
+        listPresumtiveDiag = ctlDengue.selectDengueDefinitions(
+                DefinitionTypes.denguePresumtiveDiagnosis, con, odi);
+        setDengueInfo(listPresumtiveDiag, tblPresumtiveDiag);
+        listERManagement = ctlDengue.selectDengueDefinitions(
+                DefinitionTypes.dengueEmergencyManag, con, odi);
+        setDengueInfo(listERManagement, tblERManagment);
+        listDisposal = ctlDengue.selectDengueDefinitions(
+                DefinitionTypes.dengueDisposal, con, odi);
+        setDengueInfo(listDisposal, tblDisposal);
+    }
+
+    private void checkDengueInfo() {
+        listDengueMaster = ctlDengue.selectDengueAssetmentMaster(con, odi);
+        if (listDengueMaster.isEmpty()) {
+            if (ctlDengue.insertDefinitionsInDengueMaster(con, odi)) {
+                selectDengueAssestInfo();
+            } else {
+                JOptionPane.showMessageDialog(null, "There is some configuration issue.\n"
+                        + "Please Contact Support Team.");
+            }
+        } else {
+            selectDengueAssestInfo();
+        }
+    }
+
+    private void setDemgraphy(PatientHospitalVisit pat) {
+        this.con = pat.getCON();
+        this.odi = pat.getODI();
+        txtPatientId.setText(pat.getPatientId().substring(3));
+        txtPatientName.setText(pat.getPatientName());
+        txtAgeGen.setText(pat.getAge()+"/ "+ pat.getGenderDescription());
+//        txtVisitNo.setText(pat.getvis());
+//        txtVisitDate.setText(pat.getvis());
     }
 
 }
