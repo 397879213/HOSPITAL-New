@@ -34,19 +34,19 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
         this.setSize(Constants.xSize - 45, Constants.ySize - 70);
         btnExit.setMnemonic(KeyEvent.VK_X);
         btnCloseExpense.setMnemonic(KeyEvent.VK_C);
-//        listMedicalHist = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengMedicalHistory);
-//        setDengueInfo(listMedicalHist, tblMedicalHistory);
-//        listExamination = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueExamination);
-//        setDengueInfo(listExamination, tblExamination);
-//        listLabInv = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueLabInvestigation);
-//        setDengueInfo(listLabInv, tblLabInv);
-//        listUltrasound = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueUltrasoundInves);
-//        setDengueInfo(listUltrasound, tblUltrasound);
-        listWarningSign = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueUltrasoundInves);
+        listMedicalHist = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengMedicalHistory);
+        setDengueInfo(listMedicalHist, tblMedicalHistory);
+        listExamination = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueExamination);
+        setDengueInfo(listExamination, tblExamination);
+        listLabInv = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueLabInvestigation);
+        setDengueInfo(listLabInv, tblLabInv);
+        listUltrasound = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueUltrasoundInves);
+        setDengueInfo(listUltrasound, tblUltrasound);
+        listWarningSign = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueWarningSigns);
         setDengueInfo(listWarningSign, tblWarningSign);
-        listPresumtiveDiag = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueWarningSigns);
+        listPresumtiveDiag = ctlDengue.selectDengueDefinitions(DefinitionTypes.denguePresumtiveDiagnosis);
         setDengueInfo(listPresumtiveDiag, tblPresumtiveDiag);
-        listERManagement = ctlDengue.selectDengueDefinitions(DefinitionTypes.denguePresumtiveDiagnosis);
+        listERManagement = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueEmergencyManag);
         setDengueInfo(listERManagement, tblERManagment);
         listDisposal = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueDisposal);
         setDengueInfo(listDisposal, tblDisposal);
@@ -1023,6 +1023,28 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
                 obj.setSelection("Y");
             }
             if (ctlDengue.updateDengueAsst(obj)) {
+                listDisposal = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueDisposal);
+                setDengueInfo(listDisposal, tblDisposal);
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to save info.");
+            }
+        }
+        
+        if (tblDisposal.getSelectedColumn() == 4
+                && !obj.getAdditionlaInfo().equalsIgnoreCase("RE")
+                && evt.getClickCount() % 2 == 0) {
+            String query = "SELECT ID,DESCRIPTION                       \n"
+                    + " FROM " + Database.DCMS.definitionTypeDetail + " \n"
+                    + " WHERE DEF_TYPE_ID = " + obj.getAdditionlaInfo() + "\n"
+                    + " ORDER BY ID                                     \n";
+
+            lov.LOVSelection(query, this);
+            if (Constants.lovID.equalsIgnoreCase("ID")) {
+                obj.setRemarks("");
+                return;
+            }
+            obj.setRemarks(Constants.lovDescription);
+            if (ctlDengue.updateRemarks(obj)) {
                 listDisposal = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueDisposal);
                 setDengueInfo(listDisposal, tblDisposal);
             } else {
