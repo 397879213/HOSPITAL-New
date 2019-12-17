@@ -25,6 +25,8 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
     List<DengueFeverAssesmentBO> listUltrasound = new ArrayList();
     List<DengueFeverAssesmentBO> listWarningSign = new ArrayList();
     List<DengueFeverAssesmentBO> listPresumtiveDiag = new ArrayList();
+    List<DengueFeverAssesmentBO> listERManagement = new ArrayList();
+    List<DengueFeverAssesmentBO> listDisposal = new ArrayList();
 
     public DengueFeverAssesment() {
 
@@ -42,8 +44,12 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
 //        setDengueInfo(listUltrasound, tblUltrasound);
         listWarningSign = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueUltrasoundInves);
         setDengueInfo(listWarningSign, tblWarningSign);
-        listPresumtiveDiag = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueUltrasoundInves);
+        listPresumtiveDiag = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueWarningSigns);
         setDengueInfo(listPresumtiveDiag, tblPresumtiveDiag);
+        listERManagement = ctlDengue.selectDengueDefinitions(DefinitionTypes.denguePresumtiveDiagnosis);
+        setDengueInfo(listERManagement, tblERManagment);
+        listDisposal = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueDisposal);
+        setDengueInfo(listDisposal, tblDisposal);
     }
 
     @SuppressWarnings("unchecked")
@@ -930,10 +936,34 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
 
     private void tblPresumtiveDiagMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPresumtiveDiagMouseReleased
         // TODO add your handling code here:
+        DengueFeverAssesmentBO obj = listPresumtiveDiag.get(tblPresumtiveDiag.getSelectedRow());
+        if (tblPresumtiveDiag.getSelectedColumn() == 3) {
+            obj.setSelection("N");
+            if (tblPresumtiveDiag.getValueAt(tblPresumtiveDiag.getSelectedRow(), 3).equals(true)) {
+                obj.setSelection("Y");
+            }
+            if (ctlDengue.updateDengueAsst(obj)) {
+                listPresumtiveDiag = ctlDengue.selectDengueDefinitions(DefinitionTypes.denguePresumtiveDiagnosis);
+                setDengueInfo(listPresumtiveDiag, tblPresumtiveDiag);
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to save info.");
+            }
+        }
     }//GEN-LAST:event_tblPresumtiveDiagMouseReleased
 
     private void tblPresumtiveDiagKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblPresumtiveDiagKeyReleased
         // TODO add your handling code here:
+        DengueFeverAssesmentBO obj = listPresumtiveDiag.get(tblPresumtiveDiag.getSelectedRow());
+        if (tblPresumtiveDiag.getSelectedColumn() == 4) {
+            obj.setRemarks(tblPresumtiveDiag.getValueAt(
+                    tblPresumtiveDiag.getSelectedRow(), 4).toString().trim());
+            if (ctlDengue.updateRemarks(obj)) {
+                listPresumtiveDiag = ctlDengue.selectDengueDefinitions(DefinitionTypes.denguePresumtiveDiagnosis);
+                setDengueInfo(listPresumtiveDiag, tblPresumtiveDiag);
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to save info.");
+            }
+        }
     }//GEN-LAST:event_tblPresumtiveDiagKeyReleased
 
     private void tblERManagmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblERManagmentMouseClicked
@@ -946,10 +976,34 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
 
     private void tblERManagmentMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblERManagmentMouseReleased
         // TODO add your handling code here:
+        DengueFeverAssesmentBO obj = listERManagement.get(tblERManagment.getSelectedRow());
+        if (tblERManagment.getSelectedColumn() == 3) {
+            obj.setSelection("N");
+            if (tblERManagment.getValueAt(tblERManagment.getSelectedRow(), 3).equals(true)) {
+                obj.setSelection("Y");
+            }
+            if (ctlDengue.updateDengueAsst(obj)) {
+                listERManagement = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueEmergencyManag);
+                setDengueInfo(listERManagement, tblERManagment);
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to save info.");
+            }
+        }
     }//GEN-LAST:event_tblERManagmentMouseReleased
 
     private void tblERManagmentKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblERManagmentKeyReleased
         // TODO add your handling code here:
+        DengueFeverAssesmentBO obj = listERManagement.get(tblERManagment.getSelectedRow());
+        if (tblERManagment.getSelectedColumn() == 4) {
+            obj.setRemarks(tblERManagment.getValueAt(
+                    tblERManagment.getSelectedRow(), 4).toString().trim());
+            if (ctlDengue.updateRemarks(obj)) {
+                listERManagement = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueEmergencyManag);
+                setDengueInfo(listERManagement, tblERManagment);
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to save info.");
+            }
+        }
     }//GEN-LAST:event_tblERManagmentKeyReleased
 
     private void tblDisposalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDisposalMouseClicked
@@ -962,10 +1016,34 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
 
     private void tblDisposalMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDisposalMouseReleased
         // TODO add your handling code here:
+        DengueFeverAssesmentBO obj = listDisposal.get(tblDisposal.getSelectedRow());
+        if (tblDisposal.getSelectedColumn() == 3) {
+            obj.setSelection("N");
+            if (tblDisposal.getValueAt(tblDisposal.getSelectedRow(), 3).equals(true)) {
+                obj.setSelection("Y");
+            }
+            if (ctlDengue.updateDengueAsst(obj)) {
+                listDisposal = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueDisposal);
+                setDengueInfo(listDisposal, tblDisposal);
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to save info.");
+            }
+        }
     }//GEN-LAST:event_tblDisposalMouseReleased
 
     private void tblDisposalKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblDisposalKeyReleased
         // TODO add your handling code here:
+        DengueFeverAssesmentBO obj = listDisposal.get(tblDisposal.getSelectedRow());
+        if (tblDisposal.getSelectedColumn() == 4) {
+            obj.setRemarks(tblDisposal.getValueAt(
+                    tblDisposal.getSelectedRow(), 4).toString().trim());
+            if (ctlDengue.updateRemarks(obj)) {
+                listDisposal = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueDisposal);
+                setDengueInfo(listDisposal, tblDisposal);
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to save info.");
+            }
+        }
     }//GEN-LAST:event_tblDisposalKeyReleased
 
 
