@@ -22,6 +22,7 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
     List<DengueFeverAssesmentBO> listMedicalHist = new ArrayList();
     List<DengueFeverAssesmentBO> listExamination = new ArrayList();
     List<DengueFeverAssesmentBO> listLabInv = new ArrayList();
+    List<DengueFeverAssesmentBO> listUltrasound = new ArrayList();
 
     public DengueFeverAssesment() {
 
@@ -29,12 +30,14 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
         this.setSize(Constants.xSize - 45, Constants.ySize - 70);
         btnExit.setMnemonic(KeyEvent.VK_X);
         btnCloseExpense.setMnemonic(KeyEvent.VK_C);
-        listMedicalHist = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengMedicalHistory);
-        setDengueInfo(listMedicalHist, tblMedicalHistory);
-        listExamination = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueExamination);
-        setDengueInfo(listExamination, tblExamination);
+//        listMedicalHist = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengMedicalHistory);
+//        setDengueInfo(listMedicalHist, tblMedicalHistory);
+//        listExamination = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueExamination);
+//        setDengueInfo(listExamination, tblExamination);
         listLabInv = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueLabInvestigation);
         setDengueInfo(listLabInv, tblLabInv);
+        listUltrasound = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueUltrasoundInves);
+        setDengueInfo(listUltrasound, tblUltrasound);
     }
 
     @SuppressWarnings("unchecked")
@@ -65,7 +68,7 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
         jPanel16 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
         jScrollPane15 = new javax.swing.JScrollPane();
-        tbRequestedItem3 = new javax.swing.JTable();
+        tblUltrasound = new javax.swing.JTable();
         jPanel12 = new javax.swing.JPanel();
         jScrollPane14 = new javax.swing.JScrollPane();
         tblLabInv = new javax.swing.JTable();
@@ -370,8 +373,8 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
         jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ultrasound Findings", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel14.setForeground(new java.awt.Color(102, 0, 0));
 
-        tbRequestedItem3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        tbRequestedItem3.setModel(new javax.swing.table.DefaultTableModel(
+        tblUltrasound.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tblUltrasound.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
                 {null,null, null, null}
@@ -379,23 +382,23 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
             new String [] {
                 "Item Id","Item Name","Request Quantity"}
         ));
-        tbRequestedItem3.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblUltrasound.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbRequestedItem3MouseClicked(evt);
+                tblUltrasoundMouseClicked(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                tbRequestedItem3MousePressed(evt);
+                tblUltrasoundMousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                tbRequestedItem3MouseReleased(evt);
+                tblUltrasoundMouseReleased(evt);
             }
         });
-        tbRequestedItem3.addKeyListener(new java.awt.event.KeyAdapter() {
+        tblUltrasound.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                tbRequestedItem3KeyReleased(evt);
+                tblUltrasoundKeyReleased(evt);
             }
         });
-        jScrollPane15.setViewportView(tbRequestedItem3);
+        jScrollPane15.setViewportView(tblUltrasound);
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -801,27 +804,75 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
 
     private void tblLabInvMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLabInvMouseReleased
         // TODO add your handling code here:
+        DengueFeverAssesmentBO obj = listLabInv.get(tblLabInv.getSelectedRow());
+        if (tblLabInv.getSelectedColumn() == 3) {
+            obj.setSelection("N");
+            if (tblLabInv.getValueAt(tblLabInv.getSelectedRow(), 3).equals(true)) {
+                obj.setSelection("Y");
+            }
+            if (ctlDengue.updateDengueAsst(obj)) {
+                listLabInv = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueLabInvestigation);
+                setDengueInfo(listLabInv, tblLabInv);
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to save info.");
+            }
+        }
     }//GEN-LAST:event_tblLabInvMouseReleased
 
     private void tblLabInvKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblLabInvKeyReleased
         // TODO add your handling code here:
+        DengueFeverAssesmentBO obj = listLabInv.get(tblLabInv.getSelectedRow());
+        if (tblLabInv.getSelectedColumn() == 4) {
+            obj.setRemarks(tblLabInv.getValueAt(
+                    tblLabInv.getSelectedRow(), 4).toString().trim());
+            if (ctlDengue.updateRemarks(obj)) {
+                listLabInv = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueLabInvestigation);
+                setDengueInfo(listLabInv, tblLabInv);
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to save info.");
+            }
+        }
     }//GEN-LAST:event_tblLabInvKeyReleased
 
-    private void tbRequestedItem3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbRequestedItem3MouseClicked
+    private void tblUltrasoundMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUltrasoundMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tbRequestedItem3MouseClicked
+    }//GEN-LAST:event_tblUltrasoundMouseClicked
 
-    private void tbRequestedItem3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbRequestedItem3MousePressed
+    private void tblUltrasoundMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUltrasoundMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tbRequestedItem3MousePressed
+    }//GEN-LAST:event_tblUltrasoundMousePressed
 
-    private void tbRequestedItem3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbRequestedItem3MouseReleased
+    private void tblUltrasoundMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUltrasoundMouseReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tbRequestedItem3MouseReleased
+        DengueFeverAssesmentBO obj = listUltrasound.get(tblUltrasound.getSelectedRow());
+        if (tblUltrasound.getSelectedColumn() == 3) {
+            obj.setSelection("N");
+            if (tblUltrasound.getValueAt(tblUltrasound.getSelectedRow(), 3).equals(true)) {
+                obj.setSelection("Y");
+            }
+            if (ctlDengue.updateDengueAsst(obj)) {
+                listUltrasound = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueUltrasoundInves);
+                setDengueInfo(listUltrasound, tblUltrasound);
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to save info.");
+            }
+        }
+    }//GEN-LAST:event_tblUltrasoundMouseReleased
 
-    private void tbRequestedItem3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbRequestedItem3KeyReleased
+    private void tblUltrasoundKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblUltrasoundKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tbRequestedItem3KeyReleased
+        DengueFeverAssesmentBO obj = listUltrasound.get(tblUltrasound.getSelectedRow());
+        if (tblUltrasound.getSelectedColumn() == 4) {
+            obj.setRemarks(tblUltrasound.getValueAt(
+                    tblUltrasound.getSelectedRow(), 4).toString().trim());
+            if (ctlDengue.updateRemarks(obj)) {
+                listUltrasound = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueUltrasoundInves);
+                setDengueInfo(listUltrasound, tblUltrasound);
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to save info.");
+            }
+        }
+    }//GEN-LAST:event_tblUltrasoundKeyReleased
 
     private void tblIndentRequest1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblIndentRequest1MouseClicked
         // TODO add your handling code here:
@@ -914,7 +965,6 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane17;
     private javax.swing.JScrollPane jScrollPane18;
     private javax.swing.JScrollPane jScrollPane19;
-    private javax.swing.JTable tbRequestedItem3;
     private javax.swing.JTable tblExamination;
     private javax.swing.JTable tblIndentRequest1;
     private javax.swing.JTable tblIndentRequest2;
@@ -922,6 +972,7 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
     private javax.swing.JTable tblIndentRequest4;
     private javax.swing.JTable tblLabInv;
     private javax.swing.JTable tblMedicalHistory;
+    private javax.swing.JTable tblUltrasound;
     private javax.swing.JTextField txtToStoreName1;
     private javax.swing.JTextField txtToStoreName2;
     private javax.swing.JTextField txtToStoreName3;

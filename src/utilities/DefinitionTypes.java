@@ -4,7 +4,12 @@ public class DefinitionTypes {
 
     public static final String dengMedicalHistory = "469";
     public static final String dengueExamination = "470";
-    public static final String dengueLbInvestigation = "470";
+    public static final String dengueLabInvestigation = "471";
+    public static final String dengueUltrasoundInves = "472";
+    public static final String dengueWarningSigns = "473";
+    public static final String denguePresumtiveDiagnosis = "474";
+    public static final String dengueEmergencyManag = "475";
+    public static final String dengueDisposal = "476";
     
     // treatment oN DISCHARGE
     public static final String manufacturer = "80";
