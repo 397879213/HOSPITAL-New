@@ -23,6 +23,8 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
     List<DengueFeverAssesmentBO> listExamination = new ArrayList();
     List<DengueFeverAssesmentBO> listLabInv = new ArrayList();
     List<DengueFeverAssesmentBO> listUltrasound = new ArrayList();
+    List<DengueFeverAssesmentBO> listWarningSign = new ArrayList();
+    List<DengueFeverAssesmentBO> listPresumtiveDiag = new ArrayList();
 
     public DengueFeverAssesment() {
 
@@ -34,10 +36,14 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
 //        setDengueInfo(listMedicalHist, tblMedicalHistory);
 //        listExamination = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueExamination);
 //        setDengueInfo(listExamination, tblExamination);
-        listLabInv = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueLabInvestigation);
-        setDengueInfo(listLabInv, tblLabInv);
-        listUltrasound = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueUltrasoundInves);
-        setDengueInfo(listUltrasound, tblUltrasound);
+//        listLabInv = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueLabInvestigation);
+//        setDengueInfo(listLabInv, tblLabInv);
+//        listUltrasound = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueUltrasoundInves);
+//        setDengueInfo(listUltrasound, tblUltrasound);
+        listWarningSign = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueUltrasoundInves);
+        setDengueInfo(listWarningSign, tblWarningSign);
+        listPresumtiveDiag = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueUltrasoundInves);
+        setDengueInfo(listPresumtiveDiag, tblPresumtiveDiag);
     }
 
     @SuppressWarnings("unchecked")
@@ -55,16 +61,16 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
         jPanel13 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
         jScrollPane16 = new javax.swing.JScrollPane();
-        tblIndentRequest1 = new javax.swing.JTable();
+        tblWarningSign = new javax.swing.JTable();
         jPanel17 = new javax.swing.JPanel();
         jScrollPane17 = new javax.swing.JScrollPane();
-        tblIndentRequest2 = new javax.swing.JTable();
+        tblPresumtiveDiag = new javax.swing.JTable();
         jPanel18 = new javax.swing.JPanel();
         jScrollPane18 = new javax.swing.JScrollPane();
-        tblIndentRequest3 = new javax.swing.JTable();
+        tblERManagment = new javax.swing.JTable();
         jPanel19 = new javax.swing.JPanel();
         jScrollPane19 = new javax.swing.JScrollPane();
-        tblIndentRequest4 = new javax.swing.JTable();
+        tblDisposal = new javax.swing.JTable();
         jPanel16 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
         jScrollPane15 = new javax.swing.JScrollPane();
@@ -176,8 +182,8 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
         jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Warning Signs", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel15.setForeground(new java.awt.Color(102, 0, 0));
 
-        tblIndentRequest1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        tblIndentRequest1.setModel(new javax.swing.table.DefaultTableModel(
+        tblWarningSign.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tblWarningSign.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
                 {null,null, null, null}
@@ -185,23 +191,23 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
             new String [] {
                 "Indent No","Indent By","Indent Store", "Requested Date"}
         ));
-        tblIndentRequest1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblWarningSign.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblIndentRequest1MouseClicked(evt);
+                tblWarningSignMouseClicked(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                tblIndentRequest1MousePressed(evt);
+                tblWarningSignMousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                tblIndentRequest1MouseReleased(evt);
+                tblWarningSignMouseReleased(evt);
             }
         });
-        tblIndentRequest1.addKeyListener(new java.awt.event.KeyAdapter() {
+        tblWarningSign.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                tblIndentRequest1KeyReleased(evt);
+                tblWarningSignKeyReleased(evt);
             }
         });
-        jScrollPane16.setViewportView(tblIndentRequest1);
+        jScrollPane16.setViewportView(tblWarningSign);
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
@@ -218,8 +224,8 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
         jPanel17.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Presumtive Diagnosis", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel17.setForeground(new java.awt.Color(102, 0, 0));
 
-        tblIndentRequest2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        tblIndentRequest2.setModel(new javax.swing.table.DefaultTableModel(
+        tblPresumtiveDiag.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tblPresumtiveDiag.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
                 {null,null, null, null}
@@ -227,23 +233,23 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
             new String [] {
                 "Indent No","Indent By","Indent Store", "Requested Date"}
         ));
-        tblIndentRequest2.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblPresumtiveDiag.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblIndentRequest2MouseClicked(evt);
+                tblPresumtiveDiagMouseClicked(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                tblIndentRequest2MousePressed(evt);
+                tblPresumtiveDiagMousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                tblIndentRequest2MouseReleased(evt);
+                tblPresumtiveDiagMouseReleased(evt);
             }
         });
-        tblIndentRequest2.addKeyListener(new java.awt.event.KeyAdapter() {
+        tblPresumtiveDiag.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                tblIndentRequest2KeyReleased(evt);
+                tblPresumtiveDiagKeyReleased(evt);
             }
         });
-        jScrollPane17.setViewportView(tblIndentRequest2);
+        jScrollPane17.setViewportView(tblPresumtiveDiag);
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
@@ -260,8 +266,8 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
         jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Emergency Management", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel18.setForeground(new java.awt.Color(102, 0, 0));
 
-        tblIndentRequest3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        tblIndentRequest3.setModel(new javax.swing.table.DefaultTableModel(
+        tblERManagment.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tblERManagment.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
                 {null,null, null, null}
@@ -269,23 +275,23 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
             new String [] {
                 "Indent No","Indent By","Indent Store", "Requested Date"}
         ));
-        tblIndentRequest3.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblERManagment.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblIndentRequest3MouseClicked(evt);
+                tblERManagmentMouseClicked(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                tblIndentRequest3MousePressed(evt);
+                tblERManagmentMousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                tblIndentRequest3MouseReleased(evt);
+                tblERManagmentMouseReleased(evt);
             }
         });
-        tblIndentRequest3.addKeyListener(new java.awt.event.KeyAdapter() {
+        tblERManagment.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                tblIndentRequest3KeyReleased(evt);
+                tblERManagmentKeyReleased(evt);
             }
         });
-        jScrollPane18.setViewportView(tblIndentRequest3);
+        jScrollPane18.setViewportView(tblERManagment);
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -302,8 +308,8 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
         jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Disposal", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel19.setForeground(new java.awt.Color(102, 0, 0));
 
-        tblIndentRequest4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        tblIndentRequest4.setModel(new javax.swing.table.DefaultTableModel(
+        tblDisposal.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tblDisposal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
                 {null,null, null, null}
@@ -311,23 +317,23 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
             new String [] {
                 "Indent No","Indent By","Indent Store", "Requested Date"}
         ));
-        tblIndentRequest4.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblDisposal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblIndentRequest4MouseClicked(evt);
+                tblDisposalMouseClicked(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                tblIndentRequest4MousePressed(evt);
+                tblDisposalMousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                tblIndentRequest4MouseReleased(evt);
+                tblDisposalMouseReleased(evt);
             }
         });
-        tblIndentRequest4.addKeyListener(new java.awt.event.KeyAdapter() {
+        tblDisposal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                tblIndentRequest4KeyReleased(evt);
+                tblDisposalKeyReleased(evt);
             }
         });
-        jScrollPane19.setViewportView(tblIndentRequest4);
+        jScrollPane19.setViewportView(tblDisposal);
 
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
         jPanel19.setLayout(jPanel19Layout);
@@ -874,69 +880,93 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_tblUltrasoundKeyReleased
 
-    private void tblIndentRequest1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblIndentRequest1MouseClicked
+    private void tblWarningSignMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblWarningSignMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblIndentRequest1MouseClicked
+    }//GEN-LAST:event_tblWarningSignMouseClicked
 
-    private void tblIndentRequest1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblIndentRequest1MousePressed
+    private void tblWarningSignMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblWarningSignMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblIndentRequest1MousePressed
+    }//GEN-LAST:event_tblWarningSignMousePressed
 
-    private void tblIndentRequest1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblIndentRequest1MouseReleased
+    private void tblWarningSignMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblWarningSignMouseReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblIndentRequest1MouseReleased
+        DengueFeverAssesmentBO obj = listWarningSign.get(tblWarningSign.getSelectedRow());
+        if (tblWarningSign.getSelectedColumn() == 3) {
+            obj.setSelection("N");
+            if (tblWarningSign.getValueAt(tblWarningSign.getSelectedRow(), 3).equals(true)) {
+                obj.setSelection("Y");
+            }
+            if (ctlDengue.updateDengueAsst(obj)) {
+                listWarningSign = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueWarningSigns);
+                setDengueInfo(listWarningSign, tblWarningSign);
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to save info.");
+            }
+        }
+    }//GEN-LAST:event_tblWarningSignMouseReleased
 
-    private void tblIndentRequest1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblIndentRequest1KeyReleased
+    private void tblWarningSignKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblWarningSignKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblIndentRequest1KeyReleased
+        DengueFeverAssesmentBO obj = listWarningSign.get(tblWarningSign.getSelectedRow());
+        if (tblWarningSign.getSelectedColumn() == 4) {
+            obj.setRemarks(tblWarningSign.getValueAt(
+                    tblWarningSign.getSelectedRow(), 4).toString().trim());
+            if (ctlDengue.updateRemarks(obj)) {
+                listWarningSign = ctlDengue.selectDengueDefinitions(DefinitionTypes.dengueWarningSigns);
+                setDengueInfo(listWarningSign, tblWarningSign);
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to save info.");
+            }
+        }
+    }//GEN-LAST:event_tblWarningSignKeyReleased
 
-    private void tblIndentRequest2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblIndentRequest2MouseClicked
+    private void tblPresumtiveDiagMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPresumtiveDiagMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblIndentRequest2MouseClicked
+    }//GEN-LAST:event_tblPresumtiveDiagMouseClicked
 
-    private void tblIndentRequest2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblIndentRequest2MousePressed
+    private void tblPresumtiveDiagMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPresumtiveDiagMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblIndentRequest2MousePressed
+    }//GEN-LAST:event_tblPresumtiveDiagMousePressed
 
-    private void tblIndentRequest2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblIndentRequest2MouseReleased
+    private void tblPresumtiveDiagMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPresumtiveDiagMouseReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblIndentRequest2MouseReleased
+    }//GEN-LAST:event_tblPresumtiveDiagMouseReleased
 
-    private void tblIndentRequest2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblIndentRequest2KeyReleased
+    private void tblPresumtiveDiagKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblPresumtiveDiagKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblIndentRequest2KeyReleased
+    }//GEN-LAST:event_tblPresumtiveDiagKeyReleased
 
-    private void tblIndentRequest3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblIndentRequest3MouseClicked
+    private void tblERManagmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblERManagmentMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblIndentRequest3MouseClicked
+    }//GEN-LAST:event_tblERManagmentMouseClicked
 
-    private void tblIndentRequest3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblIndentRequest3MousePressed
+    private void tblERManagmentMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblERManagmentMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblIndentRequest3MousePressed
+    }//GEN-LAST:event_tblERManagmentMousePressed
 
-    private void tblIndentRequest3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblIndentRequest3MouseReleased
+    private void tblERManagmentMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblERManagmentMouseReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblIndentRequest3MouseReleased
+    }//GEN-LAST:event_tblERManagmentMouseReleased
 
-    private void tblIndentRequest3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblIndentRequest3KeyReleased
+    private void tblERManagmentKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblERManagmentKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblIndentRequest3KeyReleased
+    }//GEN-LAST:event_tblERManagmentKeyReleased
 
-    private void tblIndentRequest4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblIndentRequest4MouseClicked
+    private void tblDisposalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDisposalMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblIndentRequest4MouseClicked
+    }//GEN-LAST:event_tblDisposalMouseClicked
 
-    private void tblIndentRequest4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblIndentRequest4MousePressed
+    private void tblDisposalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDisposalMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblIndentRequest4MousePressed
+    }//GEN-LAST:event_tblDisposalMousePressed
 
-    private void tblIndentRequest4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblIndentRequest4MouseReleased
+    private void tblDisposalMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDisposalMouseReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblIndentRequest4MouseReleased
+    }//GEN-LAST:event_tblDisposalMouseReleased
 
-    private void tblIndentRequest4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblIndentRequest4KeyReleased
+    private void tblDisposalKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblDisposalKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblIndentRequest4KeyReleased
+    }//GEN-LAST:event_tblDisposalKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -965,14 +995,14 @@ public class DengueFeverAssesment extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane17;
     private javax.swing.JScrollPane jScrollPane18;
     private javax.swing.JScrollPane jScrollPane19;
+    private javax.swing.JTable tblDisposal;
+    private javax.swing.JTable tblERManagment;
     private javax.swing.JTable tblExamination;
-    private javax.swing.JTable tblIndentRequest1;
-    private javax.swing.JTable tblIndentRequest2;
-    private javax.swing.JTable tblIndentRequest3;
-    private javax.swing.JTable tblIndentRequest4;
     private javax.swing.JTable tblLabInv;
     private javax.swing.JTable tblMedicalHistory;
+    private javax.swing.JTable tblPresumtiveDiag;
     private javax.swing.JTable tblUltrasound;
+    private javax.swing.JTable tblWarningSign;
     private javax.swing.JTextField txtToStoreName1;
     private javax.swing.JTextField txtToStoreName2;
     private javax.swing.JTextField txtToStoreName3;
