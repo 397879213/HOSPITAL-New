@@ -107,9 +107,7 @@ public class ReportConfigurationHandler implements java.io.Serializable {
         return lisMod;
     }
 
-    public boolean insertAppReports(ReportConfiguration pat) {
-
-        GenerateKeys Key = new GenerateKeys();
+    public boolean insertAppReports(ReportConfiguration pat) { 
 
         String[] columns = {Database.DCMS.reports, "ID", "DESCRIPTION",
             "REPORT_SERVER", "REPORT_PATH", "ACTIVE", "REPORT_NAME", "POSITION",

@@ -10,6 +10,7 @@ public class Database {
         public static final String pofMapper = DAO.usernameEmr + ".POF_EMP_MAPPER   ";
         public static final String clientEmployeeDetail = DAO.usernameEmr + ".CLIENT_EMP_DETAIL   ";
         public static final String ARCArmy = DAO.usernameEmr + ".ACR_ARMY   ";
+        public static final String regArmyPerson = DAO.usernameEmr + ".REGISTER_ARMY_PERSON   ";
 
         public static final String medicineRequest = DAO.usernameEmr + ".MEDICINE_REQUEST   ";
         public static final String ltuPatientHistory = DAO.usernameEmr + ".LTU_PATIENT_HISTORY   ";

@@ -199,14 +199,14 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="txtMemberId" min="-2" pref="108" max="-2" attributes="3"/>
+                              <Component id="txtSrchPatId" min="-2" pref="108" max="-2" attributes="3"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel11" min="-2" pref="65" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtMemberId1" min="-2" pref="102" max="-2" attributes="3"/>
+                              <Component id="txtSrchPlNo" min="-2" pref="102" max="-2" attributes="3"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="txtMemberId2" max="32767" attributes="3"/>
+                          <Component id="txtSrchName" max="32767" attributes="3"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -217,14 +217,14 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel10" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="txtMemberId" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                          <Component id="txtSrchPatId" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           <Component id="jLabel11" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="txtMemberId1" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                          <Component id="txtSrchPlNo" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel12" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="txtMemberId2" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                          <Component id="txtSrchName" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                       </Group>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                   </Group>
@@ -244,14 +244,14 @@
                 <Property name="text" type="java.lang.String" value="Patient Id : "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberId">
+            <Component class="javax.swing.JTextField" name="txtSrchPatId">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberIdActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSrchPatIdActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel11">
@@ -266,14 +266,14 @@
                 <Property name="text" type="java.lang.String" value="PL No : "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberId1">
+            <Component class="javax.swing.JTextField" name="txtSrchPlNo">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSrchPlNoActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel12">
@@ -288,14 +288,14 @@
                 <Property name="text" type="java.lang.String" value="Name : "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberId2">
+            <Component class="javax.swing.JTextField" name="txtSrchName">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSrchNameActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -328,47 +328,47 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel13" min="-2" pref="119" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtMemberId3" max="32767" attributes="3"/>
+                              <Component id="txtPatientId" max="32767" attributes="3"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jLabel14" min="-2" pref="119" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtMemberId4" max="32767" attributes="3"/>
+                              <Component id="txtPlNo" max="32767" attributes="3"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jLabel15" min="-2" pref="119" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtMemberId5" max="32767" attributes="3"/>
+                              <Component id="txtFullName" max="32767" attributes="3"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jLabel16" min="-2" pref="119" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtMemberId6" max="32767" attributes="3"/>
+                              <Component id="txtDob" max="32767" attributes="3"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jLabel17" min="-2" pref="119" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtMemberId7" max="32767" attributes="3"/>
+                              <Component id="txtRank" max="32767" attributes="3"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jLabel18" min="-2" pref="119" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtMemberId8" max="32767" attributes="3"/>
+                              <Component id="txtMS" max="32767" attributes="3"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jLabel19" min="-2" pref="119" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtMemberId9" max="32767" attributes="3"/>
+                              <Component id="txtBG" max="32767" attributes="3"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jLabel20" min="-2" pref="119" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtMemberId10" max="32767" attributes="3"/>
+                              <Component id="txtCity" max="32767" attributes="3"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jLabel21" min="-2" pref="119" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtMemberId11" max="32767" attributes="3"/>
+                              <Component id="txtUnit" max="32767" attributes="3"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -381,47 +381,47 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel13" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="txtMemberId3" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                          <Component id="txtPatientId" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel14" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="txtMemberId4" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                          <Component id="txtPlNo" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel15" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="txtMemberId5" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                          <Component id="txtFullName" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel16" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="txtMemberId6" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                          <Component id="txtDob" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel17" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="txtMemberId7" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                          <Component id="txtRank" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel18" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="txtMemberId8" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                          <Component id="txtMS" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel19" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="txtMemberId9" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                          <Component id="txtBG" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel20" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="txtMemberId10" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                          <Component id="txtCity" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel21" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="txtMemberId11" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                          <Component id="txtUnit" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
@@ -493,14 +493,14 @@
                 <Property name="text" type="java.lang.String" value="Patient Id : "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberId3">
+            <Component class="javax.swing.JTextField" name="txtPatientId">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId3ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPatientIdActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel14">
@@ -515,24 +515,24 @@
                 <Property name="text" type="java.lang.String" value="PL Number : "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberId4">
+            <Component class="javax.swing.JTextField" name="txtPlNo">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId4ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPlNoActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberId5">
+            <Component class="javax.swing.JTextField" name="txtFullName">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId5ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFullNameActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel15">
@@ -547,14 +547,14 @@
                 <Property name="text" type="java.lang.String" value="Full Nmae : "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberId6">
+            <Component class="javax.swing.JTextField" name="txtDob">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId6ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDobActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel16">
@@ -581,14 +581,14 @@
                 <Property name="text" type="java.lang.String" value="Rank : "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberId7">
+            <Component class="javax.swing.JTextField" name="txtRank">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId7ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtRankActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel18">
@@ -603,24 +603,24 @@
                 <Property name="text" type="java.lang.String" value="Marital Status : "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberId8">
+            <Component class="javax.swing.JTextField" name="txtMS">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId8ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMSActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberId9">
+            <Component class="javax.swing.JTextField" name="txtBG">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId9ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBGActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel19">
@@ -647,24 +647,24 @@
                 <Property name="text" type="java.lang.String" value="City : "/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberId10">
+            <Component class="javax.swing.JTextField" name="txtCity">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId10ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCityActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberId11">
+            <Component class="javax.swing.JTextField" name="txtUnit">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="12" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId11ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUnitActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel21">
@@ -719,21 +719,21 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="tblPatientInfo">
+                <Component class="javax.swing.JTable" name="tblArmyInfo">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="d1" green="b4" id="Active Caption" palette="2" red="99" type="palette"/>
                     </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {null, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Sr.&quot;, &quot;Grade&quot;, &quot;Grade Description&quot;, &quot;Child Above 12&quot;, &quot;Child Under 12&quot;, &quot;Spouse&quot;,&#xa;            &quot;Parents&quot;, &quot;Self&quot;, &quot;Class&quot;&#xa;&#xa;    }&#xa;)" type="code"/>
+                      <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {null, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Sr.&quot;, &quot;Patient Id&quot;, &quot;PL No&quot;, &quot;Name&quot;, &quot;Rank&quot;&#xa;    }&#xa;)" type="code"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPatientInfoMouseClicked"/>
-                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPatientInfoMouseEntered"/>
-                    <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPatientInfoMouseReleased"/>
-                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tblPatientInfoPropertyChange"/>
-                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tblPatientInfoKeyReleased"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblArmyInfoMouseClicked"/>
+                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblArmyInfoMouseEntered"/>
+                    <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblArmyInfoMouseReleased"/>
+                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tblArmyInfoPropertyChange"/>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tblArmyInfoKeyReleased"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -765,13 +765,13 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
-                  <Component id="btnClear1" min="-2" pref="95" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnClear" min="-2" pref="95" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnClear2" min="-2" pref="95" max="-2" attributes="0"/>
+                  <Component id="btnRegister" min="-2" pref="95" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnClear3" min="-2" pref="95" max="-2" attributes="0"/>
+                  <Component id="btnEdit" min="-2" pref="95" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="btnSearch" min="-2" pref="95" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jButton2" min="-2" pref="95" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -783,11 +783,11 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnClear" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnRegister" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnClear1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnClear2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnClear3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnClear" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnEdit" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnSearch" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -795,7 +795,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="btnClear">
+        <Component class="javax.swing.JButton" name="btnRegister">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="1"/>
@@ -814,7 +814,7 @@
             <Property name="text" type="java.lang.String" value="Exit"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnClear1">
+        <Component class="javax.swing.JButton" name="btnClear">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="1"/>
@@ -822,7 +822,7 @@
             <Property name="text" type="java.lang.String" value="Clear"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnClear2">
+        <Component class="javax.swing.JButton" name="btnEdit">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="1"/>
@@ -830,7 +830,7 @@
             <Property name="text" type="java.lang.String" value="Edit"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnClear3">
+        <Component class="javax.swing.JButton" name="btnSearch">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="1"/>

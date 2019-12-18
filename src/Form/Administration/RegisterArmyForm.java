@@ -8,7 +8,7 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
     public RegisterArmyForm() {
 
         initComponents();
-        this.setSize(Constants.xSize - 40, Constants.ySize - 80);
+        this.setSize(Constants.xSize - 120, Constants.ySize - 220);
 
     }
 
@@ -21,42 +21,42 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        txtMemberId = new javax.swing.JTextField();
+        txtSrchPatId = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        txtMemberId1 = new javax.swing.JTextField();
+        txtSrchPlNo = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        txtMemberId2 = new javax.swing.JTextField();
+        txtSrchName = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel13 = new javax.swing.JLabel();
-        txtMemberId3 = new javax.swing.JTextField();
+        txtPatientId = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        txtMemberId4 = new javax.swing.JTextField();
-        txtMemberId5 = new javax.swing.JTextField();
+        txtPlNo = new javax.swing.JTextField();
+        txtFullName = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        txtMemberId6 = new javax.swing.JTextField();
+        txtDob = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        txtMemberId7 = new javax.swing.JTextField();
+        txtRank = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        txtMemberId8 = new javax.swing.JTextField();
-        txtMemberId9 = new javax.swing.JTextField();
+        txtMS = new javax.swing.JTextField();
+        txtBG = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        txtMemberId10 = new javax.swing.JTextField();
-        txtMemberId11 = new javax.swing.JTextField();
+        txtCity = new javax.swing.JTextField();
+        txtUnit = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane26 = new javax.swing.JScrollPane();
-        tblPatientInfo = new javax.swing.JTable();
+        tblArmyInfo = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
-        btnClear = new javax.swing.JButton();
+        btnRegister = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        btnClear1 = new javax.swing.JButton();
-        btnClear2 = new javax.swing.JButton();
-        btnClear3 = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
+        btnSearch = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102)));
@@ -105,10 +105,10 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Patient Id : ");
 
-        txtMemberId.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtMemberId.addActionListener(new java.awt.event.ActionListener() {
+        txtSrchPatId.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtSrchPatId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMemberIdActionPerformed(evt);
+                txtSrchPatIdActionPerformed(evt);
             }
         });
 
@@ -117,10 +117,10 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel11.setText("PL No : ");
 
-        txtMemberId1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtMemberId1.addActionListener(new java.awt.event.ActionListener() {
+        txtSrchPlNo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtSrchPlNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMemberId1ActionPerformed(evt);
+                txtSrchPlNoActionPerformed(evt);
             }
         });
 
@@ -129,10 +129,10 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel12.setText("Name : ");
 
-        txtMemberId2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtMemberId2.addActionListener(new java.awt.event.ActionListener() {
+        txtSrchName.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtSrchName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMemberId2ActionPerformed(evt);
+                txtSrchNameActionPerformed(evt);
             }
         });
 
@@ -148,13 +148,13 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(txtMemberId, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSrchPatId, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtMemberId1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSrchPlNo, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(txtMemberId2))
+                    .addComponent(txtSrchName))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -162,13 +162,13 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMemberId, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSrchPatId, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMemberId1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSrchPlNo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMemberId2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSrchName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5))
         );
 
@@ -202,10 +202,10 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel13.setText("Patient Id : ");
 
-        txtMemberId3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtMemberId3.addActionListener(new java.awt.event.ActionListener() {
+        txtPatientId.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtPatientId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMemberId3ActionPerformed(evt);
+                txtPatientIdActionPerformed(evt);
             }
         });
 
@@ -214,17 +214,17 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel14.setText("PL Number : ");
 
-        txtMemberId4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtMemberId4.addActionListener(new java.awt.event.ActionListener() {
+        txtPlNo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtPlNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMemberId4ActionPerformed(evt);
+                txtPlNoActionPerformed(evt);
             }
         });
 
-        txtMemberId5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtMemberId5.addActionListener(new java.awt.event.ActionListener() {
+        txtFullName.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtFullName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMemberId5ActionPerformed(evt);
+                txtFullNameActionPerformed(evt);
             }
         });
 
@@ -233,10 +233,10 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel15.setText("Full Nmae : ");
 
-        txtMemberId6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtMemberId6.addActionListener(new java.awt.event.ActionListener() {
+        txtDob.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtDob.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMemberId6ActionPerformed(evt);
+                txtDobActionPerformed(evt);
             }
         });
 
@@ -250,10 +250,10 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel17.setText("Rank : ");
 
-        txtMemberId7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtMemberId7.addActionListener(new java.awt.event.ActionListener() {
+        txtRank.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtRank.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMemberId7ActionPerformed(evt);
+                txtRankActionPerformed(evt);
             }
         });
 
@@ -262,17 +262,17 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel18.setText("Marital Status : ");
 
-        txtMemberId8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtMemberId8.addActionListener(new java.awt.event.ActionListener() {
+        txtMS.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtMS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMemberId8ActionPerformed(evt);
+                txtMSActionPerformed(evt);
             }
         });
 
-        txtMemberId9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtMemberId9.addActionListener(new java.awt.event.ActionListener() {
+        txtBG.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtBG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMemberId9ActionPerformed(evt);
+                txtBGActionPerformed(evt);
             }
         });
 
@@ -286,17 +286,17 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel20.setText("City : ");
 
-        txtMemberId10.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtMemberId10.addActionListener(new java.awt.event.ActionListener() {
+        txtCity.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtCity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMemberId10ActionPerformed(evt);
+                txtCityActionPerformed(evt);
             }
         });
 
-        txtMemberId11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtMemberId11.addActionListener(new java.awt.event.ActionListener() {
+        txtUnit.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtUnit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMemberId11ActionPerformed(evt);
+                txtUnitActionPerformed(evt);
             }
         });
 
@@ -316,39 +316,39 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtMemberId3))
+                        .addComponent(txtPatientId))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtMemberId4))
+                        .addComponent(txtPlNo))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtMemberId5))
+                        .addComponent(txtFullName))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtMemberId6))
+                        .addComponent(txtDob))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtMemberId7))
+                        .addComponent(txtRank))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtMemberId8))
+                        .addComponent(txtMS))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtMemberId9))
+                        .addComponent(txtBG))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtMemberId10))
+                        .addComponent(txtCity))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtMemberId11)))
+                        .addComponent(txtUnit)))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -357,39 +357,39 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMemberId3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPatientId, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMemberId4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPlNo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMemberId5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFullName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMemberId6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMemberId7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtRank, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMemberId8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMS, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMemberId9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBG, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMemberId10, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMemberId11, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -398,39 +398,37 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Army Info", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel8.setForeground(new java.awt.Color(102, 0, 0));
 
-        tblPatientInfo.setBackground(java.awt.SystemColor.activeCaption);
-        tblPatientInfo.setModel(new javax.swing.table.DefaultTableModel(
+        tblArmyInfo.setBackground(java.awt.SystemColor.activeCaption);
+        tblArmyInfo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null}
             },
             new String [] {
-                "Sr.", "Grade", "Grade Description", "Child Above 12", "Child Under 12", "Spouse",
-                "Parents", "Self", "Class"
-
+                "Sr.", "Patient Id", "PL No", "Name", "Rank"
             }
         ));
-        tblPatientInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblArmyInfo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblPatientInfoMouseClicked(evt);
+                tblArmyInfoMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                tblPatientInfoMouseEntered(evt);
+                tblArmyInfoMouseEntered(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                tblPatientInfoMouseReleased(evt);
+                tblArmyInfoMouseReleased(evt);
             }
         });
-        tblPatientInfo.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        tblArmyInfo.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                tblPatientInfoPropertyChange(evt);
+                tblArmyInfoPropertyChange(evt);
             }
         });
-        tblPatientInfo.addKeyListener(new java.awt.event.KeyAdapter() {
+        tblArmyInfo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                tblPatientInfoKeyReleased(evt);
+                tblArmyInfoKeyReleased(evt);
             }
         });
-        jScrollPane26.setViewportView(tblPatientInfo);
+        jScrollPane26.setViewportView(tblArmyInfo);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -472,21 +470,21 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel6.setForeground(new java.awt.Color(102, 0, 0));
 
-        btnClear.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnClear.setText("Register");
+        btnRegister.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnRegister.setText("Register");
 
         jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButton2.setForeground(new java.awt.Color(204, 0, 0));
         jButton2.setText("Exit");
 
-        btnClear1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnClear1.setText("Clear");
+        btnClear.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnClear.setText("Clear");
 
-        btnClear2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnClear2.setText("Edit");
+        btnEdit.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnEdit.setText("Edit");
 
-        btnClear3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnClear3.setText("Search");
+        btnSearch.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnSearch.setText("Search");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -494,13 +492,13 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(127, 127, 127)
-                .addComponent(btnClear1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnClear2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnClear3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -510,11 +508,11 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnClear)
+                    .addComponent(btnRegister)
                     .addComponent(jButton2)
-                    .addComponent(btnClear1)
-                    .addComponent(btnClear2)
-                    .addComponent(btnClear3))
+                    .addComponent(btnClear)
+                    .addComponent(btnEdit)
+                    .addComponent(btnSearch))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -545,80 +543,80 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtMemberIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberIdActionPerformed
+    private void txtSrchPatIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSrchPatIdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMemberIdActionPerformed
+    }//GEN-LAST:event_txtSrchPatIdActionPerformed
 
-    private void txtMemberId1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId1ActionPerformed
+    private void txtSrchPlNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSrchPlNoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMemberId1ActionPerformed
+    }//GEN-LAST:event_txtSrchPlNoActionPerformed
 
-    private void tblPatientInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientInfoMouseClicked
+    private void tblArmyInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblArmyInfoMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPatientInfoMouseClicked
+    }//GEN-LAST:event_tblArmyInfoMouseClicked
 
-    private void tblPatientInfoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientInfoMouseEntered
+    private void tblArmyInfoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblArmyInfoMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPatientInfoMouseEntered
+    }//GEN-LAST:event_tblArmyInfoMouseEntered
 
-    private void tblPatientInfoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientInfoMouseReleased
+    private void tblArmyInfoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblArmyInfoMouseReleased
 
-    }//GEN-LAST:event_tblPatientInfoMouseReleased
+    }//GEN-LAST:event_tblArmyInfoMouseReleased
 
-    private void tblPatientInfoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblPatientInfoPropertyChange
+    private void tblArmyInfoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblArmyInfoPropertyChange
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPatientInfoPropertyChange
+    }//GEN-LAST:event_tblArmyInfoPropertyChange
 
-    private void tblPatientInfoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblPatientInfoKeyReleased
+    private void tblArmyInfoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblArmyInfoKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPatientInfoKeyReleased
+    }//GEN-LAST:event_tblArmyInfoKeyReleased
 
-    private void txtMemberId2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId2ActionPerformed
+    private void txtSrchNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSrchNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMemberId2ActionPerformed
+    }//GEN-LAST:event_txtSrchNameActionPerformed
 
-    private void txtMemberId3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId3ActionPerformed
+    private void txtPatientIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientIdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMemberId3ActionPerformed
+    }//GEN-LAST:event_txtPatientIdActionPerformed
 
-    private void txtMemberId4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId4ActionPerformed
+    private void txtPlNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPlNoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMemberId4ActionPerformed
+    }//GEN-LAST:event_txtPlNoActionPerformed
 
-    private void txtMemberId5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId5ActionPerformed
+    private void txtFullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFullNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMemberId5ActionPerformed
+    }//GEN-LAST:event_txtFullNameActionPerformed
 
-    private void txtMemberId6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId6ActionPerformed
+    private void txtDobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDobActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMemberId6ActionPerformed
+    }//GEN-LAST:event_txtDobActionPerformed
 
-    private void txtMemberId7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId7ActionPerformed
+    private void txtRankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRankActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMemberId7ActionPerformed
+    }//GEN-LAST:event_txtRankActionPerformed
 
-    private void txtMemberId8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId8ActionPerformed
+    private void txtMSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMSActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMemberId8ActionPerformed
+    }//GEN-LAST:event_txtMSActionPerformed
 
-    private void txtMemberId9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId9ActionPerformed
+    private void txtBGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBGActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMemberId9ActionPerformed
+    }//GEN-LAST:event_txtBGActionPerformed
 
-    private void txtMemberId10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId10ActionPerformed
+    private void txtCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCityActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMemberId10ActionPerformed
+    }//GEN-LAST:event_txtCityActionPerformed
 
-    private void txtMemberId11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId11ActionPerformed
+    private void txtUnitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUnitActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMemberId11ActionPerformed
+    }//GEN-LAST:event_txtUnitActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
-    private javax.swing.JButton btnClear1;
-    private javax.swing.JButton btnClear2;
-    private javax.swing.JButton btnClear3;
+    private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnRegister;
+    private javax.swing.JButton btnSearch;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -643,19 +641,19 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblPacsLink;
     private javax.swing.JPanel pnlPL;
-    private javax.swing.JTable tblPatientInfo;
-    private javax.swing.JTextField txtMemberId;
-    private javax.swing.JTextField txtMemberId1;
-    private javax.swing.JTextField txtMemberId10;
-    private javax.swing.JTextField txtMemberId11;
-    private javax.swing.JTextField txtMemberId2;
-    private javax.swing.JTextField txtMemberId3;
-    private javax.swing.JTextField txtMemberId4;
-    private javax.swing.JTextField txtMemberId5;
-    private javax.swing.JTextField txtMemberId6;
-    private javax.swing.JTextField txtMemberId7;
-    private javax.swing.JTextField txtMemberId8;
-    private javax.swing.JTextField txtMemberId9;
+    private javax.swing.JTable tblArmyInfo;
+    private javax.swing.JTextField txtBG;
+    private javax.swing.JTextField txtCity;
+    private javax.swing.JTextField txtDob;
+    private javax.swing.JTextField txtFullName;
+    private javax.swing.JTextField txtMS;
+    private javax.swing.JTextField txtPatientId;
+    private javax.swing.JTextField txtPlNo;
+    private javax.swing.JTextField txtRank;
+    private javax.swing.JTextField txtSrchName;
+    private javax.swing.JTextField txtSrchPatId;
+    private javax.swing.JTextField txtSrchPlNo;
+    private javax.swing.JTextField txtUnit;
     // End of variables declaration//GEN-END:variables
 
 }
