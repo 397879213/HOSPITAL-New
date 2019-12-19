@@ -1,16 +1,41 @@
 package Form.Administration;
 
-import Form.general.*;
+import BO.Administration.ArmyPersonBO;
+import Controller.Administration.ArmyPersonController;
+import TableModel.Administration.ArmyPersonInfoTableModel;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.TableColumn;
 import utilities.Constants;
+import utilities.DefinitionTypes;
+import utilities.DisplayLOV;
+import utilities.GenerateKeys;
+import utilities.Keys;
 
 public class RegisterArmyForm extends javax.swing.JInternalFrame {
+
+    private String patientId = "001000000001";
+    private String rankId = "";
+    private String maritalStatusId = "";
+    private String bloodGroupId = "";
+    private String cityId = "";
+
+    List<ArmyPersonBO> listAP = new ArrayList();
 
     public RegisterArmyForm() {
 
         initComponents();
         this.setSize(Constants.xSize - 120, Constants.ySize - 220);
-
     }
+
+    GenerateKeys key = new GenerateKeys();
+    Keys pk = new Keys();
+    ArmyPersonBO objAP = new ArmyPersonBO();
+    ArmyPersonBO objSrch = new ArmyPersonBO();
+    ArmyPersonController ctlAP = new ArmyPersonController();
+    DisplayLOV lov = new DisplayLOV();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -29,7 +54,7 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         jPanel7 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtAddress = new javax.swing.JTextArea();
         jLabel13 = new javax.swing.JLabel();
         txtPatientId = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
@@ -66,7 +91,7 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle(Constants.title+"Army Person");
         setFrameIcon(null);
-        setPreferredSize(new java.awt.Dimension(880, 710));
+        setPreferredSize(new java.awt.Dimension(880, 605));
         setRequestFocusEnabled(false);
 
         pnlPL.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -180,9 +205,10 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Address", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel5.setForeground(new java.awt.Color(102, 0, 0));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtAddress.setColumns(20);
+        txtAddress.setRows(5);
+        txtAddress.setWrapStyleWord(true);
+        jScrollPane1.setViewportView(txtAddress);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -202,6 +228,7 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel13.setText("Patient Id : ");
 
+        txtPatientId.setEditable(false);
         txtPatientId.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtPatientId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -354,7 +381,7 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(5, 5, 5)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPatientId, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -472,6 +499,11 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
 
         btnRegister.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnRegister.setText("Register");
+        btnRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegisterActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButton2.setForeground(new java.awt.Color(204, 0, 0));
@@ -482,6 +514,11 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
 
         btnEdit.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnSearch.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnSearch.setText("Search");
@@ -532,8 +569,8 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlPL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -544,11 +581,14 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtSrchPatIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSrchPatIdActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here: 
+        objSrch.setPatientId(txtSrchPatId.getText());
     }//GEN-LAST:event_txtSrchPatIdActionPerformed
 
     private void txtSrchPlNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSrchPlNoActionPerformed
         // TODO add your handling code here:
+        objSrch.setPlNo(txtSrchPlNo.getText().trim());
+
     }//GEN-LAST:event_txtSrchPlNoActionPerformed
 
     private void tblArmyInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblArmyInfoMouseClicked
@@ -560,7 +600,14 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblArmyInfoMouseEntered
 
     private void tblArmyInfoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblArmyInfoMouseReleased
-
+        ArmyPersonBO objAP = listAP.get(tblArmyInfo.getSelectedRow());
+        rankId = objAP.getRankId();
+        maritalStatusId = objAP.getMaritalStatusId();
+        bloodGroupId = objAP.getBloodGroupId();
+        cityId = objAP.getCityId();
+        txtPlNo.setEditable(false);
+        txtDob.setEditable(false);
+        txtBG.setEditable(false);
     }//GEN-LAST:event_tblArmyInfoMouseReleased
 
     private void tblArmyInfoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblArmyInfoPropertyChange
@@ -573,6 +620,7 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
 
     private void txtSrchNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSrchNameActionPerformed
         // TODO add your handling code here:
+        objSrch.setFullName(txtSrchName.getText().trim());
     }//GEN-LAST:event_txtSrchNameActionPerformed
 
     private void txtPatientIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientIdActionPerformed
@@ -593,23 +641,65 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
 
     private void txtRankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRankActionPerformed
         // TODO add your handling code here:
+        lov.LOVDefinitionSelection(DefinitionTypes.employeeRanks, txtRank.getText().trim(), this);
+        rankId = Constants.lovID;
+        txtRank.setText(Constants.lovDescription);
     }//GEN-LAST:event_txtRankActionPerformed
 
     private void txtMSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMSActionPerformed
         // TODO add your handling code here:
+        lov.LOVDefinitionSelection(DefinitionTypes.maritalStatus, txtMS.getText().trim(), this);
+        maritalStatusId = Constants.lovID;
+        txtMS.setText(Constants.lovDescription);
     }//GEN-LAST:event_txtMSActionPerformed
 
     private void txtBGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBGActionPerformed
         // TODO add your handling code here:
+        lov.LOVDefinitionSelection(DefinitionTypes.bloodGroup, txtBG.getText().trim(), this);
+        bloodGroupId = Constants.lovID;
+        txtBG.setText(Constants.lovDescription);
     }//GEN-LAST:event_txtBGActionPerformed
 
     private void txtCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCityActionPerformed
         // TODO add your handling code here:
+        lov.LOVDefinitionSelection(DefinitionTypes.city, txtCity.getText().trim(), this);
+        cityId = Constants.lovID;
+        txtCity.setText(Constants.lovDescription);
     }//GEN-LAST:event_txtCityActionPerformed
 
     private void txtUnitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUnitActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUnitActionPerformed
+
+    private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
+        // TODO add your handling code here:
+        setSaveInfo();
+        if (ctlAP.insertArmyPerson(objAP)) {
+            JOptionPane.showMessageDialog(null, "Army Person Registered Successfully.");
+            selectArmyPerson();
+            txtPlNo.setEditable(true);
+            txtDob.setEditable(true);
+            txtBG.setEditable(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Unablr to Register Army Person.\n"
+                    + "Kindly Contact Support Team.");
+        }
+    }//GEN-LAST:event_btnRegisterActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+        setSaveInfo();
+        if (ctlAP.updateArmyPerson(objAP)) {
+            JOptionPane.showMessageDialog(null, "Army Person Information Updated Successfully.");
+            selectArmyPerson();
+            txtPlNo.setEditable(true);
+            txtDob.setEditable(true);
+            txtBG.setEditable(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Unablr to Update Army Person Information.\n"
+                    + "Kindly Contact Support Team.");
+        }
+    }//GEN-LAST:event_btnEditActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -638,10 +728,10 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane26;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblPacsLink;
     private javax.swing.JPanel pnlPL;
     private javax.swing.JTable tblArmyInfo;
+    private javax.swing.JTextArea txtAddress;
     private javax.swing.JTextField txtBG;
     private javax.swing.JTextField txtCity;
     private javax.swing.JTextField txtDob;
@@ -655,5 +745,61 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtSrchPlNo;
     private javax.swing.JTextField txtUnit;
     // End of variables declaration//GEN-END:variables
+
+    private void selectArmyPerson() {
+        if (txtSrchPatId.getText().trim().length() == 0) {
+            objSrch.setPatientId("");
+        }
+        if (txtSrchPlNo.getText().trim().length() == 0) {
+            objSrch.setPlNo("");
+        }
+        if (txtSrchName.getText().trim().length() == 0) {
+            objSrch.setFullName("");
+        }
+        listAP = ctlAP.selectArmyPerson(objSrch);
+        if (listAP.isEmpty()) {
+            List<ArmyPersonBO> list = new ArrayList();
+            list.add(new ArmyPersonBO());
+            tblArmyInfo.setModel(new ArmyPersonInfoTableModel(list));
+        } else {
+            tblArmyInfo.setModel(new ArmyPersonInfoTableModel(listAP));
+            ListSelectionModel selectionModel = tblArmyInfo.getSelectionModel();
+            tblArmyInfo.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            setArmyPersonColumnsWidths();
+            selectionModel.setSelectionInterval(0, 0);
+            Constants.tablelook.setJTableEnvironment(tblArmyInfo);
+        }
+    }
+
+    private void setArmyPersonColumnsWidths() {
+        TableColumn column = null;
+        for (int i = 0; i < tblArmyInfo.getColumnCount(); i++) {
+            column = tblArmyInfo.getColumnModel().getColumn(i);
+            if (i == 0) {
+                column.setPreferredWidth(50);
+            } else if (i == 1) {
+                column.setPreferredWidth(200);
+            } else if (i == 2) {
+                column.setPreferredWidth(50);
+            } else if (i == 3) {
+                column.setPreferredWidth(50);
+            } else if (i == 4) {
+                column.setPreferredWidth(50);
+            }
+        }
+    }
+
+    private void setSaveInfo() {
+        objAP.setArmyPersonId(key.generatePrimaryKey(pk.registerArmyPerson, true));
+        objAP.setPatientId(patientId);
+        objAP.setPlNo(txtPlNo.getText().trim());
+        objAP.setBloodGroupId(bloodGroupId);
+        objAP.setCityId(cityId);
+        objAP.setMaritalStatusId(maritalStatusId);
+        objAP.setRankId(rankId);
+        objAP.setUnit(txtUnit.getText().trim());
+        objAP.setAddress(txtAddress.getText().trim());
+        objSrch.setPatientId(objAP.getPatientId());
+    }
 
 }

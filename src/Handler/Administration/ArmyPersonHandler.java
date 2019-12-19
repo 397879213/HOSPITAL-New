@@ -11,8 +11,8 @@ import java.util.HashMap;
 import java.util.List;
 import utilities.Constants;
 import utilities.Database;
-import static utilities.Database.DCMS.Keys;
 import utilities.GenerateKeys;
+import utilities.Keys;
 
 /**
  *
@@ -20,16 +20,16 @@ import utilities.GenerateKeys;
  */
 public class ArmyPersonHandler {
 
-    GenerateKeys key = new GenerateKeys();
+    
 
-    public List<ArmyPersonBO> selectReportWiseParameter(String id) {
+    public List<ArmyPersonBO> selectArmyPerson(ArmyPersonBO objSrch) {
 
-        String[] columns = {"-", "ID", "PATIENT_ID", "PL_NUMBER", "RANK_ID",
+        String[] columns = {"-", "ID", "PATIENT_ID", "PL_NUMBER", "RANK_ID", "FULL_NAME",
             "RANK_DESC", "MARITAL_STATUS_ID", "MARITAL_STATUS_DESC", "BLOOD_GROUP_ID",
             "BLOOD_GROUP_DESC", "CITY_ID", "CITY_DESC", "UNIT",
-            "ADDRESS", "CRTD_BY", "CRTD_NAME", "CRTD_DATE", "CRTD_TERMINAL_ID", "", ""};
+            "ADDRESS", "CRTD_BY", "CRTD_NAME", "CRTD_DATE", "CRTD_TERMINAL_ID"};
 
-        String query = "SELECT AP.ID, AP.PATIENT_ID,\n"
+        String query = "SELECT AP.ID, AP.PATIENT_ID, AP.FULL_NAME,\n"
                 + "       AP.PL_NUMBER,\n"
                 + "       AP.DOB,\n"
                 + "       AP.RANK_ID,\n"
@@ -52,8 +52,20 @@ public class ArmyPersonHandler {
                 + Database.DCMS.definitionTypeDetail + "  BGI,\n"
                 + Database.DCMS.definitionTypeDetail + "  CTI\n"
                 + Database.DCMS.users + "  USR\n"
-                + " WHERE AP.ID = " + id + "\n"
-                + "   AND AP.RANK_ID = RNK.ID\n"
+                + " WHERE 1 = 1                         \n";
+//        if (objSrch.getArmyPersonId().length() != 0) {
+//            query += " AND AP.ID = '" + objSrch.getArmyPersonId() + "'\n";
+//        }
+        if (objSrch.getPatientId().length() != 0) {
+            query += " AND AP.PATIENT_ID = '" + objSrch.getPatientId() + "'\n";
+        }
+        if (objSrch.getPlNo().length() != 0) {
+            query += " AND AP.PL_NUMBER = '" + objSrch.getPlNo() + "'\n";
+        }
+        if (objSrch.getFullName().length() != 0) {
+            query += " AND UPPER(AP.FULL_NAME) LIKE '%" + objSrch.getFullName().toUpperCase() + "%'\n";
+        }
+        query += "   AND AP.RANK_ID = RNK.ID\n"
                 + "   AND AP.MARITAL_STATUS_ID = MSI.ID\n"
                 + "   AND AP.BLOOD_GROUP_ID = BGI.ID\n"
                 + "   AND AP.CITY_ID = CTI.ID"
@@ -67,6 +79,7 @@ public class ArmyPersonHandler {
             mod.setArmyPersonId(map.get("ID").toString());
             mod.setPatientId(map.get("PATIENT_ID").toString());
             mod.setPlNo(map.get("PL_NUMBER").toString());
+            mod.setFullName(map.get("FULL_NAME").toString());
             mod.setRankId(map.get("RANK_ID").toString());
             mod.setRankDesc(map.get("RANK_DESC").toString());
             mod.setMaritalStatusId(map.get("MARITAL_STATUS_ID").toString());
@@ -86,15 +99,41 @@ public class ArmyPersonHandler {
         return listArmy;
     }
 
-    public boolean updateReportInfo(ArmyPersonBO objAP) {
+    public boolean insertArmyPerson(ArmyPersonBO pat) {
+
+        String[] columns = {Database.DCMS.reports, "ID", "PATIENT_ID", "PL_NUMBER",
+            "RANK_ID", "MARITAL_STATUS_ID", "BLOOD_GROUP_ID", "CITY_ID", "UNIT",
+            "ADDRESS", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
+
+        HashMap map = new HashMap();
+        
+        map.put("ID", "'" + pat.getArmyPersonId() + "'");
+        map.put("PATIENT_ID", "'" + pat.getPatientId() + "'");
+        map.put("PL_NUMBER", "'" + pat.getPlNo() + "'");
+        map.put("RANK_ID", "'" + pat.getRankId() + "'");
+        map.put("MARITAL_STATUS_ID", "'" + pat.getMaritalStatusId() + "'");
+        map.put("BLOOD_GROUP_ID", "'" + pat.getBloodGroupId() + "'");
+        map.put("CITY_ID", "'" + pat.getCityId() + "'");
+        map.put("UNIT", "'" + pat.getUnit() + "'");
+        map.put("ADDRESS", "'" + pat.getAddress() + "'");
+        map.put("CRTD_DATE", "" + Constants.today + "");
+        map.put("CRTD_BY", "'" + Constants.userId + "'");
+        map.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
+
+        List list = new ArrayList();
+        list.add(map);
+        return Constants.dao.insertData(list, columns);
+    }
+
+    public boolean updateArmyPerson(ArmyPersonBO objAP) {
 
         String query
                 = " UPDATE " + Database.DCMS.reports + "\n SET "
-                + " PL_NUMBER = '" + objAP.getPlNo() + "', "
-                + " DOB = '" + objAP.getDob() + "' ,"
+                //                + " PL_NUMBER = '" + objAP.getPlNo() + "', "
+                //                + " DOB = '" + objAP.getDob() + "' ,"
                 + " RANK_ID = '" + objAP.getRankId() + "', "
                 + " MARITAL_STATUS_ID = '" + objAP.getMaritalStatusId() + "', "
-                + " BLOOD_GROUP_ID = '" + objAP.getBloodGroupId() + "', "
+                //                + " BLOOD_GROUP_ID = '" + objAP.getBloodGroupId() + "', "
                 + " CITY_ID = '" + objAP.getCityId() + "', "
                 + " UNIT = '" + objAP.getUnit() + "', "
                 + " ADDRESS = '" + objAP.getAddress().replaceAll(",", " ") + "', "

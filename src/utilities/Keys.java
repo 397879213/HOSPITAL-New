@@ -2,6 +2,7 @@ package utilities;
 
 public class Keys {
 
+    public static final String registerArmyPerson = "RAP";
     public static final String locWiseCashSummary = "LOC_WISE_CASH_SUMMARY";
     public static final String locWiseCashDetail = "LOC_WISE_CASH_DETAIL";
     public static final String bank = "BANK";

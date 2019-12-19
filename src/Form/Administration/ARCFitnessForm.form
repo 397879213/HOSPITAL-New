@@ -23,7 +23,7 @@
       <Image iconType="0" name="null"/>
     </Property>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[880, 710]"/>
+      <Dimension value="[930, 630]"/>
     </Property>
     <Property name="requestFocusEnabled" type="boolean" value="false"/>
   </Properties>
@@ -60,7 +60,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-              <Component id="jPanel3" max="32767" attributes="0"/>
+              <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
@@ -593,13 +593,15 @@
                           <Component id="jLabel25" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel29" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="txtBloodSugar" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
-                          <Component id="txtUnderOverWeight" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
-                          <Component id="jLabel30" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="txtUrineRE" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel1" alignment="0" min="-2" pref="17" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel29" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
+                              <Component id="txtBloodSugar" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtUnderOverWeight" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="jLabel30" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
+                              <Component id="txtUrineRE" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                          </Group>
                       </Group>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
