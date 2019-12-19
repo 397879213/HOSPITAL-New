@@ -50,7 +50,7 @@ public class ArmyPersonHandler {
                 + Database.DCMS.definitionTypeDetail + "   RNK,\n"
                 + Database.DCMS.definitionTypeDetail + "  MSI,\n"
                 + Database.DCMS.definitionTypeDetail + "  BGI,\n"
-                + Database.DCMS.definitionTypeDetail + "  CTI\n"
+                + Database.DCMS.definitionTypeDetail + "  CTI,\n"
                 + Database.DCMS.users + "  USR\n"
                 + " WHERE 1 = 1                         \n";
 //        if (objSrch.getArmyPersonId().length() != 0) {
@@ -101,7 +101,7 @@ public class ArmyPersonHandler {
 
     public boolean insertArmyPerson(ArmyPersonBO pat) {
 
-        String[] columns = {Database.DCMS.reports, "ID", "PATIENT_ID", "PL_NUMBER",
+        String[] columns = {Database.DCMS.regArmyPerson, "ID", "PATIENT_ID", "PL_NUMBER",
             "RANK_ID", "MARITAL_STATUS_ID", "BLOOD_GROUP_ID", "CITY_ID", "UNIT",
             "ADDRESS", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
 
@@ -128,7 +128,7 @@ public class ArmyPersonHandler {
     public boolean updateArmyPerson(ArmyPersonBO objAP) {
 
         String query
-                = " UPDATE " + Database.DCMS.reports + "\n SET "
+                = " UPDATE " + Database.DCMS.regArmyPerson + "\n SET "
                 //                + " PL_NUMBER = '" + objAP.getPlNo() + "', "
                 //                + " DOB = '" + objAP.getDob() + "' ,"
                 + " RANK_ID = '" + objAP.getRankId() + "', "
