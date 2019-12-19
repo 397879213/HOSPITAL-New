@@ -23,6 +23,7 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
     private String cityId = "";
 
     List<ArmyPersonBO> listAP = new ArrayList();
+    private String id;
 
     public RegisterArmyForm() {
 
@@ -617,6 +618,7 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         txtRank.setText(objAP.getRankDesc());
         txtUnit.setText(objAP.getUnit());
         txtPlNo.setText(objAP.getPlNo());
+        id = objAP.getArmyPersonId();
         rankId = objAP.getRankId();
         maritalStatusId = objAP.getMaritalStatusId();
         bloodGroupId = objAP.getBloodGroupId();
@@ -689,6 +691,7 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
+        id = key.generatePrimaryKey(pk.registerArmyPerson, true);
         setSaveInfo();
         if (ctlAP.insertArmyPerson(objAP)) {
             JOptionPane.showMessageDialog(null, "Army Person Registered Successfully.");
@@ -814,7 +817,7 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
     }
 
     private void setSaveInfo() {
-        objAP.setArmyPersonId(key.generatePrimaryKey(pk.registerArmyPerson, true));
+        objAP.setArmyPersonId(id);
         objAP.setPatientId(patientId);
         objAP.setFullName(txtFullName.getText().trim());
         objAP.setPlNo(txtPlNo.getText().trim());

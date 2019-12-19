@@ -26,7 +26,7 @@ public class ArmyPersonHandler {
 
         String[] columns = {"-", "ID", "PATIENT_ID", "PL_NUMBER", "RANK_ID", "FULL_NAME",
             "RANK_DESC", "MARITAL_STATUS_ID", "MARITAL_STATUS_DESC", "BLOOD_GROUP_ID",
-            "BLOOD_GROUP_DESC", "CITY_ID", "CITY_DESC", "UNIT",
+            "BLOOD_GROUP_DESC", "CITY_ID", "CITY_DESC", "UNIT", "DOB",
             "ADDRESS", "CRTD_BY", "CRTD_NAME", "CRTD_DATE", "CRTD_TERMINAL_ID"};
 
         String query = "SELECT AP.ID, AP.PATIENT_ID, AP.FULL_NAME,\n"
@@ -79,6 +79,7 @@ public class ArmyPersonHandler {
             mod.setArmyPersonId(map.get("ID").toString());
             mod.setPatientId(map.get("PATIENT_ID").toString());
             mod.setPlNo(map.get("PL_NUMBER").toString());
+            mod.setDob(map.get("DOB").toString());
             mod.setFullName(map.get("FULL_NAME").toString());
             mod.setRankId(map.get("RANK_ID").toString());
             mod.setRankDesc(map.get("RANK_DESC").toString());

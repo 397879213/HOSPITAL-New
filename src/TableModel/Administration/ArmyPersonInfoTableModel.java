@@ -26,8 +26,8 @@ public class ArmyPersonInfoTableModel extends AbstractTableModel {
             data[i][0] = (i+1);
             data[i][1] = dS.getPatientId();
             data[i][2] = dS.getPlNo();
-            data[i][2] = dS.getFullName();
-            data[i][2] = dS.getRankDesc();
+            data[i][3] = dS.getFullName();
+            data[i][4] = dS.getRankDesc();
             
         }
     }
