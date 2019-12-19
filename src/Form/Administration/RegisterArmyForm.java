@@ -522,6 +522,11 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
 
         btnSearch.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -582,12 +587,12 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
 
     private void txtSrchPatIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSrchPatIdActionPerformed
         // TODO add your handling code here: 
-        objSrch.setPatientId(txtSrchPatId.getText());
+        selectArmyPerson();
     }//GEN-LAST:event_txtSrchPatIdActionPerformed
 
     private void txtSrchPlNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSrchPlNoActionPerformed
         // TODO add your handling code here:
-        objSrch.setPlNo(txtSrchPlNo.getText().trim());
+        selectArmyPerson();
 
     }//GEN-LAST:event_txtSrchPlNoActionPerformed
 
@@ -601,6 +606,17 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
 
     private void tblArmyInfoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblArmyInfoMouseReleased
         ArmyPersonBO objAP = listAP.get(tblArmyInfo.getSelectedRow());
+        txtPatientId.setText(objAP.getPatientId().substring(3));
+        txtPlNo.setText(objAP.getPlNo());
+        txtFullName.setText(objAP.getFullName());
+        txtAddress.setText(objAP.getAddress());
+        txtBG.setText(objAP.getBloodGroupDesc());
+        txtCity.setText(objAP.getCityDesc());
+        txtDob.setText(objAP.getDob());
+        txtMS.setText(objAP.getMaritalStatusDesc());
+        txtRank.setText(objAP.getRankDesc());
+        txtUnit.setText(objAP.getUnit());
+        txtPlNo.setText(objAP.getPlNo());
         rankId = objAP.getRankId();
         maritalStatusId = objAP.getMaritalStatusId();
         bloodGroupId = objAP.getBloodGroupId();
@@ -620,7 +636,7 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
 
     private void txtSrchNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSrchNameActionPerformed
         // TODO add your handling code here:
-        objSrch.setFullName(txtSrchName.getText().trim());
+        selectArmyPerson();
     }//GEN-LAST:event_txtSrchNameActionPerformed
 
     private void txtPatientIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientIdActionPerformed
@@ -701,6 +717,11 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnEditActionPerformed
 
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+        selectArmyPerson();
+    }//GEN-LAST:event_btnSearchActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
@@ -747,6 +768,9 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void selectArmyPerson() {
+        objSrch.setPatientId(txtSrchPatId.getText());
+        objSrch.setPlNo(txtSrchPlNo.getText().trim());
+        objSrch.setFullName(txtSrchName.getText().trim());
         if (txtSrchPatId.getText().trim().length() == 0) {
             objSrch.setPatientId("");
         }
@@ -792,6 +816,7 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
     private void setSaveInfo() {
         objAP.setArmyPersonId(key.generatePrimaryKey(pk.registerArmyPerson, true));
         objAP.setPatientId(patientId);
+        objAP.setFullName(txtFullName.getText().trim());
         objAP.setPlNo(txtPlNo.getText().trim());
         objAP.setBloodGroupId(bloodGroupId);
         objAP.setCityId(cityId);

@@ -102,13 +102,14 @@ public class ArmyPersonHandler {
     public boolean insertArmyPerson(ArmyPersonBO pat) {
 
         String[] columns = {Database.DCMS.regArmyPerson, "ID", "PATIENT_ID", "PL_NUMBER",
-            "RANK_ID", "MARITAL_STATUS_ID", "BLOOD_GROUP_ID", "CITY_ID", "UNIT",
-            "ADDRESS", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
+            "FULL_NAME","RANK_ID", "MARITAL_STATUS_ID", "BLOOD_GROUP_ID", "CITY_ID", 
+            "UNIT", "ADDRESS", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
 
         HashMap map = new HashMap();
         
         map.put("ID", "'" + pat.getArmyPersonId() + "'");
         map.put("PATIENT_ID", "'" + pat.getPatientId() + "'");
+        map.put("FULL_NAME", "'" + pat.getFullName()+ "'");
         map.put("PL_NUMBER", "'" + pat.getPlNo() + "'");
         map.put("RANK_ID", "'" + pat.getRankId() + "'");
         map.put("MARITAL_STATUS_ID", "'" + pat.getMaritalStatusId() + "'");
