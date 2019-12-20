@@ -363,7 +363,7 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtAge))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -862,13 +862,13 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
             if (i == 0) {
                 column.setPreferredWidth(50);
             } else if (i == 1) {
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(60);
             } else if (i == 2) {
                 column.setPreferredWidth(50);
             } else if (i == 3) {
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(150);
             } else if (i == 4) {
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(80);
             }
         }
     }
