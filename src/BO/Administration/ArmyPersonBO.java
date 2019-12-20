@@ -15,6 +15,8 @@ public class ArmyPersonBO {
     private String patientId = "";
     private String plNo = "";
     private String fullName = "";
+    private String dayOfBirth = "";
+    private String age = "";
     private String dob = "";
     private String maritalStatusId = "";
     private String maritalStatusDesc = "";
@@ -30,6 +32,22 @@ public class ArmyPersonBO {
     private String crtdUserName = "";
     private String crtdDate = "";
     private String crtdTerminalId = "";
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getDayOfBirth() {
+        return dayOfBirth;
+    }
+
+    public void setDayOfBirth(String dayOfBirth) {
+        this.dayOfBirth = dayOfBirth;
+    }
 
     public String getCrtdBy() {
         return crtdBy;

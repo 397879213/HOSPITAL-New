@@ -20,18 +20,21 @@ import utilities.Keys;
  */
 public class ArmyPersonHandler {
 
-    
-
     public List<ArmyPersonBO> selectArmyPerson(ArmyPersonBO objSrch) {
 
         String[] columns = {"-", "ID", "PATIENT_ID", "PL_NUMBER", "RANK_ID", "FULL_NAME",
             "RANK_DESC", "MARITAL_STATUS_ID", "MARITAL_STATUS_DESC", "BLOOD_GROUP_ID",
-            "BLOOD_GROUP_DESC", "CITY_ID", "CITY_DESC", "UNIT", "DOB",
-            "ADDRESS", "CRTD_BY", "CRTD_NAME", "CRTD_DATE", "CRTD_TERMINAL_ID"};
+            "BLOOD_GROUP_DESC", "CITY_ID", "CITY_DESC", "UNIT", "DOB", "DAY_OF_BIRTH",
+            "AGE", "ADDRESS", "CRTD_BY", "CRTD_NAME", "CRTD_DATE", "CRTD_TERMINAL_ID"};
 
         String query = "SELECT AP.ID, AP.PATIENT_ID, AP.FULL_NAME,\n"
                 + "       AP.PL_NUMBER,\n"
                 + "       AP.DOB,\n"
+                + "        trunc(months_between(sysdate,AP.DOB) / 12)||' (Y) ' ||\n"
+                + "   trunc(months_between(sysdate,AP.DOB) -\n"
+                + "   (trunc(months_between(sysdate,AP.DOB) / 12) * 12))||' (M) '||\n"
+                + "   (trunc(sysdate) - add_months(AP.DOB,trunc(months_between(sysdate,AP.DOB)))) ||' (D) ' AGE,\n"
+                + "  NVL(ROUND(AP.DOB - (SYSDATE+1)), 0) DAY_OF_BIRTH,     \n"
                 + "       AP.RANK_ID,\n"
                 + "       RNK.DESCRIPTION      RANK_DESC,\n"
                 + "       AP.MARITAL_STATUS_ID,\n"
@@ -79,6 +82,8 @@ public class ArmyPersonHandler {
             mod.setArmyPersonId(map.get("ID").toString());
             mod.setPatientId(map.get("PATIENT_ID").toString());
             mod.setPlNo(map.get("PL_NUMBER").toString());
+            mod.setDayOfBirth(map.get("DAY_OF_BIRTH").toString());
+            mod.setAge(map.get("AGE").toString());
             mod.setDob(map.get("DOB").toString());
             mod.setFullName(map.get("FULL_NAME").toString());
             mod.setRankId(map.get("RANK_ID").toString());
@@ -103,15 +108,16 @@ public class ArmyPersonHandler {
     public boolean insertArmyPerson(ArmyPersonBO pat) {
 
         String[] columns = {Database.DCMS.regArmyPerson, "ID", "PATIENT_ID", "PL_NUMBER",
-            "FULL_NAME","RANK_ID", "MARITAL_STATUS_ID", "BLOOD_GROUP_ID", "CITY_ID", 
-            "UNIT", "ADDRESS", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
+            "FULL_NAME", "RANK_ID", "MARITAL_STATUS_ID", "BLOOD_GROUP_ID", "CITY_ID",
+            "DOB", "UNIT", "ADDRESS", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
 
         HashMap map = new HashMap();
-        
+
         map.put("ID", "'" + pat.getArmyPersonId() + "'");
         map.put("PATIENT_ID", "'" + pat.getPatientId() + "'");
-        map.put("FULL_NAME", "'" + pat.getFullName()+ "'");
+        map.put("FULL_NAME", "'" + pat.getFullName() + "'");
         map.put("PL_NUMBER", "'" + pat.getPlNo() + "'");
+        map.put("DOB", "'" + pat.getDob()+ "'");
         map.put("RANK_ID", "'" + pat.getRankId() + "'");
         map.put("MARITAL_STATUS_ID", "'" + pat.getMaritalStatusId() + "'");
         map.put("BLOOD_GROUP_ID", "'" + pat.getBloodGroupId() + "'");
@@ -136,6 +142,7 @@ public class ArmyPersonHandler {
                 + " RANK_ID = '" + objAP.getRankId() + "', "
                 + " MARITAL_STATUS_ID = '" + objAP.getMaritalStatusId() + "', "
                 //                + " BLOOD_GROUP_ID = '" + objAP.getBloodGroupId() + "', "
+                + " DOB = '" + objAP.getDob()+ "', "
                 + " CITY_ID = '" + objAP.getCityId() + "', "
                 + " UNIT = '" + objAP.getUnit() + "', "
                 + " ADDRESS = '" + objAP.getAddress().replaceAll(",", " ") + "', "

@@ -3,11 +3,16 @@ package Form.Administration;
 import BO.Administration.ArmyPersonBO;
 import Controller.Administration.ArmyPersonController;
 import TableModel.Administration.ArmyPersonInfoTableModel;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableColumn;
+import org.joda.time.Years;
 import utilities.Constants;
 import utilities.DefinitionTypes;
 import utilities.DisplayLOV;
@@ -16,6 +21,8 @@ import utilities.Keys;
 
 public class RegisterArmyForm extends javax.swing.JInternalFrame {
 
+    private String id = "";
+    private String DOB = "";
     private String patientId = "001000000001";
     private String rankId = "";
     private String maritalStatusId = "";
@@ -23,12 +30,12 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
     private String cityId = "";
 
     List<ArmyPersonBO> listAP = new ArrayList();
-    private String id;
 
     public RegisterArmyForm() {
 
         initComponents();
         this.setSize(Constants.xSize - 120, Constants.ySize - 220);
+        setDOB(0);
     }
 
     GenerateKeys key = new GenerateKeys();
@@ -49,9 +56,9 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
         txtSrchPatId = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        txtSrchPlNo = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         txtSrchName = new javax.swing.JTextField();
+        txtSrchPLNo = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -62,18 +69,19 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         txtPlNo = new javax.swing.JTextField();
         txtFullName = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        txtDob = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         txtRank = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         txtMS = new javax.swing.JTextField();
-        txtBG = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         txtCity = new javax.swing.JTextField();
         txtUnit = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
+        txtDob = new org.jdesktop.swingx.JXDatePicker();
+        txtBG = new javax.swing.JTextField();
+        txtAge = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane26 = new javax.swing.JScrollPane();
         tblArmyInfo = new javax.swing.JTable();
@@ -143,13 +151,6 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel11.setText("PL No : ");
 
-        txtSrchPlNo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSrchPlNo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSrchPlNoActionPerformed(evt);
-            }
-        });
-
         jLabel12.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(102, 0, 0));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -172,14 +173,13 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(txtSrchPatId, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSrchPlNo, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(txtSrchPLNo, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtSrchName))
                 .addContainerGap())
         );
@@ -190,7 +190,7 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSrchPatId, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSrchPlNo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSrchPLNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -259,14 +259,7 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         jLabel15.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(102, 0, 0));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel15.setText("Full Nmae : ");
-
-        txtDob.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtDob.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDobActionPerformed(evt);
-            }
-        });
+        jLabel15.setText("Full Name : ");
 
         jLabel16.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(102, 0, 0));
@@ -294,13 +287,6 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         txtMS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMSActionPerformed(evt);
-            }
-        });
-
-        txtBG.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtBG.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBGActionPerformed(evt);
             }
         });
 
@@ -333,6 +319,25 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel21.setText("Unit : ");
 
+        txtDob.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDobActionPerformed(evt);
+            }
+        });
+
+        txtBG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBGActionPerformed(evt);
+            }
+        });
+
+        txtAge.setEditable(false);
+        txtAge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAgeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -353,10 +358,12 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtFullName))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDob))
+                        .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -397,7 +404,8 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDob, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -409,7 +417,7 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtBG, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -462,7 +470,7 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane26, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane26, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -512,6 +520,11 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
 
         btnClear.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
 
         btnEdit.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnEdit.setText("Edit");
@@ -523,11 +536,6 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
 
         btnSearch.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnSearch.setText("Search");
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -544,7 +552,7 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
                 .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -591,12 +599,6 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         selectArmyPerson();
     }//GEN-LAST:event_txtSrchPatIdActionPerformed
 
-    private void txtSrchPlNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSrchPlNoActionPerformed
-        // TODO add your handling code here:
-        selectArmyPerson();
-
-    }//GEN-LAST:event_txtSrchPlNoActionPerformed
-
     private void tblArmyInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblArmyInfoMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_tblArmyInfoMouseClicked
@@ -612,8 +614,9 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         txtFullName.setText(objAP.getFullName());
         txtAddress.setText(objAP.getAddress());
         txtBG.setText(objAP.getBloodGroupDesc());
+        txtAge.setText(objAP.getAge());
         txtCity.setText(objAP.getCityDesc());
-        txtDob.setText(objAP.getDob());
+        setDOB(Integer.parseInt(objAP.getDayOfBirth()));
         txtMS.setText(objAP.getMaritalStatusDesc());
         txtRank.setText(objAP.getRankDesc());
         txtUnit.setText(objAP.getUnit());
@@ -647,21 +650,20 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
 
     private void txtPlNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPlNoActionPerformed
         // TODO add your handling code here:
+        txtFullName.requestFocus();
     }//GEN-LAST:event_txtPlNoActionPerformed
 
     private void txtFullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFullNameActionPerformed
         // TODO add your handling code here:
+        txtDob.requestFocus();
     }//GEN-LAST:event_txtFullNameActionPerformed
-
-    private void txtDobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDobActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDobActionPerformed
 
     private void txtRankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRankActionPerformed
         // TODO add your handling code here:
         lov.LOVDefinitionSelection(DefinitionTypes.employeeRanks, txtRank.getText().trim(), this);
         rankId = Constants.lovID;
         txtRank.setText(Constants.lovDescription);
+        txtMS.requestFocus();
     }//GEN-LAST:event_txtRankActionPerformed
 
     private void txtMSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMSActionPerformed
@@ -669,32 +671,61 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         lov.LOVDefinitionSelection(DefinitionTypes.maritalStatus, txtMS.getText().trim(), this);
         maritalStatusId = Constants.lovID;
         txtMS.setText(Constants.lovDescription);
+        txtBG.requestFocus();
     }//GEN-LAST:event_txtMSActionPerformed
-
-    private void txtBGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBGActionPerformed
-        // TODO add your handling code here:
-        lov.LOVDefinitionSelection(DefinitionTypes.bloodGroup, txtBG.getText().trim(), this);
-        bloodGroupId = Constants.lovID;
-        txtBG.setText(Constants.lovDescription);
-    }//GEN-LAST:event_txtBGActionPerformed
 
     private void txtCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCityActionPerformed
         // TODO add your handling code here:
         lov.LOVDefinitionSelection(DefinitionTypes.city, txtCity.getText().trim(), this);
         cityId = Constants.lovID;
         txtCity.setText(Constants.lovDescription);
+        txtUnit.requestFocus();
     }//GEN-LAST:event_txtCityActionPerformed
 
     private void txtUnitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUnitActionPerformed
         // TODO add your handling code here:
+        txtAddress.requestFocus();
     }//GEN-LAST:event_txtUnitActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
+        objSrch.setPlNo(txtPlNo.getText().trim());
+        selectArmyPerson();
+        if(!listAP.isEmpty()){
+            JOptionPane.showMessageDialog(null, "This PL Number is already Registered.\n"
+                    + "Please Update Information, If Need.");
+            return;
+        }
+        int confirmation = JOptionPane.showConfirmDialog(null, "You Are Going "
+                + "To Register.\nDo you want to Register Army Person?");
+        if (confirmation != 0) {
+            return;
+        }
+        if(txtSrchPLNo.getText().length() == 0){
+            JOptionPane.showMessageDialog(null, "Please Enter PL Number.");
+            txtSrchPLNo.requestFocus();
+            return;
+        }
+        if(txtFullName.getText().length() == 0){
+            JOptionPane.showMessageDialog(null, "Please Enter Full Name.");
+            txtFullName.requestFocus();
+            return;
+        }
+        if(txtUnit.getText().length() == 0){
+            JOptionPane.showMessageDialog(null, "Please Enter Unit.");
+            txtUnit.requestFocus();
+            return;
+        }
+        if(rankId.equalsIgnoreCase("")){
+            JOptionPane.showMessageDialog(null, "Please Select the Rank.");
+            txtRank.requestFocus();
+            return;
+        }
         id = key.generatePrimaryKey(pk.registerArmyPerson, true);
         setSaveInfo();
         if (ctlAP.insertArmyPerson(objAP)) {
             JOptionPane.showMessageDialog(null, "Army Person Registered Successfully.");
+            clear();
             selectArmyPerson();
             txtPlNo.setEditable(true);
             txtDob.setEditable(true);
@@ -720,10 +751,35 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnEditActionPerformed
 
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+    private void txtDobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDobActionPerformed
+
+        if (txtDob.getDate().getDate() == 0) {
+            JOptionPane.showMessageDialog(null, "Enter the From Date DD-MON-YY",
+                    "Purchase Order Detail", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        SimpleDateFormat dateFormat
+                = new SimpleDateFormat("dd-MMM-yy");
+        DOB = dateFormat.format(txtDob.getDate());
+        txtRank.requestFocus();
+    }//GEN-LAST:event_txtDobActionPerformed
+
+    private void txtBGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBGActionPerformed
         // TODO add your handling code here:
-        selectArmyPerson();
-    }//GEN-LAST:event_btnSearchActionPerformed
+        lov.LOVDefinitionSelection(DefinitionTypes.bloodGroup, txtBG.getText().trim(), this);
+        bloodGroupId = Constants.lovID;
+        txtBG.setText(Constants.lovDescription);
+        txtCity.requestFocus();
+    }//GEN-LAST:event_txtBGActionPerformed
+
+    private void txtAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAgeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAgeActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        // TODO add your handling code here:
+        clear();
+    }//GEN-LAST:event_btnClearActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -756,30 +812,31 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
     private javax.swing.JPanel pnlPL;
     private javax.swing.JTable tblArmyInfo;
     private javax.swing.JTextArea txtAddress;
+    private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtBG;
     private javax.swing.JTextField txtCity;
-    private javax.swing.JTextField txtDob;
+    private org.jdesktop.swingx.JXDatePicker txtDob;
     private javax.swing.JTextField txtFullName;
     private javax.swing.JTextField txtMS;
     private javax.swing.JTextField txtPatientId;
     private javax.swing.JTextField txtPlNo;
     private javax.swing.JTextField txtRank;
     private javax.swing.JTextField txtSrchName;
+    private javax.swing.JTextField txtSrchPLNo;
     private javax.swing.JTextField txtSrchPatId;
-    private javax.swing.JTextField txtSrchPlNo;
     private javax.swing.JTextField txtUnit;
     // End of variables declaration//GEN-END:variables
 
     private void selectArmyPerson() {
         objSrch.setPatientId(txtSrchPatId.getText());
-        objSrch.setPlNo(txtSrchPlNo.getText().trim());
+//        objSrch.setPlNo(txtSrchPlNo.getText().trim());
         objSrch.setFullName(txtSrchName.getText().trim());
         if (txtSrchPatId.getText().trim().length() == 0) {
             objSrch.setPatientId("");
         }
-        if (txtSrchPlNo.getText().trim().length() == 0) {
-            objSrch.setPlNo("");
-        }
+//        if (txtSrchPlNo.getText().trim().length() == 0) {
+//            objSrch.setPlNo("");
+//        }
         if (txtSrchName.getText().trim().length() == 0) {
             objSrch.setFullName("");
         }
@@ -821,6 +878,7 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         objAP.setPatientId(patientId);
         objAP.setFullName(txtFullName.getText().trim());
         objAP.setPlNo(txtPlNo.getText().trim());
+        objAP.setDob(DOB);
         objAP.setBloodGroupId(bloodGroupId);
         objAP.setCityId(cityId);
         objAP.setMaritalStatusId(maritalStatusId);
@@ -828,6 +886,38 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         objAP.setUnit(txtUnit.getText().trim());
         objAP.setAddress(txtAddress.getText().trim());
         objSrch.setPatientId(objAP.getPatientId());
+    }
+
+    private void setDOB(int day) {
+        try {
+            Calendar c = Calendar.getInstance();
+            c.add(Calendar.DATE, day);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
+            Date date2 = dateFormat.parse(dateFormat.format(c.getTime()));
+            txtDob.setDate(date2);
+            DOB = dateFormat.format(date2);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private void clear() {
+        rankId = "";
+        bloodGroupId = "";
+        maritalStatusId = "";
+        cityId = "";
+        txtAddress.setText("");
+        txtAge.setText("");
+        txtBG.setText("");
+        txtCity.setText("");
+        txtFullName.setText("");
+        txtMS.setText("");
+        txtSrchPLNo.setText("");
+        txtPatientId.setText("");
+        txtRank.setText("");
+        txtUnit.setText("");
+        listAP.clear();
+        tblArmyInfo.setModel(new ArmyPersonInfoTableModel(listAP));
     }
 
 }

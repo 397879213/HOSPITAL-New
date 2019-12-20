@@ -971,7 +971,7 @@ tblEmpDocInfo.addMouseListener(new java.awt.event.MouseAdapter() {
     );
 
     jPanel7.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
-    jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(101, 0, 0))); // NOI18N
+    jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(101, 0, 0))); // NOI18N
 
     jLabel16.setBackground(new java.awt.Color(255, 255, 255));
     jLabel16.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
