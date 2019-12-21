@@ -3,8 +3,8 @@ package Form.Administration;
 import BO.Administration.ArmyPersonBO;
 import Controller.Administration.ArmyPersonController;
 import TableModel.Administration.ArmyPersonInfoTableModel;
+import java.awt.event.KeyEvent;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -12,10 +12,10 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableColumn;
-import org.joda.time.Years;
 import utilities.Constants;
 import utilities.DefinitionTypes;
 import utilities.DisplayLOV;
+import utilities.GUIUtils;
 import utilities.GenerateKeys;
 import utilities.Keys;
 
@@ -35,6 +35,11 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
 
         initComponents();
         this.setSize(Constants.xSize - 120, Constants.ySize - 220);
+        btnExit.setMnemonic(KeyEvent.VK_X);
+        btnClear.setMnemonic(KeyEvent.VK_C);
+        btnSearch.setMnemonic(KeyEvent.VK_S);
+        btnEdit.setMnemonic(KeyEvent.VK_E);
+        btnRegister.setMnemonic(KeyEvent.VK_R);
         setDOB(0);
     }
 
@@ -87,7 +92,7 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         tblArmyInfo = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         btnRegister = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
         btnSearch = new javax.swing.JButton();
@@ -100,7 +105,7 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle(Constants.title+"Army Person");
         setFrameIcon(null);
-        setPreferredSize(new java.awt.Dimension(880, 605));
+        setPreferredSize(new java.awt.Dimension(880, 590));
         setRequestFocusEnabled(false);
 
         pnlPL.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -163,6 +168,13 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
             }
         });
 
+        txtSrchPLNo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtSrchPLNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSrchPLNoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -207,6 +219,7 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         jPanel5.setForeground(new java.awt.Color(102, 0, 0));
 
         txtAddress.setColumns(20);
+        txtAddress.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtAddress.setRows(5);
         txtAddress.setWrapStyleWord(true);
         jScrollPane1.setViewportView(txtAddress);
@@ -325,6 +338,7 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
             }
         });
 
+        txtBG.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtBG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBGActionPerformed(evt);
@@ -332,6 +346,7 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         });
 
         txtAge.setEditable(false);
+        txtAge.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtAge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAgeActionPerformed(evt);
@@ -514,9 +529,9 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(204, 0, 0));
-        jButton2.setText("Exit");
+        btnExit.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnExit.setForeground(new java.awt.Color(204, 0, 0));
+        btnExit.setText("Exit");
 
         btnClear.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnClear.setText("Clear");
@@ -536,6 +551,11 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
 
         btnSearch.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -551,7 +571,7 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(176, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -560,7 +580,7 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegister)
-                    .addComponent(jButton2)
+                    .addComponent(btnExit)
                     .addComponent(btnClear)
                     .addComponent(btnEdit)
                     .addComponent(btnSearch))
@@ -595,7 +615,7 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtSrchPatIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSrchPatIdActionPerformed
-        // TODO add your handling code here: 
+        // TODO add your handling code here:
         selectArmyPerson();
     }//GEN-LAST:event_txtSrchPatIdActionPerformed
 
@@ -689,9 +709,28 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
-        objSrch.setPlNo(txtPlNo.getText().trim());
+        if (txtPlNo.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Please Enter PL Number.");
+            txtPlNo.requestFocus();
+            return;
+        }
+        if (txtFullName.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Please Enter Full Name.");
+            txtFullName.requestFocus();
+            return;
+        }
+        if (txtUnit.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Please Enter Unit.");
+            txtUnit.requestFocus();
+            return;
+        }
+        if (rankId.equalsIgnoreCase("")) {
+            JOptionPane.showMessageDialog(null, "Please Select the Rank.");
+            txtRank.requestFocus();
+            return;
+        }
         selectArmyPerson();
-        if(!listAP.isEmpty()){
+        if (!listAP.isEmpty()) {
             JOptionPane.showMessageDialog(null, "This PL Number is already Registered.\n"
                     + "Please Update Information, If Need.");
             return;
@@ -699,26 +738,6 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         int confirmation = JOptionPane.showConfirmDialog(null, "You Are Going "
                 + "To Register.\nDo you want to Register Army Person?");
         if (confirmation != 0) {
-            return;
-        }
-        if(txtSrchPLNo.getText().length() == 0){
-            JOptionPane.showMessageDialog(null, "Please Enter PL Number.");
-            txtSrchPLNo.requestFocus();
-            return;
-        }
-        if(txtFullName.getText().length() == 0){
-            JOptionPane.showMessageDialog(null, "Please Enter Full Name.");
-            txtFullName.requestFocus();
-            return;
-        }
-        if(txtUnit.getText().length() == 0){
-            JOptionPane.showMessageDialog(null, "Please Enter Unit.");
-            txtUnit.requestFocus();
-            return;
-        }
-        if(rankId.equalsIgnoreCase("")){
-            JOptionPane.showMessageDialog(null, "Please Select the Rank.");
-            txtRank.requestFocus();
             return;
         }
         id = key.generatePrimaryKey(pk.registerArmyPerson, true);
@@ -781,13 +800,26 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         clear();
     }//GEN-LAST:event_btnClearActionPerformed
 
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+        selectArmyPerson();
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void txtSrchPLNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSrchPLNoActionPerformed
+        // TODO add your handling code here:
+        if (txtSrchPLNo.getText().trim().length() == 0) {
+            objSrch.setPlNo("");
+        }
+        selectArmyPerson();
+    }//GEN-LAST:event_txtSrchPLNoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnRegister;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -828,18 +860,32 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void selectArmyPerson() {
-        objSrch.setPatientId(txtSrchPatId.getText());
-//        objSrch.setPlNo(txtSrchPlNo.getText().trim());
-        objSrch.setFullName(txtSrchName.getText().trim());
-        if (txtSrchPatId.getText().trim().length() == 0) {
+        if (txtPlNo.getText().trim().length() != 0) {
+            objSrch.setPlNo(txtPlNo.getText().trim());
             objSrch.setPatientId("");
-        }
-//        if (txtSrchPlNo.getText().trim().length() == 0) {
-//            objSrch.setPlNo("");
-//        }
-        if (txtSrchName.getText().trim().length() == 0) {
             objSrch.setFullName("");
+        } else {
+            objSrch.setPatientId(txtSrchPatId.getText());
+            if (GUIUtils.completePatientId(txtSrchPatId.getText().trim())) {
+                objSrch.setPatientId(Constants.completePatientId);
+                txtSrchPatId.setText(objSrch.getPatientId().substring(3));
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Kindly Enter Correct Patient ID");
+            }
+            objSrch.setPlNo(txtSrchPLNo.getText().trim());
+            objSrch.setFullName(txtSrchName.getText().trim());
+            if (txtSrchPatId.getText().trim().length() == 0) {
+                objSrch.setPatientId("");
+            }
+            if (txtSrchPLNo.getText().trim().length() == 0) {
+                objSrch.setPlNo("");
+            }
+            if (txtSrchName.getText().trim().length() == 0) {
+                objSrch.setFullName("");
+            }
         }
+
         listAP = ctlAP.selectArmyPerson(objSrch);
         if (listAP.isEmpty()) {
             List<ArmyPersonBO> list = new ArrayList();
@@ -912,12 +958,15 @@ public class RegisterArmyForm extends javax.swing.JInternalFrame {
         txtCity.setText("");
         txtFullName.setText("");
         txtMS.setText("");
-        txtSrchPLNo.setText("");
+        txtPlNo.setText("");
         txtPatientId.setText("");
         txtRank.setText("");
         txtUnit.setText("");
         listAP.clear();
         tblArmyInfo.setModel(new ArmyPersonInfoTableModel(listAP));
+        txtPlNo.setEditable(true);
+        txtDob.setEditable(true);
+        txtBG.setEditable(true);
     }
 
 }

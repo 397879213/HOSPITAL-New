@@ -14,8 +14,8 @@ import javax.swing.table.AbstractTableModel;
  */
 public class ArmyPersonInfoTableModel extends AbstractTableModel {
 
-    private final String[] columnNames = 
-                {"Sr.", "Patient Id","PL No", "Full Name", "Rank"};
+    private final String[] columnNames
+            = {"Sr.", "Patient Id", "PL No", "Full Name", "Rank"};
 
     private Object[][] data;
 
@@ -23,12 +23,16 @@ public class ArmyPersonInfoTableModel extends AbstractTableModel {
         data = new Object[li.size()][columnNames.length];
         for (int i = 0; i < li.size(); i++) {
             ArmyPersonBO dS = li.get(i);
-            data[i][0] = (i+1);
-            data[i][1] = dS.getPatientId().substring(3);
+            data[i][0] = (i + 1);
+            if (dS.getPatientId().equalsIgnoreCase("")) {
+                data[i][1] = dS.getPatientId();
+            } else {
+                data[i][1] = dS.getPatientId().substring(3);
+            }
             data[i][2] = dS.getPlNo();
             data[i][3] = dS.getFullName();
             data[i][4] = dS.getRankDesc();
-            
+
         }
     }
 
