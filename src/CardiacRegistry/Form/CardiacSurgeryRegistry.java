@@ -815,7 +815,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
 
     private void txtConsultantSurgeonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConsultantSurgeonActionPerformed
         // TODO add your handling code here:
-        lov.LOVDefinitionSelection(DefinitionTypes.CardiacPerformingPhysician,
+        lov.LOVDefinitionSelection(DefinitionTypes.cardiacPhysician,
                 txtConsultantSurgeon.getText().trim(), this);
         if (Constants.lovDescription.equalsIgnoreCase("DESCRIPTION")) {
             txtConsultantSurgeon.setText("");
@@ -828,7 +828,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
 
     private void txtConsultantCardiologistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConsultantCardiologistActionPerformed
         // TODO add your handling code here:
-        lov.LOVDefinitionSelection(DefinitionTypes.CardiacPerformingPhysician,
+        lov.LOVDefinitionSelection(DefinitionTypes.cardiacPhysician,
                 txtConsultantCardiologist.getText().trim(), this);
 
         if (Constants.lovID.equalsIgnoreCase("ID")) {
@@ -867,7 +867,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
 
     private void txtAdmittingConsultantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAdmittingConsultantActionPerformed
         // TODO add your handling code here:
-        lov.LOVDefinitionSelection(DefinitionTypes.CardiacPerformingPhysician,
+        lov.LOVDefinitionSelection(DefinitionTypes.cardiacPhysician,
                 txtAdmittingConsultant.getText().trim(), this);
 
         if (Constants.lovID.equalsIgnoreCase("ID")) {
@@ -918,7 +918,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
                 return;
             }
             if (cardiacSurgeryDetail.getIsFinal().equalsIgnoreCase("Y")) {
-                CardiacSurgeryDetailForm fm = new CardiacSurgeryDetailForm(pat.getId());
+                CardiacSurgeryDetailFormRaheel fm = new CardiacSurgeryDetailFormRaheel(pat.getId());
                 DCMS_MDI.desktopPane.add(fm);
                 Dimension desktopSize = DCMS_MDI.desktopPane.getSize();
                 Dimension fmSize = fm.getSize();

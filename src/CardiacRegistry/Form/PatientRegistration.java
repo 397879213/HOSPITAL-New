@@ -1470,7 +1470,7 @@ public class PatientRegistration extends javax.swing.JInternalFrame {
 
     private void txtPriPhysicianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPriPhysicianActionPerformed
         // TODO add your handling code here:
-        lov.LOVDefinitionSelection(DefinitionTypes.CardiacPerformingPhysician,
+        lov.LOVDefinitionSelection(DefinitionTypes.cardiacPhysician,
                 txtPriPhysician.getText().trim(), this);
         if (Constants.lovDescription.equalsIgnoreCase("DESCRIPTION")) {
             txtPriPhysician.setText("");
