@@ -346,23 +346,36 @@ public class CardiacSurgeryHandler {
 
     public boolean insertCardiacProcedureDetail(CardiacSurgeryBO insert) {
 
-        String[] columns = {Database.DCMS.cardiacProcedureDetail,
+        String[] columns = {Database.DCMS.cathCardiacDetail,
             "CARDIAC_ID", "PROCEDURE_TYPE", "PROCEDURE_ID", "DATE_OF_PROCEDURE",
-            "INSTITUTE", "PERFORMING_PHYSICIAN_ID", "REMARKS", "CRTD_BY",
-            "CRTD_DATE", "CRTD_TERMINAL_ID", "ACTIVE"};
+            "INSTITUTE_ID", "PERFORMING_PHYSICIAN_ID", "EJECTION_FRACTION", 
+            "LEFT_MAIN_DISEASE", "DISEASE_EXTENT", "LVEDP", "PAPS", "PAWP", 
+            "ANTEROBASAL","ANTEROLATERAL", "APICAL", "DIAPHRAGMATIC", "POSTEROBASAL",
+            "CSS_PERFORMED", "REMARKS", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
 
         HashMap map = new HashMap();
         map.put("CARDIAC_ID", "'" + insert.getId() + "'");
         map.put("PROCEDURE_TYPE", "'" + insert.getProcedureType() + "'");
         map.put("PROCEDURE_ID", "'" + insert.getProcedureId() + "'");
         map.put("DATE_OF_PROCEDURE", "'" + insert.getDateOfProcedure() + "'");
-        map.put("INSTITUTE", "'" + insert.getInstituteId() + "'");
+        map.put("INSTITUTE_ID", "'" + insert.getInstituteId() + "'");
         map.put("PERFORMING_PHYSICIAN_ID", "'" + insert.getPerformingPhysicianId() + "'");
+        map.put("EJECTION_FRACTION", "'" + insert.getEjectionFraction()+ "'");
+        map.put("LEFT_MAIN_DISEASE", "'" + insert.getLeftMainDisease()+ "'");
+        map.put("DISEASE_EXTENT", "'" + insert.getExtentofDisease()+ "'");
+        map.put("LVEDP", "'" + insert.getLVEDP()+ "'");
+        map.put("PAPS", "'" + insert.getPAPS()+ "'");
+        map.put("PAWP", "'" + insert.getPAWP()+ "'");
+        map.put("ANTEROBASAL", "'" + insert.getAnterobasal()+ "'");
+        map.put("ANTEROLATERAL", "'" + insert.getAnterolateral()+ "'");
+        map.put("APICAL", "'" + insert.getApical()+ "'");
+        map.put("DIAPHRAGMATIC", "'" + insert.getDiaphragmatic()+ "'");
+        map.put("POSTEROBASAL", "'" + insert.getPosterobasal()+ "'");
+        map.put("CSS_PERFORMED", "'" + insert.getCSSPerformed()+ "'");
         map.put("REMARKS", "'" + insert.getProcedureRemarks() + "'");
         map.put("CRTD_BY", "'" + Constants.userId + "'");
         map.put("CRTD_DATE", Constants.today);
         map.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
-        map.put("ACTIVE", "'Y'");
 
         List InsertEmp = new ArrayList();
         InsertEmp.add(map);

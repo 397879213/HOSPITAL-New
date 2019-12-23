@@ -100,14 +100,14 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         btnAddProceInst = new javax.swing.JButton();
         btnAddProcedureName = new javax.swing.JButton();
         txtProcedurePerforming = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtLVEDP = new javax.swing.JTextField();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        txtPAPS = new javax.swing.JTextField();
         jLabel34 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtPAPD = new javax.swing.JTextField();
         jLabel35 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        txtPAWP = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
         cboEjectionFraction = new javax.swing.JComboBox<>();
         jLabel37 = new javax.swing.JLabel();
@@ -116,19 +116,19 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         cboDiseaseExtent = new javax.swing.JComboBox<>();
         jPanel14 = new javax.swing.JPanel();
         jLabel38 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        txtanterobasal = new javax.swing.JTextField();
         jLabel39 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        txtanterolateral = new javax.swing.JTextField();
         jLabel40 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        txtApical = new javax.swing.JTextField();
         jLabel41 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
+        txtDiaphragmatic = new javax.swing.JTextField();
         jLabel42 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
+        txtPosterobasal = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtRemarks = new javax.swing.JTextArea();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
+        ChkCSS = new javax.swing.JCheckBox();
+        btnSaveCathData = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         txtPerformDate1 = new org.jdesktop.swingx.JXDatePicker();
@@ -574,9 +574,9 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             }
         });
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        txtLVEDP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                txtLVEDPActionPerformed(evt);
             }
         });
 
@@ -590,9 +590,9 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel33.setText("PAPS : ");
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        txtPAPS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                txtPAPSActionPerformed(evt);
             }
         });
 
@@ -601,9 +601,9 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel34.setText("PAPD : ");
 
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        txtPAPD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                txtPAPDActionPerformed(evt);
             }
         });
 
@@ -612,9 +612,9 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel35.setText("PAWP : ");
 
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        txtPAWP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                txtPAWPActionPerformed(evt);
             }
         });
 
@@ -672,11 +672,11 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel32)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtLVEDP, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(5, 5, 5)
                                 .addComponent(jLabel33)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtPAPS, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -688,13 +688,13 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cboLeftDisease, 0, 88, Short.MAX_VALUE)
-                            .addComponent(jTextField5))
+                            .addComponent(txtPAPD))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtPAWP, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel43)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -733,14 +733,14 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
                 .addGap(8, 8, 8)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLVEDP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPAPS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPAPD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jLabel35, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtPAWP, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(8, 8, 8))
         );
 
@@ -752,9 +752,9 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         jLabel38.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel38.setText("Anterobasal : ");
 
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+        txtanterobasal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
+                txtanterobasalActionPerformed(evt);
             }
         });
 
@@ -763,9 +763,9 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel39.setText("Anterolateral : ");
 
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+        txtanterolateral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
+                txtanterolateralActionPerformed(evt);
             }
         });
 
@@ -774,9 +774,9 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel40.setText("Apical : ");
 
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+        txtApical.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
+                txtApicalActionPerformed(evt);
             }
         });
 
@@ -785,9 +785,9 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         jLabel41.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel41.setText("Diaphragmatic : ");
 
-        jTextField10.addActionListener(new java.awt.event.ActionListener() {
+        txtDiaphragmatic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField10ActionPerformed(evt);
+                txtDiaphragmaticActionPerformed(evt);
             }
         });
 
@@ -796,9 +796,9 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         jLabel42.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel42.setText("Posterobasal : ");
 
-        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+        txtPosterobasal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField11ActionPerformed(evt);
+                txtPosterobasalActionPerformed(evt);
             }
         });
 
@@ -809,18 +809,23 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         txtRemarks.setWrapStyleWord(true);
         jScrollPane1.setViewportView(txtRemarks);
 
-        jCheckBox1.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
-        jCheckBox1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jCheckBox1.setForeground(new java.awt.Color(102, 0, 0));
-        jCheckBox1.setText("CSS Performed");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        ChkCSS.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
+        ChkCSS.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        ChkCSS.setForeground(new java.awt.Color(102, 0, 0));
+        ChkCSS.setText("CSS Performed");
+        ChkCSS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                ChkCSSActionPerformed(evt);
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton1.setText("Save");
+        btnSaveCathData.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnSaveCathData.setText("Save");
+        btnSaveCathData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveCathDataActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -840,46 +845,48 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel42, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField7)
-                                .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jTextField9, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jTextField10)
-                                .addComponent(jTextField11, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                .addComponent(txtanterobasal)
+                                .addComponent(txtanterolateral, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txtApical, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txtDiaphragmatic)
+                                .addComponent(txtPosterobasal, javax.swing.GroupLayout.Alignment.TRAILING))))
                     .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ChkCSS, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnSaveCathData, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtanterobasal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(1, 1, 1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtanterolateral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtApical, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDiaphragmatic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPosterobasal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
                 .addGap(8, 8, 8)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jButton1))
+                    .addComponent(ChkCSS)
+                    .addComponent(btnSaveCathData))
                 .addContainerGap())
         );
 
@@ -1369,17 +1376,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        if (cboProcType.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(null, "Please Select Procedure Type.");
-            cboProcType.requestFocus();
-        }
-        setProecedureDetail();
-        if (ctlCardiacSurg.insertcardiacProcedureDetail(objProcedure)) {
-            JOptionPane.showMessageDialog(null, "Record Save Successsfully.");
-            selectProcedureDetail();
-        } else {
-            JOptionPane.showMessageDialog(null, "Unable to Save Record.");
-        }
+        
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void tblProcedureDetailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProcedureDetailMouseClicked
@@ -1716,45 +1713,45 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 //        }
     }//GEN-LAST:event_txtActionByActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void txtLVEDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLVEDPActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_txtLVEDPActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void txtPAPSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPAPSActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_txtPAPSActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void txtPAPDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPAPDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_txtPAPDActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void txtPAWPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPAWPActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_txtPAWPActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void txtanterobasalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtanterobasalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+    }//GEN-LAST:event_txtanterobasalActionPerformed
 
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+    private void txtanterolateralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtanterolateralActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
+    }//GEN-LAST:event_txtanterolateralActionPerformed
 
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+    private void txtApicalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApicalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
+    }//GEN-LAST:event_txtApicalActionPerformed
 
-    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+    private void txtDiaphragmaticActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiaphragmaticActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10ActionPerformed
+    }//GEN-LAST:event_txtDiaphragmaticActionPerformed
 
-    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
+    private void txtPosterobasalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPosterobasalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField11ActionPerformed
+    }//GEN-LAST:event_txtPosterobasalActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void ChkCSSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkCSSActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_ChkCSSActionPerformed
 
     private void txtMedDurationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMedDurationActionPerformed
         // TODO add your handling code here:
@@ -1791,8 +1788,24 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         setMedicineStartDate();
     }//GEN-LAST:event_cboMonthsDaysActionPerformed
 
+    private void btnSaveCathDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveCathDataActionPerformed
+        // TODO add your handling code here:
+        if (cboProcType.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Please Select Procedure Type.");
+            cboProcType.requestFocus();
+        }
+        setProecedureDetail();
+        if (ctlCardiacSurg.insertcardiacProcedureDetail(objProcedure)) {
+            JOptionPane.showMessageDialog(null, "Record Save Successsfully.");
+            selectProcedureDetail();
+        } else {
+            JOptionPane.showMessageDialog(null, "Unable to Save Record.");
+        }
+    }//GEN-LAST:event_btnSaveCathDataActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox ChkCSS;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnAddProceInst;
     private javax.swing.JButton btnAddProcePerforming2;
@@ -1803,14 +1816,13 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnManageTeam;
+    private javax.swing.JButton btnSaveCathData;
     private javax.swing.JComboBox<String> cboDiseaseExtent;
     private javax.swing.JComboBox<String> cboEjectionFraction;
     private javax.swing.JComboBox<String> cboLeftDisease;
     private javax.swing.JComboBox<String> cboMonthsDays;
     private javax.swing.JComboBox<String> cboProcType;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel22;
@@ -1862,16 +1874,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JTable tblExamDetail;
     private javax.swing.JTable tblOTTeam;
     private javax.swing.JTable tblProcedureDetail;
@@ -1881,12 +1884,19 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     private javax.swing.JTable tblProcedureDetail5;
     private javax.swing.JTextField txtActionBy;
     private javax.swing.JTextField txtActionType;
+    private javax.swing.JTextField txtApical;
+    private javax.swing.JTextField txtDiaphragmatic;
     private javax.swing.JTextField txtDose;
     private javax.swing.JTextField txtEnteredBy;
+    private javax.swing.JTextField txtLVEDP;
     private javax.swing.JTextField txtMedDuration;
     private javax.swing.JTextField txtMedication;
+    private javax.swing.JTextField txtPAPD;
+    private javax.swing.JTextField txtPAPS;
+    private javax.swing.JTextField txtPAWP;
     private org.jdesktop.swingx.JXDatePicker txtPerformDate;
     private org.jdesktop.swingx.JXDatePicker txtPerformDate1;
+    private javax.swing.JTextField txtPosterobasal;
     private javax.swing.JTextField txtProcedureInstitute;
     private javax.swing.JTextField txtProcedureName;
     private javax.swing.JTextField txtProcedurePerforming;
@@ -1896,6 +1906,8 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtSelectTeam;
     private javax.swing.JTextField txtTicketNo;
     private org.jdesktop.swingx.JXDatePicker txtTimePeriod;
+    private javax.swing.JTextField txtanterobasal;
+    private javax.swing.JTextField txtanterolateral;
     // End of variables declaration//GEN-END:variables
 
     private void setExamDetail() {
@@ -1937,6 +1949,23 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         objProcedure.setPerformingPhysicianId(procedurePerformingId);
         objProcedure.setDateOfProcedure(performDate);
         objProcedure.setProcedureId(surgProcedureId);
+        objProcedure.setEjectionFraction(cboEjectionFraction.getSelectedItem().toString());
+        objProcedure.setLeftMainDisease(cboLeftDisease.getSelectedItem().toString());
+        objProcedure.setExtentofDisease(cboDiseaseExtent.getSelectedItem().toString());
+        objProcedure.setLVEDP(txtLVEDP.getText().trim());
+        objProcedure.setPAPS(txtPAPS.getText().trim());
+        objProcedure.setPAPD(txtPAPD.getText().trim());
+        objProcedure.setPAWP(txtPAWP.getText().trim());
+        objProcedure.setAnterobasal(txtanterobasal.getText().trim());
+        objProcedure.setAnterolateral(txtanterolateral.getText().trim());
+        objProcedure.setApical(txtApical.getText().trim());
+        objProcedure.setDiaphragmatic(txtDiaphragmatic.getText().trim());
+        objProcedure.setPosterobasal(txtPosterobasal.getText().trim());
+        objProcedure.setRemarks(txtRemarks.getText().trim().replaceAll(",", " "));
+        objProcedure.setCSSPerformed("N");
+        if(ChkCSS.isSelected()){
+            objProcedure.setCSSPerformed("Y");
+        }
     }
 
     private void selectProcedureDetail() {

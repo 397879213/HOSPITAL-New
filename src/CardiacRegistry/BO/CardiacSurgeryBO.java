@@ -54,6 +54,19 @@ public class CardiacSurgeryBO {
     private String performingPhysicianId = "";
     private String performingPhysicianName = "";
     private String procedureRemarks = "";
+    private String ejectionFraction = "";
+    private String leftMainDisease = "";
+    private String extentofDisease = "";
+    private String CSSPerformed = "";
+    private String LVEDP = "";
+    private String PAPS = "";
+    private String PAPD = "";
+    private String PAWP = "";
+    private String anterobasal = "";
+    private String anterolateral = "";
+    private String apical = "";
+    private String diaphragmatic = "";
+    private String posterobasal = "";
     private String cancelBy = "";
     private String cancelDate = "";
     private String cancelTerminalId = "";
@@ -82,6 +95,110 @@ public class CardiacSurgeryBO {
     private String echoPerformDate = "";
     private String orderStatusId = "";
     private String orderStatusDesc = "";
+
+    public String getEjectionFraction() {
+        return ejectionFraction;
+    }
+
+    public void setEjectionFraction(String ejectionFraction) {
+        this.ejectionFraction = ejectionFraction;
+    }
+
+    public String getLeftMainDisease() {
+        return leftMainDisease;
+    }
+
+    public void setLeftMainDisease(String leftMainDisease) {
+        this.leftMainDisease = leftMainDisease;
+    }
+
+    public String getExtentofDisease() {
+        return extentofDisease;
+    }
+
+    public void setExtentofDisease(String extentofDisease) {
+        this.extentofDisease = extentofDisease;
+    }
+
+    public String getCSSPerformed() {
+        return CSSPerformed;
+    }
+
+    public void setCSSPerformed(String CSSPerformed) {
+        this.CSSPerformed = CSSPerformed;
+    }
+
+    public String getLVEDP() {
+        return LVEDP;
+    }
+
+    public void setLVEDP(String LVEDP) {
+        this.LVEDP = LVEDP;
+    }
+
+    public String getPAPS() {
+        return PAPS;
+    }
+
+    public void setPAPS(String PAPS) {
+        this.PAPS = PAPS;
+    }
+
+    public String getPAPD() {
+        return PAPD;
+    }
+
+    public void setPAPD(String PAPD) {
+        this.PAPD = PAPD;
+    }
+
+    public String getPAWP() {
+        return PAWP;
+    }
+
+    public void setPAWP(String PAWP) {
+        this.PAWP = PAWP;
+    }
+
+    public String getAnterobasal() {
+        return anterobasal;
+    }
+
+    public void setAnterobasal(String anterobasal) {
+        this.anterobasal = anterobasal;
+    }
+
+    public String getAnterolateral() {
+        return anterolateral;
+    }
+
+    public void setAnterolateral(String anterolateral) {
+        this.anterolateral = anterolateral;
+    }
+
+    public String getApical() {
+        return apical;
+    }
+
+    public void setApical(String apical) {
+        this.apical = apical;
+    }
+
+    public String getDiaphragmatic() {
+        return diaphragmatic;
+    }
+
+    public void setDiaphragmatic(String diaphragmatic) {
+        this.diaphragmatic = diaphragmatic;
+    }
+
+    public String getPosterobasal() {
+        return posterobasal;
+    }
+
+    public void setPosterobasal(String posterobasal) {
+        this.posterobasal = posterobasal;
+    }
 
     public String getEchoId() {
         return echoId;
