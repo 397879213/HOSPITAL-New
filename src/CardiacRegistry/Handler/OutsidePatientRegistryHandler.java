@@ -43,7 +43,7 @@ public class OutsidePatientRegistryHandler {
         mapOutsidePat.put("FATHER_NAME", "'" + outsidePatient.getFatherName() + "'");
         mapOutsidePat.put("HUSBAND_NAME", "'" + outsidePatient.getHusbandName() + "'");
         mapOutsidePat.put("MARITAL_STATUS_ID", "'" + outsidePatient.getMaritalStatusId() + "'");
-        mapOutsidePat.put("GENDER", "'" + outsidePatient.getGender() + "'");
+        mapOutsidePat.put("GENDER_ID", "'" + outsidePatient.getGender() + "'");
         mapOutsidePat.put("AGE", "'" + outsidePatient.getAge() + "'");
         mapOutsidePat.put("CNIC", "'" + outsidePatient.getCnic() + "'");
         mapOutsidePat.put("DOB", "'" + outsidePatient.getDob() + "'");
@@ -55,8 +55,8 @@ public class OutsidePatientRegistryHandler {
         mapOutsidePat.put("CONTACT_NO", "'" + outsidePatient.getContactNo() + "'");
         mapOutsidePat.put("ADDRESS", "'" + outsidePatient.getAddress().replaceAll(",", " ") + "'");
         mapOutsidePat.put("RELATION_ID", "'" + outsidePatient.getRelationId()+ "'");
-        mapOutsidePat.put("PRI_PHYSICIAN", "'" + outsidePatient.getPrimaryPhysicianId()+ "'");
-        mapOutsidePat.put("REG_DATE", "SYSDATE");
+        mapOutsidePat.put("PRIMARY_PHYSICIAN_ID", "'" + outsidePatient.getPrimaryPhysicianId()+ "'");
+        mapOutsidePat.put("REGISTRATION_DATE", "SYSDATE");
         mapOutsidePat.put("ORDER_STATUS_ID", "'" + outsidePatient.getOrderStatusId() + "'");       
         mapOutsidePat.put("CRTD_DATE", "" + Constants.today );
         mapOutsidePat.put("CRTD_BY", "'" + Constants.userId + "'");

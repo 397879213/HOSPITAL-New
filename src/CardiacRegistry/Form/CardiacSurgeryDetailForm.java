@@ -1961,7 +1961,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         objProcedure.setApical(txtApical.getText().trim());
         objProcedure.setDiaphragmatic(txtDiaphragmatic.getText().trim());
         objProcedure.setPosterobasal(txtPosterobasal.getText().trim());
-        objProcedure.setRemarks(txtRemarks.getText().trim().replaceAll(",", " "));
+        objProcedure.setProcedureRemarks(txtRemarks.getText().trim().replaceAll(",", " "));
         objProcedure.setCSSPerformed("N");
         if(ChkCSS.isSelected()){
             objProcedure.setCSSPerformed("Y");

@@ -26,19 +26,19 @@ public class CardiacSurgeryHandler {
             String patientName, String instituteId) {
 
         String columns[] = {"-", "ID", "PATIENT_ID", "FULL_NAME", "GENDER", "CONTACT_NO",
-            "ADDRESS", "CITY_ID", "CITY", "AGE", "GENDER_ID", "INSTITUTE_ID",
+            "ADDRESS", "CITY_ID", "CITY", "AGE", "GENDER_ID", "INSTITUTE_ID", "GENDER_ID",
             "INSTITUTE_DESC"}; //"NATIONALITY_ID", "NATIONALITY",
 
-        String query = "SELECT PAT.ID, PAT.PATIENT_ID,                  \n"
-                + "        PAT.FULL_NAME,                               \n"
-                + "        PAT.GENDER GENDER_ID,                        \n"
-                + "        GEN.DESCRIPTION GENDER,                      \n"
-                + "        PAT.CONTACT_NO,                              \n"
-                + "        PAT.ADDRESS,                                 \n"
-                + "        PAT.CITY_ID,                                 \n"
-                + "        PAT.INSTITUTE_ID,                            \n"
-                + "        INS.DESCRIPTION INSTITUTE_DESC,              \n"
-                + "        CTY.DESCRIPTION CITY,                        \n"
+        String query = "SELECT PAT.ID, PAT.PATIENT_ID,           \n"
+                + "        PAT.FULL_NAME,                        \n"
+                + "        PAT.GENDER_ID,                        \n"
+                + "        GEN.DESCRIPTION GENDER,               \n"
+                + "        PAT.CONTACT_NO,                       \n"
+                + "        PAT.ADDRESS,                          \n"
+                + "        PAT.CITY_ID,                          \n"
+                + "        PAT.INSTITUTE_ID,                     \n"
+                + "        INS.DESCRIPTION INSTITUTE_DESC,       \n"
+                + "        CTY.DESCRIPTION CITY,                 \n"
                 //                + "        PAT.NATIONALITY_ID,                          \n"
                 //                + "        NAT.DESCRIPTION NATIONALITY,                 \n"
                 + "        trunc(months_between(sysdate, DOB) / 12) || ' (Y) ' ||\n"
@@ -60,7 +60,7 @@ public class CardiacSurgeryHandler {
         if (instituteId.length() != 0) {
             query += " AND PAT.INSTITUTE_ID = '" + instituteId + "'     \n";
         }
-        query += "    AND PAT.GENDER = GEN.ID                           \n"
+        query += "    AND PAT.GENDER_ID = GEN.ID                         \n"
                 //                + "    AND PAT.NATIONALITY_ID = NAT.ID \n"
                 + "    AND PAT.INSTITUTE_ID = INS.ID                    \n"
                 + "    AND PAT.CITY_ID = CTY.ID                         \n";
@@ -400,7 +400,7 @@ public class CardiacSurgeryHandler {
         String columns[] = {"-", "CARDIAC_ID", "PROCEDURE_TYPE", "PROCEDURE_ID",
             "PROCEDURE_DESC", "DATE_OF_PROCEDURE", "INSTITUTE_ID", "INSTITUTE_DESC",
             "PERFORMING_PHYSICIAN_ID", "PERFORMING_PHY_NAME", "REMARKS", "CRTD_BY",
-            "CRTD_DATE", "CRTD_TERMINAL_ID", "ACTIVE", "CRTD_BY_NAME", "DAY_OF_PROCEDURE"};
+            "CRTD_DATE", "CRTD_TERMINAL_ID", "CRTD_BY_NAME", "DAY_OF_PROCEDURE"};
 
         String query
                 = "SELECT CPD.CARDIAC_ID,                           \n"
@@ -409,25 +409,23 @@ public class CardiacSurgeryHandler {
                 + "       PCI.DESCRIPTION PROCEDURE_DESC,           \n"
                 + " NVL(ROUND(CPD.DATE_OF_PROCEDURE - (SYSDATE+1)), 0) DAY_OF_PROCEDURE,\n"
                 + " TO_CHAR(CPD.DATE_OF_PROCEDURE, 'DD-MON-YY') DATE_OF_PROCEDURE,\n"
-                + "       CPD.INSTITUTE INSTITUTE_ID,               \n"
+                + "       CPD.INSTITUTE_ID,                         \n"
                 + "       INS.DESCRIPTION INSTITUTE_DESC,           \n"
                 + "       CPD.PERFORMING_PHYSICIAN_ID,              \n"
                 + "       PPI.DESCRIPTION PERFORMING_PHY_NAME,      \n"
-                + "       CPD.ACTIVE,                               \n"
                 + " NVL(CPD.REMARKS, ' ') REMARKS,                  \n"
                 + "       CPD.CRTD_BY,                              \n"
                 + " TO_CHAR(CPD.CRTD_DATE, 'DD-MON-YY') CRTD_DATE,  \n"
                 + "       CPD.CRTD_TERMINAL_ID,                     \n"
                 + "       CRB.NAME  CRTD_BY_NAME FROM               \n"
-                + Database.DCMS.cardiacProcedureDetail + " CPD,     \n"
+                + Database.DCMS.cathCardiacDetail    + " CPD,       \n"
                 + Database.DCMS.definitionTypeDetail + " INS,       \n"
                 + Database.DCMS.definitionTypeDetail + " PCI,       \n"
                 + Database.DCMS.definitionTypeDetail + " PPI,       \n"
                 + Database.DCMS.users + " CRB                       \n"
                 + " WHERE CPD.CARDIAC_ID = " + cardiacId + "        \n"
-                + "   AND CPD.ACTIVE = 'Y'                          \n"
                 + "   AND CPD.PROCEDURE_ID = PCI.ID                 \n"
-                + "   AND CPD.INSTITUTE = INS.ID                    \n"
+                + "   AND CPD.INSTITUTE_ID = INS.ID                 \n"
                 + "   AND CPD.CRTD_BY = CRB.USER_NAME               \n"
                 + "   AND CPD.PERFORMING_PHYSICIAN_ID = PPI.ID      \n";
 
@@ -448,7 +446,6 @@ public class CardiacSurgeryHandler {
             objData.setPerformingPhysicianId(map.get("PERFORMING_PHYSICIAN_ID").toString());
             objData.setPerformingPhysicianName(map.get("PERFORMING_PHY_NAME").toString());
             objData.setProcedureRemarks(map.get("REMARKS").toString());
-            objData.setActive(map.get("ACTIVE").toString());
             objData.setCrtdBy(map.get("CRTD_BY").toString());
             objData.setCrtdByName(map.get("CRTD_BY_NAME").toString());
             objData.setCrtdDate(map.get("CRTD_DATE").toString());

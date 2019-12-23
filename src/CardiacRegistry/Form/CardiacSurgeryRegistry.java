@@ -49,7 +49,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         btnFinal.setMnemonic(KeyEvent.VK_F);
         setDateOfSurgery(0);
         setPatientInfo(patientId);
-        setCardiacRegistryDetail();
+//        setCardiacRegistryDetail();
     }
 
     @SuppressWarnings("unchecked")
@@ -911,26 +911,34 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         }
         OutsidePatientRegistry pat = lisPatient.get(tblPatientsList.getSelectedRow());
 
-        if (evt.getClickCount() % 2 == 0) {
-            if (cardiacSurgeryDetail == null) {
-                JOptionPane.showMessageDialog(null, "Please Final the Surgery "
-                        + "Information Prior to Examine the Patient.");
-                return;
-            }
-            if (cardiacSurgeryDetail.getIsFinal().equalsIgnoreCase("Y")) {
-                CardiacSurgeryDetailFormRaheel fm = new CardiacSurgeryDetailFormRaheel(pat.getId());
+//        if (evt.getClickCount() % 2 == 0) {
+//            if (cardiacSurgeryDetail == null) {
+//                JOptionPane.showMessageDialog(null, "Please Final the Surgery "
+//                        + "Information Prior to Examine the Patient.");
+//                return;
+//            }
+//            if (cardiacSurgeryDetail.getIsFinal().equalsIgnoreCase("Y")) {
+//                CardiacSurgeryDetailFormRaheel fm = new CardiacSurgeryDetailFormRaheel(pat.getId());
+//                DCMS_MDI.desktopPane.add(fm);
+//                Dimension desktopSize = DCMS_MDI.desktopPane.getSize();
+//                Dimension fmSize = fm.getSize();
+//                fm.setLocation((desktopSize.width - fmSize.width) / 2,
+//                        (desktopSize.height - fmSize.height) / 2);
+//                fm.setVisible(true);
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Please Final the Surgery "
+//                        + "Information Prior to Examine the Patient.");
+//            }
+//        }
+            
+            CardiacSurgeryDetailForm fm = new CardiacSurgeryDetailForm(pat.getId());
                 DCMS_MDI.desktopPane.add(fm);
                 Dimension desktopSize = DCMS_MDI.desktopPane.getSize();
                 Dimension fmSize = fm.getSize();
                 fm.setLocation((desktopSize.width - fmSize.width) / 2,
                         (desktopSize.height - fmSize.height) / 2);
                 fm.setVisible(true);
-            } else {
-                JOptionPane.showMessageDialog(null, "Please Final the Surgery "
-                        + "Information Prior to Examine the Patient.");
-            }
 
-        }
     }//GEN-LAST:event_tblPatientsListMouseReleased
 
     private void tblPatientsListKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblPatientsListKeyReleased
@@ -1090,6 +1098,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
     private void setPatientInfo(String patientId) {
         lisPatient = ctlCardiacSurg.selectPateitnInformation(patientId,
                 txtFilterPatName.getText().trim(), instituteId);
+        System.err.println("Pat Sixe: " + lisPatient);
         if (lisPatient.isEmpty()) {
             List<OutsidePatientRegistry> lisPatient = new ArrayList<>();
             lisPatient.add(new OutsidePatientRegistry());
