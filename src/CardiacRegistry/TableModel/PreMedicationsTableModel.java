@@ -11,7 +11,7 @@ import javax.swing.table.AbstractTableModel;
 public class PreMedicationsTableModel extends AbstractTableModel {
 
     private final String[] columnNames
-            = {"Medicine", "Dose","Taking From"};
+            = {"Medicine", "Dose","Taking From", "Duration", "From"};
     private final Object[][] data;
 
     public PreMedicationsTableModel(List<CardiacSurgeryBO> liInfo) {
@@ -23,6 +23,8 @@ public class PreMedicationsTableModel extends AbstractTableModel {
             data[row][0] = currentinfo.getMedicineDesc();
             data[row][1] = currentinfo.getDoseDesc();
             data[row][2] = currentinfo.getTimeTaking();
+            data[row][3] = currentinfo.getMedicineDuration();
+            data[row][4] = currentinfo.getMedicineMonthDays();
             row++;
 
         }

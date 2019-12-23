@@ -348,9 +348,9 @@ public class CardiacSurgeryHandler {
 
         String[] columns = {Database.DCMS.cathCardiacDetail,
             "CARDIAC_ID", "PROCEDURE_TYPE", "PROCEDURE_ID", "DATE_OF_PROCEDURE",
-            "INSTITUTE_ID", "PERFORMING_PHYSICIAN_ID", "EJECTION_FRACTION", 
-            "LEFT_MAIN_DISEASE", "DISEASE_EXTENT", "LVEDP", "PAPS", "PAWP", 
-            "ANTEROBASAL","ANTEROLATERAL", "APICAL", "DIAPHRAGMATIC", "POSTEROBASAL",
+            "INSTITUTE_ID", "PERFORMING_PHYSICIAN_ID", "EJECTION_FRACTION",
+            "LEFT_MAIN_DISEASE", "DISEASE_EXTENT", "LVEDP", "PAPS", "PAWP",
+            "ANTEROBASAL", "ANTEROLATERAL", "APICAL", "DIAPHRAGMATIC", "POSTEROBASAL",
             "CSS_PERFORMED", "REMARKS", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
 
         HashMap map = new HashMap();
@@ -360,18 +360,18 @@ public class CardiacSurgeryHandler {
         map.put("DATE_OF_PROCEDURE", "'" + insert.getDateOfProcedure() + "'");
         map.put("INSTITUTE_ID", "'" + insert.getInstituteId() + "'");
         map.put("PERFORMING_PHYSICIAN_ID", "'" + insert.getPerformingPhysicianId() + "'");
-        map.put("EJECTION_FRACTION", "'" + insert.getEjectionFraction()+ "'");
-        map.put("LEFT_MAIN_DISEASE", "'" + insert.getLeftMainDisease()+ "'");
-        map.put("DISEASE_EXTENT", "'" + insert.getExtentofDisease()+ "'");
-        map.put("LVEDP", "'" + insert.getLVEDP()+ "'");
-        map.put("PAPS", "'" + insert.getPAPS()+ "'");
-        map.put("PAWP", "'" + insert.getPAWP()+ "'");
-        map.put("ANTEROBASAL", "'" + insert.getAnterobasal()+ "'");
-        map.put("ANTEROLATERAL", "'" + insert.getAnterolateral()+ "'");
-        map.put("APICAL", "'" + insert.getApical()+ "'");
-        map.put("DIAPHRAGMATIC", "'" + insert.getDiaphragmatic()+ "'");
-        map.put("POSTEROBASAL", "'" + insert.getPosterobasal()+ "'");
-        map.put("CSS_PERFORMED", "'" + insert.getCSSPerformed()+ "'");
+        map.put("EJECTION_FRACTION", "'" + insert.getEjectionFraction() + "'");
+        map.put("LEFT_MAIN_DISEASE", "'" + insert.getLeftMainDisease() + "'");
+        map.put("DISEASE_EXTENT", "'" + insert.getExtentofDisease() + "'");
+        map.put("LVEDP", "'" + insert.getLVEDP() + "'");
+        map.put("PAPS", "'" + insert.getPAPS() + "'");
+        map.put("PAWP", "'" + insert.getPAWP() + "'");
+        map.put("ANTEROBASAL", "'" + insert.getAnterobasal() + "'");
+        map.put("ANTEROLATERAL", "'" + insert.getAnterolateral() + "'");
+        map.put("APICAL", "'" + insert.getApical() + "'");
+        map.put("DIAPHRAGMATIC", "'" + insert.getDiaphragmatic() + "'");
+        map.put("POSTEROBASAL", "'" + insert.getPosterobasal() + "'");
+        map.put("CSS_PERFORMED", "'" + insert.getCSSPerformed() + "'");
         map.put("REMARKS", "'" + insert.getProcedureRemarks() + "'");
         map.put("CRTD_BY", "'" + Constants.userId + "'");
         map.put("CRTD_DATE", Constants.today);
@@ -399,8 +399,8 @@ public class CardiacSurgeryHandler {
 
         String columns[] = {"-", "CARDIAC_ID", "PROCEDURE_TYPE", "PROCEDURE_ID",
             "PROCEDURE_DESC", "DATE_OF_PROCEDURE", "INSTITUTE_ID", "INSTITUTE_DESC",
-            "PERFORMING_PHYSICIAN_ID", "PERFORMING_PHY_NAME", "REMARKS", 
-            "EJECTION_FRACTION", "LEFT_MAIN_DISEASE", "DISEASE_EXTENT", "LVEDP", 
+            "PERFORMING_PHYSICIAN_ID", "PERFORMING_PHY_NAME", "REMARKS",
+            "EJECTION_FRACTION", "LEFT_MAIN_DISEASE", "DISEASE_EXTENT", "LVEDP",
             "PAPS", "PAWP", "ANTEROBASAL", "ANTEROLATERAL", "APICAL", "DIAPHRAGMATIC",
             "POSTEROBASAL", "CSS_PERFORMED", "REMARKS", "CRTD_BY", "CRTD_DATE",
             "CRTD_TERMINAL_ID", "CRTD_BY_NAME", "DAY_OF_PROCEDURE"};
@@ -425,7 +425,7 @@ public class CardiacSurgeryHandler {
                 + " TO_CHAR(CPD.CRTD_DATE, 'DD-MON-YY') CRTD_DATE,  \n"
                 + "       CPD.CRTD_TERMINAL_ID,                     \n"
                 + "       CRB.NAME  CRTD_BY_NAME FROM               \n"
-                + Database.DCMS.cathCardiacDetail    + " CPD,       \n"
+                + Database.DCMS.cathCardiacDetail + " CPD,       \n"
                 + Database.DCMS.definitionTypeDetail + " INS,       \n"
                 + Database.DCMS.definitionTypeDetail + " PCI,       \n"
                 + Database.DCMS.definitionTypeDetail + " PPI,       \n"
@@ -487,14 +487,18 @@ public class CardiacSurgeryHandler {
     public boolean insertPreMedications(CardiacSurgeryBO insert) {
 
         String[] columns = {Database.DCMS.cardiacPreMedication,
-            "CARDIAC_ID", "MEDICINE_ID", "DOSE_ID", "TIME_PEROID", "CRTD_BY",
-            "CRTD_DATE", "CRTD_TERMINAL_ID", "ACTIVE"};
+            "PRE_MED_ID", "MEDICINE_ID", "CARDIAC_ID", "DOSE_ID", "TIME_PEROID", "ACTIVE", 
+            "MEDICINE_DURATION", "MONTH_DAYS", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
 
         HashMap map = new HashMap();
+        map.put("PRE_MED_ID", "(SELECT NVL(MAX(PRE_MED_ID) +1, 1) MEDICINE_ID FROM "
+                + Database.DCMS.cardiacPreMedication + ")");
+        map.put("MEDICINE_ID", "'" + insert.getMedicineId()+ "'");
         map.put("CARDIAC_ID", "'" + insert.getId() + "'");
-        map.put("MEDICINE_ID", "'" + insert.getMedicineId() + "'");
         map.put("DOSE_ID", "'" + insert.getDoseId() + "'");
         map.put("TIME_PEROID", "'" + insert.getTimeTaking() + "'");
+        map.put("MEDICINE_DURATION", "'" + insert.getMedicineDuration() + "'");
+        map.put("MONTH_DAYS", "'" + insert.getMedicineMonthDays() + "'");
         map.put("CRTD_BY", "'" + Constants.userId + "'");
         map.put("CRTD_DATE", Constants.today);
         map.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
@@ -505,25 +509,24 @@ public class CardiacSurgeryHandler {
         return Constants.dao.insertData(InsertEmp, columns);
     }
 
-    public boolean updatePreMedications(CardiacSurgeryBO cardiac) {
+    public boolean updatePreMedications(String medId) {
         String query
                 = " UPDATE " + Database.DCMS.cardiacPreMedication + "   \n"
-                + " SET DOSE_ID  = '" + cardiac.getDoseId() + "',       \n"
-                + " TIME_PEROID = '" + cardiac.getTimeTaking() + "'     \n"
-                + " WHERE CARDIAC_ID = " + cardiac.getId() + "          \n"
-                + " AND MEDICINE_ID = '" + cardiac.getMedicineId() + "' \n";
+                + " SET ACTIVE  = 'N',       \n"
+                + " WHERE PRE_MED_ID = " + medId + "          \n";
 
         return Constants.dao.executeUpdate(query, false);
     }
 
     public List<CardiacSurgeryBO> selectPreMedications(String cardiacId) {
 
-        String columns[] = {"-", "CARDIAC_ID", "MEDICINE_ID", "MEDICINE_DESC",
+        String columns[] = {"-", "PRE_MED_ID", "CARDIAC_ID", "MEDICINE_ID", "MEDICINE_DESC",
             "DOSE_ID", "DOSE_DESC", "TIME_PEROID", "CRTD_BY", "CRTD_DATE",
-            "CRTD_TERMINAL_ID", "ACTIVE", "CRTD_BY_NAME", "DAY_TIME_PEROID"};
+            "CRTD_TERMINAL_ID", "ACTIVE", "CRTD_BY_NAME", "DAY_TIME_PEROID",
+            "MEDICINE_DURATION", "MONTH_DAYS"};
 
         String query
-                = "SELECT CPM.CARDIAC_ID,                   \n"
+                = "SELECT CPM.CARDIAC_ID, CPM.PRE_MED_ID,   \n"
                 + "       CPM.MEDICINE_ID,                  \n"
                 + "       ITM.DESCRIPTION MEDICINE_DESC,    \n"
                 + "       CPM.DOSE_ID,                      \n"
@@ -531,6 +534,8 @@ public class CardiacSurgeryHandler {
                 + " TO_CHAR(CPM.TIME_PEROID, 'DD-MON-YY') TIME_PEROID,\n"
                 + " NVL(ROUND(CPM.TIME_PEROID - (SYSDATE - 1)), 0) DAY_TIME_PEROID,\n"
                 + "       CPM.ACTIVE,                       \n"
+                + "       CPM.MONTH_DAYS,                   \n"
+                + "       CPM.MEDICINE_DURATION,            \n"
                 + "       CPM.CRTD_BY,                      \n"
                 + "       USR.NAME CRTD_BY_NAME,            \n"
                 + "       CPM.CRTD_DATE,                    \n"
@@ -540,6 +545,7 @@ public class CardiacSurgeryHandler {
                 + Database.DCMS.users + " USR,              \n"
                 + Database.DCMS.definitionTypeDetail + " DOS\n"
                 + " WHERE CPM.CARDIAC_ID = " + cardiacId + "\n"
+                + "   AND CPM.ACTIVE = 'Y'                  \n"
                 + "   AND CPM.MEDICINE_ID = ITM.ID          \n"
                 + "   AND CPM.CRTD_BY = USR.USER_NAME       \n"
                 + "   AND CPM.DOSE_ID = DOS.ID              \n";
@@ -550,6 +556,7 @@ public class CardiacSurgeryHandler {
             HashMap map = (HashMap) listmap.get(i);
             CardiacSurgeryBO objData = new CardiacSurgeryBO();
 
+            objData.setPreMedicineId(map.get("PRE_MED_ID").toString());
             objData.setId(map.get("CARDIAC_ID").toString());
             objData.setMedicineId(map.get("MEDICINE_ID").toString());
             objData.setMedicineDesc(map.get("MEDICINE_DESC").toString());
@@ -557,6 +564,8 @@ public class CardiacSurgeryHandler {
             objData.setDoseDesc(map.get("DOSE_DESC").toString());
             objData.setTimeTaking(map.get("TIME_PEROID").toString());
             objData.setDayTimeTaking(map.get("DAY_TIME_PEROID").toString());
+            objData.setMedicineMonthDays(map.get("MONTH_DAYS").toString());
+            objData.setMedicineDuration(map.get("MEDICINE_DURATION").toString());
             objData.setActiveMedicine(map.get("ACTIVE").toString());
             objData.setCrtdBy(map.get("CRTD_BY").toString());
             objData.setCrtdByName(map.get("CRTD_BY_NAME").toString());

@@ -164,8 +164,8 @@ public class CardiacSurgeryController {
         return ret;
     }
 
-    public boolean updatePreMedications(CardiacSurgeryBO cardiac) {
-        boolean ret = hdlCardiacSurg.updatePreMedications(cardiac);
+    public boolean updatePreMedications(String medId) {
+        boolean ret = hdlCardiacSurg.updatePreMedications(medId);
         if (ret) {
             ret = Constants.dao.commitTransaction();
         }

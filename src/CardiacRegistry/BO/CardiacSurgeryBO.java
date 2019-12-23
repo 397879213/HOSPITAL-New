@@ -72,6 +72,7 @@ public class CardiacSurgeryBO {
     private String cancelTerminalId = "";
     private String active = "";
 
+    private String preMedicineId = "";
     private String medicineId = "";
     private String medicineDesc = "";
     private String doseId = "";
@@ -79,6 +80,8 @@ public class CardiacSurgeryBO {
     private String timeTaking = "";
     private String dayTimeTaking = "";
     private String activeMedicine = "";
+    private String medicineDuration = "";
+    private String medicineMonthDays = "";
 
     private String echoId = "";
     private String columnName = "";
@@ -95,6 +98,30 @@ public class CardiacSurgeryBO {
     private String echoPerformDate = "";
     private String orderStatusId = "";
     private String orderStatusDesc = "";
+
+    public String getPreMedicineId() {
+        return preMedicineId;
+    }
+
+    public void setPreMedicineId(String preMedicineId) {
+        this.preMedicineId = preMedicineId;
+    }
+
+    public String getMedicineDuration() {
+        return medicineDuration;
+    }
+
+    public void setMedicineDuration(String medicineDuration) {
+        this.medicineDuration = medicineDuration;
+    }
+
+    public String getMedicineMonthDays() {
+        return medicineMonthDays;
+    }
+
+    public void setMedicineMonthDays(String medicineMonthDays) {
+        this.medicineMonthDays = medicineMonthDays;
+    }
 
     public String getEjectionFraction() {
         return ejectionFraction;
