@@ -399,8 +399,11 @@ public class CardiacSurgeryHandler {
 
         String columns[] = {"-", "CARDIAC_ID", "PROCEDURE_TYPE", "PROCEDURE_ID",
             "PROCEDURE_DESC", "DATE_OF_PROCEDURE", "INSTITUTE_ID", "INSTITUTE_DESC",
-            "PERFORMING_PHYSICIAN_ID", "PERFORMING_PHY_NAME", "REMARKS", "CRTD_BY",
-            "CRTD_DATE", "CRTD_TERMINAL_ID", "CRTD_BY_NAME", "DAY_OF_PROCEDURE"};
+            "PERFORMING_PHYSICIAN_ID", "PERFORMING_PHY_NAME", "REMARKS", 
+            "EJECTION_FRACTION", "LEFT_MAIN_DISEASE", "DISEASE_EXTENT", "LVEDP", 
+            "PAPS", "PAWP", "ANTEROBASAL", "ANTEROLATERAL", "APICAL", "DIAPHRAGMATIC",
+            "POSTEROBASAL", "CSS_PERFORMED", "REMARKS", "CRTD_BY", "CRTD_DATE",
+            "CRTD_TERMINAL_ID", "CRTD_BY_NAME", "DAY_OF_PROCEDURE"};
 
         String query
                 = "SELECT CPD.CARDIAC_ID,                           \n"
@@ -413,6 +416,10 @@ public class CardiacSurgeryHandler {
                 + "       INS.DESCRIPTION INSTITUTE_DESC,           \n"
                 + "       CPD.PERFORMING_PHYSICIAN_ID,              \n"
                 + "       PPI.DESCRIPTION PERFORMING_PHY_NAME,      \n"
+                + " CPD.EJECTION_FRACTION, CPD.LEFT_MAIN_DISEASE,   \n"
+                + " CPD.DISEASE_EXTENT, CPD.LVEDP, CPD.PAPS, CPD.PAWP,"
+                + " CPD.ANTEROBASAL, CPD.ANTEROLATERAL, CPD.APICAL, \n"
+                + " CPD.DIAPHRAGMATIC, CPD.POSTEROBASAL, CPD.CSS_PERFORMED,\n"
                 + " NVL(CPD.REMARKS, ' ') REMARKS,                  \n"
                 + "       CPD.CRTD_BY,                              \n"
                 + " TO_CHAR(CPD.CRTD_DATE, 'DD-MON-YY') CRTD_DATE,  \n"
@@ -445,6 +452,18 @@ public class CardiacSurgeryHandler {
             objData.setInstituteDescription(map.get("INSTITUTE_DESC").toString());
             objData.setPerformingPhysicianId(map.get("PERFORMING_PHYSICIAN_ID").toString());
             objData.setPerformingPhysicianName(map.get("PERFORMING_PHY_NAME").toString());
+            objData.setEjectionFraction(map.get("EJECTION_FRACTION").toString());
+            objData.setLeftMainDisease(map.get("LEFT_MAIN_DISEASE").toString());
+            objData.setExtentofDisease(map.get("DISEASE_EXTENT").toString());
+            objData.setLVEDP(map.get("LVEDP").toString());
+            objData.setPAPS(map.get("PAPS").toString());
+            objData.setPAWP(map.get("PAWP").toString());
+            objData.setAnterobasal(map.get("ANTEROBASAL").toString());
+            objData.setAnterolateral(map.get("ANTEROLATERAL").toString());
+            objData.setApical(map.get("APICAL").toString());
+            objData.setDiaphragmatic(map.get("DIAPHRAGMATIC").toString());
+            objData.setPosterobasal(map.get("POSTEROBASAL").toString());
+            objData.setProcedureRemarks(map.get("CSS_PERFORMED").toString());
             objData.setProcedureRemarks(map.get("REMARKS").toString());
             objData.setCrtdBy(map.get("CRTD_BY").toString());
             objData.setCrtdByName(map.get("CRTD_BY_NAME").toString());

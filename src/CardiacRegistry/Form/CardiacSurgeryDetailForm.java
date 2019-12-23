@@ -1413,7 +1413,24 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             cboProcType.setSelectedIndex(2);
             procedureType = DefinitionTypes.cardiacIntervention;
         }
-
+        cboEjectionFraction.setSelectedItem(objProcedure.getEjectionFraction());
+        cboLeftDisease.setSelectedItem(objProcedure.getLeftMainDisease());
+        cboDiseaseExtent.setSelectedItem(objProcedure.getExtentofDisease());
+        txtLVEDP.setText(objProcedure.getLVEDP());
+        txtPAPS.setText(objProcedure.getPAPS());
+        txtPAPD.setText(objProcedure.getPAPD());
+        txtPAWP.setText(objProcedure.getPAWP());
+        txtanterobasal.setText(objProcedure.getAnterobasal());
+        txtanterolateral.setText(objProcedure.getAnterolateral());
+        txtApical.setText(objProcedure.getApical());
+        txtDiaphragmatic.setText(objProcedure.getDiaphragmatic());
+        txtPosterobasal.setText(objProcedure.getPosterobasal());
+        txtRemarks.setText(objProcedure.getProcedureRemarks());
+        ChkCSS.setSelected(false);
+        if(objProcedure.getCSSPerformed().equalsIgnoreCase("Y")){
+            ChkCSS.setSelected(true);
+        }
+        
         cboProcType.setEnabled(false);
         txtProcedureName.setEditable(false);
     }//GEN-LAST:event_tblProcedureDetailMouseReleased
