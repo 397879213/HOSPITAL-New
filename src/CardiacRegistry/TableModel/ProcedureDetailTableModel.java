@@ -11,7 +11,7 @@ import javax.swing.table.AbstractTableModel;
 public class ProcedureDetailTableModel extends AbstractTableModel {
 
     private final String[] columnNames
-            = {"Procedure Type", "Proc. Name","Date", "Institute", "Performing Phy"};
+            = {"Procedure Type", "Proc. Name","Date", "Institute", "Performing Phy", "Is Save"};
     private final Object[][] data;
 
     public ProcedureDetailTableModel(List<CardiacSurgeryBO> liInfo) {
@@ -25,6 +25,7 @@ public class ProcedureDetailTableModel extends AbstractTableModel {
             data[row][2] = currentinfo.getDateOfProcedure();
             data[row][3] = currentinfo.getInstituteDescription();
             data[row][4] = currentinfo.getPerformingPhysicianName();
+            data[row][5] = "is Save";
             row++;
 
         }

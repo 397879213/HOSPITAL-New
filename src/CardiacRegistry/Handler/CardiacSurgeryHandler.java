@@ -401,8 +401,8 @@ public class CardiacSurgeryHandler {
                 + " DIAPHRAGMATIC  = '" + cardiac.getDiaphragmatic() + "',\n"
                 + " POSTEROBASAL  = '" + cardiac.getPosterobasal() + "',\n"
                 + " CSS_PERFORMED  = '" + cardiac.getCSSPerformed() + "',\n"
-                + " REMARKS  = '" + cardiac.getProcedureRemarks() + "',\n"
-                + " WHERE CARDIAC_ID = '" + cardiac.getCardiacRegistryId() + "'    \n"
+                + " REMARKS  = '" + cardiac.getProcedureRemarks() + "'\n"
+                + " WHERE CARDIAC_ID = '" + cardiac.getCardiacRegistryId() + "' \n"
                 + " AND ID = '" + cardiac.getCathProcId()+ "' \n";
 
         return Constants.dao.executeUpdate(query, false);

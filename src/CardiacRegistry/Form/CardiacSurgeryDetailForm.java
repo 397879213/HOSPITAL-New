@@ -67,6 +67,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         selectPreMedications();
         selectEchocardiographyMaster();
         setTmePeriod(0);
+        setEchocardiography(0);
     }
 
     @SuppressWarnings("unchecked")
@@ -1330,6 +1331,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     private void tblProcedureDetailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProcedureDetailMouseClicked
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_tblProcedureDetailMouseClicked
 
     private void tblProcedureDetailMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProcedureDetailMouseReleased
@@ -1386,6 +1388,17 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
         cboProcType.setEnabled(false);
         txtProcedureName.setEditable(false);
+        
+        
+        
+        if(tblProcedureDetail.getSelectedColumn() == 5){
+            if (ctlCardiacSurg.updateCardiacProcedureDetail(objCardiacSurger)) {
+                System.out.println("Remarks Save Successfully.");
+                setExamDetail();
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to save Remarks.");
+            }
+        }
     }//GEN-LAST:event_tblProcedureDetailMouseReleased
 
     private void tblProcedureDetailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblProcedureDetailKeyReleased
@@ -1507,6 +1520,12 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     private void tblEchocardiographyMasterMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEchocardiographyMasterMouseReleased
         // TODO add your handling code here:
+        CardiacSurgeryBO obj = listEchocardiographyMaster.get(
+                tblEchocardiographyMaster.getSelectedRow());
+        echoId = obj.getEchoId();
+        System.err.println("echo Id: "+ echoId);
+        selectEchoValve();
+        selectEchoValveMeasurement();
     }//GEN-LAST:event_tblEchocardiographyMasterMouseReleased
 
     private void tblEchocardiographyMasterKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblEchocardiographyMasterKeyReleased
@@ -1995,15 +2014,17 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         for (int i = 0; i < tblProcedureDetail.getColumnCount(); i++) {
             column = tblProcedureDetail.getColumnModel().getColumn(i);
             if (i == 0) {
-                column.setPreferredWidth(20);
+                column.setPreferredWidth(50);
             } else if (i == 1) {
                 column.setPreferredWidth(160);
             } else if (i == 2) {
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(50);
             } else if (i == 3) {
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(80);
             } else if (i == 4) {
                 column.setPreferredWidth(120);
+            } else if (i == 5) {
+                column.setPreferredWidth(40);
             }
         }
     }
@@ -2158,6 +2179,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         objEchocardiography.setOrderStatusId(status);
         if (ctlCardiacSurg.insertEchocrdiographyMaster(objEchocardiography)) {
             JOptionPane.showMessageDialog(null, "Record Save Successfully.");
+            clearEchocardiography();
             selectEchocardiographyMaster();
         } else {
             JOptionPane.showMessageDialog(null, "Unable to save Information.\n"
@@ -2269,5 +2291,24 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
        txtDose.setText("");
        txtMedDuration.setText("");
        cboMonthsDays.setSelectedIndex(0);
+    }
+
+    private void clearEchocardiography() {
+        txtEchoInstitue.setText("");
+        txtEchoPerforming.setText("");
+        setEchocardiography(0);
+    }
+
+    private void setEchocardiography(int day) {
+        try {
+            Calendar c = Calendar.getInstance();
+            c.add(Calendar.DATE, day);
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
+            Date date2 = dateFormat.parse(dateFormat.format(c.getTime()));
+            txtEchoPerformDate.setDate(date2);
+            echoPerDate = dateFormat.format(date2);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }
