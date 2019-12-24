@@ -154,7 +154,7 @@ public class CardiacSurgeryHandler {
         HashMap map = (HashMap) listmap.get(0);
         CardiacSurgeryBO objData = new CardiacSurgeryBO();
 
-        objData.setId(map.get("CARDIAC_ID").toString());
+        objData.setCardiacRegistryId(map.get("CARDIAC_ID").toString());
         objData.setPatientId(map.get("PATIENT_ID").toString());
 //        objData.setInstituteId(map.get("INSTITUTE_ID").toString());
 //        objData.setInstituteDescription(map.get("INSTITUTE_DESC").toString());
@@ -197,7 +197,7 @@ public class CardiacSurgeryHandler {
             "CONTACT_PER_NAME", "CONTACT_PER_NUMBER", "CONTACT_PER_ADDRES"};
 
         HashMap map = new HashMap();
-        map.put("CARDIAC_ID", "'" + insert.getId() + "'");
+        map.put("CARDIAC_ID", "'" + insert.getCardiacRegistryId() + "'");
         map.put("PATIENT_ID", "'" + insert.getPatientId() + "'");
         map.put("INSTITUTE_ID", "'" + insert.getInstituteId() + "'");
         map.put("ADMISSION_NO", "'" + insert.getAdmissionNo() + "'");
@@ -240,7 +240,7 @@ public class CardiacSurgeryHandler {
                 + "CONTACT_PER_NAME  = '" + cardiac.getContactPerName() + "',\n"
                 + "CONTACT_PER_NUMBER  = '" + cardiac.getContactPerContactNo() + "',\n"
                 + "CONTACT_PER_ADDRES  = '" + cardiac.getContactPerAddress() + "' \n"
-                + " WHERE CARDIAC_ID = '" + cardiac.getId() + "'    \n";
+                + " WHERE CARDIAC_ID = '" + cardiac.getCardiacRegistryId() + "'    \n";
 
         return Constants.dao.executeUpdate(query, false);
     }
@@ -290,7 +290,7 @@ public class CardiacSurgeryHandler {
         for (int i = 0; i < listmap.size(); i++) {
             HashMap map = (HashMap) listmap.get(i);
             CardiacSurgeryBO objData = new CardiacSurgeryBO();
-            objData.setId(map.get("CARDIAC_ID").toString());
+            objData.setCardiacRegistryId(map.get("CARDIAC_ID").toString());
             objData.setExamId(map.get("EXAM_TYPE_ID").toString());
             objData.setExamDescription(map.get("EXAM_TYPE_DESC").toString());
             objData.setExamDetailId(map.get("EXAM_DETAIL_ID").toString());
@@ -328,7 +328,7 @@ public class CardiacSurgeryHandler {
         String query
                 = " UPDATE " + Database.DCMS.cardiacHistoryDetail + "        \n"
                 + " SET EXAM_DETAIL_ID  = '" + cardiac.getExamDetailId() + "'\n"
-                + " WHERE CARDIAC_ID = '" + cardiac.getId() + "'             \n"
+                + " WHERE CARDIAC_ID = '" + cardiac.getCardiacRegistryId() + "'             \n"
                 + " AND EXAM_TYPE_ID = '" + cardiac.getExamId() + "'         \n";
 
         return Constants.dao.executeUpdate(query, false);
@@ -338,7 +338,7 @@ public class CardiacSurgeryHandler {
         String query
                 = " UPDATE " + Database.DCMS.cardiacHistoryDetail + "\n"
                 + " SET REMARKS  = '" + cardiac.getExamRemarks() + "'\n"
-                + " WHERE CARDIAC_ID = '" + cardiac.getId() + "'    \n"
+                + " WHERE CARDIAC_ID = '" + cardiac.getCardiacRegistryId() + "'    \n"
                 + " AND EXAM_TYPE_ID = '" + cardiac.getExamId() + "' \n";
 
         return Constants.dao.executeUpdate(query, false);
@@ -346,7 +346,7 @@ public class CardiacSurgeryHandler {
 
     public boolean insertCardiacProcedureDetail(CardiacSurgeryBO insert) {
 
-        String[] columns = {Database.DCMS.cathCardiacDetail,
+        String[] columns = {Database.DCMS.cathCardiacDetail, "ID",
             "CARDIAC_ID", "PROCEDURE_TYPE", "PROCEDURE_ID", "DATE_OF_PROCEDURE",
             "INSTITUTE_ID", "PERFORMING_PHYSICIAN_ID", "EJECTION_FRACTION",
             "LEFT_MAIN_DISEASE", "DISEASE_EXTENT", "LVEDP", "PAPS", "PAWP",
@@ -354,7 +354,8 @@ public class CardiacSurgeryHandler {
             "CSS_PERFORMED", "REMARKS", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
 
         HashMap map = new HashMap();
-        map.put("CARDIAC_ID", "'" + insert.getId() + "'");
+        map.put("ID", "(SELECT NVL(MAX(ID)+1, 1) ID FROM "+Database.DCMS.cathCardiacDetail+")");
+        map.put("CARDIAC_ID", "'" + insert.getCardiacRegistryId() + "'");
         map.put("PROCEDURE_TYPE", "'" + insert.getProcedureType() + "'");
         map.put("PROCEDURE_ID", "'" + insert.getProcedureId() + "'");
         map.put("DATE_OF_PROCEDURE", "'" + insert.getDateOfProcedure() + "'");
@@ -386,18 +387,30 @@ public class CardiacSurgeryHandler {
         String query
                 = " UPDATE " + Database.DCMS.cardiacProcedureDetail + "\n"
                 + " SET DATE_OF_PROCEDURE  = '" + cardiac.getDateOfProcedure() + "',\n"
-                + " INSTITUTE = '" + cardiac.getInstituteId() + "',\n"
+                + " PROCEDURE_ID = '" + cardiac.getInstituteId() + "',\n"
                 + " PERFORMING_PHYSICIAN_ID  = '" + cardiac.getPerformingPhysicianId() + "',\n"
-                + " REMARKS  = '" + cardiac.getProcedureRemarks() + "' \n"
-                + " WHERE CARDIAC_ID = '" + cardiac.getId() + "'    \n"
-                + " AND PROCEDURE_ID = '" + cardiac.getProcedureId() + "' \n";
+                + " EJECTION_FRACTION  = '" + cardiac.getEjectionFraction() + "',\n"
+                + " LEFT_MAIN_DISEASE  = '" + cardiac.getLeftMainDisease() + "',\n"
+                + " DISEASE_EXTENT  = '" + cardiac.getExtentofDisease() + "',\n"
+                + " LVEDP  = '" + cardiac.getLVEDP() + "',\n"
+                + " PAPS  = '" + cardiac.getPAPS() + "',\n"
+                + " PAWP  = '" + cardiac.getPAWP() + "',\n"
+                + " ANTEROBASAL  = '" + cardiac.getAnterobasal() + "',\n"
+                + " ANTEROLATERAL  = '" + cardiac.getAnterolateral() + "',\n"
+                + " APICAL  = '" + cardiac.getApical() + "',\n"
+                + " DIAPHRAGMATIC  = '" + cardiac.getDiaphragmatic() + "',\n"
+                + " POSTEROBASAL  = '" + cardiac.getPosterobasal() + "',\n"
+                + " CSS_PERFORMED  = '" + cardiac.getCSSPerformed() + "',\n"
+                + " REMARKS  = '" + cardiac.getProcedureRemarks() + "',\n"
+                + " WHERE CARDIAC_ID = '" + cardiac.getCardiacRegistryId() + "'    \n"
+                + " AND ID = '" + cardiac.getCathProcId()+ "' \n";
 
         return Constants.dao.executeUpdate(query, false);
     }
 
     public List<CardiacSurgeryBO> selectCardiacProcedureDetail(String cardiacId) {
 
-        String columns[] = {"-", "CARDIAC_ID", "PROCEDURE_TYPE", "PROCEDURE_ID",
+        String columns[] = {"-", "ID","CARDIAC_ID", "PROCEDURE_TYPE", "PROCEDURE_ID",
             "PROCEDURE_DESC", "DATE_OF_PROCEDURE", "INSTITUTE_ID", "INSTITUTE_DESC",
             "PERFORMING_PHYSICIAN_ID", "PERFORMING_PHY_NAME", "REMARKS",
             "EJECTION_FRACTION", "LEFT_MAIN_DISEASE", "DISEASE_EXTENT", "LVEDP",
@@ -406,7 +419,7 @@ public class CardiacSurgeryHandler {
             "CRTD_TERMINAL_ID", "CRTD_BY_NAME", "DAY_OF_PROCEDURE"};
 
         String query
-                = "SELECT CPD.CARDIAC_ID,                           \n"
+                = "SELECT CPD.ID, CPD.CARDIAC_ID,                   \n"
                 + "       CPD.PROCEDURE_TYPE,                       \n"
                 + "       CPD.PROCEDURE_ID,                         \n"
                 + "       PCI.DESCRIPTION PROCEDURE_DESC,           \n"
@@ -442,7 +455,8 @@ public class CardiacSurgeryHandler {
             HashMap map = (HashMap) listmap.get(i);
             CardiacSurgeryBO objData = new CardiacSurgeryBO();
 
-            objData.setId(map.get("CARDIAC_ID").toString());
+            objData.setCathProcId(map.get("ID").toString());
+            objData.setCardiacRegistryId(map.get("CARDIAC_ID").toString());
             objData.setProcedureType(map.get("PROCEDURE_TYPE").toString());
             objData.setProcedureId(map.get("PROCEDURE_ID").toString());
             objData.setProcedureDescription(map.get("PROCEDURE_DESC").toString());
@@ -463,7 +477,7 @@ public class CardiacSurgeryHandler {
             objData.setApical(map.get("APICAL").toString());
             objData.setDiaphragmatic(map.get("DIAPHRAGMATIC").toString());
             objData.setPosterobasal(map.get("POSTEROBASAL").toString());
-            objData.setProcedureRemarks(map.get("CSS_PERFORMED").toString());
+            objData.setCSSPerformed(map.get("CSS_PERFORMED").toString());
             objData.setProcedureRemarks(map.get("REMARKS").toString());
             objData.setCrtdBy(map.get("CRTD_BY").toString());
             objData.setCrtdByName(map.get("CRTD_BY_NAME").toString());
@@ -478,7 +492,7 @@ public class CardiacSurgeryHandler {
         String query
                 = " UPDATE " + Database.DCMS.cardiacProcedureDetail + " \n"
                 + " SET ACTIVE  = 'N'                                   \n"
-                + " WHERE CARDIAC_ID = '" + cardiac.getId() + "'        \n"
+                + " WHERE CARDIAC_ID = '" + cardiac.getCardiacRegistryId() + "'        \n"
                 + " AND PROCEDURE_ID = '" + cardiac.getProcedureId() + "' \n";
 
         return Constants.dao.executeUpdate(query, false);
@@ -487,14 +501,14 @@ public class CardiacSurgeryHandler {
     public boolean insertPreMedications(CardiacSurgeryBO insert) {
 
         String[] columns = {Database.DCMS.cardiacPreMedication,
-            "PRE_MED_ID", "MEDICINE_ID", "CARDIAC_ID", "DOSE_ID", "TIME_PEROID", "ACTIVE", 
+            "PRE_MED_ID", "MEDICINE_ID", "CARDIAC_ID", "DOSE_ID", "TIME_PEROID", "ACTIVE",
             "MEDICINE_DURATION", "MONTH_DAYS", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
 
         HashMap map = new HashMap();
         map.put("PRE_MED_ID", "(SELECT NVL(MAX(PRE_MED_ID) +1, 1) MEDICINE_ID FROM "
                 + Database.DCMS.cardiacPreMedication + ")");
-        map.put("MEDICINE_ID", "'" + insert.getMedicineId()+ "'");
-        map.put("CARDIAC_ID", "'" + insert.getId() + "'");
+        map.put("MEDICINE_ID", "'" + insert.getMedicineId() + "'");
+        map.put("CARDIAC_ID", "'" + insert.getCardiacRegistryId() + "'");
         map.put("DOSE_ID", "'" + insert.getDoseId() + "'");
         map.put("TIME_PEROID", "'" + insert.getTimeTaking() + "'");
         map.put("MEDICINE_DURATION", "'" + insert.getMedicineDuration() + "'");
@@ -512,7 +526,7 @@ public class CardiacSurgeryHandler {
     public boolean updatePreMedications(String medId) {
         String query
                 = " UPDATE " + Database.DCMS.cardiacPreMedication + "   \n"
-                + " SET ACTIVE  = 'N',       \n"
+                + " SET ACTIVE  = 'N'        \n"
                 + " WHERE PRE_MED_ID = " + medId + "          \n";
 
         return Constants.dao.executeUpdate(query, false);
@@ -557,7 +571,7 @@ public class CardiacSurgeryHandler {
             CardiacSurgeryBO objData = new CardiacSurgeryBO();
 
             objData.setPreMedicineId(map.get("PRE_MED_ID").toString());
-            objData.setId(map.get("CARDIAC_ID").toString());
+            objData.setCardiacRegistryId(map.get("CARDIAC_ID").toString());
             objData.setMedicineId(map.get("MEDICINE_ID").toString());
             objData.setMedicineDesc(map.get("MEDICINE_DESC").toString());
             objData.setDoseId(map.get("DOSE_ID").toString());
@@ -600,7 +614,7 @@ public class CardiacSurgeryHandler {
             CardiacSurgeryBO objData = new CardiacSurgeryBO();
 
             objData.setEchoId(map.get("ECHO_ID").toString());
-            objData.setId(map.get("CARDIAC_ID").toString());
+            objData.setCardiacRegistryId(map.get("CARDIAC_ID").toString());
             objData.setValveId(map.get("VALVE_ID").toString());
             objData.setValveDescription(map.get("DESCRIPTION").toString());
             objData.setStenosis(map.get("STENOSIS").toString());
@@ -631,7 +645,7 @@ public class CardiacSurgeryHandler {
             CardiacSurgeryBO objData = new CardiacSurgeryBO();
 
             objData.setEchoId(map.get("ECHO_ID").toString());
-            objData.setId(map.get("CARDIAC_ID").toString());
+            objData.setCardiacRegistryId(map.get("CARDIAC_ID").toString());
             objData.setValveMeasurementId(map.get("MEASUREMENT_ID").toString());
             objData.setValveMeasurementDescription(map.get("DESCRIPTION").toString());
             objData.setValue(map.get("VALUE").toString());
@@ -681,7 +695,7 @@ public class CardiacSurgeryHandler {
 
         HashMap map = new HashMap();
         map.put("ID", "'" + insert.getEchoId() + "'");
-        map.put("CARDIAC_ID", "'" + insert.getId() + "'");
+        map.put("CARDIAC_ID", "'" + insert.getCardiacRegistryId() + "'");
         map.put("PERFORM_DATE", "'" + insert.getEchoPerformDate() + "'");
         map.put("PERFORMED_BY", "'" + insert.getPerformingPhysicianId() + "'");
         map.put("ORDER_STATUS_ID", "'" + insert.getOrderStatusId() + "'");
@@ -736,7 +750,7 @@ public class CardiacSurgeryHandler {
             CardiacSurgeryBO objData = new CardiacSurgeryBO();
 
             objData.setEchoId(map.get("ID").toString());
-            objData.setId(map.get("CARDIAC_ID").toString());
+            objData.setCardiacRegistryId(map.get("CARDIAC_ID").toString());
             objData.setEchoPerformDate(map.get("PERFORM_DATE").toString());
             objData.setEchoPerformDay(map.get("PERFORM_DAY").toString());
             objData.setPerformingPhysicianId(map.get("PERFORMED_BY").toString());
@@ -760,7 +774,7 @@ public class CardiacSurgeryHandler {
                 + " PERFORMED_BY = '" + cardiac.getPerformingPhysicianId() + "',\n"
                 + " ORDER_STATUS_ID = '" + cardiac.getOrderStatusId() + "',\n"
                 + " INSTITUTE_ID = '" + cardiac.getInstituteId() + "' \n"
-                + " WHERE CARDIAC_ID = " + cardiac.getId() + "        \n"
+                + " WHERE CARDIAC_ID = " + cardiac.getCardiacRegistryId() + "        \n"
                 + " AND ID = " + cardiac.getEchoId() + "              \n";
 
         return Constants.dao.executeUpdate(query, false);
@@ -773,7 +787,7 @@ public class CardiacSurgeryHandler {
                 + " FINAL_BY = '" + Constants.userId + "',\n"
                 + " FINAL_DATE = SYSDATE,                               \n"
                 + " FINAL_TERMINAL_ID = '" + Constants.terminalId + "' \n"
-                + " WHERE CARDIAC_ID = " + cardiac.getId() + "        \n"
+                + " WHERE CARDIAC_ID = " + cardiac.getCardiacRegistryId() + "        \n"
                 + " AND ID = " + cardiac.getEchoId() + "              \n";
 
         return Constants.dao.executeUpdate(query, false);

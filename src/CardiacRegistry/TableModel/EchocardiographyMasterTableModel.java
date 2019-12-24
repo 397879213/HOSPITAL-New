@@ -11,7 +11,7 @@ import javax.swing.table.AbstractTableModel;
 public class EchocardiographyMasterTableModel extends AbstractTableModel {
 
     private final String[] columnNames
-            = {"Per. Date", "Performing","Institute", "Status"};
+            = {"Per. Date", "Performing","Institute"};
     private final Object[][] data;
 
     public EchocardiographyMasterTableModel(List<CardiacSurgeryBO> liInfo) {
@@ -23,7 +23,7 @@ public class EchocardiographyMasterTableModel extends AbstractTableModel {
             data[row][0] = currentinfo.getEchoPerformDate();
             data[row][1] = currentinfo.getPerformingPhysicianName();
             data[row][2] = currentinfo.getInstituteDescription();
-            data[row][3] = currentinfo.getOrderStatusDesc();
+//            data[row][3] = currentinfo.getOrderStatusDesc();
             row++;
 
         }

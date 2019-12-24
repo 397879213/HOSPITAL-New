@@ -11,7 +11,7 @@ package CardiacRegistry.BO;
  */
 public class CardiacSurgeryBO {
 
-    private String id = "";
+    private String cardiacRegistryId = "";
     private String patientId = "";
     private String admissionNo = "";
     private String instituteId = "";
@@ -47,6 +47,7 @@ public class CardiacSurgeryBO {
     private String contactPerName = "";
     private String contactPerContactNo = "";
     private String procedureType = "";
+    private String cathProcId = "";
     private String procedureId = "";
     private String procedureDescription = "";
     private String dateOfProcedure = "";
@@ -98,6 +99,14 @@ public class CardiacSurgeryBO {
     private String echoPerformDate = "";
     private String orderStatusId = "";
     private String orderStatusDesc = "";
+
+    public String getCathProcId() {
+        return cathProcId;
+    }
+
+    public void setCathProcId(String cathProcId) {
+        this.cathProcId = cathProcId;
+    }
 
     public String getPreMedicineId() {
         return preMedicineId;
@@ -635,12 +644,12 @@ public class CardiacSurgeryBO {
         this.instituteDescription = instituteDescription;
     }
 
-    public String getId() {
-        return id;
+    public String getCardiacRegistryId() {
+        return cardiacRegistryId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setCardiacRegistryId(String cardiacRegistryId) {
+        this.cardiacRegistryId = cardiacRegistryId;
     }
 
     public String getPatientId() {

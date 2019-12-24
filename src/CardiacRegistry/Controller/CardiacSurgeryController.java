@@ -35,7 +35,7 @@ public class CardiacSurgeryController {
     }
 
     public boolean insertCardiacRegisteryMaster(CardiacSurgeryBO insert) {
-        insert.setId(key.generatePrimaryKey(Keys.cardiacSurgeryPK, true));
+        insert.setCardiacRegistryId(key.generatePrimaryKey(Keys.cardiacSurgeryPK, true));
         boolean ret = hdlCardiacSurg.insertCardiacRegisteryMaster(insert);
         if (ret) {
             ret = Constants.dao.commitTransaction();
@@ -63,7 +63,7 @@ public class CardiacSurgeryController {
         if (ret) {
             String query
                     = " INSERT INTO " + Database.DCMS.cardiacHistoryDetail + "  \n"
-                    + "(SELECT " + cardiac.getId() + ", DEF.ID,'','', '' FROM   \n"
+                    + "(SELECT " + cardiac.getCardiacRegistryId() + ", DEF.ID,'','', '' FROM   \n"
                     + Database.DCMS.definitionType + " DEF                      \n"
                     + "  WHERE DEF.COMMENTS = 'CARDIAC-REGISTRY')               \n";
 
@@ -191,7 +191,7 @@ public class CardiacSurgeryController {
         if (ret) {
             String query
                     = " INSERT INTO " + Database.DCMS.echoCardiography + "      \n"
-                    + "(SELECT " + echoId + ", " + insert.getId() + ","
+                    + "(SELECT " + echoId + ", " + insert.getCardiacRegistryId() + ","
                     + " DEF.ID,'','', '', '' FROM                               \n"
                     + Database.DCMS.definitionTypeDetail + " DEF                \n"
                     + "  WHERE DEF.DEF_TYPE_ID = " + DefinitionTypes.echoCardiacValves + ")\n";
@@ -201,7 +201,7 @@ public class CardiacSurgeryController {
         if (ret) {
             String query
                     = " INSERT INTO " + Database.DCMS.cardioEchoCardiographyDetail + "\n"
-                    + "(SELECT " + echoId + ", " + insert.getId() + ", DEF.ID,'',"
+                    + "(SELECT " + echoId + ", " + insert.getCardiacRegistryId() + ", DEF.ID,'',"
                     + "'" + Constants.userId + "', SYSDATE, '" 
                     + Constants.terminalId + "' FROM                            \n"
                     + Database.DCMS.definitionTypeDetail + " DEF                \n"

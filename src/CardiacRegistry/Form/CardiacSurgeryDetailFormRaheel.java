@@ -912,7 +912,7 @@ public class CardiacSurgeryDetailFormRaheel extends javax.swing.JInternalFrame {
             lov.LOVDefinitionSelection(objCardiacSurger.getExamId(), "", this);
             objCardiacSurger.setExamDetailId(Constants.lovID);
             objCardiacSurger.setExamDetailDescription(Constants.lovDescription);
-            objCardiacSurger.setId(cardiacId);
+            objCardiacSurger.setCardiacRegistryId(cardiacId);
             if (ctlCardiacSurg.updateExamDetail(objCardiacSurger)) {
                 System.out.println("Records Save Successfully.");
                 setExamDetail();
@@ -931,7 +931,7 @@ public class CardiacSurgeryDetailFormRaheel extends javax.swing.JInternalFrame {
         objCardiacSurger = listExamDetail.get(tblExamDetail.getSelectedRow());
         objCardiacSurger.setExamRemarks(String.valueOf(tblExamDetail.getValueAt(
                 tblExamDetail.getSelectedRow(), 3)).trim());
-        objCardiacSurger.setId(cardiacId);
+        objCardiacSurger.setCardiacRegistryId(cardiacId);
         if (ctlCardiacSurg.updateExamDetailRemarks(objCardiacSurger)) {
             System.out.println("Remarks Save Successfully.");
             setExamDetail();
@@ -1224,11 +1224,11 @@ public class CardiacSurgeryDetailFormRaheel extends javax.swing.JInternalFrame {
 
     private void btnUpdtMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdtMedActionPerformed
         // TODO add your handling code here:
-        objPreMedication.setId(cardiacId);
+        objPreMedication.setCardiacRegistryId(cardiacId);
         objPreMedication.setMedicineId(medId);
         objPreMedication.setDoseId(doseId);
         objPreMedication.setTimeTaking(timePeroid);
-        if (ctlCardiacSurg.updatePreMedications(objPreMedication)) {
+        if (ctlCardiacSurg.updatePreMedications("")) {
             JOptionPane.showMessageDialog(null, "Medicine Info updated Successfuly.");
             selectPreMedications();
         } else {
@@ -1249,12 +1249,12 @@ public class CardiacSurgeryDetailFormRaheel extends javax.swing.JInternalFrame {
         if (confirmation != 0) {
             return;
         }
-        objCardiacSurger.setId(cardiacId);
+        objCardiacSurger.setCardiacRegistryId(cardiacId);
         objCardiacSurger.setEchoId(echoId);
-        if(ctlCardiacSurg.finalEchoCardiography(objCardiacSurger)){
+        if (ctlCardiacSurg.finalEchoCardiography(objCardiacSurger)) {
             selectEchocardiographyMaster();
             JOptionPane.showMessageDialog(null, "Record Final Successfully");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Unable to Final. Contact Support person.");
         }
     }//GEN-LAST:event_btnFinalEchoActionPerformed
@@ -1370,7 +1370,7 @@ public class CardiacSurgeryDetailFormRaheel extends javax.swing.JInternalFrame {
     }
 
     private void setProecedureDetail() {
-        objProcedure.setId(cardiacId);
+        objProcedure.setCardiacRegistryId(cardiacId);
         objProcedure.setProcedureType(cboProcType.getSelectedItem().toString());
         objProcedure.setInstituteId(procedureInstId);
         objProcedure.setPerformingPhysicianId(procedurePerformingId);
@@ -1452,7 +1452,7 @@ public class CardiacSurgeryDetailFormRaheel extends javax.swing.JInternalFrame {
     }
 
     private void sevePreMedication() {
-        objPreMedication.setId(cardiacId);
+        objPreMedication.setCardiacRegistryId(cardiacId);
         objPreMedication.setMedicineId(medId);
         objPreMedication.setDoseId(doseId);
         objPreMedication.setTimeTaking(timePeroid);
@@ -1558,7 +1558,7 @@ public class CardiacSurgeryDetailFormRaheel extends javax.swing.JInternalFrame {
     }
 
     private void saveEchocardiographyMaster(String status) {
-        objEchocardiography.setId(cardiacId);
+        objEchocardiography.setCardiacRegistryId(cardiacId);
         objEchocardiography.setEchoPerformDate(echoPerDate);
         objEchocardiography.setPerformingPhysicianId(echoPerformingId);
         objEchocardiography.setInstituteId(echoInstId);
@@ -1570,7 +1570,6 @@ public class CardiacSurgeryDetailFormRaheel extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Unable to save Information.\n"
                     + "Kindly contact information");
         }
-
     }
 
     private void selectEchocardiographyMaster() {

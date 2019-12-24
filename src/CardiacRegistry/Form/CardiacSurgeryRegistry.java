@@ -1117,7 +1117,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
     }
 
     private void saveCardiacSurgeryInformation() {
-        cardiacSurgery.setId(cardiacId);
+        cardiacSurgery.setCardiacRegistryId(cardiacId);
         cardiacSurgery.setPatientId(patientId);
         cardiacSurgery.getAdmissionNo();
         cardiacSurgery.setDateOfSurgery(surgeryDate);
@@ -1163,7 +1163,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         txtRemarks.setText(cardiacSurgeryDetail.getRemarks());
         txtWard.setText(cardiacSurgeryDetail.getWardDescription());
         setDateOfSurgery(Integer.parseInt(cardiacSurgeryDetail.getDayOfSurgery()));
-        cardiacId = cardiacSurgeryDetail.getId();
+        cardiacId = cardiacSurgeryDetail.getCardiacRegistryId();
         wardId = cardiacSurgeryDetail.getWardId();
         categoryId = cardiacSurgeryDetail.getCategoryId();
         System.err.println("Categry" + categoryId);
