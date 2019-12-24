@@ -1331,7 +1331,6 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     private void tblProcedureDetailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProcedureDetailMouseClicked
         // TODO add your handling code here:
-        
     }//GEN-LAST:event_tblProcedureDetailMouseClicked
 
     private void tblProcedureDetailMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProcedureDetailMouseReleased
@@ -1380,6 +1379,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         txtDiaphragmatic.setText(objProcedure.getDiaphragmatic());
         txtPosterobasal.setText(objProcedure.getPosterobasal());
         txtRemarks.setText(objProcedure.getProcedureRemarks());
+        
         ChkCSS.setSelected(false);
         System.err.println("CSS: "+objProcedure.getCSSPerformed());
         if (objProcedure.getCSSPerformed().equalsIgnoreCase("Y")) {
@@ -1392,7 +1392,8 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         
         
         if(tblProcedureDetail.getSelectedColumn() == 5){
-            if (ctlCardiacSurg.updateCardiacProcedureDetail(objCardiacSurger)) {
+            setProecedureDetail();
+            if (ctlCardiacSurg.updateCardiacProcedureDetail(objProcedure)) {
                 System.out.println("Remarks Save Successfully.");
                 setExamDetail();
             } else {
