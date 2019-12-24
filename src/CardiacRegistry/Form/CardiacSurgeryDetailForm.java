@@ -1335,20 +1335,20 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     private void tblProcedureDetailMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProcedureDetailMouseReleased
         // TODO add your handling code here:
-        if(tblProcedureDetail.getSelectedRow() < 0 || listProcedure.isEmpty()){
+        if (tblProcedureDetail.getSelectedRow() < 0 || listProcedure.isEmpty()) {
             return;
         }
-        CardiacSurgeryBO objProcedure = listProcedure.get(tblProcedureDetail.getSelectedRow());
+        objProcedure = listProcedure.get(tblProcedureDetail.getSelectedRow());
         if (evt.getClickCount() % 2 == 0) {
-            int confirmation = JOptionPane.showConfirmDialog(null, "Do you want to Cancel?");
+            int confirmation = JOptionPane.showConfirmDialog(null, "Do you want to Delete?");
             if (confirmation != 0) {
                 return;
             }
             if (ctlCardiacSurg.deleteProcedure(objProcedure)) {
-                JOptionPane.showMessageDialog(null, "Record Cancel Successsfully.");
+                JOptionPane.showMessageDialog(null, "Record Delete Successsfully.");
                 selectProcedureDetail();
             } else {
-                JOptionPane.showMessageDialog(null, "Unable to Cancel Record.");
+                JOptionPane.showMessageDialog(null, "Unable to Delete Record.");
             }
         }
         surgProcedureId = objProcedure.getProcedureId();
@@ -1379,21 +1379,19 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         txtDiaphragmatic.setText(objProcedure.getDiaphragmatic());
         txtPosterobasal.setText(objProcedure.getPosterobasal());
         txtRemarks.setText(objProcedure.getProcedureRemarks());
-        
+
         ChkCSS.setSelected(false);
-        System.err.println("CSS: "+objProcedure.getCSSPerformed());
+        System.err.println("CSS: " + objProcedure.getCSSPerformed());
         if (objProcedure.getCSSPerformed().equalsIgnoreCase("Y")) {
             ChkCSS.setSelected(true);
         }
 
         cboProcType.setEnabled(false);
         txtProcedureName.setEditable(false);
-        
-        
-        
-        if(tblProcedureDetail.getSelectedColumn() == 5){
+
+        if (tblProcedureDetail.getSelectedColumn() == 5) {
             setProecedureDetail();
-            if (ctlCardiacSurg.updateCardiacProcedureDetail(this.objProcedure)) {
+            if (ctlCardiacSurg.updateCardiacProcedureDetail(objProcedure)) {
                 System.out.println("Remarks Save Successfully.");
                 setExamDetail();
             } else {
@@ -1524,7 +1522,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         CardiacSurgeryBO obj = listEchocardiographyMaster.get(
                 tblEchocardiographyMaster.getSelectedRow());
         echoId = obj.getEchoId();
-        System.err.println("echo Id: "+ echoId);
+        System.err.println("echo Id: " + echoId);
         selectEchoValve();
         selectEchoValveMeasurement();
     }//GEN-LAST:event_tblEchocardiographyMasterMouseReleased
@@ -2289,10 +2287,10 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     }
 
     private void clearMedication() {
-       txtMedication.setText("");
-       txtDose.setText("");
-       txtMedDuration.setText("");
-       cboMonthsDays.setSelectedIndex(0);
+        txtMedication.setText("");
+        txtDose.setText("");
+        txtMedDuration.setText("");
+        cboMonthsDays.setSelectedIndex(0);
     }
 
     private void clearEchocardiography() {
