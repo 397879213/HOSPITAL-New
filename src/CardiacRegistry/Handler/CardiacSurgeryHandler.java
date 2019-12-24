@@ -488,12 +488,11 @@ public class CardiacSurgeryHandler {
         return lisExam;
     }
 
-    public boolean cancelProcedure(CardiacSurgeryBO cardiac) {
+    public boolean deleteProcedure(CardiacSurgeryBO cardiac) {
         String query
-                = " UPDATE " + Database.DCMS.cardiacProcedureDetail + " \n"
-                + " SET ACTIVE  = 'N'                                   \n"
+                = " DELETE FROM " + Database.DCMS.cathCardiacDetail + " \n"
                 + " WHERE CARDIAC_ID = '" + cardiac.getCardiacRegistryId() + "'        \n"
-                + " AND PROCEDURE_ID = '" + cardiac.getProcedureId() + "' \n";
+                + " AND ID = '" + cardiac.getCathProcId()+ "' \n";
 
         return Constants.dao.executeUpdate(query, false);
     }

@@ -1338,13 +1338,13 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         if(tblProcedureDetail.getSelectedRow() < 0 || listProcedure.isEmpty()){
             return;
         }
-        objProcedure = listProcedure.get(tblProcedureDetail.getSelectedRow());
+        CardiacSurgeryBO objProcedure = listProcedure.get(tblProcedureDetail.getSelectedRow());
         if (evt.getClickCount() % 2 == 0) {
             int confirmation = JOptionPane.showConfirmDialog(null, "Do you want to Cancel?");
             if (confirmation != 0) {
                 return;
             }
-            if (ctlCardiacSurg.cancelProcedure(objProcedure)) {
+            if (ctlCardiacSurg.deleteProcedure(objProcedure)) {
                 JOptionPane.showMessageDialog(null, "Record Cancel Successsfully.");
                 selectProcedureDetail();
             } else {
@@ -1393,7 +1393,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         
         if(tblProcedureDetail.getSelectedColumn() == 5){
             setProecedureDetail();
-            if (ctlCardiacSurg.updateCardiacProcedureDetail(objProcedure)) {
+            if (ctlCardiacSurg.updateCardiacProcedureDetail(this.objProcedure)) {
                 System.out.println("Remarks Save Successfully.");
                 setExamDetail();
             } else {
@@ -1969,6 +1969,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     }
 
     private void setProecedureDetail() {
+        System.err.println("ocscksamdkasmd");
         objProcedure.setCardiacRegistryId(cardiacSurgeryId);
         objProcedure.setProcedureType(cboProcType.getSelectedItem().toString());
         objProcedure.setInstituteId(procedureInstId);

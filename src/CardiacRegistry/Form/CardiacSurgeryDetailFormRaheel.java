@@ -967,7 +967,7 @@ public class CardiacSurgeryDetailFormRaheel extends javax.swing.JInternalFrame {
             if (confirmation != 0) {
                 return;
             }
-            if (ctlCardiacSurg.cancelProcedure(objProcedure)) {
+            if (ctlCardiacSurg.deleteProcedure(objProcedure)) {
                 JOptionPane.showMessageDialog(null, "Record Cancel Successsfully.");
                 selectProcedureDetail();
             } else {

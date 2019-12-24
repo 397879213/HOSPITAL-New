@@ -141,8 +141,8 @@ public class CardiacSurgeryController {
         return hdlCardiacSurg.selectCardiacProcedureDetail(cardiacId);
     }
 
-    public boolean cancelProcedure(CardiacSurgeryBO cardiac) {
-        boolean ret = hdlCardiacSurg.cancelProcedure(cardiac);
+    public boolean deleteProcedure(CardiacSurgeryBO cardiac) {
+        boolean ret = hdlCardiacSurg.deleteProcedure(cardiac);
         if (ret) {
             ret = Constants.dao.commitTransaction();
         }
