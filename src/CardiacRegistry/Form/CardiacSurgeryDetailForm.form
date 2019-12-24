@@ -1056,6 +1056,9 @@
                               <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Select&quot;, &quot;Unknown&quot;, &quot;Good &gt; 50%&quot;})" type="code"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboEjectionFractionActionPerformed"/>
+                          </Events>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                           </AuxValues>
@@ -1078,6 +1081,9 @@
                               <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Select&quot;, &quot;Nill or &lt; 50%&quot;, &quot;50-70&quot;, &quot; &gt; 70&quot; })" type="code"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboLeftDiseaseActionPerformed"/>
+                          </Events>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                           </AuxValues>
@@ -1100,6 +1106,9 @@
                               <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Select&quot;, &quot;Nill&quot;, &quot;Single Vessel&quot;, &quot;2-Vessel&quot;, &quot;3-Vessel&quot; })" type="code"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboDiseaseExtentActionPerformed"/>
+                          </Events>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                           </AuxValues>

@@ -636,6 +636,11 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         jLabel36.setText("Ejection Fraction : ");
 
         cboEjectionFraction.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Unknown", "Good > 50%"}));
+        cboEjectionFraction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboEjectionFractionActionPerformed(evt);
+            }
+        });
 
         jLabel37.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
         jLabel37.setForeground(new java.awt.Color(102, 0, 0));
@@ -643,6 +648,11 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         jLabel37.setText("Left Main Disease : ");
 
         cboLeftDisease.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Nill or < 50%", "50-70", " > 70" }));
+        cboLeftDisease.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboLeftDiseaseActionPerformed(evt);
+            }
+        });
 
         jLabel43.setFont(new java.awt.Font("Arial", 1, 10)); // NOI18N
         jLabel43.setForeground(new java.awt.Color(102, 0, 0));
@@ -650,6 +660,11 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         jLabel43.setText("Disease Extent: ");
 
         cboDiseaseExtent.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Nill", "Single Vessel", "2-Vessel", "3-Vessel" }));
+        cboDiseaseExtent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboDiseaseExtentActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -1338,6 +1353,17 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         if (tblProcedureDetail.getSelectedRow() < 0 || listProcedure.isEmpty()) {
             return;
         }
+
+        if (tblProcedureDetail.getSelectedColumn() == 5) {
+            setProecedureDetail();
+            if (ctlCardiacSurg.updateCardiacProcedureDetail(objProcedure)) {
+                System.out.println("Remarks Save Successfully.");
+                setExamDetail();
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to save Remarks.");
+            }
+        }
+
         objProcedure = listProcedure.get(tblProcedureDetail.getSelectedRow());
         if (evt.getClickCount() % 2 == 0) {
             int confirmation = JOptionPane.showConfirmDialog(null, "Do you want to Delete?");
@@ -1389,15 +1415,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         cboProcType.setEnabled(false);
         txtProcedureName.setEditable(false);
 
-        if (tblProcedureDetail.getSelectedColumn() == 5) {
-            setProecedureDetail();
-            if (ctlCardiacSurg.updateCardiacProcedureDetail(objProcedure)) {
-                System.out.println("Remarks Save Successfully.");
-                setExamDetail();
-            } else {
-                JOptionPane.showMessageDialog(null, "Unable to save Remarks.");
-            }
-        }
+
     }//GEN-LAST:event_tblProcedureDetailMouseReleased
 
     private void tblProcedureDetailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblProcedureDetailKeyReleased
@@ -1439,6 +1457,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
                 txtProcedurePerforming.getText().trim(), this);
         txtProcedurePerforming.setText(Constants.lovDescription);
         procedurePerformingId = Constants.lovID;
+        cboEjectionFraction.requestFocus();
     }//GEN-LAST:event_txtProcedurePerformingActionPerformed
 
     private void tblEchoValveMeasurementMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEchoValveMeasurementMouseClicked
@@ -1737,38 +1756,47 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     private void txtLVEDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLVEDPActionPerformed
         // TODO add your handling code here:
+        txtPAPS.requestFocus();
     }//GEN-LAST:event_txtLVEDPActionPerformed
 
     private void txtPAPSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPAPSActionPerformed
         // TODO add your handling code here:
+        txtPAPD.requestFocus();
     }//GEN-LAST:event_txtPAPSActionPerformed
 
     private void txtPAPDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPAPDActionPerformed
         // TODO add your handling code here:
+        txtPAWP.requestFocus();
     }//GEN-LAST:event_txtPAPDActionPerformed
 
     private void txtPAWPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPAWPActionPerformed
         // TODO add your handling code here:
+        txtanterobasal.requestFocus();
     }//GEN-LAST:event_txtPAWPActionPerformed
 
     private void txtanterobasalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtanterobasalActionPerformed
         // TODO add your handling code here:
+        txtanterolateral.requestFocus();
     }//GEN-LAST:event_txtanterobasalActionPerformed
 
     private void txtanterolateralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtanterolateralActionPerformed
         // TODO add your handling code here:
+        txtApical.requestFocus();
     }//GEN-LAST:event_txtanterolateralActionPerformed
 
     private void txtApicalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApicalActionPerformed
         // TODO add your handling code here:
+        txtDiaphragmatic.requestFocus();
     }//GEN-LAST:event_txtApicalActionPerformed
 
     private void txtDiaphragmaticActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiaphragmaticActionPerformed
         // TODO add your handling code here:
+        txtPosterobasal.requestFocus();
     }//GEN-LAST:event_txtDiaphragmaticActionPerformed
 
     private void txtPosterobasalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPosterobasalActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here
+        txtRemarks.requestFocus();
     }//GEN-LAST:event_txtPosterobasalActionPerformed
 
     private void ChkCSSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkCSSActionPerformed
@@ -1831,6 +1859,21 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         saveEchocardiographyMaster(Status.entered);
     }//GEN-LAST:event_btnSaveEchoActionPerformed
+
+    private void cboEjectionFractionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboEjectionFractionActionPerformed
+        // TODO add your handling code here:
+        cboLeftDisease.requestFocus();
+    }//GEN-LAST:event_cboEjectionFractionActionPerformed
+
+    private void cboLeftDiseaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboLeftDiseaseActionPerformed
+        // TODO add your handling code here:
+        cboDiseaseExtent.requestFocus();
+    }//GEN-LAST:event_cboLeftDiseaseActionPerformed
+
+    private void cboDiseaseExtentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDiseaseExtentActionPerformed
+        // TODO add your handling code here:
+        txtLVEDP.requestFocus();
+    }//GEN-LAST:event_cboDiseaseExtentActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
