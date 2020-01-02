@@ -11,9 +11,8 @@ import javax.swing.table.AbstractTableModel;
 public class PerfusionBloodGasesTableModel extends AbstractTableModel {
 
     private final String[] columnNames
-            = {"ID", "B Flow", "Temp.", "FiO2", "G Flow", "PH", "PCO2", 
-                "PO2", "HCO2", "BE", "O2 Sat", "TCO2", "NA", "K", "CA", "Lac",
-                "HB", "SUGAR", "ACT", "Hepar." };
+            = {"Time", "On Vent", "DBP 1", "DBP 2", "DBP 3", "DBP 4", 
+                "DBP 5", "DBP 6", "DBP 7", "DBP 8", "DBP 9", "DBP 10"};
     private final Object[][] data;
 
     public PerfusionBloodGasesTableModel(List<PerfusionistBO> liInfo) {
@@ -22,26 +21,19 @@ public class PerfusionBloodGasesTableModel extends AbstractTableModel {
         int row = 0;
 
         for (PerfusionistBO currentinfo : liInfo) {
-            data[row][0] = currentinfo.getBloodGasesId();
-            data[row][1] = currentinfo.getBloodFlow();
-            data[row][2] = currentinfo.getTemperature();
-            data[row][3] = currentinfo.getFIO2();
-            data[row][4] = currentinfo.getgFlow();
-            data[row][5] = currentinfo.getpH();
-            data[row][6] = currentinfo.getPCO2();
-            data[row][7] = currentinfo.getPO2();
-            data[row][8] = currentinfo.getHCO2();
-            data[row][9] = currentinfo.getBE();
-            data[row][10] = currentinfo.getO2Sat();
-            data[row][11] = currentinfo.getTCO2();
-            data[row][12] = currentinfo.getNa();
-            data[row][13] = currentinfo.getK();
-            data[row][14] = currentinfo.getCa();
-            data[row][15] = currentinfo.getLac();
-            data[row][16] = currentinfo.getHb();
-            data[row][17] = currentinfo.getSugar();
-            data[row][18] = currentinfo.getACT();
-            data[row][19] = currentinfo.getHeparinKU();
+//            data[row][0] = currentinfo.getBloodGasesId();
+            data[row][0] = currentinfo.getBloodGasesDescription();
+            data[row][1] = currentinfo.getOnVent();
+            data[row][2] = currentinfo.getDBP1();
+            data[row][3] = currentinfo.getDBP2();
+            data[row][4] = currentinfo.getDBP3();
+            data[row][5] = currentinfo.getDBP4();
+            data[row][6] = currentinfo.getDBP5();
+            data[row][7] = currentinfo.getDBP6();
+            data[row][8] = currentinfo.getDBP7();
+            data[row][9] = currentinfo.getDBP8();
+            data[row][10] = currentinfo.getDBP9();
+            data[row][11] = currentinfo.getDBP10();
             row++;
 
         }

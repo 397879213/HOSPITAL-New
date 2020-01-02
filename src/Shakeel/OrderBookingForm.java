@@ -1,10 +1,11 @@
-package Form.general;
+package Shakeel;
 
+import Form.general.*;
 import utilities.Constants;
 
-public class PlainForm extends javax.swing.JInternalFrame {
+public class OrderBookingForm extends javax.swing.JInternalFrame {
 
-    public PlainForm() {
+    public OrderBookingForm() {
 
         initComponents();
         this.setSize(Constants.xSize + 80, Constants.ySize - Constants.yExtension + 8);

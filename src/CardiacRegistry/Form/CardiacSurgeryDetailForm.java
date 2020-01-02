@@ -1436,6 +1436,11 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     private void txtProcedureNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProcedureNameActionPerformed
         // TODO add your handling code here:
+        if(cboProcType.getSelectedIndex() == 0){
+            JOptionPane.showMessageDialog(null, "Please Select Procedure Type.");
+            cboProcType.requestFocus();
+            return;
+        }
         lov.LOVDefinitionSelection(procedureType, txtProcedureName.getText().trim(), this);
         surgProcedureId = Constants.lovID;
         txtProcedureName.setText(Constants.lovDescription);

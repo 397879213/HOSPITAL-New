@@ -59,19 +59,26 @@ public class PerfusionistHandler {
 
     public List<PerfusionistBO> selectBloodGases(String cardiacId) {
 
-        String columns[] = {"-", "ID", "CARDIAC_ID", "B_FLOW", "TEMPERATURE",
-            "FIO2", "G_FLOW", "PH", "PCO2", "PO2", "HCO2", "BE", "O2_SAT", "TCO2",
-            "NA", "K", "CA", "LAC", "HB", "SUGAR", "ACT", "HEPARIN", "CRTD_BY",
-            "CRTD_DATE", "CRTD_TERMINAL_ID"};
+        String columns[] = {"-", "ID", "CARDIAC_ID", "BG_ID", "BLOOD_GASSES",
+            "ON_VENT", "DBP_1", "DBP_2", "DBP_3", "DBP_4", "DBP_5", "DBP_6", 
+            "DBP_7", "DBP_8", "DBP_9", "DBP_10","CRTD_BY", "CRTD_DATE", 
+            "CRTD_TERMINAL_ID"};
 
         String query
-                = "SELECT BG.ID, BG.CARDIAC_ID, BG.B_FLOW, BG.TEMPERATURE,      \n"
-                + "       BG.FIO2, BG.G_FLOW, BG.PH, BG.PCO2, BG.PO2, BG.HCO2,  \n"
-                + "       BG.BE, BG.O2_SAT, BG.TCO2, BG.NA, BG.K, BG.CA, BG.LAC,\n"
-                + "       BG.HB, BG.SUGAR, BG.ACT, BG.HEPARIN, BG.CRTD_BY,      \n"
-                + " TO_CHAR(BG.CRTD_DATE, 'DD-MON-YY') CRTD_DATE, BG.CRTD_TERMINAL_ID\n"
-                + "  FROM "+Database.DCMS.perfusionBloodGases+" BG\n"
-                + "  WHERE BG.CARDIAC_ID = "+ cardiacId +"";
+                = "SELECT BG.ID, BG.CARDIAC_ID, BG.BG_ID,\n"
+                + "       DTD.DESCRIPTION BLOOD_GASSES,\n"
+                + " NVL(BG.ON_VENT, 0) ON_VENT, NVL(BG.DBP_1, 0) DBP_1,\n"
+                + " NVL(BG.DBP_2, 0) DBP_2, NVL(BG.DBP_3, 0) DBP_3,\n"
+                + " NVL(BG.DBP_4, 0) DBP_4, NVL(BG.DBP_5, 0) DBP_5,\n"
+                + " NVL(BG.DBP_6, 0) DBP_6, NVL(BG.DBP_7, 0) DBP_7,\n"
+                + " NVL(BG.DBP_8, 0) DBP_8, NVL(BG.DBP_9, 0) DBP_9,\n"
+                + " NVL(BG.DBP_10, 0) DBP_10, BG.CRTD_BY,\n"
+                + " TO_CHAR(BG.CRTD_DATE, 'DD-MON-YY') CRTD_DATE,\n"
+                + " BG.CRTD_TERMINAL_ID\n"
+                + "  FROM " + Database.DCMS.perfusionBloodGases + " BG, \n"
+                + "DEFINITION_TYPE_DETAIL DTD\n"
+                + " WHERE BG.CARDIAC_ID = " + cardiacId + "\n"
+                + "   AND BG.BG_ID = DTD.ID";
 
         List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
         List<PerfusionistBO> lisPatient = new ArrayList();
@@ -82,25 +89,19 @@ public class PerfusionistHandler {
 
             objData.setBloodGasesId(map.get("ID").toString());
             objData.setCardiacRegistryId(map.get("CARDIAC_ID").toString());
-            objData.setBloodFlow(map.get("B_FLOW").toString());
-            objData.setTemperature(map.get("TEMPERATURE").toString());
-            objData.setFIO2(map.get("FIO2").toString());
-            objData.setgFlow(map.get("G_FLOW").toString());
-            objData.setpH(map.get("PH").toString());
-            objData.setPCO2(map.get("PCO2").toString());
-            objData.setPO2(map.get("PO2").toString());
-            objData.setHCO2(map.get("HCO2").toString());
-            objData.setBE(map.get("BE").toString());
-            objData.setO2Sat(map.get("O2_SAT").toString());
-            objData.setTCO2(map.get("TCO2").toString());
-            objData.setNa(map.get("NA").toString());
-            objData.setK(map.get("K").toString());
-            objData.setCa(map.get("CA").toString());
-            objData.setLac(map.get("LAC").toString());
-            objData.setHb(map.get("HB").toString());
-            objData.setSugar(map.get("SUGAR").toString());
-            objData.setACT(map.get("ACT").toString());
-            objData.setHeparinKU(map.get("HEPARIN").toString());
+            objData.setBloodGasesId(map.get("BG_ID").toString());
+            objData.setBloodGasesDescription(map.get("BLOOD_GASSES").toString());
+            objData.setOnVent(map.get("ON_VENT").toString());
+            objData.setDBP1(map.get("DBP_1").toString());
+            objData.setDBP2(map.get("DBP_2").toString());
+            objData.setDBP3(map.get("DBP_3").toString());
+            objData.setDBP4(map.get("DBP_4").toString());
+            objData.setDBP5(map.get("DBP_5").toString());
+            objData.setDBP6(map.get("DBP_6").toString());
+            objData.setDBP7(map.get("DBP_7").toString());
+            objData.setDBP8(map.get("DBP_8").toString());
+            objData.setDBP9(map.get("DBP_9").toString());
+            objData.setDBP10(map.get("DBP_10").toString());
             objData.setCrtdBy(map.get("CRTD_BY").toString());
             objData.setCrtdDate(map.get("CRTD_DATE").toString());
             objData.setCrtdTerminalId(map.get("CRTD_TERMINAL_ID").toString());
