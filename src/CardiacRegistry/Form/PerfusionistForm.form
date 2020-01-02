@@ -67,8 +67,8 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTabbedPane1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jTabbedPane1" min="-2" pref="478" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="pnlPL" min="-2" max="-2" attributes="0"/>
@@ -148,8 +148,12 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="290" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
                   <Component id="btnClear" min="-2" pref="95" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="btnClear1" min="-2" pref="95" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="jButton4" min="-2" pref="103" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jButton3" min="-2" pref="103" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -166,6 +170,8 @@
                       <Component id="btnClear" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnClear1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -193,6 +199,22 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton3">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Final"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnClear1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Save"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton4">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="1"/>
@@ -234,7 +256,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="jPanel9" alignment="0" max="32767" attributes="0"/>
@@ -263,15 +285,15 @@
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jPanel12" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jPanel13" max="32767" attributes="0"/>
+                              <Component id="jPanel13" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jPanel14" max="32767" attributes="0"/>
+                          <Component id="jPanel14" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -311,22 +333,22 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtMemberId3" alignment="0" max="32767" attributes="3"/>
-                              <Component id="txtMemberId4" alignment="0" max="32767" attributes="3"/>
-                              <Component id="txtMemberId7" alignment="0" max="32767" attributes="3"/>
-                              <Component id="txtMemberId8" alignment="0" max="32767" attributes="3"/>
-                              <Component id="txtMemberId9" alignment="0" max="32767" attributes="3"/>
+                              <Component id="txtPerfusionist" alignment="0" max="32767" attributes="3"/>
+                              <Component id="txtAsstPerfusionist" alignment="0" max="32767" attributes="3"/>
+                              <Component id="txtOperation" alignment="0" max="32767" attributes="3"/>
+                              <Component id="txtOxygenator" alignment="0" max="32767" attributes="3"/>
+                              <Component id="txtCpgSystem" alignment="0" max="32767" attributes="3"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="txtMemberId6" min="-2" pref="90" max="-2" attributes="3"/>
+                                  <Component id="txtHeparinized" min="-2" pref="90" max="-2" attributes="3"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel23" min="-2" pref="54" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jComboBox1" max="32767" attributes="0"/>
+                                  <Component id="cboRedo" pref="116" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jComboBox2" min="-2" pref="66" max="-2" attributes="0"/>
+                                  <Component id="cboIabCatheter" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtPerformDate" max="32767" attributes="0"/>
+                                  <Component id="cboIabCatheterDate" min="-2" pref="155" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
@@ -336,45 +358,45 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel13" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtMemberId3" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtPerfusionist" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtMemberId4" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtAsstPerfusionist" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel14" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtMemberId6" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtHeparinized" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel16" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="jLabel23" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cboRedo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtMemberId7" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtOperation" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel17" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtMemberId8" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtOxygenator" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel18" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtMemberId9" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtCpgSystem" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel19" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel20" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtPerformDate" alignment="3" max="32767" attributes="0"/>
+                              <Component id="cboIabCatheter" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cboIabCatheterDate" alignment="3" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -392,24 +414,24 @@
                     <Property name="text" type="java.lang.String" value="Perfusionist : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId3">
+                <Component class="javax.swing.JTextField" name="txtPerfusionist">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId3ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPerfusionistActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId4">
+                <Component class="javax.swing.JTextField" name="txtAsstPerfusionist">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId4ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAsstPerfusionistActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel14">
@@ -424,14 +446,14 @@
                     <Property name="text" type="java.lang.String" value="Asst. Perfusionist : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId6">
+                <Component class="javax.swing.JTextField" name="txtHeparinized">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId6ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtHeparinizedActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel16">
@@ -446,14 +468,14 @@
                     <Property name="text" type="java.lang.String" value="Heparinized@ : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId7">
+                <Component class="javax.swing.JTextField" name="txtOperation">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId7ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtOperationActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel17">
@@ -468,14 +490,14 @@
                     <Property name="text" type="java.lang.String" value="Operation : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId8">
+                <Component class="javax.swing.JTextField" name="txtOxygenator">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId8ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtOxygenatorActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel18">
@@ -502,14 +524,14 @@
                     <Property name="text" type="java.lang.String" value="Cpg System : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId9">
+                <Component class="javax.swing.JTextField" name="txtCpgSystem">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId9ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCpgSystemActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel20">
@@ -536,7 +558,7 @@
                     <Property name="text" type="java.lang.String" value="Redo : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox1">
+                <Component class="javax.swing.JComboBox" name="cboRedo">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Y&quot;, &quot;N&quot;})" type="code"/>
@@ -546,7 +568,7 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox2">
+                <Component class="javax.swing.JComboBox" name="cboIabCatheter">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Y&quot;, &quot;N&quot;})" type="code"/>
@@ -556,14 +578,14 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="org.jdesktop.swingx.JXDatePicker" name="txtPerformDate">
+                <Component class="org.jdesktop.swingx.JXDatePicker" name="cboIabCatheterDate">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPerformDateActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboIabCatheterDateActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -595,9 +617,9 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtMemberId11" alignment="0" pref="255" max="32767" attributes="3"/>
-                              <Component id="txtMemberId12" alignment="0" max="32767" attributes="3"/>
-                              <Component id="txtMemberId13" alignment="0" max="32767" attributes="3"/>
+                              <Component id="txtSurgeon" alignment="0" pref="255" max="32767" attributes="3"/>
+                              <Component id="txtAsstSurgeon" alignment="0" max="32767" attributes="3"/>
+                              <Component id="txtAnesthetist" alignment="0" max="32767" attributes="3"/>
                           </Group>
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       </Group>
@@ -609,16 +631,16 @@
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel21" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtMemberId11" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtSurgeon" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtMemberId12" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtAsstSurgeon" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel22" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtMemberId13" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtAnesthetist" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel24" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
@@ -639,24 +661,24 @@
                     <Property name="text" type="java.lang.String" value="Surgeon : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId11">
+                <Component class="javax.swing.JTextField" name="txtSurgeon">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId11ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSurgeonActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId12">
+                <Component class="javax.swing.JTextField" name="txtAsstSurgeon">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId12ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAsstSurgeonActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel22">
@@ -671,14 +693,14 @@
                     <Property name="text" type="java.lang.String" value="Assitant : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId13">
+                <Component class="javax.swing.JTextField" name="txtAnesthetist">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId13ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAnesthetistActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel24">
@@ -728,10 +750,10 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtMemberId14" alignment="1" min="-2" pref="85" max="-2" attributes="3"/>
+                                      <Component id="txtVenous" alignment="1" min="-2" pref="85" max="-2" attributes="3"/>
                                       <Group type="103" alignment="1" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="txtMemberId21" alignment="0" pref="85" max="32767" attributes="3"/>
-                                          <Component id="txtMemberId18" alignment="1" max="32767" attributes="3"/>
+                                          <Component id="txtHemofilter" alignment="0" pref="85" max="32767" attributes="3"/>
+                                          <Component id="txtAorticCannulae" alignment="1" max="32767" attributes="3"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
@@ -742,12 +764,12 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtMemberId19" max="32767" attributes="3"/>
-                                      <Component id="txtMemberId17" max="32767" attributes="3"/>
-                                      <Component id="txtMemberId20" alignment="0" max="32767" attributes="3"/>
+                                      <Component id="txtRetrograde" max="32767" attributes="3"/>
+                                      <Component id="txtAntegrade" max="32767" attributes="3"/>
+                                      <Component id="txtSumpVent" alignment="0" max="32767" attributes="3"/>
                                   </Group>
                               </Group>
-                              <Component id="txtMemberId22" max="32767" attributes="3"/>
+                              <Component id="txtConnectors" max="32767" attributes="3"/>
                           </Group>
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       </Group>
@@ -757,28 +779,28 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtMemberId14" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtVenous" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel25" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="jLabel29" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtMemberId17" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtAntegrade" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtMemberId18" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtAorticCannulae" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel30" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="jLabel31" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtMemberId19" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtRetrograde" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtMemberId21" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtHemofilter" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel32" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="jLabel33" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtMemberId20" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtSumpVent" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtMemberId22" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtConnectors" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel34" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -798,14 +820,14 @@
                     <Property name="text" type="java.lang.String" value="Venous : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId14">
+                <Component class="javax.swing.JTextField" name="txtVenous">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId14ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtVenousActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel29">
@@ -820,24 +842,24 @@
                     <Property name="text" type="java.lang.String" value="Antegrade : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId17">
+                <Component class="javax.swing.JTextField" name="txtAntegrade">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId17ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAntegradeActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId18">
+                <Component class="javax.swing.JTextField" name="txtAorticCannulae">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId18ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAorticCannulaeActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel30">
@@ -864,24 +886,24 @@
                     <Property name="text" type="java.lang.String" value="Retrograde : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId19">
+                <Component class="javax.swing.JTextField" name="txtRetrograde">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId19ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtRetrogradeActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId20">
+                <Component class="javax.swing.JTextField" name="txtSumpVent">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId20ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSumpVentActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel32">
@@ -896,14 +918,14 @@
                     <Property name="text" type="java.lang.String" value="Hemofilter : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId21">
+                <Component class="javax.swing.JTextField" name="txtHemofilter">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId21ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtHemofilterActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel33">
@@ -930,14 +952,14 @@
                     <Property name="text" type="java.lang.String" value="Connectors : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId22">
+                <Component class="javax.swing.JTextField" name="txtConnectors">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId22ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtConnectorsActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -963,64 +985,63 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel37" min="-2" pref="92" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtMemberId23" min="-2" pref="109" max="-2" attributes="3"/>
+                                  <Component id="txtHb" min="-2" pref="109" max="-2" attributes="3"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel38" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel36" min="-2" pref="92" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtMemberId27" min="-2" pref="109" max="-2" attributes="3"/>
+                                  <Component id="txtWeight" min="-2" pref="109" max="-2" attributes="3"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel40" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel35" min="-2" pref="92" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtMemberId28" min="-2" pref="109" max="-2" attributes="3"/>
+                                  <Component id="txtHeight" min="-2" pref="109" max="-2" attributes="3"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel39" min="-2" pref="116" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtMemberId26" alignment="0" pref="86" max="32767" attributes="3"/>
-                              <Component id="txtMemberId24" alignment="0" max="32767" attributes="3"/>
-                              <Component id="txtMemberId25" alignment="0" max="32767" attributes="3"/>
+                              <Component id="txtSurArea" alignment="0" max="32767" attributes="3"/>
+                              <Component id="txtBloodGroup" alignment="0" max="32767" attributes="3"/>
+                              <Component id="txtBloodFlow" alignment="0" min="-2" pref="86" max="-2" attributes="3"/>
                           </Group>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtMemberId28" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtHeight" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel35" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="jLabel39" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtMemberId26" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtSurArea" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtMemberId27" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtWeight" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel36" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="jLabel40" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtMemberId25" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtBloodFlow" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtMemberId23" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtHb" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel37" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="jLabel38" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtMemberId24" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtBloodGroup" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="jLabel38" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       </Group>
@@ -1064,14 +1085,14 @@
                     <Property name="text" type="java.lang.String" value="Hb gm/dl : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId23">
+                <Component class="javax.swing.JTextField" name="txtHb">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId23ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtHbActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel38">
@@ -1086,34 +1107,34 @@
                     <Property name="text" type="java.lang.String" value="Blood Group : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId24">
+                <Component class="javax.swing.JTextField" name="txtBloodGroup">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId24ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBloodGroupActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId25">
+                <Component class="javax.swing.JTextField" name="txtBloodFlow">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId25ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBloodFlowActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId26">
+                <Component class="javax.swing.JTextField" name="txtSurArea">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId26ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSurAreaActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel39">
@@ -1140,24 +1161,24 @@
                     <Property name="text" type="java.lang.String" value="B. Flow (Lmin4) : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId27">
+                <Component class="javax.swing.JTextField" name="txtWeight">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId27ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtWeightActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId28">
+                <Component class="javax.swing.JTextField" name="txtHeight">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId28ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtHeightActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -1192,14 +1213,14 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtMemberId45" alignment="0" max="32767" attributes="3"/>
-                              <Component id="txtMemberId46" alignment="0" max="32767" attributes="3"/>
+                              <Component id="txtMannitol" alignment="0" max="32767" attributes="3"/>
+                              <Component id="txtBloodRbc" alignment="0" max="32767" attributes="3"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="txtMemberId43" min="-2" pref="114" max="-2" attributes="3"/>
+                                  <Component id="txtHartmanns" min="-2" pref="114" max="-2" attributes="3"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel56" min="-2" pref="92" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="txtMemberId44" min="-2" pref="88" max="-2" attributes="3"/>
+                                  <Component id="txtHeparin" min="-2" pref="88" max="-2" attributes="3"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1210,22 +1231,22 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtMemberId43" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtHartmanns" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel55" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="jLabel56" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtMemberId44" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtHeparin" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel57" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtMemberId45" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtMannitol" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel58" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtMemberId46" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtBloodRbc" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1243,14 +1264,14 @@
                     <Property name="text" type="java.lang.String" value="Hartmanns : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId43">
+                <Component class="javax.swing.JTextField" name="txtHartmanns">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId43ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtHartmannsActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel56">
@@ -1265,14 +1286,14 @@
                     <Property name="text" type="java.lang.String" value="Heparin : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId44">
+                <Component class="javax.swing.JTextField" name="txtHeparin">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId44ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtHeparinActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel57">
@@ -1287,14 +1308,14 @@
                     <Property name="text" type="java.lang.String" value="Mannitol : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId45">
+                <Component class="javax.swing.JTextField" name="txtMannitol">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId45ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMannitolActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel58">
@@ -1309,14 +1330,14 @@
                     <Property name="text" type="java.lang.String" value="Blood/ RBC : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId46">
+                <Component class="javax.swing.JTextField" name="txtBloodRbc">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId46ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBloodRbcActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -1345,28 +1366,25 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jLabel54" pref="85" max="32767" attributes="0"/>
                               <Component id="jLabel52" alignment="1" max="32767" attributes="0"/>
                               <Component id="jLabel49" alignment="1" max="32767" attributes="0"/>
                               <Component id="jLabel47" alignment="1" max="32767" attributes="0"/>
                               <Component id="jLabel41" alignment="1" max="32767" attributes="0"/>
                               <Component id="jLabel42" alignment="1" max="32767" attributes="0"/>
-                              <Component id="jLabel43" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jLabel43" alignment="1" pref="85" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="txtMemberId40" alignment="0" pref="86" max="32767" attributes="3"/>
-                              <Component id="txtMemberId37" alignment="0" max="32767" attributes="3"/>
-                              <Component id="txtMemberId35" alignment="0" max="32767" attributes="3"/>
-                              <Component id="txtMemberId29" alignment="0" max="32767" attributes="3"/>
-                              <Component id="txtMemberId34" alignment="0" max="32767" attributes="3"/>
-                              <Component id="txtMemberId33" alignment="0" max="32767" attributes="3"/>
-                              <Component id="txtMemberId42" max="32767" attributes="3"/>
+                              <Component id="txtAllergies" alignment="0" pref="86" max="32767" attributes="3"/>
+                              <Component id="txtDiabetic" alignment="0" max="32767" attributes="3"/>
+                              <Component id="txtValve" alignment="0" max="32767" attributes="3"/>
+                              <Component id="txtPulmonary" alignment="0" max="32767" attributes="3"/>
+                              <Component id="txtAortic" alignment="0" max="32767" attributes="3"/>
+                              <Component id="txtMitral" alignment="0" max="32767" attributes="3"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="jLabel46" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel53" alignment="0" max="32767" attributes="0"/>
                               <Component id="jLabel51" alignment="0" max="32767" attributes="0"/>
                               <Component id="jLabel44" alignment="0" max="32767" attributes="0"/>
                               <Component id="jLabel48" alignment="0" max="32767" attributes="0"/>
@@ -1375,13 +1393,12 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtMemberId32" alignment="0" max="32767" attributes="3"/>
-                              <Component id="txtMemberId30" alignment="0" max="32767" attributes="3"/>
-                              <Component id="txtMemberId31" alignment="0" max="32767" attributes="3"/>
-                              <Component id="txtMemberId36" alignment="0" max="32767" attributes="3"/>
-                              <Component id="txtMemberId38" alignment="0" max="32767" attributes="3"/>
-                              <Component id="txtMemberId39" alignment="0" max="32767" attributes="3"/>
-                              <Component id="txtMemberId41" alignment="0" min="-2" pref="86" max="-2" attributes="3"/>
+                              <Component id="txtUrea" alignment="0" pref="86" max="32767" attributes="3"/>
+                              <Component id="txtEF" alignment="0" max="32767" attributes="3"/>
+                              <Component id="txtCreatinine" alignment="0" max="32767" attributes="3"/>
+                              <Component id="txtLMS" alignment="0" max="32767" attributes="3"/>
+                              <Component id="txtHBsAntiHcv" alignment="0" max="32767" attributes="3"/>
+                              <Component id="txtOtherPer" alignment="0" max="32767" attributes="3"/>
                           </Group>
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       </Group>
@@ -1390,56 +1407,49 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtMemberId34" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtAortic" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel41" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="jLabel45" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtMemberId32" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtUrea" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtMemberId33" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtMitral" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel42" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="jLabel46" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtMemberId31" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtCreatinine" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtMemberId29" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtPulmonary" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel43" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="jLabel44" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtMemberId30" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtEF" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtMemberId35" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtValve" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel47" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="jLabel48" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtMemberId36" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtLMS" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtMemberId37" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtDiabetic" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel49" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="jLabel50" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtMemberId38" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtHBsAntiHcv" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtMemberId40" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtAllergies" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel52" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="jLabel51" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtMemberId39" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtOtherPer" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtMemberId42" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
-                              <Component id="jLabel54" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="jLabel53" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtMemberId41" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1481,14 +1491,14 @@
                     <Property name="text" type="java.lang.String" value="Pulmonary : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId29">
+                <Component class="javax.swing.JTextField" name="txtPulmonary">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId29ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPulmonaryActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel44">
@@ -1503,34 +1513,34 @@
                     <Property name="text" type="java.lang.String" value="E. F : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId30">
+                <Component class="javax.swing.JTextField" name="txtEF">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId30ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEFActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId31">
+                <Component class="javax.swing.JTextField" name="txtCreatinine">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId31ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCreatinineActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId32">
+                <Component class="javax.swing.JTextField" name="txtUrea">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId32ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUreaActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel45">
@@ -1557,24 +1567,24 @@
                     <Property name="text" type="java.lang.String" value="Creatinine : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId33">
+                <Component class="javax.swing.JTextField" name="txtMitral">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId33ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMitralActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId34">
+                <Component class="javax.swing.JTextField" name="txtAortic">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId34ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAorticActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel47">
@@ -1589,14 +1599,14 @@
                     <Property name="text" type="java.lang.String" value="Valve : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId35">
+                <Component class="javax.swing.JTextField" name="txtValve">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId35ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtValveActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel48">
@@ -1611,14 +1621,14 @@
                     <Property name="text" type="java.lang.String" value="L. M. S : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId36">
+                <Component class="javax.swing.JTextField" name="txtLMS">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId36ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLMSActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel49">
@@ -1645,24 +1655,24 @@
                     <Property name="text" type="java.lang.String" value="HBs/Anti Hcv : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId37">
+                <Component class="javax.swing.JTextField" name="txtDiabetic">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId37ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDiabeticActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId38">
+                <Component class="javax.swing.JTextField" name="txtHBsAntiHcv">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId38ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtHBsAntiHcvActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel51">
@@ -1689,69 +1699,25 @@
                     <Property name="text" type="java.lang.String" value="Allergies : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId39">
+                <Component class="javax.swing.JTextField" name="txtOtherPer">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId39ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtOtherPerActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId40">
+                <Component class="javax.swing.JTextField" name="txtAllergies">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId40ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAllergiesActionPerformed"/>
                   </Events>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel53">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Arial" size="12" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="0" green="0" red="66" type="rgb"/>
-                    </Property>
-                    <Property name="horizontalAlignment" type="int" value="4"/>
-                    <Property name="text" type="java.lang.String" value="E. F : "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId41">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Arial" size="12" style="0"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId41ActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId42">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Arial" size="12" style="0"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId42ActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel54">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Arial" size="12" style="1"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="0" green="0" red="66" type="rgb"/>
-                    </Property>
-                    <Property name="horizontalAlignment" type="int" value="4"/>
-                    <Property name="text" type="java.lang.String" value="Pulmonary : "/>
-                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
@@ -2052,7 +2018,7 @@
                               <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane29" pref="158" max="32767" attributes="0"/>
+                          <Component id="jScrollPane29" pref="125" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2297,15 +2263,9 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jPanel18" max="32767" attributes="0"/>
-                                  <Component id="jPanel25" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="jPanel18" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jPanel23" max="32767" attributes="0"/>
-                                  <Component id="jPanel24" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="jPanel23" max="32767" attributes="0"/>
                           </Group>
                           <Component id="jPanel21" alignment="0" max="32767" attributes="0"/>
                       </Group>
@@ -2315,18 +2275,14 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="jPanel21" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jPanel21" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jPanel23" max="32767" attributes="0"/>
-                          <Component id="jPanel18" max="32767" attributes="0"/>
+                          <Component id="jPanel18" min="-2" pref="96" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanel24" max="32767" attributes="0"/>
-                          <Component id="jPanel25" max="32767" attributes="0"/>
-                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -2358,7 +2314,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane28" alignment="0" pref="191" max="32767" attributes="0"/>
+                      <Component id="jScrollPane28" alignment="0" pref="278" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -2413,8 +2369,9 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel87" min="-2" pref="76" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txtSugar1" min="-2" pref="70" max="-2" attributes="3"/>
@@ -2433,27 +2390,28 @@
                                   <Component id="txtSugar4" min="-2" pref="70" max="-2" attributes="3"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel87" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="txtSugar1" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel88" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="txtSugar2" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel89" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="txtSugar3" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel90" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="txtSugar4" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
-                          <EmptySpace pref="16" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2571,13 +2529,10 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jLabel91" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel94" alignment="0" max="32767" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel95" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="jLabel94" alignment="0" pref="111" max="32767" attributes="0"/>
+                              <Component id="jLabel95" alignment="1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -2597,7 +2552,7 @@
                               <Component id="txtSugar10" alignment="0" max="32767" attributes="3"/>
                               <Component id="txtSugar8" alignment="0" max="32767" attributes="3"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2764,7 +2719,67 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jPanel24">
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel20">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new java.awt.Color(Constants.red , Constants.green , Constants.black)" type="code"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder>
+                  <Font PropertyName="font" name="Arial" size="14" style="1"/>
+                  <Color PropertyName="color" blue="0" green="0" red="66" type="rgb"/>
+                </TitledBorder>
+              </Border>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="66" type="rgb"/>
+            </Property>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Medication &amp; Notes">
+                <Property name="tabTitle" type="java.lang.String" value="Medication &amp; Notes"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jPanel26" max="32767" attributes="0"/>
+                          <Component id="jPanel5" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jPanel27" max="32767" attributes="0"/>
+                          <Component id="jPanel28" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jPanel26" max="32767" attributes="0"/>
+                          <Component id="jPanel27" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jPanel5" max="32767" attributes="0"/>
+                          <Component id="jPanel28" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="jPanel26">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="new java.awt.Color(Constants.red , Constants.green , Constants.black)" type="code"/>
@@ -2787,16 +2802,16 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel92" min="-2" pref="76" max="-2" attributes="0"/>
+                          <Component id="jLabel99" min="-2" pref="76" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtSugar11" min="-2" pref="186" max="-2" attributes="3"/>
+                          <Component id="txtSugar13" min="-2" pref="186" max="-2" attributes="3"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel93" min="-2" pref="53" max="-2" attributes="0"/>
+                          <Component id="jLabel100" min="-2" pref="53" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtSugar12" max="32767" attributes="3"/>
+                          <Component id="txtSugar14" max="32767" attributes="3"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jScrollPane31" alignment="1" pref="468" max="32767" attributes="0"/>
+                      <Component id="jScrollPane32" alignment="1" pref="488" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -2804,19 +2819,19 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel92" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtSugar11" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
-                              <Component id="jLabel93" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtSugar12" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="jLabel99" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
+                              <Component id="txtSugar13" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="jLabel100" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
+                              <Component id="txtSugar14" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane31" pref="0" max="32767" attributes="0"/>
+                          <Component id="jScrollPane32" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel92">
+                <Component class="javax.swing.JLabel" name="jLabel99">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="1"/>
@@ -2828,17 +2843,17 @@
                     <Property name="text" type="java.lang.String" value="Medicine :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtSugar11">
+                <Component class="javax.swing.JTextField" name="txtSugar13">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSugar11ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSugar13ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel93">
+                <Component class="javax.swing.JLabel" name="jLabel100">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="1"/>
@@ -2850,24 +2865,24 @@
                     <Property name="text" type="java.lang.String" value="Dose :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtSugar12">
+                <Component class="javax.swing.JTextField" name="txtSugar14">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSugar12ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSugar14ActionPerformed"/>
                   </Events>
                 </Component>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane31">
+                <Container class="javax.swing.JScrollPane" name="jScrollPane32">
                   <AuxValues>
                     <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                   </AuxValues>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="tblPatientInfo2">
+                    <Component class="javax.swing.JTable" name="tblPatientInfo3">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d1" green="b4" id="Active Caption" palette="2" red="99" type="palette"/>
@@ -2877,18 +2892,18 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPatientInfo2MouseClicked"/>
-                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPatientInfo2MouseEntered"/>
-                        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPatientInfo2MouseReleased"/>
-                        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tblPatientInfo2PropertyChange"/>
-                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tblPatientInfo2KeyReleased"/>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPatientInfo3MouseClicked"/>
+                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPatientInfo3MouseEntered"/>
+                        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPatientInfo3MouseReleased"/>
+                        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tblPatientInfo3PropertyChange"/>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tblPatientInfo3KeyReleased"/>
                       </Events>
                     </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jPanel25">
+            <Container class="javax.swing.JPanel" name="jPanel27">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                   <Connection code="new java.awt.Color(Constants.red , Constants.green , Constants.black)" type="code"/>
@@ -2909,15 +2924,60 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jScrollPane2" alignment="1" pref="319" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jScrollPane2" alignment="0" pref="197" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextArea" name="jTextArea2">
+                      <Properties>
+                        <Property name="columns" type="int" value="20"/>
+                        <Property name="rows" type="int" value="5"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="jPanel5">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new java.awt.Color(Constants.red , Constants.green , Constants.black)" type="code"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="Notes">
+                      <Font PropertyName="font" name="Arial" size="14" style="1"/>
+                      <Color PropertyName="color" blue="0" green="0" red="66" type="rgb"/>
+                    </TitledBorder>
+                  </Border>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="66" type="rgb"/>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jScrollPane1" alignment="1" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -2930,6 +2990,54 @@
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
                     <Component class="javax.swing.JTextArea" name="jTextArea1">
+                      <Properties>
+                        <Property name="columns" type="int" value="20"/>
+                        <Property name="rows" type="int" value="5"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="jPanel28">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="new java.awt.Color(Constants.red , Constants.green , Constants.black)" type="code"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="Comments">
+                      <Font PropertyName="font" name="Arial" size="14" style="1"/>
+                      <Color PropertyName="color" blue="0" green="0" red="66" type="rgb"/>
+                    </TitledBorder>
+                  </Border>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="66" type="rgb"/>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jScrollPane3" alignment="1" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jScrollPane3" alignment="0" pref="187" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextArea" name="jTextArea3">
                       <Properties>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="rows" type="int" value="5"/>

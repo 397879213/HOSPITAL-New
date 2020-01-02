@@ -10,7 +10,50 @@ package CardiacRegistry.BO;
  * @author admin
  */
 public class PerfusionistBO {
-    
+
+    private String perfusionist = "";
+    private String asstPerfusionist = "";
+    private String heparinized = "";
+    private String redo = "";
+    private String operation = "";
+    private String oxygenator = "";
+    private String cpgSystem = "";
+    private String IABCatheter = "";
+    private String IABCatheterDate = "";
+    private String height = "";
+    private String weight = "";
+    private String Hb = "";
+    private String surfaceArea = "";
+    private String bloodFlow = "";
+    private String bloodGroup = "";
+    private String hartmanns = "";
+    private String heparin = "";
+    private String mannitol = "";
+    private String bloodRBC = "";
+    private String surgeon = "";
+    private String assistantSurgeon = "";
+    private String anesthetist = "";
+    private String venous = "";
+    private String aorticCannulae = "";
+    private String hemofilter = "";
+    private String connectors = "";
+    private String antegrade = "";
+    private String retrograde = "";
+    private String sumpVent = "";
+    private String aortic = "";
+    private String mitral = "";
+    private String pulmonary = "";
+    private String valve = "";
+    private String diabetic = "";
+    private String allergies = "";
+    private String urea = "";
+    private String creatinine = "";
+    private String EF = "";
+    private String LMS = "";
+    private String HBsAntiHcv = "";
+    private String OtherPerfusion = "";
+
+    // Blood    Gasses
     private String cardiacRegistryId = "";
     private String perfusionId = "";
     private String bloodGasesId = "";
@@ -26,25 +69,6 @@ public class PerfusionistBO {
     private String DBP8 = "";
     private String DBP9 = "";
     private String DBP10 = "";
-    private String bloodFlow = "";
-    private String Temperature = "";
-    private String FIO2 = "";
-    private String gFlow = "";
-    private String pH = "";
-    private String PCO2 = "";
-    private String PO2 = "";
-    private String HCO2 = "";
-    private String BE = "";
-    private String O2Sat = "";
-    private String TCO2 = "";
-    private String Na = "";
-    private String K = "";
-    private String Ca = "";
-    private String Lac = "";
-    private String Hb = "";
-    private String Sugar = "";
-    private String ACT = "";
-    private String heparinKU = "";
     private String crtdBy = "";
     private String crtdDate = "";
     private String crtdTerminalId = "";
@@ -177,150 +201,6 @@ public class PerfusionistBO {
         this.bloodFlow = bloodFlow;
     }
 
-    public String getTemperature() {
-        return Temperature;
-    }
-
-    public void setTemperature(String Temperature) {
-        this.Temperature = Temperature;
-    }
-
-    public String getFIO2() {
-        return FIO2;
-    }
-
-    public void setFIO2(String FIO2) {
-        this.FIO2 = FIO2;
-    }
-
-    public String getgFlow() {
-        return gFlow;
-    }
-
-    public void setgFlow(String gFlow) {
-        this.gFlow = gFlow;
-    }
-
-    public String getpH() {
-        return pH;
-    }
-
-    public void setpH(String pH) {
-        this.pH = pH;
-    }
-
-    public String getPCO2() {
-        return PCO2;
-    }
-
-    public void setPCO2(String PCO2) {
-        this.PCO2 = PCO2;
-    }
-
-    public String getPO2() {
-        return PO2;
-    }
-
-    public void setPO2(String PO2) {
-        this.PO2 = PO2;
-    }
-
-    public String getHCO2() {
-        return HCO2;
-    }
-
-    public void setHCO2(String HCO2) {
-        this.HCO2 = HCO2;
-    }
-
-    public String getBE() {
-        return BE;
-    }
-
-    public void setBE(String BE) {
-        this.BE = BE;
-    }
-
-    public String getO2Sat() {
-        return O2Sat;
-    }
-
-    public void setO2Sat(String O2Sat) {
-        this.O2Sat = O2Sat;
-    }
-
-    public String getTCO2() {
-        return TCO2;
-    }
-
-    public void setTCO2(String TCO2) {
-        this.TCO2 = TCO2;
-    }
-
-    public String getNa() {
-        return Na;
-    }
-
-    public void setNa(String Na) {
-        this.Na = Na;
-    }
-
-    public String getK() {
-        return K;
-    }
-
-    public void setK(String K) {
-        this.K = K;
-    }
-
-    public String getCa() {
-        return Ca;
-    }
-
-    public void setCa(String Ca) {
-        this.Ca = Ca;
-    }
-
-    public String getLac() {
-        return Lac;
-    }
-
-    public void setLac(String Lac) {
-        this.Lac = Lac;
-    }
-
-    public String getHb() {
-        return Hb;
-    }
-
-    public void setHb(String Hb) {
-        this.Hb = Hb;
-    }
-
-    public String getSugar() {
-        return Sugar;
-    }
-
-    public void setSugar(String Sugar) {
-        this.Sugar = Sugar;
-    }
-
-    public String getACT() {
-        return ACT;
-    }
-
-    public void setACT(String ACT) {
-        this.ACT = ACT;
-    }
-
-    public String getHeparinKU() {
-        return heparinKU;
-    }
-
-    public void setHeparinKU(String heparinKU) {
-        this.heparinKU = heparinKU;
-    }
-
     public String getCrtdBy() {
         return crtdBy;
     }
@@ -344,6 +224,325 @@ public class PerfusionistBO {
     public void setCrtdTerminalId(String crtdTerminalId) {
         this.crtdTerminalId = crtdTerminalId;
     }
-    
-    
+
+    public String getPerfusionist() {
+        return perfusionist;
+    }
+
+    public void setPerfusionist(String perfusionist) {
+        this.perfusionist = perfusionist;
+    }
+
+    public String getAsstPerfusionist() {
+        return asstPerfusionist;
+    }
+
+    public void setAsstPerfusionist(String asstPerfusionist) {
+        this.asstPerfusionist = asstPerfusionist;
+    }
+
+    public String getHeparinized() {
+        return heparinized;
+    }
+
+    public void setHeparinized(String heparinized) {
+        this.heparinized = heparinized;
+    }
+
+    public String getRedo() {
+        return redo;
+    }
+
+    public void setRedo(String redo) {
+        this.redo = redo;
+    }
+
+    public String getOperation() {
+        return operation;
+    }
+
+    public void setOperation(String operation) {
+        this.operation = operation;
+    }
+
+    public String getOxygenator() {
+        return oxygenator;
+    }
+
+    public void setOxygenator(String oxygenator) {
+        this.oxygenator = oxygenator;
+    }
+
+    public String getCpgSystem() {
+        return cpgSystem;
+    }
+
+    public void setCpgSystem(String cpgSystem) {
+        this.cpgSystem = cpgSystem;
+    }
+
+    public String getIABCatheter() {
+        return IABCatheter;
+    }
+
+    public void setIABCatheter(String IABCatheter) {
+        this.IABCatheter = IABCatheter;
+    }
+
+    public String getIABCatheterDate() {
+        return IABCatheterDate;
+    }
+
+    public void setIABCatheterDate(String IABCatheterDate) {
+        this.IABCatheterDate = IABCatheterDate;
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public void setHeight(String height) {
+        this.height = height;
+    }
+
+    public String getWeight() {
+        return weight;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+
+    public String getHb() {
+        return Hb;
+    }
+
+    public void setHb(String Hb) {
+        this.Hb = Hb;
+    }
+
+    public String getSurfaceArea() {
+        return surfaceArea;
+    }
+
+    public void setSurfaceArea(String surfaceArea) {
+        this.surfaceArea = surfaceArea;
+    }
+
+    public String getBloodGroup() {
+        return bloodGroup;
+    }
+
+    public void setBloodGroup(String bloodGroup) {
+        this.bloodGroup = bloodGroup;
+    }
+
+    public String getHartmanns() {
+        return hartmanns;
+    }
+
+    public void setHartmanns(String hartmanns) {
+        this.hartmanns = hartmanns;
+    }
+
+    public String getHeparin() {
+        return heparin;
+    }
+
+    public void setHeparin(String heparin) {
+        this.heparin = heparin;
+    }
+
+    public String getMannitol() {
+        return mannitol;
+    }
+
+    public void setMannitol(String mannitol) {
+        this.mannitol = mannitol;
+    }
+
+    public String getBloodRBC() {
+        return bloodRBC;
+    }
+
+    public void setBloodRBC(String bloodRBC) {
+        this.bloodRBC = bloodRBC;
+    }
+
+    public String getSurgeon() {
+        return surgeon;
+    }
+
+    public void setSurgeon(String surgeon) {
+        this.surgeon = surgeon;
+    }
+
+    public String getAssistantSurgeon() {
+        return assistantSurgeon;
+    }
+
+    public void setAssistantSurgeon(String assistantSurgeon) {
+        this.assistantSurgeon = assistantSurgeon;
+    }
+
+    public String getAnesthetist() {
+        return anesthetist;
+    }
+
+    public void setAnesthetist(String anesthetist) {
+        this.anesthetist = anesthetist;
+    }
+
+    public String getVenous() {
+        return venous;
+    }
+
+    public void setVenous(String venous) {
+        this.venous = venous;
+    }
+
+    public String getAorticCannulae() {
+        return aorticCannulae;
+    }
+
+    public void setAorticCannulae(String aorticCannulae) {
+        this.aorticCannulae = aorticCannulae;
+    }
+
+    public String getHemofilter() {
+        return hemofilter;
+    }
+
+    public void setHemofilter(String hemofilter) {
+        this.hemofilter = hemofilter;
+    }
+
+    public String getConnectors() {
+        return connectors;
+    }
+
+    public void setConnectors(String connectors) {
+        this.connectors = connectors;
+    }
+
+    public String getAntegrade() {
+        return antegrade;
+    }
+
+    public void setAntegrade(String antegrade) {
+        this.antegrade = antegrade;
+    }
+
+    public String getRetrograde() {
+        return retrograde;
+    }
+
+    public void setRetrograde(String retrograde) {
+        this.retrograde = retrograde;
+    }
+
+    public String getSumpVent() {
+        return sumpVent;
+    }
+
+    public void setSumpVent(String sumpVent) {
+        this.sumpVent = sumpVent;
+    }
+
+    public String getAortic() {
+        return aortic;
+    }
+
+    public void setAortic(String aortic) {
+        this.aortic = aortic;
+    }
+
+    public String getMitral() {
+        return mitral;
+    }
+
+    public void setMitral(String mitral) {
+        this.mitral = mitral;
+    }
+
+    public String getPulmonary() {
+        return pulmonary;
+    }
+
+    public void setPulmonary(String pulmonary) {
+        this.pulmonary = pulmonary;
+    }
+
+    public String getValve() {
+        return valve;
+    }
+
+    public void setValve(String valve) {
+        this.valve = valve;
+    }
+
+    public String getDiabetic() {
+        return diabetic;
+    }
+
+    public void setDiabetic(String diabetic) {
+        this.diabetic = diabetic;
+    }
+
+    public String getAllergies() {
+        return allergies;
+    }
+
+    public void setAllergies(String allergies) {
+        this.allergies = allergies;
+    }
+
+    public String getUrea() {
+        return urea;
+    }
+
+    public void setUrea(String urea) {
+        this.urea = urea;
+    }
+
+    public String getCreatinine() {
+        return creatinine;
+    }
+
+    public void setCreatinine(String creatinine) {
+        this.creatinine = creatinine;
+    }
+
+    public String getEF() {
+        return EF;
+    }
+
+    public void setEF(String EF) {
+        this.EF = EF;
+    }
+
+    public String getLMS() {
+        return LMS;
+    }
+
+    public void setLMS(String LMS) {
+        this.LMS = LMS;
+    }
+
+    public String getHBsAntiHcv() {
+        return HBsAntiHcv;
+    }
+
+    public void setHBsAntiHcv(String HBsAntiHcv) {
+        this.HBsAntiHcv = HBsAntiHcv;
+    }
+
+    public String getOtherPerfusion() {
+        return OtherPerfusion;
+    }
+
+    public void setOtherPerfusion(String OtherPerfusion) {
+        this.OtherPerfusion = OtherPerfusion;
+    }
+
 }
