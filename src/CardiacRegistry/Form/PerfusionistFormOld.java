@@ -2641,26 +2641,26 @@ public class PerfusionistFormOld extends javax.swing.JInternalFrame {
             return;
         }
 
-        objPerfusionist.setCardiacRegistryId(cardiacId);
-        objPerfusionist.setBloodFlow(txtBloodFlow.getText().trim());
-        objPerfusionist.setTemperature(txtTemperature.getText().trim());
-        objPerfusionist.setFIO2(txtFio2.getText().trim());
-        objPerfusionist.setgFlow(txtGflow.getText().trim());
-        objPerfusionist.setpH(txtPH.getText().trim());
-        objPerfusionist.setPCO2(txtPco2.getText().trim());
-        objPerfusionist.setPO2(txtPo2.getText().trim());
-        objPerfusionist.setHCO2(txtHco2.getText().trim());
-        objPerfusionist.setBE(txtBE.getText().trim());
-        objPerfusionist.setO2Sat(txtO2.getText().trim());
-        objPerfusionist.setTCO2(txtTco2.getText().trim());
-        objPerfusionist.setNa(txtNa.getText().trim());
-        objPerfusionist.setK(txtK.getText().trim());
-        objPerfusionist.setCa(txtCA.getText().trim());
-        objPerfusionist.setLac(txtLac.getText().trim());
-        objPerfusionist.setHb(txtHb.getText().trim());
-        objPerfusionist.setSugar(txtSugar.getText().trim());
-        objPerfusionist.setACT(txtAct.getText().trim());
-        objPerfusionist.setHeparinKU(txtHeparin.getText().trim());
+//        objPerfusionist.setCardiacRegistryId(cardiacId);
+//        objPerfusionist.setBloodFlow(txtBloodFlow.getText().trim());
+//        objPerfusionist.setTemperature(txtTemperature.getText().trim());
+//        objPerfusionist.setFIO2(txtFio2.getText().trim());
+//        objPerfusionist.setgFlow(txtGflow.getText().trim());
+//        objPerfusionist.setpH(txtPH.getText().trim());
+//        objPerfusionist.setPCO2(txtPco2.getText().trim());
+//        objPerfusionist.setPO2(txtPo2.getText().trim());
+//        objPerfusionist.setHCO2(txtHco2.getText().trim());
+//        objPerfusionist.setBE(txtBE.getText().trim());
+//        objPerfusionist.setO2Sat(txtO2.getText().trim());
+//        objPerfusionist.setTCO2(txtTco2.getText().trim());
+//        objPerfusionist.setNa(txtNa.getText().trim());
+//        objPerfusionist.setK(txtK.getText().trim());
+//        objPerfusionist.setCa(txtCA.getText().trim());
+//        objPerfusionist.setLac(txtLac.getText().trim());
+//        objPerfusionist.setHb(txtHb.getText().trim());
+//        objPerfusionist.setSugar(txtSugar.getText().trim());
+//        objPerfusionist.setACT(txtAct.getText().trim());
+//        objPerfusionist.setHeparinKU(txtHeparin.getText().trim());
 
         if (ctlPerfusionist.insertBloodGases(objPerfusionist)) {
             JOptionPane.showMessageDialog(null, "Record save successfully.");

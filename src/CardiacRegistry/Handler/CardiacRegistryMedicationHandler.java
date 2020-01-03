@@ -50,20 +50,20 @@ public class CardiacRegistryMedicationHandler {
         String query
                 = " UPDATE " + Database.DCMS.cardiacMedication + "   \n"
                 + " SET ACTIVE  = 'N'        \n"
-                + " WHERE PRE_MED_ID = " + medId + "          \n";
+                + " WHERE ID = " + medId + "          \n";
 
         return Constants.dao.executeUpdate(query, false);
     }
 
     public List<CardiacRegistryMedication> selectMedications(String cardiacId) {
 
-        String columns[] = {"-", "PRE_MED_ID", "CARDIAC_ID", "MEDICINE_ID",
+        String columns[] = {"-", "ID", "CARDIAC_ID", "MEDICINE_ID",
             "MEDICINE_DESC", "PATIENT_ID", "ACTION_ID", "DOSE_ID", "DOSE_DESC", 
             "TIME_PEROID", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID", "ACTIVE",
             "CRTD_BY_NAME", "DAY_TIME_PEROID", "MEDICINE_DURATION", "MONTH_DAYS"};
 
         String query
-                = "SELECT CPM.CARDIAC_ID, CPM.PRE_MED_ID,   \n"
+                = "SELECT CPM.CARDIAC_ID, CPM.ID,           \n"
                 + "       CPM.MEDICINE_ID, CPM.PATIENT_ID,  \n"
                 + "       ITM.DESCRIPTION MEDICINE_DESC,    \n"
                 + "       CPM.DOSE_ID, CPM.ACTION_ID,       \n"
@@ -93,7 +93,7 @@ public class CardiacRegistryMedicationHandler {
             HashMap map = (HashMap) listmap.get(i);
             CardiacRegistryMedication objData = new CardiacRegistryMedication();
 
-            objData.setMedicationId(map.get("PRE_MED_ID").toString());
+            objData.setMedicationId(map.get("ID").toString());
             objData.setCardiacRegistryId(map.get("CARDIAC_ID").toString());
             objData.setPatientId(map.get("PATIENT_ID").toString());
             objData.setMedicineId(map.get("MEDICINE_ID").toString());
