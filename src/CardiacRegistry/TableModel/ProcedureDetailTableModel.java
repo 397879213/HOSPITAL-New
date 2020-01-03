@@ -4,7 +4,7 @@
  */
 package CardiacRegistry.TableModel;
 
-import CardiacRegistry.BO.CardiacSurgeryBO;
+import CardiacRegistry.BO.CardiacRegistryCathProcedure;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
@@ -14,12 +14,12 @@ public class ProcedureDetailTableModel extends AbstractTableModel {
             = {"Procedure Type", "Proc. Name","Date", "Institute", "Performing Phy", "Is Save"};
     private final Object[][] data;
 
-    public ProcedureDetailTableModel(List<CardiacSurgeryBO> liInfo) {
+    public ProcedureDetailTableModel(List<CardiacRegistryCathProcedure> liInfo) {
         data = new Object[liInfo.size()][columnNames.length];
 
         int row = 0;
 
-        for (CardiacSurgeryBO currentinfo : liInfo) {
+        for (CardiacRegistryCathProcedure currentinfo : liInfo) {
             data[row][0] = currentinfo.getProcedureType();
             data[row][1] = currentinfo.getProcedureDescription();
             data[row][2] = currentinfo.getDateOfProcedure();

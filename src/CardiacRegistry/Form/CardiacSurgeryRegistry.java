@@ -930,14 +930,14 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
 //                        + "Information Prior to Examine the Patient.");
 //            }
 //        }
-            
-            CardiacSurgeryDetailForm fm = new CardiacSurgeryDetailForm(pat.getId());
-                DCMS_MDI.desktopPane.add(fm);
-                Dimension desktopSize = DCMS_MDI.desktopPane.getSize();
-                Dimension fmSize = fm.getSize();
-                fm.setLocation((desktopSize.width - fmSize.width) / 2,
-                        (desktopSize.height - fmSize.height) / 2);
-                fm.setVisible(true);
+        CardiacSurgeryDetailForm fm = new CardiacSurgeryDetailForm(pat.getId(),
+                patientId);
+        DCMS_MDI.desktopPane.add(fm);
+        Dimension desktopSize = DCMS_MDI.desktopPane.getSize();
+        Dimension fmSize = fm.getSize();
+        fm.setLocation((desktopSize.width - fmSize.width) / 2,
+                (desktopSize.height - fmSize.height) / 2);
+        fm.setVisible(true);
 
     }//GEN-LAST:event_tblPatientsListMouseReleased
 

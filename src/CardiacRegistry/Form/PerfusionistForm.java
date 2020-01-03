@@ -3,17 +3,27 @@ package CardiacRegistry.Form;
 import CardiacRegistry.BO.PerfusionistBO;
 import CardiacRegistry.Controller.PerfusionistController;
 import CardiacRegistry.TableModel.PerfusionBloodGasesTableModel;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableColumn;
 import utilities.Constants;
+import utilities.DefinitionTypes;
+import utilities.DisplayLOV;
 
 public class PerfusionistForm extends javax.swing.JInternalFrame {
 
     String cardiacId = "1";
     List<PerfusionistBO> listBG = new ArrayList();
+    private String perfusionistId;
+    private String asstPerfusionistId;
+    private String operationId;
+    private String IabCatheterDate;
+    private String surgeonId;
+    private String asstSurgeonId;
+    private String anesthetistId;
 
     public PerfusionistForm() {
 
@@ -21,6 +31,8 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         this.setSize(Constants.xSize - 120, Constants.ySize - 90);
         selectBloodGases();
     }
+
+    DisplayLOV lov = new DisplayLOV();
     PerfusionistBO objPerfusionist = new PerfusionistBO();
     PerfusionistController ctlPerfusionist = new PerfusionistController();
 
@@ -55,7 +67,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel23 = new javax.swing.JLabel();
         cboRedo = new javax.swing.JComboBox<>();
         cboIabCatheter = new javax.swing.JComboBox<>();
-        cboIabCatheterDate = new org.jdesktop.swingx.JXDatePicker();
+        txtIabCatheterDate = new org.jdesktop.swingx.JXDatePicker();
         jPanel10 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         txtSurgeon = new javax.swing.JTextField();
@@ -251,6 +263,11 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
 
         btnClear1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnClear1.setText("Save");
+        btnClear1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClear1ActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButton4.setText("View Graph");
@@ -379,10 +396,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
 
         cboIabCatheter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Y", "N"}));
 
-        cboIabCatheterDate.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        cboIabCatheterDate.addActionListener(new java.awt.event.ActionListener() {
+        txtIabCatheterDate.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtIabCatheterDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboIabCatheterDateActionPerformed(evt);
+                txtIabCatheterDateActionPerformed(evt);
             }
         });
 
@@ -416,7 +433,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(cboIabCatheter, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cboIabCatheterDate, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtIabCatheterDate, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(5, 5, 5))
         );
         jPanel9Layout.setVerticalGroup(
@@ -452,7 +469,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboIabCatheter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboIabCatheterDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtIabCatheterDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(10, 10, 10))
         );
 
@@ -2109,10 +2126,28 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
 
     private void txtPerfusionistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPerfusionistActionPerformed
         // TODO add your handling code here:
+        lov.LOVDefinitionSelection(DefinitionTypes.cardiacPhysician,
+                txtPerfusionist.getText().trim(), this);
+        if (Constants.lovDescription.equalsIgnoreCase("DESCRIPTION")) {
+            txtPerfusionist.setText("");
+            perfusionistId = "";
+        }
+        txtPerfusionist.setText(Constants.lovDescription);
+        perfusionistId = Constants.lovID;
+        txtAsstPerfusionist.requestFocus();
     }//GEN-LAST:event_txtPerfusionistActionPerformed
 
     private void txtAsstPerfusionistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAsstPerfusionistActionPerformed
         // TODO add your handling code here:
+        lov.LOVDefinitionSelection(DefinitionTypes.cardiacPhysician,
+                txtAsstPerfusionist.getText().trim(), this);
+        if (Constants.lovDescription.equalsIgnoreCase("DESCRIPTION")) {
+            txtAsstPerfusionist.setText("");
+            asstPerfusionistId = "";
+        }
+        txtAsstPerfusionist.setText(Constants.lovDescription);
+        asstPerfusionistId = Constants.lovID;
+        txtAsstPerfusionist.requestFocus();
     }//GEN-LAST:event_txtAsstPerfusionistActionPerformed
 
     private void txtHeparinizedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHeparinizedActionPerformed
@@ -2121,37 +2156,72 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
 
     private void txtOperationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOperationActionPerformed
         // TODO add your handling code here:
+        lov.LOVDefinitionSelection(DefinitionTypes.cardiacSurgery,
+                txtOperation.getText().trim(), this);
+        operationId = Constants.lovID;
+        txtOperation.setText(Constants.lovDescription);
+        txtOxygenator.requestFocus();
     }//GEN-LAST:event_txtOperationActionPerformed
 
     private void txtOxygenatorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOxygenatorActionPerformed
         // TODO add your handling code here:
+        txtCpgSystem.requestFocus();
     }//GEN-LAST:event_txtOxygenatorActionPerformed
 
     private void txtCpgSystemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCpgSystemActionPerformed
         // TODO add your handling code here:
+        cboIabCatheter.requestFocus();
     }//GEN-LAST:event_txtCpgSystemActionPerformed
 
-    private void cboIabCatheterDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboIabCatheterDateActionPerformed
-        // TODO add your handling code here:
-        //        if (txtPerformDate.getDate().getDate() == 0) {
-        //            JOptionPane.showMessageDialog(null, "Enter the Ultrasound E.D.D DD-MON-YY",
-        //                "Gaynee Parameter", JOptionPane.WARNING_MESSAGE);
-        //            return;
-        //        }
-        //        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
-        //        performDate = dateFormat.format(txtPerformDate.getDate());
-    }//GEN-LAST:event_cboIabCatheterDateActionPerformed
+    private void txtIabCatheterDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIabCatheterDateActionPerformed
+        //TODO add your handling code here:
+        if (txtIabCatheterDate.getDate().getDate() == 0) {
+            JOptionPane.showMessageDialog(null, "Enter the Iab Catheter Date DD-MON-YY",
+                    "IAB Catheter Date", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
+        IabCatheterDate = dateFormat.format(txtIabCatheterDate.getDate());
+        txtSurgeon.requestFocus();
+    }//GEN-LAST:event_txtIabCatheterDateActionPerformed
 
     private void txtSurgeonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSurgeonActionPerformed
         // TODO add your handling code here:
+        lov.LOVDefinitionSelection(DefinitionTypes.cardiacPhysician,
+                txtSurgeon.getText().trim(), this);
+        if (Constants.lovDescription.equalsIgnoreCase("DESCRIPTION")) {
+            txtSurgeon.setText("");
+            surgeonId = "";
+        }
+        txtSurgeon.setText(Constants.lovDescription);
+        surgeonId = Constants.lovID;
+        txtAsstSurgeon.requestFocus();
     }//GEN-LAST:event_txtSurgeonActionPerformed
 
     private void txtAsstSurgeonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAsstSurgeonActionPerformed
         // TODO add your handling code here:
+        lov.LOVDefinitionSelection(DefinitionTypes.cardiacPhysician,
+                txtAsstSurgeon.getText().trim(), this);
+        if (Constants.lovDescription.equalsIgnoreCase("DESCRIPTION")) {
+            txtAsstSurgeon.setText("");
+            asstSurgeonId = "";
+        }
+        txtAsstSurgeon.setText(Constants.lovDescription);
+        asstSurgeonId = Constants.lovID;
+        txtAnesthetist.requestFocus();
     }//GEN-LAST:event_txtAsstSurgeonActionPerformed
 
     private void txtAnesthetistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnesthetistActionPerformed
         // TODO add your handling code here:
+        lov.LOVDefinitionSelection(DefinitionTypes.cardiacPhysician,
+                txtAnesthetist.getText().trim(), this);
+        if (Constants.lovDescription.equalsIgnoreCase("DESCRIPTION")) {
+            txtAnesthetist.setText("");
+            anesthetistId = "";
+        }
+        txtAnesthetist.setText(Constants.lovDescription);
+        anesthetistId = Constants.lovID;
+        txtAnesthetist.requestFocus();
     }//GEN-LAST:event_txtAnesthetistActionPerformed
 
     private void txtVenousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVenousActionPerformed
@@ -2462,12 +2532,16 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tblPatientInfo3KeyReleased
 
+    private void btnClear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClear1ActionPerformed
+        // TODO add your handling code here:
+        setPerfusionInfo();
+    }//GEN-LAST:event_btnClear1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnClear1;
     private javax.swing.JComboBox<String> cboIabCatheter;
-    private org.jdesktop.swingx.JXDatePicker cboIabCatheterDate;
     private javax.swing.JComboBox<String> cboRedo;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -2599,6 +2673,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtHemofilter;
     private javax.swing.JTextField txtHeparin;
     private javax.swing.JTextField txtHeparinized;
+    private org.jdesktop.swingx.JXDatePicker txtIabCatheterDate;
     private javax.swing.JTextField txtLMS;
     private javax.swing.JTextField txtMannitol;
     private javax.swing.JTextField txtMemberId;
@@ -2722,6 +2797,23 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
 //        txtSugar.setText("");
 //        txtTco2.setText("");
 //        txtTemperature.setText("");
+    }
+
+    private void setPerfusionInfo() {
+        objPerfusionist = new PerfusionistBO();
+        objPerfusionist.setPerfusionistId(perfusionistId);
+        objPerfusionist.setAsstPerfusionistId(asstPerfusionistId);
+        objPerfusionist.setHeparinized(txtHeparinized.getText().trim());
+        objPerfusionist.setRedo(cboRedo.getSelectedItem().toString());
+        objPerfusionist.setOperationId(operationId);
+        objPerfusionist.setOxygenator(txtOxygenator.getText().trim());
+        objPerfusionist.setCpgSystem(txtCpgSystem.getText().trim());
+        objPerfusionist.setIABCatheter(cboIabCatheter.getSelectedItem().toString());
+        objPerfusionist.setIABCatheterDate(IabCatheterDate);
+        objPerfusionist.setSurgeonId(surgeonId);
+        objPerfusionist.setAssistantSurgeonId(asstSurgeonId);
+        objPerfusionist.setAnesthetistId(anesthetistId);
+
     }
 
 }

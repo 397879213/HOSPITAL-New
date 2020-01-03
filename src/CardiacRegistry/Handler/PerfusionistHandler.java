@@ -21,33 +21,59 @@ public class PerfusionistHandler {
     public boolean insertBloodGases(PerfusionistBO insert) {
 
         String[] columns = {Database.DCMS.perfusionBloodGases, "ID",
-            "CARDIAC_ID", "B_FLOW", "TEMPERATURE", "FIO2", "G_FLOW", "PH", "PCO2",
-            "PO2", "HCO2", "BE", "O2_SAT", "TCO2", "NA", "K", "CA", "LAC", "HB",
-            "SUGAR", "ACT", "HEPARIN", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
+            "CARDIAC_ID", "PATIENT_ID", "PERFUSIONNIST_ID", "ASSISTANT_PERFUSIONNIST_ID",
+            "ASSISTANT_ID", "ANESTHERIST_ID", "HEPARINIZED", "REDO", "OPERATION_ID",
+            "OXYGENATOR", "CPG_SYSTEM", "VENOUS", "ANTEGRADE", "CANN_AORTIC", 
+            "RETROGRADE", "HEMOFILTER", "SUMP_VENT", "CONNECTORS", "AORTIC",
+            "MITRAL", "PULMONARY", "VALUE", "UREA", "CREATININE", "EF", "LMS", 
+            "HBS_HCV", "DIABETIC", "ALLERGIES", "OTHER", "HEIGHT", "WEIGHT", "HB",
+            "SURFACE_AREA", "BLOOD_FLOW", "BLOOD_GROUP_ID", "HARTMANNS", "HEPARIN",
+            "MANNITOL", "BLOOD_RBC", "", "", "", "",
+            "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
 
         HashMap map = new HashMap();
 
         map.put("ID", "'" + insert.getBloodGasesId() + "'");
         map.put("CARDIAC_ID", "'" + insert.getCardiacRegistryId() + "'");
-        map.put("B_FLOW", "'" + insert.getBloodFlow() + "'");
-        map.put("TEMPERATURE", "'" + insert.getTemperature() + "'");
-        map.put("FIO2", "'" + insert.getFIO2() + "'");
-        map.put("G_FLOW", "'" + insert.getgFlow() + "'");
-        map.put("PH", "'" + insert.getpH() + "'");
-        map.put("PCO2", "'" + insert.getPCO2() + "'");
-        map.put("PO2", "'" + insert.getPO2() + "'");
-        map.put("HCO2", "'" + insert.getHCO2() + "'");
-        map.put("BE", "'" + insert.getBE() + "'");
-        map.put("O2_SAT", "'" + insert.getO2Sat() + "'");
-        map.put("TCO2", "'" + insert.getTCO2() + "'");
-        map.put("NA", "'" + insert.getNa() + "'");
-        map.put("K", "'" + insert.getK() + "'");
-        map.put("CA", "'" + insert.getCa() + "'");
-        map.put("LAC", "'" + insert.getLac() + "'");
-        map.put("HB", "'" + insert.getHb() + "'");
-        map.put("SUGAR", "'" + insert.getSugar() + "'");
-        map.put("ACT", "'" + insert.getACT() + "'");
-        map.put("HEPARIN", "'" + insert.getHeparinKU() + "'");
+        map.put("PATIENT_ID", "'" + insert.getPatientId()+ "'");
+        map.put("PERFUSIONNIST_ID", "'" + insert.getPerfusionId()+ "'");
+        map.put("ASSISTANT_PERFUSIONNIST_ID", "'" + insert.getAsstPerfusionistId()+ "'");
+        map.put("ASSISTANT_ID", "'" + insert.getAssistantSurgeonId()+ "'");
+        map.put("ANESTHERIST_ID", "'" + insert.getAnesthetistId()+ "'");
+        map.put("HEPARINIZED", "'" + insert.getHeparinized()+ "'");
+        map.put("REDO", "'" + insert.getRedo()+ "'");
+        map.put("OPERATION_ID", "'" + insert.getOperationId()+ "'");
+        map.put("OXYGENATOR", "'" + insert.getOxygenator()+ "'");
+        map.put("CPG_SYSTEM", "'" + insert.getCpgSystem()+ "'");
+        map.put("VENOUS", "'" + insert.getVenous()+ "'");
+        map.put("ANTEGRADE", "'" + insert.getAntegrade()+ "'");
+        map.put("CANN_AORTIC", "'" + insert.getAorticCannulae()+ "'");
+        map.put("RETROGRADE", "'" + insert.getRetrograde()+ "'");
+        map.put("HEMOFILTER", "'" + insert.getHemofilter()+ "'");
+        map.put("SUMP_VENT", "'" + insert.getSumpVent()+ "'");
+        map.put("CONNECTORS", "'" + insert.getConnectors()+ "'");
+        map.put("AORTIC", "'" + insert.getAortic()+ "'");
+        map.put("MITRAL", "'" + insert.getMitral()+ "'");
+        map.put("PULMONARY", "'" + insert.getPulmonary()+ "'");
+        map.put("VALUE", "'" + insert.getValve()+ "'");
+        map.put("UREA", "'" + insert.getUrea()+ "'");
+        map.put("CREATININE", "'" + insert.getCreatinine()+ "'");
+        map.put("EF", "'" + insert.getEF()+ "'");
+        map.put("LMS", "'" + insert.getLMS()+ "'");
+        map.put("HBS_HCV", "'" + insert.getHBsAntiHcv()+ "'");
+        map.put("DIABETIC", "'" + insert.getDiabetic()+ "'");
+        map.put("ALLERGIES", "'" + insert.getAllergies()+ "'");
+        map.put("OTHER", "'" + insert.getOtherPerfusion()+ "'");
+        map.put("HEIGHT", "'" + insert.getHeight()+ "'");
+        map.put("WEIGHT", "'" + insert.getWeight()+ "'");
+        map.put("HB", "'" + insert.getHb()+ "'");
+        map.put("SURFACE_AREA", "'" + insert.getSurfaceArea()+ "'");
+        map.put("BLOOD_FLOW", "'" + insert.getBloodFlow()+ "'");
+        map.put("BLOOD_GROUP_ID", "'" + insert.getBloodGroupId()+ "'");
+        map.put("HARTMANNS", "'" + insert.getHartmanns()+ "'");
+        map.put("HEPARIN", "'" + insert.getHeparin()+ "'");
+        map.put("MANNITOL", "'" + insert.getMannitol()+ "'");
+        map.put("BLOOD_RBC", "'" + insert.getBloodRBC()+ "'");
         map.put("CRTD_BY", "'" + Constants.userId + "'");
         map.put("CRTD_DATE", Constants.today);
         map.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");

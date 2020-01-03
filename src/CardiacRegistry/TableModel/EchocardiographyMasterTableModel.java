@@ -4,6 +4,7 @@
  */
 package CardiacRegistry.TableModel;
 
+import CardiacRegistry.BO.CardiacRegistryECHO;
 import CardiacRegistry.BO.CardiacSurgeryBO;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -14,12 +15,12 @@ public class EchocardiographyMasterTableModel extends AbstractTableModel {
             = {"Per. Date", "Performing","Institute"};
     private final Object[][] data;
 
-    public EchocardiographyMasterTableModel(List<CardiacSurgeryBO> liInfo) {
+    public EchocardiographyMasterTableModel(List<CardiacRegistryECHO> liInfo) {
         data = new Object[liInfo.size()][columnNames.length];
 
         int row = 0;
 
-        for (CardiacSurgeryBO currentinfo : liInfo) {
+        for (CardiacRegistryECHO currentinfo : liInfo) {
             data[row][0] = currentinfo.getEchoPerformDate();
             data[row][1] = currentinfo.getPerformingPhysicianName();
             data[row][2] = currentinfo.getInstituteDescription();

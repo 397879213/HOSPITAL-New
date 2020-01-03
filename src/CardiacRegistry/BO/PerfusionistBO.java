@@ -11,11 +11,15 @@ package CardiacRegistry.BO;
  */
 public class PerfusionistBO {
 
-    private String perfusionist = "";
-    private String asstPerfusionist = "";
+    private String perfusionistId = "";
+    private String patientId = "";
+    private String perfusionistName = "";
+    private String asstPerfusionistId = "";
+    private String asstPerfusionistName = "";
     private String heparinized = "";
     private String redo = "";
-    private String operation = "";
+    private String operationId = "";
+    private String operationDescription = "";
     private String oxygenator = "";
     private String cpgSystem = "";
     private String IABCatheter = "";
@@ -25,14 +29,18 @@ public class PerfusionistBO {
     private String Hb = "";
     private String surfaceArea = "";
     private String bloodFlow = "";
-    private String bloodGroup = "";
+    private String bloodGroupId = "";
+    private String bloodGroupDescription = "";
     private String hartmanns = "";
     private String heparin = "";
     private String mannitol = "";
     private String bloodRBC = "";
-    private String surgeon = "";
-    private String assistantSurgeon = "";
-    private String anesthetist = "";
+    private String surgeonId = "";
+    private String surgeonName = "";
+    private String assistantSurgeonId = "";
+    private String assistantSurgeonName = "";
+    private String anesthetistId = "";
+    private String anesthetistName = "";
     private String venous = "";
     private String aorticCannulae = "";
     private String hemofilter = "";
@@ -72,6 +80,70 @@ public class PerfusionistBO {
     private String crtdBy = "";
     private String crtdDate = "";
     private String crtdTerminalId = "";
+
+    public String getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(String patientId) {
+        this.patientId = patientId;
+    }
+
+    public String getPerfusionistName() {
+        return perfusionistName;
+    }
+
+    public void setPerfusionistName(String perfusionistName) {
+        this.perfusionistName = perfusionistName;
+    }
+
+    public String getAsstPerfusionistName() {
+        return asstPerfusionistName;
+    }
+
+    public void setAsstPerfusionistName(String asstPerfusionistName) {
+        this.asstPerfusionistName = asstPerfusionistName;
+    }
+
+    public String getOperationDescription() {
+        return operationDescription;
+    }
+
+    public void setOperationDescription(String operationDescription) {
+        this.operationDescription = operationDescription;
+    }
+
+    public String getBloodGroupDescription() {
+        return bloodGroupDescription;
+    }
+
+    public void setBloodGroupDescription(String bloodGroupDescription) {
+        this.bloodGroupDescription = bloodGroupDescription;
+    }
+
+    public String getSurgeonName() {
+        return surgeonName;
+    }
+
+    public void setSurgeonName(String surgeonName) {
+        this.surgeonName = surgeonName;
+    }
+
+    public String getAssistantSurgeonName() {
+        return assistantSurgeonName;
+    }
+
+    public void setAssistantSurgeonName(String assistantSurgeonName) {
+        this.assistantSurgeonName = assistantSurgeonName;
+    }
+
+    public String getAnesthetistName() {
+        return anesthetistName;
+    }
+
+    public void setAnesthetistName(String anesthetistName) {
+        this.anesthetistName = anesthetistName;
+    }
 
     public String getOnVent() {
         return onVent;
@@ -225,20 +297,20 @@ public class PerfusionistBO {
         this.crtdTerminalId = crtdTerminalId;
     }
 
-    public String getPerfusionist() {
-        return perfusionist;
+    public String getPerfusionistId() {
+        return perfusionistId;
     }
 
-    public void setPerfusionist(String perfusionist) {
-        this.perfusionist = perfusionist;
+    public void setPerfusionistId(String perfusionistId) {
+        this.perfusionistId = perfusionistId;
     }
 
-    public String getAsstPerfusionist() {
-        return asstPerfusionist;
+    public String getAsstPerfusionistId() {
+        return asstPerfusionistId;
     }
 
-    public void setAsstPerfusionist(String asstPerfusionist) {
-        this.asstPerfusionist = asstPerfusionist;
+    public void setAsstPerfusionistId(String asstPerfusionistId) {
+        this.asstPerfusionistId = asstPerfusionistId;
     }
 
     public String getHeparinized() {
@@ -257,12 +329,12 @@ public class PerfusionistBO {
         this.redo = redo;
     }
 
-    public String getOperation() {
-        return operation;
+    public String getOperationId() {
+        return operationId;
     }
 
-    public void setOperation(String operation) {
-        this.operation = operation;
+    public void setOperationId(String operationId) {
+        this.operationId = operationId;
     }
 
     public String getOxygenator() {
@@ -329,12 +401,12 @@ public class PerfusionistBO {
         this.surfaceArea = surfaceArea;
     }
 
-    public String getBloodGroup() {
-        return bloodGroup;
+    public String getBloodGroupId() {
+        return bloodGroupId;
     }
 
-    public void setBloodGroup(String bloodGroup) {
-        this.bloodGroup = bloodGroup;
+    public void setBloodGroupId(String bloodGroupId) {
+        this.bloodGroupId = bloodGroupId;
     }
 
     public String getHartmanns() {
@@ -369,28 +441,28 @@ public class PerfusionistBO {
         this.bloodRBC = bloodRBC;
     }
 
-    public String getSurgeon() {
-        return surgeon;
+    public String getSurgeonId() {
+        return surgeonId;
     }
 
-    public void setSurgeon(String surgeon) {
-        this.surgeon = surgeon;
+    public void setSurgeonId(String surgeonId) {
+        this.surgeonId = surgeonId;
     }
 
-    public String getAssistantSurgeon() {
-        return assistantSurgeon;
+    public String getAssistantSurgeonId() {
+        return assistantSurgeonId;
     }
 
-    public void setAssistantSurgeon(String assistantSurgeon) {
-        this.assistantSurgeon = assistantSurgeon;
+    public void setAssistantSurgeonId(String assistantSurgeonId) {
+        this.assistantSurgeonId = assistantSurgeonId;
     }
 
-    public String getAnesthetist() {
-        return anesthetist;
+    public String getAnesthetistId() {
+        return anesthetistId;
     }
 
-    public void setAnesthetist(String anesthetist) {
-        this.anesthetist = anesthetist;
+    public void setAnesthetistId(String anesthetistId) {
+        this.anesthetistId = anesthetistId;
     }
 
     public String getVenous() {

@@ -4,6 +4,7 @@
  */
 package CardiacRegistry.TableModel;
 
+import CardiacRegistry.BO.CardiacRegistryMedication;
 import CardiacRegistry.BO.CardiacSurgeryBO;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -14,12 +15,11 @@ public class PreMedicationsTableModel extends AbstractTableModel {
             = {"Medicine", "Dose","Taking From", "Duration", "From"};
     private final Object[][] data;
 
-    public PreMedicationsTableModel(List<CardiacSurgeryBO> liInfo) {
+    public PreMedicationsTableModel(List<CardiacRegistryMedication> liInfo) {
         data = new Object[liInfo.size()][columnNames.length];
-
         int row = 0;
 
-        for (CardiacSurgeryBO currentinfo : liInfo) {
+        for (CardiacRegistryMedication currentinfo : liInfo) {
             data[row][0] = currentinfo.getMedicineDesc();
             data[row][1] = currentinfo.getDoseDesc();
             data[row][2] = currentinfo.getTimeTaking();

@@ -4,6 +4,7 @@
  */
 package CardiacRegistry.TableModel;
 
+import CardiacRegistry.BO.CardiacRegistryECHO;
 import CardiacRegistry.BO.CardiacSurgeryBO;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -14,12 +15,12 @@ public class EchoValveMeasurementTableModel extends AbstractTableModel {
             = {"Measurement", "value"};
     private final Object[][] data;
 
-    public EchoValveMeasurementTableModel(List<CardiacSurgeryBO> liInfo) {
+    public EchoValveMeasurementTableModel(List<CardiacRegistryECHO> liInfo) {
         data = new Object[liInfo.size()][columnNames.length];
 
         int row = 0;
 
-        for (CardiacSurgeryBO currentinfo : liInfo) {
+        for (CardiacRegistryECHO currentinfo : liInfo) {
             data[row][0] = currentinfo.getValveMeasurementDescription();
             data[row][1] = currentinfo.getValue();
             row++;

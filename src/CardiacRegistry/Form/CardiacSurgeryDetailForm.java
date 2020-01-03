@@ -1,9 +1,16 @@
 package CardiacRegistry.Form;
 
+import CardiacRegistry.BO.CardiacRegistryECHO;
+import CardiacRegistry.BO.CardiacRegistryMedication;
 import CardiacRegistry.BO.CardiacSurgeryBO;
 import CardiacRegistry.BO.CardiacSurgeryTeam;
+import CardiacRegistry.BO.CardiacRegistryCathProcedure;
+import CardiacRegistry.Controller.CardiacRegistryDiagnosticController;
+import CardiacRegistry.Controller.CardiacRegistryECHOController;
+import CardiacRegistry.Controller.CardiacRegistryMedicationController;
 import CardiacRegistry.Controller.CardiacSurgeryController;
 import CardiacRegistry.Controller.CardiacTeamController;
+import CardiacRegistry.Controller.RegistryCathProcedureController;
 import CardiacRegistry.TableModel.EchoValveMeasurementTableModel;
 import CardiacRegistry.TableModel.EchoValveTableModel;
 import CardiacRegistry.TableModel.EchocardiographyMasterTableModel;
@@ -27,40 +34,49 @@ import utilities.Status;
 public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     DisplayLOV lov = new DisplayLOV();
-    CardiacSurgeryBO objEchocardiography = new CardiacSurgeryBO();
-    CardiacSurgeryBO objPreMedication = new CardiacSurgeryBO();
-    CardiacSurgeryBO objProcedure = new CardiacSurgeryBO();
+    CardiacRegistryECHO objEchocardiography = new CardiacRegistryECHO();
+    CardiacRegistryMedication objMedication = new CardiacRegistryMedication();
+    CardiacRegistryCathProcedure objProcedure = new CardiacRegistryCathProcedure();
     CardiacSurgeryBO objCardiacSurger = new CardiacSurgeryBO();
+    
     private CardiacSurgeryController ctlCardiacSurg = new CardiacSurgeryController();
     private CardiacTeamController ctlTeam = new CardiacTeamController();
+    CardiacRegistryMedicationController ctlMed = new CardiacRegistryMedicationController();
+    CardiacRegistryECHOController ctlEcho = new CardiacRegistryECHOController();
+    RegistryCathProcedureController ctlProcedure = new RegistryCathProcedureController();
+    CardiacRegistryDiagnosticController ctlDiagnostic = new CardiacRegistryDiagnosticController();
+    
     private List<CardiacSurgeryBO> listExamDetail = new ArrayList();
-    private List<CardiacSurgeryBO> listEchocardiographyMaster = new ArrayList();
-    private List<CardiacSurgeryBO> listProcedure = new ArrayList();
-    private List<CardiacSurgeryBO> listEchoValve = new ArrayList();
-    private List<CardiacSurgeryBO> listEchoValveMeasurement = new ArrayList();
-    List<CardiacSurgeryBO> listPreMedication = new ArrayList();
-    String cardiacSurgeryId = "";
-    private String performDate;
-    private String surgProcedureId;
-    private String procedureInstId;
-    private String procedurePerformingId;
+    private List<CardiacRegistryCathProcedure> listProcedure = new ArrayList();
+    private List<CardiacRegistryECHO> listEchocardiographyMaster = new ArrayList();
+    private List<CardiacRegistryECHO> listEchoValve = new ArrayList();
+    private List<CardiacRegistryECHO> listEchoValveMeasurement = new ArrayList();
+    private List<CardiacRegistryMedication> listMedication = new ArrayList();
+    
+    private String cardiacSurgeryId = "";
+    private String patientId = "";
+    private String performDate = "";
+    private String surgProcedureId = "";
+    private String procedureInstId = "";
+    private String procedurePerformingId = "";
     private String procedureType = "";
-    private String medId;
+    private String medId = "";
     private String teamId = "0";
     private String actionId = "0";
     private String actionDescription = "";
-    private String doseId;
-    private String timePeroid;
-    private String echoInstId;
-    private String echoPerformingId;
-    private String echoPerDate;
-    private String echoId;
+    private String doseId = "";
+    private String timePeroid = "";
+    private String echoInstId = "";
+    private String echoPerformingId = "";
+    private String echoPerDate = "";
+    private String echoId = "";
 
-    public CardiacSurgeryDetailForm(String id) {
+    public CardiacSurgeryDetailForm(String cardiacId, String patientId) {
 
         initComponents();
         this.setSize(Constants.xSize - 20, Constants.ySize - Constants.yExtension + 8);
-        this.cardiacSurgeryId = id;
+        this.cardiacSurgeryId = cardiacId;
+        this.patientId = patientId;
         setExamDetail();
         setDateOfProcedure(0);
         selectProcedureDetail();
@@ -313,7 +329,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -322,11 +338,11 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
                 .addGap(5, 5, 5)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addComponent(txtMedDuration, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTimePeriod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cboMonthsDays, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtMedDuration, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTimePeriod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(cboMonthsDays, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addComponent(txtMedication)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -346,9 +362,10 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
                     .addComponent(txtDose, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cboMonthsDays, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTimePeriod, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMedDuration, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtMedDuration, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cboMonthsDays, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTimePeriod, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel44, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
@@ -886,17 +903,20 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(6, 6, 6)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtanterobasal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1, 1, 1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtanterolateral, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(8, 8, 8))
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addComponent(txtanterolateral)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtApical, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1315,7 +1335,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             objCardiacSurger.setExamDetailId(Constants.lovID);
             objCardiacSurger.setExamDetailDescription(Constants.lovDescription);
             objCardiacSurger.setCardiacRegistryId(cardiacSurgeryId);
-            if (ctlCardiacSurg.updateExamDetail(objCardiacSurger)) {
+            if (ctlDiagnostic.updateExamDetail(objCardiacSurger)) {
                 System.out.println("Records Save Successfully.");
                 setExamDetail();
             } else {
@@ -1335,7 +1355,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             objCardiacSurger.setExamRemarks(String.valueOf(tblExamDetail.getValueAt(
                     tblExamDetail.getSelectedRow(), 3)).trim());
             objCardiacSurger.setCardiacRegistryId(cardiacSurgeryId);
-            if (ctlCardiacSurg.updateExamDetailRemarks(objCardiacSurger)) {
+            if (ctlDiagnostic.updateExamDetailRemarks(objCardiacSurger)) {
                 System.out.println("Remarks Save Successfully.");
                 setExamDetail();
             } else {
@@ -1356,7 +1376,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
         if (tblProcedureDetail.getSelectedColumn() == 5) {
             setProecedureDetail();
-            if (ctlCardiacSurg.updateCardiacProcedureDetail(objProcedure)) {
+            if (ctlProcedure.updateCardiacProcedureDetail(objProcedure)) {
                 System.out.println("Remarks Save Successfully.");
                 setExamDetail();
             } else {
@@ -1370,7 +1390,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             if (confirmation != 0) {
                 return;
             }
-            if (ctlCardiacSurg.deleteProcedure(objProcedure)) {
+            if (ctlProcedure.deleteProcedure(objProcedure)) {
                 JOptionPane.showMessageDialog(null, "Record Delete Successsfully.");
                 selectProcedureDetail();
             } else {
@@ -1475,11 +1495,11 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     private void tblEchoValveMeasurementKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblEchoValveMeasurementKeyReleased
         // TODO add your handling code here:
-        CardiacSurgeryBO objMea = listEchoValveMeasurement.get(
+        CardiacRegistryECHO objMea = listEchoValveMeasurement.get(
                 tblEchoValveMeasurement.getSelectedRow());
         objMea.setValue(tblEchoValveMeasurement.getValueAt(
                 tblEchoValveMeasurement.getSelectedRow(), 1).toString());
-        if (ctlCardiacSurg.updateEchoMeasurement(objMea)) {
+        if (ctlEcho.updateEchoMeasurement(objMea)) {
             selectEchoValveMeasurement();
         } else {
             JOptionPane.showMessageDialog(null, "Unable to save Value.");
@@ -1492,14 +1512,14 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     private void tblPreMedicationsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPreMedicationsMouseReleased
         // TODO add your handling code here:
-        CardiacSurgeryBO objMed = listPreMedication.get(tblPreMedications.getSelectedRow());
+        CardiacRegistryMedication objMed = listMedication.get(tblPreMedications.getSelectedRow());
         if (evt.getClickCount() % 2 == 0) {
             int confirmation = JOptionPane.showConfirmDialog(null, "You Are Going "
                     + "To Remove " + objMed.getMedicineDesc() + ". \nDo you want to Remove?");
             if (confirmation != 0) {
                 return;
             }
-            if (ctlCardiacSurg.updatePreMedications(objMed.getPreMedicineId())) {
+            if (ctlMed.updateMedications(objMed.getMedicationId())) {
                 JOptionPane.showMessageDialog(null, "Medicine Remove Successfully.");
                 selectPreMedications();
             } else {
@@ -1523,7 +1543,6 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         }
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
         timePeroid = dateFormat.format(txtTimePeriod.getDate());
-        sevePreMedication();
     }//GEN-LAST:event_txtTimePeriodActionPerformed
 
     private void txtEchoPerformDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEchoPerformDateActionPerformed
@@ -1543,7 +1562,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     private void tblEchocardiographyMasterMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEchocardiographyMasterMouseReleased
         // TODO add your handling code here:
-        CardiacSurgeryBO obj = listEchocardiographyMaster.get(
+        CardiacRegistryECHO obj = listEchocardiographyMaster.get(
                 tblEchocardiographyMaster.getSelectedRow());
         echoId = obj.getEchoId();
         System.err.println("echo Id: " + echoId);
@@ -1566,10 +1585,10 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     private void tblEchoValveKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblEchoValveKeyReleased
         // TODO add your handling code here:
         int col = tblEchoValve.getSelectedColumn();
-        CardiacSurgeryBO objValve = listEchoValve.get(tblEchoValve.getSelectedRow());
+        CardiacRegistryECHO objValve = listEchoValve.get(tblEchoValve.getSelectedRow());
         objValve.setColumnName(String.valueOf(col));
         objValve.setValue(tblEchoValve.getValueAt(tblEchoValve.getSelectedRow(), col).toString());
-        if (ctlCardiacSurg.updateEchoValve(objValve)) {
+        if (ctlEcho.updateEchoValve(objValve)) {
             System.err.println("updated.");
             selectEchoValve();
         } else {
@@ -1842,7 +1861,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             return;
         }
         setMedicineStartDate();
-        txtTimePeriod.requestFocus();
+        sevePreMedication();
     }//GEN-LAST:event_cboMonthsDaysActionPerformed
 
     private void btnSaveCathDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveCathDataActionPerformed
@@ -1852,7 +1871,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             cboProcType.requestFocus();
         }
         setProecedureDetail();
-        if (ctlCardiacSurg.insertcardiacProcedureDetail(objProcedure)) {
+        if (ctlProcedure.insertcardiacProcedureDetail(objProcedure)) {
             JOptionPane.showMessageDialog(null, "Record Save Successsfully.");
             selectProcedureDetail();
         } else {
@@ -1983,7 +2002,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void setExamDetail() {
-        listExamDetail = ctlCardiacSurg.selectExamDetail(cardiacSurgeryId);
+        listExamDetail = ctlDiagnostic.selectExamDetail(cardiacSurgeryId);
         if (listExamDetail.isEmpty()) {
             List<CardiacSurgeryBO> list = new ArrayList<>();
             list.add(new CardiacSurgeryBO());
@@ -2015,7 +2034,6 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     }
 
     private void setProecedureDetail() {
-        System.err.println("ocscksamdkasmd");
         objProcedure.setCardiacRegistryId(cardiacSurgeryId);
         objProcedure.setProcedureType(cboProcType.getSelectedItem().toString());
         objProcedure.setInstituteId(procedureInstId);
@@ -2042,10 +2060,10 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     }
 
     private void selectProcedureDetail() {
-        listProcedure = ctlCardiacSurg.selectCardiacProcedureDetail(cardiacSurgeryId);
+        listProcedure = ctlProcedure.selectCardiacProcedureDetail(cardiacSurgeryId);
         if (listProcedure.isEmpty()) {
-            List<CardiacSurgeryBO> listProcedure = new ArrayList<>();
-            listProcedure.add(new CardiacSurgeryBO());
+            List<CardiacRegistryCathProcedure> listProcedure = new ArrayList<>();
+            listProcedure.add(new CardiacRegistryCathProcedure());
             tblProcedureDetail.setModel(new ProcedureDetailTableModel(listProcedure));
             return;
         }
@@ -2172,14 +2190,16 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     }
 
     private void sevePreMedication() {
-        objPreMedication.setCardiacRegistryId(cardiacSurgeryId);
-        objPreMedication.setMedicineId(medId);
-        objPreMedication.setDoseId(doseId);
-        objPreMedication.setTimeTaking(timePeroid);
-        objPreMedication.setMedicineDuration(txtMedDuration.getText().trim());
-        objPreMedication.setMedicineMonthDays(cboMonthsDays.getSelectedItem().toString());
+        objMedication.setPatientId(patientId);
+        objMedication.setCardiacRegistryId(cardiacSurgeryId);
+        objMedication.setMedicineId(medId);
+        objMedication.setDoseId(doseId);
+        objMedication.setTimeTaking(timePeroid);
+        objMedication.setMedicineDuration(txtMedDuration.getText().trim());
+        objMedication.setMedicineMonthDays(cboMonthsDays.getSelectedItem().toString());
+        objMedication.setActionId("1"); //Pre Medication
 
-        if (ctlCardiacSurg.insertPreMedications(objPreMedication)) {
+        if (ctlMed.insertMedications(objMedication)) {
             JOptionPane.showMessageDialog(null, "Medication Save Successfully.");
             clearMedication();
             selectPreMedications();
@@ -2190,14 +2210,14 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     }
 
     private void selectPreMedications() {
-        listPreMedication = ctlCardiacSurg.selectPreMedications(cardiacSurgeryId);
-        if (listProcedure.isEmpty()) {
-            List<CardiacSurgeryBO> listPreMedication = new ArrayList<>();
-            listProcedure.add(new CardiacSurgeryBO());
+        listMedication = ctlMed.selectMedications(cardiacSurgeryId);
+        if (listMedication.isEmpty()) {
+            List<CardiacRegistryMedication> listPreMedication = new ArrayList<>();
+            listPreMedication.add(new CardiacRegistryMedication());
             tblPreMedications.setModel(new PreMedicationsTableModel(listPreMedication));
             return;
         }
-        tblPreMedications.setModel(new PreMedicationsTableModel(listPreMedication));
+        tblPreMedications.setModel(new PreMedicationsTableModel(listMedication));
         ListSelectionModel selectionModel = tblPreMedications.getSelectionModel();
         tblPreMedications.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         setPreMedicationsColumnsWidths();
@@ -2225,7 +2245,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         objEchocardiography.setPerformingPhysicianId(echoPerformingId);
         objEchocardiography.setInstituteId(echoInstId);
         objEchocardiography.setOrderStatusId(status);
-        if (ctlCardiacSurg.insertEchocrdiographyMaster(objEchocardiography)) {
+        if (ctlEcho.insertEchocrdiographyMaster(objEchocardiography)) {
             JOptionPane.showMessageDialog(null, "Record Save Successfully.");
             clearEchocardiography();
             selectEchocardiographyMaster();
@@ -2236,11 +2256,11 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     }
 
     private void selectEchocardiographyMaster() {
-        listEchocardiographyMaster = ctlCardiacSurg.selectEchocardiographyMaster(
+        listEchocardiographyMaster = ctlEcho.selectEchocardiographyMaster(
                 cardiacSurgeryId);
         if (listEchocardiographyMaster.isEmpty()) {
-            List<CardiacSurgeryBO> listEchocardiographyMaster = new ArrayList<>();
-            listEchocardiographyMaster.add(new CardiacSurgeryBO());
+            List<CardiacRegistryECHO> listEchocardiographyMaster = new ArrayList<>();
+            listEchocardiographyMaster.add(new CardiacRegistryECHO());
             tblEchocardiographyMaster.setModel(new EchocardiographyMasterTableModel(
                     listEchocardiographyMaster));
             return;
@@ -2252,7 +2272,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         setEchocardiographyMasterColumnsWidths();
         selectionModel.setSelectionInterval(0, 0);
         Constants.tablelook.setJTableEnvironment(tblEchocardiographyMaster);
-        CardiacSurgeryBO obj = listEchocardiographyMaster.get(0);
+        CardiacRegistryECHO obj = listEchocardiographyMaster.get(0);
         echoId = obj.getEchoId();
         selectEchoValve();
         selectEchoValveMeasurement();
@@ -2273,10 +2293,10 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     }
 
     private void selectEchoValve() {
-        listEchoValve = ctlCardiacSurg.selectEchoValve(echoId);
+        listEchoValve = ctlEcho.selectEchoValve(echoId);
         if (listEchoValve.isEmpty()) {
-            List<CardiacSurgeryBO> listEchoValve = new ArrayList<>();
-            listEchoValve.add(new CardiacSurgeryBO());
+            List<CardiacRegistryECHO> listEchoValve = new ArrayList<>();
+            listEchoValve.add(new CardiacRegistryECHO());
             tblEchoValve.setModel(new EchoValveTableModel(listEchoValve));
             return;
         }
@@ -2307,10 +2327,10 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     }
 
     private void selectEchoValveMeasurement() {
-        listEchoValveMeasurement = ctlCardiacSurg.selectEchoValveMeasurement(echoId);
+        listEchoValveMeasurement = ctlEcho.selectEchoValveMeasurement(echoId);
         if (listEchoValveMeasurement.isEmpty()) {
-            List<CardiacSurgeryBO> listEchoValveMeasurement = new ArrayList<>();
-            listEchoValveMeasurement.add(new CardiacSurgeryBO());
+            List<CardiacRegistryECHO> listEchoValveMeasurement = new ArrayList<>();
+            listEchoValveMeasurement.add(new CardiacRegistryECHO());
             tblEchoValveMeasurement.setModel(new EchoValveMeasurementTableModel(listEchoValveMeasurement));
             return;
         }
