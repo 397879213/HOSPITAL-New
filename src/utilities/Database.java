@@ -22,11 +22,12 @@ public class Database {
         public static final String cardiacProcedureDetail = DAO.usernameEmr + ".CARDIAC_PROCEDURE_DETAIL   ";
         public static final String cathCardiacDetail = DAO.usernameEmr + ".CARDIAC_CATH_DATA   ";
         public static final String cardiacMedication = DAO.usernameEmr + ".CARDIAC_MEDICATION   ";
-        public static String outsidePatient = DAO.username + "." + "OUTSIDE_PATIENT ";
+        public static final String outsidePatient = DAO.username + "." + "OUTSIDE_PATIENT ";
         public static final String outsidePatientUpdate = DAO.username + ".UPDATE_OUTSIDE_PATIENT ";
         public static final String echoCardiographyMaster = DAO.username + ".ECHO_CARDIOGRAPHY_MASTER ";
         public static final String cardioEchoCardiographyDetail = DAO.username + ".ECHO_CARDIOGRAPHY_DETAIL ";
         public static final String echoCardiography = DAO.username + ".ECHO_CARDIOGRAPHY ";
+        public static final String perfusionInformation = DAO.username + ".CARDIAC_REGISTRY_PERFUSION ";
         public static final String perfusionBloodGases = DAO.username + ".BLOOD_GASES ";
 
         public static final String member = DAO.usernameEmr + ".MEMBER   ";

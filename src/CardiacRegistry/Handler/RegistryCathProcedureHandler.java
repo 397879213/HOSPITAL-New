@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package CardiacRegistry.Controller;
+package CardiacRegistry.Handler;
 
 import CardiacRegistry.BO.CardiacRegistryCathProcedure;
 import java.util.ArrayList;

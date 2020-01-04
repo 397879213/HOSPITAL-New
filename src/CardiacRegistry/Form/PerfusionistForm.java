@@ -16,14 +16,17 @@ import utilities.DisplayLOV;
 public class PerfusionistForm extends javax.swing.JInternalFrame {
 
     String cardiacId = "1";
+    String patientId = "2254";
+    private String perfusionistId = "";
+    private String asstPerfusionistId = "";
+    private String operationId = "";
+    private String IabCatheterDate = "";
+    private String surgeonId = "";
+    private String asstSurgeonId = "";
+    private String anesthetistId = "";
+    private String bloodGroupId = "";
+    
     List<PerfusionistBO> listBG = new ArrayList();
-    private String perfusionistId;
-    private String asstPerfusionistId;
-    private String operationId;
-    private String IabCatheterDate;
-    private String surgeonId;
-    private String asstSurgeonId;
-    private String anesthetistId;
 
     public PerfusionistForm() {
 
@@ -239,7 +242,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
             pnlPLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlPLLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(lblPacsLink, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
+                .addComponent(lblPacsLink, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnlPLLayout.setVerticalGroup(
@@ -393,8 +396,18 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel23.setText("Redo : ");
 
         cboRedo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Y", "N"}));
+        cboRedo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboRedoActionPerformed(evt);
+            }
+        });
 
         cboIabCatheter.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Y", "N"}));
+        cboIabCatheter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboIabCatheterActionPerformed(evt);
+            }
+        });
 
         txtIabCatheterDate.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtIabCatheterDate.addActionListener(new java.awt.event.ActionListener() {
@@ -425,13 +438,13 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                     .addComponent(txtOxygenator)
                     .addComponent(txtCpgSystem)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(txtHeparinized, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtHeparinized)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cboRedo, 0, 116, Short.MAX_VALUE))
+                        .addComponent(cboRedo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(cboIabCatheter, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cboIabCatheter, 0, 108, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtIabCatheterDate, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(5, 5, 5))
@@ -817,11 +830,12 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                     .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtBloodFlow, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtHb, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtBloodGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtHb, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtBloodGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(5, 5, 5))
         );
 
@@ -2086,13 +2100,13 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pnlPL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTabbedPane1)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(pnlPL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(10, 10, 10))
         );
         layout.setVerticalGroup(
@@ -2147,11 +2161,12 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         }
         txtAsstPerfusionist.setText(Constants.lovDescription);
         asstPerfusionistId = Constants.lovID;
-        txtAsstPerfusionist.requestFocus();
+        txtHeparinized.requestFocus();
     }//GEN-LAST:event_txtAsstPerfusionistActionPerformed
 
     private void txtHeparinizedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHeparinizedActionPerformed
         // TODO add your handling code here:
+        cboRedo.requestFocus();
     }//GEN-LAST:event_txtHeparinizedActionPerformed
 
     private void txtOperationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOperationActionPerformed
@@ -2221,71 +2236,91 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         }
         txtAnesthetist.setText(Constants.lovDescription);
         anesthetistId = Constants.lovID;
-        txtAnesthetist.requestFocus();
+        txtHeight.requestFocus();
     }//GEN-LAST:event_txtAnesthetistActionPerformed
 
     private void txtVenousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVenousActionPerformed
         // TODO add your handling code here:
+        txtAorticCannulae.requestFocus();
     }//GEN-LAST:event_txtVenousActionPerformed
 
     private void txtAntegradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAntegradeActionPerformed
         // TODO add your handling code here:
+        txtRetrograde.requestFocus();
     }//GEN-LAST:event_txtAntegradeActionPerformed
 
     private void txtAorticCannulaeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAorticCannulaeActionPerformed
         // TODO add your handling code here:
+        txtHemofilter.requestFocus();
     }//GEN-LAST:event_txtAorticCannulaeActionPerformed
 
     private void txtRetrogradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRetrogradeActionPerformed
         // TODO add your handling code here:
+        txtSumpVent.requestFocus();
     }//GEN-LAST:event_txtRetrogradeActionPerformed
 
     private void txtSumpVentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSumpVentActionPerformed
         // TODO add your handling code here:
+        txtConnectors.requestFocus();
     }//GEN-LAST:event_txtSumpVentActionPerformed
 
     private void txtHemofilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHemofilterActionPerformed
         // TODO add your handling code here:
+        txtAntegrade.requestFocus();
     }//GEN-LAST:event_txtHemofilterActionPerformed
 
     private void txtConnectorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConnectorsActionPerformed
         // TODO add your handling code here:
+        txtAortic.requestFocus();
     }//GEN-LAST:event_txtConnectorsActionPerformed
 
     private void txtHbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHbActionPerformed
         // TODO add your handling code here:
+        txtSurArea.requestFocus();
     }//GEN-LAST:event_txtHbActionPerformed
 
     private void txtBloodGroupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBloodGroupActionPerformed
         // TODO add your handling code here:
+        lov.LOVDefinitionSelection(DefinitionTypes.bloodGroup,
+                txtBloodGroup.getText().trim(), this);
+        bloodGroupId = Constants.lovID;
+        txtBloodGroup.setText(Constants.lovDescription);
+        txtVenous.requestFocus();
     }//GEN-LAST:event_txtBloodGroupActionPerformed
 
     private void txtBloodFlowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBloodFlowActionPerformed
         // TODO add your handling code here:
+        txtBloodGroup.requestFocus();
     }//GEN-LAST:event_txtBloodFlowActionPerformed
 
     private void txtSurAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSurAreaActionPerformed
         // TODO add your handling code here:
+        txtBloodFlow.requestFocus();
     }//GEN-LAST:event_txtSurAreaActionPerformed
 
     private void txtWeightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtWeightActionPerformed
         // TODO add your handling code here:
+        txtHb.requestFocus();
     }//GEN-LAST:event_txtWeightActionPerformed
 
     private void txtHeightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHeightActionPerformed
         // TODO add your handling code here:
+        txtWeight.requestFocus();
     }//GEN-LAST:event_txtHeightActionPerformed
 
     private void txtHartmannsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHartmannsActionPerformed
         // TODO add your handling code here:
+        txtHeparin.requestFocus();
     }//GEN-LAST:event_txtHartmannsActionPerformed
 
     private void txtHeparinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHeparinActionPerformed
         // TODO add your handling code here:
+        txtMannitol.requestFocus();
     }//GEN-LAST:event_txtHeparinActionPerformed
 
     private void txtMannitolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMannitolActionPerformed
         // TODO add your handling code here:
+        txtBloodRbc.requestFocus();
     }//GEN-LAST:event_txtMannitolActionPerformed
 
     private void txtBloodRbcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBloodRbcActionPerformed
@@ -2294,50 +2329,62 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
 
     private void txtPulmonaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPulmonaryActionPerformed
         // TODO add your handling code here:
+        txtValve.requestFocus();
     }//GEN-LAST:event_txtPulmonaryActionPerformed
 
     private void txtEFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEFActionPerformed
         // TODO add your handling code here:
+        txtLMS.requestFocus();
     }//GEN-LAST:event_txtEFActionPerformed
 
     private void txtCreatinineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCreatinineActionPerformed
         // TODO add your handling code here:
+        txtEF.requestFocus();
     }//GEN-LAST:event_txtCreatinineActionPerformed
 
     private void txtUreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUreaActionPerformed
         // TODO add your handling code here:
+        txtCreatinine.requestFocus();
     }//GEN-LAST:event_txtUreaActionPerformed
 
     private void txtMitralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMitralActionPerformed
         // TODO add your handling code here:
+        txtPulmonary.requestFocus();
     }//GEN-LAST:event_txtMitralActionPerformed
 
     private void txtAorticActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAorticActionPerformed
         // TODO add your handling code here:
+        txtMitral.requestFocus();
     }//GEN-LAST:event_txtAorticActionPerformed
 
     private void txtValveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValveActionPerformed
         // TODO add your handling code here:
+        txtDiabetic.requestFocus();
     }//GEN-LAST:event_txtValveActionPerformed
 
     private void txtLMSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLMSActionPerformed
         // TODO add your handling code here:
+        txtHBsAntiHcv.requestFocus();
     }//GEN-LAST:event_txtLMSActionPerformed
 
     private void txtDiabeticActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiabeticActionPerformed
         // TODO add your handling code here:
+        txtAllergies.requestFocus();
     }//GEN-LAST:event_txtDiabeticActionPerformed
 
     private void txtHBsAntiHcvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHBsAntiHcvActionPerformed
         // TODO add your handling code here:
+        txtOtherPer.requestFocus();
     }//GEN-LAST:event_txtHBsAntiHcvActionPerformed
 
     private void txtOtherPerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOtherPerActionPerformed
         // TODO add your handling code here:
+        txtHartmanns.requestFocus();
     }//GEN-LAST:event_txtOtherPerActionPerformed
 
     private void txtAllergiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAllergiesActionPerformed
         // TODO add your handling code here:
+        txtUrea.requestFocus();
     }//GEN-LAST:event_txtAllergiesActionPerformed
 
     private void txtMemberId50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId50ActionPerformed
@@ -2535,7 +2582,23 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private void btnClear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClear1ActionPerformed
         // TODO add your handling code here:
         setPerfusionInfo();
+        if(ctlPerfusionist.insertPerfusionInformation(objPerfusionist)){
+            JOptionPane.showMessageDialog(null, "Record save successfully.");
+        }else{
+            JOptionPane.showMessageDialog(null, "Unable to save Record.\n"
+                    + "Kindly contact Support Team.");
+        }
     }//GEN-LAST:event_btnClear1ActionPerformed
+
+    private void cboRedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboRedoActionPerformed
+        // TODO add your handling code here:
+        txtOperation.requestFocus();
+    }//GEN-LAST:event_cboRedoActionPerformed
+
+    private void cboIabCatheterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboIabCatheterActionPerformed
+        // TODO add your handling code here:
+        txtIabCatheterDate.requestFocus();
+    }//GEN-LAST:event_cboIabCatheterActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -2801,6 +2864,8 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
 
     private void setPerfusionInfo() {
         objPerfusionist = new PerfusionistBO();
+        objPerfusionist.setPatientId(patientId);
+        objPerfusionist.setCardiacRegistryId(cardiacId);
         objPerfusionist.setPerfusionistId(perfusionistId);
         objPerfusionist.setAsstPerfusionistId(asstPerfusionistId);
         objPerfusionist.setHeparinized(txtHeparinized.getText().trim());
@@ -2813,7 +2878,39 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         objPerfusionist.setSurgeonId(surgeonId);
         objPerfusionist.setAssistantSurgeonId(asstSurgeonId);
         objPerfusionist.setAnesthetistId(anesthetistId);
-
+        // Cannulae
+        objPerfusionist.setVenous(txtVenous.getText().trim());
+        objPerfusionist.setAorticCannulae(txtAorticCannulae.getText().trim());
+        objPerfusionist.setHemofilter(txtHemofilter.getText().trim());
+        objPerfusionist.setAntegrade(txtAntegrade.getText().trim());
+        objPerfusionist.setRetrograde(txtRetrograde.getText().trim());
+        objPerfusionist.setSumpVent(txtSumpVent.getText().trim());
+        objPerfusionist.setConnectors(txtConnectors.getText().trim());
+        
+        objPerfusionist.setHeight(txtHeight.getText().trim());
+        objPerfusionist.setWeight(txtWeight.getText().trim());
+        objPerfusionist.setHb(txtHb.getText().trim());
+        objPerfusionist.setSurfaceArea(txtSurArea.getText().trim());
+        objPerfusionist.setBloodGroupId(bloodGroupId);
+        objPerfusionist.setBloodFlow(txtBloodFlow.getText().trim());
+        
+        objPerfusionist.setAortic(txtAortic.getText().trim());
+        objPerfusionist.setMitral(txtMitral.getText().trim());
+        objPerfusionist.setPulmonary(txtPulmonary.getText().trim());
+        objPerfusionist.setValve(txtValve.getText().trim());
+        objPerfusionist.setDiabetic(txtDiabetic.getText().trim());
+        objPerfusionist.setAllergies(txtAllergies.getText().trim());
+        objPerfusionist.setUrea(txtUrea.getText().trim());
+        objPerfusionist.setCreatinine(txtCreatinine.getText().trim());
+        objPerfusionist.setEF(txtEF.getText().trim());
+        objPerfusionist.setLMS(txtLMS.getText().trim());
+        objPerfusionist.setHBsAntiHcv(txtHBsAntiHcv.getText().trim());
+        objPerfusionist.setOtherPerfusion(txtOtherPer.getText().trim());
+        
+        objPerfusionist.setHartmanns(txtHartmanns.getText().trim());
+        objPerfusionist.setHeparin(txtHeparin.getText().trim());
+        objPerfusionist.setMannitol(txtMannitol.getText().trim());
+        objPerfusionist.setBloodRBC(txtBloodRbc.getText().trim());
     }
 
 }

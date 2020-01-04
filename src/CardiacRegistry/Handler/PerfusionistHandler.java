@@ -18,25 +18,24 @@ import utilities.Database;
  */
 public class PerfusionistHandler {
 
-    public boolean insertBloodGases(PerfusionistBO insert) {
+    public boolean insertPerfusionInformation(PerfusionistBO insert) {
 
-        String[] columns = {Database.DCMS.perfusionBloodGases, "ID",
-            "CARDIAC_ID", "PATIENT_ID", "PERFUSIONNIST_ID", "ASSISTANT_PERFUSIONNIST_ID",
+        String[] columns = {Database.DCMS.perfusionInformation, "ID", "CARDIAC_ID",
+            "PATIENT_ID", "PERFUSIONNIST_ID", "ASSISTANT_PERFUSIONNIST_ID",
             "ASSISTANT_ID", "ANESTHERIST_ID", "HEPARINIZED", "REDO", "OPERATION_ID",
             "OXYGENATOR", "CPG_SYSTEM", "VENOUS", "ANTEGRADE", "CANN_AORTIC", 
             "RETROGRADE", "HEMOFILTER", "SUMP_VENT", "CONNECTORS", "AORTIC",
-            "MITRAL", "PULMONARY", "VALUE", "UREA", "CREATININE", "EF", "LMS", 
+            "MITRAL", "PULMONARY", "VALVE", "UREA", "CREATININE", "EF", "LMS", 
             "HBS_HCV", "DIABETIC", "ALLERGIES", "OTHER", "HEIGHT", "WEIGHT", "HB",
             "SURFACE_AREA", "BLOOD_FLOW", "BLOOD_GROUP_ID", "HARTMANNS", "HEPARIN",
-            "MANNITOL", "BLOOD_RBC", "", "", "", "",
-            "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
+            "MANNITOL", "BLOOD_RBC", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
 
         HashMap map = new HashMap();
 
         map.put("ID", "'" + insert.getBloodGasesId() + "'");
         map.put("CARDIAC_ID", "'" + insert.getCardiacRegistryId() + "'");
         map.put("PATIENT_ID", "'" + insert.getPatientId()+ "'");
-        map.put("PERFUSIONNIST_ID", "'" + insert.getPerfusionId()+ "'");
+        map.put("PERFUSIONNIST_ID", "'" + insert.getPerfusionistId()+ "'");
         map.put("ASSISTANT_PERFUSIONNIST_ID", "'" + insert.getAsstPerfusionistId()+ "'");
         map.put("ASSISTANT_ID", "'" + insert.getAssistantSurgeonId()+ "'");
         map.put("ANESTHERIST_ID", "'" + insert.getAnesthetistId()+ "'");
@@ -55,7 +54,7 @@ public class PerfusionistHandler {
         map.put("AORTIC", "'" + insert.getAortic()+ "'");
         map.put("MITRAL", "'" + insert.getMitral()+ "'");
         map.put("PULMONARY", "'" + insert.getPulmonary()+ "'");
-        map.put("VALUE", "'" + insert.getValve()+ "'");
+        map.put("VALVE", "'" + insert.getValve()+ "'");
         map.put("UREA", "'" + insert.getUrea()+ "'");
         map.put("CREATININE", "'" + insert.getCreatinine()+ "'");
         map.put("EF", "'" + insert.getEF()+ "'");

@@ -2662,14 +2662,14 @@ public class PerfusionistFormOld extends javax.swing.JInternalFrame {
 //        objPerfusionist.setACT(txtAct.getText().trim());
 //        objPerfusionist.setHeparinKU(txtHeparin.getText().trim());
 
-        if (ctlPerfusionist.insertBloodGases(objPerfusionist)) {
-            JOptionPane.showMessageDialog(null, "Record save successfully.");
-            clearBloodGases();
-            selectBloodGases();
-        } else {
-            JOptionPane.showMessageDialog(null, "Uanble to save record.\n"
-                    + "Please contact support Team.");
-        }
+//        if (ctlPerfusionist.insertBloodGases(objPerfusionist)) {
+//            JOptionPane.showMessageDialog(null, "Record save successfully.");
+//            clearBloodGases();
+//            selectBloodGases();
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Uanble to save record.\n"
+//                    + "Please contact support Team.");
+//        }
     }//GEN-LAST:event_btnSaveBloodGasesActionPerformed
 
 

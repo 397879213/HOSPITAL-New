@@ -1425,13 +1425,12 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         txtDiaphragmatic.setText(objProcedure.getDiaphragmatic());
         txtPosterobasal.setText(objProcedure.getPosterobasal());
         txtRemarks.setText(objProcedure.getProcedureRemarks());
-
         ChkCSS.setSelected(false);
-        System.err.println("CSS: " + objProcedure.getCSSPerformed());
         if (objProcedure.getCSSPerformed().equalsIgnoreCase("Y")) {
             ChkCSS.setSelected(true);
         }
 
+        btnSaveCathData.setEnabled(false);
         cboProcType.setEnabled(false);
         txtProcedureName.setEditable(false);
 
@@ -1565,7 +1564,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         CardiacRegistryECHO obj = listEchocardiographyMaster.get(
                 tblEchocardiographyMaster.getSelectedRow());
         echoId = obj.getEchoId();
-        System.err.println("echo Id: " + echoId);
+        
         selectEchoValve();
         selectEchoValveMeasurement();
     }//GEN-LAST:event_tblEchocardiographyMasterMouseReleased
@@ -1870,6 +1869,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Please Select Procedure Type.");
             cboProcType.requestFocus();
         }
+        listProcedure = ctlProcedure.selectCardiacProcedureDetail(actionId);
         setProecedureDetail();
         if (ctlProcedure.insertcardiacProcedureDetail(objProcedure)) {
             JOptionPane.showMessageDialog(null, "Record Save Successsfully.");

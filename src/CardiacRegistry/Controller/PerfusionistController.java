@@ -22,9 +22,9 @@ public class PerfusionistController {
     GenerateKeys key = new GenerateKeys();
     PerfusionistHandler hdlPerfusionist = new PerfusionistHandler();
     
-    public boolean insertBloodGases(PerfusionistBO insert) {
+    public boolean insertPerfusionInformation(PerfusionistBO insert) {
         insert.setBloodGasesId(key.generatePrimaryKey(Keys.cardiacPerfusionIdPk, true));
-        boolean ret = hdlPerfusionist.insertBloodGases(insert);
+        boolean ret = hdlPerfusionist.insertPerfusionInformation(insert);
         if(ret){
             Constants.dao.commitTransaction();
         }

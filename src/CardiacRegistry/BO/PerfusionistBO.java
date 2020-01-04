@@ -10,7 +10,9 @@ package CardiacRegistry.BO;
  * @author admin
  */
 public class PerfusionistBO {
-
+    
+    private String cardiacRegistryId = "";
+    private String perfusionId = "";
     private String perfusionistId = "";
     private String patientId = "";
     private String perfusionistName = "";
@@ -62,8 +64,6 @@ public class PerfusionistBO {
     private String OtherPerfusion = "";
 
     // Blood    Gasses
-    private String cardiacRegistryId = "";
-    private String perfusionId = "";
     private String bloodGasesId = "";
     private String bloodGasesDescription = "";
     private String onVent = "";
