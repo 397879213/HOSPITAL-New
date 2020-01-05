@@ -32,10 +32,12 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
 
         initComponents();
         this.setSize(Constants.xSize - 120, Constants.ySize - 90);
-        selectBloodGases();
+        selectPerfusionInfo();
+//        selectBloodGases();
     }
 
     DisplayLOV lov = new DisplayLOV();
+    PerfusionistBO perfusionInfo = new PerfusionistBO();
     PerfusionistBO objPerfusionist = new PerfusionistBO();
     PerfusionistController ctlPerfusionist = new PerfusionistController();
 
@@ -2911,6 +2913,69 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         objPerfusionist.setHeparin(txtHeparin.getText().trim());
         objPerfusionist.setMannitol(txtMannitol.getText().trim());
         objPerfusionist.setBloodRBC(txtBloodRbc.getText().trim());
+    }
+
+    private void selectPerfusionInfo() {
+        perfusionInfo = ctlPerfusionist.selectPerfusionInfo(cardiacId);
+        if(perfusionInfo == null){
+            return;
+        }
+        patientId = perfusionInfo.getPatientId();
+        cardiacId = perfusionInfo.getCardiacRegistryId();
+        asstSurgeonId = perfusionInfo.getAssistantSurgeonId();
+        anesthetistId = perfusionInfo.getAnesthetistId();
+        surgeonId = perfusionInfo.getSurgeonId();
+        operationId = perfusionInfo.getOperationId();
+        perfusionistId = perfusionInfo.getPerfusionistId();
+        asstPerfusionistId = perfusionInfo.getAsstPerfusionistId();
+        bloodGroupId = objPerfusionist.getBloodGroupId();
+        
+        perfusionInfo.getIABCatheterDate();
+        
+        txtPerfusionist.setText(perfusionInfo.getPerfusionistName());
+        txtAsstPerfusionist.setText(perfusionInfo.getAsstPerfusionistName());
+        txtHeparinized.setText(perfusionInfo.getHeparinized());
+        cboRedo.setSelectedItem(perfusionInfo.getRedo());
+        txtOperation.setText(perfusionInfo.getOperationDescription());
+        txtOxygenator.setText(perfusionInfo.getOxygenator());
+        txtCpgSystem.setText(perfusionInfo.getCpgSystem());
+        cboIabCatheter.setSelectedItem(perfusionInfo.getIABCatheter());
+        txtSurgeon.setText(perfusionInfo.getSurgeonName());
+        txtAsstSurgeon.setText(perfusionInfo.getAssistantSurgeonName());
+        txtAnesthetist.setText(perfusionInfo.getAnesthetistName());
+        
+        txtVenous.setText(objPerfusionist.getVenous());
+        txtAorticCannulae.setText(objPerfusionist.getAorticCannulae());
+        txtHemofilter.setText(objPerfusionist.getHemofilter());
+        txtAntegrade.setText(objPerfusionist.getAntegrade());
+        txtRetrograde.setText(objPerfusionist.getRetrograde());
+        txtSumpVent.setText(objPerfusionist.getSumpVent());
+        txtConnectors.setText(objPerfusionist.getConnectors());
+        
+        txtHeight.setText(objPerfusionist.getHeight());
+        txtWeight.setText(objPerfusionist.getWeight());
+        txtHb.setText(objPerfusionist.getHb());
+        txtSurArea.setText(objPerfusionist.getSurfaceArea());
+        objPerfusionist.setBloodGroupDescription(objPerfusionist.getBloodGroupDescription());
+        txtBloodFlow.setText(objPerfusionist.getBloodFlow());
+        
+        txtAortic.setText(objPerfusionist.getAortic());
+        txtMitral.setText(objPerfusionist.getMitral());
+        txtPulmonary.setText(objPerfusionist.getPulmonary());
+        txtValve.setText(objPerfusionist.getValve());
+        txtDiabetic.setText(objPerfusionist.getDiabetic());
+        txtAllergies.setText(objPerfusionist.getAllergies());
+        txtUrea.setText(objPerfusionist.getUrea());
+        txtCreatinine.setText(objPerfusionist.getCreatinine());
+        txtEF.setText(objPerfusionist.getEF());
+        txtLMS.setText(objPerfusionist.getLMS());
+        txtHBsAntiHcv.setText(objPerfusionist.getHBsAntiHcv());
+        txtOtherPer.setText(objPerfusionist.getOtherPerfusion());
+        
+        txtHartmanns.setText(objPerfusionist.getHartmanns());
+        txtHeparin.setText(objPerfusionist.getHeparin());
+        txtMannitol.setText(objPerfusionist.getMannitol());
+        txtBloodRbc.setText(objPerfusionist.getBloodRBC());
     }
 
 }
