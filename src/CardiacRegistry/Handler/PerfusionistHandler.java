@@ -21,7 +21,7 @@ public class PerfusionistHandler {
     public boolean insertPerfusionInformation(PerfusionistBO insert) {
 
         String[] columns = {Database.DCMS.perfusionInformation, "ID", "CARDIAC_ID",
-            "PATIENT_ID", "PERFUSIONNIST_ID", "ASSISTANT_PERFUSIONNIST_ID",
+            "PATIENT_ID", "PERFUSIONNIST_ID", "ASSISTANT_PERFUSIONNIST_ID","SURGEON_ID",
             "ASSISTANT_ID", "ANESTHESIST_ID", "HEPARINIZED", "REDO", "OPERATION_ID",
             "OXYGENATOR", "CPG_SYSTEM", "VENOUS", "ANTEGRADE", "CANN_AORTIC",
             "RETROGRADE", "HEMOFILTER", "SUMP_VENT", "CONNECTORS", "AORTIC",
@@ -37,6 +37,7 @@ public class PerfusionistHandler {
         map.put("PATIENT_ID", "'" + insert.getPatientId() + "'");
         map.put("PERFUSIONNIST_ID", "'" + insert.getPerfusionistId() + "'");
         map.put("ASSISTANT_PERFUSIONNIST_ID", "'" + insert.getAsstPerfusionistId() + "'");
+        map.put("SURGEON_ID", "'" + insert.getSurgeonId()+ "'");
         map.put("ASSISTANT_ID", "'" + insert.getAssistantSurgeonId() + "'");
         map.put("ANESTHESIST_ID", "'" + insert.getAnesthetistId() + "'");
         map.put("HEPARINIZED", "'" + insert.getHeparinized() + "'");
@@ -84,8 +85,8 @@ public class PerfusionistHandler {
 
     public PerfusionistBO selectPerfusionInfo(String cardiacId) {
 
-        String columns[] = {"-", "ID", "PATIENT_ID", "CARDIAC_ID",
-            "PERFUSIONNIST_ID", "PERFUSIONNIST_NAME", "ASST_PERFUSIONNIST_ID",
+        String columns[] = {"-", "ID", "PATIENT_ID", "CARDIAC_ID","PERFUSIONNIST_ID",
+             "PERFUSIONNIST_NAME", "ASST_PERFUSIONNIST_ID", "SURGEON_ID","SURGEON_NAME",
             "ASSISTANT_PERFUSIONNIST_NAME", "ASSISTANT_ID", "ASSISTANT_NAME",
             "ANESTHESIST_ID", "ANESTHESIST_NAME", "HEPARINIZED", "REDO", "OPERATION_ID",
             "OPERATION_DESC", "OXYGENATOR", "CPG_SYSTEM", "VENOUS", "ANTEGRADE",
@@ -104,6 +105,8 @@ public class PerfusionistHandler {
                 + "       PRI.DESCRIPTION PERFUSIONNIST_NAME,\n"
                 + " NVL(CRP.ASSISTANT_PERFUSIONNIST_ID, -1) ASST_PERFUSIONNIST_ID,\n"
                 + "       API.DESCRIPTION ASSISTANT_PERFUSIONNIST_NAME,\n"
+                + " NVL(CRP.SURGEON_ID, -1) SURGEON_ID,\n"
+                + " SUR.DESCRIPTION SURGEON_NAME,\n"
                 + " NVL(CRP.ASSISTANT_ID, -1) ASSISTANT_ID,\n"
                 + "       AST.DESCRIPTION ASSISTANT_NAME,\n"
                 + " NVL(CRP.ANESTHESIST_ID, -1) ANESTHESIST_ID,\n"
@@ -128,16 +131,16 @@ public class PerfusionistHandler {
                 + "  NVL(CRP.UREA, ' ') UREA,\n"
                 + "  NVL(CRP.CREATININE, ' ') CREATININE,\n"
                 + "  NVL(CRP.EF, ' ') EF,\n"
-                + "  NVL(CRP.LMS, ' ') LMS,\n"
+                + "  NVL(CRP.LMS, 0) LMS,\n"
                 + "  NVL(CRP.HBS_HCV, ' ') HBS_HCV,\n"
                 + "  NVL(CRP.DIABETIC, ' ') DIABETIC,\n"
                 + "  NVL(CRP.ALLERGIES, ' ') ALLERGIES,\n"
                 + "  NVL(CRP.OTHER, ' ') OTHER,\n"
-                + "  NVL(CRP.HEIGHT, ' ') HEIGHT,\n"
-                + "  NVL(CRP.WEIGHT, ' ') WEIGHT,\n"
-                + "  NVL(CRP.HB, ' ') HB,\n"
-                + "  NVL(CRP.SURFACE_AREA, ' ') SURFACE_AREA,\n"
-                + "  NVL(CRP.BLOOD_FLOW, ' ') BLOOD_FLOW,\n"
+                + "  NVL(CRP.HEIGHT, 0) HEIGHT,\n"
+                + "  NVL(CRP.WEIGHT, 0) WEIGHT,\n"
+                + "  NVL(CRP.HB, 0) HB,\n"
+                + "  NVL(CRP.SURFACE_AREA, 0) SURFACE_AREA,\n"
+                + "  NVL(CRP.BLOOD_FLOW, 0) BLOOD_FLOW,\n"
                 + "  NVL(CRP.BLOOD_GROUP_ID, -1) BLOOD_GROUP_ID,\n"
                 + "  BGI.DESCRIPTION BLOOD_GROUP_DESC,\n"
                 + "  NVL(CRP.HARTMANNS, ' ') HARTMANNS,\n"
@@ -150,6 +153,7 @@ public class PerfusionistHandler {
                 + "  FROM " + Database.DCMS.perfusionInformation + " CRP,\n"
                 + Database.DCMS.definitionTypeDetail + " PRI,\n"
                 + Database.DCMS.definitionTypeDetail + " API,\n"
+                + Database.DCMS.definitionTypeDetail + " SUR,\n"
                 + Database.DCMS.definitionTypeDetail + " AST,\n"
                 + Database.DCMS.definitionTypeDetail + " ANT,\n"
                 + Database.DCMS.definitionTypeDetail + " OPE,\n"
@@ -157,6 +161,7 @@ public class PerfusionistHandler {
                 + "  WHERE CRP.ID = " + cardiacId + "\n"
                 + "  AND CRP.PERFUSIONNIST_ID = PRI.ID\n"
                 + "  AND CRP.ASSISTANT_PERFUSIONNIST_ID = API.ID\n"
+                + "  AND CRP.SURGEON_ID = SUR.ID\n"
                 + "  AND CRP.ASSISTANT_ID = AST.ID\n"
                 + "  AND CRP.ANESTHESIST_ID = ANT.ID\n"
                 + "  AND CRP.OPERATION_ID = OPE.ID\n"
@@ -175,6 +180,8 @@ public class PerfusionistHandler {
         objData.setCardiacRegistryId(map.get("CARDIAC_ID").toString());
         objData.setPerfusionistId(map.get("PERFUSIONNIST_ID").toString());
         objData.setPerfusionistName(map.get("PERFUSIONNIST_NAME").toString());
+        objData.setSurgeonId(map.get("SURGEON_ID").toString());
+        objData.setSurgeonName(map.get("SURGEON_NAME").toString());
         objData.setAsstPerfusionistId(map.get("ASST_PERFUSIONNIST_ID").toString());
         objData.setAsstPerfusionistName(map.get("ASSISTANT_PERFUSIONNIST_NAME").toString());
         objData.setAssistantSurgeonId(map.get("ASSISTANT_ID").toString());

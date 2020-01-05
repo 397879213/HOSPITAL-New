@@ -15,7 +15,7 @@ import utilities.DisplayLOV;
 
 public class PerfusionistForm extends javax.swing.JInternalFrame {
 
-    String cardiacId = "1";
+    String cardiacId = "1921";
     String patientId = "2254";
     private String perfusionistId = "";
     private String asstPerfusionistId = "";
@@ -33,7 +33,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         initComponents();
         this.setSize(Constants.xSize - 120, Constants.ySize - 90);
         selectPerfusionInfo();
-//        selectBloodGases();
+        selectBloodGases();
     }
 
     DisplayLOV lov = new DisplayLOV();
@@ -2928,7 +2928,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         operationId = perfusionInfo.getOperationId();
         perfusionistId = perfusionInfo.getPerfusionistId();
         asstPerfusionistId = perfusionInfo.getAsstPerfusionistId();
-        bloodGroupId = objPerfusionist.getBloodGroupId();
+        bloodGroupId = perfusionInfo.getBloodGroupId();
         
         perfusionInfo.getIABCatheterDate();
         
@@ -2944,38 +2944,38 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         txtAsstSurgeon.setText(perfusionInfo.getAssistantSurgeonName());
         txtAnesthetist.setText(perfusionInfo.getAnesthetistName());
         
-        txtVenous.setText(objPerfusionist.getVenous());
-        txtAorticCannulae.setText(objPerfusionist.getAorticCannulae());
-        txtHemofilter.setText(objPerfusionist.getHemofilter());
-        txtAntegrade.setText(objPerfusionist.getAntegrade());
-        txtRetrograde.setText(objPerfusionist.getRetrograde());
-        txtSumpVent.setText(objPerfusionist.getSumpVent());
-        txtConnectors.setText(objPerfusionist.getConnectors());
+        txtVenous.setText(perfusionInfo.getVenous());
+        txtAorticCannulae.setText(perfusionInfo.getAorticCannulae());
+        txtHemofilter.setText(perfusionInfo.getHemofilter());
+        txtAntegrade.setText(perfusionInfo.getAntegrade());
+        txtRetrograde.setText(perfusionInfo.getRetrograde());
+        txtSumpVent.setText(perfusionInfo.getSumpVent());
+        txtConnectors.setText(perfusionInfo.getConnectors());
         
-        txtHeight.setText(objPerfusionist.getHeight());
-        txtWeight.setText(objPerfusionist.getWeight());
-        txtHb.setText(objPerfusionist.getHb());
-        txtSurArea.setText(objPerfusionist.getSurfaceArea());
-        objPerfusionist.setBloodGroupDescription(objPerfusionist.getBloodGroupDescription());
-        txtBloodFlow.setText(objPerfusionist.getBloodFlow());
+        txtHeight.setText(perfusionInfo.getHeight());
+        txtWeight.setText(perfusionInfo.getWeight());
+        txtHb.setText(perfusionInfo.getHb());
+        txtSurArea.setText(perfusionInfo.getSurfaceArea());
+        perfusionInfo.setBloodGroupDescription(perfusionInfo.getBloodGroupDescription());
+        txtBloodFlow.setText(perfusionInfo.getBloodFlow());
         
-        txtAortic.setText(objPerfusionist.getAortic());
-        txtMitral.setText(objPerfusionist.getMitral());
-        txtPulmonary.setText(objPerfusionist.getPulmonary());
-        txtValve.setText(objPerfusionist.getValve());
-        txtDiabetic.setText(objPerfusionist.getDiabetic());
-        txtAllergies.setText(objPerfusionist.getAllergies());
-        txtUrea.setText(objPerfusionist.getUrea());
-        txtCreatinine.setText(objPerfusionist.getCreatinine());
-        txtEF.setText(objPerfusionist.getEF());
-        txtLMS.setText(objPerfusionist.getLMS());
-        txtHBsAntiHcv.setText(objPerfusionist.getHBsAntiHcv());
-        txtOtherPer.setText(objPerfusionist.getOtherPerfusion());
+        txtAortic.setText(perfusionInfo.getAortic());
+        txtMitral.setText(perfusionInfo.getMitral());
+        txtPulmonary.setText(perfusionInfo.getPulmonary());
+        txtValve.setText(perfusionInfo.getValve());
+        txtDiabetic.setText(perfusionInfo.getDiabetic());
+        txtAllergies.setText(perfusionInfo.getAllergies());
+        txtUrea.setText(perfusionInfo.getUrea());
+        txtCreatinine.setText(perfusionInfo.getCreatinine());
+        txtEF.setText(perfusionInfo.getEF());
+        txtLMS.setText(perfusionInfo.getLMS());
+        txtHBsAntiHcv.setText(perfusionInfo.getHBsAntiHcv());
+        txtOtherPer.setText(perfusionInfo.getOtherPerfusion());
         
-        txtHartmanns.setText(objPerfusionist.getHartmanns());
-        txtHeparin.setText(objPerfusionist.getHeparin());
-        txtMannitol.setText(objPerfusionist.getMannitol());
-        txtBloodRbc.setText(objPerfusionist.getBloodRBC());
+        txtHartmanns.setText(perfusionInfo.getHartmanns());
+        txtHeparin.setText(perfusionInfo.getHeparin());
+        txtMannitol.setText(perfusionInfo.getMannitol());
+        txtBloodRbc.setText(perfusionInfo.getBloodRBC());
     }
 
 }
