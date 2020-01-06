@@ -17,7 +17,7 @@ import utilities.DisplayLOV;
 
 public class PerfusionistForm extends javax.swing.JInternalFrame {
 
-    String cardiacId = "111";
+    String cardiacId = "1";
     String patientId = "0012121";
     private String perfusionistId = "";
     private String asstPerfusionistId = "";
@@ -237,7 +237,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle(Constants.title+"Search Studies");
+        setTitle(Constants.title+"Perfusion Form");
         setFrameIcon(null);
         setPreferredSize(new java.awt.Dimension(868, 721));
         setRequestFocusEnabled(false);
@@ -2109,8 +2109,8 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtMemberId1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(287, 287, 287)
+                .addComponent(txtMemberId1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtMemberId2, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
                 .addGap(10, 10, 10))
         );
