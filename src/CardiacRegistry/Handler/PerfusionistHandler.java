@@ -355,6 +355,55 @@ public class PerfusionistHandler {
         return lisPatient;
     }
 
+    public List<PerfusionistBO> selectPerfusionCheckList(String cardiacId,
+            String patientId) {
+
+        String columns[] = {"-", "ID", "CARDIAC_ID", "PATIENT_ID", "CHK_LIST_ID",
+            "CHK_LIST_DESC", "CHECKED","CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
+
+        String query
+                = "SELECT PCL.ID, PCL.CARDIAC_ID,\n"
+                + "       PCL.PATIENT_ID,\n"
+                + "       PCL.CHK_LIST_ID,\n"
+                + "       CLI.DESCRIPTION CHK_LIST_DESC,\n"
+                + "       PCL.CHECKED,\n"
+                + "       PCL.CRTD_DATE,\n"
+                + "       PCL.CRTD_BY,\n"
+                + "       PCL.CRTD_TERMINAL_ID\n"
+                + "  FROM "+ Database.DCMS.perfusionPressureGraph +"  PCL,\n"
+                + Database.DCMS.perfusionPressureGraph +" CLI\n"
+                + "  WHERE PCL.PATIENT_ID = '" + patientId + "'\n"
+                + "  AND PCL.CARDIAC_ID = '" + cardiacId + "'\n"
+                + "  AND PCL.CHK_LIST_ID = CLI.ID\n";
+
+        List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
+        List<PerfusionistBO> lisPatient = new ArrayList();
+        for (int i = 0; i < listmap.size(); i++) {
+
+            HashMap map = (HashMap) listmap.get(i);
+            PerfusionistBO objData = new PerfusionistBO();
+
+            objData.setPerfusionGraphId(map.get("ID").toString());
+            objData.setCardiacId(map.get("CARDIAC_ID").toString());
+            objData.setPatientId(map.get("PATIENT_ID").toString());
+            objData.setPerPressure(map.get("CHK_LIST_ID").toString());
+            objData.setTimeMin(map.get("CHK_LIST_DESC").toString());
+            objData.setTimeMin(map.get("CHECKED").toString());
+            objData.setCrtdBy(map.get("CRTD_BY").toString());
+            objData.setCrtdDate(map.get("CRTD_DATE").toString());
+            objData.setCrtdTerminalId(map.get("CRTD_TERMINAL_ID").toString());
+            lisPatient.add(objData);
+        }
+        return lisPatient;
+    }
+
+    public boolean deletePerfusionPressureGraph(String id) {
+        String query
+                = " DELETE FROM " + Database.DCMS.perfusionPressureGraph + "\n"
+                + " WHERE ID = " + id + "\n";
+        return Constants.dao.executeUpdate(query, false);
+    }
+
     public List<PerfusionistBO> selectBloodGases(String cardiacId) {
 
         String columns[] = {"-", "ID", "CARDIAC_ID", "BG_ID", "BLOOD_GASSES",

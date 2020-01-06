@@ -20,7 +20,7 @@ public class PerfusionGraphTableModel extends AbstractTableModel {
         int row = 0;
 
         for (PerfusionistBO currentinfo : liInfo) {
-            data[row][0] = (row+1);
+            data[row][0] = row+1;
             data[row][1] = currentinfo.getPerPressure();
             data[row][2] = currentinfo.getTimeMin();
             row++;

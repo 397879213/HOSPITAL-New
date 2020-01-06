@@ -65,6 +65,16 @@ public class PerfusionistController {
         return hdlPerfusionist.selectPerfusionPressureGraph(cardiacId, patientId);
     }
         
+    public boolean deletePerfusionPressureGraph(String id) {
+        boolean ret = hdlPerfusionist.deletePerfusionPressureGraph(id);
+        if (ret) {
+            Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
 
     public List<PerfusionistBO> selectBloodGases(String cardiacId) {
         return hdlPerfusionist.selectBloodGases(cardiacId);

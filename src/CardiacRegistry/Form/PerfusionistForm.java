@@ -38,6 +38,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         btnSave.setMnemonic(KeyEvent.VK_S);
         btnFinal.setMnemonic(KeyEvent.VK_F);
         btnGraph.setMnemonic(KeyEvent.VK_G);
+        selectPerfusionGraph();
         selectPerfusionInfo();
         selectBloodGases();
     }
@@ -2501,6 +2502,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
 
     private void txtPressureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPressureActionPerformed
         // TODO add your handling code here:
+        txtTime.requestFocus();
     }//GEN-LAST:event_txtPressureActionPerformed
 
     private void txtTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimeActionPerformed
@@ -2509,10 +2511,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         objPerfusionGraph.setPatientId(patientId);
         objPerfusionGraph.setPerPressure(txtPressure.getText().trim());
         objPerfusionGraph.setTimeMin(txtTime.getText().trim());
-        if(ctlPerfusionist.insertPerfusionPressureGraph(objPerfusionGraph)){
+        if (ctlPerfusionist.insertPerfusionPressureGraph(objPerfusionGraph)) {
             JOptionPane.showMessageDialog(null, "Save succesfully");
             selectPerfusionGraph();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Unable to save");
         }
     }//GEN-LAST:event_txtTimeActionPerformed
@@ -2526,7 +2528,20 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblGraphMouseEntered
 
     private void tblGraphMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblGraphMouseReleased
-
+        objPerfusionGraph = listPerGraph.get(tblGraph.getSelectedRow());
+        if (evt.getClickCount() % 2 == 0) {
+            int confirmation = JOptionPane.showConfirmDialog(null, "You Are "
+                    + "Going To Detele the Record. \nDo you want to Delete?");
+            if (confirmation != 0) {
+                return;
+            }
+            if (ctlPerfusionist.deletePerfusionPressureGraph(
+                    objPerfusionGraph.getPerfusionGraphId())) {
+                selectPerfusionGraph();
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to Deleted Record.");
+            }
+        }
     }//GEN-LAST:event_tblGraphMouseReleased
 
     private void tblGraphPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblGraphPropertyChange
@@ -2607,7 +2622,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        if(!chkInformation()){
+        if (!chkInformation()) {
             return;
         }
         objPerfusionist.setIsFinal("N");
@@ -2634,7 +2649,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
 
     private void btnFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalActionPerformed
         // TODO add your handling code here:
-        if(!chkInformation()){
+        if (!chkInformation()) {
             return;
         }
         int confirmation = JOptionPane.showConfirmDialog(null, "You Are Going "
@@ -3084,7 +3099,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     }
 
     private void savePerfusionInfo() {
-        
+
         setPerfusionInfo();
         if (perfusionInfo == null) {
             if (ctlPerfusionist.insertPerfusionInformation(objPerfusionist)) {
@@ -3108,10 +3123,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     }
 
     private void disableFields() {
-        
+
         btnSave.setEnabled(false);
         btnFinal.setEnabled(false);
-        
+
         txtPerfusionist.setEditable(false);
         txtAsstPerfusionist.setEditable(false);
         txtHeparinized.setEditable(false);
@@ -3158,44 +3173,44 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         txtMannitol.setEditable(false);
         txtBloodRbc.setEditable(false);
     }
-    
-    private boolean chkInformation(){
+
+    private boolean chkInformation() {
         boolean ret = true;
-        if(cboIabCatheter.getSelectedIndex() == 0 && 
-                txtIabCatheterTime.getText().trim().length() == 0){
+        if (cboIabCatheter.getSelectedIndex() == 0
+                && txtIabCatheterTime.getText().trim().length() == 0) {
             ret = false;
             JOptionPane.showMessageDialog(null, "Please enter the IAB Catheter Time");
             txtIabCatheterTime.requestFocus();
         }
-        if(perfusionistId.equalsIgnoreCase("")){
+        if (perfusionistId.equalsIgnoreCase("")) {
             ret = false;
             JOptionPane.showMessageDialog(null, "Please Select Perfusionist.");
             txtPerfusionist.requestFocus();
         }
-        if(asstPerfusionistId.equalsIgnoreCase("")){
+        if (asstPerfusionistId.equalsIgnoreCase("")) {
             ret = false;
             JOptionPane.showMessageDialog(null, "Please Select Assistant Perfusionist.");
             txtAsstPerfusionist.requestFocus();
         }
-        if(surgeonId.equalsIgnoreCase("")){
+        if (surgeonId.equalsIgnoreCase("")) {
             ret = false;
             JOptionPane.showMessageDialog(null, "Please Select Surgeon.");
             txtSurgeon.requestFocus();
         }
-        if(asstSurgeonId.equalsIgnoreCase("")){
+        if (asstSurgeonId.equalsIgnoreCase("")) {
             ret = false;
             JOptionPane.showMessageDialog(null, "Please Select Assistant Surgeon.");
             txtAsstSurgeon.requestFocus();
         }
-        if(anesthetistId.equalsIgnoreCase("")){
+        if (anesthetistId.equalsIgnoreCase("")) {
             ret = false;
             JOptionPane.showMessageDialog(null, "Please Select Anesthetist.");
             txtAnesthetist.requestFocus();
         }
         return ret;
     }
-    
-    private void selectPerfusionGraph(){
+
+    private void selectPerfusionGraph() {
         listPerGraph = ctlPerfusionist.selectPerfusionPressureGraph(cardiacId,
                 patientId);
         if (listPerGraph.isEmpty()) {
@@ -3211,7 +3226,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         selectionModel.setSelectionInterval(0, 0);
         Constants.tablelook.setJTableEnvironment(tblGraph);
     }
-    
+
     private void setPerfusionGraphColumnsWidths() {
         TableColumn column = null;
         for (int i = 0; i < tblGraph.getColumnCount(); i++) {
@@ -3221,8 +3236,8 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
             } else if (i == 1) {
                 column.setPreferredWidth(120);
             } else if (i == 2) {
-                column.setPreferredWidth(60);
-            } 
+                column.setPreferredWidth(120);
+            }
         }
     }
 }

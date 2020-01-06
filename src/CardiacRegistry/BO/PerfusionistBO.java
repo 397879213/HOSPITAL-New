@@ -10,7 +10,7 @@ package CardiacRegistry.BO;
  * @author admin
  */
 public class PerfusionistBO {
-    
+
     private String cardiacId = "";
     private String perfusionId = "";
     private String perfusionistId = "";
@@ -69,16 +69,18 @@ public class PerfusionistBO {
     private String finalBy = "";
     private String finalDate = "";
     private String finalTerminalId = "";
-    
+
     // Check List
+    private String checkListPK = "";
     private String checkListId = "";
+    private String checkListDescription = "";
     private String checked = "";
-    
+
     // Pressure Time Graph
     private String perfusionGraphId = "";
     private String perPressure = "";
     private String timeMin = "";
-    
+
     // Blood    Gasses
     private String bloodGasesId = "";
     private String bloodGasesDescription = "";
@@ -93,7 +95,6 @@ public class PerfusionistBO {
     private String DBP8 = "";
     private String DBP9 = "";
     private String DBP10 = "";
-    
 
     public String getPatientId() {
         return patientId;
@@ -702,5 +703,5 @@ public class PerfusionistBO {
     public void setPerfusionGraphId(String perfusionGraphId) {
         this.perfusionGraphId = perfusionGraphId;
     }
-    
+
 }
