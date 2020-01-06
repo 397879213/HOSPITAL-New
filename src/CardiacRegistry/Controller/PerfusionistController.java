@@ -22,9 +22,24 @@ public class PerfusionistController {
     GenerateKeys key = new GenerateKeys();
     PerfusionistHandler hdlPerfusionist = new PerfusionistHandler();
     
+    public PerfusionistBO selectPerfusionInfo(String cardiacId, String patientId) {
+        return hdlPerfusionist.selectPerfusionInfo(cardiacId, patientId);
+    }
+    
     public boolean insertPerfusionInformation(PerfusionistBO insert) {
-        insert.setBloodGasesId(key.generatePrimaryKey(Keys.cardiacPerfusionIdPk, true));
+        insert.setPerfusionId(key.generatePrimaryKey(Keys.cardiacPerfusionIdPk, true));
         boolean ret = hdlPerfusionist.insertPerfusionInformation(insert);
+        if(ret){
+            Constants.dao.commitTransaction();
+        }
+        if(!ret){
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
+    
+    public boolean updatePerfusionInformation(PerfusionistBO update) {
+        boolean ret = hdlPerfusionist.updatePerfusionInformation(update);
         if(ret){
             Constants.dao.commitTransaction();
         }
@@ -36,9 +51,5 @@ public class PerfusionistController {
     
     public List<PerfusionistBO> selectBloodGases(String cardiacId) {
         return hdlPerfusionist.selectBloodGases(cardiacId);
-    }
-    
-    public PerfusionistBO selectPerfusionInfo(String cardiacId) {
-        return hdlPerfusionist.selectPerfusionInfo(cardiacId);
     }
 }

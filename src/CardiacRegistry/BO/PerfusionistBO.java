@@ -25,7 +25,7 @@ public class PerfusionistBO {
     private String oxygenator = "";
     private String cpgSystem = "";
     private String IABCatheter = "";
-    private String IABCatheterDate = "";
+    private String IABCatheterTime = "";
     private String height = "";
     private String weight = "";
     private String Hb = "";
@@ -62,7 +62,14 @@ public class PerfusionistBO {
     private String LMS = "";
     private String HBsAntiHcv = "";
     private String OtherPerfusion = "";
-
+    private String crtdBy = "";
+    private String crtdDate = "";
+    private String crtdTerminalId = "";
+    private String isFinal = "";
+    private String finalBy = "";
+    private String finalDate = "";
+    private String finalTerminalId = "";
+    
     // Blood    Gasses
     private String bloodGasesId = "";
     private String bloodGasesDescription = "";
@@ -77,9 +84,7 @@ public class PerfusionistBO {
     private String DBP8 = "";
     private String DBP9 = "";
     private String DBP10 = "";
-    private String crtdBy = "";
-    private String crtdDate = "";
-    private String crtdTerminalId = "";
+    
 
     public String getPatientId() {
         return patientId;
@@ -361,12 +366,12 @@ public class PerfusionistBO {
         this.IABCatheter = IABCatheter;
     }
 
-    public String getIABCatheterDate() {
-        return IABCatheterDate;
+    public String getIABCatheterTime() {
+        return IABCatheterTime;
     }
 
-    public void setIABCatheterDate(String IABCatheterDate) {
-        this.IABCatheterDate = IABCatheterDate;
+    public void setIABCatheterTime(String IABCatheterTime) {
+        this.IABCatheterTime = IABCatheterTime;
     }
 
     public String getHeight() {
@@ -617,4 +622,35 @@ public class PerfusionistBO {
         this.OtherPerfusion = OtherPerfusion;
     }
 
+    public String getFinalBy() {
+        return finalBy;
+    }
+
+    public void setFinalBy(String finalBy) {
+        this.finalBy = finalBy;
+    }
+
+    public String getFinalDate() {
+        return finalDate;
+    }
+
+    public void setFinalDate(String finalDate) {
+        this.finalDate = finalDate;
+    }
+
+    public String getFinalTerminalId() {
+        return finalTerminalId;
+    }
+
+    public void setFinalTerminalId(String finalTerminalId) {
+        this.finalTerminalId = finalTerminalId;
+    }
+
+    public String getIsFinal() {
+        return isFinal;
+    }
+
+    public void setIsFinal(String isFinal) {
+        this.isFinal = isFinal;
+    }
 }

@@ -3,7 +3,6 @@ package CardiacRegistry.Form;
 import CardiacRegistry.BO.PerfusionistBO;
 import CardiacRegistry.Controller.PerfusionistController;
 import CardiacRegistry.TableModel.PerfusionBloodGasesTableModel;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -15,17 +14,16 @@ import utilities.DisplayLOV;
 
 public class PerfusionistForm extends javax.swing.JInternalFrame {
 
-    String cardiacId = "1921";
-    String patientId = "2254";
+    String cardiacId = "111";
+    String patientId = "0012121";
     private String perfusionistId = "";
     private String asstPerfusionistId = "";
     private String operationId = "";
-    private String IabCatheterDate = "";
     private String surgeonId = "";
     private String asstSurgeonId = "";
     private String anesthetistId = "";
     private String bloodGroupId = "";
-    
+
     List<PerfusionistBO> listBG = new ArrayList();
 
     public PerfusionistForm() {
@@ -50,8 +48,8 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jPanel6 = new javax.swing.JPanel();
         btnClear = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        btnClear1 = new javax.swing.JButton();
+        btnFinal = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel7 = new javax.swing.JPanel();
@@ -72,7 +70,8 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel23 = new javax.swing.JLabel();
         cboRedo = new javax.swing.JComboBox<>();
         cboIabCatheter = new javax.swing.JComboBox<>();
-        txtIabCatheterDate = new org.jdesktop.swingx.JXDatePicker();
+        txtIabCatheterTime = new javax.swing.JTextField();
+        jLabel93 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         txtSurgeon = new javax.swing.JTextField();
@@ -258,19 +257,29 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
 
         btnClear.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButton2.setForeground(new java.awt.Color(204, 0, 0));
         jButton2.setText("Exit");
 
-        jButton3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton3.setText("Final");
-
-        btnClear1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnClear1.setText("Save");
-        btnClear1.addActionListener(new java.awt.event.ActionListener() {
+        btnFinal.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnFinal.setText("Final");
+        btnFinal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClear1ActionPerformed(evt);
+                btnFinalActionPerformed(evt);
+            }
+        });
+
+        btnSave.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
             }
         });
 
@@ -282,29 +291,29 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(146, 146, 146)
+                .addGap(127, 127, 127)
                 .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnClear1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClear)
                     .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(btnClear1)
+                    .addComponent(btnFinal)
+                    .addComponent(btnSave)
                     .addComponent(jButton4))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanel7.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -411,12 +420,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
             }
         });
 
-        txtIabCatheterDate.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtIabCatheterDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIabCatheterDateActionPerformed(evt);
-            }
-        });
+        jLabel93.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel93.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel93.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel93.setText("Prime : ");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -436,19 +443,21 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtPerfusionist)
                     .addComponent(txtAsstPerfusionist)
-                    .addComponent(txtOperation)
                     .addComponent(txtOxygenator)
                     .addComponent(txtCpgSystem)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(txtHeparinized)
+                        .addComponent(txtHeparinized, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cboRedo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(cboIabCatheter, 0, 108, Short.MAX_VALUE)
+                        .addComponent(cboIabCatheter, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtIabCatheterDate, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel93, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtIabCatheterTime, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtOperation, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(5, 5, 5))
         );
         jPanel9Layout.setVerticalGroup(
@@ -484,8 +493,9 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboIabCatheter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtIabCatheterDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                    .addComponent(txtIabCatheterTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel93, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11))
         );
 
         jPanel10.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -1603,7 +1613,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jPanel21.setLayout(jPanel21Layout);
         jPanel21Layout.setHorizontalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane28)
+            .addComponent(jScrollPane28, javax.swing.GroupLayout.DEFAULT_SIZE, 806, Short.MAX_VALUE)
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2079,8 +2089,8 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtMemberId1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtMemberId1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(287, 287, 287)
                 .addComponent(txtMemberId2, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
                 .addGap(10, 10, 10))
         );
@@ -2189,18 +2199,6 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         cboIabCatheter.requestFocus();
     }//GEN-LAST:event_txtCpgSystemActionPerformed
-
-    private void txtIabCatheterDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIabCatheterDateActionPerformed
-        //TODO add your handling code here:
-        if (txtIabCatheterDate.getDate().getDate() == 0) {
-            JOptionPane.showMessageDialog(null, "Enter the Iab Catheter Date DD-MON-YY",
-                    "IAB Catheter Date", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yy");
-        IabCatheterDate = dateFormat.format(txtIabCatheterDate.getDate());
-        txtSurgeon.requestFocus();
-    }//GEN-LAST:event_txtIabCatheterDateActionPerformed
 
     private void txtSurgeonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSurgeonActionPerformed
         // TODO add your handling code here:
@@ -2581,16 +2579,14 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tblPatientInfo3KeyReleased
 
-    private void btnClear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClear1ActionPerformed
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        setPerfusionInfo();
-        if(ctlPerfusionist.insertPerfusionInformation(objPerfusionist)){
-            JOptionPane.showMessageDialog(null, "Record save successfully.");
-        }else{
-            JOptionPane.showMessageDialog(null, "Unable to save Record.\n"
-                    + "Kindly contact Support Team.");
-        }
-    }//GEN-LAST:event_btnClear1ActionPerformed
+        objPerfusionist.setIsFinal("N");
+        objPerfusionist.setFinalBy("");
+        objPerfusionist.setFinalTerminalId("");
+        objPerfusionist.setFinalDate("''");
+        savePerfusionInfo();
+    }//GEN-LAST:event_btnSaveActionPerformed
 
     private void cboRedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboRedoActionPerformed
         // TODO add your handling code here:
@@ -2599,17 +2595,36 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
 
     private void cboIabCatheterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboIabCatheterActionPerformed
         // TODO add your handling code here:
-        txtIabCatheterDate.requestFocus();
+        txtIabCatheterTime.requestFocus();
     }//GEN-LAST:event_cboIabCatheterActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        // TODO add your handling code here:
+        clear();
+    }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalActionPerformed
+        // TODO add your handling code here:
+        int confirmation = JOptionPane.showConfirmDialog(null, "You Are Going "
+                + "To Final the information. \nDo you want to Final?");
+        if (confirmation != 0) {
+            return;
+        }
+        objPerfusionist.setIsFinal("Y");
+        objPerfusionist.setFinalBy(Constants.userId);
+        objPerfusionist.setFinalTerminalId(Constants.terminalId);
+        objPerfusionist.setFinalDate(Constants.today);
+        savePerfusionInfo();
+    }//GEN-LAST:event_btnFinalActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
-    private javax.swing.JButton btnClear1;
+    private javax.swing.JButton btnFinal;
+    private javax.swing.JButton btnSave;
     private javax.swing.JComboBox<String> cboIabCatheter;
     private javax.swing.JComboBox<String> cboRedo;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel10;
@@ -2666,6 +2681,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel90;
     private javax.swing.JLabel jLabel91;
+    private javax.swing.JLabel jLabel93;
     private javax.swing.JLabel jLabel94;
     private javax.swing.JLabel jLabel95;
     private javax.swing.JLabel jLabel96;
@@ -2738,7 +2754,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtHemofilter;
     private javax.swing.JTextField txtHeparin;
     private javax.swing.JTextField txtHeparinized;
-    private org.jdesktop.swingx.JXDatePicker txtIabCatheterDate;
+    private javax.swing.JTextField txtIabCatheterTime;
     private javax.swing.JTextField txtLMS;
     private javax.swing.JTextField txtMannitol;
     private javax.swing.JTextField txtMemberId;
@@ -2865,7 +2881,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     }
 
     private void setPerfusionInfo() {
-        objPerfusionist = new PerfusionistBO();
+
         objPerfusionist.setPatientId(patientId);
         objPerfusionist.setCardiacRegistryId(cardiacId);
         objPerfusionist.setPerfusionistId(perfusionistId);
@@ -2876,7 +2892,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         objPerfusionist.setOxygenator(txtOxygenator.getText().trim());
         objPerfusionist.setCpgSystem(txtCpgSystem.getText().trim());
         objPerfusionist.setIABCatheter(cboIabCatheter.getSelectedItem().toString());
-        objPerfusionist.setIABCatheterDate(IabCatheterDate);
+        objPerfusionist.setIABCatheterTime(txtIabCatheterTime.getText().trim());
         objPerfusionist.setSurgeonId(surgeonId);
         objPerfusionist.setAssistantSurgeonId(asstSurgeonId);
         objPerfusionist.setAnesthetistId(anesthetistId);
@@ -2888,14 +2904,14 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         objPerfusionist.setRetrograde(txtRetrograde.getText().trim());
         objPerfusionist.setSumpVent(txtSumpVent.getText().trim());
         objPerfusionist.setConnectors(txtConnectors.getText().trim());
-        
+
         objPerfusionist.setHeight(txtHeight.getText().trim());
         objPerfusionist.setWeight(txtWeight.getText().trim());
         objPerfusionist.setHb(txtHb.getText().trim());
         objPerfusionist.setSurfaceArea(txtSurArea.getText().trim());
         objPerfusionist.setBloodGroupId(bloodGroupId);
         objPerfusionist.setBloodFlow(txtBloodFlow.getText().trim());
-        
+
         objPerfusionist.setAortic(txtAortic.getText().trim());
         objPerfusionist.setMitral(txtMitral.getText().trim());
         objPerfusionist.setPulmonary(txtPulmonary.getText().trim());
@@ -2908,7 +2924,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         objPerfusionist.setLMS(txtLMS.getText().trim());
         objPerfusionist.setHBsAntiHcv(txtHBsAntiHcv.getText().trim());
         objPerfusionist.setOtherPerfusion(txtOtherPer.getText().trim());
-        
+
         objPerfusionist.setHartmanns(txtHartmanns.getText().trim());
         objPerfusionist.setHeparin(txtHeparin.getText().trim());
         objPerfusionist.setMannitol(txtMannitol.getText().trim());
@@ -2916,66 +2932,191 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     }
 
     private void selectPerfusionInfo() {
-        perfusionInfo = ctlPerfusionist.selectPerfusionInfo(cardiacId);
-        if(perfusionInfo == null){
+        objPerfusionist = ctlPerfusionist.selectPerfusionInfo(cardiacId, patientId);
+        if (objPerfusionist == null) {
             return;
         }
-        patientId = perfusionInfo.getPatientId();
-        cardiacId = perfusionInfo.getCardiacRegistryId();
-        asstSurgeonId = perfusionInfo.getAssistantSurgeonId();
-        anesthetistId = perfusionInfo.getAnesthetistId();
-        surgeonId = perfusionInfo.getSurgeonId();
-        operationId = perfusionInfo.getOperationId();
-        perfusionistId = perfusionInfo.getPerfusionistId();
-        asstPerfusionistId = perfusionInfo.getAsstPerfusionistId();
-        bloodGroupId = perfusionInfo.getBloodGroupId();
-        
-        perfusionInfo.getIABCatheterDate();
-        
-        txtPerfusionist.setText(perfusionInfo.getPerfusionistName());
-        txtAsstPerfusionist.setText(perfusionInfo.getAsstPerfusionistName());
-        txtHeparinized.setText(perfusionInfo.getHeparinized());
-        cboRedo.setSelectedItem(perfusionInfo.getRedo());
-        txtOperation.setText(perfusionInfo.getOperationDescription());
-        txtOxygenator.setText(perfusionInfo.getOxygenator());
-        txtCpgSystem.setText(perfusionInfo.getCpgSystem());
-        cboIabCatheter.setSelectedItem(perfusionInfo.getIABCatheter());
-        txtSurgeon.setText(perfusionInfo.getSurgeonName());
-        txtAsstSurgeon.setText(perfusionInfo.getAssistantSurgeonName());
-        txtAnesthetist.setText(perfusionInfo.getAnesthetistName());
-        
-        txtVenous.setText(perfusionInfo.getVenous());
-        txtAorticCannulae.setText(perfusionInfo.getAorticCannulae());
-        txtHemofilter.setText(perfusionInfo.getHemofilter());
-        txtAntegrade.setText(perfusionInfo.getAntegrade());
-        txtRetrograde.setText(perfusionInfo.getRetrograde());
-        txtSumpVent.setText(perfusionInfo.getSumpVent());
-        txtConnectors.setText(perfusionInfo.getConnectors());
-        
-        txtHeight.setText(perfusionInfo.getHeight());
-        txtWeight.setText(perfusionInfo.getWeight());
-        txtHb.setText(perfusionInfo.getHb());
-        txtSurArea.setText(perfusionInfo.getSurfaceArea());
-        perfusionInfo.setBloodGroupDescription(perfusionInfo.getBloodGroupDescription());
-        txtBloodFlow.setText(perfusionInfo.getBloodFlow());
-        
-        txtAortic.setText(perfusionInfo.getAortic());
-        txtMitral.setText(perfusionInfo.getMitral());
-        txtPulmonary.setText(perfusionInfo.getPulmonary());
-        txtValve.setText(perfusionInfo.getValve());
-        txtDiabetic.setText(perfusionInfo.getDiabetic());
-        txtAllergies.setText(perfusionInfo.getAllergies());
-        txtUrea.setText(perfusionInfo.getUrea());
-        txtCreatinine.setText(perfusionInfo.getCreatinine());
-        txtEF.setText(perfusionInfo.getEF());
-        txtLMS.setText(perfusionInfo.getLMS());
-        txtHBsAntiHcv.setText(perfusionInfo.getHBsAntiHcv());
-        txtOtherPer.setText(perfusionInfo.getOtherPerfusion());
-        
-        txtHartmanns.setText(perfusionInfo.getHartmanns());
-        txtHeparin.setText(perfusionInfo.getHeparin());
-        txtMannitol.setText(perfusionInfo.getMannitol());
-        txtBloodRbc.setText(perfusionInfo.getBloodRBC());
+        patientId = objPerfusionist.getPatientId();
+        cardiacId = objPerfusionist.getCardiacRegistryId();
+        asstSurgeonId = objPerfusionist.getAssistantSurgeonId();
+        anesthetistId = objPerfusionist.getAnesthetistId();
+        surgeonId = objPerfusionist.getSurgeonId();
+        operationId = objPerfusionist.getOperationId();
+        perfusionistId = objPerfusionist.getPerfusionistId();
+        asstPerfusionistId = objPerfusionist.getAsstPerfusionistId();
+        bloodGroupId = objPerfusionist.getBloodGroupId();
+
+        txtPerfusionist.setText(objPerfusionist.getPerfusionistName());
+        txtAsstPerfusionist.setText(objPerfusionist.getAsstPerfusionistName());
+        txtHeparinized.setText(objPerfusionist.getHeparinized());
+        cboRedo.setSelectedItem(objPerfusionist.getRedo());
+        txtOperation.setText(objPerfusionist.getOperationDescription());
+        txtOxygenator.setText(objPerfusionist.getOxygenator());
+        txtCpgSystem.setText(objPerfusionist.getCpgSystem());
+        cboIabCatheter.setSelectedItem(objPerfusionist.getIABCatheter());
+        txtIabCatheterTime.setText(objPerfusionist.getIABCatheterTime());
+        txtSurgeon.setText(objPerfusionist.getSurgeonName());
+        txtAsstSurgeon.setText(objPerfusionist.getAssistantSurgeonName());
+        txtAnesthetist.setText(objPerfusionist.getAnesthetistName());
+
+        txtVenous.setText(objPerfusionist.getVenous());
+        txtAorticCannulae.setText(objPerfusionist.getAorticCannulae());
+        txtHemofilter.setText(objPerfusionist.getHemofilter());
+        txtAntegrade.setText(objPerfusionist.getAntegrade());
+        txtRetrograde.setText(objPerfusionist.getRetrograde());
+        txtSumpVent.setText(objPerfusionist.getSumpVent());
+        txtConnectors.setText(objPerfusionist.getConnectors());
+
+        txtHeight.setText(objPerfusionist.getHeight());
+        txtWeight.setText(objPerfusionist.getWeight());
+        txtHb.setText(objPerfusionist.getHb());
+        txtSurArea.setText(objPerfusionist.getSurfaceArea());
+        txtBloodGroup.setText(objPerfusionist.getBloodGroupDescription());
+        txtBloodFlow.setText(objPerfusionist.getBloodFlow());
+
+        txtAortic.setText(objPerfusionist.getAortic());
+        txtMitral.setText(objPerfusionist.getMitral());
+        txtPulmonary.setText(objPerfusionist.getPulmonary());
+        txtValve.setText(objPerfusionist.getValve());
+        txtDiabetic.setText(objPerfusionist.getDiabetic());
+        txtAllergies.setText(objPerfusionist.getAllergies());
+        txtUrea.setText(objPerfusionist.getUrea());
+        txtCreatinine.setText(objPerfusionist.getCreatinine());
+        txtEF.setText(objPerfusionist.getEF());
+        txtLMS.setText(objPerfusionist.getLMS());
+        txtHBsAntiHcv.setText(objPerfusionist.getHBsAntiHcv());
+        txtOtherPer.setText(objPerfusionist.getOtherPerfusion());
+
+        txtHartmanns.setText(objPerfusionist.getHartmanns());
+        txtHeparin.setText(objPerfusionist.getHeparin());
+        txtMannitol.setText(objPerfusionist.getMannitol());
+        txtBloodRbc.setText(objPerfusionist.getBloodRBC());
+
+        if (objPerfusionist.getIsFinal().equalsIgnoreCase("Y")) {
+            disableFields();
+        }
     }
 
+    private void clear() {
+        txtPerfusionist.setText("");
+        txtAsstPerfusionist.setText("");
+        txtHeparinized.setText("");
+        cboRedo.setSelectedIndex(0);
+        txtOperation.setText("");
+        txtOxygenator.setText("");
+        txtCpgSystem.setText("");
+        txtIabCatheterTime.setText("");
+        cboIabCatheter.setSelectedIndex(0);
+        txtSurgeon.setText("");
+        txtAsstSurgeon.setText("");
+        txtAnesthetist.setText("");
+
+        txtVenous.setText("");
+        txtAorticCannulae.setText("");
+        txtHemofilter.setText("");
+        txtAntegrade.setText("");
+        txtRetrograde.setText("");
+        txtSumpVent.setText("");
+        txtConnectors.setText("");
+
+        txtHeight.setText("");
+        txtWeight.setText("");
+        txtHb.setText("");
+        txtSurArea.setText("");
+        txtBloodGroup.setText("");
+        txtBloodFlow.setText("");
+
+        txtAortic.setText("");
+        txtMitral.setText("");
+        txtPulmonary.setText("");
+        txtValve.setText("");
+        txtDiabetic.setText("");
+        txtAllergies.setText("");
+        txtUrea.setText("");
+        txtCreatinine.setText("");
+        txtEF.setText("");
+        txtLMS.setText("");
+        txtHBsAntiHcv.setText("");
+        txtOtherPer.setText("");
+
+        txtHartmanns.setText("");
+        txtHeparin.setText("");
+        txtMannitol.setText("");
+        txtBloodRbc.setText("");
+    }
+
+    private void savePerfusionInfo() {
+        setPerfusionInfo();
+        if (perfusionInfo == null) {
+            if (ctlPerfusionist.insertPerfusionInformation(objPerfusionist)) {
+                JOptionPane.showMessageDialog(null, "Record save successfully.");
+                clear();
+                selectPerfusionInfo();
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to save Record.\n"
+                        + "Kindly contact Support Team.");
+            }
+        } else {
+            if (ctlPerfusionist.updatePerfusionInformation(objPerfusionist)) {
+                JOptionPane.showMessageDialog(null, "Record save successfully.");
+                clear();
+                selectPerfusionInfo();
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to save Record.\n"
+                        + "Kindly contact Support Team.");
+            }
+        }
+    }
+
+    private void disableFields() {
+        
+        btnSave.setEnabled(false);
+        btnFinal.setEnabled(false);
+        
+        txtPerfusionist.setEditable(false);
+        txtAsstPerfusionist.setEditable(false);
+        txtHeparinized.setEditable(false);
+        cboRedo.setEditable(false);
+        txtOperation.setEditable(false);
+        txtOxygenator.setEditable(false);
+        txtCpgSystem.setEditable(false);
+        cboIabCatheter.setEditable(false);
+        txtIabCatheterTime.setEditable(false);
+        txtSurgeon.setEditable(false);
+        txtAsstSurgeon.setEditable(false);
+        txtAnesthetist.setEditable(false);
+
+        txtVenous.setEditable(false);
+        txtAorticCannulae.setEditable(false);
+        txtHemofilter.setEditable(false);
+        txtAntegrade.setEditable(false);
+        txtRetrograde.setEditable(false);
+        txtSumpVent.setEditable(false);
+        txtConnectors.setEditable(false);
+
+        txtHeight.setEditable(false);
+        txtWeight.setEditable(false);
+        txtHb.setEditable(false);
+        txtSurArea.setEditable(false);
+        txtBloodGroup.setEditable(false);
+        txtBloodFlow.setEditable(false);
+
+        txtAortic.setEditable(false);
+        txtMitral.setEditable(false);
+        txtPulmonary.setEditable(false);
+        txtValve.setEditable(false);
+        txtDiabetic.setEditable(false);
+        txtAllergies.setEditable(false);
+        txtUrea.setEditable(false);
+        txtCreatinine.setEditable(false);
+        txtEF.setEditable(false);
+        txtLMS.setEditable(false);
+        txtHBsAntiHcv.setEditable(false);
+        txtOtherPer.setEditable(false);
+
+        txtHartmanns.setEditable(false);
+        txtHeparin.setEditable(false);
+        txtMannitol.setEditable(false);
+        txtBloodRbc.setEditable(false);
+    }
 }
