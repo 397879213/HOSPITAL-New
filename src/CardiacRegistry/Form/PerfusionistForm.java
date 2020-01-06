@@ -3,6 +3,7 @@ package CardiacRegistry.Form;
 import CardiacRegistry.BO.PerfusionistBO;
 import CardiacRegistry.Controller.PerfusionistController;
 import CardiacRegistry.TableModel.PerfusionBloodGasesTableModel;
+import CardiacRegistry.TableModel.PerfusionCheckListTableModel;
 import CardiacRegistry.TableModel.PerfusionGraphTableModel;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
 
     List<PerfusionistBO> listBG = new ArrayList();
     List<PerfusionistBO> listPerGraph = new ArrayList();
+    List<PerfusionistBO> listPerCheckList = new ArrayList();
 
     public PerfusionistForm() {
 
@@ -40,6 +42,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         btnGraph.setMnemonic(KeyEvent.VK_G);
         selectPerfusionGraph();
         selectPerfusionInfo();
+        selectPerfusionCheckList();
         selectBloodGases();
     }
 
@@ -2449,7 +2452,18 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblCheckListMouseEntered
 
     private void tblCheckListMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCheckListMouseReleased
-
+        // TODO add your handling code here:
+        objCheckList = listPerCheckList.get(tblCheckList.getSelectedRow());
+        objCheckList.setChecked("N");
+        if(tblCheckList.getValueAt(tblCheckList.getSelectedRow(), 2).equals(true)){
+            objCheckList.setChecked("Y");
+        }
+        if(ctlPerfusionist.updateCheckList(objCheckList)){
+            selectPerfusionCheckList();
+        }else{
+            JOptionPane.showMessageDialog(null, "Unable to update Check List.\n"
+                    + "Kindly Contact Support Team.");
+        }
     }//GEN-LAST:event_tblCheckListMouseReleased
 
     private void tblCheckListPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblCheckListPropertyChange
@@ -3231,6 +3245,37 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         TableColumn column = null;
         for (int i = 0; i < tblGraph.getColumnCount(); i++) {
             column = tblGraph.getColumnModel().getColumn(i);
+            if (i == 0) {
+                column.setPreferredWidth(25);
+            } else if (i == 1) {
+                column.setPreferredWidth(120);
+            } else if (i == 2) {
+                column.setPreferredWidth(120);
+            }
+        }
+    }
+    
+    private void selectPerfusionCheckList(){
+        listPerCheckList = ctlPerfusionist.selectPerfusionCheckList(cardiacId, 
+                patientId);
+        if (listPerCheckList.isEmpty()) {
+            List<PerfusionistBO> listPerCheckList = new ArrayList<>();
+            listBG.add(new PerfusionistBO());
+            tblCheckList.setModel(new PerfusionCheckListTableModel(listPerCheckList));
+            return;
+        }
+        tblCheckList.setModel(new PerfusionCheckListTableModel(listPerCheckList));
+        ListSelectionModel selectionModel = tblCheckList.getSelectionModel();
+        tblCheckList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        setPerfusionCheckListColumnsWidths();
+        selectionModel.setSelectionInterval(0, 0);
+        Constants.tablelook.setJTableEnvironment(tblCheckList);
+    }
+    
+    private void setPerfusionCheckListColumnsWidths() {
+        TableColumn column = null;
+        for (int i = 0; i < tblCheckList.getColumnCount(); i++) {
+            column = tblCheckList.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(25);
             } else if (i == 1) {

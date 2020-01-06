@@ -704,4 +704,20 @@ public class PerfusionistBO {
         this.perfusionGraphId = perfusionGraphId;
     }
 
+    public String getCheckListPK() {
+        return checkListPK;
+    }
+
+    public void setCheckListPK(String checkListPK) {
+        this.checkListPK = checkListPK;
+    }
+
+    public String getCheckListDescription() {
+        return checkListDescription;
+    }
+
+    public void setCheckListDescription(String checkListDescription) {
+        this.checkListDescription = checkListDescription;
+    }
+
 }

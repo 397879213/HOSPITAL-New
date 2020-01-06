@@ -76,6 +76,23 @@ public class PerfusionistController {
         return ret;
     }
 
+    public List<PerfusionistBO> selectPerfusionCheckList(String cardiacId,
+            String patientId) {
+        return hdlPerfusionist.selectPerfusionCheckList(cardiacId, patientId);
+    }
+    
+    public boolean updateCheckList(PerfusionistBO objUpdt) {
+        boolean ret = hdlPerfusionist.updateCheckList(objUpdt);
+        if (ret) {
+            Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
+        
+    
     public List<PerfusionistBO> selectBloodGases(String cardiacId) {
         return hdlPerfusionist.selectBloodGases(cardiacId);
     }
