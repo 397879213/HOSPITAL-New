@@ -11,7 +11,7 @@ package CardiacRegistry.BO;
  */
 public class PerfusionistBO {
     
-    private String cardiacRegistryId = "";
+    private String cardiacId = "";
     private String perfusionId = "";
     private String perfusionistId = "";
     private String patientId = "";
@@ -69,6 +69,14 @@ public class PerfusionistBO {
     private String finalBy = "";
     private String finalDate = "";
     private String finalTerminalId = "";
+    
+    // Check List
+    private String checkListId = "";
+    private String checked = "";
+    
+    // Pressure Time Graph
+    private String perPressure = "";
+    private String timeMin = "";
     
     // Blood    Gasses
     private String bloodGasesId = "";
@@ -254,12 +262,12 @@ public class PerfusionistBO {
         this.perfusionId = perfusionId;
     }
 
-    public String getCardiacRegistryId() {
-        return cardiacRegistryId;
+    public String getCardiacId() {
+        return cardiacId;
     }
 
-    public void setCardiacRegistryId(String cardiacRegistryId) {
-        this.cardiacRegistryId = cardiacRegistryId;
+    public void setCardiacId(String cardiacId) {
+        this.cardiacId = cardiacId;
     }
 
     public String getBloodGasesId() {
@@ -653,4 +661,37 @@ public class PerfusionistBO {
     public void setIsFinal(String isFinal) {
         this.isFinal = isFinal;
     }
+
+    public String getCheckListId() {
+        return checkListId;
+    }
+
+    public void setCheckListId(String checkListId) {
+        this.checkListId = checkListId;
+    }
+
+    public String getChecked() {
+        return checked;
+    }
+
+    public void setChecked(String checked) {
+        this.checked = checked;
+    }
+
+    public String getPerPressure() {
+        return perPressure;
+    }
+
+    public void setPerPressure(String perPressure) {
+        this.perPressure = perPressure;
+    }
+
+    public String getTimeMin() {
+        return timeMin;
+    }
+
+    public void setTimeMin(String timeMin) {
+        this.timeMin = timeMin;
+    }
+    
 }

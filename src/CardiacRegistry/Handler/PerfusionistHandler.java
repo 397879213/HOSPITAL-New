@@ -23,18 +23,18 @@ public class PerfusionistHandler {
         String[] columns = {Database.DCMS.perfusionInformation, "ID", "CARDIAC_ID",
             "PATIENT_ID", "PERFUSIONNIST_ID", "ASSISTANT_PERFUSIONNIST_ID", "SURGEON_ID",
             "ASSISTANT_ID", "ANESTHESIST_ID", "HEPARINIZED", "REDO", "OPERATION_ID",
-            "OXYGENATOR", "CPG_SYSTEM", "IAB_CATHER", "IAB_CATHER_TIME","VENOUS", 
+            "OXYGENATOR", "CPG_SYSTEM", "IAB_CATHER", "IAB_CATHER_TIME", "VENOUS",
             "ANTEGRADE", "CANN_AORTIC", "RETROGRADE", "HEMOFILTER", "SUMP_VENT",
-            "CONNECTORS", "AORTIC", "MITRAL", "PULMONARY", "VALVE", "UREA", 
-            "CREATININE", "EF", "LMS", "HBS_HCV", "DIABETIC", "ALLERGIES", "OTHER", 
+            "CONNECTORS", "AORTIC", "MITRAL", "PULMONARY", "VALVE", "UREA",
+            "CREATININE", "EF", "LMS", "HBS_HCV", "DIABETIC", "ALLERGIES", "OTHER",
             "HEIGHT", "WEIGHT", "HB", "SURFACE_AREA", "BLOOD_FLOW", "BLOOD_GROUP_ID",
             "HARTMANNS", "HEPARIN", "MANNITOL", "BLOOD_RBC", "CRTD_BY", "CRTD_DATE",
             "CRTD_TERMINAL_ID"};
 
         HashMap map = new HashMap();
 
-        map.put("ID", "'" + insert.getPerfusionId()+ "'");
-        map.put("CARDIAC_ID", "'" + insert.getCardiacRegistryId() + "'");
+        map.put("ID", "'" + insert.getPerfusionId() + "'");
+        map.put("CARDIAC_ID", "'" + insert.getCardiacId() + "'");
         map.put("PATIENT_ID", "'" + insert.getPatientId() + "'");
         map.put("PERFUSIONNIST_ID", "'" + insert.getPerfusionistId() + "'");
         map.put("ASSISTANT_PERFUSIONNIST_ID", "'" + insert.getAsstPerfusionistId() + "'");
@@ -46,8 +46,8 @@ public class PerfusionistHandler {
         map.put("OPERATION_ID", "'" + insert.getOperationId() + "'");
         map.put("OXYGENATOR", "'" + insert.getOxygenator() + "'");
         map.put("CPG_SYSTEM", "'" + insert.getCpgSystem() + "'");
-        map.put("IAB_CATHER", "'" + insert.getIABCatheter()+ "'");
-        map.put("IAB_CATHER_TIME", "'" + insert.getIABCatheterTime()+ "'");
+        map.put("IAB_CATHER", "'" + insert.getIABCatheter() + "'");
+        map.put("IAB_CATHER_TIME", "'" + insert.getIABCatheterTime() + "'");
         map.put("VENOUS", "'" + insert.getVenous() + "'");
         map.put("ANTEGRADE", "'" + insert.getAntegrade() + "'");
         map.put("CANN_AORTIC", "'" + insert.getAorticCannulae() + "'");
@@ -99,8 +99,8 @@ public class PerfusionistHandler {
                 + " OPERATION_ID = '" + update.getOperationId() + "',\n"
                 + " OXYGENATOR = '" + update.getOxygenator() + "',\n"
                 + " CPG_SYSTEM = '" + update.getCpgSystem() + "',\n"
-                + " IAB_CATHER = '" + update.getIABCatheter()+ "',\n"
-                + " IAB_CATHER_TIME = '" + update.getIABCatheterTime()+ "',\n"
+                + " IAB_CATHER = '" + update.getIABCatheter() + "',\n"
+                + " IAB_CATHER_TIME = '" + update.getIABCatheterTime() + "',\n"
                 + " VENOUS = '" + update.getVenous() + "',\n"
                 + " ANTEGRADE = '" + update.getAntegrade() + "',\n"
                 + " CANN_AORTIC = '" + update.getAorticCannulae() + "',\n"
@@ -130,10 +130,10 @@ public class PerfusionistHandler {
                 + " HEPARIN = '" + update.getHeparin() + "',\n"
                 + " MANNITOL = '" + update.getMannitol() + "',\n"
                 + " BLOOD_RBC = '" + update.getBloodRBC() + "',\n"
-                + " IS_FINAL = '" + update.getIsFinal()+ "',\n"
-                + " FINAL_BY = '" + update.getFinalBy()+ "',\n"
-                + " FINAL_DATE = " + update.getFinalDate()+ ",\n"
-                + " FINAL_TERMINAL_ID = '" + update.getFinalTerminalId()+ "'\n"
+                + " IS_FINAL = '" + update.getIsFinal() + "',\n"
+                + " FINAL_BY = '" + update.getFinalBy() + "',\n"
+                + " FINAL_DATE = " + update.getFinalDate() + ",\n"
+                + " FINAL_TERMINAL_ID = '" + update.getFinalTerminalId() + "'\n"
                 + " WHERE ID = '" + update.getPerfusionId() + "'\n";
 
         return Constants.dao.executeUpdate(query, false);
@@ -145,11 +145,11 @@ public class PerfusionistHandler {
             "PERFUSIONNIST_NAME", "ASST_PERFUSIONNIST_ID", "SURGEON_ID", "SURGEON_NAME",
             "ASSISTANT_PERFUSIONNIST_NAME", "ASSISTANT_ID", "ASSISTANT_NAME",
             "ANESTHESIST_ID", "ANESTHESIST_NAME", "HEPARINIZED", "REDO", "OPERATION_ID",
-            "OPERATION_DESC", "OXYGENATOR", "CPG_SYSTEM", "IAB_CATHER", 
+            "OPERATION_DESC", "OXYGENATOR", "CPG_SYSTEM", "IAB_CATHER",
             "IAB_CATHER_TIME", "VENOUS", "ANTEGRADE", "CANN_AORTIC", "RETROGRADE",
             "HEMOFILTER", "SUMP_VENT", "CONNECTORS", "AORTIC", "MITRAL", "PULMONARY",
-            "VALVE", "UREA", "CREATININE", "EF", "LMS", "HBS_HCV", "DIABETIC", 
-            "ALLERGIES", "OTHER", "HEIGHT", "WEIGHT", "HB", "SURFACE_AREA", 
+            "VALVE", "UREA", "CREATININE", "EF", "LMS", "HBS_HCV", "DIABETIC",
+            "ALLERGIES", "OTHER", "HEIGHT", "WEIGHT", "HB", "SURFACE_AREA",
             "BLOOD_FLOW", "BLOOD_GROUP_ID", "BLOOD_GROUP_DESC",
             "HARTMANNS", "HEPARIN", "MANNITOL", "BLOOD_RBC", "CRTD_DATE",
             "CRTD_BY", "CRTD_TERMINAL_ID", "IS_FINAL"};
@@ -238,7 +238,7 @@ public class PerfusionistHandler {
 
         objData.setPerfusionId(map.get("ID").toString());
         objData.setPatientId(map.get("PATIENT_ID").toString());
-        objData.setCardiacRegistryId(map.get("CARDIAC_ID").toString());
+        objData.setCardiacId(map.get("CARDIAC_ID").toString());
         objData.setPerfusionistId(map.get("PERFUSIONNIST_ID").toString());
         objData.setPerfusionistName(map.get("PERFUSIONNIST_NAME").toString());
         objData.setSurgeonId(map.get("SURGEON_ID").toString());
@@ -294,6 +294,28 @@ public class PerfusionistHandler {
         return objData;
     }
 
+    public boolean insertPerfusionPressureGraph(PerfusionistBO perGraph) {
+
+        String[] columns = {Database.DCMS.perfusionPressureGraph, "ID", "CARDIAC_ID",
+            "PATIENT_ID", "PER_PRESSURE", "TIME_MIN", "CRTD_BY", "CRTD_DATE",
+            "CRTD_TERMINAL_ID"};
+
+        HashMap map = new HashMap();
+        map.put("ID", " (SELECT NVL(MAX(ID)+1, 1) ID FROM "
+                + Database.DCMS.perfusionPressureGraph + ")");
+        map.put("CARDIAC_ID", "'" + perGraph.getCardiacId() + "'");
+        map.put("PATIENT_ID", "'" + perGraph.getPatientId() + "'");
+        map.put("PER_PRESSURE", "'" + perGraph.getPerPressure() + "'");
+        map.put("TIME_MIN", "'" + perGraph.getTimeMin() + "'");
+        map.put("CRTD_BY", "'" + Constants.userId + "'");
+        map.put("CRTD_DATE", Constants.today);
+        map.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
+
+        List InsertEmp = new ArrayList();
+        InsertEmp.add(map);
+        return Constants.dao.insertData(InsertEmp, columns);
+    }
+
     public List<PerfusionistBO> selectBloodGases(String cardiacId) {
 
         String columns[] = {"-", "ID", "CARDIAC_ID", "BG_ID", "BLOOD_GASSES",
@@ -325,7 +347,7 @@ public class PerfusionistHandler {
             PerfusionistBO objData = new PerfusionistBO();
 
             objData.setBloodGasesId(map.get("ID").toString());
-            objData.setCardiacRegistryId(map.get("CARDIAC_ID").toString());
+            objData.setCardiacId(map.get("CARDIAC_ID").toString());
             objData.setBloodGasesId(map.get("BG_ID").toString());
             objData.setBloodGasesDescription(map.get("BLOOD_GASSES").toString());
             objData.setOnVent(map.get("ON_VENT").toString());

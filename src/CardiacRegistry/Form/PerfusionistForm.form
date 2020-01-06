@@ -153,11 +153,11 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnSave" min="-2" pref="95" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jButton4" min="-2" pref="103" max="-2" attributes="0"/>
+                  <Component id="btnGraph" min="-2" pref="103" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnFinal" min="-2" pref="103" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jButton2" min="-2" pref="95" max="-2" attributes="0"/>
+                  <Component id="btnExit" min="-2" pref="95" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -168,10 +168,10 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnClear" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnExit" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnFinal" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnSave" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnGraph" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -190,7 +190,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClearActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="btnExit">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="1"/>
@@ -223,7 +223,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton4">
+        <Component class="javax.swing.JButton" name="btnGraph">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="1"/>
@@ -1838,11 +1838,11 @@
                               <Group type="102" attributes="0">
                                   <Component id="jLabel59" min="-2" pref="45" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtMemberId10" min="-2" pref="193" max="-2" attributes="3"/>
+                                  <Component id="txtSelectDrug" min="-2" pref="193" max="-2" attributes="3"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel71" min="-2" pref="98" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtMemberId47" pref="65" max="32767" attributes="3"/>
+                                  <Component id="txtQuantity" pref="65" max="32767" attributes="3"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -1855,8 +1855,8 @@
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel59" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtMemberId10" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
-                              <Component id="txtMemberId47" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtSelectDrug" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtQuantity" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel71" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1878,24 +1878,24 @@
                     <Property name="text" type="java.lang.String" value="Drug : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId10">
+                <Component class="javax.swing.JTextField" name="txtSelectDrug">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId10ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSelectDrugActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId47">
+                <Component class="javax.swing.JTextField" name="txtQuantity">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId47ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtQuantityActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel71">
@@ -2021,15 +2021,15 @@
                       <Component id="jScrollPane29" pref="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jComboBox3" max="32767" attributes="0"/>
+                          <Component id="cboTimeManag" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel63" min="-2" pref="35" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtMemberId50" min="-2" pref="108" max="-2" attributes="3"/>
+                          <Component id="txtOnTime" min="-2" pref="108" max="-2" attributes="3"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel64" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtMemberId51" min="-2" pref="81" max="-2" attributes="3"/>
+                          <Component id="txtOffTime" min="-2" pref="81" max="-2" attributes="3"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -2039,10 +2039,10 @@
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel63" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtMemberId50" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtOnTime" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel64" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtMemberId51" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
-                              <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtOffTime" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="cboTimeManag" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jScrollPane29" pref="125" max="32767" attributes="0"/>
@@ -2058,7 +2058,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="tblPatientInfo">
+                    <Component class="javax.swing.JTable" name="tblTimeManagement">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d1" green="b4" id="Active Caption" palette="2" red="99" type="palette"/>
@@ -2068,11 +2068,11 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPatientInfoMouseClicked"/>
-                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPatientInfoMouseEntered"/>
-                        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPatientInfoMouseReleased"/>
-                        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tblPatientInfoPropertyChange"/>
-                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tblPatientInfoKeyReleased"/>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblTimeManagementMouseClicked"/>
+                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblTimeManagementMouseEntered"/>
+                        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblTimeManagementMouseReleased"/>
+                        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tblTimeManagementPropertyChange"/>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tblTimeManagementKeyReleased"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -2089,14 +2089,14 @@
                     <Property name="text" type="java.lang.String" value="ON : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId50">
+                <Component class="javax.swing.JTextField" name="txtOnTime">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId50ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtOnTimeActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel64">
@@ -2111,17 +2111,17 @@
                     <Property name="text" type="java.lang.String" value="OFF : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId51">
+                <Component class="javax.swing.JTextField" name="txtOffTime">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId51ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtOffTimeActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox3">
+                <Component class="javax.swing.JComboBox" name="cboTimeManag">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Bypass Time&quot;, &quot;X-Clamp time&quot;, &quot;Circ. Arrest Time&quot;, &quot;Rewarming Time&quot; })" type="code"/>
@@ -2158,11 +2158,11 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel65" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                          <Component id="txtMemberId52" min="-2" pref="82" max="-2" attributes="3"/>
+                          <Component id="txtPressure" min="-2" pref="82" max="-2" attributes="3"/>
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Component id="jLabel66" min="-2" pref="73" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtMemberId53" min="-2" pref="88" max="-2" attributes="3"/>
+                          <Component id="txtTime" min="-2" pref="88" max="-2" attributes="3"/>
                           <EmptySpace pref="19" max="32767" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane30" alignment="1" pref="0" max="32767" attributes="0"/>
@@ -2174,9 +2174,9 @@
                           <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel65" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtMemberId52" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtPressure" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel66" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtMemberId53" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtTime" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jScrollPane30" pref="0" max="32767" attributes="0"/>
@@ -2197,14 +2197,14 @@
                     <Property name="text" type="java.lang.String" value="Pressure : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId52">
+                <Component class="javax.swing.JTextField" name="txtPressure">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId52ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPressureActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel66">
@@ -2219,14 +2219,14 @@
                     <Property name="text" type="java.lang.String" value="Time (min) : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtMemberId53">
+                <Component class="javax.swing.JTextField" name="txtTime">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId53ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTimeActionPerformed"/>
                   </Events>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane30">
@@ -2236,7 +2236,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="tblPatientInfo1">
+                    <Component class="javax.swing.JTable" name="tblGraph">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d1" green="b4" id="Active Caption" palette="2" red="99" type="palette"/>
@@ -2246,11 +2246,11 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPatientInfo1MouseClicked"/>
-                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPatientInfo1MouseEntered"/>
-                        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPatientInfo1MouseReleased"/>
-                        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tblPatientInfo1PropertyChange"/>
-                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tblPatientInfo1KeyReleased"/>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblGraphMouseClicked"/>
+                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblGraphMouseEntered"/>
+                        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblGraphMouseReleased"/>
+                        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tblGraphPropertyChange"/>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tblGraphKeyReleased"/>
                       </Events>
                     </Component>
                   </SubComponents>
