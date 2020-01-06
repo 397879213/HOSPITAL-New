@@ -316,6 +316,45 @@ public class PerfusionistHandler {
         return Constants.dao.insertData(InsertEmp, columns);
     }
 
+    public List<PerfusionistBO> selectPerfusionPressureGraph(String cardiacId,
+            String patientId) {
+
+        String columns[] = {"-", "ID", "CARDIAC_ID", "PATIENT_ID", "PER_PRESSURE",
+            "TIME_MIN", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
+
+        String query
+                = "SELECT PPG.ID,\n"
+                + "       PPG.CARDIAC_ID,\n"
+                + "       PPG.PATIENT_ID,\n"
+                + "       PPG.PER_PRESSURE,\n"
+                + "       PPG.TIME_MIN,\n"
+                + "       PPG.CRTD_BY,\n"
+                + "       PPG.CRTD_DATE,\n"
+                + "       PPG.CRTD_TERMINAL_ID\n"
+                + "  FROM " + Database.DCMS.perfusionPressureGraph + " PPG\n"
+                + "  WHERE PPG.PATIENT_ID = '" + patientId + "'\n"
+                + "  AND PPG.CARDIAC_ID = '" + cardiacId + "'\n";
+
+        List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
+        List<PerfusionistBO> lisPatient = new ArrayList();
+        for (int i = 0; i < listmap.size(); i++) {
+
+            HashMap map = (HashMap) listmap.get(i);
+            PerfusionistBO objData = new PerfusionistBO();
+
+            objData.setPerfusionGraphId(map.get("ID").toString());
+            objData.setCardiacId(map.get("CARDIAC_ID").toString());
+            objData.setPatientId(map.get("PATIENT_ID").toString());
+            objData.setPerPressure(map.get("PER_PRESSURE").toString());
+            objData.setTimeMin(map.get("TIME_MIN").toString());
+            objData.setCrtdBy(map.get("CRTD_BY").toString());
+            objData.setCrtdDate(map.get("CRTD_DATE").toString());
+            objData.setCrtdTerminalId(map.get("CRTD_TERMINAL_ID").toString());
+            lisPatient.add(objData);
+        }
+        return lisPatient;
+    }
+
     public List<PerfusionistBO> selectBloodGases(String cardiacId) {
 
         String columns[] = {"-", "ID", "CARDIAC_ID", "BG_ID", "BLOOD_GASSES",

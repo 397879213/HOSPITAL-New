@@ -75,6 +75,7 @@ public class PerfusionistBO {
     private String checked = "";
     
     // Pressure Time Graph
+    private String perfusionGraphId = "";
     private String perPressure = "";
     private String timeMin = "";
     
@@ -692,6 +693,14 @@ public class PerfusionistBO {
 
     public void setTimeMin(String timeMin) {
         this.timeMin = timeMin;
+    }
+
+    public String getPerfusionGraphId() {
+        return perfusionGraphId;
+    }
+
+    public void setPerfusionGraphId(String perfusionGraphId) {
+        this.perfusionGraphId = perfusionGraphId;
     }
     
 }

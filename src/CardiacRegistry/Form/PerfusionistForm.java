@@ -3,6 +3,7 @@ package CardiacRegistry.Form;
 import CardiacRegistry.BO.PerfusionistBO;
 import CardiacRegistry.Controller.PerfusionistController;
 import CardiacRegistry.TableModel.PerfusionBloodGasesTableModel;
+import CardiacRegistry.TableModel.PerfusionGraphTableModel;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private String bloodGroupId = "";
 
     List<PerfusionistBO> listBG = new ArrayList();
+    List<PerfusionistBO> listPerGraph = new ArrayList();
 
     public PerfusionistForm() {
 
@@ -41,6 +43,8 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     }
 
     DisplayLOV lov = new DisplayLOV();
+    PerfusionistBO objCheckList = new PerfusionistBO();
+    PerfusionistBO objPerfusionGraph = new PerfusionistBO();
     PerfusionistBO perfusionInfo = new PerfusionistBO();
     PerfusionistBO objPerfusionist = new PerfusionistBO();
     PerfusionistController ctlPerfusionist = new PerfusionistController();
@@ -2501,6 +2505,16 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
 
     private void txtTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimeActionPerformed
         // TODO add your handling code here:
+        objPerfusionGraph.setCardiacId(cardiacId);
+        objPerfusionGraph.setPatientId(patientId);
+        objPerfusionGraph.setPerPressure(txtPressure.getText().trim());
+        objPerfusionGraph.setTimeMin(txtTime.getText().trim());
+        if(ctlPerfusionist.insertPerfusionPressureGraph(objPerfusionGraph)){
+            JOptionPane.showMessageDialog(null, "Save succesfully");
+            selectPerfusionGraph();
+        }else{
+            JOptionPane.showMessageDialog(null, "Unable to save");
+        }
     }//GEN-LAST:event_txtTimeActionPerformed
 
     private void tblGraphMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblGraphMouseClicked
@@ -3179,5 +3193,36 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
             txtAnesthetist.requestFocus();
         }
         return ret;
+    }
+    
+    private void selectPerfusionGraph(){
+        listPerGraph = ctlPerfusionist.selectPerfusionPressureGraph(cardiacId,
+                patientId);
+        if (listPerGraph.isEmpty()) {
+            List<PerfusionistBO> listPerGraph = new ArrayList<>();
+            listBG.add(new PerfusionistBO());
+            tblGraph.setModel(new PerfusionGraphTableModel(listPerGraph));
+            return;
+        }
+        tblGraph.setModel(new PerfusionGraphTableModel(listPerGraph));
+        ListSelectionModel selectionModel = tblGraph.getSelectionModel();
+        tblGraph.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        setPerfusionGraphColumnsWidths();
+        selectionModel.setSelectionInterval(0, 0);
+        Constants.tablelook.setJTableEnvironment(tblGraph);
+    }
+    
+    private void setPerfusionGraphColumnsWidths() {
+        TableColumn column = null;
+        for (int i = 0; i < tblGraph.getColumnCount(); i++) {
+            column = tblGraph.getColumnModel().getColumn(i);
+            if (i == 0) {
+                column.setPreferredWidth(25);
+            } else if (i == 1) {
+                column.setPreferredWidth(120);
+            } else if (i == 2) {
+                column.setPreferredWidth(60);
+            } 
+        }
     }
 }

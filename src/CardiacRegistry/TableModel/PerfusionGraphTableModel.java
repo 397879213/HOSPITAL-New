@@ -4,29 +4,25 @@
  */
 package CardiacRegistry.TableModel;
 
-import CardiacRegistry.BO.CardiacRegistryCathProcedure;
+import CardiacRegistry.BO.PerfusionistBO;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
-public class ProcedureDetailTableModel extends AbstractTableModel {
+public class PerfusionGraphTableModel extends AbstractTableModel {
 
     private final String[] columnNames
-            = {"Procedure Type", "Proc. Name","Date", "Institute", 
-                "Performing Phy", "Is Save"};
+            = {"Sr.", "Per. Pressure", "Time(min)"};
     private final Object[][] data;
 
-    public ProcedureDetailTableModel(List<CardiacRegistryCathProcedure> liInfo) {
+    public PerfusionGraphTableModel(List<PerfusionistBO> liInfo) {
         data = new Object[liInfo.size()][columnNames.length];
 
         int row = 0;
 
-        for (CardiacRegistryCathProcedure currentinfo : liInfo) {
-            data[row][0] = currentinfo.getProcedureType();
-            data[row][1] = currentinfo.getProcedureDescription();
-            data[row][2] = currentinfo.getDateOfProcedure();
-            data[row][3] = currentinfo.getInstituteDescription();
-            data[row][4] = currentinfo.getPerformingPhysicianName();
-            data[row][5] = "is Save";
+        for (PerfusionistBO currentinfo : liInfo) {
+            data[row][0] = (row+1);
+            data[row][1] = currentinfo.getPerPressure();
+            data[row][2] = currentinfo.getTimeMin();
             row++;
 
         }
@@ -70,8 +66,11 @@ public class ProcedureDetailTableModel extends AbstractTableModel {
     @Override
     public boolean isCellEditable(int row, int col) {
         //no matter where the cell appears onscreen
-        return false;
+        if (col > 0) {
 
+            return true;
+        }
+        return false;
     }
     /*
      * Don't need to implement this method unless your table's

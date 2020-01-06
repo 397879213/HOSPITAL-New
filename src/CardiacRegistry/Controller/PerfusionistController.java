@@ -18,37 +18,54 @@ import utilities.Keys;
  * @author admin
  */
 public class PerfusionistController {
-    
+
     GenerateKeys key = new GenerateKeys();
     PerfusionistHandler hdlPerfusionist = new PerfusionistHandler();
-    
+
     public PerfusionistBO selectPerfusionInfo(String cardiacId, String patientId) {
         return hdlPerfusionist.selectPerfusionInfo(cardiacId, patientId);
     }
-    
+
     public boolean insertPerfusionInformation(PerfusionistBO insert) {
         insert.setPerfusionId(key.generatePrimaryKey(Keys.cardiacPerfusionIdPk, true));
         boolean ret = hdlPerfusionist.insertPerfusionInformation(insert);
-        if(ret){
+        if (ret) {
             Constants.dao.commitTransaction();
         }
-        if(!ret){
+        if (!ret) {
             Constants.dao.rollBack();
         }
         return ret;
     }
-    
+
     public boolean updatePerfusionInformation(PerfusionistBO update) {
         boolean ret = hdlPerfusionist.updatePerfusionInformation(update);
-        if(ret){
+        if (ret) {
             Constants.dao.commitTransaction();
         }
-        if(!ret){
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
+
+    public boolean insertPerfusionPressureGraph(PerfusionistBO perGraph) {
+        boolean ret = hdlPerfusionist.insertPerfusionPressureGraph(perGraph);
+        if (ret) {
+            Constants.dao.commitTransaction();
+        }
+        if (!ret) {
             Constants.dao.rollBack();
         }
         return ret;
     }
     
+    public List<PerfusionistBO> selectPerfusionPressureGraph(String cardiacId,
+            String patientId) {
+        return hdlPerfusionist.selectPerfusionPressureGraph(cardiacId, patientId);
+    }
+        
+
     public List<PerfusionistBO> selectBloodGases(String cardiacId) {
         return hdlPerfusionist.selectBloodGases(cardiacId);
     }
