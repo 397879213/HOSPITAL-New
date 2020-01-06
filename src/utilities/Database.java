@@ -29,6 +29,7 @@ public class Database {
         public static final String echoCardiography = DAO.username + ".ECHO_CARDIOGRAPHY ";
         public static final String perfusionInformation = DAO.username + ".CARDIAC_REGISTRY_PERFUSION ";
         public static final String perfusionPressureGraph = DAO.username + ".PERFUSION_PRESSURE_GRAPH ";
+        public static final String perfusionCheckList = DAO.username + ".PERFUSIONIST_CHECK_LIST ";
         public static final String perfusionBloodGases = DAO.username + ".BLOOD_GASES ";
 
         public static final String member = DAO.usernameEmr + ".MEMBER   ";

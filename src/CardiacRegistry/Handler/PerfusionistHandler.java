@@ -377,8 +377,8 @@ public class PerfusionistHandler {
                 + "       PCL.CRTD_DATE,\n"
                 + "       PCL.CRTD_BY,\n"
                 + "       PCL.CRTD_TERMINAL_ID\n"
-                + "  FROM " + Database.DCMS.perfusionPressureGraph + "  PCL,\n"
-                + Database.DCMS.perfusionPressureGraph + " CLI\n"
+                + "  FROM " + Database.DCMS.perfusionCheckList + "  PCL,\n"
+                + Database.DCMS.definitionTypeDetail + " CLI\n"
                 + "  WHERE PCL.PATIENT_ID = '" + patientId + "'\n"
                 + "  AND PCL.CARDIAC_ID = '" + cardiacId + "'\n"
                 + "  AND PCL.CHK_LIST_ID = CLI.ID\n";
@@ -406,7 +406,7 @@ public class PerfusionistHandler {
 
     public boolean updateCheckList(PerfusionistBO objUpdt) {
         String query
-                = " UPDATE " + Database.DCMS.perfusionPressureGraph + "\n"
+                = " UPDATE " + Database.DCMS.perfusionCheckList + "\n"
                 + " SET CHECKED = " + objUpdt.getChecked() + "\n"
                 + " WHERE ID = " + objUpdt.getCheckListPK() + "\n"
                 + " AND CHK_LIST_ID = " + objUpdt.getCheckListId() + "\n";
