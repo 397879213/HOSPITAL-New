@@ -420,6 +420,12 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
             }
         });
 
+        txtIabCatheterTime.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIabCatheterTimeActionPerformed(evt);
+            }
+        });
+
         jLabel93.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel93.setForeground(new java.awt.Color(102, 0, 0));
         jLabel93.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -2581,6 +2587,9 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
+        if(!chkInformation()){
+            return;
+        }
         objPerfusionist.setIsFinal("N");
         objPerfusionist.setFinalBy("");
         objPerfusionist.setFinalTerminalId("");
@@ -2605,6 +2614,9 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
 
     private void btnFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalActionPerformed
         // TODO add your handling code here:
+        if(!chkInformation()){
+            return;
+        }
         int confirmation = JOptionPane.showConfirmDialog(null, "You Are Going "
                 + "To Final the information. \nDo you want to Final?");
         if (confirmation != 0) {
@@ -2616,6 +2628,11 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         objPerfusionist.setFinalDate(Constants.today);
         savePerfusionInfo();
     }//GEN-LAST:event_btnFinalActionPerformed
+
+    private void txtIabCatheterTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIabCatheterTimeActionPerformed
+        // TODO add your handling code here:
+        txtSurgeon.requestFocus();
+    }//GEN-LAST:event_txtIabCatheterTimeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -2932,10 +2949,11 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     }
 
     private void selectPerfusionInfo() {
-        objPerfusionist = ctlPerfusionist.selectPerfusionInfo(cardiacId, patientId);
-        if (objPerfusionist == null) {
+        perfusionInfo = ctlPerfusionist.selectPerfusionInfo(cardiacId, patientId);
+        if (perfusionInfo == null) {
             return;
         }
+        objPerfusionist = perfusionInfo;
         patientId = objPerfusionist.getPatientId();
         cardiacId = objPerfusionist.getCardiacRegistryId();
         asstSurgeonId = objPerfusionist.getAssistantSurgeonId();
@@ -3046,6 +3064,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     }
 
     private void savePerfusionInfo() {
+        
         setPerfusionInfo();
         if (perfusionInfo == null) {
             if (ctlPerfusionist.insertPerfusionInformation(objPerfusionist)) {
@@ -3076,11 +3095,11 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         txtPerfusionist.setEditable(false);
         txtAsstPerfusionist.setEditable(false);
         txtHeparinized.setEditable(false);
-        cboRedo.setEditable(false);
+        cboRedo.setEnabled(false);
         txtOperation.setEditable(false);
         txtOxygenator.setEditable(false);
         txtCpgSystem.setEditable(false);
-        cboIabCatheter.setEditable(false);
+        cboIabCatheter.setEnabled(false);
         txtIabCatheterTime.setEditable(false);
         txtSurgeon.setEditable(false);
         txtAsstSurgeon.setEditable(false);
@@ -3118,5 +3137,41 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         txtHeparin.setEditable(false);
         txtMannitol.setEditable(false);
         txtBloodRbc.setEditable(false);
+    }
+    
+    private boolean chkInformation(){
+        boolean ret = true;
+        if(cboIabCatheter.getSelectedIndex() == 0 && 
+                txtIabCatheterTime.getText().trim().length() == 0){
+            ret = false;
+            JOptionPane.showMessageDialog(null, "Please enter the IAB Catheter Time");
+            txtIabCatheterTime.requestFocus();
+        }
+        if(perfusionistId.equalsIgnoreCase("")){
+            ret = false;
+            JOptionPane.showMessageDialog(null, "Please Select Perfusionist.");
+            txtPerfusionist.requestFocus();
+        }
+        if(asstPerfusionistId.equalsIgnoreCase("")){
+            ret = false;
+            JOptionPane.showMessageDialog(null, "Please Select Assistant Perfusionist.");
+            txtAsstPerfusionist.requestFocus();
+        }
+        if(surgeonId.equalsIgnoreCase("")){
+            ret = false;
+            JOptionPane.showMessageDialog(null, "Please Select Surgeon.");
+            txtSurgeon.requestFocus();
+        }
+        if(asstSurgeonId.equalsIgnoreCase("")){
+            ret = false;
+            JOptionPane.showMessageDialog(null, "Please Select Assistant Surgeon.");
+            txtAsstSurgeon.requestFocus();
+        }
+        if(anesthetistId.equalsIgnoreCase("")){
+            ret = false;
+            JOptionPane.showMessageDialog(null, "Please Select Anesthetist.");
+            txtAnesthetist.requestFocus();
+        }
+        return ret;
     }
 }
