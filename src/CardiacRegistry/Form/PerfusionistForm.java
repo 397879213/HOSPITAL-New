@@ -2526,7 +2526,9 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         objPerfusionGraph.setPerPressure(txtPressure.getText().trim());
         objPerfusionGraph.setTimeMin(txtTime.getText().trim());
         if (ctlPerfusionist.insertPerfusionPressureGraph(objPerfusionGraph)) {
-            JOptionPane.showMessageDialog(null, "Save succesfully");
+            txtPressure.setText("");
+            txtTime.setText("");
+            txtPressure.requestFocus();
             selectPerfusionGraph();
         } else {
             JOptionPane.showMessageDialog(null, "Unable to save");
@@ -3281,7 +3283,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
             } else if (i == 1) {
                 column.setPreferredWidth(120);
             } else if (i == 2) {
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(60);
             }
         }
     }

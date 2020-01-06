@@ -407,7 +407,7 @@ public class PerfusionistHandler {
     public boolean updateCheckList(PerfusionistBO objUpdt) {
         String query
                 = " UPDATE " + Database.DCMS.perfusionCheckList + "\n"
-                + " SET CHECKED = " + objUpdt.getChecked() + "\n"
+                + " SET CHECKED = '" + objUpdt.getChecked() + "'\n"
                 + " WHERE ID = " + objUpdt.getCheckListPK() + "\n"
                 + " AND CHK_LIST_ID = " + objUpdt.getCheckListId() + "\n";
         return Constants.dao.executeUpdate(query, false);
