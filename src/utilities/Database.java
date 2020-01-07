@@ -20,7 +20,8 @@ public class Database {
         public static final String cardiacRegistryMaster = DAO.usernameEmr + ".CARDIAC_REGISTRY_MASTER   ";
         public static final String cardiacHistoryDetail = DAO.usernameEmr + ".CARDIAC_REGISTRY_DETAIL   ";
         public static final String cardiacProcedureDetail = DAO.usernameEmr + ".CARDIAC_PROCEDURE_DETAIL   ";
-        public static final String cathCardiacDetail = DAO.usernameEmr + ".CARDIAC_CATH_DATA   ";
+        public static final String cardiacSurgeryIntervention = DAO.usernameEmr + ".CARDIAC_SURGERY_INTERVENTION   ";
+        public static final String cathCardiacDetail = DAO.usernameEmr + ".CARDIAC_CATH_DETAIL   ";
         public static final String cardiacMedication = DAO.usernameEmr + ".CARDIAC_MEDICATION   ";
         public static final String outsidePatient = DAO.username + "." + "OUTSIDE_PATIENT ";
         public static final String outsidePatientUpdate = DAO.username + ".UPDATE_OUTSIDE_PATIENT ";
