@@ -28,7 +28,7 @@ public class RegistryCathProcedureHandler {
         HashMap map = new HashMap();
         map.put("ID", "(SELECT NVL(MAX(ID)+1, 1) ID FROM "
                 + Database.DCMS.cardiacSurgeryIntervention + ")");
-        map.put("CARDIAC_ID", "'" + insert.getCardiacRegistryId() + "'");
+        map.put("CARDIAC_ID", "'" + insert.getCardiacId() + "'");
         map.put("PROCEDURE_TYPE", "'" + insert.getProcedureType() + "'");
         map.put("PROCEDURE_ID", "'" + insert.getProcedureId() + "'");
         map.put("DATE_OF_PROCEDURE", "'" + insert.getDateOfProcedure() + "'");
@@ -47,17 +47,17 @@ public class RegistryCathProcedureHandler {
         String query
                 = " UPDATE " + Database.DCMS.cardiacSurgeryIntervention + "\n"
                 + " SET DATE_OF_PROCEDURE  = '" + cardiac.getDateOfProcedure() + "',\n"
-                + " PROCEDURE_ID = '" + cardiac.getInstituteId() + "',\n"
+                + " PROCEDURE_ID = '" + cardiac.getProcedureId() + "',\n"
                 + " PERFORMING_PHYSICIAN_ID  = '" + cardiac.getPerformingPhysicianId() + "',\n"
                 + " INSTITUTE_ID  = '" + cardiac.getInstituteId() + "'\n"
-                + " WHERE CARDIAC_ID = '" + cardiac.getCardiacRegistryId() + "' \n"
+                + " WHERE CARDIAC_ID = '" + cardiac.getCardiacId() + "' \n"
                 + " AND ID = '" + cardiac.getProcIntervId() + "' \n";
 
         return Constants.dao.executeUpdate(query, false);
     }
 
     public List<CardiacRegistryCathProcedure> selectCardiacSurgeryIntervention(
-            String cardiacId) {
+            String cardiacId, String procedureId) {
 
         String columns[] = {"-", "ID", "CARDIAC_ID", "PROCEDURE_TYPE", "PROCEDURE_ID",
             "PROCEDURE_DESC", "DATE_OF_PROCEDURE", "INSTITUTE_ID", "INSTITUTE_DESC",
@@ -84,8 +84,11 @@ public class RegistryCathProcedureHandler {
                 + Database.DCMS.definitionTypeDetail + " PCI,       \n"
                 + Database.DCMS.definitionTypeDetail + " PPI,       \n"
                 + Database.DCMS.users + " CRB                       \n"
-                + " WHERE CPD.CARDIAC_ID = " + cardiacId + "        \n"
-                + "   AND CPD.PROCEDURE_ID = PCI.ID                 \n"
+                + " WHERE CPD.CARDIAC_ID = " + cardiacId + "        \n";
+        if (!procedureId.equalsIgnoreCase("")) {
+            query += "AND CPD.PROCEDURE_ID = " + procedureId + "    \n";
+        }
+        query +=  "   AND CPD.PROCEDURE_ID = PCI.ID                 \n"
                 + "   AND CPD.INSTITUTE_ID = INS.ID                 \n"
                 + "   AND CPD.CRTD_BY = CRB.USER_NAME               \n"
                 + "   AND CPD.PERFORMING_PHYSICIAN_ID = PPI.ID      \n";
@@ -97,7 +100,7 @@ public class RegistryCathProcedureHandler {
             CardiacRegistryCathProcedure objData = new CardiacRegistryCathProcedure();
 
             objData.setProcIntervId(map.get("ID").toString());
-            objData.setCardiacRegistryId(map.get("CARDIAC_ID").toString());
+            objData.setCardiacId(map.get("CARDIAC_ID").toString());
             objData.setProcedureType(map.get("PROCEDURE_TYPE").toString());
             objData.setProcedureId(map.get("PROCEDURE_ID").toString());
             objData.setProcedureDescription(map.get("PROCEDURE_DESC").toString());
@@ -120,13 +123,13 @@ public class RegistryCathProcedureHandler {
 
         String[] columns = {Database.DCMS.cathCardiacDetail, "SURGERY_INTERVENTION_ID",
             "CARDIAC_ID", "PROCEDURE_ID", "EJECTION_FRACTION", "LEFT_MAIN_DISEASE",
-            "DISEASE_EXTENT", "LVEDP", "PAPS", "PAWP", "ANTEROBASAL", "ANTEROLATERAL", 
+            "DISEASE_EXTENT", "LVEDP", "PAPS", "PAWP", "ANTEROBASAL", "ANTEROLATERAL",
             "APICAL", "DIAPHRAGMATIC", "POSTEROBASAL", "CSS_PERFORMED", "REMARKS",
             "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
 
         HashMap map = new HashMap();
-        map.put("SURGERY_INTERVENTION_ID", "'" + insert.getProcIntervId()+ "'");
-        map.put("CARDIAC_ID", "'" + insert.getCardiacRegistryId() + "'");
+        map.put("SURGERY_INTERVENTION_ID", "'" + insert.getProcIntervId() + "'");
+        map.put("CARDIAC_ID", "'" + insert.getCardiacId() + "'");
         map.put("PROCEDURE_ID", "'" + insert.getProcedureId() + "'");
         map.put("EJECTION_FRACTION", "'" + insert.getEjectionFraction() + "'");
         map.put("LEFT_MAIN_DISEASE", "'" + insert.getLeftMainDisease() + "'");
@@ -166,23 +169,25 @@ public class RegistryCathProcedureHandler {
                 + " POSTEROBASAL  = '" + cardiac.getPosterobasal() + "',\n"
                 + " CSS_PERFORMED  = '" + cardiac.getCSSPerformed() + "',\n"
                 + " REMARKS  = '" + cardiac.getProcedureRemarks() + "'\n"
-                + " WHERE CARDIAC_ID = '" + cardiac.getCardiacRegistryId() + "' \n"
-                + " AND SURGERY_INTERVENTION_ID = '" + cardiac.getProcIntervId() + "' \n";
+                + " WHERE CARDIAC_ID = '" + cardiac.getCardiacId() + "' \n"
+                + " AND SURGERY_INTERVENTION_ID = '" + cardiac.getProcIntervId() + "' \n"
+                + " AND PROCEDURE_ID = '" + cardiac.getProcedureId() + "' \n";
 
         return Constants.dao.executeUpdate(query, false);
     }
 
-    public List<CardiacRegistryCathProcedure> selectCardiacCathDetail(String cardiacId) {
+    public CardiacRegistryCathProcedure selectCardiacCathDetail(
+            String cardiacId, String surgIntId) {
 
-        String columns[] = {"-", "ID", "CARDIAC_ID", "PROCEDURE_ID","SURGERY_INTERVENTION_ID",
+        String columns[] = {"-", "SURGERY_INTERVENTION_ID", "CARDIAC_ID", "PROCEDURE_ID",
             "EJECTION_FRACTION", "LEFT_MAIN_DISEASE", "DISEASE_EXTENT", "LVEDP",
             "PAPS", "PAWP", "ANTEROBASAL", "ANTEROLATERAL", "APICAL", "DIAPHRAGMATIC",
             "POSTEROBASAL", "CSS_PERFORMED", "REMARKS", "CRTD_BY", "CRTD_DATE",
-            "CRTD_TERMINAL_ID", "CRTD_BY_NAME", "DAY_OF_PROCEDURE"};
+            "CRTD_TERMINAL_ID", "CRTD_BY_NAME"};
 
         String query
-                = "SELECT CPD.ID, CPD.CARDIAC_ID,                    \n"
-                + " CPD.PROCEDURE_ID, CPD.SURGERY_INTERVENTION_ID    \n"
+                = "SELECT CPD.CARDIAC_ID, CPD.SURGERY_INTERVENTION_ID,\n"
+                + " CPD.PROCEDURE_ID,                                 \n"
                 + " NVL(CPD.EJECTION_FRACTION, ' ') EJECTION_FRACTION,\n"
                 + " NVL(CPD.LEFT_MAIN_DISEASE, ' ') LEFT_MAIN_DISEASE,\n"
                 + " NVL(CPD.DISEASE_EXTENT, ' ') DISEASE_EXTENT,    \n"
@@ -196,54 +201,47 @@ public class RegistryCathProcedureHandler {
                 + " NVL(CPD.CSS_PERFORMED, ' ') CSS_PERFORMED,      \n"
                 + " NVL(CPD.REMARKS, ' ') REMARKS, CPD.CRTD_BY,     \n"
                 + " TO_CHAR(CPD.CRTD_DATE, 'DD-MON-YY') CRTD_DATE,  \n"
-                + "       CPD.CRTD_TERMINAL_ID,                     \n"
-                + "       CRB.NAME  CRTD_BY_NAME FROM               \n"
+                + " CPD.CRTD_TERMINAL_ID, CRB.NAME CRTD_BY_NAME FROM\n"
                 + Database.DCMS.cathCardiacDetail + " CPD,          \n"
-                + Database.DCMS.definitionTypeDetail + " INS,       \n"
-                + Database.DCMS.definitionTypeDetail + " PCI,       \n"
-                + Database.DCMS.definitionTypeDetail + " PPI,       \n"
                 + Database.DCMS.users + " CRB                       \n"
                 + " WHERE CPD.CARDIAC_ID = " + cardiacId + "        \n"
-                + "   AND CPD.PROCEDURE_ID = PCI.ID                 \n"
-                + "   AND CPD.INSTITUTE_ID = INS.ID                 \n"
-                + "   AND CPD.CRTD_BY = CRB.USER_NAME               \n"
-                + "   AND CPD.PERFORMING_PHYSICIAN_ID = PPI.ID      \n";
+                + " AND CPD.SURGERY_INTERVENTION_ID = " + surgIntId + "\n"
+                + "   AND CPD.CRTD_BY = CRB.USER_NAME               \n";
 
         List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
-        List<CardiacRegistryCathProcedure> lisExam = new ArrayList();
-        for (int i = 0; i < listmap.size(); i++) {
-            HashMap map = (HashMap) listmap.get(i);
-            CardiacRegistryCathProcedure objData = new CardiacRegistryCathProcedure();
-
-            objData.setProcIntervId(map.get("SURGERY_INTERVENTION_ID").toString());
-            objData.setCardiacRegistryId(map.get("CARDIAC_ID").toString());
-            objData.setProcedureId(map.get("PROCEDURE_ID").toString());
-            objData.setEjectionFraction(map.get("EJECTION_FRACTION").toString());
-            objData.setLeftMainDisease(map.get("LEFT_MAIN_DISEASE").toString());
-            objData.setExtentofDisease(map.get("DISEASE_EXTENT").toString());
-            objData.setLVEDP(map.get("LVEDP").toString());
-            objData.setPAPS(map.get("PAPS").toString());
-            objData.setPAWP(map.get("PAWP").toString());
-            objData.setAnterobasal(map.get("ANTEROBASAL").toString());
-            objData.setAnterolateral(map.get("ANTEROLATERAL").toString());
-            objData.setApical(map.get("APICAL").toString());
-            objData.setDiaphragmatic(map.get("DIAPHRAGMATIC").toString());
-            objData.setPosterobasal(map.get("POSTEROBASAL").toString());
-            objData.setCSSPerformed(map.get("CSS_PERFORMED").toString());
-            objData.setProcedureRemarks(map.get("REMARKS").toString());
-            objData.setCrtdBy(map.get("CRTD_BY").toString());
-            objData.setCrtdByName(map.get("CRTD_BY_NAME").toString());
-            objData.setCrtdDate(map.get("CRTD_DATE").toString());
-            objData.setCrtdTerminalId(map.get("CRTD_TERMINAL_ID").toString());
-            lisExam.add(objData);
+        if (listmap.isEmpty()) {
+            return null;
         }
-        return lisExam;
+        HashMap map = (HashMap) listmap.get(0);
+        CardiacRegistryCathProcedure objData = new CardiacRegistryCathProcedure();
+        objData.setProcIntervId(map.get("SURGERY_INTERVENTION_ID").toString());
+        objData.setCardiacId(map.get("CARDIAC_ID").toString());
+        objData.setProcedureId(map.get("PROCEDURE_ID").toString());
+        objData.setEjectionFraction(map.get("EJECTION_FRACTION").toString());
+        objData.setLeftMainDisease(map.get("LEFT_MAIN_DISEASE").toString());
+        objData.setExtentofDisease(map.get("DISEASE_EXTENT").toString());
+        objData.setLVEDP(map.get("LVEDP").toString());
+        objData.setPAPS(map.get("PAPS").toString());
+        objData.setPAWP(map.get("PAWP").toString());
+        objData.setAnterobasal(map.get("ANTEROBASAL").toString());
+        objData.setAnterolateral(map.get("ANTEROLATERAL").toString());
+        objData.setApical(map.get("APICAL").toString());
+        objData.setDiaphragmatic(map.get("DIAPHRAGMATIC").toString());
+        objData.setPosterobasal(map.get("POSTEROBASAL").toString());
+        objData.setCSSPerformed(map.get("CSS_PERFORMED").toString());
+        objData.setProcedureRemarks(map.get("REMARKS").toString());
+        objData.setCrtdBy(map.get("CRTD_BY").toString());
+        objData.setCrtdByName(map.get("CRTD_BY_NAME").toString());
+        objData.setCrtdDate(map.get("CRTD_DATE").toString());
+        objData.setCrtdTerminalId(map.get("CRTD_TERMINAL_ID").toString());
+
+        return objData;
     }
 
     public boolean deleteProcedure(CardiacRegistryCathProcedure cardiac) {
         String query
                 = " DELETE FROM " + Database.DCMS.cathCardiacDetail + " \n"
-                + " WHERE CARDIAC_ID = '" + cardiac.getCardiacRegistryId() + "'\n"
+                + " WHERE CARDIAC_ID = '" + cardiac.getCardiacId() + "'\n"
                 + " AND ID = '" + cardiac.getProcIntervId() + "' \n";
 
         return Constants.dao.executeUpdate(query, false);

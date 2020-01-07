@@ -11,7 +11,7 @@ package CardiacRegistry.BO;
  */
 public class CardiacRegistryCathProcedure {
     
-    private String cardiacRegistryId = "";
+    private String cardiacId = "";
     private String instituteId = "";
     private String instituteDescription = "";
     private String procedureType = "";
@@ -61,12 +61,12 @@ public class CardiacRegistryCathProcedure {
         this.instituteDescription = instituteDescription;
     }
 
-    public String getCardiacRegistryId() {
-        return cardiacRegistryId;
+    public String getCardiacId() {
+        return cardiacId;
     }
 
-    public void setCardiacRegistryId(String cardiacRegistryId) {
-        this.cardiacRegistryId = cardiacRegistryId;
+    public void setCardiacId(String cardiacId) {
+        this.cardiacId = cardiacId;
     }
 
     public String getCrtdBy() {

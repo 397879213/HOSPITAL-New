@@ -36,24 +36,27 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
     DisplayLOV lov = new DisplayLOV();
     CardiacRegistryECHO objEchocardiography = new CardiacRegistryECHO();
     CardiacRegistryMedication objMedication = new CardiacRegistryMedication();
-    CardiacRegistryCathProcedure objSurgInterven = new CardiacRegistryCathProcedure();
-    CardiacRegistryCathProcedure objProcedure = new CardiacRegistryCathProcedure();
     CardiacSurgeryBO objCardiacSurger = new CardiacSurgeryBO();
-    
+
     private CardiacSurgeryController ctlCardiacSurg = new CardiacSurgeryController();
     private CardiacTeamController ctlTeam = new CardiacTeamController();
     CardiacRegistryMedicationController ctlMed = new CardiacRegistryMedicationController();
     CardiacRegistryECHOController ctlEcho = new CardiacRegistryECHOController();
     RegistryCathProcedureController ctlProcedure = new RegistryCathProcedureController();
     CardiacRegistryDiagnosticController ctlDiagnostic = new CardiacRegistryDiagnosticController();
-    
+
     private List<CardiacSurgeryBO> listExamDetail = new ArrayList();
+
+    CardiacRegistryCathProcedure objSurgInterven = new CardiacRegistryCathProcedure();
+    CardiacRegistryCathProcedure saveCathDetail = new CardiacRegistryCathProcedure();
     private List<CardiacRegistryCathProcedure> listProcedure = new ArrayList();
+    CardiacRegistryCathProcedure objCathDetail = new CardiacRegistryCathProcedure();
+
     private List<CardiacRegistryECHO> listEchocardiographyMaster = new ArrayList();
     private List<CardiacRegistryECHO> listEchoValve = new ArrayList();
     private List<CardiacRegistryECHO> listEchoValveMeasurement = new ArrayList();
     private List<CardiacRegistryMedication> listMedication = new ArrayList();
-    
+
     private String cardiacId = "";
     private String patientId = "";
     private String performDate = "";
@@ -721,16 +724,16 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtProcedurePerforming))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(txtPerformDate, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnSaveSurgInter, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnEditSurgInter, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel23)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtProcedurePerforming))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -769,14 +772,14 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cboProcType, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
                         .addComponent(txtProcedureName)
                         .addComponent(btnAddProcedureName, javax.swing.GroupLayout.PREFERRED_SIZE, 23, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtProcedurePerforming, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboProcType))
                 .addGap(7, 7, 7)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtProcedureInstitute, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -785,9 +788,9 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
                     .addComponent(txtPerformDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSaveSurgInter)
                     .addComponent(btnEditSurgInter))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(8, 8, 8)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+                .addGap(5, 5, 5)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboEjectionFraction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1393,29 +1396,22 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             return;
         }
 
-        if (tblProcedureDetail.getSelectedColumn() == 5) {
-            setCathDetail();
-            if (ctlProcedure.updateCardiacProcedureDetail(objProcedure)) {
-                System.out.println("Remarks Save Successfully.");
-                setExamDetail();
-            } else {
-                JOptionPane.showMessageDialog(null, "Unable to save Remarks.");
-            }
-        }
-        
         objSurgInterven = listProcedure.get(tblProcedureDetail.getSelectedRow());
+        //Delete Procedure/ Intervention Information
         if (evt.getClickCount() % 2 == 0) {
             int confirmation = JOptionPane.showConfirmDialog(null, "Do you want to Delete?");
             if (confirmation != 0) {
                 return;
             }
-            if (ctlProcedure.deleteProcedure(objProcedure)) {
+            if (ctlProcedure.deleteProcedure(objSurgInterven)) {
                 JOptionPane.showMessageDialog(null, "Record Delete Successsfully.");
                 selectSurgeryIntervention();
             } else {
                 JOptionPane.showMessageDialog(null, "Unable to Delete Record.");
             }
         }
+
+        //Setting Procedure/ Intervention Information
         surgProcedureId = objSurgInterven.getProcedureId();
         procedureInstId = objSurgInterven.getInstituteId();
         procedurePerformingId = objSurgInterven.getPerformingPhysicianId();
@@ -1432,26 +1428,33 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             procedureType = DefinitionTypes.cardiacIntervention;
         }
         btnSaveSurgInter.setEnabled(false);
-        
-        cboEjectionFraction.setSelectedItem(objProcedure.getEjectionFraction());
-        cboLeftDisease.setSelectedItem(objProcedure.getLeftMainDisease());
-        cboDiseaseExtent.setSelectedItem(objProcedure.getExtentofDisease());
-        txtLVEDP.setText(objProcedure.getLVEDP());
-        txtPAPS.setText(objProcedure.getPAPS());
-        txtPAPD.setText(objProcedure.getPAPD());
-        txtPAWP.setText(objProcedure.getPAWP());
-        txtanterobasal.setText(objProcedure.getAnterobasal());
-        txtanterolateral.setText(objProcedure.getAnterolateral());
-        txtApical.setText(objProcedure.getApical());
-        txtDiaphragmatic.setText(objProcedure.getDiaphragmatic());
-        txtPosterobasal.setText(objProcedure.getPosterobasal());
-        txtRemarks.setText(objProcedure.getProcedureRemarks());
+
+        //Setting Cath Cadiac Information
+        clearCathCardiacInformation();
+        objCathDetail = ctlProcedure.selectCardiacProcedureDetail(
+                objSurgInterven.getCardiacId(), objSurgInterven.getProcIntervId());
+        if (objCathDetail == null) {
+            return;
+        }
+        cboEjectionFraction.setSelectedItem(objCathDetail.getEjectionFraction());
+        cboLeftDisease.setSelectedItem(objCathDetail.getLeftMainDisease());
+        cboDiseaseExtent.setSelectedItem(objCathDetail.getExtentofDisease());
+        txtLVEDP.setText(objCathDetail.getLVEDP());
+        txtPAPS.setText(objCathDetail.getPAPS());
+        txtPAPD.setText(objCathDetail.getPAPD());
+        txtPAWP.setText(objCathDetail.getPAWP());
+        txtanterobasal.setText(objCathDetail.getAnterobasal());
+        txtanterolateral.setText(objCathDetail.getAnterolateral());
+        txtApical.setText(objCathDetail.getApical());
+        txtDiaphragmatic.setText(objCathDetail.getDiaphragmatic());
+        txtPosterobasal.setText(objCathDetail.getPosterobasal());
+        txtRemarks.setText(objCathDetail.getProcedureRemarks());
         ChkCSS.setSelected(false);
-        if (objProcedure.getCSSPerformed().equalsIgnoreCase("Y")) {
+        if (objCathDetail.getCSSPerformed().equalsIgnoreCase("Y")) {
             ChkCSS.setSelected(true);
         }
 
-        
+
     }//GEN-LAST:event_tblProcedureDetailMouseReleased
 
     private void tblProcedureDetailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblProcedureDetailKeyReleased
@@ -1472,7 +1475,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     private void txtProcedureNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProcedureNameActionPerformed
         // TODO add your handling code here:
-        if(cboProcType.getSelectedIndex() == 0){
+        if (cboProcType.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "Please Select Procedure Type.");
             cboProcType.requestFocus();
             return;
@@ -1581,7 +1584,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         CardiacRegistryECHO obj = listEchocardiographyMaster.get(
                 tblEchocardiographyMaster.getSelectedRow());
         echoId = obj.getEchoId();
-        
+
         selectEchoValve();
         selectEchoValveMeasurement();
     }//GEN-LAST:event_tblEchocardiographyMasterMouseReleased
@@ -1883,18 +1886,24 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     private void btnSaveCathDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveCathDataActionPerformed
         // TODO add your handling code here:
-        if (cboProcType.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(null, "Please Select Procedure Type.");
-            cboProcType.requestFocus();
-        }
-        listProcedure = ctlProcedure.selectCardiacProcedureDetail(actionId);
         setCathDetail();
-        if (ctlProcedure.insertcardiacProcedureDetail(objProcedure)) {
-            JOptionPane.showMessageDialog(null, "Record Save Successsfully.");
-            selectSurgeryIntervention();
+        if (objCathDetail == null) {
+            if (ctlProcedure.insertcardiacProcedureDetail(saveCathDetail)) {
+                JOptionPane.showMessageDialog(null, "Record Save Successsfully.");
+                selectSurgeryIntervention();
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to Save Record.");
+            }
         } else {
-            JOptionPane.showMessageDialog(null, "Unable to Save Record.");
+            if (ctlProcedure.updateCardiacProcedureDetail(saveCathDetail)) {
+                JOptionPane.showMessageDialog(null, "Record Updated Successsfully.");
+                selectSurgeryIntervention();
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to Save Record.");
+            }
         }
+
+
     }//GEN-LAST:event_btnSaveCathDataActionPerformed
 
     private void btnSaveEchoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveEchoActionPerformed
@@ -1919,7 +1928,14 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     private void btnSaveSurgInterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveSurgInterActionPerformed
         // TODO add your handling code here:
-        if(!checkSurgeryIntervention()){
+        if (!checkSurgeryIntervention()) {
+            return;
+        }
+        listProcedure = ctlProcedure.selectCardiacSurgeryIntervention(cardiacId,
+                surgProcedureId);
+        if (listProcedure.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "This Procedure is Already Entered "
+                    + "on this Patient.");
             return;
         }
         setSurgeryIntervention();
@@ -1934,9 +1950,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     private void btnEditSurgInterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditSurgInterActionPerformed
         // TODO add your handling code here:
-        if(!checkSurgeryIntervention()){
-            return;
-        }
+        checkSurgeryIntervention();
         setSurgeryIntervention();
         if (ctlProcedure.updateCardiacSurgeryIntervention(objSurgInterven)) {
             JOptionPane.showMessageDialog(null, "Record Save Successsfully.");
@@ -2082,68 +2096,71 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         }
     }
 
-    private boolean checkSurgeryIntervention(){
-        boolean ret = true;
+    private boolean checkSurgeryIntervention() {
+
         if (cboProcType.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "Please Select Procedure Type.");
-            ret = false;
             cboProcType.requestFocus();
+            return false;
         }
         if (surgProcedureId.length() == 0) {
             JOptionPane.showMessageDialog(null, "Please Select Procedure.");
-            ret = false;
             txtProcedureName.requestFocus();
+            return false;
         }
         if (procedurePerformingId.length() == 0) {
             JOptionPane.showMessageDialog(null, "Please Select Performed By.");
-            ret = false;
             txtProcedurePerforming.requestFocus();
+            return false;
         }
         if (procedureInstId.length() == 0) {
             JOptionPane.showMessageDialog(null, "Please Select Institute.");
-            ret = false;
             txtProcedureInstitute.requestFocus();
+            return false;
         }
         if (performDate.length() == 0) {
             JOptionPane.showMessageDialog(null, "Please Select Performed Date.");
-            ret = false;
             txtPerformDate.requestFocus();
+            return false;
         }
-        return ret;
+        return false;
     }
-    
+
     private void setSurgeryIntervention() {
-        objSurgInterven.setCardiacRegistryId(cardiacId);
+        objSurgInterven.setCardiacId(cardiacId);
         objSurgInterven.setProcedureType(cboProcType.getSelectedItem().toString());
         objSurgInterven.setInstituteId(procedureInstId);
         objSurgInterven.setPerformingPhysicianId(procedurePerformingId);
         objSurgInterven.setDateOfProcedure(performDate);
         objSurgInterven.setProcedureId(surgProcedureId);
     }
-    
+
     private void setCathDetail() {
-        
-        objProcedure.setEjectionFraction(cboEjectionFraction.getSelectedItem().toString());
-        objProcedure.setLeftMainDisease(cboLeftDisease.getSelectedItem().toString());
-        objProcedure.setExtentofDisease(cboDiseaseExtent.getSelectedItem().toString());
-        objProcedure.setLVEDP(txtLVEDP.getText().trim());
-        objProcedure.setPAPS(txtPAPS.getText().trim());
-        objProcedure.setPAPD(txtPAPD.getText().trim());
-        objProcedure.setPAWP(txtPAWP.getText().trim());
-        objProcedure.setAnterobasal(txtanterobasal.getText().trim());
-        objProcedure.setAnterolateral(txtanterolateral.getText().trim());
-        objProcedure.setApical(txtApical.getText().trim());
-        objProcedure.setDiaphragmatic(txtDiaphragmatic.getText().trim());
-        objProcedure.setPosterobasal(txtPosterobasal.getText().trim());
-        objProcedure.setProcedureRemarks(txtRemarks.getText().trim().replaceAll(",", " "));
-        objProcedure.setCSSPerformed("N");
+
+        saveCathDetail.setCardiacId(objSurgInterven.getCardiacId());
+        saveCathDetail.setProcIntervId(objSurgInterven.getProcIntervId());
+        saveCathDetail.setProcedureId(objSurgInterven.getProcedureId());
+        saveCathDetail.setEjectionFraction(cboEjectionFraction.getSelectedItem().toString());
+        saveCathDetail.setLeftMainDisease(cboLeftDisease.getSelectedItem().toString());
+        saveCathDetail.setExtentofDisease(cboDiseaseExtent.getSelectedItem().toString());
+        saveCathDetail.setLVEDP(txtLVEDP.getText().trim());
+        saveCathDetail.setPAPS(txtPAPS.getText().trim());
+        saveCathDetail.setPAPD(txtPAPD.getText().trim());
+        saveCathDetail.setPAWP(txtPAWP.getText().trim());
+        saveCathDetail.setAnterobasal(txtanterobasal.getText().trim());
+        saveCathDetail.setAnterolateral(txtanterolateral.getText().trim());
+        saveCathDetail.setApical(txtApical.getText().trim());
+        saveCathDetail.setDiaphragmatic(txtDiaphragmatic.getText().trim());
+        saveCathDetail.setPosterobasal(txtPosterobasal.getText().trim());
+        saveCathDetail.setProcedureRemarks(txtRemarks.getText().trim().replaceAll(",", " "));
+        saveCathDetail.setCSSPerformed("N");
         if (ChkCSS.isSelected()) {
-            objProcedure.setCSSPerformed("Y");
+            saveCathDetail.setCSSPerformed("Y");
         }
     }
 
     private void selectSurgeryIntervention() {
-        listProcedure = ctlProcedure.selectCardiacSurgeryIntervention(cardiacId);
+        listProcedure = ctlProcedure.selectCardiacSurgeryIntervention(cardiacId, "");
         if (listProcedure.isEmpty()) {
             List<CardiacRegistryCathProcedure> listProcedure = new ArrayList();
             listProcedure.add(new CardiacRegistryCathProcedure());
@@ -2169,11 +2186,9 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             } else if (i == 2) {
                 column.setPreferredWidth(50);
             } else if (i == 3) {
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(100);
             } else if (i == 4) {
-                column.setPreferredWidth(120);
-            } else if (i == 5) {
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(100);
             }
         }
     }
@@ -2460,5 +2475,22 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    private void clearCathCardiacInformation() {
+        cboEjectionFraction.setSelectedIndex(0);
+        cboLeftDisease.setSelectedIndex(0);
+        cboDiseaseExtent.setSelectedIndex(0);
+        txtLVEDP.setText("");
+        txtPAPS.setText("");
+        txtPAPD.setText("");
+        txtPAWP.setText("");
+        txtanterobasal.setText("");
+        txtanterolateral.setText("");
+        txtApical.setText("");
+        txtDiaphragmatic.setText("");
+        txtPosterobasal.setText("");
+        txtRemarks.setText("");
+        ChkCSS.setSelected(false);
     }
 }

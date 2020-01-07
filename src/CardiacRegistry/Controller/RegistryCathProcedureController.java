@@ -19,8 +19,8 @@ public class RegistryCathProcedureController {
     RegistryCathProcedureHandler hdlProcedure = new RegistryCathProcedureHandler();
     
     public List<CardiacRegistryCathProcedure> selectCardiacSurgeryIntervention(
-            String cardiacId) {
-        return hdlProcedure.selectCardiacSurgeryIntervention(cardiacId);
+            String cardiacId, String procedureId) {
+        return hdlProcedure.selectCardiacSurgeryIntervention(cardiacId, procedureId);
     }
     
     public boolean insertCardiacSurgeryIntervention(CardiacRegistryCathProcedure insert) {
@@ -67,8 +67,9 @@ public class RegistryCathProcedureController {
         return ret;
     }
 
-    public List<CardiacRegistryCathProcedure> selectCardiacProcedureDetail(String cardiacId) {
-        return hdlProcedure.selectCardiacCathDetail(cardiacId);
+    public CardiacRegistryCathProcedure selectCardiacProcedureDetail(
+            String cardiacId, String surgIntId) {
+        return hdlProcedure.selectCardiacCathDetail(cardiacId, surgIntId);
     }
 
     public boolean deleteProcedure(CardiacRegistryCathProcedure cardiac) {

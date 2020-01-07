@@ -12,7 +12,7 @@ public class ProcedureDetailTableModel extends AbstractTableModel {
 
     private final String[] columnNames
             = {"Procedure Type", "Proc. Name","Date", "Institute", 
-                "Performing Phy", "Is Save"};
+                "Performing Phy"};
     private final Object[][] data;
 
     public ProcedureDetailTableModel(List<CardiacRegistryCathProcedure> liInfo) {
@@ -26,7 +26,6 @@ public class ProcedureDetailTableModel extends AbstractTableModel {
             data[row][2] = currentinfo.getDateOfProcedure();
             data[row][3] = currentinfo.getInstituteDescription();
             data[row][4] = currentinfo.getPerformingPhysicianName();
-            data[row][5] = "is Save";
             row++;
 
         }
