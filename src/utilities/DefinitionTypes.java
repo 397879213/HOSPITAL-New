@@ -291,5 +291,6 @@ public class DefinitionTypes {
     public static String cardiacInstitutes = "464";
     public static String echoCardiacValves = "466";
     public static String echoCardiacMeasurements = "467";
+    public static final String cardiacMedication = "478";
 
 }

@@ -1650,7 +1650,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
         }
         medId = Constants.lovID;
         txtMedication.setText(Constants.lovDescription);
-        txtDose.requestFocus();
+        txtMedDuration.requestFocus();
     }//GEN-LAST:event_txtMedicationActionPerformed
 
     private void txtEchoPerformingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEchoPerformingActionPerformed
@@ -1854,7 +1854,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             return;
         }
         setMedicineStartDate();
-        cboMonthsDays.requestFocus();
+        txtDose.requestFocus();
     }//GEN-LAST:event_txtMedDurationActionPerformed
 
     private void txtTicketNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTicketNoActionPerformed
@@ -1928,12 +1928,14 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
 
     private void btnSaveSurgInterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveSurgInterActionPerformed
         // TODO add your handling code here:
+        System.err.println("BOLLL" + checkSurgeryIntervention());
         if (!checkSurgeryIntervention()) {
             return;
         }
+
         listProcedure = ctlProcedure.selectCardiacSurgeryIntervention(cardiacId,
                 surgProcedureId);
-        if (listProcedure.isEmpty()) {
+        if (!listProcedure.isEmpty()) {
             JOptionPane.showMessageDialog(null, "This Procedure is Already Entered "
                     + "on this Patient.");
             return;
@@ -1946,6 +1948,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Unable to Save Record.\n"
                     + "Please Contact Support Team");
         }
+
     }//GEN-LAST:event_btnSaveSurgInterActionPerformed
 
     private void btnEditSurgInterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditSurgInterActionPerformed
@@ -2123,7 +2126,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             txtPerformDate.requestFocus();
             return false;
         }
-        return false;
+        return true;
     }
 
     private void setSurgeryIntervention() {
@@ -2284,7 +2287,7 @@ public class CardiacSurgeryDetailForm extends javax.swing.JInternalFrame {
             txtMedDuration.requestFocus();
 
         }
-
+        txtDose.requestFocus();
     }
 
     private void sevePreMedication() {
