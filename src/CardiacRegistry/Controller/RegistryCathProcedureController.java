@@ -18,8 +18,35 @@ public class RegistryCathProcedureController {
     
     RegistryCathProcedureHandler hdlProcedure = new RegistryCathProcedureHandler();
     
+    public List<CardiacRegistryCathProcedure> selectCardiacSurgeryIntervention(
+            String cardiacId) {
+        return hdlProcedure.selectCardiacSurgeryIntervention(cardiacId);
+    }
+    
+    public boolean insertCardiacSurgeryIntervention(CardiacRegistryCathProcedure insert) {
+        boolean ret = hdlProcedure.insertCardiacSurgeryIntervention(insert);
+        if (ret) {
+            ret = Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
+
+    public boolean updateCardiacSurgeryIntervention(CardiacRegistryCathProcedure cardiac) {
+        boolean ret = hdlProcedure.updateCardiacSurgeryIntervention(cardiac);
+        if (ret) {
+            ret = Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
+    
     public boolean insertcardiacProcedureDetail(CardiacRegistryCathProcedure insert) {
-        boolean ret = hdlProcedure.insertCardiacProcedureDetail(insert);
+        boolean ret = hdlProcedure.insertCardiacCathDetail(insert);
         if (ret) {
             ret = Constants.dao.commitTransaction();
         }
@@ -30,7 +57,7 @@ public class RegistryCathProcedureController {
     }
 
     public boolean updateCardiacProcedureDetail(CardiacRegistryCathProcedure cardiac) {
-        boolean ret = hdlProcedure.updateCardiacProcedureDetail(cardiac);
+        boolean ret = hdlProcedure.updateCardiacCathDetail(cardiac);
         if (ret) {
             ret = Constants.dao.commitTransaction();
         }
@@ -41,7 +68,7 @@ public class RegistryCathProcedureController {
     }
 
     public List<CardiacRegistryCathProcedure> selectCardiacProcedureDetail(String cardiacId) {
-        return hdlProcedure.selectCardiacProcedureDetail(cardiacId);
+        return hdlProcedure.selectCardiacCathDetail(cardiacId);
     }
 
     public boolean deleteProcedure(CardiacRegistryCathProcedure cardiac) {

@@ -15,7 +15,7 @@ public class CardiacRegistryCathProcedure {
     private String instituteId = "";
     private String instituteDescription = "";
     private String procedureType = "";
-    private String cathProcId = "";
+    private String ProcIntervId = "";
     private String procedureId = "";
     private String procedureDescription = "";
     private String dateOfProcedure = "";
@@ -109,12 +109,12 @@ public class CardiacRegistryCathProcedure {
         this.procedureType = procedureType;
     }
 
-    public String getCathProcId() {
-        return cathProcId;
+    public String getProcIntervId() {
+        return ProcIntervId;
     }
 
-    public void setCathProcId(String cathProcId) {
-        this.cathProcId = cathProcId;
+    public void setProcIntervId(String ProcIntervId) {
+        this.ProcIntervId = ProcIntervId;
     }
 
     public String getProcedureId() {

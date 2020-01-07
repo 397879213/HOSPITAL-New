@@ -17,7 +17,7 @@ import utilities.DisplayLOV;
 
 public class PerfusionistForm extends javax.swing.JInternalFrame {
 
-    String cardiacId = "1";
+    String cardiacId = "111";
     String patientId = "0012121";
     private String perfusionistId = "";
     private String asstPerfusionistId = "";
@@ -544,7 +544,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel22.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(102, 0, 0));
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel22.setText("Assitant : ");
+        jLabel22.setText("Assistant : ");
 
         txtAnesthetist.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtAnesthetist.addActionListener(new java.awt.event.ActionListener() {
