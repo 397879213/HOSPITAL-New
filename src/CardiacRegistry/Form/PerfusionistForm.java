@@ -2013,7 +2013,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
         );
 
         jPanel28.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -2032,7 +2032,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         );
         jPanel28Layout.setVerticalGroup(
             jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+            .addComponent(jScrollPane3)
         );
 
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);

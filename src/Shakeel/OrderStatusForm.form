@@ -143,15 +143,11 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jPanel4" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jPanel7" max="32767" attributes="0"/>
-                              <Component id="jPanel8" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jPanel9" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                          <Component id="jPanel5" max="32767" attributes="0"/>
+                      <Component id="jPanel4" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
@@ -163,17 +159,11 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="jPanel7" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                          <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="jPanel5" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jPanel7" max="32767" attributes="0"/>
+                      <Component id="jPanel8" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -272,55 +262,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanel5">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new java.awt.Color(Constants.red , Constants.green , Constants.black)" type="code"/>
-            </Property>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Adittional Info">
-                  <Font PropertyName="font" name="Arial" size="14" style="1"/>
-                  <Color PropertyName="color" blue="0" green="0" red="66" type="rgb"/>
-                </TitledBorder>
-              </Border>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="66" type="rgb"/>
-            </Property>
-          </Properties>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="1" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JTextArea" name="jTextArea1">
-                  <Properties>
-                    <Property name="columns" type="int" value="20"/>
-                    <Property name="lineWrap" type="boolean" value="true"/>
-                    <Property name="rows" type="int" value="5"/>
-                  </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
-          </SubComponents>
-        </Container>
         <Container class="javax.swing.JPanel" name="jPanel7">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -328,7 +269,7 @@
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Order Info">
+                <TitledBorder title="Order Detail">
                   <Font PropertyName="font" name="Arial" size="14" style="1"/>
                   <Color PropertyName="color" blue="0" green="0" red="66" type="rgb"/>
                 </TitledBorder>
@@ -342,67 +283,16 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane28" alignment="0" pref="363" max="32767" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jLabel11" min="-2" pref="90" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtMemberId3" max="32767" attributes="3"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jLabel13" min="-2" pref="90" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtMemberId5" max="32767" attributes="3"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jScrollPane28" alignment="0" pref="428" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel11" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="txtMemberId3" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel13" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="txtMemberId5" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="jScrollPane28" min="-2" pref="103" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jScrollPane28" alignment="1" pref="373" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel11">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="12" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="66" type="rgb"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="4"/>
-                <Property name="text" type="java.lang.String" value="Select Order : "/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberId3">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="12" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="ITEM_ORDER"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId3ActionPerformed"/>
-              </Events>
-            </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane28">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -429,28 +319,6 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="jLabel13">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="12" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="66" type="rgb"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="4"/>
-                <Property name="text" type="java.lang.String" value="Reference : "/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberId5">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="12" style="0"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId5ActionPerformed"/>
-              </Events>
-            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel8">
@@ -460,7 +328,7 @@
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Color">
+                <TitledBorder title="Order Status">
                   <Font PropertyName="font" name="Arial" size="14" style="1"/>
                   <Color PropertyName="color" blue="0" green="0" red="66" type="rgb"/>
                 </TitledBorder>
@@ -474,28 +342,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane26" pref="0" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Component id="jLabel12" min="-2" pref="59" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtMemberId4" pref="163" max="32767" attributes="3"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtMemberId7" min="-2" pref="117" max="-2" attributes="3"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jScrollPane26" pref="363" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel12" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="txtMemberId4" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
-                          <Component id="txtMemberId7" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jScrollPane26" min="-2" pref="77" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jScrollPane26" alignment="1" pref="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -526,146 +378,6 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="jLabel12">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="12" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="66" type="rgb"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="4"/>
-                <Property name="text" type="java.lang.String" value="Select : "/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberId4">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="12" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="ITEM_ORDER_DETAIL"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId4ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberId7">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="12" style="0"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId7ActionPerformed"/>
-              </Events>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="jPanel9">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new java.awt.Color(Constants.red , Constants.green , Constants.black)" type="code"/>
-            </Property>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Fabric">
-                  <Font PropertyName="font" name="Arial" size="14" style="1"/>
-                  <Color PropertyName="color" blue="0" green="0" red="66" type="rgb"/>
-                </TitledBorder>
-              </Border>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="66" type="rgb"/>
-            </Property>
-          </Properties>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane27" pref="0" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Component id="jLabel14" min="-2" pref="59" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtMemberId6" max="32767" attributes="3"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtMemberId8" min="-2" pref="117" max="-2" attributes="3"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel14" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="txtMemberId6" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
-                          <Component id="txtMemberId8" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jScrollPane27" min="-2" pref="77" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane27">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JTable" name="tblPatientInfo1">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="d1" green="b4" id="Active Caption" palette="2" red="99" type="palette"/>
-                    </Property>
-                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {null, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Sr.&quot;, &quot;Grade&quot;, &quot;Grade Description&quot;, &quot;Child Above 12&quot;, &quot;Child Under 12&quot;, &quot;Spouse&quot;,&#xa;            &quot;Parents&quot;, &quot;Self&quot;, &quot;Class&quot;&#xa;&#xa;    }&#xa;)" type="code"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPatientInfo1MouseClicked"/>
-                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPatientInfo1MouseEntered"/>
-                    <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPatientInfo1MouseReleased"/>
-                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tblPatientInfo1PropertyChange"/>
-                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tblPatientInfo1KeyReleased"/>
-                  </Events>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Component class="javax.swing.JLabel" name="jLabel14">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="12" style="1"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="66" type="rgb"/>
-                </Property>
-                <Property name="horizontalAlignment" type="int" value="4"/>
-                <Property name="text" type="java.lang.String" value="Select : "/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberId6">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="12" style="0"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId6ActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtMemberId8">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Arial" size="12" style="0"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMemberId8ActionPerformed"/>
-              </Events>
-            </Component>
           </SubComponents>
         </Container>
       </SubComponents>

@@ -6,6 +6,9 @@ public class Database {
 
     public static final class DCMS {
 
+        public static final String itemOrder = DAO.usernameEmr + "." + "ITEM_ORDER ";
+        public static final String itemOrderDetail = DAO.usernameEmr + "." + "ITEM_ORDER_DETAIL ";
+        
         public static final String PofEmployee = DAO.usernameEmr + ".POF_EMPLOYEE   ";
         public static final String pofMapper = DAO.usernameEmr + ".POF_EMP_MAPPER   ";
         public static final String clientEmployeeDetail = DAO.usernameEmr + ".CLIENT_EMP_DETAIL   ";
