@@ -94,20 +94,20 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         txtAnesthetist = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
-        jLabel25 = new javax.swing.JLabel();
-        txtVenous = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         txtAntegrade = new javax.swing.JTextField();
-        txtAorticCannulae = new javax.swing.JTextField();
-        jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         txtRetrograde = new javax.swing.JTextField();
         txtSumpVent = new javax.swing.JTextField();
         jLabel32 = new javax.swing.JLabel();
         txtHemofilter = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
+        jPanel18 = new javax.swing.JPanel();
+        jScrollPane31 = new javax.swing.JScrollPane();
+        tblPatientInfo = new javax.swing.JTable();
+        txtSumpVent1 = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel34 = new javax.swing.JLabel();
-        txtConnectors = new javax.swing.JTextField();
         jPanel12 = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
@@ -185,28 +185,47 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jPanel21 = new javax.swing.JPanel();
         jScrollPane28 = new javax.swing.JScrollPane();
         tblBloodGases = new javax.swing.JTable();
-        jPanel18 = new javax.swing.JPanel();
-        jLabel87 = new javax.swing.JLabel();
-        txtSugar1 = new javax.swing.JTextField();
-        txtSugar2 = new javax.swing.JTextField();
-        jLabel88 = new javax.swing.JLabel();
-        txtSugar3 = new javax.swing.JTextField();
-        jLabel89 = new javax.swing.JLabel();
-        txtSugar4 = new javax.swing.JTextField();
-        jLabel90 = new javax.swing.JLabel();
-        jPanel23 = new javax.swing.JPanel();
-        jLabel91 = new javax.swing.JLabel();
-        txtSugar5 = new javax.swing.JTextField();
-        txtSugar6 = new javax.swing.JTextField();
+        jPanel29 = new javax.swing.JPanel();
+        jLabel60 = new javax.swing.JLabel();
+        txtBloodFlow1 = new javax.swing.JTextField();
+        jLabel61 = new javax.swing.JLabel();
+        txtTemperature = new javax.swing.JTextField();
+        jLabel62 = new javax.swing.JLabel();
+        txtFio2 = new javax.swing.JTextField();
+        jLabel72 = new javax.swing.JLabel();
+        txtGflow = new javax.swing.JTextField();
+        txtPH = new javax.swing.JTextField();
+        jLabel73 = new javax.swing.JLabel();
+        jLabel74 = new javax.swing.JLabel();
+        jLabel75 = new javax.swing.JLabel();
+        jLabel76 = new javax.swing.JLabel();
+        txtHco2 = new javax.swing.JTextField();
+        txtPco2 = new javax.swing.JTextField();
+        txtPo2 = new javax.swing.JTextField();
+        txtBE = new javax.swing.JTextField();
+        txtTco2 = new javax.swing.JTextField();
+        txtNa = new javax.swing.JTextField();
+        jLabel77 = new javax.swing.JLabel();
+        jLabel78 = new javax.swing.JLabel();
+        jLabel79 = new javax.swing.JLabel();
+        jLabel80 = new javax.swing.JLabel();
+        txtO2 = new javax.swing.JTextField();
+        txtK = new javax.swing.JTextField();
+        jLabel81 = new javax.swing.JLabel();
+        txtCA = new javax.swing.JTextField();
+        jLabel82 = new javax.swing.JLabel();
+        jLabel83 = new javax.swing.JLabel();
+        txtLac = new javax.swing.JTextField();
+        txtHb1 = new javax.swing.JTextField();
+        jLabel84 = new javax.swing.JLabel();
+        jLabel86 = new javax.swing.JLabel();
+        txtSugar = new javax.swing.JTextField();
         jLabel94 = new javax.swing.JLabel();
+        txtAct = new javax.swing.JTextField();
         jLabel95 = new javax.swing.JLabel();
-        txtSugar7 = new javax.swing.JTextField();
-        jLabel96 = new javax.swing.JLabel();
-        txtSugar8 = new javax.swing.JTextField();
-        jLabel97 = new javax.swing.JLabel();
-        txtSugar9 = new javax.swing.JTextField();
-        jLabel98 = new javax.swing.JLabel();
-        txtSugar10 = new javax.swing.JTextField();
+        txtHeparin1 = new javax.swing.JTextField();
+        txtBGTime = new javax.swing.JTextField();
+        cboBGType = new javax.swing.JComboBox<>();
         jPanel20 = new javax.swing.JPanel();
         jPanel26 = new javax.swing.JPanel();
         jLabel99 = new javax.swing.JLabel();
@@ -224,6 +243,33 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jPanel28 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
+        jPanel24 = new javax.swing.JPanel();
+        jLabel92 = new javax.swing.JLabel();
+        txtSugar11 = new javax.swing.JTextField();
+        txtSugar12 = new javax.swing.JTextField();
+        jLabel101 = new javax.swing.JLabel();
+        jLabel102 = new javax.swing.JLabel();
+        txtSugar15 = new javax.swing.JTextField();
+        jLabel103 = new javax.swing.JLabel();
+        txtSugar16 = new javax.swing.JTextField();
+        jLabel104 = new javax.swing.JLabel();
+        txtSugar17 = new javax.swing.JTextField();
+        jLabel105 = new javax.swing.JLabel();
+        txtSugar18 = new javax.swing.JTextField();
+        jPanel25 = new javax.swing.JPanel();
+        jLabel106 = new javax.swing.JLabel();
+        txtSugar19 = new javax.swing.JTextField();
+        txtSugar20 = new javax.swing.JTextField();
+        jLabel107 = new javax.swing.JLabel();
+        txtSugar21 = new javax.swing.JTextField();
+        jLabel108 = new javax.swing.JLabel();
+        txtSugar22 = new javax.swing.JTextField();
+        jLabel109 = new javax.swing.JLabel();
+        jPanel23 = new javax.swing.JPanel();
+        jLabel110 = new javax.swing.JLabel();
+        txtSugar23 = new javax.swing.JTextField();
+        jLabel111 = new javax.swing.JLabel();
+        txtSugar24 = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         txtMemberId = new javax.swing.JTextField();
@@ -570,7 +616,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                     .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtSurgeon, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                    .addComponent(txtSurgeon)
                     .addComponent(txtAsstSurgeon)
                     .addComponent(txtAnesthetist))
                 .addGap(5, 5, 5))
@@ -582,11 +628,11 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSurgeon, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(3, 3, 3)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAsstSurgeon, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(3, 3, 3)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAnesthetist, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -596,18 +642,6 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jPanel11.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cannulae", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel11.setForeground(new java.awt.Color(102, 0, 0));
-
-        jLabel25.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel25.setText("Venous : ");
-
-        txtVenous.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtVenous.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtVenousActionPerformed(evt);
-            }
-        });
 
         jLabel29.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(102, 0, 0));
@@ -620,18 +654,6 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                 txtAntegradeActionPerformed(evt);
             }
         });
-
-        txtAorticCannulae.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtAorticCannulae.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAorticCannulaeActionPerformed(evt);
-            }
-        });
-
-        jLabel30.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel30.setText("Aortic : ");
 
         jLabel31.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(102, 0, 0));
@@ -669,74 +691,124 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel33.setText("Sump/ Vent : ");
 
+        jPanel18.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
+        jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
+        jPanel18.setForeground(new java.awt.Color(102, 0, 0));
+
+        tblPatientInfo.setBackground(java.awt.SystemColor.activeCaption);
+        tblPatientInfo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null}
+            },
+            new String [] {
+                "Sr.", "Grade", "Grade Description", "Child Above 12", "Child Under 12", "Spouse",
+                "Parents", "Self", "Class"
+
+            }
+        ));
+        tblPatientInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPatientInfoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                tblPatientInfoMouseEntered(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tblPatientInfoMouseReleased(evt);
+            }
+        });
+        tblPatientInfo.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tblPatientInfoPropertyChange(evt);
+            }
+        });
+        tblPatientInfo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblPatientInfoKeyReleased(evt);
+            }
+        });
+        jScrollPane31.setViewportView(tblPatientInfo);
+
+        txtSumpVent1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtSumpVent1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSumpVent1ActionPerformed(evt);
+            }
+        });
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Venous", "Aortic", "Connectors"}));
+
         jLabel34.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel34.setForeground(new java.awt.Color(102, 0, 0));
         jLabel34.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel34.setText("Connectors : ");
+        jLabel34.setText("Select : ");
 
-        txtConnectors.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtConnectors.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtConnectorsActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
+        jPanel18.setLayout(jPanel18Layout);
+        jPanel18Layout.setHorizontalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane31, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addGroup(jPanel18Layout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtSumpVent1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel18Layout.setVerticalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
+                .addGap(2, 2, 2)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSumpVent1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane31, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
+                .addContainerGap()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE))
+                    .addComponent(txtHemofilter)
+                    .addComponent(txtSumpVent, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel31, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel29, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel11Layout.createSequentialGroup()
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtVenous, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtHemofilter, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-                                .addComponent(txtAorticCannulae)))
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
-                            .addComponent(jLabel31, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel29, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtRetrograde)
-                            .addComponent(txtAntegrade)
-                            .addComponent(txtSumpVent)))
-                    .addComponent(txtConnectors))
+                    .addComponent(txtAntegrade)
+                    .addComponent(txtRetrograde))
                 .addGap(5, 5, 5))
+            .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtVenous, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtAntegrade, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtAorticCannulae, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtRetrograde, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAntegrade, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtHemofilter, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRetrograde, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSumpVent, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtConnectors, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(3, 3, 3)
+                .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel12.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -794,12 +866,12 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel39.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel39.setForeground(new java.awt.Color(102, 0, 0));
         jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel39.setText("S. Area (m3) : ");
+        jLabel39.setText("S. Area (m2) : ");
 
         jLabel40.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel40.setForeground(new java.awt.Color(102, 0, 0));
         jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel40.setText("B. Flow (Lmin4) : ");
+        jLabel40.setText("B. Flow (L/min) : ");
 
         txtWeight.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtWeight.addActionListener(new java.awt.event.ActionListener() {
@@ -890,7 +962,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel56.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel56.setForeground(new java.awt.Color(102, 0, 0));
         jLabel56.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel56.setText("Heparin : ");
+        jLabel56.setText("Heparin (iu) : ");
 
         txtHeparin.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtHeparin.addActionListener(new java.awt.event.ActionListener() {
@@ -902,7 +974,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel57.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel57.setForeground(new java.awt.Color(102, 0, 0));
         jLabel57.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel57.setText("Mannitol : ");
+        jLabel57.setText("Mannitol (ml) : ");
 
         txtMannitol.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtMannitol.addActionListener(new java.awt.event.ActionListener() {
@@ -914,7 +986,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel58.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel58.setForeground(new java.awt.Color(102, 0, 0));
         jLabel58.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel58.setText("Blood/ RBC : ");
+        jLabel58.setText("Blood/ RBC (ml) : ");
 
         txtBloodRbc.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtBloodRbc.addActionListener(new java.awt.event.ActionListener() {
@@ -929,10 +1001,11 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel55, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
-                    .addComponent(jLabel57, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel58, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel55, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                        .addComponent(jLabel57, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel58))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtMannitol)
@@ -1043,7 +1116,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel47.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel47.setForeground(new java.awt.Color(102, 0, 0));
         jLabel47.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel47.setText("Valve : ");
+        jLabel47.setText("Tricuspid : ");
 
         txtValve.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtValve.addActionListener(new java.awt.event.ActionListener() {
@@ -1154,43 +1227,43 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addGap(5, 5, 5)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAortic, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel45, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUrea, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                .addGap(3, 3, 3)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtMitral, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCreatinine, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                .addGap(3, 3, 3)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPulmonary, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEF, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                .addGap(3, 3, 3)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtValve, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtLMS, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                .addGap(3, 3, 3)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDiabetic, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtHBsAntiHcv, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                .addGap(3, 3, 3)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAllergies, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtOtherPer, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(5, 5, 5))
         );
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -1202,7 +1275,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 437, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1213,20 +1286,20 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Perfusion", jPanel7);
@@ -1542,7 +1615,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                 .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTime, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
             .addComponent(jScrollPane30, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         jPanel16Layout.setVerticalGroup(
@@ -1633,231 +1706,409 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jPanel21.setLayout(jPanel21Layout);
         jPanel21Layout.setHorizontalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane28, javax.swing.GroupLayout.DEFAULT_SIZE, 806, Short.MAX_VALUE)
+            .addComponent(jScrollPane28, javax.swing.GroupLayout.DEFAULT_SIZE, 815, Short.MAX_VALUE)
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane28, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+            .addComponent(jScrollPane28, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
         );
 
-        jPanel18.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
-        jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Input", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
-        jPanel18.setForeground(new java.awt.Color(102, 0, 0));
+        jPanel29.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
+        jPanel29.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Enter Values", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
+        jPanel29.setForeground(new java.awt.Color(102, 0, 0));
 
-        jLabel87.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel87.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel87.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel87.setText("Transfusion :");
+        jLabel60.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel60.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel60.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel60.setText("Blood Flow L/min :");
 
-        txtSugar1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar1.addActionListener(new java.awt.event.ActionListener() {
+        txtBloodFlow1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtBloodFlow1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar1ActionPerformed(evt);
+                txtBloodFlow1ActionPerformed(evt);
             }
         });
 
-        txtSugar2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar2.addActionListener(new java.awt.event.ActionListener() {
+        jLabel61.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel61.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel61.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel61.setText("Temperature°C :");
+
+        txtTemperature.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtTemperature.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar2ActionPerformed(evt);
+                txtTemperatureActionPerformed(evt);
             }
         });
 
-        jLabel88.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel88.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel88.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel88.setText("Prime :");
+        jLabel62.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel62.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel62.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel62.setText("FiO2 % :");
 
-        txtSugar3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar3.addActionListener(new java.awt.event.ActionListener() {
+        txtFio2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtFio2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar3ActionPerformed(evt);
+                txtFio2ActionPerformed(evt);
             }
         });
 
-        jLabel89.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel89.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel89.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel89.setText("Blood :");
+        jLabel72.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel72.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel72.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel72.setText("G. Flow L/min :");
 
-        txtSugar4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar4.addActionListener(new java.awt.event.ActionListener() {
+        txtGflow.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtGflow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar4ActionPerformed(evt);
+                txtGflowActionPerformed(evt);
             }
         });
 
-        jLabel90.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jLabel90.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel90.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel90.setText("Others :");
-
-        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
-        jPanel18.setLayout(jPanel18Layout);
-        jPanel18Layout.setHorizontalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
-                        .addComponent(jLabel87, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSugar1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel88, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSugar2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
-                        .addComponent(jLabel89, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSugar3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel90, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSugar4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        jPanel18Layout.setVerticalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel87, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSugar1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel88, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSugar2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel89, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSugar3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel90, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSugar4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel23.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
-        jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Output", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
-        jPanel23.setForeground(new java.awt.Color(102, 0, 0));
-
-        jLabel91.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
-        jLabel91.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel91.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel91.setText("Autologous BC :");
-
-        txtSugar5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar5.addActionListener(new java.awt.event.ActionListener() {
+        txtPH.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtPH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar5ActionPerformed(evt);
+                txtPHActionPerformed(evt);
             }
         });
 
-        txtSugar6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar6.addActionListener(new java.awt.event.ActionListener() {
+        jLabel73.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel73.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel73.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel73.setText("PO2 mm Hg : ");
+
+        jLabel74.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel74.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel74.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel74.setText("PH :");
+
+        jLabel75.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel75.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel75.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel75.setText("HCO2 mmol/l :");
+
+        jLabel76.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel76.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel76.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel76.setText("PCO2 mm Hg :");
+
+        txtHco2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtHco2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar6ActionPerformed(evt);
+                txtHco2ActionPerformed(evt);
             }
         });
 
-        jLabel94.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        txtPco2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtPco2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPco2ActionPerformed(evt);
+            }
+        });
+
+        txtPo2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtPo2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPo2ActionPerformed(evt);
+            }
+        });
+
+        txtBE.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtBE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBEActionPerformed(evt);
+            }
+        });
+
+        txtTco2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtTco2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTco2ActionPerformed(evt);
+            }
+        });
+
+        txtNa.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtNa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNaActionPerformed(evt);
+            }
+        });
+
+        jLabel77.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel77.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel77.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel77.setText("TCO2 mmol/l :");
+
+        jLabel78.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel78.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel78.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel78.setText("B. E. mmol/l :");
+
+        jLabel79.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel79.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel79.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel79.setText("O2Sat% :");
+
+        jLabel80.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel80.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel80.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel80.setText("Na + mmol/l :");
+
+        txtO2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtO2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtO2ActionPerformed(evt);
+            }
+        });
+
+        txtK.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtKActionPerformed(evt);
+            }
+        });
+
+        jLabel81.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel81.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel81.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel81.setText("Lac :");
+
+        txtCA.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtCA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCAActionPerformed(evt);
+            }
+        });
+
+        jLabel82.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel82.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel82.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel82.setText("Hb gm/dl :");
+
+        jLabel83.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel83.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel83.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel83.setText("Ca++mmol/l :");
+
+        txtLac.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtLac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLacActionPerformed(evt);
+            }
+        });
+
+        txtHb1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtHb1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHb1ActionPerformed(evt);
+            }
+        });
+
+        jLabel84.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel84.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel84.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel84.setText("K+ mmol/l :");
+
+        jLabel86.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel86.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel86.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel86.setText("Sugar mg/dl :");
+
+        txtSugar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtSugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSugarActionPerformed(evt);
+            }
+        });
+
+        jLabel94.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel94.setForeground(new java.awt.Color(102, 0, 0));
         jLabel94.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel94.setText("Urine Before CPB :");
+        jLabel94.setText("ACT sec : ");
 
-        jLabel95.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        txtAct.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtAct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtActActionPerformed(evt);
+            }
+        });
+
+        jLabel95.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel95.setForeground(new java.awt.Color(102, 0, 0));
         jLabel95.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel95.setText("Urine During CPB :");
+        jLabel95.setText("Heparin KU : ");
 
-        txtSugar7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar7.addActionListener(new java.awt.event.ActionListener() {
+        txtHeparin1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtHeparin1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar7ActionPerformed(evt);
+                txtHeparin1ActionPerformed(evt);
             }
         });
 
-        jLabel96.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
-        jLabel96.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel96.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel96.setText("Urine After CPB :");
-
-        txtSugar8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar8.addActionListener(new java.awt.event.ActionListener() {
+        txtBGTime.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        txtBGTime.setForeground(new java.awt.Color(102, 0, 0));
+        txtBGTime.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtBGTime.setText("00:00:00");
+        txtBGTime.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar8ActionPerformed(evt);
+                txtBGTimeActionPerformed(evt);
             }
         });
 
-        jLabel97.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
-        jLabel97.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel97.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel97.setText("MU Filtration :");
-
-        txtSugar9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar9.addActionListener(new java.awt.event.ActionListener() {
+        cboBGType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "On Vent", "DP1"}));
+        cboBGType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar9ActionPerformed(evt);
+                cboBGTypeActionPerformed(evt);
             }
         });
 
-        jLabel98.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
-        jLabel98.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel98.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel98.setText("Hemofilterate :");
-
-        txtSugar10.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar10ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
-        jPanel23.setLayout(jPanel23Layout);
-        jPanel23Layout.setHorizontalGroup(
-            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel23Layout.createSequentialGroup()
-                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel91, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel94, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                    .addComponent(jLabel95, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
+        jPanel29.setLayout(jPanel29Layout);
+        jPanel29Layout.setHorizontalGroup(
+            jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel29Layout.createSequentialGroup()
+                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel83, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
+                        .addComponent(jLabel78, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtBE, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel79, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
+                        .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtBloodFlow1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel61, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
+                        .addComponent(jLabel74, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtPH, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel76, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel29Layout.createSequentialGroup()
+                            .addComponent(jLabel84, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtK, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel29Layout.createSequentialGroup()
+                            .addComponent(jLabel86, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtSugar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel94, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtSugar5, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
-                    .addComponent(txtSugar6)
-                    .addComponent(txtSugar7))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel97, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel98, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel96, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel29Layout.createSequentialGroup()
+                        .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtAct, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCA, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel95, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel81, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel29Layout.createSequentialGroup()
+                        .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPco2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtO2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel62, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel73, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel77, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtSugar9, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
-                    .addComponent(txtSugar10)
-                    .addComponent(txtSugar8))
-                .addGap(41, 41, 41))
+                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtHeparin1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtLac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtTco2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtFio2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPo2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(5, 5, 5)
+                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
+                        .addComponent(jLabel80, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNa, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
+                        .addComponent(jLabel72, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtGflow, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
+                        .addComponent(jLabel75, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtHco2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
+                        .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
+                                .addComponent(jLabel82, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(jPanel29Layout.createSequentialGroup()
+                                .addComponent(txtBGTime, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(5, 5, 5)))
+                        .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtHb1, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                            .addComponent(cboBGType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
         );
-        jPanel23Layout.setVerticalGroup(
-            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel23Layout.createSequentialGroup()
-                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel91, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSugar5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel97, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSugar9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
-                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSugar6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jPanel29Layout.setVerticalGroup(
+            jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel29Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBloodFlow1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel61, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFio2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel72, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtGflow, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel74, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPH, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel76, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPco2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel73, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPo2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel75, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtHco2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel78, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBE, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel79, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtO2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel77, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTco2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel80, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNa, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel84, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtK, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel83, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCA, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel81, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLac, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel82, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtHb1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel86, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSugar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel94, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel98, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSugar10, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
-                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSugar7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAct, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel95, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSugar8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel96, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(txtHeparin1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBGTime, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboBGType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5))
         );
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -1866,22 +2117,17 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel29, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(5, 5, 5))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(jPanel29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Blood Gases", jPanel8);
@@ -1957,13 +2203,13 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel99, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSugar13, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtSugar13, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel100, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSugar14)
+                .addComponent(txtSugar14, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(jScrollPane32, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+            .addComponent(jScrollPane32, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         jPanel26Layout.setVerticalGroup(
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1975,7 +2221,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                     .addComponent(jLabel100, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSugar14, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane32, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addComponent(jScrollPane32, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))
         );
 
         jPanel27.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -1990,11 +2236,11 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jPanel27.setLayout(jPanel27Layout);
         jPanel27Layout.setHorizontalGroup(
             jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel27Layout.setVerticalGroup(
             jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
         jPanel5.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -2009,11 +2255,11 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jScrollPane1)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
         );
 
         jPanel28.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -2035,29 +2281,315 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
             .addComponent(jScrollPane3)
         );
 
+        jPanel24.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
+        jPanel24.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Output", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
+        jPanel24.setForeground(new java.awt.Color(102, 0, 0));
+
+        jLabel92.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        jLabel92.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel92.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel92.setText("Autologous BC :");
+
+        txtSugar11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtSugar11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSugar11ActionPerformed(evt);
+            }
+        });
+
+        txtSugar12.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtSugar12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSugar12ActionPerformed(evt);
+            }
+        });
+
+        jLabel101.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        jLabel101.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel101.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel101.setText("Urine Before CPB :");
+
+        jLabel102.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        jLabel102.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel102.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel102.setText("Urine During CPB :");
+
+        txtSugar15.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtSugar15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSugar15ActionPerformed(evt);
+            }
+        });
+
+        jLabel103.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        jLabel103.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel103.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel103.setText("Urine After CPB :");
+
+        txtSugar16.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtSugar16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSugar16ActionPerformed(evt);
+            }
+        });
+
+        jLabel104.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        jLabel104.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel104.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel104.setText("MU Filtration :");
+
+        txtSugar17.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtSugar17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSugar17ActionPerformed(evt);
+            }
+        });
+
+        jLabel105.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
+        jLabel105.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel105.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel105.setText("Hemofilterate :");
+
+        txtSugar18.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtSugar18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSugar18ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
+        jPanel24.setLayout(jPanel24Layout);
+        jPanel24Layout.setHorizontalGroup(
+            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel24Layout.createSequentialGroup()
+                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel92, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel101, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel102, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtSugar11, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                    .addComponent(txtSugar12)
+                    .addComponent(txtSugar15))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel104, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel105, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel103, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtSugar17, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                    .addComponent(txtSugar18)
+                    .addComponent(txtSugar16)))
+        );
+        jPanel24Layout.setVerticalGroup(
+            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel24Layout.createSequentialGroup()
+                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel92, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSugar11, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel104, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSugar17, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSugar12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel101, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel105, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSugar18, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
+                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSugar15, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel102, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSugar16, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel103, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5))
+        );
+
+        jPanel25.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
+        jPanel25.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Input", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
+        jPanel25.setForeground(new java.awt.Color(102, 0, 0));
+
+        jLabel106.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel106.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel106.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel106.setText("Transfusion :");
+
+        txtSugar19.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtSugar19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSugar19ActionPerformed(evt);
+            }
+        });
+
+        txtSugar20.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtSugar20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSugar20ActionPerformed(evt);
+            }
+        });
+
+        jLabel107.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel107.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel107.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel107.setText("Prime :");
+
+        txtSugar21.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtSugar21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSugar21ActionPerformed(evt);
+            }
+        });
+
+        jLabel108.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel108.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel108.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel108.setText("Blood :");
+
+        txtSugar22.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtSugar22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSugar22ActionPerformed(evt);
+            }
+        });
+
+        jLabel109.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel109.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel109.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel109.setText("Others :");
+
+        javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
+        jPanel25.setLayout(jPanel25Layout);
+        jPanel25Layout.setHorizontalGroup(
+            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel25Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel25Layout.createSequentialGroup()
+                        .addComponent(jLabel108, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtSugar21))
+                    .addGroup(jPanel25Layout.createSequentialGroup()
+                        .addComponent(jLabel106, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtSugar19, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel107, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel109, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtSugar20, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                    .addComponent(txtSugar22))
+                .addContainerGap())
+        );
+        jPanel25Layout.setVerticalGroup(
+            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel25Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel106, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSugar19, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel107, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSugar20, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel108, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSugar21, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel109, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSugar22, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5))
+        );
+
+        jPanel23.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
+        jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Notes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
+        jPanel23.setForeground(new java.awt.Color(102, 0, 0));
+
+        jLabel110.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel110.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel110.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel110.setText("Residual Prime Bagged : ");
+
+        txtSugar23.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtSugar23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSugar23ActionPerformed(evt);
+            }
+        });
+
+        jLabel111.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel111.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel111.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel111.setText("Fluid Left in the Circuit : ");
+
+        txtSugar24.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtSugar24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSugar24ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
+        jPanel23.setLayout(jPanel23Layout);
+        jPanel23Layout.setHorizontalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel23Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addComponent(jLabel110, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtSugar23))
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addComponent(jLabel111, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtSugar24)))
+                .addContainerGap())
+        );
+        jPanel23Layout.setVerticalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel23Layout.createSequentialGroup()
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel110, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSugar23, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel111, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSugar24, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5))
+        );
+
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
         jPanel20.setLayout(jPanel20Layout);
         jPanel20Layout.setHorizontalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(5, 5, 5)
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel27, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel20Layout.setVerticalGroup(
-            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel20Layout.createSequentialGroup()
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel20Layout.createSequentialGroup()
+                .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jPanel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jTabbedPane1.addTab("Medication & Notes", jPanel20);
@@ -2259,20 +2791,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         txtHeight.requestFocus();
     }//GEN-LAST:event_txtAnesthetistActionPerformed
 
-    private void txtVenousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVenousActionPerformed
-        // TODO add your handling code here:
-        txtAorticCannulae.requestFocus();
-    }//GEN-LAST:event_txtVenousActionPerformed
-
     private void txtAntegradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAntegradeActionPerformed
         // TODO add your handling code here:
         txtRetrograde.requestFocus();
     }//GEN-LAST:event_txtAntegradeActionPerformed
-
-    private void txtAorticCannulaeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAorticCannulaeActionPerformed
-        // TODO add your handling code here:
-        txtHemofilter.requestFocus();
-    }//GEN-LAST:event_txtAorticCannulaeActionPerformed
 
     private void txtRetrogradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRetrogradeActionPerformed
         // TODO add your handling code here:
@@ -2281,18 +2803,13 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
 
     private void txtSumpVentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSumpVentActionPerformed
         // TODO add your handling code here:
-        txtConnectors.requestFocus();
+//        txtConnectors.requestFocus();
     }//GEN-LAST:event_txtSumpVentActionPerformed
 
     private void txtHemofilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHemofilterActionPerformed
         // TODO add your handling code here:
         txtAntegrade.requestFocus();
     }//GEN-LAST:event_txtHemofilterActionPerformed
-
-    private void txtConnectorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConnectorsActionPerformed
-        // TODO add your handling code here:
-        txtAortic.requestFocus();
-    }//GEN-LAST:event_txtConnectorsActionPerformed
 
     private void txtHbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHbActionPerformed
         // TODO add your handling code here:
@@ -2305,7 +2822,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                 txtBloodGroup.getText().trim(), this);
         bloodGroupId = Constants.lovID;
         txtBloodGroup.setText(Constants.lovDescription);
-        txtVenous.requestFocus();
+//        txtVenous.requestFocus();
     }//GEN-LAST:event_txtBloodGroupActionPerformed
 
     private void txtBloodFlowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBloodFlowActionPerformed
@@ -2568,46 +3085,6 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tblGraphKeyReleased
 
-    private void txtSugar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar1ActionPerformed
-
-    private void txtSugar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar2ActionPerformed
-
-    private void txtSugar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar3ActionPerformed
-
-    private void txtSugar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar4ActionPerformed
-
-    private void txtSugar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar5ActionPerformed
-
-    private void txtSugar6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar6ActionPerformed
-
-    private void txtSugar7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar7ActionPerformed
-
-    private void txtSugar8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar8ActionPerformed
-
-    private void txtSugar9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar9ActionPerformed
-
-    private void txtSugar10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar10ActionPerformed
-
     private void txtSugar13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar13ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSugar13ActionPerformed
@@ -2685,6 +3162,215 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         txtSurgeon.requestFocus();
     }//GEN-LAST:event_txtIabCatheterTimeActionPerformed
 
+    private void txtSugar11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSugar11ActionPerformed
+
+    private void txtSugar12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar12ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSugar12ActionPerformed
+
+    private void txtSugar15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar15ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSugar15ActionPerformed
+
+    private void txtSugar16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar16ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSugar16ActionPerformed
+
+    private void txtSugar17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar17ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSugar17ActionPerformed
+
+    private void txtSugar18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar18ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSugar18ActionPerformed
+
+    private void txtSugar19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar19ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSugar19ActionPerformed
+
+    private void txtSugar20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar20ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSugar20ActionPerformed
+
+    private void txtSugar21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar21ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSugar21ActionPerformed
+
+    private void txtSugar22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar22ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSugar22ActionPerformed
+
+    private void txtSugar23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar23ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSugar23ActionPerformed
+
+    private void txtSugar24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar24ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSugar24ActionPerformed
+
+    private void txtBloodFlow1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBloodFlow1ActionPerformed
+        // TODO add your handling code here:
+        txtTemperature.requestFocus();
+    }//GEN-LAST:event_txtBloodFlow1ActionPerformed
+
+    private void txtTemperatureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTemperatureActionPerformed
+        // TODO add your handling code here:
+        txtFio2.requestFocus();
+    }//GEN-LAST:event_txtTemperatureActionPerformed
+
+    private void txtFio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFio2ActionPerformed
+        // TODO add your handling code here:
+        txtGflow.requestFocus();
+    }//GEN-LAST:event_txtFio2ActionPerformed
+
+    private void txtGflowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGflowActionPerformed
+        // TODO add your handling code here:
+        txtPH.requestFocus();
+    }//GEN-LAST:event_txtGflowActionPerformed
+
+    private void txtPHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPHActionPerformed
+        // TODO add your handling code here:
+        txtPco2.requestFocus();
+    }//GEN-LAST:event_txtPHActionPerformed
+
+    private void txtHco2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHco2ActionPerformed
+        // TODO add your handling code here:
+        txtBE.requestFocus();
+    }//GEN-LAST:event_txtHco2ActionPerformed
+
+    private void txtPco2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPco2ActionPerformed
+        // TODO add your handling code here:
+        txtPo2.requestFocus();
+    }//GEN-LAST:event_txtPco2ActionPerformed
+
+    private void txtPo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPo2ActionPerformed
+        // TODO add your handling code here:
+        txtHco2.requestFocus();
+    }//GEN-LAST:event_txtPo2ActionPerformed
+
+    private void txtBEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBEActionPerformed
+        // TODO add your handling code here:
+        txtO2.requestFocus();
+    }//GEN-LAST:event_txtBEActionPerformed
+
+    private void txtTco2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTco2ActionPerformed
+        // TODO add your handling code here:
+        txtNa.requestFocus();
+    }//GEN-LAST:event_txtTco2ActionPerformed
+
+    private void txtNaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNaActionPerformed
+        // TODO add your handling code here:
+        txtK.requestFocus();
+    }//GEN-LAST:event_txtNaActionPerformed
+
+    private void txtO2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtO2ActionPerformed
+        // TODO add your handling code here:
+        txtTco2.requestFocus();
+    }//GEN-LAST:event_txtO2ActionPerformed
+
+    private void txtKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKActionPerformed
+        // TODO add your handling code here:
+        txtCA.requestFocus();
+    }//GEN-LAST:event_txtKActionPerformed
+
+    private void txtCAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCAActionPerformed
+        // TODO add your handling code here:
+        txtLac.requestFocus();
+    }//GEN-LAST:event_txtCAActionPerformed
+
+    private void txtLacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLacActionPerformed
+        // TODO add your handling code here:
+        txtHb.requestFocus();
+    }//GEN-LAST:event_txtLacActionPerformed
+
+    private void txtHb1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHb1ActionPerformed
+        // TODO add your handling code here:
+        txtSugar.requestFocus();
+    }//GEN-LAST:event_txtHb1ActionPerformed
+
+    private void txtSugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugarActionPerformed
+        // TODO add your handling code here:
+        txtAct.requestFocus();
+    }//GEN-LAST:event_txtSugarActionPerformed
+
+    private void txtActActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtActActionPerformed
+        // TODO add your handling code here:
+        txtHeparin.requestFocus();
+    }//GEN-LAST:event_txtActActionPerformed
+
+    private void txtHeparin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHeparin1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHeparin1ActionPerformed
+
+    private void txtBGTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBGTimeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBGTimeActionPerformed
+
+    private void cboBGTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboBGTypeActionPerformed
+        // TODO add your handling code here:
+        int confirmation = JOptionPane.showConfirmDialog(null, "You Are Going "
+            + "To Save and Final the information.\nDo you want to Save and Final?");
+        if (confirmation != 0) {
+            return;
+        }
+
+        //        objPerfusionist.setCardiacRegistryId(cardiacId);
+        //        objPerfusionist.setBloodFlow(txtBloodFlow.getText().trim());
+        //        objPerfusionist.setTemperature(txtTemperature.getText().trim());
+        //        objPerfusionist.setFIO2(txtFio2.getText().trim());
+        //        objPerfusionist.setgFlow(txtGflow.getText().trim());
+        //        objPerfusionist.setpH(txtPH.getText().trim());
+        //        objPerfusionist.setPCO2(txtPco2.getText().trim());
+        //        objPerfusionist.setPO2(txtPo2.getText().trim());
+        //        objPerfusionist.setHCO2(txtHco2.getText().trim());a
+        //        objPerfusionist.setBE(txtBE.getText().trim());
+        //        objPerfusionist.setO2Sat(txtO2.getText().trim());
+        //        objPerfusionist.setTCO2(txtTco2.getText().trim());
+        //        objPerfusionist.setNa(txtNa.getText().trim());
+        //        objPerfusionist.setK(txtK.getText().trim());
+        //        objPerfusionist.setCa(txtCA.getText().trim());
+        //        objPerfusionist.setLac(txtLac.getText().trim());
+        //        objPerfusionist.setHb(txtHb.getText().trim());
+        //        objPerfusionist.setSugar(txtSugar.getText().trim());
+        //        objPerfusionist.setACT(txtAct.getText().trim());
+        //        objPerfusionist.setHeparinKU(txtHeparin.getText().trim());
+
+        //        if (ctlPerfusionist.insertBloodGases(objPerfusionist)) {
+            //            JOptionPane.showMessageDialog(null, "Record save successfully.");
+            //            clearBloodGases();
+            //            selectBloodGases();
+            //        } else {
+            //            JOptionPane.showMessageDialog(null, "Uanble to save record.\n"
+                //                    + "Please contact support Team.");
+            //        }
+    }//GEN-LAST:event_cboBGTypeActionPerformed
+
+    private void tblPatientInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientInfoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblPatientInfoMouseClicked
+
+    private void tblPatientInfoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientInfoMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblPatientInfoMouseEntered
+
+    private void tblPatientInfoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientInfoMouseReleased
+
+    }//GEN-LAST:event_tblPatientInfoMouseReleased
+
+    private void tblPatientInfoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblPatientInfoPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblPatientInfoPropertyChange
+
+    private void tblPatientInfoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblPatientInfoKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblPatientInfoKeyReleased
+
+    private void txtSumpVent1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSumpVent1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSumpVent1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
@@ -2692,12 +3378,25 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnFinal;
     private javax.swing.JButton btnGraph;
     private javax.swing.JButton btnSave;
+    private javax.swing.JComboBox<String> cboBGType;
     private javax.swing.JComboBox<String> cboIabCatheter;
     private javax.swing.JComboBox<String> cboRedo;
     private javax.swing.JComboBox<String> cboTimeManag;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel100;
+    private javax.swing.JLabel jLabel101;
+    private javax.swing.JLabel jLabel102;
+    private javax.swing.JLabel jLabel103;
+    private javax.swing.JLabel jLabel104;
+    private javax.swing.JLabel jLabel105;
+    private javax.swing.JLabel jLabel106;
+    private javax.swing.JLabel jLabel107;
+    private javax.swing.JLabel jLabel108;
+    private javax.swing.JLabel jLabel109;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel110;
+    private javax.swing.JLabel jLabel111;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
@@ -2709,9 +3408,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
@@ -2739,22 +3436,32 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel59;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel71;
-    private javax.swing.JLabel jLabel87;
-    private javax.swing.JLabel jLabel88;
-    private javax.swing.JLabel jLabel89;
-    private javax.swing.JLabel jLabel90;
-    private javax.swing.JLabel jLabel91;
+    private javax.swing.JLabel jLabel72;
+    private javax.swing.JLabel jLabel73;
+    private javax.swing.JLabel jLabel74;
+    private javax.swing.JLabel jLabel75;
+    private javax.swing.JLabel jLabel76;
+    private javax.swing.JLabel jLabel77;
+    private javax.swing.JLabel jLabel78;
+    private javax.swing.JLabel jLabel79;
+    private javax.swing.JLabel jLabel80;
+    private javax.swing.JLabel jLabel81;
+    private javax.swing.JLabel jLabel82;
+    private javax.swing.JLabel jLabel83;
+    private javax.swing.JLabel jLabel84;
+    private javax.swing.JLabel jLabel86;
+    private javax.swing.JLabel jLabel92;
     private javax.swing.JLabel jLabel93;
     private javax.swing.JLabel jLabel94;
     private javax.swing.JLabel jLabel95;
-    private javax.swing.JLabel jLabel96;
-    private javax.swing.JLabel jLabel97;
-    private javax.swing.JLabel jLabel98;
     private javax.swing.JLabel jLabel99;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -2770,9 +3477,12 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
+    private javax.swing.JPanel jPanel24;
+    private javax.swing.JPanel jPanel25;
     private javax.swing.JPanel jPanel26;
     private javax.swing.JPanel jPanel27;
     private javax.swing.JPanel jPanel28;
+    private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
@@ -2787,6 +3497,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane29;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane30;
+    private javax.swing.JScrollPane jScrollPane31;
     private javax.swing.JScrollPane jScrollPane32;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
@@ -2798,67 +3509,88 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private javax.swing.JTable tblCheckList;
     private javax.swing.JTable tblDrugs;
     private javax.swing.JTable tblGraph;
+    private javax.swing.JTable tblPatientInfo;
     private javax.swing.JTable tblPatientInfo3;
     private javax.swing.JTable tblTimeManagement;
+    private javax.swing.JTextField txtAct;
     private javax.swing.JTextField txtAllergies;
     private javax.swing.JTextField txtAnesthetist;
     private javax.swing.JTextField txtAntegrade;
     private javax.swing.JTextField txtAortic;
-    private javax.swing.JTextField txtAorticCannulae;
     private javax.swing.JTextField txtAsstPerfusionist;
     private javax.swing.JTextField txtAsstSurgeon;
+    private javax.swing.JTextField txtBE;
+    private javax.swing.JTextField txtBGTime;
     private javax.swing.JTextField txtBloodFlow;
+    private javax.swing.JTextField txtBloodFlow1;
     private javax.swing.JTextField txtBloodGroup;
     private javax.swing.JTextField txtBloodRbc;
-    private javax.swing.JTextField txtConnectors;
+    private javax.swing.JTextField txtCA;
     private javax.swing.JTextField txtCpgSystem;
     private javax.swing.JTextField txtCreatinine;
     private javax.swing.JTextField txtDiabetic;
     private javax.swing.JTextField txtEF;
+    private javax.swing.JTextField txtFio2;
+    private javax.swing.JTextField txtGflow;
     private javax.swing.JTextField txtHBsAntiHcv;
     private javax.swing.JTextField txtHartmanns;
     private javax.swing.JTextField txtHb;
+    private javax.swing.JTextField txtHb1;
+    private javax.swing.JTextField txtHco2;
     private javax.swing.JTextField txtHeight;
     private javax.swing.JTextField txtHemofilter;
     private javax.swing.JTextField txtHeparin;
+    private javax.swing.JTextField txtHeparin1;
     private javax.swing.JTextField txtHeparinized;
     private javax.swing.JTextField txtIabCatheterTime;
+    private javax.swing.JTextField txtK;
     private javax.swing.JTextField txtLMS;
+    private javax.swing.JTextField txtLac;
     private javax.swing.JTextField txtMannitol;
     private javax.swing.JTextField txtMemberId;
     private javax.swing.JTextField txtMemberId1;
     private javax.swing.JTextField txtMemberId2;
     private javax.swing.JTextField txtMitral;
+    private javax.swing.JTextField txtNa;
+    private javax.swing.JTextField txtO2;
     private javax.swing.JTextField txtOffTime;
     private javax.swing.JTextField txtOnTime;
     private javax.swing.JTextField txtOperation;
     private javax.swing.JTextField txtOtherPer;
     private javax.swing.JTextField txtOxygenator;
+    private javax.swing.JTextField txtPH;
+    private javax.swing.JTextField txtPco2;
     private javax.swing.JTextField txtPerfusionist;
+    private javax.swing.JTextField txtPo2;
     private javax.swing.JTextField txtPressure;
     private javax.swing.JTextField txtPulmonary;
     private javax.swing.JTextField txtQuantity;
     private javax.swing.JTextField txtRetrograde;
     private javax.swing.JTextField txtSelectDrug;
-    private javax.swing.JTextField txtSugar1;
-    private javax.swing.JTextField txtSugar10;
+    private javax.swing.JTextField txtSugar;
+    private javax.swing.JTextField txtSugar11;
+    private javax.swing.JTextField txtSugar12;
     private javax.swing.JTextField txtSugar13;
     private javax.swing.JTextField txtSugar14;
-    private javax.swing.JTextField txtSugar2;
-    private javax.swing.JTextField txtSugar3;
-    private javax.swing.JTextField txtSugar4;
-    private javax.swing.JTextField txtSugar5;
-    private javax.swing.JTextField txtSugar6;
-    private javax.swing.JTextField txtSugar7;
-    private javax.swing.JTextField txtSugar8;
-    private javax.swing.JTextField txtSugar9;
+    private javax.swing.JTextField txtSugar15;
+    private javax.swing.JTextField txtSugar16;
+    private javax.swing.JTextField txtSugar17;
+    private javax.swing.JTextField txtSugar18;
+    private javax.swing.JTextField txtSugar19;
+    private javax.swing.JTextField txtSugar20;
+    private javax.swing.JTextField txtSugar21;
+    private javax.swing.JTextField txtSugar22;
+    private javax.swing.JTextField txtSugar23;
+    private javax.swing.JTextField txtSugar24;
     private javax.swing.JTextField txtSumpVent;
+    private javax.swing.JTextField txtSumpVent1;
     private javax.swing.JTextField txtSurArea;
     private javax.swing.JTextField txtSurgeon;
+    private javax.swing.JTextField txtTco2;
+    private javax.swing.JTextField txtTemperature;
     private javax.swing.JTextField txtTime;
     private javax.swing.JTextField txtUrea;
     private javax.swing.JTextField txtValve;
-    private javax.swing.JTextField txtVenous;
     private javax.swing.JTextField txtWeight;
     // End of variables declaration//GEN-END:variables
 
@@ -2965,13 +3697,14 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         objPerfusionist.setAssistantSurgeonId(asstSurgeonId);
         objPerfusionist.setAnesthetistId(anesthetistId);
         // Cannulae
-        objPerfusionist.setVenous(txtVenous.getText().trim());
-        objPerfusionist.setAorticCannulae(txtAorticCannulae.getText().trim());
+        
         objPerfusionist.setHemofilter(txtHemofilter.getText().trim());
         objPerfusionist.setAntegrade(txtAntegrade.getText().trim());
         objPerfusionist.setRetrograde(txtRetrograde.getText().trim());
         objPerfusionist.setSumpVent(txtSumpVent.getText().trim());
-        objPerfusionist.setConnectors(txtConnectors.getText().trim());
+//        objPerfusionist.setConnectors(txtConnectors.getText().trim());
+//        objPerfusionist.setVenous(txtVenous.getText().trim());
+//        objPerfusionist.setAorticCannulae(txtAorticCannulae.getText().trim());
 
         objPerfusionist.setHeight(txtHeight.getText().trim());
         objPerfusionist.setWeight(txtWeight.getText().trim());
@@ -3028,13 +3761,14 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         txtAsstSurgeon.setText(objPerfusionist.getAssistantSurgeonName());
         txtAnesthetist.setText(objPerfusionist.getAnesthetistName());
 
-        txtVenous.setText(objPerfusionist.getVenous());
-        txtAorticCannulae.setText(objPerfusionist.getAorticCannulae());
+        
         txtHemofilter.setText(objPerfusionist.getHemofilter());
         txtAntegrade.setText(objPerfusionist.getAntegrade());
         txtRetrograde.setText(objPerfusionist.getRetrograde());
         txtSumpVent.setText(objPerfusionist.getSumpVent());
-        txtConnectors.setText(objPerfusionist.getConnectors());
+//        txtVenous.setText(objPerfusionist.getVenous());
+//        txtAorticCannulae.setText(objPerfusionist.getAorticCannulae());
+//        txtConnectors.setText(objPerfusionist.getConnectors());
 
         txtHeight.setText(objPerfusionist.getHeight());
         txtWeight.setText(objPerfusionist.getWeight());
@@ -3080,13 +3814,14 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         txtAsstSurgeon.setText("");
         txtAnesthetist.setText("");
 
-        txtVenous.setText("");
-        txtAorticCannulae.setText("");
+        
         txtHemofilter.setText("");
         txtAntegrade.setText("");
         txtRetrograde.setText("");
         txtSumpVent.setText("");
-        txtConnectors.setText("");
+//        txtConnectors.setText("");
+//        txtVenous.setText("");
+//        txtAorticCannulae.setText("");
 
         txtHeight.setText("");
         txtWeight.setText("");
@@ -3156,13 +3891,14 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         txtAsstSurgeon.setEditable(false);
         txtAnesthetist.setEditable(false);
 
-        txtVenous.setEditable(false);
-        txtAorticCannulae.setEditable(false);
+        
         txtHemofilter.setEditable(false);
         txtAntegrade.setEditable(false);
         txtRetrograde.setEditable(false);
         txtSumpVent.setEditable(false);
-        txtConnectors.setEditable(false);
+//        txtConnectors.setEditable(false);
+//        txtVenous.setEditable(false);
+//        txtAorticCannulae.setEditable(false);
 
         txtHeight.setEditable(false);
         txtWeight.setEditable(false);
