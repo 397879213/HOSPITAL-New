@@ -20,8 +20,7 @@ public class FormAction extends javax.swing.JInternalFrame {
     public FormAction() {
 
         initComponents();
-        this.setSize(Constants.xSize + 20, Constants.ySize - Constants.yExtension + 8);
-
+        this.setSize(Constants.xSize - 40, Constants.ySize - Constants.yExtension + 8);
     }
 
     FormActionController ctlAction = new FormActionController();
@@ -216,6 +215,7 @@ public class FormAction extends javax.swing.JInternalFrame {
         jPanel5.setForeground(new java.awt.Color(102, 0, 0));
 
         txtSaveRemarks.setColumns(20);
+        txtSaveRemarks.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtSaveRemarks.setRows(5);
         txtSaveRemarks.setText("195\nIPD CASH REFUND ALLOW\n");
         jScrollPane1.setViewportView(txtSaveRemarks);
@@ -275,9 +275,7 @@ public class FormAction extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Sr.", "Grade", "Grade Description", "Child Above 12", "Child Under 12", "Spouse",
-                "Parents", "Self", "Class"
-
+                "Sr.", "Id", "Description", "Form Name", "Active", "Remarks"
             }
         ));
         tblFormAction.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -375,6 +373,7 @@ public class FormAction extends javax.swing.JInternalFrame {
         jPanel10.setForeground(new java.awt.Color(102, 0, 0));
 
         txtEdtRemarks.setColumns(20);
+        txtEdtRemarks.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtEdtRemarks.setRows(5);
         jScrollPane2.setViewportView(txtEdtRemarks);
 
@@ -514,7 +513,7 @@ public class FormAction extends javax.swing.JInternalFrame {
 
     private void txtActionIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtActionIdActionPerformed
         // TODO add your handling code here:
-        listActions = ctlAction.selectIdWiseAction(txtActionDesc.getText().trim());
+        listActions = ctlAction.selectIdWiseAction(txtActionId.getText().trim());
         selectActionInfromation(listActions);
     }//GEN-LAST:event_txtActionIdActionPerformed
 
@@ -534,6 +533,11 @@ public class FormAction extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblFormActionMouseEntered
 
     private void tblFormActionMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFormActionMouseReleased
+        if(listActions.isEmpty() || tblFormAction.getSelectedRow() < 0){
+            JOptionPane.showMessageDialog(null, "Please Select Record to Edit.");
+            txtActionId.requestFocus();
+            return;
+        }
         objAction = listActions.get(tblFormAction.getSelectedRow());
         formId = objAction.getFormId();
         txtEdtDescription.setText(objAction.getActionDescription());
@@ -621,6 +625,10 @@ public class FormAction extends javax.swing.JInternalFrame {
         objAction.setRemarks(txtEdtRemarks.getText().trim());
         if (ctlAction.updateFormAction(objAction)) {
             selectActionInfromation(ctlAction.selectIdWiseAction(objAction.getActionId()));
+            txtEdtRemarks.setText("");
+            txtEdtDescription.setText("");
+            txtEdtFormName.setText("");
+            txtActionId.requestFocus();
         } else {
             JOptionPane.showMessageDialog(null, "Unable to Edit Information.\n"
                     + "Please Contact Support Team.");
@@ -633,10 +641,14 @@ public class FormAction extends javax.swing.JInternalFrame {
             return;
         }
         objAction.setActionDescription(txtSaveDescription.getText().trim());
-        objAction.setFormId(formId);
+        objAction.setFormId(saveFormId);
         objAction.setRemarks(txtSaveRemarks.getText().trim());
         if (ctlAction.insertFormAction(objAction)) {
             selectActionInfromation(ctlAction.selectNameWiseAction(""));
+            txtSaveRemarks.setText("");
+            txtSaveDescription.setText("");
+            txtSaveFormName.setText("");
+            txtSaveDescription.requestFocus();
         } else {
             JOptionPane.showMessageDialog(null, "Unable to Save Information.\n"
                     + "Please Contact Support Team.");
@@ -704,13 +716,15 @@ public class FormAction extends javax.swing.JInternalFrame {
             if (i == 0) {
                 column.setPreferredWidth(35);
             } else if (i == 1) {
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(50);
             } else if (i == 2) {
                 column.setPreferredWidth(200);
             } else if (i == 3) {
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(150);
             } else if (i == 4) {
-                column.setPreferredWidth(200);
+                column.setPreferredWidth(50);
+            }else if (i == 4) {
+                column.setPreferredWidth(120);
             }
         }
     }

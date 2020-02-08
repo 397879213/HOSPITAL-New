@@ -464,6 +464,9 @@
                     <Component class="javax.swing.JTextArea" name="txtSaveRemarks">
                       <Properties>
                         <Property name="columns" type="int" value="20"/>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Arial" size="12" style="0"/>
+                        </Property>
                         <Property name="rows" type="int" value="5"/>
                         <Property name="text" type="java.lang.String" value="195&#xa;IPD CASH REFUND ALLOW&#xa;"/>
                       </Properties>
@@ -518,7 +521,7 @@
                       <Color blue="d1" green="b4" id="Active Caption" palette="2" red="99" type="palette"/>
                     </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {null, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Sr.&quot;, &quot;Grade&quot;, &quot;Grade Description&quot;, &quot;Child Above 12&quot;, &quot;Child Under 12&quot;, &quot;Spouse&quot;,&#xa;            &quot;Parents&quot;, &quot;Self&quot;, &quot;Class&quot;&#xa;&#xa;    }&#xa;)" type="code"/>
+                      <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {null, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Sr.&quot;, &quot;Id&quot;, &quot;Description&quot;, &quot;Form Name&quot;, &quot;Active&quot;, &quot;Remarks&quot;&#xa;    }&#xa;)" type="code"/>
                     </Property>
                   </Properties>
                   <Events>
@@ -565,7 +568,7 @@
                           <Component id="txtEdtFormName" max="32767" attributes="3"/>
                           <Component id="txtEdtDescription" max="32767" attributes="3"/>
                       </Group>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -674,6 +677,9 @@
                 <Component class="javax.swing.JTextArea" name="txtEdtRemarks">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Arial" size="12" style="0"/>
+                    </Property>
                     <Property name="rows" type="int" value="5"/>
                   </Properties>
                 </Component>
