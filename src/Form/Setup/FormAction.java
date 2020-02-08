@@ -1,11 +1,11 @@
 package Form.Setup;
 
-import BO.Client.POFEmployeeMapperBO;
 import BO.Setup.FormActionBO;
 import Controller.Setup.FormActionController;
 import TableModel.Setup.FormActionTableModel;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableColumn;
 import utilities.Constants;
@@ -26,6 +26,7 @@ public class FormAction extends javax.swing.JInternalFrame {
     FormActionController ctlAction = new FormActionController();
     DisplayLOV lov = new DisplayLOV();
 
+    FormActionBO objAction = new FormActionBO();
     List<FormActionBO> listActions = new ArrayList();
 
     @SuppressWarnings("unchecked")
@@ -44,12 +45,12 @@ public class FormAction extends javax.swing.JInternalFrame {
         txtFormName = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        txtMemberId3 = new javax.swing.JTextField();
+        txtEdtFormName = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        txtMemberId6 = new javax.swing.JTextField();
+        txtEdtDescription = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtRemarks = new javax.swing.JTextArea();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane26 = new javax.swing.JScrollPane();
         tblFormAction = new javax.swing.JTable();
@@ -63,9 +64,9 @@ public class FormAction extends javax.swing.JInternalFrame {
         tblPatientInfo1 = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         btnClear = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
+        btnAdd = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102)));
@@ -190,10 +191,10 @@ public class FormAction extends javax.swing.JInternalFrame {
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel13.setText("Form :");
 
-        txtMemberId3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtMemberId3.addActionListener(new java.awt.event.ActionListener() {
+        txtEdtFormName.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtEdtFormName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMemberId3ActionPerformed(evt);
+                txtEdtFormNameActionPerformed(evt);
             }
         });
 
@@ -202,10 +203,10 @@ public class FormAction extends javax.swing.JInternalFrame {
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel16.setText("Description :");
 
-        txtMemberId6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtMemberId6.addActionListener(new java.awt.event.ActionListener() {
+        txtEdtDescription.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtEdtDescription.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMemberId6ActionPerformed(evt);
+                txtEdtDescriptionActionPerformed(evt);
             }
         });
 
@@ -213,9 +214,9 @@ public class FormAction extends javax.swing.JInternalFrame {
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Remarks", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel5.setForeground(new java.awt.Color(102, 0, 0));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtRemarks.setColumns(20);
+        txtRemarks.setRows(5);
+        jScrollPane1.setViewportView(txtRemarks);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -242,8 +243,8 @@ public class FormAction extends javax.swing.JInternalFrame {
                             .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtMemberId3)
-                            .addComponent(txtMemberId6))))
+                            .addComponent(txtEdtFormName)
+                            .addComponent(txtEdtDescription))))
                 .addGap(8, 8, 8))
         );
         jPanel7Layout.setVerticalGroup(
@@ -252,11 +253,11 @@ public class FormAction extends javax.swing.JInternalFrame {
                 .addGap(8, 8, 8)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMemberId6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEdtDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMemberId3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEdtFormName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8))
@@ -423,20 +424,30 @@ public class FormAction extends javax.swing.JInternalFrame {
         btnClear.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnClear.setText("Clear");
 
-        jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(204, 0, 0));
-        jButton2.setText("Exit");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnExit.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnExit.setForeground(new java.awt.Color(204, 0, 0));
+        btnExit.setText("Exit");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnExitActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton3.setText("Save");
+        btnAdd.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnAdd.setText("Save");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
-        jButton4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton4.setText("Edit");
+        btnEdit.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -446,11 +457,11 @@ public class FormAction extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -459,9 +470,9 @@ public class FormAction extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClear)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(btnExit)
+                    .addComponent(btnAdd)
+                    .addComponent(btnEdit))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -546,7 +557,11 @@ public class FormAction extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblFormActionMouseEntered
 
     private void tblFormActionMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFormActionMouseReleased
-
+        objAction = listActions.get(tblFormAction.getSelectedRow());
+        formId = objAction.getFormId();
+        txtEdtDescription.setText(objAction.getActionDescription());
+        txtEdtFormName.setText(objAction.getFormDescription());
+        txtRemarks.setText(objAction.getRemarks());
     }//GEN-LAST:event_tblFormActionMouseReleased
 
     private void tblFormActionPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblFormActionPropertyChange
@@ -602,25 +617,67 @@ public class FormAction extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tblPatientInfo1KeyReleased
 
-    private void txtMemberId3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId3ActionPerformed
+    private void txtEdtFormNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdtFormNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMemberId3ActionPerformed
+        String query
+                = "SELECT FM.ID ID, FM.NAME DESCRIPTION FROM \n"
+                + Database.DCMS.form + " WHERE WHERE FM.ID IN \n"
+                + " (SELECT DISTINCT(FORM_ID) FROM \n"
+                + Database.DCMS.formWiseAction + ")\n"
+                + "ORDER BY ID\n";
 
-    private void txtMemberId6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId6ActionPerformed
+        lov.LOVSelection(query, this);
+        if (Constants.lovID.equalsIgnoreCase("ID")) {
+            return;
+        }
+        formId = Constants.lovID;
+        txtEdtFormName.setText(Constants.lovDescription);
+    }//GEN-LAST:event_txtEdtFormNameActionPerformed
+
+    private void txtEdtDescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdtDescriptionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMemberId6ActionPerformed
+    }//GEN-LAST:event_txtEdtDescriptionActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnExitActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+        objAction.setActionDescription(txtEdtDescription.getText().trim());
+        objAction.setFormId(formId);
+        objAction.setRemarks(txtRemarks.getText().trim());
+        if (ctlAction.updateFormAction(objAction)) {
+            selectActionInfromation(ctlAction.selectIdWiseAction(objAction.getActionId()));
+        } else {
+            JOptionPane.showMessageDialog(null, "Unable to Edit Information.\n"
+                    + "Please Contact Support Team.");
+        }
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        if (!checkField()) {
+            return;
+        }
+        objAction.setActionDescription(txtEdtDescription.getText().trim());
+        objAction.setFormId(formId);
+        objAction.setRemarks(txtRemarks.getText().trim());
+        if (ctlAction.insertFormAction(objAction)) {
+            selectActionInfromation(ctlAction.selectNameWiseAction(""));
+        } else {
+            JOptionPane.showMessageDialog(null, "Unable to Save Information.\n"
+                    + "Please Contact Support Team.");
+        }
+    }//GEN-LAST:event_btnAddActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnClear;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnExit;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -639,18 +696,18 @@ public class FormAction extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane26;
     private javax.swing.JScrollPane jScrollPane27;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblPacsLink;
     private javax.swing.JPanel pnlPL;
     private javax.swing.JTable tblFormAction;
     private javax.swing.JTable tblPatientInfo1;
     private javax.swing.JTextField txtActionDesc;
     private javax.swing.JTextField txtActionId;
+    private javax.swing.JTextField txtEdtDescription;
+    private javax.swing.JTextField txtEdtFormName;
     private javax.swing.JTextField txtFormName;
-    private javax.swing.JTextField txtMemberId3;
     private javax.swing.JTextField txtMemberId4;
     private javax.swing.JTextField txtMemberId5;
-    private javax.swing.JTextField txtMemberId6;
+    private javax.swing.JTextArea txtRemarks;
     // End of variables declaration//GEN-END:variables
 
     private void selectActionInfromation(List<FormActionBO> listAction) {
@@ -685,6 +742,20 @@ public class FormAction extends javax.swing.JInternalFrame {
                 column.setPreferredWidth(200);
             }
         }
+    }
+
+    private boolean checkField() {
+        if (formId.length() == 0) {
+            txtFormName.requestFocus();
+            JOptionPane.showMessageDialog(null, "Please Select Form Name to Save.");
+            return false;
+        }
+        if (txtEdtDescription.getText().trim().length() == 0) {
+            txtEdtDescription.requestFocus();
+            JOptionPane.showMessageDialog(null, "Please Enter Description to Save.");
+            return false;
+        }
+        return true;
     }
 
 }
