@@ -576,7 +576,7 @@ public class FormAction extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         String query
                 = "SELECT FM.ID ID, FM.NAME DESCRIPTION FROM \n"
-                + Database.DCMS.form + " WHERE WHERE FM.ID IN \n"
+                + Database.DCMS.form + " FM WHERE FM.ID IN \n"
                 + " (SELECT DISTINCT(FORM_ID) FROM \n"
                 + Database.DCMS.formWiseAction + ")\n"
                 + "ORDER BY ID\n";

@@ -24,12 +24,13 @@ public class FormActionHndler {
 
     String generalQuery
             = "SELECT FA.ID, FA.DESCRIPTION, FA.FORM_ID, FRM.NAME FORM_NAME,\n"
-            + "PEM.REMARKS, PEM.ACTIVE, PEM.CRTD_BY, PEM.CRTD_DATE, PEM.CRTD_TERMINAL_ID\n"
-            + Database.DCMS.formWiseAction + " FA\n"
-            + Database.DCMS.form + " FRM\n";
+            + "FA.REMARKS, FA.ACTIVE, FA.CRTD_BY, FA.CRTD_DATE,     \n"
+            + "FA.CRTD_TERMINAL_ID FROM                             \n"
+            + Database.DCMS.formWiseAction + " FA,                  \n"
+            + Database.DCMS.form + " FRM                            \n";
 
     String generalJois
-            = "AND FA.FORM_ID = FRM.ID\n";
+            = "AND FA.FORM_ID = FRM.ID                              \n";
 
     private List<FormActionBO> selectFormActionInformation(List<HashMap> selectData) {
 
