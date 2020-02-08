@@ -3,6 +3,7 @@ package Form.Setup;
 import BO.Setup.FormActionBO;
 import Controller.Setup.FormActionController;
 import TableModel.Setup.FormActionTableModel;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -20,7 +21,11 @@ public class FormAction extends javax.swing.JInternalFrame {
     public FormAction() {
 
         initComponents();
-        this.setSize(Constants.xSize - 40, Constants.ySize - Constants.yExtension + 8);
+        this.setSize(Constants.xSize - 50, Constants.ySize - 40);
+        btnExit.setMnemonic(KeyEvent.VK_X);
+        btnClear.setMnemonic(KeyEvent.VK_C);
+        btnAdd.setMnemonic(KeyEvent.VK_S);
+        btnEdit.setMnemonic(KeyEvent.VK_E);
     }
 
     FormActionController ctlAction = new FormActionController();
@@ -183,13 +188,13 @@ public class FormAction extends javax.swing.JInternalFrame {
         );
 
         jPanel7.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Save Form Action", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel7.setForeground(new java.awt.Color(102, 0, 0));
 
         jLabel13.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(102, 0, 0));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel13.setText("Form :");
+        jLabel13.setText("Select Form :");
 
         txtSaveFormName.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtSaveFormName.addActionListener(new java.awt.event.ActionListener() {
@@ -217,7 +222,7 @@ public class FormAction extends javax.swing.JInternalFrame {
         txtSaveRemarks.setColumns(20);
         txtSaveRemarks.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtSaveRemarks.setRows(5);
-        txtSaveRemarks.setText("195\nIPD CASH REFUND ALLOW\n");
+        txtSaveRemarks.setText("\n");
         jScrollPane1.setViewportView(txtSaveRemarks);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -241,8 +246,8 @@ public class FormAction extends javax.swing.JInternalFrame {
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtSaveFormName)
@@ -313,7 +318,7 @@ public class FormAction extends javax.swing.JInternalFrame {
         );
 
         jPanel9.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
-        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Search", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
+        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Edit Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel9.setForeground(new java.awt.Color(102, 0, 0));
 
         jLabel14.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -369,7 +374,7 @@ public class FormAction extends javax.swing.JInternalFrame {
         );
 
         jPanel10.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
-        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Result", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
+        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Remarks", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel10.setForeground(new java.awt.Color(102, 0, 0));
 
         txtEdtRemarks.setColumns(20);
@@ -394,6 +399,11 @@ public class FormAction extends javax.swing.JInternalFrame {
 
         btnClear.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
 
         btnExit.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnExit.setForeground(new java.awt.Color(204, 0, 0));
@@ -655,6 +665,11 @@ public class FormAction extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnAddActionPerformed
 
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        // TODO add your handling code here:
+        clearForm();
+    }//GEN-LAST:event_btnClearActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
@@ -743,4 +758,19 @@ public class FormAction extends javax.swing.JInternalFrame {
         return true;
     }
 
+    private void clearForm(){
+        txtActionDesc.setText("");
+        txtActionId.setText("");
+        txtEdtDescription.setText("");
+        txtEdtFormName.setText("");
+        txtEdtRemarks.setText("");
+        txtFormName.setText("");
+        txtSaveDescription.setText("");
+        txtSaveFormName.setText("");
+        txtSaveRemarks.setText("");
+        listActions.clear();
+        tblFormAction.setModel(new FormActionTableModel(listActions));
+        formId = "";
+        saveFormId = "";
+    }
 }
