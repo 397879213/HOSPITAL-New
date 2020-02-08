@@ -24,7 +24,7 @@ public class FormActionHndler {
 
     String generalQuery
             = "SELECT FA.ID, FA.DESCRIPTION, FA.FORM_ID, FRM.NAME FORM_NAME,\n"
-            + "FA.REMARKS, FA.ACTIVE, FA.CRTD_BY, FA.CRTD_DATE,     \n"
+            + "NVL(FA.REMARKS, ' ') REMARKS, FA.ACTIVE, FA.CRTD_BY, FA.CRTD_DATE,\n"
             + "FA.CRTD_TERMINAL_ID FROM                             \n"
             + Database.DCMS.formWiseAction + " FA,                  \n"
             + Database.DCMS.form + " FRM                            \n";
@@ -55,7 +55,7 @@ public class FormActionHndler {
     public List<FormActionBO> selectIdWiseAction(String actionId) {
         String query
                 = generalQuery
-                + " WHERE ID = " + actionId + " \n"
+                + " WHERE FA.ID = " + actionId + " \n"
                 + generalJois;
         return selectFormActionInformation(Constants.dao.selectDatainList(query,
                 selectColumns));
@@ -64,7 +64,7 @@ public class FormActionHndler {
     public List<FormActionBO> selectNameWiseAction(String actionDesc) {
         String query
                 = generalQuery
-                + " WHERE UPPER(DESCRIPTION) LIKE '%" + actionDesc.toUpperCase() + "%' "
+                + " WHERE UPPER(FA.DESCRIPTION) LIKE '%" + actionDesc.toUpperCase() + "%'\n"
                 + generalJois;
         return selectFormActionInformation(Constants.dao.selectDatainList(query,
                 selectColumns));
@@ -73,7 +73,7 @@ public class FormActionHndler {
     public List<FormActionBO> selectFormWiseAction(String fromId) {
         String query
                 = generalQuery
-                + " WHERE FORM_ID = " + fromId + " \n"
+                + " WHERE FA.FORM_ID = " + fromId + " \n"
                 + generalJois;
         return selectFormActionInformation(Constants.dao.selectDatainList(query,
                 selectColumns));
@@ -104,7 +104,7 @@ public class FormActionHndler {
         String query
                 = " UPDATE " + Database.DCMS.formWiseAction + "\n"
                 + " SET DESCRIPTION  = '" + updateAction.getActionDescription() + "',\n"
-                + " FORM_ID  = '" + updateAction.getFormId() + "'\n"
+                + " FORM_ID  = '" + updateAction.getFormId() + "',\n"
                 + " REMARKS  = '" + updateAction.getRemarks() + "',\n"
                 + " ACTIVE  = '" + updateAction.getActive() + "'\n"
                 + " WHERE ID = '" + updateAction.getActionId() + "'\n";
