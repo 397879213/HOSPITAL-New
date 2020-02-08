@@ -664,7 +664,7 @@ public class frmCompoundingStore extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtItemsActionPerformed
 
     private void txtUnitQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUnitQuantityActionPerformed
-        // TODO add your handling code here:
+         // TODO add your handling code here:
         setStockInQuantity();
     }//GEN-LAST:event_txtUnitQuantityActionPerformed
 

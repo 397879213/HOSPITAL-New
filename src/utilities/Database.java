@@ -6,11 +6,20 @@ public class Database {
 
     public static final class DCMS {
 
+        public static final String angioReportingMaster = DAO.usernameEmr + "." + "ANGIO_REPORTING_MASTER ";
+        public static final String angioReportingCatheter = DAO.usernameEmr + "." + "ANGIO_CATHETER ";
+        public static final String angioReportingVessel = DAO.usernameEmr + "." + "ANGIO_VESSELS ";
+        public static final String angioadditionalInfo = DAO.usernameEmr + "." + "ANGIO_ADDITIONAL_INFO ";
+        
+        public static final String physioMasterPlan = DAO.usernameEmr + "." + "PHYSIO_MASTER_PLAN ";
+        public static final String physioDetailPlan = DAO.usernameEmr + "." + "PHYSIO_DETAIL_PLAN ";
+        public static final String pofPhysioReporting = DAO.usernameEmr + "." + " ";
+    
         public static final String itemOrder = DAO.usernameEmr + "." + "ITEM_ORDER ";
         public static final String itemOrderDetail = DAO.usernameEmr + "." + "ITEM_ORDER_DETAIL ";
         
         public static final String PofEmployee = DAO.usernameEmr + ".POF_EMPLOYEE   ";
-        public static final String pofMapper = DAO.usernameEmr + ".POF_EMP_MAPPER   ";
+        public static final String pofEmpMapper = DAO.usernameEmr + ".POF_EMP_MAPPER   ";
         public static final String clientEmployeeDetail = DAO.usernameEmr + ".CLIENT_EMP_DETAIL   ";
         public static final String ARCArmy = DAO.usernameEmr + ".ACR_ARMY   ";
         public static final String regArmyPerson = DAO.usernameEmr + ".REGISTER_ARMY_PERSON   ";

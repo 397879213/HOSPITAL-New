@@ -2,6 +2,18 @@ package utilities;
 
 public class DefinitionTypes {
 
+    public static final String route = "504";
+    public static final String cathType = "505";
+    public static final String cathLR = "506";
+    public static final String cathValue = "507";
+    public static final String angioParameter = "508";
+    public static final String angioAdditionalInfo = "509";
+    public static final String angioParameterValues = "510";
+    public static final String LVAngiogram = "511";
+    
+    public static final String POFPhysioMachine = "1";
+    public static final String bodyType = "8";
+    
     public static final String dengMedicalHistory = "469";
     public static final String dengueExamination = "470";
     public static final String dengueLabInvestigation = "471";

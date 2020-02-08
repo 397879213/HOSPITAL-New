@@ -132,6 +132,10 @@ public class Reports {
         public static final String issueReport = "314";
 
         public static final String transfusionReport = "317";
+        
+        public static final String outsideArmyDonor = "575";
+        public static final String outsideArmyDonorReport = "576";
+        public static final String outsideArmyDonorAllReport = "577";
 
     }
 
@@ -260,6 +264,7 @@ public class Reports {
 
     public static class OPD {
 
+        public static final String physioMachineDetail = "";
         public static final String patientEyeVision = "365";
         public static final String patientReferral = "378";
         public static final String donorRecipientPreprationReport = "378";
