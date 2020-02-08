@@ -1,9 +1,20 @@
 package Form.Setup;
 
-import Form.general.*;
+import BO.Client.POFEmployeeMapperBO;
+import BO.Setup.FormActionBO;
+import Controller.Setup.FormActionController;
+import TableModel.Setup.FormActionTableModel;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.TableColumn;
 import utilities.Constants;
+import utilities.Database;
+import utilities.DisplayLOV;
 
 public class FormAction extends javax.swing.JInternalFrame {
+
+    private String formId;
 
     public FormAction() {
 
@@ -11,6 +22,11 @@ public class FormAction extends javax.swing.JInternalFrame {
         this.setSize(Constants.xSize + 80, Constants.ySize - Constants.yExtension + 8);
 
     }
+
+    FormActionController ctlAction = new FormActionController();
+    DisplayLOV lov = new DisplayLOV();
+
+    List<FormActionBO> listActions = new ArrayList();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -21,11 +37,11 @@ public class FormAction extends javax.swing.JInternalFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        txtMemberId = new javax.swing.JTextField();
+        txtActionId = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        txtMemberId1 = new javax.swing.JTextField();
+        txtActionDesc = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        txtMemberId2 = new javax.swing.JTextField();
+        txtFormName = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         txtMemberId3 = new javax.swing.JTextField();
@@ -36,7 +52,7 @@ public class FormAction extends javax.swing.JInternalFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane26 = new javax.swing.JScrollPane();
-        tblPatientInfo = new javax.swing.JTable();
+        tblFormAction = new javax.swing.JTable();
         jPanel9 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         txtMemberId4 = new javax.swing.JTextField();
@@ -98,10 +114,10 @@ public class FormAction extends javax.swing.JInternalFrame {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Action Id :");
 
-        txtMemberId.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtMemberId.addActionListener(new java.awt.event.ActionListener() {
+        txtActionId.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtActionId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMemberIdActionPerformed(evt);
+                txtActionIdActionPerformed(evt);
             }
         });
 
@@ -110,10 +126,10 @@ public class FormAction extends javax.swing.JInternalFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel11.setText("Description :");
 
-        txtMemberId1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtMemberId1.addActionListener(new java.awt.event.ActionListener() {
+        txtActionDesc.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtActionDesc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMemberId1ActionPerformed(evt);
+                txtActionDescActionPerformed(evt);
             }
         });
 
@@ -122,10 +138,10 @@ public class FormAction extends javax.swing.JInternalFrame {
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel12.setText("Form Name :");
 
-        txtMemberId2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtMemberId2.addActionListener(new java.awt.event.ActionListener() {
+        txtFormName.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtFormName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMemberId2ActionPerformed(evt);
+                txtFormNameActionPerformed(evt);
             }
         });
 
@@ -139,15 +155,15 @@ public class FormAction extends javax.swing.JInternalFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtMemberId2))
+                        .addComponent(txtFormName))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtMemberId, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtActionId, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtMemberId1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtActionDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(5, 5, 5))
         );
         jPanel4Layout.setVerticalGroup(
@@ -155,13 +171,13 @@ public class FormAction extends javax.swing.JInternalFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMemberId, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtActionId, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMemberId1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtActionDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMemberId2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFormName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8))
         );
 
@@ -250,8 +266,8 @@ public class FormAction extends javax.swing.JInternalFrame {
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Form Action", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel8.setForeground(new java.awt.Color(102, 0, 0));
 
-        tblPatientInfo.setBackground(java.awt.SystemColor.activeCaption);
-        tblPatientInfo.setModel(new javax.swing.table.DefaultTableModel(
+        tblFormAction.setBackground(java.awt.SystemColor.activeCaption);
+        tblFormAction.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null}
             },
@@ -261,28 +277,28 @@ public class FormAction extends javax.swing.JInternalFrame {
 
             }
         ));
-        tblPatientInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblFormAction.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblPatientInfoMouseClicked(evt);
+                tblFormActionMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                tblPatientInfoMouseEntered(evt);
+                tblFormActionMouseEntered(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                tblPatientInfoMouseReleased(evt);
+                tblFormActionMouseReleased(evt);
             }
         });
-        tblPatientInfo.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        tblFormAction.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                tblPatientInfoPropertyChange(evt);
+                tblFormActionPropertyChange(evt);
             }
         });
-        tblPatientInfo.addKeyListener(new java.awt.event.KeyAdapter() {
+        tblFormAction.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                tblPatientInfoKeyReleased(evt);
+                tblFormActionKeyReleased(evt);
             }
         });
-        jScrollPane26.setViewportView(tblPatientInfo);
+        jScrollPane26.setViewportView(tblFormAction);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -509,37 +525,54 @@ public class FormAction extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtMemberIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberIdActionPerformed
+    private void txtActionIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtActionIdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMemberIdActionPerformed
+        selectActionInfromation(ctlAction.selectIdWiseAction(
+                txtActionId.getText().trim()));
+    }//GEN-LAST:event_txtActionIdActionPerformed
 
-    private void txtMemberId1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId1ActionPerformed
+    private void txtActionDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtActionDescActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMemberId1ActionPerformed
+        selectActionInfromation(ctlAction.selectNameWiseAction(
+                txtActionDesc.getText().trim()));
+    }//GEN-LAST:event_txtActionDescActionPerformed
 
-    private void tblPatientInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientInfoMouseClicked
+    private void tblFormActionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFormActionMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPatientInfoMouseClicked
+    }//GEN-LAST:event_tblFormActionMouseClicked
 
-    private void tblPatientInfoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientInfoMouseEntered
+    private void tblFormActionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFormActionMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPatientInfoMouseEntered
+    }//GEN-LAST:event_tblFormActionMouseEntered
 
-    private void tblPatientInfoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientInfoMouseReleased
+    private void tblFormActionMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFormActionMouseReleased
 
-    }//GEN-LAST:event_tblPatientInfoMouseReleased
+    }//GEN-LAST:event_tblFormActionMouseReleased
 
-    private void tblPatientInfoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblPatientInfoPropertyChange
+    private void tblFormActionPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblFormActionPropertyChange
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPatientInfoPropertyChange
+    }//GEN-LAST:event_tblFormActionPropertyChange
 
-    private void tblPatientInfoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblPatientInfoKeyReleased
+    private void tblFormActionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblFormActionKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPatientInfoKeyReleased
+    }//GEN-LAST:event_tblFormActionKeyReleased
 
-    private void txtMemberId2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId2ActionPerformed
+    private void txtFormNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFormNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMemberId2ActionPerformed
+        String query
+                = "SELECT FM.ID ID, FM.NAME DESCRIPTION FROM \n"
+                + Database.DCMS.form + " WHERE WHERE FM.ID IN \n"
+                + " (SELECT DISTINCT(FORM_ID) FROM \n"
+                + Database.DCMS.formWiseAction + ")\n"
+                + "ORDER BY ID\n";
+
+        lov.LOVSelection(query, this);
+        if (Constants.lovID.equalsIgnoreCase("ID")) {
+            return;
+        }
+        txtFormName.setText(Constants.lovDescription);
+        selectActionInfromation(ctlAction.selectFormWiseAction(Constants.lovID));
+    }//GEN-LAST:event_txtFormNameActionPerformed
 
     private void txtMemberId4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMemberId4ActionPerformed
         // TODO add your handling code here:
@@ -609,15 +642,49 @@ public class FormAction extends javax.swing.JInternalFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblPacsLink;
     private javax.swing.JPanel pnlPL;
-    private javax.swing.JTable tblPatientInfo;
+    private javax.swing.JTable tblFormAction;
     private javax.swing.JTable tblPatientInfo1;
-    private javax.swing.JTextField txtMemberId;
-    private javax.swing.JTextField txtMemberId1;
-    private javax.swing.JTextField txtMemberId2;
+    private javax.swing.JTextField txtActionDesc;
+    private javax.swing.JTextField txtActionId;
+    private javax.swing.JTextField txtFormName;
     private javax.swing.JTextField txtMemberId3;
     private javax.swing.JTextField txtMemberId4;
     private javax.swing.JTextField txtMemberId5;
     private javax.swing.JTextField txtMemberId6;
     // End of variables declaration//GEN-END:variables
+
+    private void selectActionInfromation(List<FormActionBO> listAction) {
+        if (listAction.isEmpty()) {
+            List<FormActionBO> list = new ArrayList();
+            list.add(new FormActionBO());
+            tblFormAction.setModel(new FormActionTableModel(list));
+        } else {
+            tblFormAction.setModel(new FormActionTableModel(listAction));
+        }
+        tblFormAction.addRowSelectionInterval(0, 0);
+        ListSelectionModel selectionModel = tblFormAction.getSelectionModel();
+        tblFormAction.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        setActionInfoColumnsWidths();
+        selectionModel.setSelectionInterval(0, 0);
+        Constants.tablelook.setJTableEnvironment(tblFormAction);
+    }
+
+    public void setActionInfoColumnsWidths() {
+        TableColumn column = null;
+        for (int i = 0; i < tblFormAction.getColumnCount(); i++) {
+            column = tblFormAction.getColumnModel().getColumn(i);
+            if (i == 0) {
+                column.setPreferredWidth(35);
+            } else if (i == 1) {
+                column.setPreferredWidth(60);
+            } else if (i == 2) {
+                column.setPreferredWidth(200);
+            } else if (i == 3) {
+                column.setPreferredWidth(60);
+            } else if (i == 4) {
+                column.setPreferredWidth(200);
+            }
+        }
+    }
 
 }
