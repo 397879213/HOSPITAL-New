@@ -15,9 +15,9 @@ public class SetupColumnDetail implements java.io.Serializable {
     private String rowDescription = "";
     private String tableColumnId = "";
     private String columnDescription = "";
-    private String description = "";
+    private String defaultValue = "";
+    private String remarks = "";
     private String active = "";
-
     private String property = "";
     private int rowIndex;
 
@@ -85,12 +85,20 @@ public class SetupColumnDetail implements java.io.Serializable {
         this.columnDescription = columnDescription;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDefaultValue() {
+        return defaultValue;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDefaultValue(String defaultValue) {
+        this.defaultValue = defaultValue;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 
 }

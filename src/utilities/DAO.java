@@ -28,12 +28,13 @@ public class DAO implements java.io.Serializable {
  
     public static String username = "EMR";
     public static String usernameEmr = "EMR";
+    public static String usernameINVSYS = "INVSYS";
     public static String usernamePerSys = "PERSYS";
     public static String usernamePof = "POF";
 
         public static String password = "SIBTAINPASHA";
-    public static String sid = "HMSD";
-    public static String ip = "127.0.0.1";
+    public static String sid = "HMSDB";//HMSD
+    public static String ip = "127.0.0.1"; //192.168.10.30
     public static String organizationName = "";
     public static String port = "1521";
 
@@ -80,12 +81,11 @@ public class DAO implements java.io.Serializable {
         try {
 
             conString = "jdbc:oracle:thin:@//" + ip + ":" + port + "/" + sid;
+            System.err.println("\nConnection Str: " + conString +"\n" + username+"\n"+password);
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
             conn = DriverManager.getConnection(conString, username, password);
-
             conn.setAutoCommit(false);
-
         } catch (Exception ex) {
 
             conn = null;
@@ -94,8 +94,9 @@ public class DAO implements java.io.Serializable {
             System.out.println("\n Unable to make connection to DB, Please contact Administrator ");
         }
         if (Constants.sessionId.length() != 0 && checkUserSessionStatus()) {
+            
             closeSession();
-         
+            
             System.exit(0);
         }
 

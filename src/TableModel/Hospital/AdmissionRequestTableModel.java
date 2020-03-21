@@ -4,7 +4,7 @@
  */
 package TableModel.Hospital;
 
-import BO.CPTWiseParameter;
+import BO.CPT.CPTWiseParameter;
 import BO.Hospital.PatientAdmission;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;

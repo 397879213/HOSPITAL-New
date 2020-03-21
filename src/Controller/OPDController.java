@@ -6,10 +6,21 @@
 
 package Controller;
 
+import BO.LOV;
+import Handler.OPDHandler;
+import java.util.List;
+
 /**
  *
  * @author pacslink
  */
 public class OPDController {
+
+    
+    private OPDHandler hdlOpd = new OPDHandler();
+    
+    public List<LOV> selectMedicineIntakeType() {
+        return hdlOpd.selectMedicineIntakeType();
+    }
     
 }

@@ -8,7 +8,7 @@ public class Actions {
 
     public static String opdItemSelectionType = "6124";
     public static String medicineAction = "6124";
-    
+
     public static String anaesthesiaStarted = "6124";
     public static String anaesthesiaEnded = "6125";
     public static String surgeryStarted = "6126";
@@ -89,7 +89,7 @@ public class Actions {
     public static final String addStoreWiseItem = "6106";
     public static final String updateStoreWiseItemProperties = "6107";
     public static final String deleteStoreWiseItem = "6108";
-    
+
     public static final String addItemQtyinStore = "6151";
     public static final String subtractItemQtyinStore = "6152";
 
@@ -108,9 +108,17 @@ public class Actions {
     public static String backTodispatchBill = "6141";
     public static String backTodispatchReceived = "6142";
     public static String backTochequePrepare = "6143";
-    
-   //USERS ACTION
+
+    //USERS ACTION
     public static String userAttachedStoreWiseId = "7183";
     public static String userAttachedFinancialSupport = "7210";
+
+    public static String queueAppointment = "488";
+    public static final String cancelOTPlan = "2554";
+    public static String opdPhysicianDay = "476";
+    public static String OpdInstrcutionAction = "5";
+    public static String userWiseTerminals = "500";
+    public static String teamAction = "2";
+    public static String intakeMed = "9";
 
 }

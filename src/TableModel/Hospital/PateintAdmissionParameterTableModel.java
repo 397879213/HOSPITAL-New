@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 package TableModel.Hospital;
-import BO.CPTWiseParameter;
+import BO.CPT.CPTWiseParameter;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 

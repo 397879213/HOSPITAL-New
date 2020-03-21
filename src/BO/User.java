@@ -47,12 +47,12 @@ public class User implements java.io.Serializable {
     public void setPracticeIncomeTax(String practiceIncomeTax) {
         this.practiceIncomeTax = practiceIncomeTax;
     }
-   
-    
-    
+
+    private String discountLimit = "";
+    private String prescriptionDays = "";
 
     private String type = "";
-    private String active = "";
+    private String active = "ALL";
 
     private String department = "";
     private String departmentId = "";
@@ -91,10 +91,24 @@ public class User implements java.io.Serializable {
         this.userId = userId;
     }
 
-    
-    
     public void setContractId(String contractId) {
         this.contractId = contractId;
+    }
+
+    public String getDiscountLimit() {
+        return discountLimit;
+    }
+
+    public void setDiscountLimit(String discountLimit) {
+        this.discountLimit = discountLimit;
+    }
+
+    public String getPrescriptionDays() {
+        return prescriptionDays;
+    }
+
+    public void setPrescriptionDays(String prescriptionDays) {
+        this.prescriptionDays = prescriptionDays;
     }
 
     public int getRowIndex() {

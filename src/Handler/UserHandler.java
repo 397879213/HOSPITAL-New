@@ -18,6 +18,7 @@ import utilities.EncryptDecryptWithDES;
 import utilities.GenerateKeys;
 import utilities.Keys;
 import utilities.Reports;
+import utilities.UserActions;
 
 public class UserHandler implements java.io.Serializable {
 
@@ -28,41 +29,44 @@ public class UserHandler implements java.io.Serializable {
             "COLOR_RED", "COLOR_GREEN", "COLOR_BLUE", "DESIGNATION",
             "DESIGNATION_ID", "DEPARTMENT", "DEPARTMENT_ID", "REPORT_PASSWORD",
             "TYPE", "DEGREES", "SPECIALITY_ID", "SPECIALITY", "LOCATION_NAME",
-            "SECTION_ID", "SECTION_NAME", "CONTACT_NO", "USER_ID"};
+            "SECTION_ID", "SECTION_NAME", "CONTACT_NO", "USER_ID",
+            "DISCOUNT_LIMIT", "MED_PRESCRIPTION_DAYS"};
 
-        String query = " SELECT USR.SECTION_ID                       ,\n"
-                + " SEC.DESCRIPTION SECTION_NAME                     ,\n"
+        String query = " SELECT USR.SECTION_ID          ,\n"
+                + " SEC.DESCRIPTION SECTION_NAME        ,\n"
                 + " NVL(USR.CONTACT_NO, '123') CONTACT_NO            ,\n"
-                + " USR.USER_NAME USER_NAME                          ,\n"
-                + " USR.USER_ID USER_ID                              ,\n"
-                + " USR.PASSWORD  PASSWORD                           ,\n"
-                + " USR.LOCATION_ID LOCATION_ID                      ,\n"
-                + " LOC.DESCRIPTION LOCATION_NAME                    ,\n"
+                + " USR.USER_NAME USER_NAME,\n"
+                + " USR.USER_ID USER_ID    ,\n"
+                + " USR.PASSWORD  PASSWORD ,\n"
+                + " USR.DISCOUNT_LIMIT  DISCOUNT_LIMIT  ,\n"
+                + " USR.MED_PRESCRIPTION_DAYS  MED_PRESCRIPTION_DAYS ,\n"
+                + " USR.LOCATION_ID LOCATION_ID         ,\n"
+                + " LOC.DESCRIPTION LOCATION_NAME       ,\n"
                 + " NVL(USR.SPECIALITY_ID,234)  SPECIALITY_ID        ,\n"
-                + " SPY.DESCRIPTION SPECIALITY                       ,\n"
-                + " NVL(USR.NAME,'   ') NAME                         ,\n"
-                + " NVL(USR.TYPE,'   ') TYPE                         ,\n"
+                + " SPY.DESCRIPTION SPECIALITY          ,\n"
+                + " NVL(USR.NAME,'   ') NAME            ,\n"
+                + " NVL(USR.TYPE,'   ') TYPE            ,\n"
                 + " NVL(DEG.DESCRIPTION,'   ')      DESIGNATION      ,\n"
                 + " NVL(USR.DESIGNATION_ID,0)   DESIGNATION_ID       ,\n"
                 + " NVL(DEP.DESCRIPTION,'   ')      DEPARTMENT       ,\n"
                 + " NVL(USR.DEPARTMENT_ID,0)    DEPARTMENT_ID        ,\n"
                 + " NVL(USR.EMAIL_ADDRESS,'  ')     EMAIL_ADDRESS    ,\n"
                 + " NVL(USR.REPORT_PASSWORD,'420')  REPORT_PASSWORD  ,\n"
-                + " NVL(USR.ADDRESS,'  ') ADDRESS                    ,\n"
-                + " NVL(USR.DEGREES,'  ') DEGREES                    ,\n"
-                + " NVL(USR.ACTIVE,'N') ACTIVE                       ,\n"
-                + " NVL(USR.THEME,'  ') THEME                        ,\n"
+                + " NVL(USR.ADDRESS,'  ') ADDRESS       ,\n"
+                + " NVL(USR.DEGREES,'  ') DEGREES       ,\n"
+                + " NVL(USR.ACTIVE,'N') ACTIVE          ,\n"
+                + " NVL(USR.THEME,'  ') THEME           ,\n"
                 + " NVL(USR.THEME_COLOR,'  ')  THEME_COLOR           ,\n"
-                + " NVL(USR.COLOR_RED,0)   COLOR_RED                 ,\n"
-                + " NVL(USR.COLOR_GREEN,0) COLOR_GREEN               ,\n"
-                + " NVL(USR.COLOR_BLUE,0)  COLOR_BLUE                 \n"
-                + " FROM                                              \n"
-                + Database.DCMS.department + "   DEP,                 \n"
-                + Database.DCMS.designation + "  DEG,                 \n"
-                + Database.DCMS.section + "      SEC,                 \n"
-                + Database.DCMS.speciality + "   SPY,                 \n"
-                + Database.DCMS.location + "     LOC,                 \n"
-                + Database.DCMS.users + "        USR                  \n"
+                + " NVL(USR.COLOR_RED,0)   COLOR_RED    ,\n"
+                + " NVL(USR.COLOR_GREEN,0) COLOR_GREEN  ,\n"
+                + " NVL(USR.COLOR_BLUE,0)  COLOR_BLUE    \n"
+                + " FROM       \n"
+                + Database.DCMS.department + "   DEP,    \n"
+                + Database.DCMS.designation + "  DEG,    \n"
+                + Database.DCMS.section + "      SEC,    \n"
+                + Database.DCMS.speciality + "   SPY,    \n"
+                + Database.DCMS.location + "     LOC,    \n"
+                + Database.DCMS.users + "        USR     \n"
                 + " WHERE UPPER(USR.USER_ID) LIKE '%" + user.getUserId().toUpperCase() + "%'  \n"
                 + " AND UPPER(USR.USER_NAME) LIKE '%" + user.getUserName().toUpperCase() + "%'  \n"
                 + " AND UPPER(USR.NAME) LIKE '%" + user.getName().toUpperCase() + "%'  \n";
@@ -79,12 +83,15 @@ public class UserHandler implements java.io.Serializable {
         if (!user.getDesignationId().isEmpty()) {
             query += " AND DEG.ID =  '" + user.getDesignationId() + "'  \n";
         }
+        if (!user.getActive().equalsIgnoreCase("ALL")) {
+            query += " AND USR.ACTIVE =  '" + user.getActive() + "'  \n";
+        }
 
-        query += " AND USR.DESIGNATION_ID = DEG.ID              \n"
-                + " AND USR.LOCATION_ID = LOC.ID                \n"
+        query += " AND USR.DESIGNATION_ID = DEG.ID \n"
+                + " AND USR.LOCATION_ID = LOC.ID   \n"
                 + " AND NVL(USR.SPECIALITY_ID , 234) = SPY.ID   \n"
-                + " AND USR.DEPARTMENT_ID = DEP.ID              \n"
-                + " AND SEC.DEPARTMENT_ID = DEP.ID              \n"
+                + " AND USR.DEPARTMENT_ID = DEP.ID \n"
+                + " AND SEC.DEPARTMENT_ID = DEP.ID \n"
                 + " AND USR.SECTION_ID = SEC.SECTION_ID         \n";
 
         return setUserData(Constants.dao.selectData(query, colums));
@@ -157,7 +164,6 @@ public class UserHandler implements java.io.Serializable {
     }
 
     public List<User> setUserData(List data) {
-
         List<User> user = new ArrayList<>();
         for (int i = 0; i < data.size(); i++) {
             HashMap rowData = (HashMap) data.get(i);
@@ -186,6 +192,8 @@ public class UserHandler implements java.io.Serializable {
             userData.setReportPassword((String) rowData.get("REPORT_PASSWORD"));
             userData.setType((String) rowData.get("TYPE"));
             userData.setTheme((String) rowData.get("THEME"));
+            userData.setDiscountLimit((String) rowData.get("DISCOUNT_LIMIT"));
+            userData.setPrescriptionDays((String) rowData.get("MED_PRESCRIPTION_DAYS"));
             userData.setThemeColor((String) rowData.get("THEME_COLOR"));
             userData.setColorRed(Integer.parseInt((String) rowData.get("COLOR_RED")));
             userData.setColorGreen(Integer.parseInt((String) rowData.get("COLOR_GREEN")));
@@ -193,6 +201,7 @@ public class UserHandler implements java.io.Serializable {
             user.add(userData);
         }
         return user;
+
     }
 
     public Vector setLoginUserData(Vector data) {
@@ -614,7 +623,7 @@ public class UserHandler implements java.io.Serializable {
                 || Constants.terminalId.equalsIgnoreCase("PLCADM"))) {
             query += " AND USR.ACTIVE = 'Y'             \n";
         }
-         System.out.println(query);
+        System.out.println(query);
         return setLoginUserData(Constants.dao.selectData(query, colums));
 
     }
@@ -722,4 +731,79 @@ public class UserHandler implements java.io.Serializable {
     private void setMessagingAlertData() {
 
     }
+
+    public boolean updateUserPassword(User user) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void insertPasswordChangeHistory(User user) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public boolean registerUser(User user) {
+
+        boolean ret = true;
+        String[] columns = {Database.DCMS.users, "USER_NAME", "LOCATION_ID",
+            "NAME", "CONTACT_NO", "DESIGNATION_ID", "EMAIL_ADDRESS", "DEGREES",
+            "ACTIVE", "PASSWORD", "CRTD_BY", "CRTD_TERMINAL_ID", "TYPE",
+            "DEPARTMENT_ID", "SPECIALITY_ID", "SECTION_ID", "USER_ID"};
+
+        String query = " SELECT * FROM " + Database.DCMS.users
+                + " WHERE UPPER(USER_NAME) ='"
+                + user.getUserName().toUpperCase() + "'";
+
+        if (!Constants.dao.selectData(query, columns).isEmpty()) {
+            user.setMessage("User Already Exists");
+            return true;
+        }
+        HashMap userMap = new HashMap();
+        userMap.put("USER_NAME", "'" + user.getUserName() + "'");
+        userMap.put("LOCATION_ID", "'" + user.getLocationId() + "'");
+        userMap.put("NAME", "'" + user.getName() + "'");
+        userMap.put("CONTACT_NO", "'" + user.getContactNo() + "'");
+        userMap.put("DESIGNATION_ID", "'" + user.getDesignationId() + "'");
+        userMap.put("TYPE", "'" + user.getType() + "'");
+        userMap.put("SPECIALITY_ID", "'" + user.getSpecialityId() + "'");
+        userMap.put("USER_ID", "'" + user.getUserName() + "'");
+        userMap.put("DEPARTMENT_ID", "'" + user.getDepartmentId() + "'");
+        userMap.put("SECTION_ID", "'" + user.getSectionId() + "'");
+        userMap.put("EMAIL_ADDRESS", "'" + user.getEmailAddress() + "'");
+        userMap.put("DEGREES", "'" + user.getDegrees() + "'");
+        userMap.put("ACTIVE", "'" + user.getActive() + "'");
+        userMap.put("CRTD_BY", "'" + Constants.userId + "'");
+        userMap.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
+        userMap.put("PASSWORD", "'" + EncryptDecrypt.encrypt(user.getNewPassword(), keyValue) + "'");
+        Vector vec = new Vector();
+        vec.add(userMap);
+        ret = Constants.dao.insertData(vec, columns);
+        if (ret) {
+            ret = Constants.dao.commitTransaction();
+            user.setMessage("Record Save Successfully");
+
+        } else {
+            Constants.dao.rollBack();
+        }
+        return ret;
+
+    }
+
+    public boolean updateUserSetting(String userName, String medInstReq,
+            String medDays, String doseTypeId) {
+
+        String query = " UPDATE " + Database.DCMS.users + "     \n"
+                + " SET IS_MED_INSTR_REQ = '" + medInstReq + "', "
+                + " DOSE_TYPE_ID = '" + doseTypeId + "', "
+                + " MED_INTAKE_TYPE = '" + UserActions.userMedIntakeType + "', "
+                + " FONT_SIZE = " + UserActions.userFontSize + ", "
+                + " DEFAULT_MED_DAYS = '" + medDays + "'   \n"
+                + " WHERE UPPER(USER_NAME) = '" + userName.toUpperCase() + "'\n";
+
+        return Constants.dao.executeUpdate(query, true);
+
+    }
+
+    public boolean updateUserInformation(User user) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
