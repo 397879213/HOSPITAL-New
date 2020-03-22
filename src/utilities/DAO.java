@@ -33,7 +33,7 @@ public class DAO implements java.io.Serializable {
     public static String usernamePof = "POF";
 
         public static String password = "SIBTAINPASHA";
-    public static String sid = "HMSDB";//HMSD
+    public static String sid = "HMSD";//HMSD
     public static String ip = "127.0.0.1"; //192.168.10.30
     public static String organizationName = "";
     public static String port = "1521";

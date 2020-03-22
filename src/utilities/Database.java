@@ -6,6 +6,13 @@ public class Database {
 
     public static final class DCMS {
 
+        public static final String EMRWEBPatient = DAO.usernameEmr + "." + "WEB_PATIENT ";
+        public static final String patientPendingVisit = DAO.usernameEmr + "." + "PATIENT_PENDING_VISIT ";
+        public static final String patientPerformVisit = DAO.usernameEmr + "." + "PATIENT_PERFORMED_VISIT ";
+            public static final String patientWiseSymptoms = DAO.usernameEmr + "." + "PATIENT_WISE_SYMPTOMS ";
+        public static final String patientVisitMedicines = DAO.usernameEmr + "." + "VISIT_MEDICINE ";
+        
+        
         public static final String angioReportingMaster = DAO.usernameEmr + "." + "ANGIO_REPORTING_MASTER ";
         public static final String angioReportingCatheter = DAO.usernameEmr + "." + "ANGIO_CATHETER ";
         public static final String angioReportingVessel = DAO.usernameEmr + "." + "ANGIO_VESSELS ";
