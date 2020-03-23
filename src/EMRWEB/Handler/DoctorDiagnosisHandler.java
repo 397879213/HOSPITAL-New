@@ -229,7 +229,7 @@ public class DoctorDiagnosisHandler {
                 + "\n PVP.ORDER_STATUS_ID, NVL(PVP.ACTION_BY, 'GENERAL') ACTION_BY,"
                 + "\n TO_CHAR(PVP.VISIT_DATE, 'DD-MON-YY') VISIT_DATE, USR.NAME USR_NAME,"
                 + "\n NVL(TO_CHAR(PVP.ACTION_DATE, 'DD-MON-YY'), SYSDATE) ACTION_DATE"
-                + "\n" + Database.DCMS.patientPerformVisit + " PVP,"
+                + "\n FROM " + Database.DCMS.patientPerformVisit + " PVP,"
                 + "\n" + Database.DCMS.users + "USR,"
                 + "\n" + Database.DCMS.EMRWEBPatient + " EWP, "
                 + "\n" + Database.DCMS.definitionTypeDetail + " GEN, "
