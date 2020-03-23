@@ -192,23 +192,85 @@ public class DoctorDiagnosisHandler {
     public boolean deletePendingVisits(DoctorDiagnosis objDelete) {
         String query
                 = " DELETE FROM " + Database.DCMS.patientPendingVisit + "\n"
-                + " WHERE PATIENT_ID = '" + objDelete.getPatientId()+ "'"
-                + " AND VISIT_ID = '" + objDelete.getVisitId()+ "'";
+                + " WHERE PATIENT_ID = '" + objDelete.getPatientId() + "'"
+                + " AND VISIT_ID = '" + objDelete.getVisitId() + "'";
 
         return Constants.dao.executeUpdate(query, false);
     }
-    
+
     public boolean fianlPerformedVisits(DoctorDiagnosis objDelete) {
         String query
-                = " UPDATE " + Database.DCMS.patientPerformVisit 
-                + "\n SET ORDER_STATUS_ID = " + Status.Approved + ","
+                = " UPDATE " + Database.DCMS.patientPerformVisit
+                + "\n SET ORDER_STATUS_ID = " + Status.verified + ","
                 + "\n ACTION_BY = '" + Constants.userId + "',"
                 + "\n ACTION_DATE = " + Constants.today + ","
-                + "\n ACTION_TERMINAL_ID = '" + Constants.terminalId +"'"
-                + "\n WHERE PATIENT_ID = '" + objDelete.getPatientId()+ "'"
-                + "\n AND VISIT_ID = '" + objDelete.getVisitId()+ "'";
+                + "\n ACTION_TERMINAL_ID = '" + Constants.terminalId + "'"
+                + "\n WHERE PATIENT_ID = '" + objDelete.getPatientId() + "'"
+                + "\n AND VISIT_ID = '" + objDelete.getVisitId() + "'";
 
         return Constants.dao.executeUpdate(query, false);
     }
-    
+
+    public List<DoctorDiagnosis> selectPerformedPatients(String patientId) {
+
+        String[] selectColumns = {"-", "PATIENT_ID", "FULL_NAME", "AGE",
+            "GENDER_ID", "GENDER_DESC", "CONTACT_NO", "CITY_ID", "CITY_DESC",
+            "AREA", "EMP_ID", "CRTD_DATE", "VISIT_ID", "BP_SYS",
+            "BP_DIS", "TEMPERATURE", "ORDER_STATUS_ID", "VISIT_DATE", "ACTION_BY",
+            "USR_NAME", "ACTION_DATE"};
+
+        String query
+                = "SELECT PVP.PATIENT_ID, PVP.VISIT_ID, NVL(PVP.BP_SYS, 0) BP_SYS,"
+                + "\n NVL(PVP.BP_DIS, 0) BP_DIS, NVL(PVP.TEMPERATURE, 0) TEMPERATURE,"
+                + "\nEWP.FULL_NAME, EWP.AGE, NVL(EWP.EMP_ID, ' ') EMP_ID,"
+                + "\n EWP.GENDER_ID, GEN.DESCRIPTION GENDER_DESC, EWP.CONTACT_NO,"
+                + "\n EWP.CITY_ID, CTY.DESCRIPTION CITY_DESC, EWP.AREA,\n"
+                + "\n TO_CHAR(EWP.CRTD_DATE, 'DD-MON-YY') CRTD_DATE,"
+                + "\n PVP.ORDER_STATUS_ID, NVL(PVP.ACTION_BY, 'GENERAL') ACTION_BY,"
+                + "\n TO_CHAR(PVP.VISIT_DATE, 'DD-MON-YY') VISIT_DATE, USR.NAME USR_NAME,"
+                + "\n NVL(TO_CHAR(PVP.ACTION_DATE, 'DD-MON-YY'), SYSDATE) ACTION_DATE"
+                + "\n" + Database.DCMS.patientPerformVisit + " PVP,"
+                + "\n" + Database.DCMS.users + "USR,"
+                + "\n" + Database.DCMS.EMRWEBPatient + " EWP, "
+                + "\n" + Database.DCMS.definitionTypeDetail + " GEN, "
+                + "\n" + Database.DCMS.definitionTypeDetail + " CTY"
+                + "\n  WHERE PVP.PATIENT_ID = " + patientId
+                + "\n PVP.ORDER_STATUS_ID = " + Status.verified
+                + "\n AND PVP.PATIENT_ID = EWP.ID"
+                + "\n AND NVL(PVP.ACTION_BY, 'GENERAL') = NVL(USR.USER_NAME, 'GENERAL')"
+                + "\n AND EWP.GENDER_ID = GEN.ID"
+                + "\n AND EWP.CITY_ID = CTY.ID";
+
+        List selectInvoice = Constants.dao.selectDatainList(query, selectColumns);
+
+        List<DoctorDiagnosis> list = new ArrayList();
+        for (int i = 0; i < selectInvoice.size(); i++) {
+            HashMap map = (HashMap) selectInvoice.get(i);
+            DoctorDiagnosis setpatient = new DoctorDiagnosis();
+
+            setpatient.setPatientId(map.get("PATIENT_ID").toString());
+            setpatient.setFullName(map.get("FULL_NAME").toString());
+            setpatient.setAge(map.get("AGE").toString());
+            setpatient.setGenderId(map.get("GENDER_ID").toString());
+            setpatient.setGenderDesc(map.get("GENDER_DESC").toString());
+            setpatient.setContactNo(map.get("CONTACT_NO").toString());
+            setpatient.setCityId(map.get("CITY_ID").toString());
+            setpatient.setCityDescription(map.get("CITY_DESC").toString());
+            setpatient.setArea(map.get("AREA").toString());
+            setpatient.setEmpId(map.get("EMP_ID").toString());
+            setpatient.setRegistrationDate(map.get("CRTD_DATE").toString());
+            setpatient.setVisitId(map.get("VISIT_ID").toString());
+            setpatient.setBPSys(map.get("BP_SYS").toString());
+            setpatient.setBPDis(map.get("BP_DIS").toString());
+            setpatient.setTemperature(map.get("TEMPERATURE").toString());
+            setpatient.setOrderStatusId(map.get("ORDER_STATUS_ID").toString());
+            setpatient.setVisitDtae(map.get("VISIT_DATE").toString());
+            setpatient.setActionBy(map.get("ACTION_BY").toString());
+            setpatient.setActionByName(map.get("USR_NAME").toString());
+            setpatient.setActionDate(map.get("ACTION_DATE").toString());
+            list.add(setpatient);
+        }
+        return list;
+    }
+
 }

@@ -932,6 +932,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
     private String doseId = "";
 
     List<DoctorDiagnosis> listPendingPatients = new ArrayList();
+    List<DoctorDiagnosis> listPerformedPatients = new ArrayList();
     List<DoctorDiagnosis> listSymptomQues = new ArrayList();
     List<DoctorDiagnosis> listMedicines = new ArrayList();
 
@@ -955,6 +956,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
             Constants.tablelook.setJTableEnvironment(tblPatientPendings);
             DoctorDiagnosis obj = listPendingPatients.get(0);
             setSymptomQuestions(obj.getVisitId());
+            selectVisitMedicines(obj.getVisitId());
         }
     }
 

@@ -29,6 +29,10 @@ public class DoctorDiagnosisController {
     public List<DoctorDiagnosis> selectVisitMedicines(String visitId) {
         return hdlDocDiag.selectVisitMedicines(visitId);
     }
+    
+    public List<DoctorDiagnosis> selectPerformedPatients(String patientId) {
+        return hdlDocDiag.selectPerformedPatients(patientId);
+    }
 
     public boolean insertVisitMedicines(DoctorDiagnosis item) {
         boolean ret = hdlDocDiag.insertVisitMedicines(item);
