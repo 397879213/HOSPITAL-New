@@ -189,6 +189,14 @@ public class DoctorDiagnosisHandler {
         return Constants.dao.insertData(InsertEmp, columns);
     }
 
+    public boolean deleteVisitMedicines(String id) {
+        String query
+                = " DELETE FROM " + Database.DCMS.patientVisitMedicines
+                + "\n WHERE ID = " + id;
+
+        return Constants.dao.executeUpdate(query, false);
+    }
+
     public boolean deletePendingVisits(DoctorDiagnosis objDelete) {
         String query
                 = " DELETE FROM " + Database.DCMS.patientPendingVisit + "\n"

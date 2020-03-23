@@ -58,7 +58,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         jScrollPane29 = new javax.swing.JScrollPane();
         tblMedicines = new javax.swing.JTable();
         jLabel16 = new javax.swing.JLabel();
-        txtDose1 = new javax.swing.JTextField();
+        txtInstructions = new javax.swing.JTextField();
         btnSaveMedicine = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane26 = new javax.swing.JScrollPane();
@@ -357,10 +357,10 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel16.setText("Instruction : ");
 
-        txtDose1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtDose1.addActionListener(new java.awt.event.ActionListener() {
+        txtInstructions.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtInstructions.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDose1ActionPerformed(evt);
+                txtInstructionsActionPerformed(evt);
             }
         });
 
@@ -395,7 +395,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
                                 .addComponent(txtDose, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtDose1))
+                            .addComponent(txtInstructions))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtDays)
@@ -416,7 +416,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDose1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtInstructions, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSaveMedicine))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane29, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE))
@@ -712,8 +712,9 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
     private void tblPatientInfoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientInfoMouseReleased
 
         DoctorDiagnosis obj = listPerformedPatients.get(tblPatientInfo.getSelectedRow());
-        setSymptomQuestions(obj.getVisitId());
-        selectVisitMedicines(obj.getVisitId());
+        visitId = obj.getVisitId();
+        setSymptomQuestions(visitId);
+        selectVisitMedicines(visitId);
     }//GEN-LAST:event_tblPatientInfoMouseReleased
 
     private void tblPatientInfoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblPatientInfoPropertyChange
@@ -796,6 +797,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         lov.LOVSelection(query, this);
         itemId = Constants.lovID;
         txtItemId.setText(Constants.lovDescription);
+        txtDose.requestFocus();
     }//GEN-LAST:event_txtItemIdActionPerformed
 
     private void txtDiagnosisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiagnosisActionPerformed
@@ -810,11 +812,12 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         lov.LOVDefinitionSelection(DefinitionTypes.doseTime, txtDose.getText().trim(), this);
         doseId = Constants.lovID;
         txtDose.setText(Constants.lovDescription);
+        txtDays.requestFocus();
     }//GEN-LAST:event_txtDoseActionPerformed
 
     private void txtDaysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDaysActionPerformed
         // TODO add your handling code here:
-        saveVisitMedicines();
+        txtInstructions.requestFocus();
     }//GEN-LAST:event_txtDaysActionPerformed
 
     private void tblMedicinesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMedicinesMouseClicked
@@ -827,6 +830,15 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
 
     private void tblMedicinesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMedicinesMouseReleased
         // TODO add your handling code here:
+        DoctorDiagnosis obj = listMedicines.get(tblMedicines.getSelectedRow());
+        if(evt.getClickCount() % 2 == 0){
+            if(ctlDocDiag.deleteVisitMedicines(obj.getMedicinePk())){
+                selectVisitMedicines(visitId);
+            }else{
+                JOptionPane.showMessageDialog(null, "Unable to Delete Medicine.\n"
+                        + "Kindly Contact Support Team.");
+            }
+        }
     }//GEN-LAST:event_tblMedicinesMouseReleased
 
     private void tblMedicinesPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblMedicinesPropertyChange
@@ -862,9 +874,10 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void txtDose1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDose1ActionPerformed
+    private void txtInstructionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInstructionsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDose1ActionPerformed
+        saveVisitMedicines();
+    }//GEN-LAST:event_txtInstructionsActionPerformed
 
     private void btnSaveMedicineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveMedicineActionPerformed
         // TODO add your handling code here:
@@ -924,8 +937,8 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtDays;
     private javax.swing.JTextField txtDiagnosis;
     private javax.swing.JTextField txtDose;
-    private javax.swing.JTextField txtDose1;
     private javax.swing.JTextField txtFullName;
+    private javax.swing.JTextField txtInstructions;
     private javax.swing.JTextField txtItemId;
     private javax.swing.JTextField txtPatientId;
     private javax.swing.JTextArea txtRemarks;

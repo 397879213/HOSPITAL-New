@@ -44,6 +44,17 @@ public class DoctorDiagnosisController {
         }
         return ret;
     }
+    
+    public boolean deleteVisitMedicines(String id) {
+        boolean ret = hdlDocDiag.deleteVisitMedicines(id);
+        if (ret) {
+            Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
 
     public boolean fianlPerformedVisits(DoctorDiagnosis objDelete) {
         boolean ret = hdlDocDiag.deletePendingVisits(objDelete);
