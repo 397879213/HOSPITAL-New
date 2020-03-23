@@ -793,7 +793,11 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
                 + "\n" + Database.DCMS.item
                 + "\n WHERE UPPER(DESCRIPTION) LIKE '%"
                 + txtItemId.getText().trim().toUpperCase() + "%'"
-                + "\n AND ACTIVE = 'Y'";
+                + "\n AND ACTIVE = 'Y'"
+                + "\n AND ID NOT IN (SELECT ITEM_ID FROM"
+                + Database.DCMS.patientVisitMedicines + ""
+                + "\n WHERE PATIENT_ID = " + obj.getPatientId()
+                + "\n AND VISIT_ID = "+ visitId +")";
         lov.LOVSelection(query, this);
         itemId = Constants.lovID;
         txtItemId.setText(Constants.lovDescription);
@@ -1092,6 +1096,11 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         objInsrMed.setVisitId(visitId);
         if (ctlDocDiag.insertVisitMedicines(objInsrMed)) {
             selectVisitMedicines(visitId);
+            txtItemId.setText("");
+            txtDose.setText("");
+            txtDays.setText("");
+            txtInstructions.setText("");
+            txtItemId.requestFocus();
         } else {
             JOptionPane.showMessageDialog(null, "Unable to Save Medicines.\n"
                     + "Please Contact the Support Team.");
