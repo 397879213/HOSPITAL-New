@@ -711,6 +711,9 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
 
     private void tblPatientInfoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientInfoMouseReleased
 
+        DoctorDiagnosis obj = listPerformedPatients.get(tblPatientInfo.getSelectedRow());
+        setSymptomQuestions(obj.getVisitId());
+        selectVisitMedicines(obj.getVisitId());
     }//GEN-LAST:event_tblPatientInfoMouseReleased
 
     private void tblPatientInfoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblPatientInfoPropertyChange
@@ -870,11 +873,11 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
 
     private void btnFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalActionPerformed
         // TODO add your handling code here:
-        
-        if(ctlDocDiag.fianlPerformedVisits(obj)){
+
+        if (ctlDocDiag.fianlPerformedVisits(obj)) {
             JOptionPane.showMessageDialog(null, "Patient Perform Successfully.");
             selectPendingPatients();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Unable to Final the Patient.\n"
                     + "Please Contact the Support Team.");
         }

@@ -234,8 +234,8 @@ public class DoctorDiagnosisHandler {
                 + "\n" + Database.DCMS.EMRWEBPatient + " EWP, "
                 + "\n" + Database.DCMS.definitionTypeDetail + " GEN, "
                 + "\n" + Database.DCMS.definitionTypeDetail + " CTY"
-                + "\n  WHERE PVP.PATIENT_ID = " + patientId
-                + "\n PVP.ORDER_STATUS_ID = " + Status.verified
+                + "\n WHERE PVP.PATIENT_ID = " + patientId
+                + "\n AND PVP.ORDER_STATUS_ID = " + Status.verified
                 + "\n AND PVP.PATIENT_ID = EWP.ID"
                 + "\n AND NVL(PVP.ACTION_BY, 'GENERAL') = NVL(USR.USER_NAME, 'GENERAL')"
                 + "\n AND EWP.GENDER_ID = GEN.ID"
