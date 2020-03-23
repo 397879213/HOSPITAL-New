@@ -202,8 +202,8 @@ public class DoctorDiagnosisHandler {
         String query
                 = " UPDATE " + Database.DCMS.patientPerformVisit 
                 + "\n SET ORDER_STATUS_ID = " + Status.Approved + ","
-                + "\n ACTION_BY '" + Constants.userId + "',"
-                + "\n ACTION_DATE " + Constants.today + ","
+                + "\n ACTION_BY = '" + Constants.userId + "',"
+                + "\n ACTION_DATE = " + Constants.today + ","
                 + "\n ACTION_TERMINAL_ID = '" + Constants.terminalId +"'"
                 + "\n WHERE PATIENT_ID = '" + objDelete.getPatientId()+ "'"
                 + "\n AND VISIT_ID = '" + objDelete.getVisitId()+ "'";
