@@ -19,7 +19,7 @@ import utilities.Status;
  */
 public class DoctorDiagnosisHandler {
 
-    public List<DoctorDiagnosis> selectPendingPatients(String visitId) {
+    public List<DoctorDiagnosis> selectPendingPatients(String patientId) {
 
         String[] selectColumns = {"-", "PATIENT_ID", "FULL_NAME", "AGE",
             "GENDER_ID", "GENDER_DESC", "CONTACT_NO", "CITY_ID", "CITY_DESC",
@@ -43,11 +43,11 @@ public class DoctorDiagnosisHandler {
                 + "\n" + Database.DCMS.EMRWEBPatient + " EWP, "
                 + "\n" + Database.DCMS.definitionTypeDetail + " GEN, "
                 + "\n" + Database.DCMS.definitionTypeDetail + " CTY";
-        if (visitId.trim().length() == 0) {
+        if (patientId.trim().length() == 0) {
             query += "\n  WHERE PPV.VISIT_DATE > SYSDATE - 1";
         }
-        if (visitId.trim().length() != 0) {
-            query += "\n WHERE VISIT_ID = " + visitId;
+        if (patientId.trim().length() != 0) {
+            query += "\n WHERE PPV.PATIENT_ID = " + patientId;
         }
         query += "\n AND PPV.VISIT_ID = PVP.VISIT_ID"
                 + "\n AND PVP.PATIENT_ID = EWP.ID"

@@ -22,7 +22,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
 
         initComponents();
         this.setSize(Constants.xSize + 180, Constants.ySize + 160);
-        selectPendingPatients();
+        selectPendingPatients("");
     }
 
     @SuppressWarnings("unchecked")
@@ -128,6 +128,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
             }
         });
 
+        txtFullName.setEditable(false);
         txtFullName.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtFullName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,6 +136,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
             }
         });
 
+        txtAgeGen.setEditable(false);
         txtAgeGen.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtAgeGen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,6 +144,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
             }
         });
 
+        txtCityArea.setEditable(false);
         txtCityArea.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtCityArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,6 +152,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
             }
         });
 
+        txtContactNo.setEditable(false);
         txtContactNo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -695,6 +699,8 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
 
     private void txtPatientIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPatientIdActionPerformed
         // TODO add your handling code here:
+        selectPendingPatients(txtPatientId.getText().trim());
+        selectPerformedPaients(txtPatientId.getText().trim());
     }//GEN-LAST:event_txtPatientIdActionPerformed
 
     private void txtFullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFullNameActionPerformed
@@ -766,14 +772,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         if (listPendingPatients.isEmpty() || tblPatientPendings.getSelectedRow() < 0) {
             return;
         }
-        obj = listPendingPatients.get(tblPatientPendings.getSelectedRow());
-        txtPatientId.setText(obj.getPatientId());
-        txtFullName.setText(obj.getFullName());
-        txtContactNo.setText(obj.getContactNo());
-        txtAgeGen.setText(obj.getAge() + "/ " + obj.getGenderDesc());
-        txtCityArea.setText(obj.getCityDescription() + "/ " + obj.getArea());
-        visitId = obj.getVisitId();
-        System.err.println("Table vsid" + visitId);
+        setPatientInfo(listPendingPatients);
         setSymptomQuestions(visitId);
         selectVisitMedicines(visitId);
         selectPerformedPaients(obj.getPatientId());
@@ -797,7 +796,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
                 + "\n AND ID NOT IN (SELECT ITEM_ID FROM"
                 + Database.DCMS.patientVisitMedicines + ""
                 + "\n WHERE PATIENT_ID = " + obj.getPatientId()
-                + "\n AND VISIT_ID = "+ visitId +")";
+                + "\n AND VISIT_ID = " + visitId + ")";
         lov.LOVSelection(query, this);
         itemId = Constants.lovID;
         txtItemId.setText(Constants.lovDescription);
@@ -835,10 +834,10 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
     private void tblMedicinesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMedicinesMouseReleased
         // TODO add your handling code here:
         DoctorDiagnosis obj = listMedicines.get(tblMedicines.getSelectedRow());
-        if(evt.getClickCount() % 2 == 0){
-            if(ctlDocDiag.deleteVisitMedicines(obj.getMedicinePk())){
+        if (evt.getClickCount() % 2 == 0) {
+            if (ctlDocDiag.deleteVisitMedicines(obj.getMedicinePk())) {
                 selectVisitMedicines(visitId);
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Unable to Delete Medicine.\n"
                         + "Kindly Contact Support Team.");
             }
@@ -897,7 +896,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         }
         if (ctlDocDiag.fianlPerformedVisits(obj)) {
             JOptionPane.showMessageDialog(null, "Patient Perform Successfully.");
-            selectPendingPatients();
+            selectPendingPatients("");
         } else {
             JOptionPane.showMessageDialog(null, "Unable to Final the Patient.\n"
                     + "Please Contact the Support Team.");
@@ -967,8 +966,8 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
     DisplayLOV lov = new DisplayLOV();
     DoctorDiagnosisController ctlDocDiag = new DoctorDiagnosisController();
 
-    private void selectPendingPatients() {
-        listPendingPatients = ctlDocDiag.selectPendingPatients(""); //visitId
+    private void selectPendingPatients(String patientId) {
+        listPendingPatients = ctlDocDiag.selectPendingPatients(patientId); //visitId
         if (listPendingPatients.isEmpty()) {
             List<DoctorDiagnosis> listPendingPatients = new ArrayList();
             listPendingPatients.add(new DoctorDiagnosis());
@@ -981,6 +980,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
             selectionModel.setSelectionInterval(0, 0);
             Constants.tablelook.setJTableEnvironment(tblPatientPendings);
             DoctorDiagnosis obj = listPendingPatients.get(0);
+            setPatientInfo(listPendingPatients);
             setSymptomQuestions(obj.getVisitId());
             selectVisitMedicines(obj.getVisitId());
         }
@@ -1124,6 +1124,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
             setPerformedPatientsColumnsWidths();
             selectionModel.setSelectionInterval(0, 0);
             Constants.tablelook.setJTableEnvironment(tblPatientInfo);
+            setPatientInfo(listPerformedPatients);
         }
     }
 
@@ -1139,6 +1140,16 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
                 column.setPreferredWidth(40);
             }
         }
+    }
+
+    private void setPatientInfo(List<DoctorDiagnosis> list) {
+        obj = list.get(tblPatientPendings.getSelectedRow());
+        txtPatientId.setText(obj.getPatientId());
+        txtFullName.setText(obj.getFullName());
+        txtContactNo.setText(obj.getContactNo());
+        txtAgeGen.setText(obj.getAge() + "/ " + obj.getGenderDesc());
+        txtCityArea.setText(obj.getCityDescription() + "/ " + obj.getArea());
+        visitId = obj.getVisitId();
     }
 
 }

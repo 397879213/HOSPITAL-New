@@ -18,8 +18,8 @@ public class DoctorDiagnosisController {
 
     DoctorDiagnosisHandler hdlDocDiag = new DoctorDiagnosisHandler();
 
-    public List<EMRWEB.BO.DoctorDiagnosis> selectPendingPatients(String visitId) {
-        return hdlDocDiag.selectPendingPatients(visitId);
+    public List<EMRWEB.BO.DoctorDiagnosis> selectPendingPatients(String patientId) {
+        return hdlDocDiag.selectPendingPatients(patientId);
     }
 
     public List<DoctorDiagnosis> selectVisitQuestionDetail(String visitId) {
