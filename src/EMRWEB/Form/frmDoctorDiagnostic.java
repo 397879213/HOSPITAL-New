@@ -953,6 +953,8 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
             setCondumDetailColumnsWidths();
             selectionModel.setSelectionInterval(0, 0);
             Constants.tablelook.setJTableEnvironment(tblPatientPendings);
+            DoctorDiagnosis obj = listPendingPatients.get(0);
+            setSymptomQuestions(obj.getVisitId());
         }
     }
 
