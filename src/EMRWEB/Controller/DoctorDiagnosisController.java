@@ -17,25 +17,39 @@ import utilities.Constants;
 public class DoctorDiagnosisController {
 
     DoctorDiagnosisHandler hdlDocDiag = new DoctorDiagnosisHandler();
-    
+
     public List<EMRWEB.BO.DoctorDiagnosis> selectPendingPatients(String visitId) {
         return hdlDocDiag.selectPendingPatients(visitId);
     }
-    
+
     public List<DoctorDiagnosis> selectVisitQuestionDetail(String visitId) {
         return hdlDocDiag.selectVisitQuestionDetail(visitId);
     }
-    
+
     public List<DoctorDiagnosis> selectVisitMedicines(String visitId) {
         return hdlDocDiag.selectVisitMedicines(visitId);
     }
-    
+
     public boolean insertVisitMedicines(DoctorDiagnosis item) {
         boolean ret = hdlDocDiag.insertVisitMedicines(item);
-        if(ret){
+        if (ret) {
             Constants.dao.commitTransaction();
         }
-        if(!ret){
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
+
+    public boolean fianlPerformedVisits(DoctorDiagnosis objDelete) {
+        boolean ret = hdlDocDiag.deletePendingVisits(objDelete);
+        if (ret) {
+            ret = hdlDocDiag.fianlPerformedVisits(objDelete);
+        }
+        if (ret) {
+            Constants.dao.commitTransaction();
+        }
+        if (!ret) {
             Constants.dao.rollBack();
         }
         return ret;

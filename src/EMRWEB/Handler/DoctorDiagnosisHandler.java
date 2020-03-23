@@ -6,12 +6,12 @@
 package EMRWEB.Handler;
 
 import EMRWEB.BO.DoctorDiagnosis;
-import com.archimed.dicom.DDict;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import utilities.Constants;
 import utilities.Database;
+import utilities.Status;
 
 /**
  *
@@ -189,4 +189,26 @@ public class DoctorDiagnosisHandler {
         return Constants.dao.insertData(InsertEmp, columns);
     }
 
+    public boolean deletePendingVisits(DoctorDiagnosis objDelete) {
+        String query
+                = " DELETE FROM " + Database.DCMS.patientPendingVisit + "\n"
+                + " WHERE PATIENT_ID = '" + objDelete.getPatientId()+ "'"
+                + " AND VISIT_ID = '" + objDelete.getVisitId()+ "'";
+
+        return Constants.dao.executeUpdate(query, false);
+    }
+    
+    public boolean fianlPerformedVisits(DoctorDiagnosis objDelete) {
+        String query
+                = " UPDATE " + Database.DCMS.patientPerformVisit 
+                + "\n SET ORDER_STATUS_ID = " + Status.Approved + ","
+                + "\n ACTION_BY '" + Constants.userId + "',"
+                + "\n ACTION_DATE " + Constants.today + ","
+                + "\n ACTION_TERMINAL_ID = '" + Constants.terminalId +"'"
+                + "\n WHERE PATIENT_ID = '" + objDelete.getPatientId()+ "'"
+                + "\n AND VISIT_ID = '" + objDelete.getVisitId()+ "'";
+
+        return Constants.dao.executeUpdate(query, false);
+    }
+    
 }

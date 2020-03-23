@@ -868,7 +868,14 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
 
     private void btnFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalActionPerformed
         // TODO add your handling code here:
-        n
+        
+        if(ctlDocDiag.fianlPerformedVisits(obj)){
+            JOptionPane.showMessageDialog(null, "Patient Perform Successfully.");
+            selectPendingPatients();
+        }else{
+            JOptionPane.showMessageDialog(null, "Unable to Final the Patient.\n"
+                    + "Please Contact the Support Team.");
+        }
     }//GEN-LAST:event_btnFinalActionPerformed
 
 
