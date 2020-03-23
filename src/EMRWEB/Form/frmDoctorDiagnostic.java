@@ -3,6 +3,7 @@ package EMRWEB.Form;
 import EMRWEB.BO.DoctorDiagnosis;
 import EMRWEB.Controller.DoctorDiagnosisController;
 import EMRWEB.TableModel.PatientPendingTableModel;
+import EMRWEB.TableModel.PatientPerformedTableModel;
 import EMRWEB.TableModel.SymptomQuestionTableModel;
 import EMRWEB.TableModel.VisitMedicinesTableModel;
 import java.util.ArrayList;
@@ -771,6 +772,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         System.err.println("Table vsid" + visitId);
         setSymptomQuestions(visitId);
         selectVisitMedicines(visitId);
+        selectPerformedPaients(obj.getPatientId());
     }//GEN-LAST:event_tblPatientPendingsMouseReleased
 
     private void tblPatientPendingsPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblPatientPendingsPropertyChange
@@ -1077,6 +1079,36 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Unable to Save Medicines.\n"
                     + "Please Contact the Support Team.");
+        }
+    }
+
+    private void selectPerformedPaients(String patientId) {
+        listPerformedPatients = ctlDocDiag.selectPerformedPatients(patientId);
+        if (listPerformedPatients.isEmpty()) {
+            List<DoctorDiagnosis> listPendingPatients = new ArrayList();
+            listPerformedPatients.add(new DoctorDiagnosis());
+            tblPatientInfo.setModel(new PatientPerformedTableModel(listPerformedPatients));
+        } else {
+            tblPatientInfo.setModel(new PatientPerformedTableModel(listPerformedPatients));
+            ListSelectionModel selectionModel = tblPatientInfo.getSelectionModel();
+            tblPatientInfo.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            setPerformedPatientsColumnsWidths();
+            selectionModel.setSelectionInterval(0, 0);
+            Constants.tablelook.setJTableEnvironment(tblPatientInfo);
+        }
+    }
+
+    private void setPerformedPatientsColumnsWidths() {
+        TableColumn column = null;
+        for (int i = 0; i < tblPatientInfo.getColumnCount(); i++) {
+            column = tblPatientInfo.getColumnModel().getColumn(i);
+            if (i == 0) {
+                column.setPreferredWidth(120);
+            } else if (i == 1) {
+                column.setPreferredWidth(80);
+            } else if (i == 2) {
+                column.setPreferredWidth(40);
+            }
         }
     }
 
