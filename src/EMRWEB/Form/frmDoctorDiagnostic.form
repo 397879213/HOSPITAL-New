@@ -900,7 +900,7 @@
                   <EmptySpace min="-2" pref="427" max="-2" attributes="0"/>
                   <Component id="btnClear" min="-2" pref="95" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jButton3" min="-2" pref="103" max="-2" attributes="0"/>
+                  <Component id="btnFinal" min="-2" pref="103" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jButton2" min="-2" pref="95" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -914,7 +914,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnClear" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnFinal" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -944,16 +944,16 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="btnFinal">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial" size="12" style="1"/>
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="66" green="cc" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Final"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFinalActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -71,7 +71,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         jPanel6 = new javax.swing.JPanel();
         btnClear = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnFinal = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102)));
@@ -633,9 +633,13 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 204, 102));
-        jButton3.setText("Final");
+        btnFinal.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnFinal.setText("Final");
+        btnFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinalActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -645,7 +649,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
                 .addGap(427, 427, 427)
                 .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -657,7 +661,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClear)
                     .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(btnFinal))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -757,7 +761,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         if (listPendingPatients.isEmpty() || tblPatientPendings.getSelectedRow() < 0) {
             return;
         }
-        DoctorDiagnosis obj = listPendingPatients.get(tblPatientPendings.getSelectedRow());
+        obj = listPendingPatients.get(tblPatientPendings.getSelectedRow());
         txtPatientId.setText(obj.getPatientId());
         txtFullName.setText(obj.getFullName());
         txtContactNo.setText(obj.getContactNo());
@@ -862,12 +866,17 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         saveVisitMedicines();
     }//GEN-LAST:event_btnSaveMedicineActionPerformed
 
+    private void btnFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalActionPerformed
+        // TODO add your handling code here:
+        n
+    }//GEN-LAST:event_btnFinalActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnFinal;
     private javax.swing.JButton btnSaveMedicine;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -915,11 +924,12 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
     private String itemId = "";
     private String doseId = "";
 
-    DoctorDiagnosis objInsrMed = new DoctorDiagnosis();
     List<DoctorDiagnosis> listPendingPatients = new ArrayList();
     List<DoctorDiagnosis> listSymptomQues = new ArrayList();
     List<DoctorDiagnosis> listMedicines = new ArrayList();
 
+    DoctorDiagnosis objInsrMed = new DoctorDiagnosis();
+    DoctorDiagnosis obj = new DoctorDiagnosis();
     DisplayLOV lov = new DisplayLOV();
     DoctorDiagnosisController ctlDocDiag = new DoctorDiagnosisController();
 
