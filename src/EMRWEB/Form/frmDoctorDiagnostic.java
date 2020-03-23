@@ -890,7 +890,11 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
 
     private void btnFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalActionPerformed
         // TODO add your handling code here:
-
+        int confirmation = JOptionPane.showConfirmDialog(null, "You Are Going "
+                + "To Final Patient.\nAre You Sure?");
+        if (confirmation != 0) {
+            return;
+        }
         if (ctlDocDiag.fianlPerformedVisits(obj)) {
             JOptionPane.showMessageDialog(null, "Patient Perform Successfully.");
             selectPendingPatients();
