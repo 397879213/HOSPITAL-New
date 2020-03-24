@@ -1141,6 +1141,9 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
             selectionModel.setSelectionInterval(0, 0);
             Constants.tablelook.setJTableEnvironment(tblPerformPatients);
             setPatientInfo(listPerformedPatients, tblPerformPatients.getSelectedRow());
+            DoctorDiagnosis obj = listPerformedPatients.get(0);
+            selectDiagnosis(obj.getVisitId());
+            selectVisitMedicines(obj.getVisitId());
         }
     }
 
