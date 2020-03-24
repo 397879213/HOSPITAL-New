@@ -1201,11 +1201,11 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         for (int i = 0; i < tblDiagnosis.getColumnCount(); i++) {
             column = tblDiagnosis.getColumnModel().getColumn(i);
             if (i == 0) {
-                column.setPreferredWidth(120);
-            } else if (i == 1) {
-                column.setPreferredWidth(80);
-            } else if (i == 2) {
                 column.setPreferredWidth(40);
+            } else if (i == 1) {
+                column.setPreferredWidth(50);
+            } else if (i == 2) {
+                column.setPreferredWidth(200);
             }
         }
     }
