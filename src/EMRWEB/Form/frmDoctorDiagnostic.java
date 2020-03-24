@@ -424,7 +424,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
                     .addComponent(txtInstructions, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSaveMedicine))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane29, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE))
+                .addComponent(jScrollPane29, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -492,7 +492,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane26, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane26, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
         );
 
         jPanel9.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -500,6 +500,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         jPanel9.setForeground(new java.awt.Color(102, 0, 0));
 
         tblQuesDetail.setBackground(java.awt.SystemColor.activeCaption);
+        tblQuesDetail.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tblQuesDetail.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null}
@@ -540,7 +541,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane27, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane27, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
         );
 
         jPanel10.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -588,7 +589,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane28, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+            .addComponent(jScrollPane28, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -614,12 +615,14 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(10, 10, 10))
         );
 
@@ -794,8 +797,8 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
                 + "\n WHERE UPPER(DESCRIPTION) LIKE '%"
                 + txtItemId.getText().trim().toUpperCase() + "%'"
                 + "\n AND ACTIVE = 'Y'"
-                + "\n AND ID NOT IN (SELECT ITEM_ID FROM"
-                + Database.DCMS.patientVisitMedicines + ""
+                + "\n AND ID NOT IN (SELECT ITEM_ID FROM "
+                + Database.DCMS.patientVisitMedicines
                 + "\n WHERE PATIENT_ID = " + obj.getPatientId()
                 + "\n AND VISIT_ID = " + visitId + ")";
         lov.LOVSelection(query, this);
@@ -821,7 +824,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
     private void txtDoseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDoseActionPerformed
         // TODO add your handling code here:
         lov.LOVDefinitionSelection(DefinitionTypes.doseTime, txtDose.getText().trim(), this);
-        if(Constants.lovID.equalsIgnoreCase("ID")){
+        if (Constants.lovID.equalsIgnoreCase("ID")) {
             return;
         }
         doseId = Constants.lovID;
@@ -1157,24 +1160,25 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
     }
 
     private void setPatientInfo(List<DoctorDiagnosis> list) {
-        if(list.isEmpty()){
+        if (list.isEmpty()) {
             return;
+        } else {
+            obj = list.get(tblPatientPendings.getSelectedRow());
+            txtPatientId.setText(obj.getPatientId());
+            txtFullName.setText(obj.getFullName());
+            txtContactNo.setText(obj.getContactNo());
+            txtAgeGen.setText(obj.getAge() + "/ " + obj.getGenderDesc());
+            txtCityArea.setText(obj.getCityDescription() + "/ " + obj.getArea());
+            visitId = obj.getVisitId();
         }
-        obj = list.get(tblPatientPendings.getSelectedRow());
-        txtPatientId.setText(obj.getPatientId());
-        txtFullName.setText(obj.getFullName());
-        txtContactNo.setText(obj.getContactNo());
-        txtAgeGen.setText(obj.getAge() + "/ " + obj.getGenderDesc());
-        txtCityArea.setText(obj.getCityDescription() + "/ " + obj.getArea());
-        visitId = obj.getVisitId();
     }
 
     private void insertDiagnosis() {
         objDiagnosis.setVisitId(visitId);
         objDiagnosis.setDiagnosisId(diagnosisId);
-        if(ctlDocDiag.insertVisitDiagnosis(objDiagnosis)){
+        if (ctlDocDiag.insertVisitDiagnosis(objDiagnosis)) {
             selectDiagnosis(visitId);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Unable to Save Diagnosis.\n"
                     + "Kindy contact Support Team.");
         }
