@@ -284,7 +284,7 @@ public class DoctorDiagnosisHandler {
     public List<DoctorDiagnosis> selectVisitDiagnosis(String visitId) {
 
         String[] selectColumns = {"-", "ID", "VISIT_ID", "DIAGNOSIS_ID", 
-            "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
+            "DIAGNOSIS_DESC", "CRTD_BY", "CRTD_NAME","CRTD_DATE"};
 
         String query
                 = "SELECT MED.ID, MED.VISIT_ID, MED.DIAGNOSIS_ID,"

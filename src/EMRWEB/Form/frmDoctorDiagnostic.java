@@ -996,6 +996,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
             setPatientInfo(listPendingPatients);
             setSymptomQuestions(obj.getVisitId());
             selectVisitMedicines(obj.getVisitId());
+            selectDiagnosis(obj.getVisitId());
         }
     }
 
@@ -1156,6 +1157,9 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
     }
 
     private void setPatientInfo(List<DoctorDiagnosis> list) {
+        if(list.isEmpty()){
+            return;
+        }
         obj = list.get(tblPatientPendings.getSelectedRow());
         txtPatientId.setText(obj.getPatientId());
         txtFullName.setText(obj.getFullName());
@@ -1169,14 +1173,14 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         objDiagnosis.setVisitId(visitId);
         objDiagnosis.setDiagnosisId(diagnosisId);
         if(ctlDocDiag.insertVisitDiagnosis(objDiagnosis)){
-            selectDiagnosis();
+            selectDiagnosis(visitId);
         }else{
             JOptionPane.showMessageDialog(null, "Unable to Save Diagnosis.\n"
                     + "Kindy contact Support Team.");
         }
     }
 
-    private void selectDiagnosis() {
+    private void selectDiagnosis(String visitId) {
         listDiagnosis = ctlDocDiag.selectVisitDiagnosis(visitId);
         if (listDiagnosis.isEmpty()) {
             List<DoctorDiagnosis> listPendingPatients = new ArrayList();

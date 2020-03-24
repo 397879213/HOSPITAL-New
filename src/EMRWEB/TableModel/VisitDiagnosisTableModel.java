@@ -24,10 +24,9 @@ public class VisitDiagnosisTableModel extends AbstractTableModel {
         data = new Object[li.size()][columnNames.length];
         for (int i = 0; i < li.size(); i++) {
             DoctorDiagnosis dS = li.get(i);
-//            data[i][0] = (i + 1);
-            data[i][0] = dS.getItemDesc();
-            data[i][1] = dS.getDoseDesc();
-            data[i][2] = dS.getDays();
+            data[i][0] = (i + 1);
+            data[i][1] = dS.getDiagnosisId();
+            data[i][2] = dS.getDiagnosisDescription();
         }
     }
 
