@@ -281,4 +281,59 @@ public class DoctorDiagnosisHandler {
         return list;
     }
 
+    public List<DoctorDiagnosis> selectVisitDiagnosis(String visitId) {
+
+        String[] selectColumns = {"-", "ID", "VISIT_ID", "DIAGNOSIS_ID", 
+            "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
+
+        String query
+                = "SELECT MED.ID, MED.VISIT_ID, MED.DIAGNOSIS_ID,"
+                + "\n DSE.DESCRIPTION DIAGNOSIS_DESC,MED. CRTD_BY, CRU.NAME CRTD_NAME,"
+                + "\n TO_CHAR(MED.CRTD_DATE, 'DD-MON-YY') CRTD_DATE"
+                + "\n FROM " + Database.DCMS.visitDiagnosis + " MED, "
+                + "\n" + Database.DCMS.definitionTypeDetail + " DSE,"
+                + "\n" + Database.DCMS.users + " CRU"
+                + "\n WHERE MED.VISIT_ID = " + visitId
+                + "\n  AND MED.DIAGNOSIS_ID = DSE.ID"
+                + "\n AND MED.CRTD_BY = CRU.USER_NAME";
+
+        List selectInvoice = Constants.dao.selectDatainList(query, selectColumns);
+
+        List<DoctorDiagnosis> list = new ArrayList();
+        for (int i = 0; i < selectInvoice.size(); i++) {
+            HashMap map = (HashMap) selectInvoice.get(i);
+            DoctorDiagnosis setpatient = new DoctorDiagnosis();
+
+            setpatient.setMedicinePk(map.get("ID").toString());
+            setpatient.setVisitId(map.get("VISIT_ID").toString());
+            setpatient.setDiagnosisId(map.get("DIAGNOSIS_ID").toString());
+            setpatient.setDiagnosisDescription(map.get("DIAGNOSIS_DESC").toString());
+            setpatient.setCrtdBy(map.get("CRTD_BY").toString());
+            setpatient.setCrtdByName(map.get("CRTD_NAME").toString());
+            setpatient.setCrtdDate(map.get("CRTD_DATE").toString());
+            list.add(setpatient);
+        }
+        return list;
+    }
+
+    public boolean insertVisitDiagnosis(DoctorDiagnosis diagnosis) {
+
+        String[] columns = {Database.DCMS.visitDiagnosis,
+            "ID", "VISIT_ID", "DIAGNOSIS_ID", "CRTD_BY", "CRTD_DATE", 
+            "CRTD_TERMINAL_ID"};
+
+        HashMap map = new HashMap();
+        map.put("ID", " (SELECT NVL(MAX(ID) + 1, 1) FROM "
+                + Database.DCMS.visitDiagnosis + ")");
+        map.put("VISIT_ID", "'" + diagnosis.getVisitId() + "'");
+        map.put("DIAGNOSIS_ID", "'" + diagnosis.getDiagnosisId()+ "'");
+        map.put("CRTD_BY", "'" + Constants.userId + "'");
+        map.put("CRTD_DATE", Constants.today);
+        map.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
+
+        List InsertEmp = new ArrayList();
+        InsertEmp.add(map);
+        return Constants.dao.insertData(InsertEmp, columns);
+    }
+    
 }

@@ -33,6 +33,10 @@ public class DoctorDiagnosisController {
     public List<DoctorDiagnosis> selectPerformedPatients(String patientId) {
         return hdlDocDiag.selectPerformedPatients(patientId);
     }
+    
+    public List<DoctorDiagnosis> selectVisitDiagnosis(String visitId) {
+        return hdlDocDiag.selectVisitDiagnosis(visitId);
+    }
 
     public boolean insertVisitMedicines(DoctorDiagnosis item) {
         boolean ret = hdlDocDiag.insertVisitMedicines(item);
@@ -69,4 +73,16 @@ public class DoctorDiagnosisController {
         }
         return ret;
     }
+    
+    public boolean insertVisitDiagnosis(DoctorDiagnosis diagnosis) {
+        boolean ret = hdlDocDiag.insertVisitDiagnosis(diagnosis);
+        if (ret) {
+            Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
+        
 }

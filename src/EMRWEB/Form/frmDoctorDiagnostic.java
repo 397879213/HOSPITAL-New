@@ -5,6 +5,7 @@ import EMRWEB.Controller.DoctorDiagnosisController;
 import EMRWEB.TableModel.PatientPendingTableModel;
 import EMRWEB.TableModel.PatientPerformedTableModel;
 import EMRWEB.TableModel.SymptomQuestionTableModel;
+import EMRWEB.TableModel.VisitDiagnosisTableModel;
 import EMRWEB.TableModel.VisitMedicinesTableModel;
 import java.util.ArrayList;
 import java.util.List;
@@ -798,6 +799,9 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
                 + "\n WHERE PATIENT_ID = " + obj.getPatientId()
                 + "\n AND VISIT_ID = " + visitId + ")";
         lov.LOVSelection(query, this);
+        if (Constants.lovID.equalsIgnoreCase("ID")) {
+            return;
+        }
         itemId = Constants.lovID;
         txtItemId.setText(Constants.lovDescription);
         txtDose.requestFocus();
@@ -807,12 +811,19 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         lov.LOVDefinitionSelection(DefinitionTypes.diagnosisOPD,
                 txtDiagnosis.getText().trim().toUpperCase(), this);
+        if (Constants.lovID.equalsIgnoreCase("ID")) {
+            return;
+        }
         diagnosisId = Constants.lovID;
+        insertDiagnosis();
     }//GEN-LAST:event_txtDiagnosisActionPerformed
 
     private void txtDoseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDoseActionPerformed
         // TODO add your handling code here:
         lov.LOVDefinitionSelection(DefinitionTypes.doseTime, txtDose.getText().trim(), this);
+        if(Constants.lovID.equalsIgnoreCase("ID")){
+            return;
+        }
         doseId = Constants.lovID;
         txtDose.setText(Constants.lovDescription);
         txtDays.requestFocus();
@@ -960,7 +971,9 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
     List<DoctorDiagnosis> listPerformedPatients = new ArrayList();
     List<DoctorDiagnosis> listSymptomQues = new ArrayList();
     List<DoctorDiagnosis> listMedicines = new ArrayList();
+    List<DoctorDiagnosis> listDiagnosis = new ArrayList();
 
+    DoctorDiagnosis objDiagnosis = new DoctorDiagnosis();
     DoctorDiagnosis objInsrMed = new DoctorDiagnosis();
     DoctorDiagnosis obj = new DoctorDiagnosis();
     DisplayLOV lov = new DisplayLOV();
@@ -1150,6 +1163,47 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         txtAgeGen.setText(obj.getAge() + "/ " + obj.getGenderDesc());
         txtCityArea.setText(obj.getCityDescription() + "/ " + obj.getArea());
         visitId = obj.getVisitId();
+    }
+
+    private void insertDiagnosis() {
+        objDiagnosis.setVisitId(visitId);
+        objDiagnosis.setDiagnosisId(diagnosisId);
+        if(ctlDocDiag.insertVisitDiagnosis(objDiagnosis)){
+            selectDiagnosis();
+        }else{
+            JOptionPane.showMessageDialog(null, "Unable to Save Diagnosis.\n"
+                    + "Kindy contact Support Team.");
+        }
+    }
+
+    private void selectDiagnosis() {
+        listDiagnosis = ctlDocDiag.selectVisitDiagnosis(visitId);
+        if (listDiagnosis.isEmpty()) {
+            List<DoctorDiagnosis> listPendingPatients = new ArrayList();
+            listDiagnosis.add(new DoctorDiagnosis());
+            tblDiagnosis.setModel(new VisitDiagnosisTableModel(listDiagnosis));
+        } else {
+            tblDiagnosis.setModel(new VisitDiagnosisTableModel(listDiagnosis));
+            ListSelectionModel selectionModel = tblDiagnosis.getSelectionModel();
+            tblDiagnosis.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            setDiagnosisColumnsWidths();
+            selectionModel.setSelectionInterval(0, 0);
+            Constants.tablelook.setJTableEnvironment(tblDiagnosis);
+        }
+    }
+
+    private void setDiagnosisColumnsWidths() {
+        TableColumn column = null;
+        for (int i = 0; i < tblDiagnosis.getColumnCount(); i++) {
+            column = tblDiagnosis.getColumnModel().getColumn(i);
+            if (i == 0) {
+                column.setPreferredWidth(120);
+            } else if (i == 1) {
+                column.setPreferredWidth(80);
+            } else if (i == 2) {
+                column.setPreferredWidth(40);
+            }
+        }
     }
 
 }

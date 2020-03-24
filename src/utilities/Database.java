@@ -11,6 +11,7 @@ public class Database {
         public static final String patientPerformVisit = DAO.usernameEmr + "." + "PATIENT_PERFORMED_VISIT ";
             public static final String patientWiseSymptoms = DAO.usernameEmr + "." + "PATIENT_WISE_SYMPTOMS ";
         public static final String patientVisitMedicines = DAO.usernameEmr + "." + "VISIT_MEDICINE ";
+        public static final String visitDiagnosis = DAO.usernameEmr + "." + "VISIT_DIAGNOSIS ";
         
         
         public static final String angioReportingMaster = DAO.usernameEmr + "." + "ANGIO_REPORTING_MASTER ";

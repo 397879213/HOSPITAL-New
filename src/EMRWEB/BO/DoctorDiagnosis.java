@@ -42,12 +42,30 @@ public class DoctorDiagnosis {
     private String crtdByName = "";
     
     private String medicinePk = "";
+    private String diagnosisId = "";
+    private String diagnosisDescription = "";
     private String itemId = "";
     private String itemDesc = "";
     private String doseId = "";
     private String doseDesc = "";
     private String days = "";
     private String instructions = "";
+
+    public String getDiagnosisId() {
+        return diagnosisId;
+    }
+
+    public void setDiagnosisId(String diagnosisId) {
+        this.diagnosisId = diagnosisId;
+    }
+
+    public String getDiagnosisDescription() {
+        return diagnosisDescription;
+    }
+
+    public void setDiagnosisDescription(String diagnosisDescription) {
+        this.diagnosisDescription = diagnosisDescription;
+    }
     
     public String getPatientId() {
         return patientId;
