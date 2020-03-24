@@ -63,7 +63,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         btnSaveMedicine = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane26 = new javax.swing.JScrollPane();
-        tblPatientInfo = new javax.swing.JTable();
+        tblPerformPatients = new javax.swing.JTable();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane27 = new javax.swing.JScrollPane();
         tblQuesDetail = new javax.swing.JTable();
@@ -451,8 +451,8 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Patient Perform", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel8.setForeground(new java.awt.Color(102, 0, 0));
 
-        tblPatientInfo.setBackground(java.awt.SystemColor.activeCaption);
-        tblPatientInfo.setModel(new javax.swing.table.DefaultTableModel(
+        tblPerformPatients.setBackground(java.awt.SystemColor.activeCaption);
+        tblPerformPatients.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null}
             },
@@ -461,28 +461,28 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
 
             }
         ));
-        tblPatientInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblPerformPatients.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblPatientInfoMouseClicked(evt);
+                tblPerformPatientsMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                tblPatientInfoMouseEntered(evt);
+                tblPerformPatientsMouseEntered(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                tblPatientInfoMouseReleased(evt);
+                tblPerformPatientsMouseReleased(evt);
             }
         });
-        tblPatientInfo.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        tblPerformPatients.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                tblPatientInfoPropertyChange(evt);
+                tblPerformPatientsPropertyChange(evt);
             }
         });
-        tblPatientInfo.addKeyListener(new java.awt.event.KeyAdapter() {
+        tblPerformPatients.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                tblPatientInfoKeyReleased(evt);
+                tblPerformPatientsKeyReleased(evt);
             }
         });
-        jScrollPane26.setViewportView(tblPatientInfo);
+        jScrollPane26.setViewportView(tblPerformPatients);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -711,29 +711,29 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFullNameActionPerformed
 
-    private void tblPatientInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientInfoMouseClicked
+    private void tblPerformPatientsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPerformPatientsMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPatientInfoMouseClicked
+    }//GEN-LAST:event_tblPerformPatientsMouseClicked
 
-    private void tblPatientInfoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientInfoMouseEntered
+    private void tblPerformPatientsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPerformPatientsMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPatientInfoMouseEntered
+    }//GEN-LAST:event_tblPerformPatientsMouseEntered
 
-    private void tblPatientInfoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientInfoMouseReleased
+    private void tblPerformPatientsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPerformPatientsMouseReleased
 
-        DoctorDiagnosis obj = listPerformedPatients.get(tblPatientInfo.getSelectedRow());
+        DoctorDiagnosis obj = listPerformedPatients.get(tblPerformPatients.getSelectedRow());
         visitId = obj.getVisitId();
         setSymptomQuestions(visitId);
         selectVisitMedicines(visitId);
-    }//GEN-LAST:event_tblPatientInfoMouseReleased
+    }//GEN-LAST:event_tblPerformPatientsMouseReleased
 
-    private void tblPatientInfoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblPatientInfoPropertyChange
+    private void tblPerformPatientsPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblPerformPatientsPropertyChange
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPatientInfoPropertyChange
+    }//GEN-LAST:event_tblPerformPatientsPropertyChange
 
-    private void tblPatientInfoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblPatientInfoKeyReleased
+    private void tblPerformPatientsKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblPerformPatientsKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPatientInfoKeyReleased
+    }//GEN-LAST:event_tblPerformPatientsKeyReleased
 
     private void txtAgeGenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAgeGenActionPerformed
         // TODO add your handling code here:
@@ -776,7 +776,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         if (listPendingPatients.isEmpty() || tblPatientPendings.getSelectedRow() < 0) {
             return;
         }
-        setPatientInfo(listPendingPatients);
+        setPatientInfo(listPendingPatients, tblPatientPendings.getSelectedRow());
         setSymptomQuestions(visitId);
         selectVisitMedicines(visitId);
         selectPerformedPaients(obj.getPatientId());
@@ -799,7 +799,6 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
                 + "\n AND ACTIVE = 'Y'"
                 + "\n AND ID NOT IN (SELECT ITEM_ID FROM "
                 + Database.DCMS.patientVisitMedicines
-                + "\n WHERE PATIENT_ID = " + obj.getPatientId()
                 + "\n AND VISIT_ID = " + visitId + ")";
         lov.LOVSelection(query, this);
         if (Constants.lovID.equalsIgnoreCase("ID")) {
@@ -949,8 +948,8 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
     private javax.swing.JPanel pnlPL;
     private javax.swing.JTable tblDiagnosis;
     private javax.swing.JTable tblMedicines;
-    private javax.swing.JTable tblPatientInfo;
     private javax.swing.JTable tblPatientPendings;
+    private javax.swing.JTable tblPerformPatients;
     private javax.swing.JTable tblQuesDetail;
     private javax.swing.JTextField txtAgeGen;
     private javax.swing.JTextField txtCityArea;
@@ -996,7 +995,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
             selectionModel.setSelectionInterval(0, 0);
             Constants.tablelook.setJTableEnvironment(tblPatientPendings);
             DoctorDiagnosis obj = listPendingPatients.get(0);
-            setPatientInfo(listPendingPatients);
+            setPatientInfo(listPendingPatients, tblPatientPendings.getSelectedRow());
             setSymptomQuestions(obj.getVisitId());
             selectVisitMedicines(obj.getVisitId());
             selectDiagnosis(obj.getVisitId());
@@ -1133,22 +1132,22 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         if (listPerformedPatients.isEmpty()) {
             List<DoctorDiagnosis> listPendingPatients = new ArrayList();
             listPerformedPatients.add(new DoctorDiagnosis());
-            tblPatientInfo.setModel(new PatientPerformedTableModel(listPerformedPatients));
+            tblPerformPatients.setModel(new PatientPerformedTableModel(listPerformedPatients));
         } else {
-            tblPatientInfo.setModel(new PatientPerformedTableModel(listPerformedPatients));
-            ListSelectionModel selectionModel = tblPatientInfo.getSelectionModel();
-            tblPatientInfo.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            tblPerformPatients.setModel(new PatientPerformedTableModel(listPerformedPatients));
+            ListSelectionModel selectionModel = tblPerformPatients.getSelectionModel();
+            tblPerformPatients.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
             setPerformedPatientsColumnsWidths();
             selectionModel.setSelectionInterval(0, 0);
-            Constants.tablelook.setJTableEnvironment(tblPatientInfo);
-            setPatientInfo(listPerformedPatients);
+            Constants.tablelook.setJTableEnvironment(tblPerformPatients);
+            setPatientInfo(listPerformedPatients, tblPerformPatients.getSelectedRow());
         }
     }
 
     private void setPerformedPatientsColumnsWidths() {
         TableColumn column = null;
-        for (int i = 0; i < tblPatientInfo.getColumnCount(); i++) {
-            column = tblPatientInfo.getColumnModel().getColumn(i);
+        for (int i = 0; i < tblPerformPatients.getColumnCount(); i++) {
+            column = tblPerformPatients.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(120);
             } else if (i == 1) {
@@ -1159,11 +1158,11 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         }
     }
 
-    private void setPatientInfo(List<DoctorDiagnosis> list) {
+    private void setPatientInfo(List<DoctorDiagnosis> list, int row) {
         if (list.isEmpty()) {
             return;
         } else {
-            obj = list.get(tblPatientPendings.getSelectedRow());
+            obj = list.get(row);
             txtPatientId.setText(obj.getPatientId());
             txtFullName.setText(obj.getFullName());
             txtContactNo.setText(obj.getContactNo());
