@@ -53,7 +53,8 @@ public class DocumentAttachmentHandler {
                 + "\n AND DA.DOC_TYPE_ID = DOC.ID"
                 + "\n AND DA.CRTD_BY = USR.USER_NAME"
                 + "\n AND RECENT_UPLOADED = 'Y'"
-                + "\n AND DA.ACTIVE = 'Y'";
+                + "\n AND DA.ACTIVE = 'Y'"
+                + "\n ORDER BY CRTD_DATE DESC";
 
         List<HashMap> list = Constants.dao.selectDatainList(query, cols);
 
@@ -100,7 +101,8 @@ public class DocumentAttachmentHandler {
                 + "\n AND DA.DOC_TYPE_ID = DOC.ID"
                 + "\n AND DA.CRTD_BY = USR.USER_NAME"
                 + "\n AND RECENT_UPLOADED = 'N'"
-                + "\n AND DA.ACTIVE = 'Y'";
+                + "\n AND DA.ACTIVE = 'Y'"
+                + "\n ORDER BY CRTD_DATE DESC";
 
         List<HashMap> list = Constants.dao.selectDatainList(query, cols);
 
@@ -132,7 +134,7 @@ public class DocumentAttachmentHandler {
         return Constants.dao.executeUpdate(query, false);
     }
     
-    public boolean updateDelete(String Id){
+    public boolean deleteDocument(String Id){
         String query = "UPDATE " + Database.DCMS.documentAttachment
                 + "\n SET ACTIVE = 'N'"
                 + "\n WHERE ACTIVE = 'Y'"

@@ -382,8 +382,8 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtDocumentTypeActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        
-        if(ctlAttachment.updateRecentUploaded(patientId)){
+
+        if (ctlAttachment.updateRecentUploaded(patientId)) {
             this.dispose();
         }
     }//GEN-LAST:event_btnExitActionPerformed
@@ -433,6 +433,9 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
         }
         if (ctlAttachment.insertDocument("", patientId, visitNo, docTypeId, path)) {
             JOptionPane.showMessageDialog(null, "Picture Attached Successfully!");
+            txtDocumentType.setText("");
+            txtPath.setText("");
+            selectRecentUploadedDocs();
         } else {
             JOptionPane.showMessageDialog(null, "Unable to save picture Kindly Contact Administrator");
             webcam.close();
@@ -448,9 +451,22 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
 
     private void tblRecentUploadedMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRecentUploadedMouseReleased
         // TODO add your handling code here:
+        if (listRecentUploadedDocs.isEmpty()
+                || tblRecentUploaded.getSelectedRow() < 0) {
+            return;
+        }
         DocumentAtachement obj = listRecentUploadedDocs.get(
                 tblRecentUploaded.getSelectedRow());
         setImage(obj.getId());
+        if (evt.getClickCount() % 2 == 0) {
+            if (ctlAttachment.deleteDocument(obj.getId())) {
+                selectRecentUploadedDocs();
+                JOptionPane.showMessageDialog(null, "");
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to Delete Information.\n"
+                        + "Please Contact Administrator.");
+            }
+        }
     }//GEN-LAST:event_tblRecentUploadedMouseReleased
 
     private void tblRecentUploadedMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRecentUploadedMousePressed
@@ -471,11 +487,21 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
 
     private void tblPreviousAttachmentsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPreviousAttachmentsMouseReleased
         // TODO add your handling code here:
+        if (listPreviousUploadedDocs.isEmpty()
+                || tblPreviousAttachments.getSelectedRow() < 0) {
+            return;
+        }
         DocumentAtachement obj = listPreviousUploadedDocs.get(
                 tblPreviousAttachments.getSelectedRow());
         setImage(obj.getId());
-        if(evt.getClickCount() % 2 == 0){
-            
+        if (evt.getClickCount() % 2 == 0) {
+            if (ctlAttachment.deleteDocument(obj.getId())) {
+                selectRecentUploadedDocs();
+                JOptionPane.showMessageDialog(null, "");
+            } else {
+                JOptionPane.showMessageDialog(null, "Unable to Delete Information.\n"
+                        + "Please Contact Administrator.");
+            }
         }
     }//GEN-LAST:event_tblPreviousAttachmentsMouseReleased
 
@@ -516,6 +542,9 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
         }
         if (ctlAttachment.insertDocument("", patientId, visitNo, docTypeId, path)) {
             JOptionPane.showMessageDialog(null, "Picture Attached Successfully!");
+            txtDocumentType.setText("");
+            txtPath.setText("");
+            selectRecentUploadedDocs();
         } else {
             JOptionPane.showMessageDialog(null, "Unable to save picture Kindly Contact Administrator");
             webcam.close();
@@ -595,7 +624,7 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
             Constants.tablelook.setJTableEnvironment(tblRecentUploaded);
         }
     }
-    
+
     private void setRecentUploadedDocsColumnsWidths() {
         TableColumn column = null;
         for (int i = 0; i < tblRecentUploaded.getColumnCount(); i++) {

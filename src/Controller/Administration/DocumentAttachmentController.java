@@ -42,6 +42,17 @@ public class DocumentAttachmentController {
         }
         return ret;
     }
+    
+    public boolean deleteDocument(String Id){
+        boolean ret = hdlAttachment.deleteDocument(Id);
+        if (ret) {
+            Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
 
     public boolean insertDocument(String id, String patientId,
             String visitNo, String doctypeId, String path) {
