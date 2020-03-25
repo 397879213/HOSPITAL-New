@@ -251,6 +251,7 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
         });
 
         txtPath.setEditable(false);
+        txtPath.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -466,8 +467,12 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
         try {
             Image procImage = ctlAttachment.selectDocumentImage(obj.getId());
             ImageIcon icon = new ImageIcon(procImage);
-            Image resizedImage = procImage.getScaledInstance(500, 500, 0);
-            lblPicture.setIcon(icon);
+            Image img = icon.getImage();
+            Image newImg = img.getScaledInstance(lblPicture.getWidth(),
+                    lblPicture.getHeight(), Image.SCALE_SMOOTH);
+            ImageIcon newImc = new ImageIcon(newImg);
+            lblPicture.setIcon(newImc);
+
         } catch (NullPointerException ex) {
             lblPicture.setIcon(null);
         }
