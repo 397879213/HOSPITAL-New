@@ -9,7 +9,9 @@ import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamResolution;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.imageio.ImageIO;
@@ -431,17 +433,7 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Unable to Capture Picture!\n"
                     + "Please Contact Administrator");
         }
-        if (ctlAttachment.insertDocument("", patientId, visitNo, docTypeId, path)) {
-            JOptionPane.showMessageDialog(null, "Picture Attached Successfully!");
-            txtDocumentType.setText("");
-            txtPath.setText("");
-            selectRecentUploadedDocs();
-        } else {
-            JOptionPane.showMessageDialog(null, "Unable to save picture Kindly Contact Administrator");
-            webcam.close();
-            return;
-        }
-
+        insertDocumentInDB(path);
         webcam.close();
     }//GEN-LAST:event_btnAttachPictureActionPerformed
 
@@ -534,24 +526,7 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
         if (confirmation != 0) {
             return;
         }
-        if (docTypeId.length() == 0) {
-            JOptionPane.showMessageDialog(null, "Please Select Document Type "
-                    + "Prior to Attach Picture.");
-            txtDocumentType.requestFocus();
-            return;
-        }
-        if (ctlAttachment.insertDocument("", patientId, visitNo, docTypeId, path)) {
-            JOptionPane.showMessageDialog(null, "Picture Attached Successfully!");
-            txtDocumentType.setText("");
-            txtPath.setText("");
-            selectRecentUploadedDocs();
-        } else {
-            JOptionPane.showMessageDialog(null, "Unable to save picture Kindly Contact Administrator");
-            webcam.close();
-            return;
-        }
-
-
+        insertDocumentInDB(path);
     }//GEN-LAST:event_btnBrowseActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -655,4 +630,37 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
             lblPicture.setIcon(null);
         }
     }
+
+    private void insertDocumentInDB(String path) {
+        if (ctlAttachment.insertDocument("", patientId, visitNo, docTypeId, path)) {
+            JOptionPane.showMessageDialog(null, "Picture Attached Successfully!");
+            txtDocumentType.setText("");
+            txtPath.setText("");
+            selectRecentUploadedDocs();
+        } else {
+            JOptionPane.showMessageDialog(null, "Unable to save picture Kindly Contact Administrator");
+            webcam.close();
+            return;
+        }
+    }
+
+//    private static void save( String fileName, String ext) {
+//
+//        File file = new File(fileName + "." + ext);
+//        
+//        try {
+//            
+//            BufferedImage image = webcam.getImage();
+//        String path = "";
+//
+//    
+//            path = System.getProperty("java.io.tmpdir") + patientId + docTypeId + ".png";
+//            ImageIO.write(image, "PNG", new File(path));
+//
+//        } catch (IOException e) {
+//            System.out.println("Write error for " + file.getPath()
+//                    + ": " + e.getMessage());
+//        }
+//    }
+
 }
