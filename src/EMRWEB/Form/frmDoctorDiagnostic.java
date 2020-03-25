@@ -7,6 +7,7 @@ import EMRWEB.TableModel.PatientPerformedTableModel;
 import EMRWEB.TableModel.SymptomQuestionTableModel;
 import EMRWEB.TableModel.VisitDiagnosisTableModel;
 import EMRWEB.TableModel.VisitMedicinesTableModel;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -23,6 +24,9 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
 
         initComponents();
         this.setSize(Constants.xSize + 180, Constants.ySize + 160);
+        btnRefresh.setMnemonic(KeyEvent.VK_R);
+        btnFinal.setMnemonic(KeyEvent.VK_S);
+        btnExit.setMnemonic(KeyEvent.VK_E);
         selectPendingPatients("");
     }
 
@@ -71,8 +75,8 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         jScrollPane28 = new javax.swing.JScrollPane();
         tblPatientPendings = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
-        btnClear = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnRefresh = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
         btnFinal = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -424,7 +428,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
                     .addComponent(txtInstructions, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSaveMedicine))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane29, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addComponent(jScrollPane29, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -541,7 +545,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane27, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+            .addComponent(jScrollPane27, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
         jPanel10.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -616,9 +620,9 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -630,15 +634,20 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel6.setForeground(new java.awt.Color(102, 0, 0));
 
-        btnClear.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnClear.setText("Clear");
-
-        jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(204, 0, 0));
-        jButton2.setText("Exit");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnRefresh.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnRefresh.setText("Refresh");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnRefreshActionPerformed(evt);
+            }
+        });
+
+        btnExit.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnExit.setForeground(new java.awt.Color(204, 0, 0));
+        btnExit.setText("Exit");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
             }
         });
 
@@ -656,11 +665,11 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(427, 427, 427)
-                .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -668,8 +677,8 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnClear)
-                    .addComponent(jButton2)
+                    .addComponent(btnRefresh)
+                    .addComponent(btnExit)
                     .addComponent(btnFinal))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -725,6 +734,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         visitId = obj.getVisitId();
         setSymptomQuestions(visitId);
         selectVisitMedicines(visitId);
+        setEnabledFields(false);
     }//GEN-LAST:event_tblPerformPatientsMouseReleased
 
     private void tblPerformPatientsPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblPerformPatientsPropertyChange
@@ -779,7 +789,9 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         setPatientInfo(listPendingPatients, tblPatientPendings.getSelectedRow());
         setSymptomQuestions(visitId);
         selectVisitMedicines(visitId);
+        selectDiagnosis(visitId);
         selectPerformedPaients(obj.getPatientId());
+        setEnabledFields(true);
     }//GEN-LAST:event_tblPatientPendingsMouseReleased
 
     private void tblPatientPendingsPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblPatientPendingsPropertyChange
@@ -885,10 +897,10 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tblDiagnosisKeyReleased
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnExitActionPerformed
 
     private void txtInstructionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInstructionsActionPerformed
         // TODO add your handling code here:
@@ -916,12 +928,17 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnFinalActionPerformed
 
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        // TODO add your handling code here:
+        selectPendingPatients("");
+    }//GEN-LAST:event_btnRefreshActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnClear;
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnFinal;
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnSaveMedicine;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -1142,8 +1159,10 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
             Constants.tablelook.setJTableEnvironment(tblPerformPatients);
             setPatientInfo(listPerformedPatients, tblPerformPatients.getSelectedRow());
             DoctorDiagnosis obj = listPerformedPatients.get(0);
+            setSymptomQuestions(obj.getVisitId());
             selectDiagnosis(obj.getVisitId());
             selectVisitMedicines(obj.getVisitId());
+            setEnabledFields(false);
         }
     }
 
@@ -1189,7 +1208,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
     private void selectDiagnosis(String visitId) {
         listDiagnosis = ctlDocDiag.selectVisitDiagnosis(visitId);
         if (listDiagnosis.isEmpty()) {
-            List<DoctorDiagnosis> listPendingPatients = new ArrayList();
+            List<DoctorDiagnosis> listDiagnosis = new ArrayList();
             listDiagnosis.add(new DoctorDiagnosis());
             tblDiagnosis.setModel(new VisitDiagnosisTableModel(listDiagnosis));
         } else {
@@ -1214,6 +1233,18 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
                 column.setPreferredWidth(200);
             }
         }
+    }
+
+    private void setEnabledFields(boolean ret) {
+    
+        txtItemId.setEnabled(ret);
+        txtDose.setEnabled(ret);
+        txtInstructions.setEnabled(ret);
+        txtDays.setEnabled(ret);
+        txtDiagnosis.setEnabled(ret);
+        txtRemarks.setEnabled(ret);
+        btnFinal.setEnabled(ret);
+        btnSaveMedicine.setEnabled(ret);
     }
 
 }
