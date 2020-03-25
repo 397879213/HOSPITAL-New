@@ -1610,7 +1610,8 @@ tblEmpDocInfo.addMouseListener(new java.awt.event.MouseAdapter() {
 
         Patient SelectForDocument = listDocData.get(tblEmpDocInfo.getSelectedRow());
         try {
-            Image procImage = ctlEmployeeData.selectDocumentImage(selectClientWiseEmp.getPatientId(), SelectForDocument.getDocTypeId());
+            Image procImage = ctlEmployeeData.selectDocumentImage(
+                    selectClientWiseEmp.getPatientId(), SelectForDocument.getDocTypeId());
             //Image resizedImage
             //        = procImage.getScaledInstance(lblPicture.getWidth(),
             //                lblPicture.getHeight() - 0, 0);
@@ -1695,7 +1696,7 @@ tblEmpDocInfo.addMouseListener(new java.awt.event.MouseAdapter() {
 
         if (ctlAtttachDoc.insertEmployeeDoc(selectClientWiseEmp.getPatientId(),
                 selectClientWiseEmp.getId(), docTypeId, path, txtAddress.getText())) {
-            //JOptionPane.showMessageDialog(null, "Picture Captured Successfully!");
+            JOptionPane.showMessageDialog(null, "Picture Captured Successfully!");
         } else {
             JOptionPane.showMessageDialog(null, "Unable to save picture Kindly Contact Administrator");
             webcam.close();

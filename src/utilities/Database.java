@@ -6,6 +6,8 @@ public class Database {
 
     public static final class DCMS {
 
+        public static final String documentAttachment = DAO.usernameEmr + "." + "DOCUMENT_ATTACHMENT ";
+        
         public static final String EMRWEBPatient = DAO.usernameEmr + "." + "WEB_PATIENT ";
         public static final String patientPendingVisit = DAO.usernameEmr + "." + "PATIENT_PENDING_VISIT ";
         public static final String patientPerformVisit = DAO.usernameEmr + "." + "PATIENT_PERFORMED_VISIT ";

@@ -1008,7 +1008,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
             tblPatientPendings.setModel(new PatientPendingTableModel(listPendingPatients));
             ListSelectionModel selectionModel = tblPatientPendings.getSelectionModel();
             tblPatientPendings.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-            setCondumDetailColumnsWidths();
+            setPendinfPatientsColumnsWidths();
             selectionModel.setSelectionInterval(0, 0);
             Constants.tablelook.setJTableEnvironment(tblPatientPendings);
             DoctorDiagnosis obj = listPendingPatients.get(0);
@@ -1019,7 +1019,7 @@ public class frmDoctorDiagnostic extends javax.swing.JInternalFrame {
         }
     }
 
-    private void setCondumDetailColumnsWidths() {
+    private void setPendinfPatientsColumnsWidths() {
         TableColumn column = null;
         for (int i = 0; i < tblPatientPendings.getColumnCount(); i++) {
             column = tblPatientPendings.getColumnModel().getColumn(i);
