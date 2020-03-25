@@ -22,11 +22,23 @@ public class DocumentAttachmentController {
     public List<DocumentAtachement> selectDocuments(String patientId) {
         return hdlAttachment.selectDocuments(patientId);
     }
-    
+
     public Image selectDocumentImage(String id) {
         return hdlAttachment.selectDocumentImage(id);
     }
-    
+
+    public boolean updateRecentUploaded(String patId) {
+        
+        boolean ret = hdlAttachment.updateRecentUploaded(patId);
+        if (ret) {
+            Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
+
     public boolean insertDocument(String id, String patientId,
             String visitNo, String doctypeId, String path) {
         boolean ret = hdlAttachment.insertDocument(hdlAttachment.selectDocTypePK(),

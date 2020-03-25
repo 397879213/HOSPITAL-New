@@ -76,6 +76,13 @@ public class DocumentAttachmentHandler {
         return listItems;
     }
 
+    public boolean updateRecentUploaded(String patId){
+        String query = "UPDATE " + Database.DCMS.documentAttachment
+                + "\n SET RECENT_UPLOADED = 'N'"
+                + "\n WHERE RECENT_UPLOADED = 'Y'"
+                + "\n AND PATIENT_ID = '" + patId + "'";
+        return Constants.dao.executeUpdate(query, false);
+    }
     public Image selectDocumentImage(String id) {
 
         String query = "SELECT PICTURE FROM "

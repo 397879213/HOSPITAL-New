@@ -379,8 +379,10 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtDocumentTypeActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-
-        this.dispose();
+        
+        if(ctlAttachment.updateRecentUploaded(patientId)){
+            this.dispose();
+        }
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnShowPicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowPicActionPerformed
