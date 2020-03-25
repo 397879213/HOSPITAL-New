@@ -19,8 +19,12 @@ public class DocumentAttachmentController {
 
     DocumentAttachmentHandler hdlAttachment = new DocumentAttachmentHandler();
 
-    public List<DocumentAtachement> selectDocuments(String patientId) {
-        return hdlAttachment.selectDocuments(patientId);
+    public List<DocumentAtachement> selectRecentUploadedDocs(String patientId) {
+        return hdlAttachment.selectRecentUploadedDocs(patientId);
+    }
+    
+    public List<DocumentAtachement> selectPreviousUploadedDocs(String patientId) {
+        return hdlAttachment.selectPreviousUploadedDocs(patientId);
     }
 
     public Image selectDocumentImage(String id) {

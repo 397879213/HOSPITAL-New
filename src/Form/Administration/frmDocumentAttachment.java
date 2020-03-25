@@ -3,6 +3,7 @@ package Form.Administration;
 import BO.Administration.DocumentAtachement;
 import Controller.Administration.DocumentAttachmentController;
 import TableModel.Administration.PreviousAttachmentsTableModel;
+import TableModel.Administration.RecentUploadedAttachmentsTableModel;
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamResolution;
@@ -30,13 +31,15 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
     private String patientId = "001212112";
 
     DocumentAttachmentController ctlAttachment = new DocumentAttachmentController();
-    List<DocumentAtachement> listDocs = new ArrayList();
+    List<DocumentAtachement> listRecentUploadedDocs = new ArrayList();
+    List<DocumentAtachement> listPreviousUploadedDocs = new ArrayList();
     private String docTypeId = "";
     private String visitNo = "123";
 
     public frmDocumentAttachment() {
         initComponents();
         this.setSize(Constants.xSize - 160, Constants.ySize - 180);
+        selectRecentUploadedDocs();
         selectPreviousDocsuments();
     }
 
@@ -54,7 +57,7 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
         lblPicture = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane9 = new javax.swing.JScrollPane();
-        tblInpatientLimit = new javax.swing.JTable();
+        tblRecentUploaded = new javax.swing.JTable();
         jPanel10 = new javax.swing.JPanel();
         btnExit = new javax.swing.JButton();
         btnShowPic = new javax.swing.JButton();
@@ -175,7 +178,7 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
         jPanel9.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Client Approval History", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
 
-        tblInpatientLimit.setModel(new javax.swing.table.DefaultTableModel(
+        tblRecentUploaded.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
                 {null,null, null}
@@ -185,23 +188,23 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
 
             }
         ));
-        tblInpatientLimit.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblRecentUploaded.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblInpatientLimitMouseClicked(evt);
+                tblRecentUploadedMouseClicked(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                tblInpatientLimitMousePressed(evt);
+                tblRecentUploadedMousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                tblInpatientLimitMouseReleased(evt);
+                tblRecentUploadedMouseReleased(evt);
             }
         });
-        tblInpatientLimit.addKeyListener(new java.awt.event.KeyAdapter() {
+        tblRecentUploaded.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                tblInpatientLimitKeyReleased(evt);
+                tblRecentUploadedKeyReleased(evt);
             }
         });
-        jScrollPane9.setViewportView(tblInpatientLimit);
+        jScrollPane9.setViewportView(tblRecentUploaded);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -439,21 +442,21 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
         webcam.close();
     }//GEN-LAST:event_btnAttachPictureActionPerformed
 
-    private void tblInpatientLimitKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblInpatientLimitKeyReleased
+    private void tblRecentUploadedKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblRecentUploadedKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblInpatientLimitKeyReleased
+    }//GEN-LAST:event_tblRecentUploadedKeyReleased
 
-    private void tblInpatientLimitMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblInpatientLimitMouseReleased
+    private void tblRecentUploadedMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRecentUploadedMouseReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblInpatientLimitMouseReleased
+    }//GEN-LAST:event_tblRecentUploadedMouseReleased
 
-    private void tblInpatientLimitMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblInpatientLimitMousePressed
+    private void tblRecentUploadedMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRecentUploadedMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblInpatientLimitMousePressed
+    }//GEN-LAST:event_tblRecentUploadedMousePressed
 
-    private void tblInpatientLimitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblInpatientLimitMouseClicked
+    private void tblRecentUploadedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRecentUploadedMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblInpatientLimitMouseClicked
+    }//GEN-LAST:event_tblRecentUploadedMouseClicked
 
     private void tblPreviousAttachmentsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPreviousAttachmentsMouseClicked
         // TODO add your handling code here:
@@ -465,7 +468,7 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
 
     private void tblPreviousAttachmentsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPreviousAttachmentsMouseReleased
         // TODO add your handling code here:
-        DocumentAtachement obj = listDocs.get(tblPreviousAttachments.getSelectedRow());
+        DocumentAtachement obj = listPreviousUploadedDocs.get(tblPreviousAttachments.getSelectedRow());
         try {
             Image procImage = ctlAttachment.selectDocumentImage(obj.getId());
             ImageIcon icon = new ImageIcon(procImage);
@@ -543,20 +546,20 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JLabel lblPicture;
     private javax.swing.JPanel pnlPatientDetail;
-    private javax.swing.JTable tblInpatientLimit;
     private javax.swing.JTable tblPreviousAttachments;
+    private javax.swing.JTable tblRecentUploaded;
     private javax.swing.JTextField txtDocumentType;
     private javax.swing.JTextField txtPath;
     // End of variables declaration//GEN-END:variables
 
     private void selectPreviousDocsuments() {
-        listDocs = ctlAttachment.selectDocuments(patientId);
-        if (listDocs.isEmpty()) {
+        listPreviousUploadedDocs = ctlAttachment.selectPreviousUploadedDocs(patientId);
+        if (listPreviousUploadedDocs.isEmpty()) {
             List<DocumentAtachement> listDocs = new ArrayList();
             listDocs.add(new DocumentAtachement());
             tblPreviousAttachments.setModel(new PreviousAttachmentsTableModel(listDocs));
         } else {
-            tblPreviousAttachments.setModel(new PreviousAttachmentsTableModel(listDocs));
+            tblPreviousAttachments.setModel(new PreviousAttachmentsTableModel(listPreviousUploadedDocs));
             ListSelectionModel selectionModel = tblPreviousAttachments.getSelectionModel();
             tblPreviousAttachments.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
             setPreviousAttachmentsColumnsWidths();
@@ -569,6 +572,38 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
         TableColumn column = null;
         for (int i = 0; i < tblPreviousAttachments.getColumnCount(); i++) {
             column = tblPreviousAttachments.getColumnModel().getColumn(i);
+            if (i == 0) {
+                column.setPreferredWidth(30);
+            } else if (i == 1) {
+                column.setPreferredWidth(50);
+            } else if (i == 2) {
+                column.setPreferredWidth(50);
+            } else if (i == 3) {
+                column.setPreferredWidth(120);
+            }
+        }
+    }
+
+    private void selectRecentUploadedDocs() {
+        listRecentUploadedDocs = ctlAttachment.selectRecentUploadedDocs(patientId);
+        if (listRecentUploadedDocs.isEmpty()) {
+            List<DocumentAtachement> listDocs = new ArrayList();
+            listDocs.add(new DocumentAtachement());
+            tblRecentUploaded.setModel(new RecentUploadedAttachmentsTableModel(listDocs));
+        } else {
+            tblRecentUploaded.setModel(new RecentUploadedAttachmentsTableModel(listRecentUploadedDocs));
+            ListSelectionModel selectionModel = tblRecentUploaded.getSelectionModel();
+            tblRecentUploaded.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            setRecentUploadedDocsColumnsWidths();
+            selectionModel.setSelectionInterval(0, 0);
+            Constants.tablelook.setJTableEnvironment(tblRecentUploaded);
+        }
+    }
+    
+    private void setRecentUploadedDocsColumnsWidths() {
+        TableColumn column = null;
+        for (int i = 0; i < tblRecentUploaded.getColumnCount(); i++) {
+            column = tblRecentUploaded.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(30);
             } else if (i == 1) {
