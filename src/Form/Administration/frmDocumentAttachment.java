@@ -448,6 +448,9 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
 
     private void tblRecentUploadedMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRecentUploadedMouseReleased
         // TODO add your handling code here:
+        DocumentAtachement obj = listRecentUploadedDocs.get(
+                tblRecentUploaded.getSelectedRow());
+        setImage(obj.getId());
     }//GEN-LAST:event_tblRecentUploadedMouseReleased
 
     private void tblRecentUploadedMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRecentUploadedMousePressed
@@ -468,18 +471,11 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
 
     private void tblPreviousAttachmentsMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPreviousAttachmentsMouseReleased
         // TODO add your handling code here:
-        DocumentAtachement obj = listPreviousUploadedDocs.get(tblPreviousAttachments.getSelectedRow());
-        try {
-            Image procImage = ctlAttachment.selectDocumentImage(obj.getId());
-            ImageIcon icon = new ImageIcon(procImage);
-            Image img = icon.getImage();
-            Image newImg = img.getScaledInstance(lblPicture.getWidth(),
-                    lblPicture.getHeight(), Image.SCALE_SMOOTH);
-            ImageIcon newImc = new ImageIcon(newImg);
-            lblPicture.setIcon(newImc);
-
-        } catch (NullPointerException ex) {
-            lblPicture.setIcon(null);
+        DocumentAtachement obj = listPreviousUploadedDocs.get(
+                tblPreviousAttachments.getSelectedRow());
+        setImage(obj.getId());
+        if(evt.getClickCount() % 2 == 0){
+            
         }
     }//GEN-LAST:event_tblPreviousAttachmentsMouseReleased
 
@@ -613,6 +609,21 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
             } else if (i == 3) {
                 column.setPreferredWidth(120);
             }
+        }
+    }
+
+    private void setImage(String id) {
+        try {
+            Image procImage = ctlAttachment.selectDocumentImage(id);
+            ImageIcon icon = new ImageIcon(procImage);
+            Image img = icon.getImage();
+            Image newImg = img.getScaledInstance(lblPicture.getWidth(),
+                    lblPicture.getHeight(), Image.SCALE_SMOOTH);
+            ImageIcon newImc = new ImageIcon(newImg);
+            lblPicture.setIcon(newImc);
+
+        } catch (NullPointerException ex) {
+            lblPicture.setIcon(null);
         }
     }
 }

@@ -131,6 +131,15 @@ public class DocumentAttachmentHandler {
                 + "\n AND PATIENT_ID = '" + patId + "'";
         return Constants.dao.executeUpdate(query, false);
     }
+    
+    public boolean updateDelete(String Id){
+        String query = "UPDATE " + Database.DCMS.documentAttachment
+                + "\n SET ACTIVE = 'N'"
+                + "\n WHERE ACTIVE = 'Y'"
+                + "\n AND ID = " + Id ;
+        return Constants.dao.executeUpdate(query, false);
+    }
+    
     public Image selectDocumentImage(String id) {
 
         String query = "SELECT PICTURE FROM "
