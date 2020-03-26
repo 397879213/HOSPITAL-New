@@ -681,14 +681,11 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
             f = new File("D:\\Save Image\\0012121121231661.jpg"); //image file path
             image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
             image = ImageIO.read(f);
-
             ImageIcon icon = new ImageIcon(image);
-            Image img = icon.getImage();
-            Image newImg = img.getScaledInstance(lblPicture.getWidth(),
-                    lblPicture.getHeight(), Image.SCALE_SMOOTH);
+            Image img = icon.getImage();// Resizing for Label
+            Image newImg = img.getScaledInstance(width,height, Image.SCALE_SMOOTH);
             ImageIcon newImc = new ImageIcon(newImg);
             lblPicture.setIcon(newImc);
-
         } catch (IOException e) {
             System.err.println("Error: " + e);
         }
