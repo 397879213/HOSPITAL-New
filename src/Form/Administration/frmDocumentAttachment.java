@@ -629,8 +629,8 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
             Image img = icon.getImage();
             Image newImg = img.getScaledInstance(lblPicture.getWidth(),
                     lblPicture.getHeight(), Image.SCALE_SMOOTH);
-            System.err.println("LBL HG WG: "+lblPicture.getWidth() + " HEIGHT : " + lblPicture.getHeight());
-            
+            System.err.println("LBL HG WG: " + lblPicture.getWidth() + " HEIGHT : " + lblPicture.getHeight());
+
             ImageIcon newImc = new ImageIcon(newImg);
             lblPicture.setIcon(newImc);
 
@@ -671,35 +671,24 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
 //        }
 //    }
     private void setImgeFromPath() {
-        int width = 963;    //width of the image
-        int height = 640;   //height of the image
+        int width = 422;    //width of the image
+        int height = 389;   //height of the image
         BufferedImage image = null;
         File f = null;
         try {
-            
-//            Image procImage = ctlEmployeeData.selectDocumentImage(
-//                    selectClientWiseEmp.getPatientId(), SelectForDocument.getDocTypeId());
-            //Image resizedImage
-            //        = procImage.getScaledInstance(lblPicture.getWidth(),
-            //                lblPicture.getHeight() - 0, 0);
-//            ImageIcon icon = new ImageIcon(procImage);
-//            lblPicture.setIcon(icon);
-            
-            
-            
             String s = "D:\\Save Image\\" + patientId + visitNo + docTypeId + ".jpg";
-            System.err.println("image path: "+s);
+            System.err.println("image path: " + s);
             f = new File("D:\\Save Image\\0012121121231661.jpg"); //image file path
-            image = new BufferedImage(lblPicture.getWidth(), lblPicture.getHeight(), BufferedImage.TYPE_INT_ARGB);
+            image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
             image = ImageIO.read(f);
-            
+
             ImageIcon icon = new ImageIcon(image);
-//            Image img = icon.getImage();
-//            Image newImg = img.getScaledInstance(width,
-//                    height, Image.SCALE_SMOOTH);
-//            ImageIcon newImc = new ImageIcon(newImg);
-            lblPicture.setIcon(icon);
-            
+            Image img = icon.getImage();
+            Image newImg = img.getScaledInstance(lblPicture.getWidth(),
+                    lblPicture.getHeight(), Image.SCALE_SMOOTH);
+            ImageIcon newImc = new ImageIcon(newImg);
+            lblPicture.setIcon(newImc);
+
         } catch (IOException e) {
             System.err.println("Error: " + e);
         }
