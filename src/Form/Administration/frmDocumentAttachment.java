@@ -674,7 +674,9 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
         BufferedImage image = null;
         File f = null;
         try {
-            f = new File("D:\\Save Image\\" + patientId + visitNo + docTypeId + ".jpg"); //image file path
+            String s = "D:\\Save Image\\" + patientId + visitNo + docTypeId + ".jpg";
+            System.err.println("image path: "+s);
+            f = new File("D:\\Save Image\\0012121121231661.jpg"); //image file path
             image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
             image = ImageIO.read(f);
             
