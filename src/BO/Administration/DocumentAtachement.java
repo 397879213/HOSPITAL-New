@@ -14,7 +14,7 @@ public class DocumentAtachement {
     private String id = "";
     private String patientId = "";
     private String visitNo = "";
-    private String picture = "";
+    private String imageName = "";
     private String docTypeId = "";
     private String docTypeDescription = "";
     private String active = "";
@@ -47,12 +47,12 @@ public class DocumentAtachement {
         this.visitNo = visitNo;
     }
 
-    public String getPicture() {
-        return picture;
+    public String getImageName() {
+        return imageName;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 
     public String getDocTypeId() {

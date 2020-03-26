@@ -4,12 +4,12 @@ import BO.Administration.DocumentAtachement;
 import Controller.Administration.DocumentAttachmentController;
 import TableModel.Administration.PreviousAttachmentsTableModel;
 import TableModel.Administration.RecentUploadedAttachmentsTableModel;
+import com.archimed.tool.d;
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamResolution;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,26 +24,31 @@ import javax.swing.table.TableColumn;
 import utilities.Constants;
 import utilities.DefinitionTypes;
 import utilities.DisplayLOV;
+import utilities.PacsProcessPath;
 
 public class frmDocumentAttachment extends javax.swing.JInternalFrame {
 
+    DocumentAtachement inrDoc = new DocumentAtachement();
     DisplayLOV lov = new DisplayLOV();
     Webcam webcam = null;
     WebcamPanel panel;
     private String patientId = "001212112";
+    private String docTypeId = "";
+    private String visitNo = "123";
+    private String path = "";
+    private String id = "";
+    private String fileName = "";
 
     DocumentAttachmentController ctlAttachment = new DocumentAttachmentController();
     List<DocumentAtachement> listRecentUploadedDocs = new ArrayList();
     List<DocumentAtachement> listPreviousUploadedDocs = new ArrayList();
-    private String docTypeId = "";
-    private String visitNo = "123";
 
     public frmDocumentAttachment() {
         initComponents();
         this.setSize(Constants.xSize - 160, Constants.ySize - 180);
+        path = ctlAttachment.selectImagePath(PacsProcessPath.attchedImagePath);
         selectRecentUploadedDocs();
         selectPreviousDocsuments();
-        setImgeFromPath();
     }
 
     @SuppressWarnings("unchecked")
@@ -424,14 +429,16 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
             return;
         }
         BufferedImage image = webcam.getImage();
-        String path = "";
-
         try {
 //            path = System.getProperty("java.io.tmpdir") + patientId + docTypeId + ".png";
 //            ImageIO.write(image, "PNG", new File(path));
             File f = null;
-            f = new File("D:\\Save Image\\" + patientId + visitNo + docTypeId + ".jpg");
+            id = ctlAttachment.selectDocTypePK();
+            fileName = patientId + visitNo + docTypeId + id;
+            System.err.println("\n\nSave Path: " + fileName);
+            f = new File(path + fileName);
             ImageIO.write(image, "PNG", f);
+            insertDocumentInDB();
             JOptionPane.showMessageDialog(null, "Writing complete.");
 
         } catch (Exception ex) {
@@ -439,7 +446,6 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
                     + "Please Contact Administrator");
         }
 
-//        insertDocumentInDB(path);
         webcam.close();
     }//GEN-LAST:event_btnAttachPictureActionPerformed
 
@@ -455,16 +461,17 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
         }
         DocumentAtachement obj = listRecentUploadedDocs.get(
                 tblRecentUploaded.getSelectedRow());
-        setImage(obj.getId());
-        if (evt.getClickCount() % 2 == 0) {
-            if (ctlAttachment.deleteDocument(obj.getId())) {
-                selectRecentUploadedDocs();
-                JOptionPane.showMessageDialog(null, "");
-            } else {
-                JOptionPane.showMessageDialog(null, "Unable to Delete Information.\n"
-                        + "Please Contact Administrator.");
-            }
-        }
+        selectImageFromFolder(obj.getImageName());
+//        setImage(obj.getId());
+//        if (evt.getClickCount() % 2 == 0) {
+//            if (ctlAttachment.deleteDocument(obj.getId())) {
+//                selectRecentUploadedDocs();
+//                JOptionPane.showMessageDialog(null, "");
+//            } else {
+//                JOptionPane.showMessageDialog(null, "Unable to Delete Information.\n"
+//                        + "Please Contact Administrator.");
+//            }
+//        }
     }//GEN-LAST:event_tblRecentUploadedMouseReleased
 
     private void tblRecentUploadedMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRecentUploadedMousePressed
@@ -532,7 +539,7 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
         if (confirmation != 0) {
             return;
         }
-        insertDocumentInDB(path);
+        insertDocumentInDB();
     }//GEN-LAST:event_btnBrowseActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -591,7 +598,7 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
     }
 
     private void selectRecentUploadedDocs() {
-        listRecentUploadedDocs = ctlAttachment.selectRecentUploadedDocs(patientId);
+        listRecentUploadedDocs = ctlAttachment.selectUploadedImages(patientId, "Y");
         if (listRecentUploadedDocs.isEmpty()) {
             List<DocumentAtachement> listDocs = new ArrayList();
             listDocs.add(new DocumentAtachement());
@@ -629,8 +636,6 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
             Image img = icon.getImage();
             Image newImg = img.getScaledInstance(lblPicture.getWidth(),
                     lblPicture.getHeight(), Image.SCALE_SMOOTH);
-            System.err.println("LBL HG WG: " + lblPicture.getWidth() + " HEIGHT : " + lblPicture.getHeight());
-
             ImageIcon newImc = new ImageIcon(newImg);
             lblPicture.setIcon(newImc);
 
@@ -639,8 +644,12 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
         }
     }
 
-    private void insertDocumentInDB(String path) {
-        if (ctlAttachment.insertDocument("", patientId, visitNo, docTypeId, path)) {
+    private void insertDocumentInDB() {
+        inrDoc.setId(id);
+        inrDoc.setPatientId(patientId);
+        inrDoc.setVisitNo(visitNo);
+        inrDoc.setImageName(fileName);
+        if (ctlAttachment.insertAtachedImageInfo(inrDoc)) {
             JOptionPane.showMessageDialog(null, "Picture Attached Successfully!");
             txtDocumentType.setText("");
             txtPath.setText("");
@@ -670,20 +679,19 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
 //                    + ": " + e.getMessage());
 //        }
 //    }
-    private void setImgeFromPath() {
+    private void selectImageFromFolder(String fileName) {
         int width = 422;    //width of the image
         int height = 389;   //height of the image
         BufferedImage image = null;
         File f = null;
         try {
-            String s = "D:\\Save Image\\" + patientId + visitNo + docTypeId + ".jpg";
-            System.err.println("image path: " + s);
-            f = new File("D:\\Save Image\\0012121121231661.jpg"); //image file path
+            System.err.println("\n\nselect Path: " + path + fileName);
+            f = new File(path + fileName); //image file path
             image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
             image = ImageIO.read(f);
             ImageIcon icon = new ImageIcon(image);
             Image img = icon.getImage();// Resizing for Label
-            Image newImg = img.getScaledInstance(width,height, Image.SCALE_SMOOTH);
+            Image newImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
             ImageIcon newImc = new ImageIcon(newImg);
             lblPicture.setIcon(newImc);
         } catch (IOException e) {
