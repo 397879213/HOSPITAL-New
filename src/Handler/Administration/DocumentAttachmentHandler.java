@@ -170,10 +170,8 @@ public class DocumentAttachmentHandler {
                     byte[] bytes;
                     bytes = rs.getBytes(1);
                     System.out.print("Image is not Find");
-
                 }
             }
-
             // Close resources
             rs.close();
             stmnt.close();

@@ -43,6 +43,7 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
         this.setSize(Constants.xSize - 160, Constants.ySize - 180);
         selectRecentUploadedDocs();
         selectPreviousDocsuments();
+        setImgeFromPath();
     }
 
     @SuppressWarnings("unchecked")
@@ -426,14 +427,19 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
         String path = "";
 
         try {
-            path = System.getProperty("java.io.tmpdir") + patientId + docTypeId + ".png";
-            ImageIO.write(image, "PNG", new File(path));
+//            path = System.getProperty("java.io.tmpdir") + patientId + docTypeId + ".png";
+//            ImageIO.write(image, "PNG", new File(path));
+            File f = null;
+            f = new File("D:\\Save Image\\" + patientId + visitNo + docTypeId + ".jpg");
+            ImageIO.write(image, "PNG", f);
+            JOptionPane.showMessageDialog(null, "Writing complete.");
 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Unable to Capture Picture!\n"
                     + "Please Contact Administrator");
         }
-        insertDocumentInDB(path);
+
+//        insertDocumentInDB(path);
         webcam.close();
     }//GEN-LAST:event_btnAttachPictureActionPerformed
 
@@ -662,5 +668,25 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
 //                    + ": " + e.getMessage());
 //        }
 //    }
-
+    private void setImgeFromPath() {
+        int width = 963;    //width of the image
+        int height = 640;   //height of the image
+        BufferedImage image = null;
+        File f = null;
+        try {
+            f = new File("D:\\Save Image\\" + patientId + visitNo + docTypeId + ".jpg"); //image file path
+            image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+            image = ImageIO.read(f);
+            
+            ImageIcon icon = new ImageIcon(image);
+            Image img = icon.getImage();
+            Image newImg = img.getScaledInstance(lblPicture.getWidth(),
+                    lblPicture.getHeight(), Image.SCALE_SMOOTH);
+            ImageIcon newImc = new ImageIcon(newImg);
+            lblPicture.setIcon(newImc);
+            
+        } catch (IOException e) {
+            System.err.println("Error: " + e);
+        }
+    }
 }
