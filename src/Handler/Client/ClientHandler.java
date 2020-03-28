@@ -22,16 +22,16 @@ public class ClientHandler implements java.io.Serializable {
     public List<SetupColumnDetail> selectClientProprties(String clientId) {
 
         String[] cols = {"-", "ID", "PROPERTY", "TABLE_ROW_ID", "TABLE_COLUMN_ID",
-            "DESCRIPTION", "ACTIVE"};
+            "DESCRIPTION"};
 
         String query
-                = "SELECT STC.ID, STC.PROPERTY, S.TABLE_ROW_ID, S.TABLE_COLUMN_ID,"
+                = "SELECT STC.ID, STC.PROPERTY, SCD.TABLE_ROW_ID, SCD.TABLE_COLUMN_ID,"
                 + "\n SCD.DESCRIPTION FROM "
                 + "\n " + Database.DCMS.setupColumnDetail + " SCD,"
                 + "\n "+ Database.DCMS.setupTableColums +" STC"
                 + "\n WHERE SCD.TABLE_ROW_ID = '" + clientId + "'"
-                + "\n  AND STC.ID = SCD.TABLE_COLUMN_ID"
-                + "\n STC.ACTIVE = 'Y'";
+                + "\n AND STC.ID = SCD.TABLE_COLUMN_ID"
+                + "\n AND STC.ACTIVE = 'Y'";
 
         List<HashMap> list = Constants.dao.selectDatainList(query, cols);
 
@@ -45,7 +45,6 @@ public class ClientHandler implements java.io.Serializable {
             setupProperties.setTableRowId(map.get("TABLE_ROW_ID").toString());
             setupProperties.setTableColumnId(map.get("TABLE_COLUMN_ID").toString());
             setupProperties.setDefaultValue(map.get("DESCRIPTION").toString());
-            setupProperties.setActive(map.get("ACTIVE").toString());
             listItems.add(setupProperties);
         }
         return listItems;
@@ -166,7 +165,7 @@ public class ClientHandler implements java.io.Serializable {
                 + " FROM "
                 + Database.DCMS.client + " CLT "
                 + " WHERE UPPER(CLT.DESCRIPTION) LIKE '%" + clientName.toUpperCase() + "%'";
-
+        System.out.println(query);
         return setStudyVector(Constants.dao.selectData(query, columns));
     }
 

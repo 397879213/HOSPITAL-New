@@ -736,7 +736,6 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
 
         btnSave.setEnabled(false);
         searchClientInformation();
-
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSelectClientActionPerformed
 
@@ -815,8 +814,9 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
             return;
         }
         client = (Client) vecClient.get(tableSearchClient.getSelectedRow());
+        clientId = client.getClientId();
         setClientInformation();
-        setClientWiseLocation();
+//        setClientWiseLocation();
 
         // TODO add your handling code here:
 }//GEN-LAST:event_tableSearchClientMouseReleased
@@ -1043,9 +1043,7 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
 
 //    public CPTController ctlCPT = new CPTController();
     public void searchClientInformation() {
-
         if (txtSelectClient.getText().trim().length() == 0) {
-
             return;
         }
         vecClient = ctlClient.searchClientByName(txtSelectClient.getText().trim());
