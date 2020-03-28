@@ -83,7 +83,7 @@ public class ClientWiseCptHandler {
         String[] columns = {"", "CPT_ID", "CPT_DESCRIPTION", "CPT_PRICE",
             "DEPARTMENT", "DEPARTMENT_DESCRIPTION", "SECTION", "ACTIVE",
             "CLIENT_ID", "CLIENT_NAME", "CLIENT_PRICE", "CONTRACT_STATUS",
-            "CLIENT_CPT_ACTIVE", "PERCENTAGE_DISCOUNT", "TEST_LIMIT"};
+            "CLIENT_CPT_ACTIVE", "PERCENTAGE_DISCOUNT", "TEST_LIMIT", "IS_CREDIT"};
 
         String query
                 = " SELECT                                              \n"
@@ -100,7 +100,8 @@ public class ClientWiseCptHandler {
                 + " NVL(CWC.CONTRACT_STATUS, 'N') CONTRACT_STATUS,      \n"
                 + " CWC.ACTIVE                CLIENT_CPT_ACTIVE,        \n"
                 + " NVL(CWC.PERCENTAGE_DISCOUNT , '0') PERCENTAGE_DISCOUNT ,\n"
-                + " CWC.TEST_LIMIT            TEST_LIMIT                \n"
+                + " CWC.TEST_LIMIT            TEST_LIMIT,               \n"
+                + " CWC.IS_CREDIT                                       \n"
                 + " FROM                                                \n"
                 + Database.DCMS.CPT + " CPT,                            \n"
                 + Database.DCMS.client + " CLT,                         \n"
@@ -153,6 +154,7 @@ public class ClientWiseCptHandler {
             clientWiseCpt.setPercentageDiscount(map.get("PERCENTAGE_DISCOUNT").toString());
             clientWiseCpt.setClientCptStatus(map.get("CLIENT_CPT_ACTIVE").toString());
             clientWiseCpt.setTestLimit(map.get("TEST_LIMIT").toString());
+            clientWiseCpt.setIsCredit(map.get("IS_CREDIT").toString());
             vecCPT.add(clientWiseCpt);
         }
         return vecCPT;
@@ -201,13 +203,14 @@ public class ClientWiseCptHandler {
             String departmentId, String section) {
 
         String[] columns = {"", "CPT_ID", "CPT_DESCRIPTION", "CPT_PRICE",
-            "CPT_ACTIVE"};
+            "CPT_ACTIVE", "IS_CREDIT"};
 
         String query = "SELECT                                       \n"
                 + "CPT.CPT_ID                        CPT_ID,         \n"
                 + "CPT.DESCRIPTION                   CPT_DESCRIPTION,\n"
                 + "CPT.COST                          CPT_PRICE,      \n"
-                + "CPT.ACTIVE                        CPT_ACTIVE      \n"
+                + "CPT.ACTIVE                        CPT_ACTIVE,     \n"
+                + "CPT.IS_CREDIT                                     \n"
                 + "FROM                                              \n"
                 + "EMR.CPT                           CPT             \n"
                 + "WHERE CPT.CPT_ID NOT IN (SELECT CWP.CPT_ID        \n"
@@ -238,6 +241,7 @@ public class ClientWiseCptHandler {
             clientWiseCpt.setCptDescription(map.get("CPT_DESCRIPTION").toString());
             clientWiseCpt.setCptPrice(map.get("CPT_PRICE").toString());
             clientWiseCpt.setCptStatus(map.get("CPT_ACTIVE").toString());
+            clientWiseCpt.setIsCredit(map.get("IS_CREDIT").toString());
             vecCPT.add(clientWiseCpt);
         }
         return vecCPT;

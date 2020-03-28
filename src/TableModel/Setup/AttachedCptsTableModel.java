@@ -15,7 +15,7 @@ import javax.swing.table.AbstractTableModel;
 public class AttachedCptsTableModel extends AbstractTableModel {
 
     private final String[] columnNames = {"Sr.No", "CPT.Description", "Price", 
-        "Status", "Select"};
+        "Status", "Select", "Is Credit"};
     private Object[][] data;
 
     public AttachedCptsTableModel(List<ClientWiseCpt> list) {
@@ -26,7 +26,8 @@ public class AttachedCptsTableModel extends AbstractTableModel {
             data[i][1] = client.getCptDescription();
             data[i][2] = client.getClientCptPrice();
             data[i][3] = client.getClientCptStatus();
-            data[i][4] = false;
+            data[i][4] = client.getIsCredit();
+            data[i][5] = false;
         }
     }
 

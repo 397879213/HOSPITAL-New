@@ -24,7 +24,8 @@ public class ClientWiseCptController {
 
     public List<ClientWiseCpt> getUnAttachedCpts(String clientId, String cptDescription,
             String departmentId, String section) {
-        return hdlClientWiseCpt.selectUnAttachedCPT(clientId, cptDescription, departmentId, section);
+        return hdlClientWiseCpt.selectUnAttachedCPT(clientId, cptDescription,
+                departmentId, section);
     }
 
     public boolean attachClientAndCpt(List<ClientWiseCpt> listClientWiseCpt) {

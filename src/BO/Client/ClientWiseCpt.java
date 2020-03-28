@@ -22,6 +22,7 @@ public class ClientWiseCpt {
     private String sectionId = "";
     private String cptStatus = "";
     private String percentage = "";
+    private String isCredit = "";
 
     public String getPercentage() {
         return percentage;
@@ -157,6 +158,14 @@ public class ClientWiseCpt {
 
     public void setCptStatus(String cptStatus) {
         this.cptStatus = cptStatus;
+    }
+
+    public String getIsCredit() {
+        return isCredit;
+    }
+
+    public void setIsCredit(String isCredit) {
+        this.isCredit = isCredit;
     }
 
 }
