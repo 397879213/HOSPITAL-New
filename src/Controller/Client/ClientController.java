@@ -6,6 +6,7 @@ package Controller.Client;
 
 import BO.Client.Client;
 import BO.CPT.CPT;
+import BO.SetupColumnDetail;
 import Handler.Client.ClientHandler;
 import Handler.Setup.CPTHandler;
 import java.sql.Connection;
@@ -38,6 +39,11 @@ public class ClientController implements java.io.Serializable {
     public static int count = 0;
     public static boolean receipient = false;
 
+    
+    public List<SetupColumnDetail> selectClientProprties(String clientId) {
+        return hdlClient.selectClientProprties(clientId);
+    }
+    
     public int selectCreditLimit(String clientId) throws SQLException {
         int creditLimit = 0;
         try {

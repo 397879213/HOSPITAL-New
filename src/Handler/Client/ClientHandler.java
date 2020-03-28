@@ -2,6 +2,7 @@ package Handler.Client;
 
 import BO.Client.Client;
 import BO.CPT.CPT;
+import BO.SetupColumnDetail;
 import Handler.Setup.CPTHandler;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,6 +18,38 @@ public class ClientHandler implements java.io.Serializable {
 
     GenerateKeys key = new GenerateKeys();
     CPTHandler cpt = new CPTHandler();
+
+    public List<SetupColumnDetail> selectClientProprties(String clientId) {
+
+        String[] cols = {"-", "ID", "PROPERTY", "TABLE_ROW_ID", "TABLE_COLUMN_ID",
+            "DESCRIPTION", "ACTIVE"};
+
+        String query
+                = "SELECT STC.ID, STC.PROPERTY, S.TABLE_ROW_ID, S.TABLE_COLUMN_ID,"
+                + "\n SCD.DESCRIPTION FROM "
+                + "\n " + Database.DCMS.setupColumnDetail + " SCD,"
+                + "\n "+ Database.DCMS.setupTableColums +" STC"
+                + "\n WHERE SCD.TABLE_ROW_ID = '" + clientId + "'"
+                + "\n  AND STC.ID = SCD.TABLE_COLUMN_ID"
+                + "\n STC.ACTIVE = 'Y'";
+
+        List<HashMap> list = Constants.dao.selectDatainList(query, cols);
+
+        List<SetupColumnDetail> listItems = new ArrayList();
+        for (int i = 0; i < list.size(); i++) {
+            HashMap map = list.get(i);
+
+            SetupColumnDetail setupProperties = new SetupColumnDetail();
+            setupProperties.setId(map.get("ID").toString());
+            setupProperties.setProperty(map.get("PROPERTY").toString());
+            setupProperties.setTableRowId(map.get("TABLE_ROW_ID").toString());
+            setupProperties.setTableColumnId(map.get("TABLE_COLUMN_ID").toString());
+            setupProperties.setDefaultValue(map.get("DESCRIPTION").toString());
+            setupProperties.setActive(map.get("ACTIVE").toString());
+            listItems.add(setupProperties);
+        }
+        return listItems;
+    }
 
     public boolean registerClient(Client client) {
         boolean ret = true;
