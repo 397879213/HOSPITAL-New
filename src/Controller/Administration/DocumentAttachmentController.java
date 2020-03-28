@@ -19,13 +19,9 @@ public class DocumentAttachmentController {
 
     DocumentAttachmentHandler hdlAttachment = new DocumentAttachmentHandler();
 
-    public List<DocumentAtachement> selectUploadedImages(String patientId, 
+    public List<DocumentAtachement> selectUploadedImages(String patientId,
             String recentImage) {
         return hdlAttachment.selectUploadedImages(patientId, recentImage);
-    }
-
-    public List<DocumentAtachement> selectPreviousUploadedDocs(String patientId) {
-        return hdlAttachment.selectPreviousUploadedDocs(patientId);
     }
 
     public boolean insertAtachedImageInfo(DocumentAtachement InrDoc) {
@@ -41,10 +37,6 @@ public class DocumentAttachmentController {
 
     public String selectImagePath(String id) {
         return hdlAttachment.selectImagePath(id);
-    }
-
-    public Image selectDocumentImage(String id) {
-        return hdlAttachment.selectDocumentImage(id);
     }
 
     public boolean updateRecentUploaded(String patId) {
@@ -73,18 +65,4 @@ public class DocumentAttachmentController {
     public String selectDocTypePK() {
         return hdlAttachment.selectDocTypePK();
     }
-
-    public boolean insertDocument(String id, String patientId, String visitNo,
-            String doctypeId, String path) {
-        boolean ret = hdlAttachment.insertDocument(id, patientId, visitNo,
-                doctypeId, path);
-        if (ret) {
-            Constants.dao.commitTransaction();
-        }
-        if (!ret) {
-            Constants.dao.rollBack();
-        }
-        return ret;
-    }
-
 }

@@ -4,13 +4,13 @@ import BO.Administration.DocumentAtachement;
 import Controller.Administration.DocumentAttachmentController;
 import TableModel.Administration.PreviousAttachmentsTableModel;
 import TableModel.Administration.RecentUploadedAttachmentsTableModel;
-import com.archimed.tool.d;
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamResolution;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -402,7 +402,6 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
             webcam = Webcam.getDefault();
             webcam.setViewSize(WebcamResolution.VGA.getSize());
             webcam.open();
-
             WebcamPanel panel = new WebcamPanel(webcam);
             panel.setFPSDisplayed(true);
             panel.setSize(jPanel5.getSize());
@@ -429,23 +428,7 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
             return;
         }
         BufferedImage image = webcam.getImage();
-        try {
-//            path = System.getProperty("java.io.tmpdir") + patientId + docTypeId + ".png";
-//            ImageIO.write(image, "PNG", new File(path));
-            File f = null;
-            id = ctlAttachment.selectDocTypePK();
-            fileName = patientId + visitNo + docTypeId + id;
-            System.err.println("\n\nSave Path: " + fileName);
-            f = new File(path + fileName);
-            ImageIO.write(image, "PNG", f);
-            insertDocumentInDB();
-            JOptionPane.showMessageDialog(null, "Writing complete.");
-
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Unable to Capture Picture!\n"
-                    + "Please Contact Administrator");
-        }
-
+        saveImageInfo(image);
         webcam.close();
     }//GEN-LAST:event_btnAttachPictureActionPerformed
 
@@ -462,16 +445,6 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
         DocumentAtachement obj = listRecentUploadedDocs.get(
                 tblRecentUploaded.getSelectedRow());
         selectImageFromFolder(obj.getImageName());
-//        setImage(obj.getId());
-//        if (evt.getClickCount() % 2 == 0) {
-//            if (ctlAttachment.deleteDocument(obj.getId())) {
-//                selectRecentUploadedDocs();
-//                JOptionPane.showMessageDialog(null, "");
-//            } else {
-//                JOptionPane.showMessageDialog(null, "Unable to Delete Information.\n"
-//                        + "Please Contact Administrator.");
-//            }
-//        }
     }//GEN-LAST:event_tblRecentUploadedMouseReleased
 
     private void tblRecentUploadedMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRecentUploadedMousePressed
@@ -498,7 +471,7 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
         }
         DocumentAtachement obj = listPreviousUploadedDocs.get(
                 tblPreviousAttachments.getSelectedRow());
-        setImage(obj.getId());
+        selectImageFromFolder(obj.getImageName());
         if (evt.getClickCount() % 2 == 0) {
             if (ctlAttachment.deleteDocument(obj.getId())) {
                 selectRecentUploadedDocs();
@@ -522,24 +495,30 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
             txtDocumentType.requestFocus();
             return;
         }
-        JFileChooser chooser = new JFileChooser();
-        chooser.setCurrentDirectory(new File("C:\\"));
-        chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        chooser.setAcceptAllFileFilterUsed(false);
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG Documents", "jpg");
-        chooser.setFileFilter(filter);
-        chooser.showOpenDialog(null);
-        String path = "";
-        if (chooser.getSelectedFile() != null) {
-            path = chooser.getSelectedFile().getAbsolutePath();
-            txtPath.setText(path);
+        try {
+            JFileChooser chooser = new JFileChooser();
+            chooser.setCurrentDirectory(new File("D:\\"));
+            chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            chooser.setAcceptAllFileFilterUsed(false);
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG Documents", "jpg");
+            chooser.setFileFilter(filter);
+            chooser.showOpenDialog(null);
+            if (chooser.getSelectedFile() != null) {
+                txtPath.setText(chooser.getSelectedFile().getAbsolutePath());
+            }
+            int confirmation = JOptionPane.showConfirmDialog(null, "Do you want to Attach"
+                    + " this " + path + " Picture?");
+            if (confirmation != 0) {
+                return;
+            }
+            File initialImage = new File(chooser.getSelectedFile().getAbsolutePath());
+            BufferedImage image = ImageIO.read(initialImage);
+            saveImageInfo(image);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Unable to Capture Picture!\n"
+                    + "Please Contact Administrator");
         }
-        int confirmation = JOptionPane.showConfirmDialog(null, "Do you want to Attach"
-                + " this " + path + " Picture?");
-        if (confirmation != 0) {
-            return;
-        }
-        insertDocumentInDB();
+
     }//GEN-LAST:event_btnBrowseActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -566,7 +545,7 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void selectPreviousDocsuments() {
-        listPreviousUploadedDocs = ctlAttachment.selectPreviousUploadedDocs(patientId);
+        listPreviousUploadedDocs = ctlAttachment.selectUploadedImages(patientId, "N");
         if (listPreviousUploadedDocs.isEmpty()) {
             List<DocumentAtachement> listDocs = new ArrayList();
             listDocs.add(new DocumentAtachement());
@@ -629,24 +608,10 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
         }
     }
 
-    private void setImage(String id) {
-        try {
-            Image procImage = ctlAttachment.selectDocumentImage(id);
-            ImageIcon icon = new ImageIcon(procImage);
-            Image img = icon.getImage();
-            Image newImg = img.getScaledInstance(lblPicture.getWidth(),
-                    lblPicture.getHeight(), Image.SCALE_SMOOTH);
-            ImageIcon newImc = new ImageIcon(newImg);
-            lblPicture.setIcon(newImc);
-
-        } catch (NullPointerException ex) {
-            lblPicture.setIcon(null);
-        }
-    }
-
     private void insertDocumentInDB() {
         inrDoc.setId(id);
         inrDoc.setPatientId(patientId);
+        inrDoc.setDocTypeId(docTypeId);
         inrDoc.setVisitNo(visitNo);
         inrDoc.setImageName(fileName);
         if (ctlAttachment.insertAtachedImageInfo(inrDoc)) {
@@ -661,24 +626,6 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
         }
     }
 
-//    private static void save( String fileName, String ext) {
-//
-//        File file = new File(fileName + "." + ext);
-//        
-//        try {
-//            
-//            BufferedImage image = webcam.getImage();
-//        String path = "";
-//
-//    
-//            path = System.getProperty("java.io.tmpdir") + patientId + docTypeId + ".png";
-//            ImageIO.write(image, "PNG", new File(path));
-//
-//        } catch (IOException e) {
-//            System.out.println("Write error for " + file.getPath()
-//                    + ": " + e.getMessage());
-//        }
-//    }
     private void selectImageFromFolder(String fileName) {
         int width = 422;    //width of the image
         int height = 389;   //height of the image
@@ -696,6 +643,20 @@ public class frmDocumentAttachment extends javax.swing.JInternalFrame {
             lblPicture.setIcon(newImc);
         } catch (IOException e) {
             System.err.println("Error: " + e);
+        }
+    }
+
+    private void saveImageInfo(BufferedImage image) {
+        try {
+            File f = null;
+            id = ctlAttachment.selectDocTypePK();
+            fileName = patientId + visitNo + docTypeId + id + ".png";
+            f = new File(path + fileName);
+            ImageIO.write(image, "PNG", f);
+            insertDocumentInDB();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Unable to Capture Picture!\n"
+                    + "Please Contact Administrator");
         }
     }
 }

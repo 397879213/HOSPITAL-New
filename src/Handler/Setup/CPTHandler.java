@@ -316,10 +316,9 @@ public class CPTHandler implements java.io.Serializable {
     public Vector selectClientWiseCPT(CPT cpt) {
 
         String[] columns = {"", "CPT", "DESCRIPTION", "PRICE", "CLIENT_PRICE",
-            "SECTION", "DEPARTMENT", "ACTIVE", "CONTRACT_STATUS",
-            "CLIENT_ID", "CLIENT_CPT_ACTIVE",
-            "CLIENT_NAME", "PERCENTAGE_DISCOUNT", "TEST_LIMIT",
-            "DEPARTMENT_DESCRIPTION"};
+            "SECTION", "DEPARTMENT", "ACTIVE", "CONTRACT_STATUS", "CLIENT_ID",
+            "CLIENT_CPT_ACTIVE", "CLIENT_NAME", "PERCENTAGE_DISCOUNT", "TEST_LIMIT",
+            "DEPARTMENT_DESCRIPTION", "IS_CREDIT"};
 
         Vector vec = new Vector();
 
@@ -337,7 +336,8 @@ public class CPTHandler implements java.io.Serializable {
                 + " CPT.DEPARTMENT_ID         DEPARTMENT,               \n"
                 + " DEP.DESCRIPTION           DEPARTMENT_DESCRIPTION,   \n"
                 + " CPT.ACTIVE                ACTIVE,                   \n"
-                + " CWC.ACTIVE                CLIENT_CPT_ACTIVE         \n"
+                + " CWC.ACTIVE                CLIENT_CPT_ACTIVE,        \n"
+                + " CWC.IS_CREDIT                                       \n"
                 + " FROM  " + Database.DCMS.CPT + " CPT,                \n"
                 + Database.DCMS.client + " CLT,                         \n"
                 + Database.DCMS.department + " DEP,                     \n"
@@ -376,6 +376,7 @@ public class CPTHandler implements java.io.Serializable {
             searchCPT.contractStatus = map.get("CONTRACT_STATUS").toString();
             searchCPT.clientCPTStatus = map.get("CLIENT_CPT_ACTIVE").toString();
             searchCPT.status = map.get("ACTIVE").toString();
+            searchCPT.isCredit = map.get("IS_CREDIT").toString();
             vecCPT.add(searchCPT);
         }
         return vecCPT;

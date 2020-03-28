@@ -417,7 +417,7 @@ public class ClientHandler implements java.io.Serializable {
         String[] cols = {Database.DCMS.clientCptUpdateHistory,
             "CPT_ID", "CLIENT_ID", "CONTRACT_PRICE", "TEST_LIMIT", "STATUS",
             "PERCENTAGE_DISCOUNT", "UPTD_BY", "UPTD_TERMINAL", "UPTD_DATE", "ID",
-            "REMARKS"};
+            "REMARKS", "IS_CREDIT"};
 
         HashMap cptMap = new HashMap();
         cptMap.put("CPT_ID", "'" + cpt.cptId + "'");
@@ -431,6 +431,7 @@ public class ClientHandler implements java.io.Serializable {
         cptMap.put("UPTD_TERMINAL", "'" + Constants.terminalId + "'");
         cptMap.put("UPTD_DATE", "SYSDATE");
         cptMap.put("ID", "'" + key.generatePrimaryKey(Keys.clientCPTUpdateHistory, false) + "'");
+        cptMap.put("IS_CREDIT", "'" + cpt.isCredit + "'");
 
         Vector vec = new Vector();
         vec.add(cptMap);

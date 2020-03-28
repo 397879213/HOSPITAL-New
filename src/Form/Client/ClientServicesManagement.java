@@ -1,5 +1,5 @@
 package Form.Client;
- 
+
 import BO.CPT.CPT;
 import BO.Client.Client;
 import Controller.Setup.CPTController;
@@ -389,12 +389,11 @@ public class ClientServicesManagement extends javax.swing.JInternalFrame {
 
     private void tableClientCPTInformationMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableClientCPTInformationMouseReleased
 
-        if (tableClientCPTInformation.getSelectedRow() < 0) {
+        if (vecClientCPT.isEmpty() || tableClientCPTInformation.getSelectedRow() < 0) {
             return;
         }
         CPT cpt = (CPT) vecClientCPT.get(tableClientCPTInformation.getSelectedRow());
         vecCptTestSelected.add(cpt.cptId);
-
         clientId = cpt.clientId;
         cptId = cpt.cptId;
         // TODO add your handling code here:
@@ -447,9 +446,7 @@ public class ClientServicesManagement extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtDepartmentActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-
         searchClientCPT();
-
         // TODO add your handling code here:
     }//GEN-LAST:event_btnClearActionPerformed
 
@@ -509,6 +506,12 @@ public class ClientServicesManagement extends javax.swing.JInternalFrame {
 
                     int price = Integer.parseInt(cpt.price);
                     cpt.clientPrice = "" + (price * discount);
+                }
+                if(tableClientCPTInformation.getValueAt(
+                        tableClientCPTInformation.getSelectedRow(), 4).equals(true)){
+                    cpt.isCredit = "Y";
+                }else{
+                    cpt.isCredit = "N";
                 }
                 selectedCPT.add(cpt);
             }
@@ -634,20 +637,25 @@ public class ClientServicesManagement extends javax.swing.JInternalFrame {
         for (int i = 0; i < tableClientCPTInformation.getColumnCount(); i++) {
             column = tableClientCPTInformation.getColumnModel().getColumn(i);
             if (i == 0) {
-                column.setPreferredWidth(20);
+                column.setPreferredWidth(35);
             } else if (i == 1) {
-                column.setPreferredWidth(400);
-            } else {
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(450);
+            } else if (i == 2) {
+                column.setPreferredWidth(60);
+            } else if (i == 3) {
+                column.setPreferredWidth(50);
+            } else if (i == 4) {
+                column.setPreferredWidth(50);
+            } else if (i == 5) {
+                column.setPreferredWidth(50);
             }
         }
     }
 
-    int selectIndex = 4;// 5 status
+    int selectIndex = 5;// 5 status
     int selectCostIndex = 3;// 5 status
 
     public void checkUncheckAllCPT(boolean status) {
-
         for (int i = 0; i < tableClientCPTInformation.getRowCount(); i++) {
             tableClientCPTInformation.setValueAt(new Boolean(status), i, selectIndex);
         }

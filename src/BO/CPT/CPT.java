@@ -35,6 +35,7 @@ public class CPT implements java.io.Serializable {
     public String stat = "N";
     public String statPrice = "";
     public String status = "";
+    public String isCredit = "";
     public String reportDay = "";
     public String reportDayDescription = "";
 
@@ -753,4 +754,11 @@ public class CPT implements java.io.Serializable {
         this.performingLocationId = performingLocationId;
     }
 
+    public String getIsCredit() {
+        return isCredit;
+    }
+
+    public void setIsCredit(String isCredit) {
+        this.isCredit = isCredit;
+    }
 }

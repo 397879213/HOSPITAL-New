@@ -251,6 +251,7 @@ public class CPTController implements java.io.Serializable {
             String query = " UPDATE " + Database.DCMS.clientWiseCPT
                     + " SET CONTRACT_STATUS = 'Y', \n"
                     + " CONTRACT_PRICE  = '" + cpt.clientPrice + "', \n"
+                    + " IS_CREDIT  = '" + cpt.isCredit + "', \n"
                     + " PERCENTAGE_DISCOUNT = '" + editInfo.discount + "' \n"
                     + " WHERE CLIENT_ID  = '" + cpt.clientId + "' \n"
                     + " AND CPT_ID = '" + cpt.cptId + "' \n";

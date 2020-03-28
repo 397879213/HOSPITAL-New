@@ -10,7 +10,8 @@ import javax.swing.table.AbstractTableModel;
 
 public class ClientServicesSearchTable extends AbstractTableModel {
 
-    private String[] columnNames = {"Sr.", "Description", "Price", "Contract", "Select"};
+    private String[] columnNames = {"Sr.", "Description", "Price", "Contract", 
+        "Is Credit", "Select"};
     private Object[][] data;
 
     public ClientServicesSearchTable(Vector orders) {
@@ -23,7 +24,12 @@ public class ClientServicesSearchTable extends AbstractTableModel {
             data[row][1] = cpt.description;
             data[row][2] = cpt.price;
             data[row][3] = cpt.clientPrice;
-            data[row][4] = new Boolean(false);
+            if(cpt.isCredit.equalsIgnoreCase("N")){
+                data[row][4] = new Boolean(false);
+            }else{
+                data[row][4] = new Boolean(true);
+            }
+            data[row][5] = new Boolean(false);
             row++;
         }
     }
@@ -62,7 +68,7 @@ public class ClientServicesSearchTable extends AbstractTableModel {
         //Note that the data/cell address is constant,
         //no matter where the cell appears onscreen.
 
-        if (col == 3 ||col == 4) {
+        if (col == 4 ||col == 5) {
             return true;
         }
         return false;
