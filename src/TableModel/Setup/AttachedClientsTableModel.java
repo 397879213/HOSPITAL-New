@@ -15,7 +15,7 @@ import javax.swing.table.AbstractTableModel;
 public class AttachedClientsTableModel extends AbstractTableModel {
 
     private final String[] columnNames = {"Sr.No", "Cleint.Description", "Client.Price", 
-        "I s Credit", "Status", "Select"};
+        "Is Credit", "Status", "Select"};
     private Object[][] data;
 
     public AttachedClientsTableModel(List<ClientWiseCpt> list) {

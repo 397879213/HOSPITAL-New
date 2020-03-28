@@ -20,7 +20,7 @@ import utilities.Forms;
 import utilities.GUIUtils;
 import utilities.Rights;
 
-public class frmClientRegistration extends javax.swing.JInternalFrame {
+public class frmClientRegistrationSave extends javax.swing.JInternalFrame {
 
     DisplayLOV lov = new DisplayLOV();
     ClientController ctlClient = new ClientController();
@@ -29,7 +29,7 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
     List<Client> listUnattach = new ArrayList();
     List<Client> listAttach = new ArrayList();
 
-    public frmClientRegistration() {
+    public frmClientRegistrationSave() {
 
         initComponents();
         this.setSize(Constants.xSize + 195, Constants.ySize - 100);
