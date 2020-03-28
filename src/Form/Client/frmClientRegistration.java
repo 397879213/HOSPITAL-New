@@ -1139,13 +1139,13 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
         for (int i = 0; i < tblProperties.getColumnCount(); i++) {
             column = tblProperties.getColumnModel().getColumn(i);
             if (i == 0) {
-                column.setPreferredWidth(30);
+                column.setPreferredWidth(40);
             } else if (i == 1) {
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(60);
             } else if (i == 2) {
-                column.setPreferredWidth(50);
+                column.setPreferredWidth(250);
             } else if (i == 3) {
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(300);
             }
         }
     }

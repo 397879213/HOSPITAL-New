@@ -26,7 +26,7 @@ public class ClientHandler implements java.io.Serializable {
 
         String query
                 = "SELECT STC.ID, STC.PROPERTY, SCD.TABLE_ROW_ID, SCD.TABLE_COLUMN_ID,"
-                + "\n SCD.DESCRIPTION FROM "
+                + "\n NVL(SCD.DESCRIPTION, ' ') DESCRIPTION FROM "
                 + "\n " + Database.DCMS.setupColumnDetail + " SCD,"
                 + "\n "+ Database.DCMS.setupTableColums +" STC"
                 + "\n WHERE SCD.TABLE_ROW_ID = '" + clientId + "'"
