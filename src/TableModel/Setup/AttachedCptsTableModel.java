@@ -15,7 +15,7 @@ import javax.swing.table.AbstractTableModel;
 public class AttachedCptsTableModel extends AbstractTableModel {
 
     private final String[] columnNames = {"Sr.No", "CPT.Description", "Price", 
-        "Status", "Select", "Is Credit"};
+        "Status", "Is Credit", "Select"};
     private Object[][] data;
 
     public AttachedCptsTableModel(List<ClientWiseCpt> list) {
@@ -62,7 +62,7 @@ public class AttachedCptsTableModel extends AbstractTableModel {
      * editable.
      */
     public boolean isCellEditable(int row, int col) {
-        if(col == 4){
+        if(col == 5){
             return true;
         }
         return false;
