@@ -994,7 +994,6 @@ public class frmClientWiseCPT extends javax.swing.JInternalFrame {
     private void txtAttachedClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAttachedClientActionPerformed
 
         getAttachedClients();
-
     }//GEN-LAST:event_txtAttachedClientActionPerformed
 
     private void txtUnAttachedClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUnAttachedClientActionPerformed
@@ -1641,11 +1640,13 @@ public class frmClientWiseCPT extends javax.swing.JInternalFrame {
             } else if (i == 1) {
                 column.setPreferredWidth(200);
             } else if (i == 2) {
-                column.setPreferredWidth(30);
+                column.setPreferredWidth(40);
             } else if (i == 3) {
-                column.setPreferredWidth(30);
+                column.setPreferredWidth(40);
             } else if (i == 4) {
-                column.setPreferredWidth(20);
+                column.setPreferredWidth(40);
+            } else if (i == 5) {
+                column.setPreferredWidth(40);
             }
         }
     }

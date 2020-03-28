@@ -203,7 +203,7 @@ public class ClientWiseCptHandler {
             String departmentId, String section) {
 
         String[] columns = {"", "CPT_ID", "CPT_DESCRIPTION", "CPT_PRICE",
-            "CPT_ACTIVE", "IS_CREDIT"};
+            "CPT_ACTIVE"};
 
         String query = "SELECT                                       \n"
                 + "CPT.CPT_ID                        CPT_ID,         \n"
@@ -240,7 +240,6 @@ public class ClientWiseCptHandler {
             clientWiseCpt.setCptDescription(map.get("CPT_DESCRIPTION").toString());
             clientWiseCpt.setCptPrice(map.get("CPT_PRICE").toString());
             clientWiseCpt.setCptStatus(map.get("CPT_ACTIVE").toString());
-            clientWiseCpt.setIsCredit(map.get("IS_CREDIT").toString());
             vecCPT.add(clientWiseCpt);
         }
         return vecCPT;
