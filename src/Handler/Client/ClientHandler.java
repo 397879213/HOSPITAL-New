@@ -28,7 +28,7 @@ public class ClientHandler implements java.io.Serializable {
                 = "SELECT STC.ID, STC.PROPERTY, SCD.TABLE_ROW_ID, SCD.TABLE_COLUMN_ID,"
                 + "\n NVL(SCD.DESCRIPTION, ' ') DESCRIPTION FROM "
                 + "\n " + Database.DCMS.setupColumnDetail + " SCD,"
-                + "\n "+ Database.DCMS.setupTableColums +" STC"
+                + "\n " + Database.DCMS.setupTableColums + " STC"
                 + "\n WHERE SCD.TABLE_ROW_ID = '" + clientId + "'"
                 + "\n AND STC.ID = SCD.TABLE_COLUMN_ID"
                 + "\n AND STC.ACTIVE = 'Y'";
@@ -52,20 +52,19 @@ public class ClientHandler implements java.io.Serializable {
 
     public boolean updateClientSetupProprties(List<SetupColumnDetail> listProperties) {
         boolean ret = true;
-
         for (int i = 0; i < listProperties.size(); i++) {
             SetupColumnDetail property = listProperties.get(i);
 
             String query
-                    = " UPDATE " + Database.DCMS.setupTableColums + "\n"
-                + " SET DEFAULT_VALUE  ='" + property.getDefaultValue() + "'\n"
-                + " WHERE ID ='" + property.getId() + "'\n";
-
+                    = " UPDATE " + Database.DCMS.setupColumnDetail
+                    + "\n SET DESCRIPTION = '" + property.getDefaultValue() + "'"
+                    + "\n WHERE TABLE_ROW_ID = '" + property.getTableRowId() + "'"
+                    + "\n AND TABLE_COLUMN_ID = " + property.getTableColumnId();
             ret = Constants.dao.executeUpdate(query, false);
         }
         return ret;
     }
-    
+
     public boolean registerClient(Client client) {
         boolean ret = true;
 

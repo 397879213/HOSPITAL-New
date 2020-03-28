@@ -987,7 +987,7 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
         SetupColumnDetail objSetup = listClientProperties.get(
                 tblProperties.getSelectedRow());
         objSetup.setDefaultValue(tblProperties.getValueAt(
-                tblProperties.getSelectedRow(), 4).toString());
+                tblProperties.getSelectedRow(), 3).toString());
     }//GEN-LAST:event_tblPropertiesKeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1147,7 +1147,7 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
         for (int i = 0; i < tblProperties.getColumnCount(); i++) {
             column = tblProperties.getColumnModel().getColumn(i);
             if (i == 0) {
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(50);
             } else if (i == 1) {
                 column.setPreferredWidth(60);
             } else if (i == 2) {
