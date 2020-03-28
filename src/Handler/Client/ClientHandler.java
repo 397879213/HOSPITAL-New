@@ -50,6 +50,22 @@ public class ClientHandler implements java.io.Serializable {
         return listItems;
     }
 
+    public boolean updateClientSetupProprties(List<SetupColumnDetail> listProperties) {
+        boolean ret = true;
+
+        for (int i = 0; i < listProperties.size(); i++) {
+            SetupColumnDetail property = listProperties.get(i);
+
+            String query
+                    = " UPDATE " + Database.DCMS.setupTableColums + "\n"
+                + " SET DEFAULT_VALUE  ='" + property.getDefaultValue() + "'\n"
+                + " WHERE ID ='" + property.getId() + "'\n";
+
+            ret = Constants.dao.executeUpdate(query, false);
+        }
+        return ret;
+    }
+    
     public boolean registerClient(Client client) {
         boolean ret = true;
 

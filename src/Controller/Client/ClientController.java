@@ -39,11 +39,21 @@ public class ClientController implements java.io.Serializable {
     public static int count = 0;
     public static boolean receipient = false;
 
-    
     public List<SetupColumnDetail> selectClientProprties(String clientId) {
         return hdlClient.selectClientProprties(clientId);
     }
-    
+
+    public boolean updateClientSetupProprties(List<SetupColumnDetail> listProperties) {
+        boolean ret = hdlClient.updateClientSetupProprties(listProperties);
+        if (ret) {
+            Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
+
     public int selectCreditLimit(String clientId) throws SQLException {
         int creditLimit = 0;
         try {

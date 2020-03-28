@@ -46,10 +46,10 @@ public class ClientPropertiesModel extends AbstractTableModel {
 
     @Override
     public boolean isCellEditable(int row, int col) {
-        if (col == 3) {
-            return true;
-        }
-        return false;
+       if(col == 3){
+           return true;
+       }
+        return col == 2;
     }
 
     private boolean DEBUG = false;

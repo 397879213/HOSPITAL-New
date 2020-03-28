@@ -756,19 +756,18 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
 //        locationId = client.getLocationId();
 //        txtClientName.setText(client.getClientName().trim());
 //        cboTransactionType.setSelectedItem(client.getTransactionType());
-        }
+    }
 
     public boolean getClientInformation() {
 
         boolean ret = true;
 
-        
         return ret;
 
     }
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
 
-        
+
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
@@ -799,12 +798,17 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
         if (!this.getClientInformation()) {
             return;
         }
-        if (ctlClient.updateClient(client)) {
-            JOptionPane.showMessageDialog(null, "Record Save Successfully ");
-            this.clearForm();
-        } else {
+        if(ctlClient.updateClientSetupProprties(listClientProperties)){
+            setClientInformation();
+        }else{
             JOptionPane.showMessageDialog(null, Constants.errorMessage);
         }
+//        if (ctlClient.updateClient(client)) {
+//            JOptionPane.showMessageDialog(null, "Record Save Successfully ");
+//            this.clearForm();
+//        } else {
+//            JOptionPane.showMessageDialog(null, Constants.errorMessage);
+//        }
 
     }//GEN-LAST:event_btnEditActionPerformed
 
@@ -980,6 +984,10 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
 
     private void tblPropertiesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblPropertiesKeyReleased
         // TODO add your handling code here:
+        SetupColumnDetail objSetup = listClientProperties.get(
+                tblProperties.getSelectedRow());
+        objSetup.setDefaultValue(tblProperties.getValueAt(
+                tblProperties.getSelectedRow(), 4).toString());
     }//GEN-LAST:event_tblPropertiesKeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
