@@ -64,80 +64,47 @@ public class ClientHandler implements java.io.Serializable {
         }
         return ret;
     }
-
+    
     public boolean registerClient(Client client) {
-        boolean ret = true;
 
-        String[] columns = {Database.DCMS.client, "ID", "DESCRIPTION",
-            "EMAIL_ADDRESS", "ADDRESS", "CONTACT_PERSON", "LAND_LINE_NO", "CLIENT_TYPE",
-            "MOBILE_NO", "ACTIVE", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID",
-            "TRANSACTION_TYPE", "SELECT_IT", "SELECTION_ALLOWED", "PATIENT_UPDATE_ALLOW",
-            "PATIENT_CONTACT_NO", "PATIENT_REPORT_EMAIL", "SEND_SMS", "DISPLAY_REPORT",
-            "DISCOUNT", "CREDIT_LIMIT", "TEST_LIMIT",
-            "CHECK_CREDIT", "ACCOUNT_ID"};
+        String[] columns = {Database.DCMS.client, "ID", "DESCRIPTION","ACTIVE", 
+            "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID", "TRANSACTION_TYPE"};
 
         HashMap clientMap = new HashMap();
+        clientMap.put("ID", client.getClientId()); //"(SELECT MAX(ID) +1 FROM " + Database.DCMS.client + ")"
         clientMap.put("DESCRIPTION", "'" + client.getClientName() + "'");
-        clientMap.put("EMAIL_ADDRESS", "'" + client.getEmail() + "'");
-        clientMap.put("ADDRESS", "'" + client.getAddress() + "'");
-        clientMap.put("CONTACT_PERSON", "'" + client.getContactPerson() + "'");
-        clientMap.put("LAND_LINE_NO", "'" + client.getLandLineNo() + "'");
-        clientMap.put("MOBILE_NO", "'" + client.getMobileNo() + "'");
-        clientMap.put("ACCOUNT_ID", "'" + client.getAccountId() + "'");
-        clientMap.put("CREDIT_LIMIT", "'" + client.getCreditLimit() + "'");
-        clientMap.put("LOCATION_ID", "'" + client.getLocationId() + "'");
         clientMap.put("ACTIVE", "'" + client.getActive() + "'");
-        clientMap.put("DISCOUNT", "'" + client.getDiscount() + "'");
-        clientMap.put("CHECK_CREDIT", "'" + client.getCheckCreditLimit() + "'");
-        clientMap.put("CLIENT_TYPE", "'" + client.getClientType() + "'");
-        clientMap.put("TEST_LIMIT", "'" + client.getTestLimit() + "'");
         clientMap.put("TRANSACTION_TYPE", "'" + client.getTransactionType() + "'");
-        clientMap.put("SELECT_IT", "'" + client.getSelectIt() + "'");
-        clientMap.put("SELECTION_ALLOWED", "'" + client.getSelectionAllow() + "'");
-        clientMap.put("PATIENT_UPDATE_ALLOW", "'" + client.getPatientUpdate() + "'");
-        clientMap.put("PATIENT_CONTACT_NO", "'" + client.getPatientContact() + "'");
-        clientMap.put("PATIENT_REPORT_EMAIL", "'" + client.getPatientReportEmail() + "'");
-        clientMap.put("SEND_SMS", "'" + client.getSendSms() + "'");
-        clientMap.put("DISPLAY_REPORT", "'" + client.getDisplayReport() + "'");
         clientMap.put("CRTD_BY", "'" + Constants.userId + "'");
         clientMap.put("CRTD_DATE", "SYSDATE");
         clientMap.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
-        clientMap.put("ID", "(SELECT MAX(ID) +1 FROM " + Database.DCMS.client + ")");
         Vector vec = new Vector();
         vec.add(clientMap);
         return Constants.dao.insertData(vec, columns);
     }
+    
+    public boolean insertClientProperties(String clientId, String refClientId) {
+        
+
+            String query
+                    = " INSERT INTO " + Database.DCMS.setupColumnDetail
+                    + "\n SELECT = '" + clientId + "', TABLE_COLUMN_ID, "
+                    + "DESCRIPTION, '"+Constants.userId + "', SYSDATE,"
+                    + Constants.terminalId
+                    + "\n WHERE TABLE_ROW_ID = '" + refClientId + "'";
+            
+            return Constants.dao.executeUpdate(query, false);
+    }
 
     public Client searchClientById(String clientId) {
 
-        String[] columns = {Database.DCMS.client, "ID", "DESCRIPTION",
-            "CREDIT_LIMIT", "EMAIL_ADDRESS", "CONTACT_PERSON", "LAND_LINE_NO",
-            "ADDRESS", "CLIENT_TYPE", "MOBILE_NO", "ACTIVE", "TRANSACTION_TYPE",
-            "TEST_LIMIT", "CHECK_CREDIT", "ACCOUNT_ID", "SELECT_IT", "SELECTION_ALLOWED",
-            "PATIENT_UPDATE_ALLOW", "PATIENT_CONTACT_NO", "PATIENT_REPORT_EMAIL", "SEND_SMS",
-            "DISPLAY_REPORT"};
+        String[] columns = {Database.DCMS.client, "ID", "DESCRIPTION","ACTIVE", 
+            "TRANSACTION_TYPE", "ACTIVE"};
 
         String query
                 = " SELECT "
                 + " CLT.ID, CLT.DESCRIPTION ,                               \n"
-                + " NVL(CLT.EMAIL_ADDRESS , ' ') EMAIL_ADDRESS ,            \n"
-                + " NVL(CLT.CONTACT_PERSON , ' ') CONTACT_PERSON ,          \n"
-                + " NVL(CLT.ACCOUNT_ID , 0) ACCOUNT_ID,                     \n"
-                + " NVL(CLT.LAND_LINE_NO , ' ') LAND_LINE_NO,               \n"
-                + " NVL(CLT.ADDRESS , ' ') ADDRESS,                         \n"
-                + " NVL(CLT.MOBILE_NO , ' ') MOBILE_NO,                     \n"
-                + " NVL(CLT.CREDIT_LIMIT , '10') CREDIT_LIMIT,              \n"
                 + " NVL(CLT.TRANSACTION_TYPE , 'CASH')TRANSACTION_TYPE,     \n"
-                + " NVL(CLT.CLIENT_TYPE , 'PANEL') CLIENT_TYPE,             \n"
-                + " NVL(CLT.TEST_LIMIT , 'Y') TEST_LIMIT,                   \n"
-                + " NVL(CLT.CHECK_CREDIT , 'Y') CHECK_CREDIT,               \n"
-                + " NVL(CLT.SELECT_IT , 'N') SELECT_IT,                     \n"
-                + " NVL(CLT.SELECTION_ALLOWED , 'N') SELECTION_ALLOWED,     \n"
-                + " NVL(CLT.PATIENT_UPDATE_ALLOW , 'N') PATIENT_UPDATE_ALLOW, \n"
-                + " NVL(CLT.PATIENT_CONTACT_NO , ' ') PATIENT_CONTACT_NO,     \n"
-                + " NVL(CLT.PATIENT_REPORT_EMAIL , ' ') PATIENT_REPORT_EMAIL, \n"
-                + " NVL(CLT.SEND_SMS , 'N') SEND_SMS,                         \n"
-                + " NVL(CLT.DISPLAY_REPORT , 'N') DISPLAY_REPORT,             \n"
                 + " ACTIVE                                                  \n"
                 + " FROM "
                 + Database.DCMS.client + " CLT "
@@ -149,35 +116,13 @@ public class ClientHandler implements java.io.Serializable {
     public Vector searchClientByName(String clientName) {
 
         String[] columns = {Database.DCMS.client, "ID", "DESCRIPTION",
-            "CREDIT_LIMIT", "EMAIL_ADDRESS", "CONTACT_PERSON", "LAND_LINE_NO",
-            "ADDRESS", "CLIENT_TYPE", "MOBILE_NO", "ACTIVE", "TRANSACTION_TYPE",
-            "TEST_LIMIT", "CHECK_CREDIT", "ACCOUNT_ID", "SELECT_IT", "SEND_SMS",
-            "SELECTION_ALLOWED", "PATIENT_UPDATE_ALLOW", "PATIENT_CONTACT_NO",
-            "PATIENT_REPORT_EMAIL", "DISPLAY_REPORT"};
+            "CREDIT_LIMIT", "TRANSACTION_TYPE"};
 
         String query
                 = " SELECT "
                 + " CLT.ID, CLT.DESCRIPTION ,                               \n"
-                + " NVL(CLT.EMAIL_ADDRESS , ' ') EMAIL_ADDRESS ,            \n"
-                + " NVL(CLT.CONTACT_PERSON , ' ') CONTACT_PERSON ,          \n"
-                + " NVL(CLT.LAND_LINE_NO , ' ') LAND_LINE_NO,               \n"
-                + " NVL(CLT.ACCOUNT_ID , 0) ACCOUNT_ID,                     \n"
-                + " NVL(CLT.ADDRESS , ' ') ADDRESS,                         \n"
-                + " NVL(CLT.MOBILE_NO , ' ') MOBILE_NO,                     \n"
-                + " NVL(CLT.CREDIT_LIMIT , '10') CREDIT_LIMIT,              \n"
                 + " NVL(CLT.TRANSACTION_TYPE , 'CASH')TRANSACTION_TYPE,     \n"
-                + " NVL(CLT.CLIENT_TYPE , 'PANEL') CLIENT_TYPE,             \n"
-                + " NVL(CLT.TEST_LIMIT , 'N') TEST_LIMIT,                   \n"
-                + " NVL(CLT.CHECK_CREDIT , 'N') CHECK_CREDIT,               \n"
-                + " NVL(CLT.SELECT_IT , 'N') SELECT_IT,                     \n"
-                + " NVL(CLT.SELECTION_ALLOWED , 'N') SELECTION_ALLOWED,     \n"
-                + " NVL(CLT.PATIENT_UPDATE_ALLOW , 'N') PATIENT_UPDATE_ALLOW, \n"
-                + " NVL(CLT.PATIENT_CONTACT_NO , ' ') PATIENT_CONTACT_NO,     \n"
-                + " NVL(CLT.PATIENT_REPORT_EMAIL , ' ') PATIENT_REPORT_EMAIL, \n"
-                + " NVL(CLT.SEND_SMS , 'N') SEND_SMS,                         \n"
-                + " NVL(CLT.DISPLAY_REPORT , 'N') DISPLAY_REPORT,             \n"
-                + " ACTIVE                                                    \n"
-                + " FROM "
+                + " ACTIVE FROM                                               \n"
                 + Database.DCMS.client + " CLT "
                 + " WHERE UPPER(CLT.DESCRIPTION) LIKE '%" + clientName.toUpperCase() + "%'";
         System.out.println(query);
@@ -245,30 +190,9 @@ public class ClientHandler implements java.io.Serializable {
             HashMap hashClient = (HashMap) clients.get(i);
             Client client = new Client();
             client.setActive((String) hashClient.get("ACTIVE"));
-            client.setAddress((String) hashClient.get("ADDRESS"));
             client.setClientId((String) hashClient.get("ID"));
             client.setClientName((String) hashClient.get("DESCRIPTION"));
-            client.setContactPerson((String) hashClient.get("CONTACT_PERSON"));
-            client.setClientType((String) hashClient.get("CLIENT_TYPE"));
-            client.setEmail((String) hashClient.get("EMAIL_ADDRESS"));
-            client.setEndDate((String) hashClient.get("ENDDATE"));
-            client.setLandLineNo((String) hashClient.get("LAND_LINE_NO"));
-            client.setMobileNo((String) hashClient.get("MOBILE_NO"));
-            client.setAccountId((String) hashClient.get("ACCOUNT_ID"));
-            client.setStartDate((String) hashClient.get("STARTDATE"));
-            client.setCreditLimit((String) hashClient.get("CREDIT_LIMIT"));
             client.setTransactionType((String) hashClient.get("TRANSACTION_TYPE"));
-            client.setClientType((String) hashClient.get("CLIENT_TYPE"));
-            client.setCheckCreditLimit((String) hashClient.get("CHECK_CREDIT"));
-            client.setTestLimit((String) hashClient.get("TEST_LIMIT"));
-            client.setSelectIt((String) hashClient.get("SELECT_IT"));
-            client.setSelectionAllow(hashClient.get("SELECTION_ALLOWED").toString());
-            client.setPatientUpdate(hashClient.get("PATIENT_UPDATE_ALLOW").toString());
-            client.setPatientContact(hashClient.get("PATIENT_CONTACT_NO").toString());
-            client.setPatientReportEmail(hashClient.get("PATIENT_REPORT_EMAIL").toString());
-            client.setSendSms(hashClient.get("SEND_SMS").toString());
-            client.setDisplayReport(hashClient.get("DISPLAY_REPORT").toString());
-
             vec.add(client);
         }//
         return vec;
