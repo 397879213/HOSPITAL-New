@@ -20,11 +20,14 @@ import java.util.List;
 import java.util.Vector;
 import utilities.Constants;
 import utilities.DAO;
+import utilities.Keys;
 import utilities.Database;
+import utilities.GenerateKeys;
 import utilities.Status;
 
 public class ClientController implements java.io.Serializable {
 
+    GenerateKeys key = new GenerateKeys();
     ClientHandler hdlClient = new ClientHandler();
     CPTHandler hdlCPT = new CPTHandler();
 
@@ -41,6 +44,22 @@ public class ClientController implements java.io.Serializable {
 
     public List<SetupColumnDetail> selectClientProprties(String clientId) {
         return hdlClient.selectClientProprties(clientId);
+    }
+
+    public boolean registerClient(Client client) {
+        client.setClientId(key.generateCounterPrimaryKey(Keys.client));
+        boolean ret = hdlClient.registerClient(client);
+        if (ret) {
+            ret = hdlClient.insertClientProperties(client.getClientId(),
+                    client.getRefClientId());
+        }
+        if (ret) {
+            Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
     }
 
     public boolean updateClientSetupProprties(List<SetupColumnDetail> listProperties) {
@@ -109,19 +128,6 @@ public class ClientController implements java.io.Serializable {
             ex.printStackTrace();
         }
         return testLimit;
-    }
-
-    public boolean registerClient(Client client) {
-
-        boolean ret = hdlClient.registerClient(client);
-        if (ret) {
-            ret = Constants.dao.commitTransaction();
-            DAO.closeConnection();
-        }
-        if (!ret) {
-            Constants.dao.rollBack();
-        }
-        return ret;
     }
 
     public boolean copyClientCPT(String fromClientId, String toClientId) {

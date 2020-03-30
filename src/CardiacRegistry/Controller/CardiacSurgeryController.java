@@ -6,13 +6,11 @@
 package CardiacRegistry.Controller;
 
 import CardiacRegistry.BO.CardiacSurgeryBO;
-import BO.Patient;
 import CardiacRegistry.BO.OutsidePatientRegistry;
 import CardiacRegistry.Handler.CardiacSurgeryHandler;
 import java.util.List;
 import utilities.Constants;
 import utilities.Database;
-import utilities.DefinitionTypes;
 import utilities.GenerateKeys;
 import utilities.Keys;
 

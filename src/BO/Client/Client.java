@@ -3,6 +3,7 @@ package BO.Client;
 public class Client implements java.io.Serializable {
 
     private String clientId = "";//need to display data in table 
+    private String refClientId = "";//need to display data in table 
     private String id = "";//need to display data in table 
     private String clientName = "";
     private String address = "";
@@ -339,5 +340,13 @@ public class Client implements java.io.Serializable {
 
     public void setDeleteAll(boolean DeleteAll) {
         this.DeleteAll = DeleteAll;
+    }
+
+    public String getRefClientId() {
+        return refClientId;
+    }
+
+    public void setRefClientId(String refClientId) {
+        this.refClientId = refClientId;
     }
 }
