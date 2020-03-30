@@ -83,6 +83,7 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
         txtRefClient = new javax.swing.JTextField();
         btnSave = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
+        cboActive = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -276,6 +277,9 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
             }
         });
 
+        cboActive.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        cboActive.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Y", "N"}));
+
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
@@ -287,11 +291,12 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addComponent(txtRefClient)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cboTransactionType, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtRefClient)
                     .addComponent(txtClientName))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cboTransactionType, 0, 110, Short.MAX_VALUE)
+                    .addComponent(cboActive, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addGap(158, 158, 158)
@@ -303,10 +308,11 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addGap(9, 9, 9)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtClientName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtClientName, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboActive, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboTransactionType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -864,7 +870,9 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
             return;
         }
         client = (Client) vecClient.get(tableSearchClient.getSelectedRow());
+        txtClientName.setText(client.getClientName());
         clientId = client.getClientId();
+        cboActive.setSelectedItem(client.getActive());
         cboTransactionType.setSelectedItem(client.getTransactionType());
         setClientInformation();
 //        setClientWiseLocation();
@@ -1067,7 +1075,9 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
         client.setClientName(txtClientName.getText().trim());
         client.setTransactionType(cboTransactionType.getSelectedItem().toString());
         if(ctlClient.updateClient(client)){
-            
+            JOptionPane.showMessageDialog(null, "Record Save Successfully.");
+        }else{
+            JOptionPane.showMessageDialog(null, "Unable to Save Record.");
         }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
@@ -1083,6 +1093,7 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnUpdate;
     private javax.swing.JCheckBox cbAddAll;
     private javax.swing.JCheckBox cbDeleteAll;
+    private javax.swing.JComboBox<String> cboActive;
     private javax.swing.JComboBox cboTransactionType;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel25;
