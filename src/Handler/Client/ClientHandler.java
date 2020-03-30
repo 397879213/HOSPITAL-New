@@ -64,10 +64,10 @@ public class ClientHandler implements java.io.Serializable {
         }
         return ret;
     }
-    
+
     public boolean registerClient(Client client) {
 
-        String[] columns = {Database.DCMS.client, "ID", "DESCRIPTION","ACTIVE", 
+        String[] columns = {Database.DCMS.client, "ID", "DESCRIPTION", "ACTIVE",
             "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID", "TRANSACTION_TYPE"};
 
         HashMap clientMap = new HashMap();
@@ -82,23 +82,23 @@ public class ClientHandler implements java.io.Serializable {
         vec.add(clientMap);
         return Constants.dao.insertData(vec, columns);
     }
-    
-    public boolean insertClientProperties(String clientId, String refClientId) {
-        
 
-            String query
-                    = " INSERT INTO " + Database.DCMS.setupColumnDetail
-                    + "\n SELECT = '" + clientId + "', TABLE_COLUMN_ID, "
-                    + "DESCRIPTION, '"+Constants.userId + "', SYSDATE,"
-                    + Constants.terminalId
-                    + "\n WHERE TABLE_ROW_ID = '" + refClientId + "'";
-            
-            return Constants.dao.executeUpdate(query, false);
+    public boolean insertClientProperties(String clientId, String refClientId) {
+
+        String query
+                = " INSERT INTO " + Database.DCMS.setupColumnDetail
+                + "\n SELECT '" + clientId + "', TABLE_COLUMN_ID, "
+                + "DESCRIPTION, '" + Constants.userId + "', SYSDATE,"
+                + "'" + Constants.terminalId + "' FROM "
+                + Database.DCMS.setupColumnDetail
+                + "\n WHERE TABLE_ROW_ID = '" + refClientId + "'";
+
+        return Constants.dao.executeUpdate(query, false);
     }
 
     public Client searchClientById(String clientId) {
 
-        String[] columns = {Database.DCMS.client, "ID", "DESCRIPTION","ACTIVE", 
+        String[] columns = {Database.DCMS.client, "ID", "DESCRIPTION", "ACTIVE",
             "TRANSACTION_TYPE", "ACTIVE"};
 
         String query
@@ -116,15 +116,14 @@ public class ClientHandler implements java.io.Serializable {
     public Vector searchClientByName(String clientName) {
 
         String[] columns = {Database.DCMS.client, "ID", "DESCRIPTION",
-            "CREDIT_LIMIT", "TRANSACTION_TYPE"};
+            "TRANSACTION_TYPE", "ACTIVE"};
 
         String query
-                = " SELECT "
-                + " CLT.ID, CLT.DESCRIPTION ,                               \n"
-                + " NVL(CLT.TRANSACTION_TYPE , 'CASH')TRANSACTION_TYPE,     \n"
-                + " ACTIVE FROM                                               \n"
-                + Database.DCMS.client + " CLT "
-                + " WHERE UPPER(CLT.DESCRIPTION) LIKE '%" + clientName.toUpperCase() + "%'";
+                = " SELECT CLT.ID, CLT.DESCRIPTION,"
+                + "\n NVL(CLT.TRANSACTION_TYPE , 'CASH')TRANSACTION_TYPE,"
+                + "\n ACTIVE FROM"
+                + "\n" + Database.DCMS.client + " CLT"
+                + "\n WHERE UPPER(CLT.DESCRIPTION) LIKE '%" + clientName.toUpperCase() + "%'";
         System.out.println(query);
         return setStudyVector(Constants.dao.selectData(query, columns));
     }

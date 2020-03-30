@@ -34,7 +34,7 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
     public frmClientRegistration() {
 
         initComponents();
-        this.setSize(Constants.xSize + 195, Constants.ySize - 100);
+        this.setSize(Constants.xSize + 195, Constants.ySize);
         clientId = "";
         txtClientName.requestFocusInWindow();
         txtClientName.setCaretPosition(0);
@@ -74,6 +74,7 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
         jPanel8 = new javax.swing.JPanel();
         btnClear = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
         jPanel14 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         txtClientName = new javax.swing.JTextField();
@@ -81,7 +82,7 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         txtRefClient = new javax.swing.JTextField();
         btnSave = new javax.swing.JButton();
-        btnEdit = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -197,21 +198,34 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
             }
         });
 
+        btnEdit.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnEdit.setText("Edit");
+        btnEdit.setPreferredSize(new java.awt.Dimension(80, 60));
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addGap(154, 154, 154)
+                .addGap(68, 68, 68)
                 .addComponent(btnClear, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
+                .addComponent(btnEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
-                .addGap(148, 148, 148))
+                .addGap(88, 88, 88))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnClear, javax.swing.GroupLayout.Alignment.CENTER, 0, 23, Short.MAX_VALUE)
-            .addComponent(btnExit, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(btnClear, 0, 23, Short.MAX_VALUE)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
         );
 
         jPanel14.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -254,12 +268,11 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
             }
         });
 
-        btnEdit.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnEdit.setText("Edit");
-        btnEdit.setPreferredSize(new java.awt.Dimension(80, 60));
-        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdate.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditActionPerformed(evt);
+                btnUpdateActionPerformed(evt);
             }
         });
 
@@ -284,8 +297,8 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
                 .addGap(158, 158, 158)
                 .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnEdit, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
-                .addGap(157, 157, 157))
+                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,8 +315,8 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
                 .addGap(8, 8, 8)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                    .addComponent(btnUpdate))
+                .addGap(9, 9, 9))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -323,7 +336,7 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -584,7 +597,7 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
         );
 
@@ -652,11 +665,12 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtClientSelectedtoCopyCPT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10))
         );
 
         jButton1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -705,9 +719,9 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12))
@@ -730,13 +744,13 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(113, 113, 113))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(5, 5, 5)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -780,8 +794,20 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
     }
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
 
+        if(txtClientName.getText().trim().length() == 0){
+            JOptionPane.showMessageDialog(null, "Please Enter Client Name.");
+            txtClientName.requestFocus();
+            return;
+        }
+        if(client.getRefClientId().length() == 0){
+            JOptionPane.showMessageDialog(null, "Please Select Default Client."
+                    + " Prior to Create a new Client");
+            txtRefClient.requestFocus();
+            return;
+        }
         client.setClientName(txtClientName.getText().trim());
         client.setTransactionType(cboTransactionType.getSelectedItem().toString());
+        client.setActive("Y");
         if (ctlClient.registerClient(client)) {
             JOptionPane.showMessageDialog(null, "Client Created Successfuly.");
         } else {
@@ -839,6 +865,7 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
         }
         client = (Client) vecClient.get(tableSearchClient.getSelectedRow());
         clientId = client.getClientId();
+        cboTransactionType.setSelectedItem(client.getTransactionType());
         setClientInformation();
 //        setClientWiseLocation();
 
@@ -1020,12 +1047,29 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
                 + Database.DCMS.client
                 + "\n WHERE UPPER(DESCRIPTION) LIKE '%"
                 + txtRefClient.getText().trim().toUpperCase() + "%'"
-                + "\n ACTIVE = 'Y'";
-
+                + "\n AND ACTIVE = 'Y'";
         lov.LOVSelection(query, this);
+        if(Constants.lovID.equalsIgnoreCase("ID")){
+            client.setRefClientId("");
+            return;
+        }
         client.setRefClientId(Constants.lovID);
         txtRefClient.setText(Constants.lovDescription);
     }//GEN-LAST:event_txtRefClientActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        if(txtClientName.getText().trim().length() == 0){
+            JOptionPane.showMessageDialog(null, "Please Enter Client Name.");
+            txtClientName.requestFocus();
+            return;
+        }
+        client.setClientName(txtClientName.getText().trim());
+        client.setTransactionType(cboTransactionType.getSelectedItem().toString());
+        if(ctlClient.updateClient(client)){
+            
+        }
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
@@ -1036,6 +1080,7 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnSearchClear;
     private javax.swing.JButton btnSearchClientCPT;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JCheckBox cbAddAll;
     private javax.swing.JCheckBox cbDeleteAll;
     private javax.swing.JComboBox cboTransactionType;
@@ -1103,6 +1148,9 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
         setClientTablesColumnsWidths();
         selectionModel.setSelectionInterval(0, 0);
         Constants.tablelook.setJTableEnvironment(tableSearchClient);
+        client = (Client) vecClient.get(0);
+        clientId = client.getClientId();
+        setClientInformation();
     }
 
     public void setClientTablesColumnsWidths() {
