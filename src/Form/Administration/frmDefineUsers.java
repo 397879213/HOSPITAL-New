@@ -1,9 +1,9 @@
 package Form.Administration;
 
-
 import BO.Administration.BODefineUser;
 import BO.SetupColumnDetail;
 import Controller.Administration.DefineUserController;
+import TableModel.Administration.DefineUserPropertiesModel;
 import TableModel.Administration.UserInfoTableModel;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -22,17 +22,14 @@ import utilities.DisplayLOV;
 import utilities.GUIUtils;
 
 public class frmDefineUsers extends javax.swing.JInternalFrame {
-    
+
     private DisplayLOV lov = new DisplayLOV();
-      DefineUserController defineUserClt = new DefineUserController();
-      BODefineUser userBo = new BODefineUser();
-    
+    DefineUserController defineUserClt = new DefineUserController();
+    BODefineUser userBo = new BODefineUser();
+
     List<BODefineUser> listFS = new ArrayList<>();
     List<SetupColumnDetail> listProperties = new ArrayList();
-   
-    
-  
-   
+
     private String userId = "";
     private String userName = "";
     private String name = "";
@@ -42,15 +39,14 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
     private String designationId = "";
     private String sectionId = "";
 
-     public frmDefineUsers() {
+    public frmDefineUsers() {
         initComponents();
         txtLoginIdSearch.requestFocus();
         btnExit.setMnemonic(KeyEvent.VK_X);
         btnClear.setMnemonic(KeyEvent.VK_C);
-        this.setSize(Constants.xSize -70,670);
-        
-        
-}
+        this.setSize(Constants.xSize - 70, 670);
+
+    }
 
     @SuppressWarnings("unchecked")
 
@@ -74,22 +70,29 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
         txtLoginId = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         txtLocation = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
         txtConfirmPassword = new javax.swing.JTextField();
         btnPasswordUpdate = new javax.swing.JButton();
         jLabel25 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtDegree = new javax.swing.JTextArea();
         jLabel26 = new javax.swing.JLabel();
         cboActive = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane10 = new javax.swing.JScrollPane();
-        tblUserProperties = new javax.swing.JTable();
+        tblUserInfo1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         txtLoginIdSearch = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         txtUserNameSearch = new javax.swing.JTextField();
+        jLabel29 = new javax.swing.JLabel();
+        txtDepartmentSearch = new javax.swing.JTextField();
+        jLabel30 = new javax.swing.JLabel();
+        txtSectionSearch = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         txtNameSearch = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
@@ -189,7 +192,7 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(318, Short.MAX_VALUE)
                 .addComponent(btnRegister)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -273,6 +276,11 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel23.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel23.setText("Degree :");
+
         txtPassword.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -305,6 +313,10 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel25.setText("Password :");
 
+        txtDegree.setColumns(20);
+        txtDegree.setRows(5);
+        jScrollPane1.setViewportView(txtDegree);
+
         jLabel26.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(102, 0, 0));
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -323,53 +335,58 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
         pnlSearchLayout.setHorizontalGroup(
             pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSearchLayout.createSequentialGroup()
-                .addGap(5, 5, 5)
+                .addContainerGap()
                 .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSearchLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtFullName, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnlSearchLayout.createSequentialGroup()
-                                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cboActive, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addGroup(pnlSearchLayout.createSequentialGroup()
                         .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
-                            .addComponent(txtUserName)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtPassword))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                            .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
                         .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSearchLayout.createSequentialGroup()
-                                .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtLocation, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtLoginId, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlSearchLayout.createSequentialGroup()
-                                        .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(pnlSearchLayout.createSequentialGroup()
-                                                .addComponent(txtConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(btnPasswordUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                            .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(1, 1, 1)))
-                                .addGap(1, 1, 1)))))
+                            .addGroup(pnlSearchLayout.createSequentialGroup()
+                                .addComponent(txtConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnPasswordUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(pnlSearchLayout.createSequentialGroup()
+                        .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pnlSearchLayout.createSequentialGroup()
+                                .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtFullName))
+                                .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(pnlSearchLayout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel16)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cboActive, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSearchLayout.createSequentialGroup()
+                                        .addGap(17, 17, 17)
+                                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(pnlSearchLayout.createSequentialGroup()
+                                .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtLoginId)
+                                    .addComponent(txtLocation, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlSearchLayout.setVerticalGroup(
             pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSearchLayout.createSequentialGroup()
-                .addGap(8, 8, 8)
+                .addContainerGap()
+                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboActive, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -394,14 +411,17 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
                         .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnPasswordUpdate))))
-                .addGap(8, 8, 8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel5.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Properties", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
 
-        tblUserProperties.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        tblUserProperties.setModel(new javax.swing.table.DefaultTableModel(
+        tblUserInfo1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tblUserInfo1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
                 {null,null, null, null}
@@ -409,23 +429,23 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
             new String [] {
                 "User ID","User Name","Designation","Location","Active"}
         ));
-        tblUserProperties.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblUserInfo1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblUserPropertiesMouseClicked(evt);
+                tblUserInfo1MouseClicked(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                tblUserPropertiesMousePressed(evt);
+                tblUserInfo1MousePressed(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                tblUserPropertiesMouseReleased(evt);
+                tblUserInfo1MouseReleased(evt);
             }
         });
-        tblUserProperties.addKeyListener(new java.awt.event.KeyAdapter() {
+        tblUserInfo1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                tblUserPropertiesKeyReleased(evt);
+                tblUserInfo1KeyReleased(evt);
             }
         });
-        jScrollPane10.setViewportView(tblUserProperties);
+        jScrollPane10.setViewportView(tblUserInfo1);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -435,18 +455,15 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout pnlSearchUser7Layout = new javax.swing.GroupLayout(pnlSearchUser7);
         pnlSearchUser7.setLayout(pnlSearchUser7Layout);
         pnlSearchUser7Layout.setHorizontalGroup(
             pnlSearchUser7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlSearchUser7Layout.createSequentialGroup()
-                .addGroup(pnlSearchUser7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+            .addComponent(pnlSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 403, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnlSearchUser7Layout.setVerticalGroup(
             pnlSearchUser7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -488,6 +505,30 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel29.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel29.setText("Department :");
+
+        txtDepartmentSearch.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtDepartmentSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDepartmentSearchActionPerformed(evt);
+            }
+        });
+
+        jLabel30.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel30.setText(" Section :");
+
+        txtSectionSearch.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtSectionSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSectionSearchActionPerformed(evt);
+            }
+        });
+
         btnSearch.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -509,15 +550,22 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel30)
                     .addComponent(jLabel28)
                     .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtLoginIdSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-                    .addComponent(txtUserNameSearch))
-                .addGap(31, 31, 31)
+                    .addComponent(txtUserNameSearch)
+                    .addComponent(txtSectionSearch))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel29)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                            .addComponent(txtDepartmentSearch)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -536,8 +584,14 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUserNameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDepartmentSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSectionSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch))
-                .addGap(0, 10, Short.MAX_VALUE))
+                .addGap(0, 15, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -578,7 +632,7 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+            .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -589,14 +643,17 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(pnlSearchUser7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pnlSearchUser7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 79, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -606,7 +663,7 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
                     .addComponent(pnlSearchUser7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -626,19 +683,18 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
 
-        this.dispose();    
+        this.dispose();
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-       clearForm();
-      
+        clearForm();
+
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void txtFullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFullNameActionPerformed
-     
-        
-         txtUserName.requestFocus();
-    
+
+        txtUserName.requestFocus();
+
     }//GEN-LAST:event_txtFullNameActionPerformed
 
     private void tblUserInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUserInfoMouseClicked
@@ -650,18 +706,18 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblUserInfoMousePressed
 
     private void tblUserInfoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUserInfoMouseReleased
-       
-         listFS = defineUserClt.selectUserSearch(userId,name,userName,departmentId,sectionId);
+
+        listFS = defineUserClt.selectUserSearch(userId, name, userName, departmentId, sectionId);
         userBo = listFS.get(tblUserInfo.getSelectedRow());
-       
-       userId = userBo.getUserId();
+
+        userId = userBo.getUserId();
         txtFullName.setText(userBo.getFullName());
         txtUserName.setText(userBo.getUserName());
         txtLoginId.setText(userBo.getUserId());
         txtLocation.setText(userBo.getLocations());
         cboActive.setSelectedItem(userBo.getActive());
-       selectUserProperties();
-        
+        selectUserProperties();
+
     }//GEN-LAST:event_tblUserInfoMouseReleased
 
     private void tblUserInfoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblUserInfoKeyReleased
@@ -669,33 +725,28 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblUserInfoKeyReleased
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-       if (!verifyFieldData()) {
+        if (!verifyFieldData()) {
             return;
-        }
-
-        else{
+        } else {
 
             BODefineUser objIns = new BODefineUser();
             objIns.setUserId(txtLoginId.getText());
             objIns.setLocationId(locationId);
             objIns.setFullName(txtFullName.getText());
             objIns.setDesignationId(designationId);
-            objIns.setActive(cboActive.getSelectedItem().toString());     
+            objIns.setActive(cboActive.getSelectedItem().toString());
             objIns.setPassword(txtPassword.getText());
             objIns.setDepartmentId(departmentId);
-            objIns.setTypee(cboType.getSelectedItem().toString());
-            objIns.setDegrees(txtDegree.getText());
             objIns.setSpecialityId(specialityId);
             objIns.setSectionId(sectionId);
-            objIns.seteAddress(txtEmail.getText());
             objIns.setUserName(txtUserName.getText());
 
-            if(defineUserClt.inserteUserReg(objIns)){
+            if (defineUserClt.inserteUserReg(objIns)) {
                 JOptionPane.showMessageDialog(null, "Register Successfully");
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Something Went Wrong");
             }
-          
+
             clearForm();
         }
     }//GEN-LAST:event_btnRegisterActionPerformed
@@ -705,30 +756,29 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtUserNameActionPerformed
 
     private void txtLoginIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginIdActionPerformed
-     txtLocation.requestFocus();      
+        txtLocation.requestFocus();
     }//GEN-LAST:event_txtLoginIdActionPerformed
 
     private void txtLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLocationActionPerformed
         String query
                 = " SELECT ID, DESCRIPTION                                   \n"
-                +"FROM                                                       \n" 
-                +Database.DCMS.location+ "                                   \n"
-                +"WHERE UPPER(DESCRIPTION) LIKE '%"+ txtLocation.getText().toUpperCase().trim() +"%' \n"
-                +"AND ACTIVE = 'Y'                                           \n"
-                +" ORDER BY ID                                               \n";
-                 
+                + "FROM                                                       \n"
+                + Database.DCMS.location + "                                   \n"
+                + "WHERE UPPER(DESCRIPTION) LIKE '%" + txtLocation.getText().toUpperCase().trim() + "%' \n"
+                + "AND ACTIVE = 'Y'                                           \n"
+                + " ORDER BY ID                                               \n";
+
         lov.LOVSelection(query, this);
         if (Constants.lovID.equalsIgnoreCase("ID")) {
             return;
         }
         locationId = Constants.lovID;
         txtLocation.setText(Constants.lovDescription);
-        
-        txtDepartment.requestFocus();
+
     }//GEN-LAST:event_txtLocationActionPerformed
 
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
-       txtDegree.requestFocus();
+
     }//GEN-LAST:event_txtPasswordActionPerformed
 
     private void txtConfirmPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfirmPasswordActionPerformed
@@ -740,7 +790,7 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnPasswordUpdateActionPerformed
 
     private void txtLoginIdSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginIdSearchActionPerformed
-       
+
     }//GEN-LAST:event_txtLoginIdSearchActionPerformed
 
     private void txtUserNameSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameSearchActionPerformed
@@ -751,8 +801,8 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
         userId = txtLoginIdSearch.getText().toUpperCase().trim();
         name = txtNameSearch.getText().toUpperCase().trim();
         userName = txtUserNameSearch.getText().toUpperCase().trim();
-       
-        selectUserInfo( userId,name, userName,  departmentId,  sectionId);              
+
+        selectUserInfo(userId, name, userName, departmentId, sectionId);
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void txtNameSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameSearchActionPerformed
@@ -760,7 +810,7 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtNameSearchActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-       if (listFS.isEmpty() || tblUserInfo.getSelectedRow() < 0) {
+        if (listFS.isEmpty() || tblUserInfo.getSelectedRow() < 0) {
             JOptionPane.showMessageDialog(null, "No User Is Selected");
             return;
         }
@@ -770,32 +820,28 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
         userBo.setUserName(txtUserName.getText().trim());
         userBo.setUserId(txtLoginId.getText().trim());
         userBo.setActive(cboActive.getSelectedItem().toString());
-        userBo.setTypee(cboType.getSelectedItem().toString());
-        
-        if (locationId.length()!= 0){
+
+        if (locationId.length() != 0) {
             userBo.setLocationId(locationId);
         }
-        
-        if (departmentId.length()!= 0){
+
+        if (departmentId.length() != 0) {
             userBo.setDepartmentId(departmentId);
         }
-        
-         if (sectionId.length()!= 0){
+
+        if (sectionId.length() != 0) {
             userBo.setSectionId(sectionId);
         }
-        
-          if (designationId.length()!= 0){
+
+        if (designationId.length() != 0) {
             userBo.setDesignationId(designationId);
         }
-          
-           if (specialityId.length()!= 0){
+
+        if (specialityId.length() != 0) {
             userBo.setSpeciality(specialityId);
         }
-           
-           userBo.seteAddress(txtEmail.getText().trim());
-           userBo.setDegrees(txtDegree.getText().trim());
-          
-          int confirmation = JOptionPane.showConfirmDialog(null, "You Are Going "
+
+        int confirmation = JOptionPane.showConfirmDialog(null, "You Are Going "
                 + "Update User Information.");
         if (confirmation != 0) {
             return;
@@ -810,7 +856,7 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void cboActiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboActiveActionPerformed
-                   
+
     }//GEN-LAST:event_cboActiveActionPerformed
 
     private void txtFullNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtFullNameMouseClicked
@@ -819,24 +865,49 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtFullNameMouseClicked
 
     private void txtLoginIdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtLoginIdMouseClicked
-      txtLoginId.setBackground(Color.WHITE);        // TODO add your handling code here:
+        txtLoginId.setBackground(Color.WHITE);        // TODO add your handling code here:
     }//GEN-LAST:event_txtLoginIdMouseClicked
 
-    private void tblUserPropertiesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUserPropertiesMouseClicked
+    private void tblUserInfo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUserInfo1MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblUserPropertiesMouseClicked
+    }//GEN-LAST:event_tblUserInfo1MouseClicked
 
-    private void tblUserPropertiesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUserPropertiesMousePressed
+    private void tblUserInfo1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUserInfo1MousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblUserPropertiesMousePressed
+    }//GEN-LAST:event_tblUserInfo1MousePressed
 
-    private void tblUserPropertiesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUserPropertiesMouseReleased
+    private void tblUserInfo1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUserInfo1MouseReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblUserPropertiesMouseReleased
+    }//GEN-LAST:event_tblUserInfo1MouseReleased
 
-    private void tblUserPropertiesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblUserPropertiesKeyReleased
+    private void tblUserInfo1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblUserInfo1KeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblUserPropertiesKeyReleased
+    }//GEN-LAST:event_tblUserInfo1KeyReleased
+
+    private void txtDepartmentSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDepartmentSearchActionPerformed
+        lov.LOVDefinitionSelection(DefinitionTypes.department, txtDepartmentSearch.getText().trim(), this);
+        if (Constants.lovID.equalsIgnoreCase("ID")) {
+            return;
+        }
+        departmentId = Constants.lovID;
+        txtDepartmentSearch.setText(Constants.lovDescription);
+    }//GEN-LAST:event_txtDepartmentSearchActionPerformed
+
+    private void txtSectionSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSectionSearchActionPerformed
+        String query
+        = "   SELECT SECTION_ID ID , DESCRIPTION                     \n"
+        +"FROM                                                       \n"
+        +Database.DCMS.section+ "                                    \n"
+        +"WHERE  DEPARTMENT_ID = '"+departmentId+"'              \n"
+        +"AND UPPER(DESCRIPTION) LIKE '%"+ txtSectionSearch.getText().toUpperCase().trim() +"%'\n";
+
+        lov.LOVSelection(query, this);
+        if (Constants.lovID.equalsIgnoreCase("ID")) {
+            return;
+        }
+        sectionId = Constants.lovID;
+        txtSectionSearch.setText(Constants.lovDescription);
+    }//GEN-LAST:event_txtSectionSearchActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
@@ -851,46 +922,52 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JPanel pnlSearch;
     private javax.swing.JPanel pnlSearchUser7;
     private javax.swing.JTable tblUserInfo;
-    private javax.swing.JTable tblUserProperties;
+    private javax.swing.JTable tblUserInfo1;
     private javax.swing.JTextField txtConfirmPassword;
+    private javax.swing.JTextArea txtDegree;
+    private javax.swing.JTextField txtDepartmentSearch;
     private javax.swing.JTextField txtFullName;
     private javax.swing.JTextField txtLocation;
     private javax.swing.JTextField txtLoginId;
     private javax.swing.JTextField txtLoginIdSearch;
     private javax.swing.JTextField txtNameSearch;
     private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtSectionSearch;
     private javax.swing.JTextField txtUserName;
     private javax.swing.JTextField txtUserNameSearch;
     // End of variables declaration//GEN-END:variables
 
-    
     private void selectUserInfo(String userId, String name,
-             String userName, String departmentId, String sectionId) {
-        listFS = defineUserClt.selectUserSearch(userId,name,userName,departmentId,sectionId);
-        
+            String userName, String departmentId, String sectionId) {
+        listFS = defineUserClt.selectUserSearch(userId, name, userName, departmentId, sectionId);
+
         if (!listFS.isEmpty()) {
             userBo = listFS.get(0);
         }
 
         if (listFS.isEmpty()) {
 
-            listFS = defineUserClt.selectUserSearch(userId,name,userName,departmentId,sectionId);
+            listFS = defineUserClt.selectUserSearch(userId, name, userName, departmentId, sectionId);
         } else {
             tblUserInfo.setModel(new UserInfoTableModel(listFS));
         }
@@ -899,12 +976,10 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
         setColumnsWidthsUserInfo();
         selectionMod.setSelectionInterval(0, 0);
         Constants.tablelook.setJTableEnvironment(tblUserInfo);
-        
+
     }
-    
-    
-    
-     private boolean verifyFieldData() {
+
+    private boolean verifyFieldData() {
         if (cboActive.getSelectedItem().toString().length() == 0) {
             JOptionPane.showMessageDialog(null, "Kindly Enter Active ");
             txtFullName.requestFocus();
@@ -928,17 +1003,17 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
 
         return true;
     }
-   
-           public void setColumnsWidthsUserInfo() {
+
+    public void setColumnsWidthsUserInfo() {
 
         TableColumn column = null;
         for (int i = 0; i < tblUserInfo.getColumnCount(); i++) {
             column = tblUserInfo.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(0);
-            }else if (i == 1) {
+            } else if (i == 1) {
                 column.setPreferredWidth(30);
-            }else if (i == 2) {
+            } else if (i == 2) {
                 column.setPreferredWidth(110);
             } else if (i == 3) {
                 column.setPreferredWidth(80);
@@ -946,12 +1021,12 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
                 column.setPreferredWidth(80);
             } else if (i == 5) {
                 column.setPreferredWidth(3);
-            } 
+            }
         }
     }
-       
+
     private void clearForm() {
-        
+
         Vector<JComponent> comp = new Vector<JComponent>();
         comp.add(txtFullName);
         comp.add(cboActive);
@@ -963,14 +1038,42 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
         comp.add(txtLoginIdSearch);
         comp.add(txtNameSearch);
         comp.add(txtUserNameSearch);
-       
+
         GUIUtils.setClear(comp);
-        
+
         listFS.clear();
         tblUserInfo.setModel(new UserInfoTableModel(listFS));
-   }
+    }
 
     private void selectUserProperties() {
         listProperties = defineUserClt.selectUserProprties(userId);
+        if (listProperties.isEmpty()) {
+            List<SetupColumnDetail> listProperties = new ArrayList();
+            listProperties.add(new SetupColumnDetail());
+            tblUserInfo1.setModel(new DefineUserPropertiesModel(listProperties));
+        } else {
+            tblUserInfo1.setModel(new DefineUserPropertiesModel(listProperties));
+            ListSelectionModel selectionModel = tblUserInfo1.getSelectionModel();
+            tblUserInfo1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            setUserInformationColumnsWidths();
+            selectionModel.setSelectionInterval(0, 0);
+            Constants.tablelook.setJTableEnvironment(tblUserInfo1);
+        }
+    }
+
+    private void setUserInformationColumnsWidths() {
+        TableColumn column = null;
+        for (int i = 0; i < tblUserInfo1.getColumnCount(); i++) {
+            column = tblUserInfo1.getColumnModel().getColumn(i);
+            if (i == 0) {
+                column.setPreferredWidth(50);
+            } else if (i == 1) {
+                column.setPreferredWidth(60);
+            } else if (i == 2) {
+                column.setPreferredWidth(250);
+            } else if (i == 3) {
+                column.setPreferredWidth(300);
+            }
+        }
     }
 }

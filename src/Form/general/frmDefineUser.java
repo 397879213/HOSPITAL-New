@@ -1,6 +1,7 @@
 package Form.general;
 
 import BO.GroupForm;
+import BO.SetupColumnDetail;
 import java.util.Vector;
 import javax.swing.JComponent;
 import utilities.Constants;
@@ -12,6 +13,7 @@ import Controller.UserController;
 import Controller.UserGroupController;
 import static Form.general.frmUserSetting.currentUser;
 import Handler.UserHandler;
+import TableModel.Administration.DefineUserPropertiesModel;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -34,6 +36,7 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
     public static List<User> vecUsers = new ArrayList<>();
     GroupForm groupForm = new GroupForm();
     UserGroupController ctlUserGroup = new UserGroupController();
+    List<SetupColumnDetail> listProperties = new ArrayList();
 
     public frmDefineUser() {
 
@@ -50,7 +53,6 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
         btnCreateUser.setEnabled(true);
         btnSave.setEnabled(true);
         txtLocation.setEnabled(true);
-        txtDepartment.setEnabled(true);
         txtUserName.setEnabled(true);
         txtUserFullName.setEnabled(true);
 
@@ -84,33 +86,17 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
         if (Constants.userRightsMap.get(Rights.txtLocation_defineUser) == null) {
             txtLocation.setEnabled(false);
         }
-        if (Constants.userRightsMap.get(Rights.txtDepartment_defineUser) == null) {
-            txtDepartment.setEnabled(false);
-        }
         if (Constants.userRightsMap.get(Rights.txtUserId_defineUser) == null) {
             txtUserName.setEnabled(false);
         }
         if (Constants.userRightsMap.get(Rights.txtUserName_defineUser) == null) {
             txtUserFullName.setEnabled(false);
         }
-        if (Constants.userRightsMap.get(Rights.defineUserTxtSection) == null) {
-            txtSection.setEnabled(false);
-        }
-        if (Constants.userRightsMap.get(Rights.defineUserTxtDesignation) == null) {
-            txtDesignation.setEnabled(false);
-        }
         btnEditLoginId.setEnabled(true);
         if (Constants.userRightsMap.get(Rights.updateUserLoginId) == null) {
             btnEditLoginId.setEnabled(false);
         }
-        btnUpdatePrescriptionDays.setEnabled(true);
-        if (Constants.userRightsMap.get(Rights.updateUserPrescriptionDays) == null) {
-            btnUpdatePrescriptionDays.setEnabled(false);
-        }
-        btnUpdateSupportLimit.setEnabled(true);
-        if (Constants.userRightsMap.get(Rights.updateUserSupportLimit) == null) {
-            btnUpdateSupportLimit.setEnabled(false);
-        }
+        
         btnManageRights.setEnabled(false);
         if (Constants.userId.equalsIgnoreCase("PLC")
                 || Constants.userId.equalsIgnoreCase("MISSION")) {
@@ -130,36 +116,17 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtDesignation = new javax.swing.JTextField();
         cboType = new javax.swing.JComboBox();
-        jLabel7 = new javax.swing.JLabel();
-        txtEmailAddress = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtDegrees = new javax.swing.JTextArea();
         jLabel9 = new javax.swing.JLabel();
         cboActive = new javax.swing.JComboBox();
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
         txtConfirmPassword = new javax.swing.JPasswordField();
-        jLabel5 = new javax.swing.JLabel();
-        txtDepartment = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
         txtLocation = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
-        txtSpeciality = new javax.swing.JTextField();
-        jLabel18 = new javax.swing.JLabel();
-        txtSection = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
         txtUserId = new javax.swing.JTextField();
         btnChangePassword = new javax.swing.JButton();
-        jLabel23 = new javax.swing.JLabel();
-        txtSupportLimit = new javax.swing.JTextField();
-        btnUpdatePrescriptionDays = new javax.swing.JButton();
-        jLabel24 = new javax.swing.JLabel();
-        txtPrecriptionDays = new javax.swing.JTextField();
-        btnUpdateSupportLimit = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
@@ -197,6 +164,9 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
         txtName2 = new javax.swing.JTextField();
         txtDesignation2 = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        tblProperties = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -254,39 +224,12 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
         jLabel3.setForeground(new java.awt.Color(102, 0, 0));
         jLabel3.setText("User Name:");
 
-        txtDesignation.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDesignationActionPerformed(evt);
-            }
-        });
-
         cboType.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"Type","General","Faculty","Visiting-Faculty","WMC", "POF", "NON"}));
         cboType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboTypeActionPerformed(evt);
             }
         });
-
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel7.setText("Email: ");
-
-        txtEmailAddress.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailAddressActionPerformed(evt);
-            }
-        });
-
-        jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel8.setText("Degrees:");
-
-        txtDegrees.setColumns(20);
-        txtDegrees.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtDegrees.setLineWrap(true);
-        txtDegrees.setRows(6);
-        txtDegrees.setWrapStyleWord(true);
-        jScrollPane2.setViewportView(txtDegrees);
 
         jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(102, 0, 0));
@@ -315,43 +258,9 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel5.setText("Designation:");
-
-        txtDepartment.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDepartmentActionPerformed(evt);
-            }
-        });
-
-        jLabel16.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel16.setText("Department:");
-
         txtLocation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLocationActionPerformed(evt);
-            }
-        });
-
-        jLabel17.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel17.setText("Speciality:");
-
-        txtSpeciality.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSpecialityActionPerformed(evt);
-            }
-        });
-
-        jLabel18.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel18.setText("Section");
-
-        txtSection.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSectionActionPerformed(evt);
             }
         });
 
@@ -373,34 +282,6 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel23.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel23.setText("Support Limit : ");
-
-        btnUpdatePrescriptionDays.setText("Update");
-        btnUpdatePrescriptionDays.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdatePrescriptionDaysActionPerformed(evt);
-            }
-        });
-
-        jLabel24.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel24.setText("Prescription Days :");
-
-        txtPrecriptionDays.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPrecriptionDaysActionPerformed(evt);
-            }
-        });
-
-        btnUpdateSupportLimit.setText("Update");
-        btnUpdateSupportLimit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateSupportLimitActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout pnlPatientDetailLayout = new javax.swing.GroupLayout(pnlPatientDetail);
         pnlPatientDetail.setLayout(pnlPatientDetailLayout);
         pnlPatientDetailLayout.setHorizontalGroup(
@@ -408,59 +289,6 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
             .addGroup(pnlPatientDetailLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2)
-                    .addGroup(pnlPatientDetailLayout.createSequentialGroup()
-                        .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtUserName)
-                            .addComponent(txtUserFullName)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(pnlPatientDetailLayout.createSequentialGroup()
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cboActive, 0, 91, Short.MAX_VALUE))
-                            .addComponent(txtUserId, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cboType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(pnlPatientDetailLayout.createSequentialGroup()
-                        .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtLocation)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDepartment)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(pnlPatientDetailLayout.createSequentialGroup()
-                        .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtSection, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDesignation)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPatientDetailLayout.createSequentialGroup()
-                        .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtEmailAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtSpeciality)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(pnlPatientDetailLayout.createSequentialGroup()
-                                    .addGap(66, 66, 66)
-                                    .addComponent(btnUpdateSupportLimit, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPatientDetailLayout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtSupportLimit, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(85, 85, 85)))
-                            .addGroup(pnlPatientDetailLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(pnlPatientDetailLayout.createSequentialGroup()
                         .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING)
@@ -471,16 +299,26 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(pnlPatientDetailLayout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlPatientDetailLayout.createSequentialGroup()
-                                        .addGap(77, 77, 77)
-                                        .addComponent(txtPrecriptionDays)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnUpdatePrescriptionDays, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPatientDetailLayout.createSequentialGroup()
-                                        .addComponent(txtConfirmPassword)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnChangePassword)))))))
+                                .addComponent(txtConfirmPassword)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnChangePassword))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPatientDetailLayout.createSequentialGroup()
+                        .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtUserName)
+                            .addComponent(txtUserFullName)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(pnlPatientDetailLayout.createSequentialGroup()
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cboActive, 0, 91, Short.MAX_VALUE))
+                            .addComponent(txtUserId, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cboType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtLocation))))
                 .addContainerGap())
         );
         pnlPatientDetailLayout.setVerticalGroup(
@@ -504,40 +342,10 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
                     .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUserId, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtSection, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDesignation, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel23))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSpeciality, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSupportLimit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUpdateSupportLimit))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel24))
-                .addGap(4, 4, 4)
-                .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEmailAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPrecriptionDays, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUpdatePrescriptionDays))
-                .addGap(9, 9, 9)
                 .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jLabel12))
@@ -546,11 +354,7 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnChangePassword))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(8, 8, 8))
         );
 
         jPanel4.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -716,7 +520,7 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
         );
 
         jPanel9.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -926,6 +730,47 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        jPanel5.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Properties", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
+
+        tblProperties.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tblProperties.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+                {null,null, null, null}
+            },
+            new String [] {
+                "User ID","User Name","Designation","Location","Active"}
+        ));
+        tblProperties.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPropertiesMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblPropertiesMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tblPropertiesMouseReleased(evt);
+            }
+        });
+        tblProperties.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblPropertiesKeyReleased(evt);
+            }
+        });
+        jScrollPane10.setViewportView(tblProperties);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -936,8 +781,10 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(pnlPatientDetail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnlPatientDetail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -955,7 +802,10 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(pnlPatientDetail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(pnlPatientDetail, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1059,17 +909,13 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
             return;
         }
         user = (User) vecUsers.get(currentRecord);
+        userId = user.getUserId();
+        selectUserProperties();
         txtUserFullName.setText(user.getName());
         txtUserName.setText(user.getUserName());
-        txtDesignation.setText(user.getDesignation());
-        txtDepartment.setText(user.getDepartment());
         txtUserId.setText(user.getUserId());
-        txtDegrees.setText(user.getDegrees());
-        txtEmailAddress.setText(user.getEmailAddress());
         cboActive.setSelectedItem(user.getActive());
         cboType.setSelectedItem(user.getType());
-        txtPrecriptionDays.setText(user.getPrescriptionDays());
-        txtSupportLimit.setText(user.getDiscountLimit());
         if (user.getType().equalsIgnoreCase(TypeDetailId.faculty)) {
             cboType.setSelectedIndex(2);
         }
@@ -1077,10 +923,8 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
             cboType.setSelectedIndex(3);
         }
 
-        txtSpeciality.setText(user.getSpeciality());
         txtLocation.setText(user.getLocationName());
         txtPassword.setText(user.getCurrentPassword());
-        txtSection.setText(user.getSection());
         txtConfirmPassword.setText(user.getCurrentPassword());
         txtUserName.setEnabled(false);
 
@@ -1098,10 +942,6 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
             User usr = (User) vecUsers.get(tableUser.getSelectedRow());
             txtUserFullName.setText(usr.getUserName());
             txtUserName.setText(usr.getName());
-            txtDesignation.setText(usr.getDesignation());
-            //txtContact.setText(usr.getContactNo());
-            txtDegrees.setText(usr.getDegrees());
-            txtEmailAddress.setText(usr.getEmailAddress());
             cboActive.setSelectedItem(usr.getActive());
             cboType.setSelectedItem(usr.getType());
             //Disable the Username Text So that they cannot edit it;
@@ -1110,36 +950,12 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_tableUserKeyReleased
 
-    private void txtDesignationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDesignationActionPerformed
-
-        lov.LOVDefinitionSelection(utilities.DefinitionTypes.designation,
-                txtDesignation.getText().toUpperCase().trim(), this);
-        if (Constants.lovDescription.equalsIgnoreCase("DESCRIPTION")) {
-            JOptionPane.showMessageDialog(null, "No Data Found");
-            txtDesignation.setText("");
-            //patient.maritalStatusId = "1";
-        } else {
-            txtDesignation.setText(Constants.lovDescription.toUpperCase());
-            user.setDesignationId(Constants.lovID);
-            txtSpeciality.requestFocusInWindow();
-            txtSpeciality.setCaretPosition(0);
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDesignationActionPerformed
-
     private void txtUserFullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserFullNameActionPerformed
         txtUserName.requestFocusInWindow();
         txtUserName.setCaretPosition(0);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserFullNameActionPerformed
-
-    private void txtEmailAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailAddressActionPerformed
-
-        //txtContact.requestFocusInWindow();
-        //txtContact.setCaretPosition(0);
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailAddressActionPerformed
 
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
 
@@ -1150,35 +966,8 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
 
     private void txtConfirmPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfirmPasswordActionPerformed
 
-        txtDegrees.requestFocusInWindow();
-        txtDegrees.setCaretPosition(0);
         // TODO add your handling code here:
     }//GEN-LAST:event_txtConfirmPasswordActionPerformed
-
-    private void txtDepartmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDepartmentActionPerformed
-
-        lov.LOVDefinitionSelection(utilities.DefinitionTypes.department,
-                txtDepartment.getText().toUpperCase().trim(), this);
-        if (Constants.lovDescription.equalsIgnoreCase("DESCRIPTION")) {
-            JOptionPane.showMessageDialog(null, "No Data Found");
-            txtDepartment.setText("");
-        } else {
-            txtDepartment.setText(Constants.lovDescription.toUpperCase());
-            user.setDepartment(Constants.lovDescription);
-            departmentId = Constants.lovID;
-            txtSection.requestFocusInWindow();
-            txtSection.setCaretPosition(0);
-            if (!departmentId.equalsIgnoreCase(user.getDepartmentId())) {
-                txtSection.setText("");
-                sectionId = "";
-                user.setSectionId("");
-                user.setDepartmentId(Constants.lovID);
-
-            }
-
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDepartmentActionPerformed
 
     private void txtLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLocationActionPerformed
 
@@ -1191,66 +980,12 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
             user.setLocationName(Constants.lovDescription);
 //            user.setLocationId(Constants.lovID);
             locationId = Constants.lovID;
-            txtDepartment.requestFocusInWindow();
-            txtDepartment.setCaretPosition(0);
             if (!locationId.equalsIgnoreCase(user.getLocationId())) {
-                // txtDepartment.setText("");
-                //  txtSection.setText("");
-                //  departmentId = "";
-                ///  sectionId = "";
-                // user.setDepartment("");
-                //  user.setSectionId("");
                 user.setLocationId(Constants.lovID);
             }
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLocationActionPerformed
-
-    private void txtSpecialityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSpecialityActionPerformed
-
-        lov.LOVDefinitionSelection(utilities.DefinitionTypes.speciality,
-                txtSpeciality.getText().toUpperCase().trim(), this);
-        if (Constants.lovDescription.equalsIgnoreCase("DESCRIPTION")) {
-            txtSpeciality.setText("");
-        } else {
-            txtSpeciality.setText(Constants.lovDescription.toUpperCase());
-            user.setSpeciality(Constants.lovDescription);
-            user.setSpecialityId(Constants.lovID);
-            txtEmailAddress.requestFocusInWindow();
-            txtEmailAddress.setCaretPosition(0);
-        }
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSpecialityActionPerformed
-
-    private void txtSectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSectionActionPerformed
-
-        if (user.getDepartmentId().trim().length() == 0) {
-            JOptionPane.showMessageDialog(null, "No Data Found");
-            txtDepartment.requestFocusInWindow();
-            txtDepartment.setCaretPosition(0);
-        }
-        String query = " SELECT SECTION_ID ID , DESCRIPTION FROM "
-                + Database.DCMS.section
-                + " WHERE DEPARTMENT_ID = '" + user.getDepartmentId() + "'"
-                + " AND UPPER(DESCRIPTION) LIKE '%"
-                + txtSection.getText().trim().toUpperCase() + "%'";
-
-        lov.LOVSelection(query, this);
-        if (Constants.lovID.equalsIgnoreCase("ID")) {
-            JOptionPane.showMessageDialog(null, "No Data Found");
-            txtSection.requestFocusInWindow();
-            txtSection.setCaretPosition(0);
-            txtSection.setText("");
-        } else {
-            txtSection.setText(Constants.lovDescription.toUpperCase());
-            user.setSectionId(Constants.lovID);
-            txtDesignation.requestFocusInWindow();
-            txtDesignation.setCaretPosition(0);
-        }
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSectionActionPerformed
 
     private void txtSearchUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchUserNameActionPerformed
         // TODO add your handling code here:
@@ -1436,10 +1171,6 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEditLoginIdCreate_User
 
-    private void txtPrecriptionDaysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecriptionDaysActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPrecriptionDaysActionPerformed
-
     private void btnDefaultColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDefaultColorActionPerformed
         // TODO add your handling code here:
         if (currentRecord < 0 || vecUsers.isEmpty()) {
@@ -1459,70 +1190,6 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnDefaultColorActionPerformed
 
-    private void btnUpdateSupportLimitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateSupportLimitActionPerformed
-        // TODO add your handling code here:
-        if (currentRecord < 0 || vecUsers.isEmpty()) {
-            return;
-        }
-        if (txtSupportLimit.getText().trim().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Kindly Enter Support Limit");
-            txtSupportLimit.requestFocus();
-            return;
-        }
-        try {
-            int i = Integer.parseInt(txtSupportLimit.getText().trim());
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Kindly Enter Correct Support Limit");
-            txtSupportLimit.requestFocus();
-            return;
-        }
-        user = (User) vecUsers.get(currentRecord);
-        int i = JOptionPane.showConfirmDialog(null, " you are going to update user support limit "
-                + txtUserId.getText().trim());
-        if (i != 0) {
-            return;
-        }
-        if (ctlUser.setUserSupportLimit(user, txtSupportLimit.getText().trim())) {
-            user.setDiscountLimit(txtSupportLimit.getText().trim());
-            JOptionPane.showMessageDialog(null, "Support Limit Updated Successfully");
-        } else {
-            JOptionPane.showMessageDialog(null, "Unable to Update, Kindly Contact Administrator");
-        }
-
-
-    }//GEN-LAST:event_btnUpdateSupportLimitActionPerformed
-
-    private void btnUpdatePrescriptionDaysActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdatePrescriptionDaysActionPerformed
-        // TODO add your handling code here:
-        if (currentRecord < 0 || vecUsers.isEmpty()) {
-            return;
-        }
-        if (txtPrecriptionDays.getText().trim().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Kindly Enter Prescription Days");
-            txtPrecriptionDays.requestFocus();
-            return;
-        }
-        try {
-            int i = Integer.parseInt(txtPrecriptionDays.getText().trim());
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Kindly Enter Correct Prescription Days");
-            txtPrecriptionDays.requestFocus();
-            return;
-        }
-        user = (User) vecUsers.get(currentRecord);
-        int i = JOptionPane.showConfirmDialog(null, " you are going to update user Prescription Days "
-                + txtUserId.getText().trim());
-        if (i != 0) {
-            return;
-        }
-        if (ctlUser.setUserPrescriptionDays(user, txtPrecriptionDays.getText().trim())) {
-            user.setPrescriptionDays(txtPrecriptionDays.getText().trim());
-            JOptionPane.showMessageDialog(null, "Prescription Days Updated Successfully");
-        } else {
-            JOptionPane.showMessageDialog(null, "Unable to Update, Kindly Contact Administrator");
-        }
-    }//GEN-LAST:event_btnUpdatePrescriptionDaysActionPerformed
-
     private void btnManageRightsCreate_User(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageRightsCreate_User
         // TODO add your handling code here:
         UserApplicationRights fm = new UserApplicationRights();
@@ -1535,6 +1202,22 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
 
 
     }//GEN-LAST:event_btnManageRightsCreate_User
+
+    private void tblPropertiesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPropertiesMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblPropertiesMouseClicked
+
+    private void tblPropertiesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPropertiesMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblPropertiesMousePressed
+
+    private void tblPropertiesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPropertiesMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblPropertiesMouseReleased
+
+    private void tblPropertiesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblPropertiesKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblPropertiesKeyReleased
 
     public void searchUser() {
 
@@ -1585,8 +1268,6 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnManageRights;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JButton btnUpdatePrescriptionDays;
-    private javax.swing.JButton btnUpdateSupportLimit;
     private javax.swing.JComboBox cboActive;
     private javax.swing.JComboBox cboType;
     private javax.swing.JLabel jLabel1;
@@ -1596,53 +1277,39 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JPanel pnlPatientDetail;
     private javax.swing.JTable tableUser;
+    private javax.swing.JTable tblProperties;
     private javax.swing.JPasswordField txtConfirmPassword;
-    private javax.swing.JTextArea txtDegrees;
-    private javax.swing.JTextField txtDepartment;
-    private javax.swing.JTextField txtDesignation;
     private javax.swing.JTextField txtDesignation1;
     private javax.swing.JTextField txtDesignation2;
-    private javax.swing.JTextField txtEmailAddress;
     private javax.swing.JTextField txtLocation;
     private javax.swing.JTextField txtName1;
     private javax.swing.JTextField txtName2;
     private javax.swing.JPasswordField txtPassword;
-    private javax.swing.JTextField txtPrecriptionDays;
     private javax.swing.JTextField txtSearchDepartment;
     private javax.swing.JTextField txtSearchDesignation;
     private javax.swing.JTextField txtSearchSection;
     private javax.swing.JTextField txtSearchUserFullName;
     private javax.swing.JTextField txtSearchUserId;
     private javax.swing.JTextField txtSearchUserName;
-    private javax.swing.JTextField txtSection;
-    private javax.swing.JTextField txtSpeciality;
-    private javax.swing.JTextField txtSupportLimit;
     private javax.swing.JTextField txtUserFullName;
     private javax.swing.JTextField txtUserId;
     private javax.swing.JTextField txtUserId1;
@@ -1661,18 +1328,12 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
     public void clearForm() {
 
         Vector<JComponent> comp = new Vector<JComponent>();
-        comp.add(txtDegrees);
         comp.add(txtConfirmPassword);
         //comp.add(txtContact);
-        comp.add(txtDepartment);
-        comp.add(txtDesignation);
-        comp.add(txtSection);
         comp.add(txtLocation);
-        comp.add(txtSpeciality);
         comp.add(txtUserName);
         comp.add(txtUserFullName);
         comp.add(txtPassword);
-        comp.add(txtEmailAddress);
         comp.add(cboActive);
         comp.add(cboType);
         GUIUtils.setClear(comp);
@@ -1729,9 +1390,6 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
         if (verifyUserData(registered)) {
             user.setUserName(txtUserName.getText().trim().toUpperCase());
             user.setName(txtUserFullName.getText().trim().toUpperCase());
-            //user.setContactNo(txtContact.getText().trim().toUpperCase());
-            user.setEmailAddress(txtEmailAddress.getText().trim().toUpperCase());
-            user.setDegrees(txtDegrees.getText().trim().toUpperCase());
             user.setNewPassword(txtPassword.getText());
             user.setType(cboType.getSelectedItem().toString());
             user.setActive(cboActive.getSelectedItem().toString());
@@ -1812,22 +1470,39 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
             txtLocation.setBackground(Color.red);
             ret = false;
         }
-        if (user.getSpecialityId().trim().length() == 0) {
-            txtSpeciality.setBackground(Color.red);
-            ret = false;
-        }
-        if (user.getDepartmentId().trim().length() == 0) {
-            txtDepartment.setBackground(Color.red);
-            ret = false;
-        }
-        if (user.getSectionId().trim().length() == 0) {
-            txtSection.setBackground(Color.red);
-            ret = false;
-        }
-        if (user.getDesignationId().trim().length() == 0) {
-            txtDesignation.setBackground(Color.red);
-            ret = false;
-        }
+        
         return ret;
+    }
+    
+    private void selectUserProperties() {
+        listProperties = ctlUserGroup.selectUserProprties(userId);
+        if (listProperties.isEmpty()) {
+            List<SetupColumnDetail> listProperties = new ArrayList();
+            listProperties.add(new SetupColumnDetail());
+            tblProperties.setModel(new DefineUserPropertiesModel(listProperties));
+        } else {
+            tblProperties.setModel(new DefineUserPropertiesModel(listProperties));
+            ListSelectionModel selectionModel = tblProperties.getSelectionModel();
+            tblProperties.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            setUserInformationColumnsWidths();
+            selectionModel.setSelectionInterval(0, 0);
+            Constants.tablelook.setJTableEnvironment(tblProperties);
+        }
+    }
+
+    private void setUserInformationColumnsWidths() {
+        TableColumn column = null;
+        for (int i = 0; i < tblProperties.getColumnCount(); i++) {
+            column = tblProperties.getColumnModel().getColumn(i);
+            if (i == 0) {
+                column.setPreferredWidth(50);
+            } else if (i == 1) {
+                column.setPreferredWidth(60);
+            } else if (i == 2) {
+                column.setPreferredWidth(250);
+            } else if (i == 3) {
+                column.setPreferredWidth(300);
+            }
+        }
     }
 }

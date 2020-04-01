@@ -2,6 +2,7 @@ package Handler;
 
 import BO.GroupForm;
 import BO.RightAssignHistory;
+import BO.SetupColumnDetail;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +14,38 @@ public class UserGroupHandler  implements java.io.Serializable{
 
     UserHandler hdlUser = new UserHandler();
 
+    public List<SetupColumnDetail> selectUserProprties(String userId) {
+
+        String[] cols = {"-", "ID", "PROPERTY", "TABLE_ROW_ID", "TABLE_COLUMN_ID",
+            "DESCRIPTION"};
+
+        String query
+                = "SELECT STC.ID, STC.PROPERTY, SCD.TABLE_ROW_ID, SCD.TABLE_COLUMN_ID,"
+                + "\n NVL(SCD.DESCRIPTION, ' ') DESCRIPTION FROM "
+                + "\n " + Database.DCMS.setupColumnDetail + " SCD,"
+                + "\n " + Database.DCMS.setupTableColums + " STC"
+                + "\n WHERE SCD.TABLE_ROW_ID = '" + userId + "'"
+                + "\n AND ID > 200 AND ID < 236"
+                + "\n AND STC.ID = SCD.TABLE_COLUMN_ID"
+                + "\n AND STC.ACTIVE = 'Y'";
+
+        List<HashMap> list = Constants.dao.selectDatainList(query, cols);
+
+        List<SetupColumnDetail> listItems = new ArrayList();
+        for (int i = 0; i < list.size(); i++) {
+            HashMap map = list.get(i);
+
+            SetupColumnDetail setupProperties = new SetupColumnDetail();
+            setupProperties.setId(map.get("ID").toString());
+            setupProperties.setProperty(map.get("PROPERTY").toString());
+            setupProperties.setTableRowId(map.get("TABLE_ROW_ID").toString());
+            setupProperties.setTableColumnId(map.get("TABLE_COLUMN_ID").toString());
+            setupProperties.setDefaultValue(map.get("DESCRIPTION").toString());
+            listItems.add(setupProperties);
+        }
+        return listItems;
+    }
+    
     public Vector selectUserGroup(String userId) {
 
         String colums[] = {"-", "USER_ID", "ROLE_ID", "DESCRIPTION", "ROLE_TYPE"};
