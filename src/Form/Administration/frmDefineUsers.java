@@ -2,6 +2,7 @@ package Form.Administration;
 
 
 import BO.Administration.BODefineUser;
+import BO.SetupColumnDetail;
 import Controller.Administration.DefineUserController;
 import TableModel.Administration.UserInfoTableModel;
 import java.awt.Color;
@@ -27,7 +28,7 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
       BODefineUser userBo = new BODefineUser();
     
     List<BODefineUser> listFS = new ArrayList<>();
-    
+    List<SetupColumnDetail> listProperties = new ArrayList();
    
     
   
@@ -65,7 +66,6 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
         btnEdit = new javax.swing.JButton();
         pnlSearchUser7 = new javax.swing.JPanel();
         pnlSearch = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
         txtFullName = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -74,38 +74,22 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
         txtLoginId = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         txtLocation = new javax.swing.JTextField();
-        jLabel18 = new javax.swing.JLabel();
-        txtDepartment = new javax.swing.JTextField();
-        jLabel19 = new javax.swing.JLabel();
-        txtSection = new javax.swing.JTextField();
-        jLabel20 = new javax.swing.JLabel();
-        txtDesignation = new javax.swing.JTextField();
-        jLabel21 = new javax.swing.JLabel();
-        txtSpeciality = new javax.swing.JTextField();
-        jLabel22 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
-        jLabel23 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
         txtConfirmPassword = new javax.swing.JTextField();
         btnPasswordUpdate = new javax.swing.JButton();
         jLabel25 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtDegree = new javax.swing.JTextArea();
         jLabel26 = new javax.swing.JLabel();
-        btnEmailUpdate = new javax.swing.JButton();
         cboActive = new javax.swing.JComboBox<>();
-        cboType = new javax.swing.JComboBox<>();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        tblUserProperties = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         txtLoginIdSearch = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         txtUserNameSearch = new javax.swing.JTextField();
-        jLabel29 = new javax.swing.JLabel();
-        txtDepartmentSearch = new javax.swing.JTextField();
-        jLabel30 = new javax.swing.JLabel();
-        txtSectionSearch = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         txtNameSearch = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
@@ -205,7 +189,7 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(247, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnRegister)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -230,11 +214,6 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
 
         pnlSearch.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
         pnlSearch.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Info", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
-
-        jLabel13.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel13.setText("Type  :");
 
         txtFullName.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtFullName.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -294,71 +273,6 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel18.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel18.setText("Department :");
-
-        txtDepartment.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtDepartment.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDepartmentActionPerformed(evt);
-            }
-        });
-
-        jLabel19.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel19.setText("Section :");
-
-        txtSection.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSection.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSectionActionPerformed(evt);
-            }
-        });
-
-        jLabel20.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel20.setText("Designation :");
-
-        txtDesignation.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtDesignation.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDesignationActionPerformed(evt);
-            }
-        });
-
-        jLabel21.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel21.setText("Speciality :");
-
-        txtSpeciality.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSpeciality.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSpecialityActionPerformed(evt);
-            }
-        });
-
-        jLabel22.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel22.setText("Email :");
-
-        txtEmail.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailActionPerformed(evt);
-            }
-        });
-
-        jLabel23.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel23.setText("Degree :");
-
         txtPassword.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -391,22 +305,10 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel25.setText("Password :");
 
-        txtDegree.setColumns(20);
-        txtDegree.setRows(5);
-        jScrollPane1.setViewportView(txtDegree);
-
         jLabel26.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(102, 0, 0));
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel26.setText("User Full Name :");
-
-        btnEmailUpdate.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnEmailUpdate.setText("Update");
-        btnEmailUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEmailUpdateActionPerformed(evt);
-            }
-        });
 
         cboActive.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         cboActive.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"Y", "N" }));
@@ -416,101 +318,58 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
             }
         });
 
-        cboType.setEditable(true);
-        cboType.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        cboType.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"General", "Faculty" }));
-        cboType.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboTypeActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout pnlSearchLayout = new javax.swing.GroupLayout(pnlSearch);
         pnlSearch.setLayout(pnlSearchLayout);
         pnlSearchLayout.setHorizontalGroup(
             pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSearchLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(5, 5, 5)
                 .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtSpeciality)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSearchLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtFullName, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(pnlSearchLayout.createSequentialGroup()
+                                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cboActive, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(pnlSearchLayout.createSequentialGroup()
-                        .addComponent(txtSection, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtDesignation))
-                    .addComponent(jScrollPane1)
-                    .addGroup(pnlSearchLayout.createSequentialGroup()
-                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                            .addComponent(txtUserName)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtPassword))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEmailUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(pnlSearchLayout.createSequentialGroup()
-                        .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtFullName, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlSearchLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cboActive, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cboType, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSearchLayout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(pnlSearchLayout.createSequentialGroup()
-                        .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
-                            .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlSearchLayout.createSequentialGroup()
-                                .addComponent(txtConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnPasswordUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(pnlSearchLayout.createSequentialGroup()
-                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(pnlSearchLayout.createSequentialGroup()
-                        .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                            .addComponent(txtLocation))
-                        .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlSearchLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(txtDepartment))
-                            .addGroup(pnlSearchLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(txtLoginId))
-                            .addGroup(pnlSearchLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtLocation, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtLoginId, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlSearchLayout.createSequentialGroup()
+                                        .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(pnlSearchLayout.createSequentialGroup()
+                                                .addComponent(txtConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btnPasswordUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(1, 1, 1)))
+                                .addGap(1, 1, 1)))))
                 .addContainerGap())
         );
         pnlSearchLayout.setVerticalGroup(
             pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSearchLayout.createSequentialGroup()
-                .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cboType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlSearchLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(8, 8, 8)
                 .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboActive, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -522,32 +381,10 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDesignation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSpeciality, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
+                    .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
                 .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlSearchLayout.createSequentialGroup()
-                        .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEmailUpdate))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -557,24 +394,66 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
                         .addGroup(pnlSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnPasswordUpdate))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5))
+                .addGap(8, 8, 8))
+        );
+
+        jPanel5.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Properties", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
+
+        tblUserProperties.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tblUserProperties.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+                {null,null, null, null}
+            },
+            new String [] {
+                "User ID","User Name","Designation","Location","Active"}
+        ));
+        tblUserProperties.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblUserPropertiesMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblUserPropertiesMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tblUserPropertiesMouseReleased(evt);
+            }
+        });
+        tblUserProperties.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblUserPropertiesKeyReleased(evt);
+            }
+        });
+        jScrollPane10.setViewportView(tblUserProperties);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout pnlSearchUser7Layout = new javax.swing.GroupLayout(pnlSearchUser7);
         pnlSearchUser7.setLayout(pnlSearchUser7Layout);
         pnlSearchUser7Layout.setHorizontalGroup(
             pnlSearchUser7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 403, Short.MAX_VALUE)
+            .addGroup(pnlSearchUser7Layout.createSequentialGroup()
+                .addGroup(pnlSearchUser7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
         pnlSearchUser7Layout.setVerticalGroup(
             pnlSearchUser7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSearchUser7Layout.createSequentialGroup()
                 .addComponent(pnlSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -609,30 +488,6 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel29.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel29.setText("Department :");
-
-        txtDepartmentSearch.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtDepartmentSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDepartmentSearchActionPerformed(evt);
-            }
-        });
-
-        jLabel30.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel30.setText(" Section :");
-
-        txtSectionSearch.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSectionSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSectionSearchActionPerformed(evt);
-            }
-        });
-
         btnSearch.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -654,22 +509,15 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel30)
                     .addComponent(jLabel28)
                     .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtLoginIdSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-                    .addComponent(txtUserNameSearch)
-                    .addComponent(txtSectionSearch))
-                .addGap(18, 18, 18)
+                    .addComponent(txtUserNameSearch))
+                .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel29)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
-                            .addComponent(txtDepartmentSearch)))
+                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -688,14 +536,8 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUserNameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDepartmentSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSectionSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch))
-                .addGap(0, 15, Short.MAX_VALUE))
+                .addGap(0, 10, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -732,11 +574,11 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
+            .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane9)
+            .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -747,17 +589,14 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(pnlSearchUser7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pnlSearchUser7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 5, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -815,20 +654,13 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
          listFS = defineUserClt.selectUserSearch(userId,name,userName,departmentId,sectionId);
         userBo = listFS.get(tblUserInfo.getSelectedRow());
        
-       
+       userId = userBo.getUserId();
         txtFullName.setText(userBo.getFullName());
         txtUserName.setText(userBo.getUserName());
         txtLoginId.setText(userBo.getUserId());
         txtLocation.setText(userBo.getLocations());
-        txtDepartment.setText(userBo.getDepartment());
-        txtSection.setText(userBo.getSections());
-        txtDesignation.setText(userBo.getDesignation());
-        txtSpeciality.setText(userBo.getSpeciality());
-        txtEmail.setText(userBo.geteAddress());
-        txtDegree.setText(userBo.getDegrees());
         cboActive.setSelectedItem(userBo.getActive());
-        cboType.setSelectedItem(userBo.getTypee());
-       
+       selectUserProperties();
         
     }//GEN-LAST:event_tblUserInfoMouseReleased
 
@@ -895,48 +727,6 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
         txtDepartment.requestFocus();
     }//GEN-LAST:event_txtLocationActionPerformed
 
-    private void txtSectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSectionActionPerformed
-       String query
-                = "   SELECT SECTION_ID ID , DESCRIPTION                     \n"
-                +"FROM                                                       \n" 
-                +Database.DCMS.section+ "                                    \n"
-                +"WHERE  DEPARTMENT_ID = '"+departmentId+"'              \n"
-               +"AND UPPER(DESCRIPTION) LIKE '%"+ txtSection.getText().toUpperCase().trim() +"%'\n";
-              
-                 
-        lov.LOVSelection(query, this);
-        if (Constants.lovID.equalsIgnoreCase("ID")) {
-            return;
-        }
-        sectionId = Constants.lovID;
-        txtSection.setText(Constants.lovDescription);
-        txtDesignation.requestFocus();
-    }//GEN-LAST:event_txtSectionActionPerformed
-
-    private void txtDesignationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDesignationActionPerformed
-        lov.LOVDefinitionSelection(DefinitionTypes.designation, txtDesignation.getText().trim(), this);
-        if (Constants.lovID.equalsIgnoreCase("ID")) {
-            return;
-        }
-        designationId = Constants.lovID;
-        txtDesignation.setText(Constants.lovDescription);
-        txtSpeciality.requestFocus();
-    }//GEN-LAST:event_txtDesignationActionPerformed
-
-    private void txtSpecialityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSpecialityActionPerformed
-        lov.LOVDefinitionSelection(DefinitionTypes.speciality, txtSpeciality.getText().trim(), this);
-        if (Constants.lovID.equalsIgnoreCase("ID")) {
-            return;
-        }
-        specialityId = Constants.lovID;
-        txtSpeciality.setText(Constants.lovDescription);
-        txtEmail.requestFocus();
-    }//GEN-LAST:event_txtSpecialityActionPerformed
-
-    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
-            txtPassword.requestFocus();
-    }//GEN-LAST:event_txtEmailActionPerformed
-
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
        txtDegree.requestFocus();
     }//GEN-LAST:event_txtPasswordActionPerformed
@@ -957,32 +747,6 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserNameSearchActionPerformed
 
-    private void txtDepartmentSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDepartmentSearchActionPerformed
-       lov.LOVDefinitionSelection(DefinitionTypes.department, txtDepartmentSearch.getText().trim(), this);
-        if (Constants.lovID.equalsIgnoreCase("ID")) {
-            return;
-        }
-        departmentId = Constants.lovID;
-        txtDepartmentSearch.setText(Constants.lovDescription);
-    }//GEN-LAST:event_txtDepartmentSearchActionPerformed
-
-    private void txtSectionSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSectionSearchActionPerformed
-       String query
-                = "   SELECT SECTION_ID ID , DESCRIPTION                     \n"
-                +"FROM                                                       \n" 
-                +Database.DCMS.section+ "                                    \n"
-                +"WHERE  DEPARTMENT_ID = '"+departmentId+"'              \n"
-               +"AND UPPER(DESCRIPTION) LIKE '%"+ txtSectionSearch.getText().toUpperCase().trim() +"%'\n";
-              
-                 
-        lov.LOVSelection(query, this);
-        if (Constants.lovID.equalsIgnoreCase("ID")) {
-            return;
-        }
-        sectionId = Constants.lovID;
-        txtSectionSearch.setText(Constants.lovDescription);
-    }//GEN-LAST:event_txtSectionSearchActionPerformed
-
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         userId = txtLoginIdSearch.getText().toUpperCase().trim();
         name = txtNameSearch.getText().toUpperCase().trim();
@@ -991,23 +755,9 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
         selectUserInfo( userId,name, userName,  departmentId,  sectionId);              
     }//GEN-LAST:event_btnSearchActionPerformed
 
-    private void btnEmailUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmailUpdateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEmailUpdateActionPerformed
-
     private void txtNameSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameSearchActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameSearchActionPerformed
-
-    private void txtDepartmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDepartmentActionPerformed
-      lov.LOVDefinitionSelection(DefinitionTypes.department, txtDepartment.getText().trim(), this);
-        if (Constants.lovID.equalsIgnoreCase("ID")) {
-            return;
-        }
-        departmentId = Constants.lovID;
-        txtDepartment.setText(Constants.lovDescription);
-        txtSection.requestFocus();
-    }//GEN-LAST:event_txtDepartmentActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
        if (listFS.isEmpty() || tblUserInfo.getSelectedRow() < 0) {
@@ -1063,10 +813,6 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
                    
     }//GEN-LAST:event_cboActiveActionPerformed
 
-    private void cboTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTypeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cboTypeActionPerformed
-
     private void txtFullNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtFullNameMouseClicked
         // TODO add your handling code here:
         txtFullName.setBackground(Color.WHITE);
@@ -1076,60 +822,59 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
       txtLoginId.setBackground(Color.WHITE);        // TODO add your handling code here:
     }//GEN-LAST:event_txtLoginIdMouseClicked
 
+    private void tblUserPropertiesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUserPropertiesMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblUserPropertiesMouseClicked
+
+    private void tblUserPropertiesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUserPropertiesMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblUserPropertiesMousePressed
+
+    private void tblUserPropertiesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUserPropertiesMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblUserPropertiesMouseReleased
+
+    private void tblUserPropertiesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblUserPropertiesKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblUserPropertiesKeyReleased
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnEdit;
-    private javax.swing.JButton btnEmailUpdate;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnPasswordUpdate;
     private javax.swing.JButton btnRegister;
     private javax.swing.JButton btnSearch;
     private javax.swing.JComboBox<String> cboActive;
-    private javax.swing.JComboBox<String> cboType;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JPanel pnlSearch;
     private javax.swing.JPanel pnlSearchUser7;
     private javax.swing.JTable tblUserInfo;
+    private javax.swing.JTable tblUserProperties;
     private javax.swing.JTextField txtConfirmPassword;
-    private javax.swing.JTextArea txtDegree;
-    private javax.swing.JTextField txtDepartment;
-    private javax.swing.JTextField txtDepartmentSearch;
-    private javax.swing.JTextField txtDesignation;
-    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFullName;
     private javax.swing.JTextField txtLocation;
     private javax.swing.JTextField txtLoginId;
     private javax.swing.JTextField txtLoginIdSearch;
     private javax.swing.JTextField txtNameSearch;
     private javax.swing.JTextField txtPassword;
-    private javax.swing.JTextField txtSection;
-    private javax.swing.JTextField txtSectionSearch;
-    private javax.swing.JTextField txtSpeciality;
     private javax.swing.JTextField txtUserName;
     private javax.swing.JTextField txtUserNameSearch;
     // End of variables declaration//GEN-END:variables
@@ -1160,13 +905,6 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
     
     
      private boolean verifyFieldData() {
-        if (cboType.getSelectedItem().toString().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Kindly Enter Type ");
-            cboActive.requestFocus();
-            cboType.setBackground(Color.red);
-            return false;
-        }
-
         if (cboActive.getSelectedItem().toString().length() == 0) {
             JOptionPane.showMessageDialog(null, "Kindly Enter Active ");
             txtFullName.requestFocus();
@@ -1185,48 +923,6 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Kindly Enter Login ID ");
             txtLocation.requestFocus();
             txtLoginId.setBackground(Color.red);
-            return false;
-        }
-
-        if (txtLocation.getText().trim().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Kindly Enter Location ");
-            txtDepartment.requestFocus();
-            txtLocation.setBackground(Color.red);
-            return false;
-        }
-
-        if (txtDepartment.getText().trim().length()== 0) {
-            JOptionPane.showMessageDialog(null, "Kindly Enter Department ");
-            txtSection.requestFocus();
-            txtDepartment.setBackground(Color.red);
-            return false;
-        }
-
-        if (txtSection.getText().trim().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Kindly Enter Section ");
-            txtDesignation.requestFocus();
-            txtSection.setBackground(Color.red);
-            return false;
-        }
-
-        if (txtDesignation.getText().trim().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Kindly Enter Designation ");
-            txtSpeciality.requestFocus();
-            txtDesignation.setBackground(Color.red);
-            return false;
-        }
-
-        if (txtSpeciality.getText().trim().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Kindly Enter Speciality ");
-            txtPassword.requestFocus();
-            txtSpeciality.setBackground(Color.red);
-            return false;
-        }
-
-        if (txtPassword.getText().trim().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Kindly Enter Password ");
-            txtDegree.requestFocus();
-            txtPassword.setBackground(Color.red);
             return false;
         }
 
@@ -1257,29 +953,24 @@ public class frmDefineUsers extends javax.swing.JInternalFrame {
     private void clearForm() {
         
         Vector<JComponent> comp = new Vector<JComponent>();
-        comp.add(cboType);
         comp.add(txtFullName);
         comp.add(cboActive);
         comp.add(txtUserName);
         comp.add(txtLoginId);
         comp.add(txtLocation);
-        comp.add(txtDepartment);
-        comp.add(txtSection);
-        comp.add(txtDesignation);
-        comp.add(txtSpeciality);
-        comp.add(txtEmail);
         comp.add(txtPassword);
         comp.add(txtConfirmPassword);
-        comp.add(txtDegree);
         comp.add(txtLoginIdSearch);
         comp.add(txtNameSearch);
         comp.add(txtUserNameSearch);
-        comp.add(txtDepartmentSearch);
-        comp.add(txtSectionSearch);
        
         GUIUtils.setClear(comp);
         
         listFS.clear();
         tblUserInfo.setModel(new UserInfoTableModel(listFS));
    }
+
+    private void selectUserProperties() {
+        listProperties = defineUserClt.selectUserProprties(userId);
+    }
 }

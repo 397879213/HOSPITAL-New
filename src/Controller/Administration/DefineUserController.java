@@ -8,6 +8,7 @@ package Controller.Administration;
 
 
 import BO.Administration.BODefineUser;
+import BO.SetupColumnDetail;
 import Handler.Administration.DefineUserHandler;
 
 import java.util.List;
@@ -25,6 +26,10 @@ public class DefineUserController {
              String userName, String departmentId, String sectionId ){
         return defUser.selectUserSearch(userId,name,userName,departmentId,sectionId);
         }
+    
+    public List<SetupColumnDetail> selectUserProprties(String userId) {
+        return defUser.selectUserProprties(userId);
+    }
     
   public boolean updateUserInfo(BODefineUser obj) {
 
