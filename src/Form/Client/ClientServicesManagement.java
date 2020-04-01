@@ -17,6 +17,7 @@ import utilities.Forms;
 public class ClientServicesManagement extends javax.swing.JInternalFrame {
 
     DisplayLOV lov = new DisplayLOV();
+    Vector selectedCredit = new Vector();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -47,6 +48,10 @@ public class ClientServicesManagement extends javax.swing.JInternalFrame {
         btnEdit = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
+        cboContractStatus = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        chkAllCredit = new javax.swing.JCheckBox();
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -67,7 +72,7 @@ public class ClientServicesManagement extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle(Constants.title+"Client Management");
         setFrameIcon(null);
-        setPreferredSize(new java.awt.Dimension(830, 660));
+        setPreferredSize(new java.awt.Dimension(840, 660));
 
         jPanel4.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -84,8 +89,8 @@ public class ClientServicesManagement extends javax.swing.JInternalFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,7 +211,7 @@ public class ClientServicesManagement extends javax.swing.JInternalFrame {
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -268,7 +273,7 @@ public class ClientServicesManagement extends javax.swing.JInternalFrame {
         jPanel10.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        btnSearchClear.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        btnSearchClear.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnSearchClear.setText("Clear");
         btnSearchClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -276,15 +281,15 @@ public class ClientServicesManagement extends javax.swing.JInternalFrame {
             }
         });
 
-        btnEdit.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
-        btnEdit.setText("Edit");
+        btnEdit.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnEdit.setText("Edit Clent Rate");
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditActionPerformed(evt);
             }
         });
 
-        btnExit.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
+        btnExit.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnExit.setForeground(new java.awt.Color(102, 0, 0));
         btnExit.setText("Exit");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
@@ -293,11 +298,35 @@ public class ClientServicesManagement extends javax.swing.JInternalFrame {
             }
         });
 
-        btnClear.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnClear.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnClear.setText("Search");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClearActionPerformed(evt);
+            }
+        });
+
+        cboContractStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Y", "N"}));
+
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(102, 0, 0));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel5.setText("Contract Status : ");
+
+        jButton1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jButton1.setText("Edit Credit");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        chkAllCredit.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
+        chkAllCredit.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        chkAllCredit.setText("All Is Credit");
+        chkAllCredit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkAllCreditActionPerformed(evt);
             }
         });
 
@@ -306,25 +335,37 @@ public class ClientServicesManagement extends javax.swing.JInternalFrame {
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSearchClear, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(187, 187, 187))
+                .addComponent(cboContractStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEdit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSearchClear, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chkAllCredit, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addGap(2, 2, 2)
+                .addGap(1, 1, 1)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSearchClear)
                     .addComponent(btnEdit)
                     .addComponent(btnExit)
-                    .addComponent(btnClear)))
+                    .addComponent(btnClear)
+                    .addComponent(cboContractStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1)
+                    .addComponent(chkAllCredit)))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -353,12 +394,12 @@ public class ClientServicesManagement extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(5, 5, 5))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -392,10 +433,20 @@ public class ClientServicesManagement extends javax.swing.JInternalFrame {
         if (vecClientCPT.isEmpty() || tableClientCPTInformation.getSelectedRow() < 0) {
             return;
         }
-        CPT cpt = (CPT) vecClientCPT.get(tableClientCPTInformation.getSelectedRow());
+        int row = tableClientCPTInformation.getSelectedRow();
+        CPT cpt = (CPT) vecClientCPT.get(row);
         vecCptTestSelected.add(cpt.cptId);
         clientId = cpt.clientId;
         cptId = cpt.cptId;
+        cboContractStatus.setSelectedItem(cpt.contractStatus);
+
+        if (tableClientCPTInformation.getValueAt(row, 4).equals(true)) {
+            cpt.setIsCredit("Y");
+        }
+        if (tableClientCPTInformation.getValueAt(row, 4).equals(false)) {
+            cpt.setIsCredit("N");
+        }
+            selectedCredit.add(cpt);
         // TODO add your handling code here:
 }//GEN-LAST:event_tableClientCPTInformationMouseReleased
 
@@ -503,14 +554,13 @@ public class ClientServicesManagement extends javax.swing.JInternalFrame {
                         return;
                     }
                 } else {
-
                     int price = Integer.parseInt(cpt.price);
                     cpt.clientPrice = "" + (price * discount);
                 }
-                if(tableClientCPTInformation.getValueAt(
-                        tableClientCPTInformation.getSelectedRow(), 4).equals(true)){
+                if (tableClientCPTInformation.getValueAt(
+                        tableClientCPTInformation.getSelectedRow(), 4).equals(true)) {
                     cpt.isCredit = "Y";
-                }else{
+                } else {
                     cpt.isCredit = "N";
                 }
                 selectedCPT.add(cpt);
@@ -558,17 +608,41 @@ public class ClientServicesManagement extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnSearchClearActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if (ctlCPT.updateClientCredit(selectedCredit)) {
+            JOptionPane.showMessageDialog(null, "Record Save Successfully");
+            searchClientCPT();
+        } else {
+            JOptionPane.showMessageDialog(null, "Unable to Save Record "
+                    + "Kindly Contact Administrator");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void chkAllCreditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkAllCreditActionPerformed
+        // TODO add your handling code here:
+        boolean status = false;
+        if (chkAllCredit.isSelected()) {
+            status = true;
+        }
+        checkUncheckAllCredit(status);
+    }//GEN-LAST:event_chkAllCreditActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnSearchClear;
+    private javax.swing.JComboBox<String> cboContractStatus;
     private javax.swing.JCheckBox chkAllCPT;
+    private javax.swing.JCheckBox chkAllCredit;
     private javax.swing.JCheckBox chkDiscountType;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel10;
@@ -658,6 +732,12 @@ public class ClientServicesManagement extends javax.swing.JInternalFrame {
     public void checkUncheckAllCPT(boolean status) {
         for (int i = 0; i < tableClientCPTInformation.getRowCount(); i++) {
             tableClientCPTInformation.setValueAt(new Boolean(status), i, selectIndex);
+        }
+    }
+
+    public void checkUncheckAllCredit(boolean status) {
+        for (int i = 0; i < tableClientCPTInformation.getRowCount(); i++) {
+            tableClientCPTInformation.setValueAt(new Boolean(status), i, 4);
         }
     }
 

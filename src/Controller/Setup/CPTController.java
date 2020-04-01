@@ -273,6 +273,35 @@ public class CPTController implements java.io.Serializable {
         }
         return ret;
     }
+    
+    public boolean updateClientCredit(Vector vecCPT) {
+
+        boolean ret = true;
+        Vector queries = new Vector();
+        for (int i = 0; i < vecCPT.size(); i++) {
+            CPT cpt = (CPT) vecCPT.get(i);
+            String query = " UPDATE " + Database.DCMS.clientWiseCPT
+                    + " SET IS_CREDIT = 'Y' \n"
+                    + " WHERE CLIENT_ID  = '" + cpt.clientId + "' \n"
+                    + " AND CPT_ID = '" + cpt.cptId + "' \n";
+
+            queries.add(query);
+            if (!hdlClient.insertClientCPTUpdateHistory(cpt)) {
+                ret = false;
+                break;
+            }
+        }
+        if (ret) {
+            ret = Constants.dao.executeUpdates(queries);
+        }
+        if (ret) {
+            ret = Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
 
     public boolean updateCPTParamter(CPTWiseParameter cpt) {
 

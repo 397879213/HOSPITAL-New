@@ -133,7 +133,7 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle(Constants.title+"Client Management");
         setFrameIcon(null);
-        setPreferredSize(new java.awt.Dimension(1150, 800));
+        setPreferredSize(new java.awt.Dimension(1210, 800));
 
         jPanel1.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Client Registration", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 16), new java.awt.Color(102, 0, 0))); // NOI18N
@@ -302,7 +302,7 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
                 .addGap(158, 158, 158)
                 .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
@@ -767,8 +767,11 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
 
     private void txtSelectClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSelectClientActionPerformed
 
+        if (txtSelectClient.getText().trim().length() == 0) {
+            return;
+        }
         btnSave.setEnabled(false);
-        searchClientInformation();
+        searchClientInformation(txtSelectClient.getText().trim());
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSelectClientActionPerformed
 
@@ -815,6 +818,7 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
         client.setTransactionType(cboTransactionType.getSelectedItem().toString());
         client.setActive("Y");
         if (ctlClient.registerClient(client)) {
+            searchClientInformation(txtClientName.getText().trim());
             JOptionPane.showMessageDialog(null, "Client Created Successfuly.");
         } else {
             JOptionPane.showMessageDialog(null, "Unable to Create Client.\n"
@@ -1076,6 +1080,7 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
         client.setTransactionType(cboTransactionType.getSelectedItem().toString());
         if(ctlClient.updateClient(client)){
             JOptionPane.showMessageDialog(null, "Record Save Successfully.");
+            searchClientInformation(txtSelectClient.getText().trim());
         }else{
             JOptionPane.showMessageDialog(null, "Unable to Save Record.");
         }
@@ -1144,11 +1149,8 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
     private int testLimit = -1;
 
 //    public CPTController ctlCPT = new CPTController();
-    public void searchClientInformation() {
-        if (txtSelectClient.getText().trim().length() == 0) {
-            return;
-        }
-        vecClient = ctlClient.searchClientByName(txtSelectClient.getText().trim());
+    public void searchClientInformation(String clientName) {
+        vecClient = ctlClient.searchClientByName(clientName);
         if (vecClient.isEmpty()) {
             Client clt = new Client();
             vecClient.add(clt);

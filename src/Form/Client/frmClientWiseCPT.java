@@ -1091,6 +1091,14 @@ public class frmClientWiseCPT extends javax.swing.JInternalFrame {
                 client.setCptId(cptId);
                 client.setClientCptPrice("0");
                 client.setContractStatus("N");
+                System.err.println("\n\n TR TYPE" + client.getTransectionType());
+                if (client.getTransectionType().equalsIgnoreCase("CREDIT")) {
+                    client.setIsCredit("Y");
+                } else {
+                    client.setIsCredit("N");
+                }
+                System.err.println("\n\n TR TYPE" + client.getIsCredit());
+                
                 list.add(client);
             }
         }
@@ -1189,6 +1197,13 @@ public class frmClientWiseCPT extends javax.swing.JInternalFrame {
                 client.setClientId(clientId);
                 client.setClientCptPrice("0");
                 client.setContractStatus("N");
+                System.err.println("\n\n TR TYPE" + client.getTransectionType());
+                if (client.getTransectionType().equalsIgnoreCase("CREDIT")) {
+                    client.setIsCredit("Y");
+                } else {
+                    client.setIsCredit("N");
+                }
+                System.err.println("\n\n TR TYPE" + client.getIsCredit());
                 list.add(client);
             }
         }

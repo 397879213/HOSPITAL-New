@@ -21,7 +21,8 @@ public class ClientWiseCptHandler {
     public boolean insertClientWiseCPT(List<ClientWiseCpt> listClientWiseCpt) {
 
         String[] columns = {Database.DCMS.clientWiseCPT, "CRTD_BY", "CLIENT_ID",
-            "CPT_ID", "CONTRACT_PRICE", "CONTRACT_STATUS", "CRTD_TERMINAL_ID"};
+            "CPT_ID", "IS_CREDIT", "CONTRACT_PRICE", "CONTRACT_STATUS", 
+            "CRTD_TERMINAL_ID"};
 
         List list = new ArrayList();
         for (int i = 0; i < listClientWiseCpt.size(); i++) {
@@ -31,6 +32,7 @@ public class ClientWiseCptHandler {
             map.put("CLIENT_ID", "'" + clientWiseCpt.getClientId() + "'");
             map.put("CONTRACT_PRICE", "'" + clientWiseCpt.getClientCptPrice() + "'");
             map.put("CONTRACT_STATUS", "'" + clientWiseCpt.getContractStatus() + "'");
+            map.put("IS_CREDIT", "'" + clientWiseCpt.getIsCredit() + "'");
             map.put("CRTD_BY", "'" + Constants.userId + "'");
             map.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
             list.add(map);
@@ -83,7 +85,8 @@ public class ClientWiseCptHandler {
         String[] columns = {"", "CPT_ID", "CPT_DESCRIPTION", "CPT_PRICE",
             "DEPARTMENT", "DEPARTMENT_DESCRIPTION", "SECTION", "ACTIVE",
             "CLIENT_ID", "CLIENT_NAME", "CLIENT_PRICE", "CONTRACT_STATUS",
-            "CLIENT_CPT_ACTIVE", "PERCENTAGE_DISCOUNT", "TEST_LIMIT", "IS_CREDIT"};
+            "CLIENT_CPT_ACTIVE", "PERCENTAGE_DISCOUNT", "TEST_LIMIT",
+            "TRANSACTION_TYPE", "IS_CREDIT"};
 
         String query
                 = " SELECT                                              \n"
@@ -97,6 +100,7 @@ public class ClientWiseCptHandler {
                 + " CWC.CLIENT_ID             CLIENT_ID,                \n"
                 + " CLT.DESCRIPTION           CLIENT_NAME,              \n"
                 + " NVL(CWC.CONTRACT_PRICE, '0')  CLIENT_PRICE,         \n"
+                + " NVL(CLT.TRANSACTION_TYPE, '0')  TRANSACTION_TYPE,   \n"
                 + " NVL(CWC.CONTRACT_STATUS, 'N') CONTRACT_STATUS,      \n"
                 + " CWC.ACTIVE                CLIENT_CPT_ACTIVE,        \n"
                 + " NVL(CWC.PERCENTAGE_DISCOUNT , '0') PERCENTAGE_DISCOUNT ,\n"
@@ -154,6 +158,7 @@ public class ClientWiseCptHandler {
             clientWiseCpt.setPercentageDiscount(map.get("PERCENTAGE_DISCOUNT").toString());
             clientWiseCpt.setClientCptStatus(map.get("CLIENT_CPT_ACTIVE").toString());
             clientWiseCpt.setTestLimit(map.get("TEST_LIMIT").toString());
+            clientWiseCpt.setTransectionType(map.get("TRANSACTION_TYPE").toString());
             clientWiseCpt.setIsCredit(map.get("IS_CREDIT").toString());
             vecCPT.add(clientWiseCpt);
         }
@@ -203,13 +208,13 @@ public class ClientWiseCptHandler {
             String departmentId, String section) {
 
         String[] columns = {"", "CPT_ID", "CPT_DESCRIPTION", "CPT_PRICE",
-            "CPT_ACTIVE"};
+            "CPT_ACTIVE", "TRANSACTION_TYPE"};
 
-        String query = "SELECT                                       \n"
-                + "CPT.CPT_ID                        CPT_ID,         \n"
+        String query = "SELECT CPT.CPT_ID            CPT_ID,         \n"
                 + "CPT.DESCRIPTION                   CPT_DESCRIPTION,\n"
                 + "CPT.COST                          CPT_PRICE,      \n"
-                + "CPT.ACTIVE                        CPT_ACTIVE      \n"
+                + "CPT.ACTIVE                        CPT_ACTIVE,     \n"
+                + "CPT.TRANSECTION_TYPE              TRANSACTION_TYPE\n"
                 + "FROM                                              \n"
                 + "EMR.CPT                           CPT             \n"
                 + "WHERE CPT.CPT_ID NOT IN (SELECT CWP.CPT_ID FROM   \n"
@@ -239,6 +244,7 @@ public class ClientWiseCptHandler {
             clientWiseCpt.setCptDescription(map.get("CPT_DESCRIPTION").toString());
             clientWiseCpt.setCptPrice(map.get("CPT_PRICE").toString());
             clientWiseCpt.setCptStatus(map.get("CPT_ACTIVE").toString());
+            clientWiseCpt.setTransectionType(map.get("TRANSACTION_TYPE").toString());
             vecCPT.add(clientWiseCpt);
         }
         return vecCPT;

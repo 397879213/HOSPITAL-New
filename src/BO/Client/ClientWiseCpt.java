@@ -15,6 +15,7 @@ public class ClientWiseCpt {
     private String cptPrice = "";
     private String clientCptPrice = "";
     private String testLimit = "";
+    private String transectionType = "";
     private String percentageDiscount = "";
     private String clientCptStatus = "";
     private String departmentId = "";
@@ -168,4 +169,11 @@ public class ClientWiseCpt {
         this.isCredit = isCredit;
     }
 
+    public String getTransectionType() {
+        return transectionType;
+    }
+
+    public void setTransectionType(String transectionType) {
+        this.transectionType = transectionType;
+    }
 }
