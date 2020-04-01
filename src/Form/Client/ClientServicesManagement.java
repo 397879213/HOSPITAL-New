@@ -439,17 +439,12 @@ public class ClientServicesManagement extends javax.swing.JInternalFrame {
         clientId = cpt.clientId;
         cptId = cpt.cptId;
         cboContractStatus.setSelectedItem(cpt.contractStatus);
-        if (chkAllCredit.isSelected()) {
-            for (int i = 0; i < vecClientCPT.size(); i++) {
-                cpt.isCredit = "Y";
-            }
-        } else {
-            if (tableClientCPTInformation.getValueAt(row, 4).equals(true)) {
-                cpt.isCredit = "Y";
-            }
-            if (tableClientCPTInformation.getValueAt(row, 4).equals(false)) {
-                cpt.isCredit = "N";
-            }
+
+        if (tableClientCPTInformation.getValueAt(row, 4).equals(true)) {
+            cpt.isCredit = "Y";
+        }
+        if (tableClientCPTInformation.getValueAt(row, 4).equals(false)) {
+            cpt.isCredit = "N";
         }
         selectedCredit.add(cpt);
         // TODO add your handling code here:
@@ -615,6 +610,12 @@ public class ClientServicesManagement extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        if (chkAllCredit.isSelected()) {
+            for (int i = 0; i < vecClientCPT.size(); i++) {
+                CPT cpt = (CPT) vecClientCPT.get(i);
+                cpt.isCredit = "Y";
+            }
+        }
         if (ctlCPT.updateClientCredit(selectedCredit)) {
             JOptionPane.showMessageDialog(null, "Record Save Successfully");
             searchClientCPT();
