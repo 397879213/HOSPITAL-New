@@ -439,12 +439,17 @@ public class ClientServicesManagement extends javax.swing.JInternalFrame {
         clientId = cpt.clientId;
         cptId = cpt.cptId;
         cboContractStatus.setSelectedItem(cpt.contractStatus);
-
-        if (tableClientCPTInformation.getValueAt(row, 4).equals(true)) {
-            cpt.isCredit = "Y";
-        }
-        if (tableClientCPTInformation.getValueAt(row, 4).equals(false)) {
-            cpt.isCredit = "N";
+        if (chkAllCredit.isSelected()) {
+            for (int i = 0; i < vecClientCPT.size(); i++) {
+                cpt.isCredit = "Y";
+            }
+        } else {
+            if (tableClientCPTInformation.getValueAt(row, 4).equals(true)) {
+                cpt.isCredit = "Y";
+            }
+            if (tableClientCPTInformation.getValueAt(row, 4).equals(false)) {
+                cpt.isCredit = "N";
+            }
         }
         selectedCredit.add(cpt);
         // TODO add your handling code here:
