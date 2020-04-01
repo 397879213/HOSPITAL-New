@@ -441,12 +441,12 @@ public class ClientServicesManagement extends javax.swing.JInternalFrame {
         cboContractStatus.setSelectedItem(cpt.contractStatus);
 
         if (tableClientCPTInformation.getValueAt(row, 4).equals(true)) {
-            cpt.setIsCredit("Y");
+            cpt.isCredit = "Y";
         }
         if (tableClientCPTInformation.getValueAt(row, 4).equals(false)) {
-            cpt.setIsCredit("N");
+            cpt.isCredit = "N";
         }
-            selectedCredit.add(cpt);
+        selectedCredit.add(cpt);
         // TODO add your handling code here:
 }//GEN-LAST:event_tableClientCPTInformationMouseReleased
 

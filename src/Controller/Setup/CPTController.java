@@ -273,7 +273,7 @@ public class CPTController implements java.io.Serializable {
         }
         return ret;
     }
-    
+
     public boolean updateClientCredit(Vector vecCPT) {
 
         boolean ret = true;
@@ -281,7 +281,7 @@ public class CPTController implements java.io.Serializable {
         for (int i = 0; i < vecCPT.size(); i++) {
             CPT cpt = (CPT) vecCPT.get(i);
             String query = " UPDATE " + Database.DCMS.clientWiseCPT
-                    + " SET IS_CREDIT = 'Y' \n"
+                    + " SET IS_CREDIT = '" + cpt.isCredit + "' \n"
                     + " WHERE CLIENT_ID  = '" + cpt.clientId + "' \n"
                     + " AND CPT_ID = '" + cpt.cptId + "' \n";
 
