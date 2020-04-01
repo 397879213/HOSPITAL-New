@@ -63,7 +63,12 @@ public class ClientController implements java.io.Serializable {
     }
 
     public boolean updateClientSetupProprties(List<SetupColumnDetail> listProperties) {
-        boolean ret = hdlClient.updateClientSetupProprties(listProperties);
+        SetupColumnDetail property = listProperties.get(0);
+        boolean ret = hdlClient.insertClientPropertyHist(property);
+        if (ret) {
+            ret = hdlClient.updateClientSetupProprties(listProperties);
+        }
+
         if (ret) {
             Constants.dao.commitTransaction();
         }

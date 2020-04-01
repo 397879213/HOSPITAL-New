@@ -610,14 +610,39 @@ public class ClientServicesManagement extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        if(vecClientCPT.isEmpty()){
+            return;
+        }
         if (chkAllCredit.isSelected()) {
+            int ret = JOptionPane.showConfirmDialog(null, "Do you wnat to Allow"
+                        + " all CPTs on Credit?");
+                if (ret != 0) {
+                    return;
+                }
             for (int i = 0; i < vecClientCPT.size(); i++) {
                 CPT cpt = (CPT) vecClientCPT.get(i);
                 cpt.isCredit = "Y";
+                selectedCredit.add(cpt);
+            }
+        }
+        if (!chkAllCredit.isSelected()) {
+            if (selectedCredit.isEmpty()) {
+                int ret = JOptionPane.showConfirmDialog(null, "Do you wnat to"
+                        + "Disallow all CPTs on Cash?");
+                if (ret != 0) {
+                    return;
+                }
+                for (int j = 0; j < vecClientCPT.size(); j++) {
+                    CPT cpt = (CPT) vecClientCPT.get(j);
+                    cpt.isCredit = "N";
+                    selectedCredit.add(cpt);
+                }
             }
         }
         if (ctlCPT.updateClientCredit(selectedCredit)) {
             JOptionPane.showMessageDialog(null, "Record Save Successfully");
+            selectedCredit.clear();
+            chkAllCredit.setSelected(false);
             searchClientCPT();
         } else {
             JOptionPane.showMessageDialog(null, "Unable to Save Record "
@@ -736,12 +761,18 @@ public class ClientServicesManagement extends javax.swing.JInternalFrame {
     int selectCostIndex = 3;// 5 status
 
     public void checkUncheckAllCPT(boolean status) {
+        if(vecClientCPT.isEmpty()){
+            return;
+        }
         for (int i = 0; i < tableClientCPTInformation.getRowCount(); i++) {
             tableClientCPTInformation.setValueAt(new Boolean(status), i, selectIndex);
         }
     }
 
     public void checkUncheckAllCredit(boolean status) {
+        if(vecClientCPT.isEmpty()){
+            return;
+        }
         for (int i = 0; i < tableClientCPTInformation.getRowCount(); i++) {
             tableClientCPTInformation.setValueAt(new Boolean(status), i, 4);
         }

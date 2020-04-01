@@ -859,12 +859,6 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(null, Constants.errorMessage);
         }
-//        if (ctlClient.updateClient(client)) {
-//            JOptionPane.showMessageDialog(null, "Record Save Successfully ");
-//            this.clearForm();
-//        } else {
-//            JOptionPane.showMessageDialog(null, Constants.errorMessage);
-//        }
 
     }//GEN-LAST:event_btnEditActionPerformed
 

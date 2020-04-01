@@ -65,6 +65,18 @@ public class ClientHandler implements java.io.Serializable {
         return ret;
     }
 
+    public boolean insertClientPropertyHist(SetupColumnDetail property) {
+
+        String query
+                = " INSERT INTO " + Database.DCMS.setupColumnDetailHistory
+                + "\n SELECT '" + property.getTableRowId() + "', '"
+                + property.getTableColumnId() + "', '" + property.getDefaultValue()
+                + "', '" + Constants.userId + "', " + Constants.today + ", '"
+                + Constants.terminalId + "' FROM " + Database.DCMS.setupColumnDetail
+                + " WHERE TABLE_ROW_ID = '" + property.getTableRowId() + "'";
+        return Constants.dao.executeUpdate(query, false);
+    }
+
     public boolean registerClient(Client client) {
 
         String[] columns = {Database.DCMS.client, "ID", "DESCRIPTION", "ACTIVE",
