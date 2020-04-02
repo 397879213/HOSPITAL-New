@@ -8,6 +8,7 @@ package Controller;
 import BO.SetupColumnDetail;
 import Handler.UserGroupHandler;
 import java.util.List;
+import utilities.Constants;
 
 /**
  *
@@ -24,4 +25,21 @@ public class UserGroupController {
     public List<SetupColumnDetail> selectUserProprties(String userId) {
         return hdlUserGroup.selectUserProprties(userId);
     }
+    
+    public boolean updateClientSetupProprties(List<SetupColumnDetail> listProperties) {
+        SetupColumnDetail property = listProperties.get(0);
+        boolean ret = hdlUserGroup.insertUserPropertyHist(property);
+        if (ret) {
+            ret = hdlUserGroup.updateUserSetupProprties(listProperties);
+        }
+
+        if (ret) {
+            Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
+    
 }

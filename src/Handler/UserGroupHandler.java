@@ -46,6 +46,33 @@ public class UserGroupHandler  implements java.io.Serializable{
         return listItems;
     }
     
+    public boolean updateUserSetupProprties(List<SetupColumnDetail> listProperties) {
+        boolean ret = true;
+        for (int i = 0; i < listProperties.size(); i++) {
+            SetupColumnDetail property = listProperties.get(i);
+
+            String query
+                    = " UPDATE " + Database.DCMS.setupColumnDetail
+                    + "\n SET DESCRIPTION = '" + property.getDefaultValue() + "'"
+                    + "\n WHERE TABLE_ROW_ID = '" + property.getTableRowId() + "'"
+                    + "\n AND TABLE_COLUMN_ID = " + property.getTableColumnId();
+            ret = Constants.dao.executeUpdate(query, false);
+        }
+        return ret;
+    }
+
+    public boolean insertUserPropertyHist(SetupColumnDetail property) {
+
+        String query
+                = " INSERT INTO " + Database.DCMS.setupColumnDetailHistory
+                + "\n SELECT '" + property.getTableRowId() + "', '"
+                + property.getTableColumnId() + "', '" + property.getDefaultValue()
+                + "', '" + Constants.userId + "', " + Constants.today + ", '"
+                + Constants.terminalId + "' FROM " + Database.DCMS.setupColumnDetail
+                + " WHERE TABLE_ROW_ID = '" + property.getTableRowId() + "'";
+        return Constants.dao.executeUpdate(query, false);
+    }
+    
     public Vector selectUserGroup(String userId) {
 
         String colums[] = {"-", "USER_ID", "ROLE_ID", "DESCRIPTION", "ROLE_TYPE"};

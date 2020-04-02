@@ -37,12 +37,13 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
     GroupForm groupForm = new GroupForm();
     UserGroupController ctlUserGroup = new UserGroupController();
     List<SetupColumnDetail> listProperties = new ArrayList();
+    private int selectedRow = 0;
 
     public frmDefineUser() {
 
         initComponents();
 
-        this.setSize(Constants.xSize, Constants.ySize - 130);
+        this.setSize(Constants.xSize + 40, Constants.ySize - 130);
         disableFormActionAbleComponents();
         this.enableFormActionAbleComponents();
         btnSave.setMnemonic(KeyEvent.VK_S);
@@ -138,6 +139,7 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
         btnEditLoginId = new javax.swing.JButton();
         btnDefaultColor = new javax.swing.JButton();
         btnManageRights = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableUser = new javax.swing.JTable();
@@ -306,7 +308,7 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
                         .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtUserName)
                             .addComponent(txtUserFullName)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -319,7 +321,7 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
                             .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtLocation)
                             .addComponent(cboType, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
+                .addGap(8, 8, 8))
         );
         pnlPatientDetailLayout.setVerticalGroup(
             pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -450,19 +452,29 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButton1.setText("Save Properties");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel12Layout.createSequentialGroup()
-                .addGap(73, 73, 73)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDefaultColor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCreateUser, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEditLoginId, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnClear, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                .addComponent(btnClear, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -471,12 +483,12 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
                 .addComponent(btnCopyRights, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnManageRights, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63))
+                .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
+                .addGap(4, 4, 4)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClear)
                     .addComponent(btnCreateUser)
@@ -485,7 +497,8 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
                     .addComponent(btnCopyRights)
                     .addComponent(btnEditLoginId)
                     .addComponent(btnDefaultColor)
-                    .addComponent(btnManageRights)))
+                    .addComponent(btnManageRights)
+                    .addComponent(jButton1)))
         );
 
         jPanel1.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -607,7 +620,7 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap(235, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(206, 206, 206))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
@@ -787,9 +800,9 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(10, 10, 10))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1213,11 +1226,28 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
 
     private void tblPropertiesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPropertiesMouseReleased
         // TODO add your handling code here:
+        selectedRow = tblProperties.getSelectedRow();
     }//GEN-LAST:event_tblPropertiesMouseReleased
 
     private void tblPropertiesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblPropertiesKeyReleased
         // TODO add your handling code here:
+        if(listProperties.isEmpty()){
+            return;
+        }
+        SetupColumnDetail objSetup = listProperties.get(
+                tblProperties.getSelectedRow());
+        objSetup.setDefaultValue(tblProperties.getValueAt(
+                tblProperties.getSelectedRow(), 3).toString());
     }//GEN-LAST:event_tblPropertiesKeyReleased
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if (ctlUserGroup.updateClientSetupProprties(listProperties)) {
+            selectUserProperties();
+        } else {
+            JOptionPane.showMessageDialog(null, Constants.errorMessage);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public void searchUser() {
 
@@ -1273,6 +1303,7 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnSearch;
     private javax.swing.JComboBox cboActive;
     private javax.swing.JComboBox cboType;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1488,8 +1519,9 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
             ListSelectionModel selectionModel = tblProperties.getSelectionModel();
             tblProperties.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
             setUserInformationColumnsWidths();
-            selectionModel.setSelectionInterval(0, 0);
+            selectionModel.setSelectionInterval(0, selectedRow);
             Constants.tablelook.setJTableEnvironment(tblProperties);
+            selectedRow = 0;
         }
     }
 
