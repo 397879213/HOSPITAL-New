@@ -138,7 +138,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="txtUserName" max="32767" attributes="1"/>
                               <Component id="txtUserFullName" alignment="0" max="32767" attributes="1"/>
-                              <Component id="jLabel1" alignment="1" max="32767" attributes="0"/>
+                              <Component id="jLabel1" alignment="1" pref="228" max="32767" attributes="0"/>
                               <Component id="jLabel3" alignment="1" max="32767" attributes="1"/>
                               <Component id="jLabel2" alignment="0" max="32767" attributes="1"/>
                           </Group>
@@ -147,12 +147,12 @@
                               <Group type="102" attributes="0">
                                   <Component id="jLabel9" min="-2" pref="68" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="cboActive" pref="91" max="32767" attributes="0"/>
+                                  <Component id="cboActive" max="32767" attributes="0"/>
                               </Group>
                               <Component id="txtUserId" alignment="1" max="32767" attributes="1"/>
                               <Component id="jLabel22" alignment="1" max="32767" attributes="1"/>
-                              <Component id="cboType" max="32767" attributes="0"/>
                               <Component id="txtLocation" max="32767" attributes="0"/>
+                              <Component id="cboType" alignment="1" min="-2" pref="164" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
