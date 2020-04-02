@@ -116,6 +116,7 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         btnExit = new javax.swing.JButton();
         btnFinal = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
+        btnPerfusion = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102)));
@@ -686,7 +687,6 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         });
 
         btnSave.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnSave.setForeground(new java.awt.Color(0, 204, 102));
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -704,7 +704,6 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         });
 
         btnFinal.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnFinal.setForeground(new java.awt.Color(0, 204, 102));
         btnFinal.setText("Final");
         btnFinal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -720,12 +719,20 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
             }
         });
 
+        btnPerfusion.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnPerfusion.setText("Perfusion");
+        btnPerfusion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPerfusionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(296, 296, 296)
+                .addGap(243, 243, 243)
                 .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -735,6 +742,8 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
                 .addComponent(btnFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnPerfusion, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -746,7 +755,8 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
                     .addComponent(btnSave)
                     .addComponent(btnFinal)
                     .addComponent(btnEdit)
-                    .addComponent(btnClear))
+                    .addComponent(btnClear)
+                    .addComponent(btnPerfusion))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1031,12 +1041,24 @@ public class CardiacSurgeryRegistry extends javax.swing.JInternalFrame {
         tblPatientsList.setModel(new PatientListTableModel(lisPatient));
     }//GEN-LAST:event_btnClearActionPerformed
 
+    private void btnPerfusionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfusionActionPerformed
+        // TODO add your handling code here:
+        PerfusionistForm fm = new PerfusionistForm();
+        DCMS_MDI.desktopPane.add(fm);
+        Dimension desktopSize = DCMS_MDI.desktopPane.getSize();
+        Dimension fmSize = fm.getSize();
+        fm.setLocation((desktopSize.width - fmSize.width) / 2,
+                (desktopSize.height - fmSize.height) / 2);
+        fm.setVisible(true);
+    }//GEN-LAST:event_btnPerfusionActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnFinal;
+    private javax.swing.JButton btnPerfusion;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
