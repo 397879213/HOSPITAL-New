@@ -1256,6 +1256,9 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
         selectionModel.setSelectionInterval(0, currentRecord);
         Constants.tablelook.setJTableEnvironment(tableUser);
         this.currentRecord = 0;
+        user = (User) vecUsers.get(currentRecord);
+        userId = user.getUserId();
+        selectUserProperties();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChangePassword;
