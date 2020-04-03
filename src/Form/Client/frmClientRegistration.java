@@ -42,10 +42,11 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
         txtClientName.setCaretPosition(0);
         btnExit.setMnemonic(KeyEvent.VK_X);
         btnEditExit.setMnemonic(KeyEvent.VK_X);
-        btnSave.setMnemonic(KeyEvent.VK_S);
+        btnSave.setMnemonic(KeyEvent.VK_R);
         btnClear.setMnemonic(KeyEvent.VK_C);
+        btnUpdate.setMnemonic(KeyEvent.VK_U);
         btnEdit.setMnemonic(KeyEvent.VK_E);
-        btnSearchClientCPT.setMnemonic(KeyEvent.VK_R);
+        btnSearchClientCPT.setMnemonic(KeyEvent.VK_S);
         btnSave.setEnabled(true);
 
         setFormRights();
@@ -1218,6 +1219,11 @@ public class frmClientRegistration extends javax.swing.JInternalFrame {
         comp.add(txtDeleteLocation);
         comp.add(txtSelectClient);
         GUIUtils.setClear(comp);
+        listClientProperties.clear();
+        vecClient.clear();
+        tblProperties.setModel(new ClientPropertiesModel(listClientProperties));
+        tableSearchClient.setModel(new ClientInformationModel(vecClient));
+        btnSave.setEnabled(true);
         client = null;
     }
 

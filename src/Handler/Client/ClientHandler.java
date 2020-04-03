@@ -214,25 +214,8 @@ public class ClientHandler implements java.io.Serializable {
         String query
                 = " UPDATE " + Database.DCMS.client + " \n SET "
                 + " ACTIVE  = '" + client.getActive().trim() + "' ,"
-                + " ADDRESS  = '" + client.getAddress().trim() + "' ,"
                 + " DESCRIPTION  = '" + client.getClientName().trim() + "',"
-                + " ACCOUNT_ID  = '" + client.getAccountId() + "',"
-                + " CONTACT_PERSON  = '" + client.getContactPerson().trim() + "',"
-                + " EMAIL_ADDRESS  = '" + client.getEmail().trim() + "',"
-                + " LAND_LINE_NO  = '" + client.getLandLineNo().trim() + "',"
-                + " MOBILE_NO  = '" + client.getMobileNo().trim() + "',"
-                + " TRANSACTION_TYPE  = '" + client.getTransactionType() + "',"
-                + " CLIENT_TYPE  = '" + client.getClientType() + "',"
-                + " CREDIT_LIMIT  = '" + client.getCreditLimit() + "',"
-                + " CHECK_CREDIT  = '" + client.getCheckCreditLimit() + "',"
-                + " TEST_LIMIT  = '" + client.getTestLimit() + "',"
-                + " SELECT_IT  = '" + client.getSelectIt() + "',"
-                + " SELECTION_ALLOWED  = '" + client.getSelectionAllow() + "',"
-                + " PATIENT_UPDATE_ALLOW  = '" + client.getPatientUpdate() + "',"
-                + " PATIENT_CONTACT_NO  = '" + client.getPatientContact() + "',"
-                + " PATIENT_REPORT_EMAIL  = '" + client.getPatientReportEmail() + "',"
-                + " SEND_SMS  = '" + client.getSendSms() + "',"
-                + " DISPLAY_REPORT  = '" + client.getDisplayReport() + "'"
+                + " TRANSACTION_TYPE  = '" + client.getTransactionType() + "'"
                 + " WHERE ID = '" + client.getClientId() + "'";
         boolean ret = Constants.dao.executeUpdate(query, false);
 
@@ -240,18 +223,10 @@ public class ClientHandler implements java.io.Serializable {
 
             String hist
                     = " INSERT INTO " + Database.DCMS.updateClientHistory
-                    + "( ID, DESCRIPTION, ADDRESS, EMAIL_ADDRESS, CONTACT_PERSON, \n"
-                    + " LAND_LINE_NO,MOBILE_NO, TRANSACTION_TYPE, ACTIVE, START_DATE, \n "
-                    + " END_DATE, ACCOUNT_ID, DISCOUNT, CLIENT_TYPE, CREDIT_LIMIT,  \n"
-                    + " CHECK_CREDIT, TEST_LIMIT, CRTD_BY, CRTD_DATE, CRTD_TERMINAL_ID, \n"
-                    + " SELECT_IT, SELECTION_ALLOWED,  PATIENT_UPDATE_ALLOW, \n"
-                    + " UPTD_DATE, UPTD_TERMINAL_ID, UPTD_BY) (SELECT ID, DESCRIPTION, \n"
-                    + " ADDRESS, EMAIL_ADDRESS, CONTACT_PERSON, LAND_LINE_NO, MOBILE_NO, \n"
-                    + " TRANSACTION_TYPE, ACTIVE, START_DATE, END_DATE, ACCOUNT_ID, DISCOUNT,\n"
-                    + " CLIENT_TYPE, CREDIT_LIMIT, CHECK_CREDIT, TEST_LIMIT, CRTD_BY,\n "
-                    + " CRTD_DATE, CRTD_TERMINAL_ID, SELECT_IT, SELECTION_ALLOWED,  \n"
-                    + " PATIENT_UPDATE_ALLOW, SYSDATE,'" + Constants.terminalId + "','"
-                    + Constants.userId + "' \n"
+                    + "( SELECT ID, DESCRIPTION, TRANSACTION_TYPE, ACTIVE,"
+                    + " CRTD_BY, CRTD_DATE, CRTD_TERMINAL_ID, \n"
+                    + " SYSDATE,'" + Constants.userId + "','"
+                    + Constants.terminalId + "' \n"
                     + " FROM " + Database.DCMS.client + " WHERE "
                     + " ID = " + client.getClientId() + " )";
             ret = Constants.dao.executeUpdate(hist, ret);
