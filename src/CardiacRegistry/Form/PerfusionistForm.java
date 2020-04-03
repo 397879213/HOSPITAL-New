@@ -45,9 +45,9 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         btnFinal.setMnemonic(KeyEvent.VK_F);
         btnGraph.setMnemonic(KeyEvent.VK_G);
         DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");// yyyy/MM/dd HH:mm:ss
-	Date date = new Date();
-        txtBGTime.setText(dateFormat.format(date)); 
-        
+        Date date = new Date();
+        txtBGTime.setText(dateFormat.format(date));
+
         selectPerfusionGraph();
         selectPerfusionInfo();
         selectPerfusionCheckList();
@@ -3305,12 +3305,12 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         objCheckList = listPerCheckList.get(tblCheckList.getSelectedRow());
         objCheckList.setChecked("N");
-        if(tblCheckList.getValueAt(tblCheckList.getSelectedRow(), 2).equals(true)){
+        if (tblCheckList.getValueAt(tblCheckList.getSelectedRow(), 2).equals(true)) {
             objCheckList.setChecked("Y");
         }
-        if(ctlPerfusionist.updateCheckList(objCheckList)){
+        if (ctlPerfusionist.updateCheckList(objCheckList)) {
             selectPerfusionCheckList();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Unable to update Check List.\n"
                     + "Kindly Contact Support Team.");
         }
@@ -3644,42 +3644,45 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private void cboBGTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboBGTypeActionPerformed
         // TODO add your handling code here:
         int confirmation = JOptionPane.showConfirmDialog(null, "You Are Going "
-            + "To Save and Final the information.\nDo you want to Save and Final?");
+                + "To Save and Final the information.\nDo you want to Save and Final?");
         if (confirmation != 0) {
             return;
         }
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy " + 
+                txtBGTime.getText().trim());// yyyy/MM/dd HH:mm:ss
+        Date date = new Date();
+        System.err.println("inrr date: "+ dateFormat.format(date));
+        bloodGasses.setCardiacId(cardiacId);
+        bloodGasses.setOnVentDBP(cboBGType.getSelectedItem().toString());
+        bloodGasses.setTime(dateFormat.format(date));
+        bloodGasses.setBloodFlow(txtBloodFlow.getText().trim());
+        bloodGasses.setTemperature(txtTemperature.getText().trim());
+        bloodGasses.setFIO2(txtFio2.getText().trim());
+        bloodGasses.setGFlow(txtGflow.getText().trim());
+        bloodGasses.setPH(txtPH.getText().trim());
+        bloodGasses.setPCO2(txtPco2.getText().trim());
+        bloodGasses.setPO2(txtPo2.getText().trim());
+        bloodGasses.setHCO2(txtHco2.getText().trim());
+        bloodGasses.setBE(txtBE.getText().trim());
+        bloodGasses.setO2Sat(txtO2.getText().trim());
+        bloodGasses.setTCO2(txtTco2.getText().trim());
+        bloodGasses.setNA(txtNa.getText().trim());
+        bloodGasses.setK(txtK.getText().trim());
+        bloodGasses.setCA(txtCA.getText().trim());
+        bloodGasses.setLAC(txtLac.getText().trim());
+        bloodGasses.setHB(txtHb.getText().trim());
+        bloodGasses.setSugar(txtSugar.getText().trim());
+        bloodGasses.setACT(txtAct.getText().trim());
+        bloodGasses.setHeparin(txtHeparin.getText().trim());
 
-                bloodGasses.setCardiacId(cardiacId);
-                bloodGasses.setOnVentDBP(cboBGType.getSelectedItem().toString());
-                bloodGasses.setTime(txtBGTime.getText().trim());
-                bloodGasses.setBloodFlow(txtBloodFlow.getText().trim());
-                bloodGasses.setTemperature(txtTemperature.getText().trim());
-                bloodGasses.setFIO2(txtFio2.getText().trim());
-                bloodGasses.setGFlow(txtGflow.getText().trim());
-                bloodGasses.setPH(txtPH.getText().trim());
-                bloodGasses.setPCO2(txtPco2.getText().trim());
-                bloodGasses.setPO2(txtPo2.getText().trim());
-                bloodGasses.setHCO2(txtHco2.getText().trim());
-                bloodGasses.setBE(txtBE.getText().trim());
-                bloodGasses.setO2Sat(txtO2.getText().trim());
-                bloodGasses.setTCO2(txtTco2.getText().trim());
-                bloodGasses.setNA(txtNa.getText().trim());
-                bloodGasses.setK(txtK.getText().trim());
-                bloodGasses.setCA(txtCA.getText().trim());
-                bloodGasses.setLAC(txtLac.getText().trim());
-                bloodGasses.setHB(txtHb.getText().trim());
-                bloodGasses.setSugar(txtSugar.getText().trim());
-                bloodGasses.setACT(txtAct.getText().trim());
-                bloodGasses.setHeparin(txtHeparin.getText().trim());
-
-                if (ctlPerfusionist.insertBloodGases(bloodGasses)) {
-                        JOptionPane.showMessageDialog(null, "Record save successfully.");
-                        clearBloodGases();
-                        selectBloodGases();
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Uanble to save record.\n"
-                                    + "Please contact support Team.");
-                    }
+        if (ctlPerfusionist.insertBloodGases(bloodGasses)) {
+            JOptionPane.showMessageDialog(null, "Record save successfully.");
+            clearBloodGases();
+            selectBloodGases();
+        } else {
+            JOptionPane.showMessageDialog(null, "Uanble to save record.\n"
+                    + "Please contact support Team.");
+        }
     }//GEN-LAST:event_cboBGTypeActionPerformed
 
     private void tblPatientInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientInfoMouseClicked
@@ -4136,7 +4139,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         objPerfusionist.setAssistantSurgeonId(asstSurgeonId);
         objPerfusionist.setAnesthetistId(anesthetistId);
         // Cannulae
-        
+
         objPerfusionist.setHemofilter(txtHemofilter.getText().trim());
         objPerfusionist.setAntegrade(txtAntegrade.getText().trim());
         objPerfusionist.setRetrograde(txtRetrograde.getText().trim());
@@ -4200,7 +4203,6 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         txtAsstSurgeon.setText(objPerfusionist.getAssistantSurgeonName());
         txtAnesthetist.setText(objPerfusionist.getAnesthetistName());
 
-        
         txtHemofilter.setText(objPerfusionist.getHemofilter());
         txtAntegrade.setText(objPerfusionist.getAntegrade());
         txtRetrograde.setText(objPerfusionist.getRetrograde());
@@ -4253,7 +4255,6 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         txtAsstSurgeon.setText("");
         txtAnesthetist.setText("");
 
-        
         txtHemofilter.setText("");
         txtAntegrade.setText("");
         txtRetrograde.setText("");
@@ -4330,7 +4331,6 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         txtAsstSurgeon.setEditable(false);
         txtAnesthetist.setEditable(false);
 
-        
         txtHemofilter.setEditable(false);
         txtAntegrade.setEditable(false);
         txtRetrograde.setEditable(false);
@@ -4431,9 +4431,9 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
             }
         }
     }
-    
-    private void selectPerfusionCheckList(){
-        listPerCheckList = ctlPerfusionist.selectPerfusionCheckList(cardiacId, 
+
+    private void selectPerfusionCheckList() {
+        listPerCheckList = ctlPerfusionist.selectPerfusionCheckList(cardiacId,
                 patientId);
         if (listPerCheckList.isEmpty()) {
             List<PerfusionistBO> listPerCheckList = new ArrayList<>();
@@ -4448,7 +4448,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         selectionModel.setSelectionInterval(0, 0);
         Constants.tablelook.setJTableEnvironment(tblCheckList);
     }
-    
+
     private void setPerfusionCheckListColumnsWidths() {
         TableColumn column = null;
         for (int i = 0; i < tblCheckList.getColumnCount(); i++) {
