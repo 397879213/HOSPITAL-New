@@ -461,7 +461,8 @@ public class PerfusionistHandler {
             "HEPARIN", "CRTD_BY", "CRTD_DATE"};
 
         String query
-                = "SELECT BG.ID, BG.CARDIAC_ID, BG.TIME, BG.ON_VENT_DB, BG.B_FLOW, "
+                = "SELECT BG.ID, BG.CARDIAC_ID, TO_CHAR(BG.TIME, 'HH24:MI:SS') TIME, "
+                + "BG.ON_VENT_DB, BG.B_FLOW, "
                 + "\n BG.TEMPERATURE, BG.FIO2, BG.G_FLOW, BG.PH, BG.PCO2,"
                 + "\n BG.HCO2, BG.BE, BG.O2_SAT, BG.TCO2, BG.NA, BG.K,"
                 + "\n BG.CA, BG.LAC, BG.HB, BG.SUGAR, BG.ACT, BG.HEPARIN,"

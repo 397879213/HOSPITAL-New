@@ -2451,7 +2451,7 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel60" min="-2" pref="114" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtBloodFlow1" min="-2" pref="95" max="-2" attributes="3"/>
+                                  <Component id="txtBFlow" min="-2" pref="95" max="-2" attributes="3"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel61" pref="105" max="32767" attributes="0"/>
                               </Group>
@@ -2507,7 +2507,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                  <Component id="txtHeparin1" alignment="1" min="-2" pref="95" max="-2" attributes="3"/>
+                                  <Component id="txtHeparinKU" alignment="1" min="-2" pref="95" max="-2" attributes="3"/>
                                   <Component id="txtLac" alignment="1" min="-2" pref="95" max="-2" attributes="3"/>
                               </Group>
                               <Group type="103" alignment="0" groupAlignment="0" attributes="0">
@@ -2545,7 +2545,7 @@
                                       </Group>
                                   </Group>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtHb1" pref="95" max="32767" attributes="3"/>
+                                      <Component id="txtHB" pref="95" max="32767" attributes="3"/>
                                       <Component id="cboBGType" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -2559,7 +2559,7 @@
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel60" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtBloodFlow1" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtBFlow" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel61" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="txtTemperature" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel62" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
@@ -2598,7 +2598,7 @@
                               <Component id="jLabel81" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="txtLac" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel82" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtHb1" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtHB" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
                           <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -2607,7 +2607,7 @@
                               <Component id="jLabel94" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="txtAct" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel95" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtHeparin1" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtHeparinKU" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="txtBGTime" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="cboBGType" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -2629,14 +2629,14 @@
                     <Property name="text" type="java.lang.String" value="Blood Flow L/min :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtBloodFlow1">
+                <Component class="javax.swing.JTextField" name="txtBFlow">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBloodFlow1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBFlowActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel61">
@@ -2947,14 +2947,14 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLacActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtHb1">
+                <Component class="javax.swing.JTextField" name="txtHB">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtHb1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtHBActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel84">
@@ -3025,14 +3025,14 @@
                     <Property name="text" type="java.lang.String" value="Heparin KU : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtHeparin1">
+                <Component class="javax.swing.JTextField" name="txtHeparinKU">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtHeparin1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtHeparinKUActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtBGTime">

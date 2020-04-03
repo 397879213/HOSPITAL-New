@@ -12,8 +12,9 @@ import javax.swing.table.AbstractTableModel;
 public class PerfusionBloodGasesTableModel extends AbstractTableModel {
 
     private final String[] columnNames
-            = {"Time", "On Vent", "DBP 1", "DBP 2", "DBP 3", "DBP 4",
-                "DBP 5", "DBP 6", "DBP 7", "DBP 8", "DBP 9", "DBP 10", ""};
+            = {"Id", "Time", "On Vent", "B. Flow", "Temp.", "FIO2", "G Flow",
+                "PH", "PCO2", "HCO2", "BE", "O2 Sat", "TCO2", "NA", "K", "Ca",
+            "Lac", "Hb", "Sugar", "ACT", "Hapa. KU"};
     private final Object[][] data;
 
     public PerfusionBloodGasesTableModel(List<BloodGasses> liInfo) {
@@ -24,25 +25,26 @@ public class PerfusionBloodGasesTableModel extends AbstractTableModel {
         for (BloodGasses currentinfo : liInfo) {
 
             data[row][0] = currentinfo.getBloodGasesId();
-            data[row][1] = currentinfo.getOnVentDBP();
-            data[row][2] = currentinfo.getBloodFlow();
-            data[row][3] = currentinfo.getTemperature();
-            data[row][4] = currentinfo.getFIO2();
-            data[row][5] = currentinfo.getGFlow();
-            data[row][6] = currentinfo.getPH();
-            data[row][7] = currentinfo.getPCO2();
-            data[row][8] = currentinfo.getHCO2();
-            data[row][9] = currentinfo.getBE();
-            data[row][10] = currentinfo.getO2Sat();
-            data[row][11] = currentinfo.getTCO2();
-            data[row][12] = currentinfo.getNA();
-//            data[row][13] = currentinfo.getK();
-//            data[row][14] = currentinfo.getCA();
-//            data[row][15] = currentinfo.getLAC();
-//            data[row][16] = currentinfo.getHB();
-//            data[row][17] = currentinfo.getSugar();
-//            data[row][18] = currentinfo.getACT();
-//            data[row][19] = currentinfo.getHeparin();
+            data[row][1] = currentinfo.getTime();
+            data[row][2] = currentinfo.getOnVentDBP();
+            data[row][3] = currentinfo.getBloodFlow();
+            data[row][4] = currentinfo.getTemperature();
+            data[row][5] = currentinfo.getFIO2();
+            data[row][6] = currentinfo.getGFlow();
+            data[row][7] = currentinfo.getPH();
+            data[row][8] = currentinfo.getPCO2();
+            data[row][9] = currentinfo.getHCO2();
+            data[row][10] = currentinfo.getBE();
+            data[row][11] = currentinfo.getO2Sat();
+            data[row][12] = currentinfo.getTCO2();
+            data[row][13] = currentinfo.getNA();
+            data[row][14] = currentinfo.getK();
+            data[row][15] = currentinfo.getCA();
+            data[row][16] = currentinfo.getLAC();
+            data[row][17] = currentinfo.getHB();
+            data[row][18] = currentinfo.getSugar();
+            data[row][19] = currentinfo.getACT();
+            data[row][12] = currentinfo.getHeparin();
             row++;
 
         }

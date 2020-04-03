@@ -198,7 +198,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         tblBloodGases = new javax.swing.JTable();
         jPanel29 = new javax.swing.JPanel();
         jLabel60 = new javax.swing.JLabel();
-        txtBloodFlow1 = new javax.swing.JTextField();
+        txtBFlow = new javax.swing.JTextField();
         jLabel61 = new javax.swing.JLabel();
         txtTemperature = new javax.swing.JTextField();
         jLabel62 = new javax.swing.JLabel();
@@ -227,14 +227,14 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel82 = new javax.swing.JLabel();
         jLabel83 = new javax.swing.JLabel();
         txtLac = new javax.swing.JTextField();
-        txtHb1 = new javax.swing.JTextField();
+        txtHB = new javax.swing.JTextField();
         jLabel84 = new javax.swing.JLabel();
         jLabel86 = new javax.swing.JLabel();
         txtSugar = new javax.swing.JTextField();
         jLabel94 = new javax.swing.JLabel();
         txtAct = new javax.swing.JTextField();
         jLabel95 = new javax.swing.JLabel();
-        txtHeparin1 = new javax.swing.JTextField();
+        txtHeparinKU = new javax.swing.JTextField();
         txtBGTime = new javax.swing.JTextField();
         cboBGType = new javax.swing.JComboBox<>();
         jPanel20 = new javax.swing.JPanel();
@@ -1776,10 +1776,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel60.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel60.setText("Blood Flow L/min :");
 
-        txtBloodFlow1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtBloodFlow1.addActionListener(new java.awt.event.ActionListener() {
+        txtBFlow.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtBFlow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBloodFlow1ActionPerformed(evt);
+                txtBFlowActionPerformed(evt);
             }
         });
 
@@ -1951,10 +1951,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
             }
         });
 
-        txtHb1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtHb1.addActionListener(new java.awt.event.ActionListener() {
+        txtHB.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtHB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtHb1ActionPerformed(evt);
+                txtHBActionPerformed(evt);
             }
         });
 
@@ -1992,10 +1992,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel95.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel95.setText("Heparin KU : ");
 
-        txtHeparin1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtHeparin1.addActionListener(new java.awt.event.ActionListener() {
+        txtHeparinKU.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtHeparinKU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtHeparin1ActionPerformed(evt);
+                txtHeparinKUActionPerformed(evt);
             }
         });
 
@@ -2034,7 +2034,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
                         .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtBloodFlow1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtBFlow, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel61, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel29Layout.createSequentialGroup()
@@ -2077,7 +2077,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtHeparin1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtHeparinKU, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtLac, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(txtTco2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2106,7 +2106,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                                 .addComponent(txtBGTime, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(5, 5, 5)))
                         .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtHb1, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                            .addComponent(txtHB, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
                             .addComponent(cboBGType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
         );
         jPanel29Layout.setVerticalGroup(
@@ -2115,7 +2115,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                 .addGap(5, 5, 5)
                 .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtBloodFlow1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBFlow, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel61, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2151,7 +2151,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                     .addComponent(jLabel81, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtLac, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel82, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtHb1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtHB, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel86, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2159,7 +2159,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                     .addComponent(jLabel94, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAct, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel95, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtHeparin1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtHeparinKU, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtBGTime, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboBGType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5))
@@ -3543,10 +3543,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSugar24ActionPerformed
 
-    private void txtBloodFlow1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBloodFlow1ActionPerformed
+    private void txtBFlowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBFlowActionPerformed
         // TODO add your handling code here:
         txtTemperature.requestFocus();
-    }//GEN-LAST:event_txtBloodFlow1ActionPerformed
+    }//GEN-LAST:event_txtBFlowActionPerformed
 
     private void txtTemperatureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTemperatureActionPerformed
         // TODO add your handling code here:
@@ -3618,10 +3618,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         txtHb.requestFocus();
     }//GEN-LAST:event_txtLacActionPerformed
 
-    private void txtHb1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHb1ActionPerformed
+    private void txtHBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHBActionPerformed
         // TODO add your handling code here:
         txtSugar.requestFocus();
-    }//GEN-LAST:event_txtHb1ActionPerformed
+    }//GEN-LAST:event_txtHBActionPerformed
 
     private void txtSugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugarActionPerformed
         // TODO add your handling code here:
@@ -3633,9 +3633,9 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         txtHeparin.requestFocus();
     }//GEN-LAST:event_txtActActionPerformed
 
-    private void txtHeparin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHeparin1ActionPerformed
+    private void txtHeparinKUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHeparinKUActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtHeparin1ActionPerformed
+    }//GEN-LAST:event_txtHeparinKUActionPerformed
 
     private void txtBGTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBGTimeActionPerformed
         // TODO add your handling code here:
@@ -3651,11 +3651,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy " + 
                 txtBGTime.getText().trim());// yyyy/MM/dd HH:mm:ss
         Date date = new Date();
-        System.err.println("inrr date: "+ dateFormat.format(date));
         bloodGasses.setCardiacId(cardiacId);
         bloodGasses.setOnVentDBP(cboBGType.getSelectedItem().toString());
         bloodGasses.setTime(dateFormat.format(date));
-        bloodGasses.setBloodFlow(txtBloodFlow.getText().trim());
+        bloodGasses.setBloodFlow(txtBFlow.getText().trim());
         bloodGasses.setTemperature(txtTemperature.getText().trim());
         bloodGasses.setFIO2(txtFio2.getText().trim());
         bloodGasses.setGFlow(txtGflow.getText().trim());
@@ -3670,10 +3669,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         bloodGasses.setK(txtK.getText().trim());
         bloodGasses.setCA(txtCA.getText().trim());
         bloodGasses.setLAC(txtLac.getText().trim());
-        bloodGasses.setHB(txtHb.getText().trim());
+        bloodGasses.setHB(txtHB.getText().trim());
         bloodGasses.setSugar(txtSugar.getText().trim());
         bloodGasses.setACT(txtAct.getText().trim());
-        bloodGasses.setHeparin(txtHeparin.getText().trim());
+        bloodGasses.setHeparin(txtHeparinKU.getText().trim());
 
         if (ctlPerfusionist.insertBloodGases(bloodGasses)) {
             JOptionPane.showMessageDialog(null, "Record save successfully.");
@@ -3949,9 +3948,9 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtAsstPerfusionist;
     private javax.swing.JTextField txtAsstSurgeon;
     private javax.swing.JTextField txtBE;
+    private javax.swing.JTextField txtBFlow;
     private javax.swing.JTextField txtBGTime;
     private javax.swing.JTextField txtBloodFlow;
-    private javax.swing.JTextField txtBloodFlow1;
     private javax.swing.JTextField txtBloodGroup;
     private javax.swing.JTextField txtBloodRbc;
     private javax.swing.JTextField txtCA;
@@ -3961,15 +3960,15 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtEF;
     private javax.swing.JTextField txtFio2;
     private javax.swing.JTextField txtGflow;
+    private javax.swing.JTextField txtHB;
     private javax.swing.JTextField txtHBsAntiHcv;
     private javax.swing.JTextField txtHartmanns;
     private javax.swing.JTextField txtHb;
-    private javax.swing.JTextField txtHb1;
     private javax.swing.JTextField txtHco2;
     private javax.swing.JTextField txtHeight;
     private javax.swing.JTextField txtHemofilter;
     private javax.swing.JTextField txtHeparin;
-    private javax.swing.JTextField txtHeparin1;
+    private javax.swing.JTextField txtHeparinKU;
     private javax.swing.JTextField txtHeparinized;
     private javax.swing.JTextField txtIabCatheterTime;
     private javax.swing.JTextField txtK;
