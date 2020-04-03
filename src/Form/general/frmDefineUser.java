@@ -43,7 +43,7 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
 
         initComponents();
 
-        this.setSize(Constants.xSize + 40, Constants.ySize - 130);
+        this.setSize(Constants.xSize + 110, Constants.ySize - 120);
         disableFormActionAbleComponents();
         this.enableFormActionAbleComponents();
         btnSave.setMnemonic(KeyEvent.VK_S);
@@ -217,7 +217,8 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel2.setText("Location:");
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("Location : ");
 
         txtUserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
