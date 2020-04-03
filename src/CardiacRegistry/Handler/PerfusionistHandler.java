@@ -414,16 +414,55 @@ public class PerfusionistHandler {
         return Constants.dao.executeUpdate(query, false);
     }
 
+    public boolean insertBloodGases(BloodGasses bloodGasses) {
+        String[] columns = {Database.DCMS.perfusionPressureGraph, "ID", 
+            "CARDIAC_ID", "TIME","ON_VENT_DB", "B_FLOW", "TEMPERATURE", "FIO2", 
+            "G_FLOW", "PH", "PCO2", "HCO2", "BE", "O2_SAT", "TCO2", "NA",
+            "K", "CA", "LAC", "HB", "SUGAR", "ACT", "HEPARIN", "CRTD_BY",
+            "CRTD_DATE", "CRTD_TERMINAL_ID"};
+
+        HashMap map = new HashMap();
+        map.put("ID", " (SELECT NVL(MAX(ID)+1, 1) ID FROM "
+                + Database.DCMS.perfusionPressureGraph + ")");
+        map.put("CARDIAC_ID", "'" +  bloodGasses.getCardiacId()+ "'");
+        map.put("TIME", "'" +  bloodGasses.getTime()+ "'");
+        map.put("ON_VENT_DB", "'" +  bloodGasses.getOnVentDBP()+ "'");
+        map.put("B_FLOW", "'" +  bloodGasses.getBloodFlow()+ "'");
+        map.put("TEMPERATURE", "'" +  bloodGasses.getTemperature()+ "'");
+        map.put("FIO2", "'" +  bloodGasses.getFIO2()+ "'");
+        map.put("G_FLOW", "'" +  bloodGasses.getGFlow()+ "'");
+        map.put("PH", "'" +  bloodGasses.getPH()+ "'");
+        map.put("PCO2", "'" +  bloodGasses.getPCO2()+ "'");
+        map.put("HCO2", "'" +  bloodGasses.getHCO2()+ "'");
+        map.put("BE", "'" +  bloodGasses.getBE()+ "'");
+        map.put("O2_SAT", "'" +  bloodGasses.getO2Sat()+ "'");
+        map.put("TCO2", "'" +  bloodGasses.getTCO2()+ "'");
+        map.put("NA", "'" +  bloodGasses.getNA()+ "'");
+        map.put("K", "'" +  bloodGasses.getK()+ "'");
+        map.put("CA", "'" +  bloodGasses.getCA() + "'");
+        map.put("LAC", "'" +  bloodGasses.getLAC()+ "'");
+        map.put("HB", "'" +  bloodGasses.getHB() + "'");
+        map.put("SUGAR", "'" +  bloodGasses.getSugar()+ "'");
+        map.put("ACT", "'" +  bloodGasses.getACT()+ "'");
+        map.put("HEPARIN", "'" +  bloodGasses.getHeparin()+ "'");
+        map.put("CRTD_BY", "'" + Constants.userId + "'");
+        map.put("CRTD_DATE", Constants.today);
+        map.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
+
+        List InsertEmp = new ArrayList();
+        InsertEmp.add(map);
+        return Constants.dao.insertData(InsertEmp, columns);
+    }
+
     public List<BloodGasses> selectBloodGases(String cardiacId) {
 
-        String columns[] = {"-", "ID", "CARDIAC_ID", "ON_VENT_DB", "B_FLOW",
+        String columns[] = {"-", "ID", "CARDIAC_ID", "TIME", "ON_VENT_DB", "B_FLOW",
             "TEMPERATURE", "FIO2", "G_FLOW", "PH", "PCO2", "HCO2", "BE",
             "O2_SAT", "TCO2", "NA", "K", "CA", "LAC", "HB", "SUGAR", "ACT",
-            "HEPARIN", "CRTD_BY", "CRTD_DATE",
-            "CRTD_TERMINAL_ID"};
+            "HEPARIN", "CRTD_BY", "CRTD_DATE"};
 
         String query
-                = "SELECT BG.ID, BG.CARDIAC_ID, BG.ON_VENT_DB, BG.B_FLOW, "
+                = "SELECT BG.ID, BG.CARDIAC_ID, BG.TIME, BG.ON_VENT_DB, BG.B_FLOW, "
                 + "\n BG.TEMPERATURE, BG.FIO2, BG.G_FLOW, BG.PH, BG.PCO2,"
                 + "\n BG.HCO2, BG.BE, BG.O2_SAT, BG.TCO2, BG.NA, BG.K,"
                 + "\n BG.CA, BG.LAC, BG.HB, BG.SUGAR, BG.ACT, BG.HEPARIN,"

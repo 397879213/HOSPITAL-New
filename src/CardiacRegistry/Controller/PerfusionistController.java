@@ -97,4 +97,15 @@ public class PerfusionistController {
     public List<BloodGasses> selectBloodGases(String cardiacId) {
         return hdlPerfusionist.selectBloodGases(cardiacId);
     }
+    
+    public boolean insertBloodGases(BloodGasses objInrt) {
+        boolean ret = hdlPerfusionist.insertBloodGases(objInrt);
+        if (ret) {
+            Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
 }

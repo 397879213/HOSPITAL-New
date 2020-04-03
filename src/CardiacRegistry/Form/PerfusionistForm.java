@@ -3638,6 +3638,8 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         }
 
                 bloodGasses.setCardiacId(cardiacId);
+                bloodGasses.setOnVentDBP(cboBGType.getSelectedItem().toString());
+                bloodGasses.setTime(txtBGTime.getText().trim());
                 bloodGasses.setBloodFlow(txtBloodFlow.getText().trim());
                 bloodGasses.setTemperature(txtTemperature.getText().trim());
                 bloodGasses.setFIO2(txtFio2.getText().trim());
@@ -4418,7 +4420,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                 patientId);
         if (listPerCheckList.isEmpty()) {
             List<PerfusionistBO> listPerCheckList = new ArrayList<>();
-            listBG.add(new PerfusionistBO());
+            listPerCheckList.add(new PerfusionistBO());
             tblCheckList.setModel(new PerfusionCheckListTableModel(listPerCheckList));
             return;
         }

@@ -13,6 +13,7 @@ public class BloodGasses {
     
     private String cardiacId = "";
     private String bloodGasesId = "";
+    private String time = "";
     private String onVentDBP = "";
     private String bloodFlow = "";
     private String temperature = "";
@@ -226,5 +227,13 @@ public class BloodGasses {
 
     public void setCrtdDate(String crtdDate) {
         this.crtdDate = crtdDate;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

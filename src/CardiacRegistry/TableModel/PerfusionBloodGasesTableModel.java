@@ -12,8 +12,8 @@ import javax.swing.table.AbstractTableModel;
 public class PerfusionBloodGasesTableModel extends AbstractTableModel {
 
     private final String[] columnNames
-            = {"Time", "On Vent", "DBP 1", "DBP 2", "DBP 3", "DBP 4", 
-                "DBP 5", "DBP 6", "DBP 7", "DBP 8", "DBP 9", "DBP 10"};
+            = {"Time", "On Vent", "DBP 1", "DBP 2", "DBP 3", "DBP 4",
+                "DBP 5", "DBP 6", "DBP 7", "DBP 8", "DBP 9", "DBP 10", ""};
     private final Object[][] data;
 
     public PerfusionBloodGasesTableModel(List<BloodGasses> liInfo) {
@@ -22,7 +22,7 @@ public class PerfusionBloodGasesTableModel extends AbstractTableModel {
         int row = 0;
 
         for (BloodGasses currentinfo : liInfo) {
-//            data[row][0] = currentinfo.getBloodGasesId();
+
             data[row][0] = currentinfo.getBloodGasesId();
             data[row][1] = currentinfo.getOnVentDBP();
             data[row][2] = currentinfo.getBloodFlow();
@@ -36,13 +36,13 @@ public class PerfusionBloodGasesTableModel extends AbstractTableModel {
             data[row][10] = currentinfo.getO2Sat();
             data[row][11] = currentinfo.getTCO2();
             data[row][12] = currentinfo.getNA();
-            data[row][13] = currentinfo.getK();
-            data[row][14] = currentinfo.getCA();
-            data[row][15] = currentinfo.getLAC();
-            data[row][16] = currentinfo.getHB();
-            data[row][17] = currentinfo.getSugar();
-            data[row][18] = currentinfo.getACT();
-            data[row][19] = currentinfo.getHeparin();
+//            data[row][13] = currentinfo.getK();
+//            data[row][14] = currentinfo.getCA();
+//            data[row][15] = currentinfo.getLAC();
+//            data[row][16] = currentinfo.getHB();
+//            data[row][17] = currentinfo.getSugar();
+//            data[row][18] = currentinfo.getACT();
+//            data[row][19] = currentinfo.getHeparin();
             row++;
 
         }

@@ -2858,19 +2858,19 @@ public class PerfusionistFormOld extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void selectBloodGases() {
-        listBG = ctlPerfusionist.selectBloodGases(cardiacId);
-        if (listBG.isEmpty()) {
-            List<PerfusionistBO> listBG = new ArrayList<>();
-            listBG.add(new PerfusionistBO());
-            tblBloodGases.setModel(new PerfusionBloodGasesTableModel(listBG));
-            return;
-        }
-        tblBloodGases.setModel(new PerfusionBloodGasesTableModel(listBG));
-        ListSelectionModel selectionModel = tblBloodGases.getSelectionModel();
-        tblBloodGases.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        setBloodGasesColumnsWidths();
-        selectionModel.setSelectionInterval(0, 0);
-        Constants.tablelook.setJTableEnvironment(tblBloodGases);
+//        listBG = ctlPerfusionist.selectBloodGases(cardiacId);
+//        if (listBG.isEmpty()) {
+//            List<PerfusionistBO> listBG = new ArrayList<>();
+//            listBG.add(new PerfusionistBO());
+//            tblBloodGases.setModel(new PerfusionBloodGasesTableModel(listBG));
+//            return;
+//        }
+//        tblBloodGases.setModel(new PerfusionBloodGasesTableModel(listBG));
+//        ListSelectionModel selectionModel = tblBloodGases.getSelectionModel();
+//        tblBloodGases.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+//        setBloodGasesColumnsWidths();
+//        selectionModel.setSelectionInterval(0, 0);
+//        Constants.tablelook.setJTableEnvironment(tblBloodGases);
     }
 
     private void setBloodGasesColumnsWidths() {
