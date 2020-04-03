@@ -1521,13 +1521,13 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
         for (int i = 0; i < tableUser.getColumnCount(); i++) {
             column = tableUser.getColumnModel().getColumn(i);
             if (i == 0) {
-                column.setPreferredWidth(50); //third column is bigger
+                column.setPreferredWidth(80); //third column is bigger
             } else if (i == 1) {
-                column.setPreferredWidth(220);
+                column.setPreferredWidth(280);
             } else if (i == 2) {
                 column.setPreferredWidth(80);
             }else if (i == 3) {
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(50);
             }
         }
     }
