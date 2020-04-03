@@ -25,8 +25,7 @@ public class UserHandler implements java.io.Serializable {
     public List<User> searchUser(User user) {
 
         String colums[] = {"-", "USER_NAME", "PASSWORD", "LOCATION_ID",
-            "NAME", "ACTIVE", "TYPE",  "LOCATION_NAME", "USER_ID",
-            "DISCOUNT_LIMIT", "MED_PRESCRIPTION_DAYS"};
+            "NAME", "ACTIVE", "TYPE",  "LOCATION_NAME", "USER_ID"};
 
         String query = " SELECT USR.USER_NAME USER_NAME,\n"
                 + "\n USR.USER_ID USER_ID,"
@@ -121,11 +120,11 @@ public class UserHandler implements java.io.Serializable {
     }
 
     public List<User> setUserData(List data) {
+        
         List<User> user = new ArrayList<>();
         for (int i = 0; i < data.size(); i++) {
             HashMap rowData = (HashMap) data.get(i);
             User userData = new User();
-            userData.setContactNo((String) rowData.get("CONTACT_NO"));
             userData.setLocationId((String) rowData.get("LOCATION_ID"));
             userData.setLocationName((String) rowData.get("LOCATION_NAME"));
             userData.setName((String) rowData.get("NAME"));
