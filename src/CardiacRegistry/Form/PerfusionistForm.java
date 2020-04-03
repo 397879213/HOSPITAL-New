@@ -3333,7 +3333,33 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblBloodGasesMouseEntered
 
     private void tblBloodGasesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBloodGasesMouseReleased
-
+        
+        if(listBG.isEmpty() || tblBloodGases.getSelectedRow() < 0){
+            return;
+        }
+        BloodGasses bloodGasses = listBG.get(tblBloodGases.getSelectedRow());
+        
+        cboBGType.setSelectedItem(bloodGasses.getOnVentDBP());
+        txtTime.setText(bloodGasses.getTime());
+        txtBFlow.setText(bloodGasses.getBloodFlow());
+        txtTemperature.setText(bloodGasses.getTemperature());
+        txtFio2.setText(bloodGasses.getFIO2());
+        txtGflow.setText(bloodGasses.getGFlow());
+        txtPH.setText(bloodGasses.getPH());
+        txtPco2.setText(bloodGasses.getPCO2());
+        txtPo2.setText(bloodGasses.getPO2());
+        txtHco2.setText(bloodGasses.getHCO2());
+        txtBE.setText(bloodGasses.getBE());
+        txtO2.setText(bloodGasses.getO2Sat());
+        txtTco2.setText(bloodGasses.getTCO2());
+        txtNa.setText(bloodGasses.getNA());
+        txtK.setText(bloodGasses.getK());
+        txtCA.setText(bloodGasses.getCA());
+        txtLac.setText(bloodGasses.getLAC());
+        txtHB.setText(bloodGasses.getHB());
+        txtSugar.setText(bloodGasses.getSugar());
+        txtAct.setText(bloodGasses.getACT());
+        txtHeparinKU.setText(bloodGasses.getHeparin());
     }//GEN-LAST:event_tblBloodGasesMouseReleased
 
     private void tblBloodGasesPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblBloodGasesPropertyChange
@@ -4056,45 +4082,45 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         for (int i = 0; i < tblBloodGases.getColumnCount(); i++) {
             column = tblBloodGases.getColumnModel().getColumn(i);
             if (i == 0) {
-                column.setPreferredWidth(120);
+                column.setPreferredWidth(60);
             } else if (i == 1) {
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(50);
             } else if (i == 2) {
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(50);
             } else if (i == 3) {
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(50);
             } else if (i == 4) {
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(50);
             } else if (i == 5) {
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(50);
             } else if (i == 6) {
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(50);
             } else if (i == 7) {
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(50);
             } else if (i == 8) {
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(50);
             } else if (i == 9) {
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(50);
             } else if (i == 10) {
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(50);
             } else if (i == 11) {
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(50);
             } else if (i == 12) {
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(50);
             } else if (i == 13) {
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(50);
             } else if (i == 14) {
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(50);
             } else if (i == 15) {
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(50);
             } else if (i == 16) {
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(50);
             } else if (i == 17) {
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(50);
             } else if (i == 18) {
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(50);
             } else if (i == 19) {
-                column.setPreferredWidth(60);
+                column.setPreferredWidth(50);
             }
         }
     }

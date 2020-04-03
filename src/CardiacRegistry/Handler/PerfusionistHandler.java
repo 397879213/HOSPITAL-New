@@ -479,7 +479,8 @@ public class PerfusionistHandler {
 
             objData.setBloodGasesId(map.get("ID").toString());
             objData.setCardiacId(map.get("CARDIAC_ID").toString());
-            objData.setBloodGasesId(map.get("ON_VENT_DB").toString());
+            objData.setTime(map.get("TIME").toString());
+            objData.setOnVentDBP(map.get("ON_VENT_DB").toString());
             objData.setBloodFlow(map.get("B_FLOW").toString());
             objData.setTemperature(map.get("TEMPERATURE").toString());
             objData.setFIO2(map.get("FIO2").toString());
