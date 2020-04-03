@@ -9,7 +9,6 @@ import CardiacRegistry.BO.BloodGasses;
 import CardiacRegistry.BO.PerfusionistBO;
 import CardiacRegistry.Handler.PerfusionistHandler;
 import java.util.List;
-import org.bridj.demangling.Demangler;
 import utilities.Constants;
 import utilities.GenerateKeys;
 import utilities.Keys;
@@ -19,14 +18,16 @@ import utilities.Keys;
  * @author admin
  */
 public class PerfusionistController {
-
+    
     GenerateKeys key = new GenerateKeys();
     PerfusionistHandler hdlPerfusionist = new PerfusionistHandler();
 
+    ;
+    
     public PerfusionistBO selectPerfusionInfo(String cardiacId, String patientId) {
         return hdlPerfusionist.selectPerfusionInfo(cardiacId, patientId);
     }
-
+    
     public boolean insertPerfusionInformation(PerfusionistBO insert) {
         insert.setPerfusionId(key.generatePrimaryKey(Keys.cardiacPerfusionIdPk, true));
         boolean ret = hdlPerfusionist.insertPerfusionInformation(insert);
@@ -38,7 +39,7 @@ public class PerfusionistController {
         }
         return ret;
     }
-
+    
     public boolean updatePerfusionInformation(PerfusionistBO update) {
         boolean ret = hdlPerfusionist.updatePerfusionInformation(update);
         if (ret) {
@@ -49,7 +50,7 @@ public class PerfusionistController {
         }
         return ret;
     }
-
+    
     public boolean insertPerfusionPressureGraph(PerfusionistBO perGraph) {
         boolean ret = hdlPerfusionist.insertPerfusionPressureGraph(perGraph);
         if (ret) {
@@ -65,7 +66,7 @@ public class PerfusionistController {
             String patientId) {
         return hdlPerfusionist.selectPerfusionPressureGraph(cardiacId, patientId);
     }
-        
+    
     public boolean deletePerfusionPressureGraph(String id) {
         boolean ret = hdlPerfusionist.deletePerfusionPressureGraph(id);
         if (ret) {
@@ -76,7 +77,7 @@ public class PerfusionistController {
         }
         return ret;
     }
-
+    
     public List<PerfusionistBO> selectPerfusionCheckList(String cardiacId,
             String patientId) {
         return hdlPerfusionist.selectPerfusionCheckList(cardiacId, patientId);
@@ -92,13 +93,13 @@ public class PerfusionistController {
         }
         return ret;
     }
-        
     
     public List<BloodGasses> selectBloodGases(String cardiacId) {
         return hdlPerfusionist.selectBloodGases(cardiacId);
     }
     
     public boolean insertBloodGases(BloodGasses objInrt) {
+        objInrt.setBloodGasesId(key.generatePrimaryKey(Keys.bloodGassesPK, true));
         boolean ret = hdlPerfusionist.insertBloodGases(objInrt);
         if (ret) {
             Constants.dao.commitTransaction();

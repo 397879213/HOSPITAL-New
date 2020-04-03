@@ -422,8 +422,7 @@ public class PerfusionistHandler {
             "CRTD_DATE", "CRTD_TERMINAL_ID"};
 
         HashMap map = new HashMap();
-        map.put("ID", " (SELECT NVL(MAX(ID)+1, 1) ID FROM "
-                + Database.DCMS.perfusionBloodGases + ")");
+        map.put("ID", bloodGasses.getBloodGasesId());
         map.put("CARDIAC_ID", "'" +  bloodGasses.getCardiacId()+ "'");
         map.put("TIME", "'" +  bloodGasses.getTime()+ "'");
         map.put("ON_VENT_DB", "'" +  bloodGasses.getOnVentDBP()+ "'");

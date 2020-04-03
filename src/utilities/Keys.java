@@ -8,6 +8,7 @@ public class Keys {
     public static final String bank = "BANK";
     public static final String otc = "OTC";
     public static final String outsidePatient = "OUTSIDE_PATIENT";
+    public static final String bloodGassesPK = "BLOOD_GASSES";
     public static final String cardiacSurgeryPK = "CARDIAC_SURGERY_MASTER";
     public static final String cardiacPerfusionIdPk = "CARDIAC_REGISTRY_PERFUSION";
 //NEW OT KEYS   
