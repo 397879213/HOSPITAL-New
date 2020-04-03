@@ -25,74 +25,31 @@ public class UserHandler implements java.io.Serializable {
     public List<User> searchUser(User user) {
 
         String colums[] = {"-", "USER_NAME", "PASSWORD", "LOCATION_ID",
-            "NAME", "EMAIL_ADDRESS", "ADDRESS", "ACTIVE", "THEME", "THEME_COLOR",
-            "COLOR_RED", "COLOR_GREEN", "COLOR_BLUE", "DESIGNATION",
-            "DESIGNATION_ID", "DEPARTMENT", "DEPARTMENT_ID", "REPORT_PASSWORD",
-            "TYPE", "DEGREES", "SPECIALITY_ID", "SPECIALITY", "LOCATION_NAME",
-            "SECTION_ID", "SECTION_NAME", "CONTACT_NO", "USER_ID",
+            "NAME", "ACTIVE", "TYPE",  "LOCATION_NAME", "USER_ID",
             "DISCOUNT_LIMIT", "MED_PRESCRIPTION_DAYS"};
 
-        String query = " SELECT USR.SECTION_ID          ,\n"
-                + " SEC.DESCRIPTION SECTION_NAME        ,\n"
-                + " NVL(USR.CONTACT_NO, '123') CONTACT_NO            ,\n"
-                + " USR.USER_NAME USER_NAME,\n"
-                + " USR.USER_ID USER_ID    ,\n"
-                + " USR.PASSWORD  PASSWORD ,\n"
-                + " USR.DISCOUNT_LIMIT  DISCOUNT_LIMIT  ,\n"
-                + " USR.MED_PRESCRIPTION_DAYS  MED_PRESCRIPTION_DAYS ,\n"
-                + " USR.LOCATION_ID LOCATION_ID         ,\n"
-                + " LOC.DESCRIPTION LOCATION_NAME       ,\n"
-                + " NVL(USR.SPECIALITY_ID,234)  SPECIALITY_ID        ,\n"
-                + " SPY.DESCRIPTION SPECIALITY          ,\n"
-                + " NVL(USR.NAME,'   ') NAME            ,\n"
-                + " NVL(USR.TYPE,'   ') TYPE            ,\n"
-                + " NVL(DEG.DESCRIPTION,'   ')      DESIGNATION      ,\n"
-                + " NVL(USR.DESIGNATION_ID,0)   DESIGNATION_ID       ,\n"
-                + " NVL(DEP.DESCRIPTION,'   ')      DEPARTMENT       ,\n"
-                + " NVL(USR.DEPARTMENT_ID,0)    DEPARTMENT_ID        ,\n"
-                + " NVL(USR.EMAIL_ADDRESS,'  ')     EMAIL_ADDRESS    ,\n"
-                + " NVL(USR.REPORT_PASSWORD,'420')  REPORT_PASSWORD  ,\n"
-                + " NVL(USR.ADDRESS,'  ') ADDRESS       ,\n"
-                + " NVL(USR.DEGREES,'  ') DEGREES       ,\n"
-                + " NVL(USR.ACTIVE,'N') ACTIVE          ,\n"
-                + " NVL(USR.THEME,'  ') THEME           ,\n"
-                + " NVL(USR.THEME_COLOR,'  ')  THEME_COLOR           ,\n"
-                + " NVL(USR.COLOR_RED,0)   COLOR_RED    ,\n"
-                + " NVL(USR.COLOR_GREEN,0) COLOR_GREEN  ,\n"
-                + " NVL(USR.COLOR_BLUE,0)  COLOR_BLUE    \n"
-                + " FROM       \n"
-                + Database.DCMS.department + "   DEP,    \n"
-                + Database.DCMS.designation + "  DEG,    \n"
-                + Database.DCMS.section + "      SEC,    \n"
-                + Database.DCMS.speciality + "   SPY,    \n"
-                + Database.DCMS.location + "     LOC,    \n"
-                + Database.DCMS.users + "        USR     \n"
-                + " WHERE UPPER(USR.USER_ID) LIKE '%" + user.getUserId().toUpperCase() + "%'  \n"
-                + " AND UPPER(USR.USER_NAME) LIKE '%" + user.getUserName().toUpperCase() + "%'  \n"
-                + " AND UPPER(USR.NAME) LIKE '%" + user.getName().toUpperCase() + "%'  \n";
+        String query = " SELECT USR.USER_NAME USER_NAME,\n"
+                + "\n USR.USER_ID USER_ID,"
+                + "\n USR.PASSWORD  PASSWORD,"
+                + "\n USR.LOCATION_ID LOCATION_ID,"
+                + "\n LOC.DESCRIPTION LOCATION_NAME,"
+                + "\n NVL(USR.NAME,'   ') NAME,"
+                + "\n NVL(USR.TYPE,'   ') TYPE,"
+                + "\n NVL(USR.ACTIVE,'N') ACTIVE FROM "
+                + Database.DCMS.location + "     LOC, "
+                + Database.DCMS.users + "        USR "
+                + "\n WHERE UPPER(USR.USER_ID) LIKE '%" + user.getUserId().toUpperCase() + "%'"
+                + "\n AND UPPER(USR.USER_NAME) LIKE '%" + user.getUserName().toUpperCase() + "%'"
+                + "\n AND UPPER(USR.NAME) LIKE '%" + user.getName().toUpperCase() + "%'";
 
         if (!user.getLocationId().isEmpty()) {
             query += " AND LOC.ID =  '" + user.getLocationId() + "'  \n";
-        }
-        if (!user.getDepartmentId().isEmpty()) {
-            query += " AND DEP.ID =  '" + user.getDepartmentId() + "'  \n";
-        }
-        if (!user.getSectionId().isEmpty()) {
-            query += " AND SEC.ID =  '" + user.getSection() + "'  \n";
-        }
-        if (!user.getDesignationId().isEmpty()) {
-            query += " AND DEG.ID =  '" + user.getDesignationId() + "'  \n";
         }
         if (!user.getActive().equalsIgnoreCase("ALL")) {
             query += " AND USR.ACTIVE =  '" + user.getActive() + "'  \n";
         }
 
-        query += " AND USR.DESIGNATION_ID = DEG.ID \n"
-                + " AND USR.LOCATION_ID = LOC.ID   \n"
-                + " AND NVL(USR.SPECIALITY_ID , 234) = SPY.ID   \n"
-                + " AND USR.DEPARTMENT_ID = DEP.ID \n"
-                + " AND SEC.DEPARTMENT_ID = DEP.ID \n"
-                + " AND USR.SECTION_ID = SEC.SECTION_ID         \n";
+        query += " AND USR.LOCATION_ID = LOC.ID   \n";
 
         return setUserData(Constants.dao.selectData(query, colums));
 
@@ -168,36 +125,16 @@ public class UserHandler implements java.io.Serializable {
         for (int i = 0; i < data.size(); i++) {
             HashMap rowData = (HashMap) data.get(i);
             User userData = new User();
-            userData.setAddress((String) rowData.get("ADDRESS"));
             userData.setContactNo((String) rowData.get("CONTACT_NO"));
-            userData.setDegrees((String) rowData.get("DEGREES"));
-            userData.setEmailAddress((String) rowData.get("EMAIL_ADDRESS"));
             userData.setLocationId((String) rowData.get("LOCATION_ID"));
             userData.setLocationName((String) rowData.get("LOCATION_NAME"));
             userData.setName((String) rowData.get("NAME"));
             userData.setActive((String) rowData.get("ACTIVE"));
-            userData.setPracticeIncomeTax((String) rowData.get("PRACTICE_INCOME_TAX"));
-            userData.setDesignation((String) rowData.get("DESIGNATION"));
-            userData.setDesignationId((String) rowData.get("DESIGNATION_ID"));
-            userData.setSpeciality((String) rowData.get("SPECIALITY"));
-            userData.setSpecialityId((String) rowData.get("SPECIALITY_ID"));
-            userData.setDepartment((String) rowData.get("DEPARTMENT"));
-            userData.setDepartmentId((String) rowData.get("DEPARTMENT_ID"));
-            userData.setSectionId((String) rowData.get("SECTION_ID"));
-            userData.setSection((String) rowData.get("SECTION_NAME"));
             userData.setCurrentPassword((String) rowData.get("PASSWORD"));
             userData.setCurrentPassword(EncryptDecryptWithDES.decrypt(userData.getCurrentPassword()));
             userData.setUserName((String) rowData.get("USER_NAME"));
             userData.setUserId((String) rowData.get("USER_ID"));
-            userData.setReportPassword((String) rowData.get("REPORT_PASSWORD"));
             userData.setType((String) rowData.get("TYPE"));
-            userData.setTheme((String) rowData.get("THEME"));
-            userData.setDiscountLimit((String) rowData.get("DISCOUNT_LIMIT"));
-            userData.setPrescriptionDays((String) rowData.get("MED_PRESCRIPTION_DAYS"));
-            userData.setThemeColor((String) rowData.get("THEME_COLOR"));
-            userData.setColorRed(Integer.parseInt((String) rowData.get("COLOR_RED")));
-            userData.setColorGreen(Integer.parseInt((String) rowData.get("COLOR_GREEN")));
-            userData.setColorBlue(Integer.parseInt((String) rowData.get("COLOR_BLUE")));
             user.add(userData);
         }
         return user;
