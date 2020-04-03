@@ -15,6 +15,7 @@ import javax.faces.bean.ManagedBean;
 public class User implements java.io.Serializable {
 
     private String userName = "";
+    private String defaultUserName = "";
     private String currentPassword = "";
     private String reportPassword = "";
     private String newPassword = "";
@@ -23,6 +24,14 @@ public class User implements java.io.Serializable {
     private String confirmPassword = "";
     private String password = "";
     private String practiceIncomeTax = "";
+
+    public String getDefaultUserName() {
+        return defaultUserName;
+    }
+
+    public void setDefaultUserName(String defaultUserName) {
+        this.defaultUserName = defaultUserName;
+    }
 
     public String getConfirmPassword() {
         return confirmPassword;

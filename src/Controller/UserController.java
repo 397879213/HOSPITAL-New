@@ -3,10 +3,22 @@ package Controller;
 import BO.User;
 import Handler.UserHandler;
 import java.util.List;
+import utilities.Constants;
 
 public class UserController {
 
     private UserHandler hdlUser = new UserHandler();
+
+    public boolean registerUser(User user) {
+        boolean ret = hdlUser.registerUser(user);
+        if (ret) {
+            Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
 
     public boolean getEmployee(String trim) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
