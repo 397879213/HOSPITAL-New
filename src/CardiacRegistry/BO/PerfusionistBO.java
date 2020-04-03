@@ -81,21 +81,6 @@ public class PerfusionistBO {
     private String perPressure = "";
     private String timeMin = "";
 
-    // Blood    Gasses
-    private String bloodGasesId = "";
-    private String bloodGasesDescription = "";
-    private String onVent = "";
-    private String DBP1 = "";
-    private String DBP2 = "";
-    private String DBP3 = "";
-    private String DBP4 = "";
-    private String DBP5 = "";
-    private String DBP6 = "";
-    private String DBP7 = "";
-    private String DBP8 = "";
-    private String DBP9 = "";
-    private String DBP10 = "";
-
     public String getPatientId() {
         return patientId;
     }
@@ -159,103 +144,7 @@ public class PerfusionistBO {
     public void setAnesthetistName(String anesthetistName) {
         this.anesthetistName = anesthetistName;
     }
-
-    public String getOnVent() {
-        return onVent;
-    }
-
-    public void setOnVent(String onVent) {
-        this.onVent = onVent;
-    }
-
-    public String getBloodGasesDescription() {
-        return bloodGasesDescription;
-    }
-
-    public void setBloodGasesDescription(String bloodGasesDescription) {
-        this.bloodGasesDescription = bloodGasesDescription;
-    }
-
-    public String getDBP1() {
-        return DBP1;
-    }
-
-    public void setDBP1(String DBP1) {
-        this.DBP1 = DBP1;
-    }
-
-    public String getDBP2() {
-        return DBP2;
-    }
-
-    public void setDBP2(String DBP2) {
-        this.DBP2 = DBP2;
-    }
-
-    public String getDBP3() {
-        return DBP3;
-    }
-
-    public void setDBP3(String DBP3) {
-        this.DBP3 = DBP3;
-    }
-
-    public String getDBP4() {
-        return DBP4;
-    }
-
-    public void setDBP4(String DBP4) {
-        this.DBP4 = DBP4;
-    }
-
-    public String getDBP5() {
-        return DBP5;
-    }
-
-    public void setDBP5(String DBP5) {
-        this.DBP5 = DBP5;
-    }
-
-    public String getDBP6() {
-        return DBP6;
-    }
-
-    public void setDBP6(String DBP6) {
-        this.DBP6 = DBP6;
-    }
-
-    public String getDBP7() {
-        return DBP7;
-    }
-
-    public void setDBP7(String DBP7) {
-        this.DBP7 = DBP7;
-    }
-
-    public String getDBP8() {
-        return DBP8;
-    }
-
-    public void setDBP8(String DBP8) {
-        this.DBP8 = DBP8;
-    }
-
-    public String getDBP9() {
-        return DBP9;
-    }
-
-    public void setDBP9(String DBP9) {
-        this.DBP9 = DBP9;
-    }
-
-    public String getDBP10() {
-        return DBP10;
-    }
-
-    public void setDBP10(String DBP10) {
-        this.DBP10 = DBP10;
-    }
-
+    
     public String getPerfusionId() {
         return perfusionId;
     }
@@ -270,14 +159,6 @@ public class PerfusionistBO {
 
     public void setCardiacId(String cardiacId) {
         this.cardiacId = cardiacId;
-    }
-
-    public String getBloodGasesId() {
-        return bloodGasesId;
-    }
-
-    public void setBloodGasesId(String bloodGasesId) {
-        this.bloodGasesId = bloodGasesId;
     }
 
     public String getBloodFlow() {

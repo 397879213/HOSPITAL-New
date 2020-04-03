@@ -5,6 +5,7 @@
  */
 package CardiacRegistry.Controller;
 
+import CardiacRegistry.BO.BloodGasses;
 import CardiacRegistry.BO.PerfusionistBO;
 import CardiacRegistry.Handler.PerfusionistHandler;
 import java.util.List;
@@ -93,7 +94,7 @@ public class PerfusionistController {
     }
         
     
-    public List<PerfusionistBO> selectBloodGases(String cardiacId) {
+    public List<BloodGasses> selectBloodGases(String cardiacId) {
         return hdlPerfusionist.selectBloodGases(cardiacId);
     }
 }

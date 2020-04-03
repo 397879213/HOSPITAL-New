@@ -1,5 +1,6 @@
 package CardiacRegistry.Form;
 
+import CardiacRegistry.BO.BloodGasses;
 import CardiacRegistry.BO.PerfusionistBO;
 import CardiacRegistry.Controller.PerfusionistController;
 import CardiacRegistry.TableModel.PerfusionBloodGasesTableModel;
@@ -27,7 +28,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private String anesthetistId = "";
     private String bloodGroupId = "";
 
-    List<PerfusionistBO> listBG = new ArrayList();
+    List<BloodGasses> listBG = new ArrayList();
     List<PerfusionistBO> listPerGraph = new ArrayList();
     List<PerfusionistBO> listPerCheckList = new ArrayList();
 
@@ -51,6 +52,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     PerfusionistBO objPerfusionGraph = new PerfusionistBO();
     PerfusionistBO perfusionInfo = new PerfusionistBO();
     PerfusionistBO objPerfusionist = new PerfusionistBO();
+    BloodGasses bloodGasses = new BloodGasses();
     PerfusionistController ctlPerfusionist = new PerfusionistController();
 
     @SuppressWarnings("unchecked")
@@ -1995,7 +1997,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
             }
         });
 
-        cboBGType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "On Vent", "DP1"}));
+        cboBGType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "On Vent", "DBP"}));
         cboBGType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboBGTypeActionPerformed(evt);
@@ -3635,35 +3637,35 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
             return;
         }
 
-        //        objPerfusionist.setCardiacRegistryId(cardiacId);
-        //        objPerfusionist.setBloodFlow(txtBloodFlow.getText().trim());
-        //        objPerfusionist.setTemperature(txtTemperature.getText().trim());
-        //        objPerfusionist.setFIO2(txtFio2.getText().trim());
-        //        objPerfusionist.setgFlow(txtGflow.getText().trim());
-        //        objPerfusionist.setpH(txtPH.getText().trim());
-        //        objPerfusionist.setPCO2(txtPco2.getText().trim());
-        //        objPerfusionist.setPO2(txtPo2.getText().trim());
-        //        objPerfusionist.setHCO2(txtHco2.getText().trim());a
-        //        objPerfusionist.setBE(txtBE.getText().trim());
-        //        objPerfusionist.setO2Sat(txtO2.getText().trim());
-        //        objPerfusionist.setTCO2(txtTco2.getText().trim());
-        //        objPerfusionist.setNa(txtNa.getText().trim());
-        //        objPerfusionist.setK(txtK.getText().trim());
-        //        objPerfusionist.setCa(txtCA.getText().trim());
-        //        objPerfusionist.setLac(txtLac.getText().trim());
-        //        objPerfusionist.setHb(txtHb.getText().trim());
-        //        objPerfusionist.setSugar(txtSugar.getText().trim());
-        //        objPerfusionist.setACT(txtAct.getText().trim());
-        //        objPerfusionist.setHeparinKU(txtHeparin.getText().trim());
+                bloodGasses.setCardiacId(cardiacId);
+                bloodGasses.setBloodFlow(txtBloodFlow.getText().trim());
+                bloodGasses.setTemperature(txtTemperature.getText().trim());
+                bloodGasses.setFIO2(txtFio2.getText().trim());
+                bloodGasses.setGFlow(txtGflow.getText().trim());
+                bloodGasses.setPH(txtPH.getText().trim());
+                bloodGasses.setPCO2(txtPco2.getText().trim());
+                bloodGasses.setPO2(txtPo2.getText().trim());
+                bloodGasses.setHCO2(txtHco2.getText().trim());
+                bloodGasses.setBE(txtBE.getText().trim());
+                bloodGasses.setO2Sat(txtO2.getText().trim());
+                bloodGasses.setTCO2(txtTco2.getText().trim());
+                bloodGasses.setNA(txtNa.getText().trim());
+                bloodGasses.setK(txtK.getText().trim());
+                bloodGasses.setCA(txtCA.getText().trim());
+                bloodGasses.setLAC(txtLac.getText().trim());
+                bloodGasses.setHB(txtHb.getText().trim());
+                bloodGasses.setSugar(txtSugar.getText().trim());
+                bloodGasses.setACT(txtAct.getText().trim());
+                bloodGasses.setHeparin(txtHeparin.getText().trim());
 
-        //        if (ctlPerfusionist.insertBloodGases(objPerfusionist)) {
-            //            JOptionPane.showMessageDialog(null, "Record save successfully.");
-            //            clearBloodGases();
-            //            selectBloodGases();
-            //        } else {
-            //            JOptionPane.showMessageDialog(null, "Uanble to save record.\n"
-                //                    + "Please contact support Team.");
-            //        }
+                if (ctlPerfusionist.insertBloodGases(bloodGasses)) {
+                        JOptionPane.showMessageDialog(null, "Record save successfully.");
+                        clearBloodGases();
+                        selectBloodGases();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Uanble to save record.\n"
+                                    + "Please contact support Team.");
+                    }
     }//GEN-LAST:event_cboBGTypeActionPerformed
 
     private void tblPatientInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientInfoMouseClicked
@@ -4015,8 +4017,8 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private void selectBloodGases() {
         listBG = ctlPerfusionist.selectBloodGases(cardiacId);
         if (listBG.isEmpty()) {
-            List<PerfusionistBO> listBG = new ArrayList<>();
-            listBG.add(new PerfusionistBO());
+            List<BloodGasses> listBG = new ArrayList<>();
+            listBG.add(new BloodGasses());
             tblBloodGases.setModel(new PerfusionBloodGasesTableModel(listBG));
             return;
         }
@@ -4385,7 +4387,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                 patientId);
         if (listPerGraph.isEmpty()) {
             List<PerfusionistBO> listPerGraph = new ArrayList<>();
-            listBG.add(new PerfusionistBO());
+            listPerGraph.add(new PerfusionistBO());
             tblGraph.setModel(new PerfusionGraphTableModel(listPerGraph));
             return;
         }

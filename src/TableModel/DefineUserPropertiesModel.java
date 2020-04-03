@@ -1,7 +1,5 @@
-package TableModel.Administration;
+package TableModel;
 
-import TableModel.Client.*;
-import BO.Client.Client;
 import BO.SetupColumnDetail;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;

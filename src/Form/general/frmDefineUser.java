@@ -13,7 +13,7 @@ import Controller.UserController;
 import Controller.UserGroupController;
 import static Form.general.frmUserSetting.currentUser;
 import Handler.UserHandler;
-import TableModel.Administration.DefineUserPropertiesModel;
+import TableModel.DefineUserPropertiesModel;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -149,15 +149,9 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
         txtSearchUserId = new javax.swing.JTextField();
         txtSearchUserFullName = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        txtSearchDesignation = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
         btnSearch = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         txtSearchUserName = new javax.swing.JTextField();
-        jLabel20 = new javax.swing.JLabel();
-        txtSearchDepartment = new javax.swing.JTextField();
-        jLabel21 = new javax.swing.JLabel();
-        txtSearchSection = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         txtUserId1 = new javax.swing.JTextField();
@@ -338,11 +332,11 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
             pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlPatientDetailLayout.createSequentialGroup()
                 .addGap(9, 9, 9)
-                .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlPatientDetailLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(cboActive, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtUserFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -545,7 +539,7 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
         );
 
         jPanel9.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -575,18 +569,6 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel13.setText(" Name:");
 
-        txtSearchDesignation.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        txtSearchDesignation.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSearchDesignationActionPerformed(evt);
-            }
-        });
-
-        jLabel14.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel14.setText("Designation:");
-
         btnSearch.setFont(new java.awt.Font("Arial", 1, 11)); // NOI18N
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -605,85 +587,44 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel20.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel20.setText("Department:");
-
-        txtSearchDepartment.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSearchDepartmentActionPerformed(evt);
-            }
-        });
-
-        jLabel21.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(102, 0, 0));
-        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel21.setText("Section:");
-
-        txtSearchSection.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        txtSearchSection.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSearchSectionActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(206, 206, 206))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txtSearchUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-                    .addComponent(txtSearchUserId)
-                    .addComponent(txtSearchSection))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel14))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtSearchDesignation)
-                    .addComponent(txtSearchUserFullName)
-                    .addComponent(txtSearchDepartment))
-                .addGap(10, 10, 10))
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(txtSearchUserId, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtSearchUserName)
+                        .addContainerGap())
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(txtSearchUserFullName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33))))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtSearchUserId, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtSearchUserFullName, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtSearchUserId)
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(txtSearchUserName)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(txtSearchUserName, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtSearchDepartment, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtSearchSection, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtSearchDesignation, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(5, 5, 5)
-                .addComponent(btnSearch))
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtSearchUserFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch))
+                .addGap(10, 10, 10))
         );
 
         jPanel6.setBackground(new java.awt.Color(Constants.red , Constants.green , Constants.black));
@@ -915,25 +856,6 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSearchUserFullNameActionPerformed
 
-    private void txtSearchDesignationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchDesignationActionPerformed
-
-        String query = "SELECT ID ID, DESCRIPTION FROM "
-                + Database.DCMS.definitionTypeDetail + " WHERE DEF_TYPE_ID = '" + DefinitionTypes.designation + "'";
-        lov.LOVSelection(query, this);
-
-        if (Constants.lovID.equalsIgnoreCase("ID")) {
-            return;
-        } else {
-            txtSearchDesignation.setText(Constants.lovDescription);
-            designationId = Constants.lovID;
-            txtSearchDesignation.requestFocusInWindow();
-            txtSearchDesignation.setCaretPosition(0);
-            searchUser();
-
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearchDesignationActionPerformed
-
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
 
         txtLocation.requestFocusInWindow();
@@ -1042,46 +964,6 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
 
 
     }//GEN-LAST:event_txtSearchUserNameActionPerformed
-
-    private void txtSearchDepartmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchDepartmentActionPerformed
-
-        String query
-                = "  SELECT ID , DESCRIPTION  FROM \n"
-                + Database.DCMS.department + " LOC \n"
-                + " WHERE ID IN (SELECT DEPARTMENT_ID FROM  "
-                + Database.DCMS.locationWiseDepartment + " LWD \n"
-                + " WHERE LWD.LOCATION_ID = '" + locationId + "') \n"
-                + " AND ACTIVE = 'Y'";
-        lov.LOVSelection(query, this);
-
-        if (Constants.lovID.equalsIgnoreCase("ID")) {
-            return;
-        }
-        txtSearchDepartment.setText(Constants.lovDescription);
-        departmentId = Constants.lovID;
-        txtSearchSection.requestFocusInWindow();
-        txtSearchSection.setCaretPosition(0);
-        searchUser();
-
-    }//GEN-LAST:event_txtSearchDepartmentActionPerformed
-
-    private void txtSearchSectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchSectionActionPerformed
-
-        String query = "SELECT SECTION_ID ID, DESCRIPTION FROM "
-                + Database.DCMS.section + " WHERE DEPARTMENT_ID = '" + departmentId + "'";
-        lov.LOVSelection(query, this);
-
-        if (Constants.lovID.equalsIgnoreCase("ID")) {
-            return;
-        } else {
-            txtSearchSection.setText(Constants.lovDescription);
-            sectionId = Constants.lovID;
-            txtSearchDesignation.requestFocusInWindow();
-            txtSearchDesignation.setCaretPosition(0);
-            searchUser();
-
-        }
-    }//GEN-LAST:event_txtSearchSectionActionPerformed
 
     private void btnChangePasswordCreate_User(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangePasswordCreate_User
         if (txtPassword.getText().length() == 0) {
@@ -1301,20 +1183,9 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
         User search = new User();
         search.setUserName(txtSearchUserName.getText().toUpperCase());
         search.setName(txtSearchUserFullName.getText().toUpperCase());
-        search.setDesignation(txtSearchDesignation.getText().toUpperCase());
-        search.setSection(txtSearchSection.getText().toUpperCase());
-        search.setDepartment(txtSearchDepartment.getText().toUpperCase());
         search.setUserId(txtSearchUserId.getText().toUpperCase());
 
-        if (txtSearchDepartment.getText().length() == 0) {
-            departmentId = "";
-        }
-        if (txtSearchSection.getText().length() == 0) {
-            sectionId = "";
-        }
-        if (txtSearchDesignation.getText().length() == 0) {
-            designationId = "";
-        }
+        
         vecUsers = this.ctlUser.searchUser(search);
 
         if (vecUsers.isEmpty()) {
@@ -1356,12 +1227,9 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
@@ -1388,9 +1256,6 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtName1;
     private javax.swing.JTextField txtName2;
     private javax.swing.JPasswordField txtPassword;
-    private javax.swing.JTextField txtSearchDepartment;
-    private javax.swing.JTextField txtSearchDesignation;
-    private javax.swing.JTextField txtSearchSection;
     private javax.swing.JTextField txtSearchUserFullName;
     private javax.swing.JTextField txtSearchUserId;
     private javax.swing.JTextField txtSearchUserName;
@@ -1425,8 +1290,6 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
 
     public void clearSearchPanel() {
 
-        txtSearchSection.setText("");
-        txtSearchDesignation.setText("");
         txtSearchUserId.setText("");
         txtSearchUserFullName.setText("");
         Vector vec = new Vector();

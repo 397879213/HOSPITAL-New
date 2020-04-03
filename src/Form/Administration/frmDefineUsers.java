@@ -3,7 +3,7 @@ package Form.Administration;
 import BO.Administration.BODefineUser;
 import BO.SetupColumnDetail;
 import Controller.Administration.DefineUserController;
-import TableModel.Administration.DefineUserPropertiesModel;
+import TableModel.DefineUserPropertiesModel;
 import TableModel.Administration.UserInfoTableModel;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
