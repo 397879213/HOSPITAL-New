@@ -1523,9 +1523,11 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
             if (i == 0) {
                 column.setPreferredWidth(50); //third column is bigger
             } else if (i == 1) {
-                column.setPreferredWidth(180);
+                column.setPreferredWidth(220);
             } else if (i == 2) {
-                //column.setPreferredWidth(20);
+                column.setPreferredWidth(80);
+            }else if (i == 3) {
+                column.setPreferredWidth(60);
             }
         }
     }

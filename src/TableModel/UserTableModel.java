@@ -15,8 +15,8 @@ import javax.swing.table.AbstractTableModel;
  */
 public class UserTableModel extends AbstractTableModel {
 
-    private final String[] columnNames = {"User Id", "User Name",
-        "Designation", "Location", "Active"};
+    private final String[] columnNames = {"User Id", "User Full Name",
+        "Location", "Active"};
 
     private final Object[][] data;
 
@@ -26,9 +26,8 @@ public class UserTableModel extends AbstractTableModel {
             User usr = (User) Users.get(i);
             data[i][0] = usr.getUserName();
             data[i][1] = usr.getName();
-            data[i][2] = usr.getDesignation();
-            data[i][3] = usr.getLocationName();
-            data[i][4] = usr.getActive();
+            data[i][2] = usr.getLocationName();
+            data[i][3] = usr.getActive();
 
         }
     }
