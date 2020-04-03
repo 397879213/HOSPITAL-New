@@ -424,7 +424,7 @@ public class PerfusionistHandler {
         HashMap map = new HashMap();
         map.put("ID", bloodGasses.getBloodGasesId());
         map.put("CARDIAC_ID", "'" +  bloodGasses.getCardiacId()+ "'");
-        map.put("TIME", "TO_DATE('" +  bloodGasses.getTime()+ "', 'DD-MM-YY HH:MI:SS')");
+        map.put("TIME", "TO_DATE('" +  bloodGasses.getTime()+ "', 'DD-MM-YY HH24:MI:SS')");
         map.put("ON_VENT_DB", "'" +  bloodGasses.getOnVentDBP()+ "'");
         map.put("B_FLOW", "'" +  bloodGasses.getBloodFlow()+ "'");
         map.put("TEMPERATURE", "'" +  bloodGasses.getTemperature()+ "'");

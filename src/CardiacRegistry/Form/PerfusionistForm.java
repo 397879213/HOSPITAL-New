@@ -3648,7 +3648,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         if (confirmation != 0) {
             return;
         }
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy " + 
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy " + 
                 txtBGTime.getText().trim());// yyyy/MM/dd HH:mm:ss
         Date date = new Date();
         System.err.println("inrr date: "+ dateFormat.format(date));
