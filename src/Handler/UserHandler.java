@@ -760,15 +760,8 @@ public class UserHandler implements java.io.Serializable {
         userMap.put("USER_NAME", "'" + user.getUserName() + "'");
         userMap.put("LOCATION_ID", "'" + user.getLocationId() + "'");
         userMap.put("NAME", "'" + user.getName() + "'");
-        userMap.put("CONTACT_NO", "'" + user.getContactNo() + "'");
-        userMap.put("DESIGNATION_ID", "'" + user.getDesignationId() + "'");
         userMap.put("TYPE", "'" + user.getType() + "'");
-        userMap.put("SPECIALITY_ID", "'" + user.getSpecialityId() + "'");
         userMap.put("USER_ID", "'" + user.getUserName() + "'");
-        userMap.put("DEPARTMENT_ID", "'" + user.getDepartmentId() + "'");
-        userMap.put("SECTION_ID", "'" + user.getSectionId() + "'");
-        userMap.put("EMAIL_ADDRESS", "'" + user.getEmailAddress() + "'");
-        userMap.put("DEGREES", "'" + user.getDegrees() + "'");
         userMap.put("ACTIVE", "'" + user.getActive() + "'");
         userMap.put("CRTD_BY", "'" + Constants.userId + "'");
         userMap.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
@@ -784,9 +777,21 @@ public class UserHandler implements java.io.Serializable {
             Constants.dao.rollBack();
         }
         return ret;
-
     }
 
+    public boolean insertClientProperties(String userId, String refUserId) {
+
+        String query
+                = " INSERT INTO " + Database.DCMS.setupColumnDetail
+                + "\n SELECT '" + userId + "', TABLE_COLUMN_ID, "
+                + "DESCRIPTION, '" + Constants.userId + "', SYSDATE,"
+                + "'" + Constants.terminalId + "' FROM "
+                + Database.DCMS.setupColumnDetail
+                + "\n WHERE TABLE_ROW_ID = '" + refUserId + "'";
+
+        return Constants.dao.executeUpdate(query, false);
+    }
+    
     public boolean updateUserSetting(String userName, String medInstReq,
             String medDays, String doseTypeId) {
 

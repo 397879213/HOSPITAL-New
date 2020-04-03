@@ -885,8 +885,9 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Kindly Enter User Id");
             return;
         }
-        if (txtDefaultUser.getText().trim().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Kindly Select Default User.");
+        if (user.getDefaultUserName().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Kindly Select Default User.\n"
+                    + "Prior to Register.");
             txtDefaultUser.requestFocus();
             return;
         }
@@ -895,6 +896,7 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
         user.setName(txtUserFullName.getText().trim());
         user.setLocationId(locationId);
         user.setType(cboType.getSelectedItem().toString());
+        user.setActive("Y");
         if (ctlUser.registerUser(user)) {
             searchUser();
         } else {
@@ -1294,7 +1296,7 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
         String query = " SELECT USER_NAME ID, NAME DESCRIPTION FROM \n"
                 + Database.DCMS.users
                 + " WHERE UPPER(NAME) LIKE '%" + txtDefaultUser.getText().trim() + "%'"
-                + " AND ACTIVE = 'Y' \n";
+                + "\n AND ACTIVE = 'Y' \n";
         lov.LOVSelection(query, this);
         user.setDefaultUserName(Constants.lovID);
         txtDefaultUser.setText(Constants.lovDescription);

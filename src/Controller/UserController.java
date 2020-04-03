@@ -12,6 +12,10 @@ public class UserController {
     public boolean registerUser(User user) {
         boolean ret = hdlUser.registerUser(user);
         if (ret) {
+            ret = hdlUser.insertClientProperties(user.getUserName(),
+                    user.getDefaultUserName());
+        }
+        if (ret) {
             Constants.dao.commitTransaction();
         }
         if (!ret) {
