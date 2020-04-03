@@ -881,14 +881,7 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
 
     private void Create_User(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Create_User
 
-        if (txtUserId.getText().trim().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Kindly Enter User Id");
-            return;
-        }
-        if (user.getDefaultUserName().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Kindly Select Default User.\n"
-                    + "Prior to Register.");
-            txtDefaultUser.requestFocus();
+        if (!checkInsertUser()) {
             return;
         }
         user.setUserName(txtUserName.getText().trim());
@@ -1595,5 +1588,43 @@ public class frmDefineUser extends javax.swing.JInternalFrame {
                 column.setPreferredWidth(300);
             }
         }
+    }
+
+    private boolean checkInsertUser() {
+
+        if (txtUserFullName.getText().trim().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Kindly Enter User Full Name.");
+            txtUserFullName.requestFocus();
+            return false;
+        }
+        if (txtUserName.getText().trim().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Kindly Enter User Name.");
+            txtUserName.requestFocus();
+            return false;
+        }
+        if (txtUserId.getText().trim().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Kindly Enter Login Id");
+            txtUserId.requestFocus();
+            return false;
+        }
+        if (locationId.length() == 0) {
+            JOptionPane.showMessageDialog(null, "Kindly Select Location.\n"
+                    + "Prior to Register.");
+            txtLocation.requestFocus();
+            return false;
+        }
+        if (cboType.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Kindly Select Type of User.\n"
+                    + "Prior to Register.");
+            cboType.requestFocus();
+            return false;
+        }
+        if (user.getDefaultUserName().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Kindly Select Default User.\n"
+                    + "Prior to Register.");
+            txtDefaultUser.requestFocus();
+            return false;
+        }
+        return true;
     }
 }
