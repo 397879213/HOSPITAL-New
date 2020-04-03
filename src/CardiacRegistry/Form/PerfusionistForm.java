@@ -7,7 +7,10 @@ import CardiacRegistry.TableModel.PerfusionBloodGasesTableModel;
 import CardiacRegistry.TableModel.PerfusionCheckListTableModel;
 import CardiacRegistry.TableModel.PerfusionGraphTableModel;
 import java.awt.event.KeyEvent;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
@@ -41,6 +44,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         btnSave.setMnemonic(KeyEvent.VK_S);
         btnFinal.setMnemonic(KeyEvent.VK_F);
         btnGraph.setMnemonic(KeyEvent.VK_G);
+        DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");// yyyy/MM/dd HH:mm:ss
+	Date date = new Date();
+        txtBGTime.setText(dateFormat.format(date)); 
+        
         selectPerfusionGraph();
         selectPerfusionInfo();
         selectPerfusionCheckList();
@@ -355,6 +362,11 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         btnExit.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnExit.setForeground(new java.awt.Color(204, 0, 0));
         btnExit.setText("Exit");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
 
         btnFinal.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnFinal.setText("Final");
@@ -3765,6 +3777,11 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private void tblPatientInfo1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblPatientInfo1KeyReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_tblPatientInfo1KeyReleased
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnExitActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

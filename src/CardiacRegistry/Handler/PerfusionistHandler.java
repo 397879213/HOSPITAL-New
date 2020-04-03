@@ -415,7 +415,7 @@ public class PerfusionistHandler {
     }
 
     public boolean insertBloodGases(BloodGasses bloodGasses) {
-        String[] columns = {Database.DCMS.perfusionPressureGraph, "ID", 
+        String[] columns = {Database.DCMS.perfusionBloodGases, "ID", 
             "CARDIAC_ID", "TIME","ON_VENT_DB", "B_FLOW", "TEMPERATURE", "FIO2", 
             "G_FLOW", "PH", "PCO2", "HCO2", "BE", "O2_SAT", "TCO2", "NA",
             "K", "CA", "LAC", "HB", "SUGAR", "ACT", "HEPARIN", "CRTD_BY",
@@ -423,7 +423,7 @@ public class PerfusionistHandler {
 
         HashMap map = new HashMap();
         map.put("ID", " (SELECT NVL(MAX(ID)+1, 1) ID FROM "
-                + Database.DCMS.perfusionPressureGraph + ")");
+                + Database.DCMS.perfusionBloodGases + ")");
         map.put("CARDIAC_ID", "'" +  bloodGasses.getCardiacId()+ "'");
         map.put("TIME", "'" +  bloodGasses.getTime()+ "'");
         map.put("ON_VENT_DB", "'" +  bloodGasses.getOnVentDBP()+ "'");
