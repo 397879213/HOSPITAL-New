@@ -537,8 +537,8 @@ public class PerfusionistHandler {
                 + "\n NVL(PT.TEMPERATURE,' ') TEMPERATURE,"
                 + "\n TO_CHAR(PT.START_TIME, 'HH24:MI:SS') START_TIME, "
                 + "\n TO_CHAR(PT.END_TIME, 'HH24:MI:SS') END_TIME,"
-                + "\n (END_TIME - START_TIME) * 1440 TOTAL_TIME, PT.CRTD_BY,"
-                + "\n TO_CHAR(PT.CRTD_DATE, 'DD-MON-YY HH24:MI:SS') CRTD_DATE"
+                + "\n ((END_TIME - START_TIME) * 1440) TOTAL_TIME, PT.CRTD_BY," //24 * 60 = 1440
+                + "\n TO_CHAR(PT.CRTD_DATE, 'DD-MON-YY HH24:MI:SS') CRTD_DATE"  //24 hours in a day * 60 minutes in an hour
                 + "\n FROM " + Database.DCMS.perfusionTime + " PT"
                 + "\n WHERE PT.CARDIAC_ID = " + cardiacId
                 + "\n AND PT.ACTION_ID = " + actionId;
@@ -554,7 +554,7 @@ public class PerfusionistHandler {
             objData.setCardiacId(map.get("CARDIAC_ID").toString());
             objData.setStartTime(map.get("START_TIME").toString());
             objData.setEndTime(map.get("END_TIME").toString());
-            objData.setEndTime(map.get("TOTAL_TIME").toString());
+            objData.setTotalTime(map.get("TOTAL_TIME").toString());
             objData.setActionId(map.get("ACTION_ID").toString());
             objData.setTemperature(map.get("TEMPERATURE").toString());
             objData.setCrtdBy(map.get("CRTD_BY").toString());

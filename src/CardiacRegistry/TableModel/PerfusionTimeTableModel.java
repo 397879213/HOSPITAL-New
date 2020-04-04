@@ -11,7 +11,7 @@ import javax.swing.table.AbstractTableModel;
 public class PerfusionTimeTableModel extends AbstractTableModel {
 
     private final String[] columnNames
-            = {"Sr.", "Start Time", "End Time", "Temperature"};
+            = {"Sr.", "Start Time", "End Time", "Total Time", "Temperature"};
     private final Object[][] data;
 
     public PerfusionTimeTableModel(List<PerfusionistBO> liInfo) {
@@ -22,11 +22,10 @@ public class PerfusionTimeTableModel extends AbstractTableModel {
         for (PerfusionistBO currentinfo : liInfo) {
             data[row][0] = row + 1;
             data[row][1] = currentinfo.getStartTime();
-            data[row][1] = currentinfo.getEndTime();
-            data[row][1] = currentinfo.getTemperature();
-            
+            data[row][2] = currentinfo.getEndTime();
+            data[row][3] = currentinfo.getTotalTime();
+            data[row][4] = currentinfo.getTemperature();
             row++;
-
         }
     }
 
