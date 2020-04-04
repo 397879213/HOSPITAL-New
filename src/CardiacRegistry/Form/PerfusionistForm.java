@@ -55,6 +55,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         selectPerfusionInfo();
         selectPerfusionCheckList();
         selectBloodGases();
+        selectPerTimeInfo(cboTimeManag.getSelectedIndex());
     }
 
     Date date = new Date();
@@ -1549,6 +1550,11 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         });
 
         cboTimeManag.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bypass Time", "X-Clamp time", "Circ. Arrest Time", "Rewarming Time" }));
+        cboTimeManag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboTimeManagActionPerformed(evt);
+            }
+        });
 
         txtTimeTemperature.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         txtTimeTemperature.addActionListener(new java.awt.event.ActionListener() {
@@ -3266,17 +3272,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
 
     private void txtOffTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOffTimeActionPerformed
         // TODO add your handling code here:
-        setOntime();
-        setOffTime();
-        objPerTime.setCardiacId(cardiacId);
-        objPerTime.setTemperature(txtTimeTemperature.getText().trim());
-        objPerTime.setActionId(String.valueOf(cboTimeManag.getSelectedIndex()));
-        if (ctlPerfusionist.insertPerfusionTime(objPerTime)) {
-            selectPerTimeInfo(cboTimeManag.getSelectedIndex());
-        } else {
-            JOptionPane.showMessageDialog(null, "Unable to Save Information.\n"
-                    + "Please Contact Support Person.");
-        }
+        savePerfusionTime();
     }//GEN-LAST:event_txtOffTimeActionPerformed
 
     private void txtSelectDrugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSelectDrugActionPerformed
@@ -3824,6 +3820,11 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void cboTimeManagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTimeManagActionPerformed
+        // TODO add your handling code here:
+        selectPerTimeInfo(cboTimeManag.getSelectedIndex());
+    }//GEN-LAST:event_cboTimeManagActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -4543,5 +4544,19 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy "
                 + txtOffTime.getText().trim());
         objPerTime.setEndTime(dateFormat.format(date));
+    }
+
+    private void savePerfusionTime() {
+        setOntime();
+        setOffTime();
+        objPerTime.setCardiacId(cardiacId);
+        objPerTime.setTemperature(txtTimeTemperature.getText().trim());
+        objPerTime.setActionId(String.valueOf(cboTimeManag.getSelectedIndex()));
+        if (ctlPerfusionist.insertPerfusionTime(objPerTime)) {
+            selectPerTimeInfo(cboTimeManag.getSelectedIndex());
+        } else {
+            JOptionPane.showMessageDialog(null, "Unable to Save Information.\n"
+                    + "Please Contact Support Person.");
+        }
     }
 }
