@@ -10,6 +10,7 @@ public class Keys {
     public static final String outsidePatient = "OUTSIDE_PATIENT";
     public static final String bloodGassesPK = "BLOOD_GASSES";
     public static final String perfusionTimePK = "PERFUSION_TIME";
+    public static final String valveInfoPK = "VALVE_INFO";
     public static final String cardiacSurgeryPK = "CARDIAC_SURGERY_MASTER";
     public static final String cardiacPerfusionIdPk = "CARDIAC_REGISTRY_PERFUSION";
 //NEW OT KEYS   

@@ -130,8 +130,9 @@ public class PerfusionistController {
         return hdlPerfusionist.selectValveInformation(cardiacId, actionId);
     }
 
-    public boolean insertValveInformation(PerfusionistBO perTime) {
-        boolean ret = hdlPerfusionist.insertValveInformation(perTime);
+    public boolean insertValveInformation(PerfusionistBO valveInfo) { // SEQ_VALVE_INFO
+        valveInfo.setValvePk(key.generatePrimaryKey(Keys.valveInfoPK, true));
+        boolean ret = hdlPerfusionist.insertValveInformation(valveInfo);
         if (ret) {
             Constants.dao.commitTransaction();
         }

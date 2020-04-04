@@ -3757,14 +3757,14 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
 
     private void txtValveInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValveInfoActionPerformed
         // TODO add your handling code here:
-        lov.LOVDefinitionSelection(title, txtValveInfo.getText().trim(), this);
+        lov.LOVDefinitionSelection(DefinitionTypes.statusAsset, txtValveInfo.getText().trim(), this);
 
         objValve.setValveId(Constants.lovID);
         objValve.setActionId(String.valueOf(cboValve.getSelectedIndex()));
         if (ctlPerfusionist.insertValveInformation(objValve)) {
             selectValveInformation(cboValve.getSelectedIndex());
         } else {
-            JOptionPane.showMessageDialog(null, "Unable tot save Infromation.\n"
+            JOptionPane.showMessageDialog(null, "Unable to Save Infromation.\n"
                     + "Please Contact Support Team.");
         }
 
