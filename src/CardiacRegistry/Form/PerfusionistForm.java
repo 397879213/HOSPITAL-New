@@ -1242,9 +1242,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Sr.", "Grade", "Grade Description", "Child Above 12", "Child Under 12", "Spouse",
-                "Parents", "Self", "Class"
-
+                "Sr.", "ID", "Description"
             }
         ));
         tblPatientInfo.addMouseListener(new java.awt.event.MouseAdapter() {
