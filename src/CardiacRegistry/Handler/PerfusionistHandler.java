@@ -536,8 +536,8 @@ public class PerfusionistHandler {
                 = "SELECT PT.ID, PT.CARDIAC_ID, PT.ACTION_ID, "
                 + "\n NVL(PT.TEMPERATURE,' ') TEMPERATURE,"
                 + "\n TO_CHAR(PT.START_TIME, 'HH24:MI:SS') START_TIME, "
-                + "\n TO_CHAR(PT.END_TIME, 'HH24:MI:SS') END_TIME,"
-                + "\n ((END_TIME - START_TIME) * 1440) TOTAL_TIME, PT.CRTD_BY," //24 * 60 = 1440
+                + "\n TO_CHAR(PT.END_TIME, 'HH24:MI:SS') END_TIME,  PT.CRTD_BY,"
+                + "\n SUBSTR(TO_CHAR(((END_TIME - START_TIME) * 1440)), 0, 2) TOTAL_TIME," //24 * 60 = 1440
                 + "\n TO_CHAR(PT.CRTD_DATE, 'DD-MON-YY HH24:MI:SS') CRTD_DATE"  //24 hours in a day * 60 minutes in an hour
                 + "\n FROM " + Database.DCMS.perfusionTime + " PT"
                 + "\n WHERE PT.CARDIAC_ID = " + cardiacId
