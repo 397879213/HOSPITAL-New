@@ -6,6 +6,7 @@ import CardiacRegistry.Controller.PerfusionistController;
 import CardiacRegistry.TableModel.PerfusionBloodGasesTableModel;
 import CardiacRegistry.TableModel.PerfusionCheckListTableModel;
 import CardiacRegistry.TableModel.PerfusionGraphTableModel;
+import CardiacRegistry.TableModel.PerfusionTimeTableModel;
 import java.awt.event.KeyEvent;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -3269,7 +3270,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         objPerTime.setActionId(String.valueOf(cboTimeManag.getSelectedIndex()));
         if (ctlPerfusionist.insertPerfusionTime(objPerTime)) {
             selectPerTimeInfo();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Unable to Save Information.\n"
                     + "Please Contact Support Person.");
         }
@@ -3343,12 +3344,12 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblBloodGasesMouseEntered
 
     private void tblBloodGasesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBloodGasesMouseReleased
-        
-        if(listBG.isEmpty() || tblBloodGases.getSelectedRow() < 0){
+
+        if (listBG.isEmpty() || tblBloodGases.getSelectedRow() < 0) {
             return;
         }
         BloodGasses bloodGasses = listBG.get(tblBloodGases.getSelectedRow());
-        
+
         cboBGType.setSelectedItem(bloodGasses.getOnVentDBP());
         txtTime.setText(bloodGasses.getTime());
         txtBFlow.setText(bloodGasses.getBloodFlow());
@@ -3684,8 +3685,8 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         if (confirmation != 0) {
             return;
         }
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy " + 
-                txtBGTime.getText().trim());// yyyy/MM/dd HH:mm:ss
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy "
+                + txtBGTime.getText().trim());// yyyy/MM/dd HH:mm:ss
         Date date = new Date();
         bloodGasses.setCardiacId(cardiacId);
         bloodGasses.setOnVentDBP(cboBGType.getSelectedItem().toString());
@@ -4499,6 +4500,34 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     }
 
     private void selectPerTimeInfo() {
-        s
+        listPerTime = ctlPerfusionist.selectPerfusionTime(cardiacId, patientId);
+        if (listPerTime.isEmpty()) {
+            List<PerfusionistBO> listPerTime = new ArrayList<>();
+            listPerTime.add(new PerfusionistBO());
+            tblTimeManagement.setModel(new PerfusionTimeTableModel(listPerTime));
+            return;
+        }
+        tblTimeManagement.setModel(new PerfusionTimeTableModel(listPerTime));
+        ListSelectionModel selectionModel = tblTimeManagement.getSelectionModel();
+        tblTimeManagement.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        setPerTimeColumnsWidths();
+        selectionModel.setSelectionInterval(0, 0);
+        Constants.tablelook.setJTableEnvironment(tblTimeManagement);
+    }
+
+    private void setPerTimeColumnsWidths() {
+        TableColumn column = null;
+        for (int i = 0; i < tblTimeManagement.getColumnCount(); i++) {
+            column = tblTimeManagement.getColumnModel().getColumn(i);
+            if (i == 0) {
+                column.setPreferredWidth(25);
+            } else if (i == 1) {
+                column.setPreferredWidth(60);
+            } else if (i == 2) {
+                column.setPreferredWidth(60);
+            } else if (i == 3) {
+                column.setPreferredWidth(60);
+            }
+        }
     }
 }

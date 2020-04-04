@@ -110,6 +110,11 @@ public class PerfusionistController {
     }
 
     // Perfusionist Time
+    
+    public List<PerfusionistBO> selectPerfusionTime(String cardiacId, String actionId) {
+        return hdlPerfusionist.selectPerfusionTime(cardiacId, actionId);
+    }
+    
     public boolean insertPerfusionTime(PerfusionistBO perTime) { 
         perTime.setPerTimePk(key.generatePrimaryKey(Keys.perfusionTimePK, true));
         boolean ret = hdlPerfusionist.insertPerfusionTime(perTime);

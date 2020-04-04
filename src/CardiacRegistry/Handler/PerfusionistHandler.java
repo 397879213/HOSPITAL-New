@@ -526,7 +526,7 @@ public class PerfusionistHandler {
         return Constants.dao.insertData(InsertEmp, columns);
     }
 
-    public List<BloodGasses> selectPerfusionTime(String cardiacId, String actionId) {
+    public List<PerfusionistBO> selectPerfusionTime(String cardiacId, String actionId) {
 
         String columns[] = {"-", "ID", "START_TIME", "END_TIME", "ACTION_ID",
             "TEMPERATURE", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
@@ -541,34 +541,18 @@ public class PerfusionistHandler {
                 + "\n AND PT.ACTION_ID = " + actionId;
 
         List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
-        List<BloodGasses> lisPatient = new ArrayList();
+        List<PerfusionistBO> lisPatient = new ArrayList();
         for (int i = 0; i < listmap.size(); i++) {
 
             HashMap map = (HashMap) listmap.get(i);
-            BloodGasses objData = new BloodGasses();
+            PerfusionistBO objData = new PerfusionistBO();
 
-            objData.setBloodGasesId(map.get("ID").toString());
+            objData.setPerTimePk(map.get("ID").toString());
             objData.setCardiacId(map.get("CARDIAC_ID").toString());
-            objData.setTime(map.get("TIME").toString());
-            objData.setOnVentDBP(map.get("ON_VENT_DB").toString());
-            objData.setBloodFlow(map.get("B_FLOW").toString());
+            objData.setStartTime(map.get("START_TIME").toString());
+            objData.setEndTime(map.get("END_TIME").toString());
+            objData.setActionId(map.get("ACTION_ID").toString());
             objData.setTemperature(map.get("TEMPERATURE").toString());
-            objData.setFIO2(map.get("FIO2").toString());
-            objData.setGFlow(map.get("G_FLOW").toString());
-            objData.setPH(map.get("PH").toString());
-            objData.setPCO2(map.get("PCO2").toString());
-            objData.setHCO2(map.get("HCO2").toString());
-            objData.setBE(map.get("BE").toString());
-            objData.setO2Sat(map.get("O2_SAT").toString());
-            objData.setTCO2(map.get("TCO2").toString());
-            objData.setNA(map.get("NA").toString());
-            objData.setK(map.get("K").toString());
-            objData.setCA(map.get("CA").toString());
-            objData.setLAC(map.get("LAC").toString());
-            objData.setHB(map.get("HB").toString());
-            objData.setSugar(map.get("SUGAR").toString());
-            objData.setACT(map.get("ACT").toString());
-            objData.setHeparin(map.get("HEPARIN").toString());
             objData.setCrtdBy(map.get("CRTD_BY").toString());
             objData.setCrtdDate(map.get("CRTD_DATE").toString());
             lisPatient.add(objData);
