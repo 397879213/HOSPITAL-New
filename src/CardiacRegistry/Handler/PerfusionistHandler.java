@@ -592,8 +592,8 @@ public class PerfusionistHandler {
                 + "\n PT.ACTION_ID, PT.CRTD_BY, USR.NAME,"
                 + "\n TO_CHAR(PT.CRTD_DATE, 'DD-MON-YY HH24:MI:SS') CRTD_DATE"
                 + "\n FROM " + Database.DCMS.valveInformation + " PT,"
-                + "\n FROM " + Database.DCMS.definitionTypeDetail + " VLI,"
-                + "\n FROM " + Database.DCMS.users + " USR"
+                + "\n " + Database.DCMS.definitionTypeDetail + " VLI,"
+                + "\n " + Database.DCMS.users + " USR"
                 + "\n WHERE PT.CARDIAC_ID = " + cardiacId
                 + "\n AND PT.ACTION_ID = " + actionId
                 + "\n AND PT.VALVE_ID = VLI.ID"

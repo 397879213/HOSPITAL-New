@@ -3167,11 +3167,11 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel99" min="-2" pref="76" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtSugar13" min="-2" pref="149" max="-2" attributes="3"/>
+                          <Component id="txtMedicine" min="-2" pref="149" max="-2" attributes="3"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel100" min="-2" pref="53" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtSugar14" pref="62" max="32767" attributes="3"/>
+                          <Component id="txtMedDose" pref="62" max="32767" attributes="3"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane32" alignment="1" pref="0" max="32767" attributes="0"/>
@@ -3183,9 +3183,9 @@
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel99" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtSugar13" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtMedicine" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel100" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtSugar14" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtMedDose" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jScrollPane32" pref="99" max="32767" attributes="0"/>
@@ -3206,14 +3206,14 @@
                     <Property name="text" type="java.lang.String" value="Medicine :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtSugar13">
+                <Component class="javax.swing.JTextField" name="txtMedicine">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSugar13ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMedicineActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel100">
@@ -3228,14 +3228,14 @@
                     <Property name="text" type="java.lang.String" value="Dose :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtSugar14">
+                <Component class="javax.swing.JTextField" name="txtMedDose">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSugar14ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMedDoseActionPerformed"/>
                   </Events>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane32">
@@ -3245,7 +3245,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="tblPatientInfo3">
+                    <Component class="javax.swing.JTable" name="tblMedication">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d1" green="b4" id="Active Caption" palette="2" red="99" type="palette"/>
@@ -3255,11 +3255,11 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPatientInfo3MouseClicked"/>
-                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPatientInfo3MouseEntered"/>
-                        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPatientInfo3MouseReleased"/>
-                        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tblPatientInfo3PropertyChange"/>
-                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tblPatientInfo3KeyReleased"/>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblMedicationMouseClicked"/>
+                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblMedicationMouseEntered"/>
+                        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblMedicationMouseReleased"/>
+                        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tblMedicationPropertyChange"/>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tblMedicationKeyReleased"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -3304,7 +3304,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="jTextArea2">
+                    <Component class="javax.swing.JTextArea" name="txtProsthesisData">
                       <Properties>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="lineWrap" type="boolean" value="true"/>
@@ -3342,7 +3342,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel121" min="-2" pref="88" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtSugar34" min="-2" pref="83" max="-2" attributes="3"/>
+                                  <Component id="txtInotropes" min="-2" pref="83" max="-2" attributes="3"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel120" max="32767" attributes="0"/>
                               </Group>
@@ -3351,21 +3351,21 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel123" min="-2" pref="88" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtSugar35" min="-2" pref="83" max="-2" attributes="3"/>
+                                          <Component id="txtCardioversion" min="-2" pref="83" max="-2" attributes="3"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jLabel122" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel114" min="-2" pref="88" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtSugar27" min="-2" pref="83" max="-2" attributes="3"/>
+                                          <Component id="txtInfusionMode" min="-2" pref="83" max="-2" attributes="3"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jLabel115" min="-2" pref="90" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel112" min="-2" pref="88" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtSugar25" min="-2" pref="83" max="-2" attributes="3"/>
+                                          <Component id="txtCardioplegia" min="-2" pref="83" max="-2" attributes="3"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jLabel113" min="-2" pref="90" max="-2" attributes="0"/>
                                       </Group>
@@ -3380,12 +3380,12 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="txtSugar29" min="-2" pref="83" max="-2" attributes="3"/>
+                                          <Component id="txtPlegiaTemp" min="-2" pref="83" max="-2" attributes="3"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jLabel117" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
-                                          <Component id="txtSugar31" min="-2" pref="83" max="-2" attributes="3"/>
+                                          <Component id="txtCardiacVenting" min="-2" pref="83" max="-2" attributes="3"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jLabel119" max="32767" attributes="0"/>
                                       </Group>
@@ -3394,12 +3394,12 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtSugar26" max="32767" attributes="3"/>
+                              <Component id="txtPleagiaType" max="32767" attributes="3"/>
                               <Component id="txtSugar28" max="32767" attributes="3"/>
-                              <Component id="txtSugar30" max="32767" attributes="3"/>
-                              <Component id="txtSugar32" max="32767" attributes="3"/>
-                              <Component id="txtSugar33" max="32767" attributes="3"/>
-                              <Component id="txtSugar36" pref="79" max="32767" attributes="3"/>
+                              <Component id="txtNoPlegia" max="32767" attributes="3"/>
+                              <Component id="txtIABP" max="32767" attributes="3"/>
+                              <Component id="txtVAD" max="32767" attributes="3"/>
+                              <Component id="txtAntiarrythmics" pref="79" max="32767" attributes="3"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -3410,44 +3410,44 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel112" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtSugar25" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtCardioplegia" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel113" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtSugar26" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtPleagiaType" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel114" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtSugar27" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtInfusionMode" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel115" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="txtSugar28" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel116" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtSugar29" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtPlegiaTemp" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel117" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtSugar30" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtNoPlegia" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel118" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtSugar31" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtCardiacVenting" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel119" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtSugar32" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtIABP" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel121" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtSugar34" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtInotropes" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel120" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtSugar33" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtVAD" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel123" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtSugar35" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtCardioversion" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel122" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtSugar36" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtAntiarrythmics" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -3467,14 +3467,14 @@
                     <Property name="text" type="java.lang.String" value="Cardioplegia :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtSugar25">
+                <Component class="javax.swing.JTextField" name="txtCardioplegia">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSugar25ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCardioplegiaActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel113">
@@ -3489,14 +3489,14 @@
                     <Property name="text" type="java.lang.String" value="Pleagia Type :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtSugar26">
+                <Component class="javax.swing.JTextField" name="txtPleagiaType">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSugar26ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPleagiaTypeActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel114">
@@ -3511,14 +3511,14 @@
                     <Property name="text" type="java.lang.String" value="Infusion Mode :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtSugar27">
+                <Component class="javax.swing.JTextField" name="txtInfusionMode">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSugar27ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtInfusionModeActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel115">
@@ -3543,14 +3543,14 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSugar28ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtSugar29">
+                <Component class="javax.swing.JTextField" name="txtPlegiaTemp">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSugar29ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPlegiaTempActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel116">
@@ -3577,24 +3577,24 @@
                     <Property name="text" type="java.lang.String" value="No Plegia :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtSugar30">
+                <Component class="javax.swing.JTextField" name="txtNoPlegia">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSugar30ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNoPlegiaActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtSugar31">
+                <Component class="javax.swing.JTextField" name="txtCardiacVenting">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSugar31ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCardiacVentingActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel118">
@@ -3621,24 +3621,24 @@
                     <Property name="text" type="java.lang.String" value="IABP :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtSugar32">
+                <Component class="javax.swing.JTextField" name="txtIABP">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSugar32ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIABPActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtSugar33">
+                <Component class="javax.swing.JTextField" name="txtVAD">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSugar33ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtVADActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel120">
@@ -3653,14 +3653,14 @@
                     <Property name="text" type="java.lang.String" value="VAD :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtSugar34">
+                <Component class="javax.swing.JTextField" name="txtInotropes">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSugar34ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtInotropesActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel121">
@@ -3699,24 +3699,24 @@
                     <Property name="text" type="java.lang.String" value="Cardioversion :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtSugar35">
+                <Component class="javax.swing.JTextField" name="txtCardioversion">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSugar35ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCardioversionActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtSugar36">
+                <Component class="javax.swing.JTextField" name="txtAntiarrythmics">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSugar36ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAntiarrythmicsActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -3759,7 +3759,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTextArea" name="jTextArea3">
+                    <Component class="javax.swing.JTextArea" name="txtComments">
                       <Properties>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="lineWrap" type="boolean" value="true"/>
@@ -3799,9 +3799,9 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtSugar11" alignment="0" pref="101" max="32767" attributes="3"/>
-                              <Component id="txtSugar12" alignment="0" max="32767" attributes="3"/>
-                              <Component id="txtSugar15" alignment="0" max="32767" attributes="3"/>
+                              <Component id="txtAutologousBC" alignment="0" pref="101" max="32767" attributes="3"/>
+                              <Component id="txtUrineBeforeCPB" alignment="0" max="32767" attributes="3"/>
+                              <Component id="txtUrineDuringCPB" alignment="0" max="32767" attributes="3"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -3811,9 +3811,9 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtSugar17" alignment="0" pref="96" max="32767" attributes="3"/>
-                              <Component id="txtSugar18" alignment="0" max="32767" attributes="3"/>
-                              <Component id="txtSugar16" alignment="0" max="32767" attributes="3"/>
+                              <Component id="txtMUFiltration" alignment="0" pref="96" max="32767" attributes="3"/>
+                              <Component id="txtHemofilterate" alignment="0" max="32767" attributes="3"/>
+                              <Component id="txtUrineAfterCPB" alignment="0" max="32767" attributes="3"/>
                           </Group>
                       </Group>
                   </Group>
@@ -3823,22 +3823,22 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel92" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtSugar11" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtAutologousBC" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel104" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtSugar17" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtMUFiltration" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
                           <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtSugar12" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtUrineBeforeCPB" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel101" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="jLabel105" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtSugar18" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtHemofilterate" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                           </Group>
                           <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtSugar15" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtUrineDuringCPB" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel102" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
-                              <Component id="txtSugar16" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtUrineAfterCPB" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel103" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
@@ -3859,24 +3859,24 @@
                     <Property name="text" type="java.lang.String" value="Autologous BC :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtSugar11">
+                <Component class="javax.swing.JTextField" name="txtAutologousBC">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSugar11ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAutologousBCActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtSugar12">
+                <Component class="javax.swing.JTextField" name="txtUrineBeforeCPB">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSugar12ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUrineBeforeCPBActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel101">
@@ -3903,14 +3903,14 @@
                     <Property name="text" type="java.lang.String" value="Urine During CPB :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtSugar15">
+                <Component class="javax.swing.JTextField" name="txtUrineDuringCPB">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSugar15ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUrineDuringCPBActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel103">
@@ -3925,14 +3925,14 @@
                     <Property name="text" type="java.lang.String" value="Urine After CPB :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtSugar16">
+                <Component class="javax.swing.JTextField" name="txtUrineAfterCPB">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSugar16ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUrineAfterCPBActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel104">
@@ -3947,14 +3947,14 @@
                     <Property name="text" type="java.lang.String" value="MU Filtration :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtSugar17">
+                <Component class="javax.swing.JTextField" name="txtMUFiltration">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSugar17ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMUFiltrationActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel105">
@@ -3969,14 +3969,14 @@
                     <Property name="text" type="java.lang.String" value="Hemofilterate :"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtSugar18">
+                <Component class="javax.swing.JTextField" name="txtHemofilterate">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSugar18ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtHemofilterateActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -4168,9 +4168,9 @@
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jLabel111" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtSugar23" alignment="0" max="32767" attributes="3"/>
+                              <Component id="txtResidualPrimeBagged" alignment="0" max="32767" attributes="3"/>
                               <Component id="jLabel110" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtSugar24" max="32767" attributes="3"/>
+                              <Component id="txtFluidLeftIntheCircuit" max="32767" attributes="3"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -4181,11 +4181,11 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel110" min="-2" pref="21" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtSugar23" min="-2" pref="20" max="-2" attributes="1"/>
+                          <Component id="txtResidualPrimeBagged" min="-2" pref="20" max="-2" attributes="1"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel111" min="-2" pref="21" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                          <Component id="txtSugar24" min="-2" pref="20" max="-2" attributes="1"/>
+                          <Component id="txtFluidLeftIntheCircuit" min="-2" pref="20" max="-2" attributes="1"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -4204,14 +4204,14 @@
                     <Property name="text" type="java.lang.String" value="Residual Prime Bagged : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtSugar23">
+                <Component class="javax.swing.JTextField" name="txtResidualPrimeBagged">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSugar23ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtResidualPrimeBaggedActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel111">
@@ -4226,14 +4226,14 @@
                     <Property name="text" type="java.lang.String" value="Fluid Left in the Circuit : "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtSugar24">
+                <Component class="javax.swing.JTextField" name="txtFluidLeftIntheCircuit">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSugar24ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFluidLeftIntheCircuitActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -4276,7 +4276,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="tblPatientInfo1">
+                    <Component class="javax.swing.JTable" name="tblBloodConservation">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="d1" green="b4" id="Active Caption" palette="2" red="99" type="palette"/>
@@ -4286,11 +4286,11 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPatientInfo1MouseClicked"/>
-                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPatientInfo1MouseEntered"/>
-                        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblPatientInfo1MouseReleased"/>
-                        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tblPatientInfo1PropertyChange"/>
-                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tblPatientInfo1KeyReleased"/>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblBloodConservationMouseClicked"/>
+                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblBloodConservationMouseEntered"/>
+                        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblBloodConservationMouseReleased"/>
+                        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tblBloodConservationPropertyChange"/>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tblBloodConservationKeyReleased"/>
                       </Events>
                     </Component>
                   </SubComponents>

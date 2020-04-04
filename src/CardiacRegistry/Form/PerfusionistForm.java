@@ -249,55 +249,55 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jPanel20 = new javax.swing.JPanel();
         jPanel26 = new javax.swing.JPanel();
         jLabel99 = new javax.swing.JLabel();
-        txtSugar13 = new javax.swing.JTextField();
+        txtMedicine = new javax.swing.JTextField();
         jLabel100 = new javax.swing.JLabel();
-        txtSugar14 = new javax.swing.JTextField();
+        txtMedDose = new javax.swing.JTextField();
         jScrollPane32 = new javax.swing.JScrollPane();
-        tblPatientInfo3 = new javax.swing.JTable();
+        tblMedication = new javax.swing.JTable();
         jPanel27 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        txtProsthesisData = new javax.swing.JTextArea();
         jPanel5 = new javax.swing.JPanel();
         jLabel112 = new javax.swing.JLabel();
-        txtSugar25 = new javax.swing.JTextField();
+        txtCardioplegia = new javax.swing.JTextField();
         jLabel113 = new javax.swing.JLabel();
-        txtSugar26 = new javax.swing.JTextField();
+        txtPleagiaType = new javax.swing.JTextField();
         jLabel114 = new javax.swing.JLabel();
-        txtSugar27 = new javax.swing.JTextField();
+        txtInfusionMode = new javax.swing.JTextField();
         jLabel115 = new javax.swing.JLabel();
         txtSugar28 = new javax.swing.JTextField();
-        txtSugar29 = new javax.swing.JTextField();
+        txtPlegiaTemp = new javax.swing.JTextField();
         jLabel116 = new javax.swing.JLabel();
         jLabel117 = new javax.swing.JLabel();
-        txtSugar30 = new javax.swing.JTextField();
-        txtSugar31 = new javax.swing.JTextField();
+        txtNoPlegia = new javax.swing.JTextField();
+        txtCardiacVenting = new javax.swing.JTextField();
         jLabel118 = new javax.swing.JLabel();
         jLabel119 = new javax.swing.JLabel();
-        txtSugar32 = new javax.swing.JTextField();
-        txtSugar33 = new javax.swing.JTextField();
+        txtIABP = new javax.swing.JTextField();
+        txtVAD = new javax.swing.JTextField();
         jLabel120 = new javax.swing.JLabel();
-        txtSugar34 = new javax.swing.JTextField();
+        txtInotropes = new javax.swing.JTextField();
         jLabel121 = new javax.swing.JLabel();
         jLabel122 = new javax.swing.JLabel();
         jLabel123 = new javax.swing.JLabel();
-        txtSugar35 = new javax.swing.JTextField();
-        txtSugar36 = new javax.swing.JTextField();
+        txtCardioversion = new javax.swing.JTextField();
+        txtAntiarrythmics = new javax.swing.JTextField();
         jPanel28 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        txtComments = new javax.swing.JTextArea();
         jPanel24 = new javax.swing.JPanel();
         jLabel92 = new javax.swing.JLabel();
-        txtSugar11 = new javax.swing.JTextField();
-        txtSugar12 = new javax.swing.JTextField();
+        txtAutologousBC = new javax.swing.JTextField();
+        txtUrineBeforeCPB = new javax.swing.JTextField();
         jLabel101 = new javax.swing.JLabel();
         jLabel102 = new javax.swing.JLabel();
-        txtSugar15 = new javax.swing.JTextField();
+        txtUrineDuringCPB = new javax.swing.JTextField();
         jLabel103 = new javax.swing.JLabel();
-        txtSugar16 = new javax.swing.JTextField();
+        txtUrineAfterCPB = new javax.swing.JTextField();
         jLabel104 = new javax.swing.JLabel();
-        txtSugar17 = new javax.swing.JTextField();
+        txtMUFiltration = new javax.swing.JTextField();
         jLabel105 = new javax.swing.JLabel();
-        txtSugar18 = new javax.swing.JTextField();
+        txtHemofilterate = new javax.swing.JTextField();
         jPanel25 = new javax.swing.JPanel();
         jLabel106 = new javax.swing.JLabel();
         txtSugar19 = new javax.swing.JTextField();
@@ -309,12 +309,12 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel109 = new javax.swing.JLabel();
         jPanel23 = new javax.swing.JPanel();
         jLabel110 = new javax.swing.JLabel();
-        txtSugar23 = new javax.swing.JTextField();
+        txtResidualPrimeBagged = new javax.swing.JTextField();
         jLabel111 = new javax.swing.JLabel();
-        txtSugar24 = new javax.swing.JTextField();
+        txtFluidLeftIntheCircuit = new javax.swing.JTextField();
         jPanel30 = new javax.swing.JPanel();
         jScrollPane33 = new javax.swing.JScrollPane();
-        tblPatientInfo1 = new javax.swing.JTable();
+        tblBloodConservation = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         txtMemberId = new javax.swing.JTextField();
@@ -2214,10 +2214,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel99.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel99.setText("Medicine :");
 
-        txtSugar13.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar13.addActionListener(new java.awt.event.ActionListener() {
+        txtMedicine.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtMedicine.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar13ActionPerformed(evt);
+                txtMedicineActionPerformed(evt);
             }
         });
 
@@ -2226,43 +2226,43 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel100.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel100.setText("Dose :");
 
-        txtSugar14.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar14.addActionListener(new java.awt.event.ActionListener() {
+        txtMedDose.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtMedDose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar14ActionPerformed(evt);
+                txtMedDoseActionPerformed(evt);
             }
         });
 
-        tblPatientInfo3.setBackground(java.awt.SystemColor.activeCaption);
-        tblPatientInfo3.setModel(new javax.swing.table.DefaultTableModel(
+        tblMedication.setBackground(java.awt.SystemColor.activeCaption);
+        tblMedication.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null}
             },
             new String [] {
                 "Sr.", "Medicine", "Dose"    }
         ));
-        tblPatientInfo3.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblMedication.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblPatientInfo3MouseClicked(evt);
+                tblMedicationMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                tblPatientInfo3MouseEntered(evt);
+                tblMedicationMouseEntered(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                tblPatientInfo3MouseReleased(evt);
+                tblMedicationMouseReleased(evt);
             }
         });
-        tblPatientInfo3.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        tblMedication.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                tblPatientInfo3PropertyChange(evt);
+                tblMedicationPropertyChange(evt);
             }
         });
-        tblPatientInfo3.addKeyListener(new java.awt.event.KeyAdapter() {
+        tblMedication.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                tblPatientInfo3KeyReleased(evt);
+                tblMedicationKeyReleased(evt);
             }
         });
-        jScrollPane32.setViewportView(tblPatientInfo3);
+        jScrollPane32.setViewportView(tblMedication);
 
         javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
         jPanel26.setLayout(jPanel26Layout);
@@ -2272,11 +2272,11 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel99, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSugar13, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtMedicine, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel100, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSugar14, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+                .addComponent(txtMedDose, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
                 .addContainerGap())
             .addComponent(jScrollPane32, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
@@ -2286,9 +2286,9 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                 .addGap(5, 5, 5)
                 .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel99, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSugar13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMedicine, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel100, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSugar14, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMedDose, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane32, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))
         );
@@ -2297,10 +2297,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jPanel27.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Prosthesis Data", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel27.setForeground(new java.awt.Color(102, 0, 0));
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setLineWrap(true);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        txtProsthesisData.setColumns(20);
+        txtProsthesisData.setLineWrap(true);
+        txtProsthesisData.setRows(5);
+        jScrollPane2.setViewportView(txtProsthesisData);
 
         javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
         jPanel27.setLayout(jPanel27Layout);
@@ -2322,10 +2322,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel112.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel112.setText("Cardioplegia :");
 
-        txtSugar25.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar25.addActionListener(new java.awt.event.ActionListener() {
+        txtCardioplegia.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtCardioplegia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar25ActionPerformed(evt);
+                txtCardioplegiaActionPerformed(evt);
             }
         });
 
@@ -2334,10 +2334,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel113.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel113.setText("Pleagia Type :");
 
-        txtSugar26.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar26.addActionListener(new java.awt.event.ActionListener() {
+        txtPleagiaType.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtPleagiaType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar26ActionPerformed(evt);
+                txtPleagiaTypeActionPerformed(evt);
             }
         });
 
@@ -2346,10 +2346,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel114.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel114.setText("Infusion Mode :");
 
-        txtSugar27.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar27.addActionListener(new java.awt.event.ActionListener() {
+        txtInfusionMode.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtInfusionMode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar27ActionPerformed(evt);
+                txtInfusionModeActionPerformed(evt);
             }
         });
 
@@ -2365,10 +2365,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
             }
         });
 
-        txtSugar29.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar29.addActionListener(new java.awt.event.ActionListener() {
+        txtPlegiaTemp.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtPlegiaTemp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar29ActionPerformed(evt);
+                txtPlegiaTempActionPerformed(evt);
             }
         });
 
@@ -2382,17 +2382,17 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel117.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel117.setText("No Plegia :");
 
-        txtSugar30.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar30.addActionListener(new java.awt.event.ActionListener() {
+        txtNoPlegia.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtNoPlegia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar30ActionPerformed(evt);
+                txtNoPlegiaActionPerformed(evt);
             }
         });
 
-        txtSugar31.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar31.addActionListener(new java.awt.event.ActionListener() {
+        txtCardiacVenting.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtCardiacVenting.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar31ActionPerformed(evt);
+                txtCardiacVentingActionPerformed(evt);
             }
         });
 
@@ -2406,17 +2406,17 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel119.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel119.setText("IABP :");
 
-        txtSugar32.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar32.addActionListener(new java.awt.event.ActionListener() {
+        txtIABP.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtIABP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar32ActionPerformed(evt);
+                txtIABPActionPerformed(evt);
             }
         });
 
-        txtSugar33.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar33.addActionListener(new java.awt.event.ActionListener() {
+        txtVAD.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtVAD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar33ActionPerformed(evt);
+                txtVADActionPerformed(evt);
             }
         });
 
@@ -2425,10 +2425,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel120.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel120.setText("VAD :");
 
-        txtSugar34.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar34.addActionListener(new java.awt.event.ActionListener() {
+        txtInotropes.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtInotropes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar34ActionPerformed(evt);
+                txtInotropesActionPerformed(evt);
             }
         });
 
@@ -2447,17 +2447,17 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel123.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel123.setText("Cardioversion :");
 
-        txtSugar35.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar35.addActionListener(new java.awt.event.ActionListener() {
+        txtCardioversion.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtCardioversion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar35ActionPerformed(evt);
+                txtCardioversionActionPerformed(evt);
             }
         });
 
-        txtSugar36.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar36.addActionListener(new java.awt.event.ActionListener() {
+        txtAntiarrythmics.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtAntiarrythmics.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar36ActionPerformed(evt);
+                txtAntiarrythmicsActionPerformed(evt);
             }
         });
 
@@ -2471,7 +2471,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel121, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSugar34, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtInotropes, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel120, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
@@ -2479,19 +2479,19 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jLabel123, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtSugar35, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCardioversion, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel122))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jLabel114, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtSugar27, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtInfusionMode, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel115, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jLabel112, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtSugar25, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCardioplegia, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel113, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -2502,21 +2502,21 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(txtSugar29, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtPlegiaTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel117, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(txtSugar31, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCardiacVenting, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel119, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtSugar26)
+                    .addComponent(txtPleagiaType)
                     .addComponent(txtSugar28)
-                    .addComponent(txtSugar30)
-                    .addComponent(txtSugar32)
-                    .addComponent(txtSugar33)
-                    .addComponent(txtSugar36, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))
+                    .addComponent(txtNoPlegia)
+                    .addComponent(txtIABP)
+                    .addComponent(txtVAD)
+                    .addComponent(txtAntiarrythmics, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -2524,39 +2524,39 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel112, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSugar25, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCardioplegia, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel113, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSugar26, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPleagiaType, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel114, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSugar27, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtInfusionMode, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel115, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSugar28, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel116, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSugar29, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPlegiaTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel117, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSugar30, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNoPlegia, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel118, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSugar31, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCardiacVenting, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel119, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSugar32, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIABP, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel121, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSugar34, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtInotropes, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel120, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSugar33, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtVAD, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel123, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSugar35, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCardioversion, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel122, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSugar36, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAntiarrythmics, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2564,10 +2564,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jPanel28.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Comments", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel28.setForeground(new java.awt.Color(102, 0, 0));
 
-        jTextArea3.setColumns(20);
-        jTextArea3.setLineWrap(true);
-        jTextArea3.setRows(5);
-        jScrollPane3.setViewportView(jTextArea3);
+        txtComments.setColumns(20);
+        txtComments.setLineWrap(true);
+        txtComments.setRows(5);
+        jScrollPane3.setViewportView(txtComments);
 
         javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
         jPanel28.setLayout(jPanel28Layout);
@@ -2589,17 +2589,17 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel92.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel92.setText("Autologous BC :");
 
-        txtSugar11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar11.addActionListener(new java.awt.event.ActionListener() {
+        txtAutologousBC.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtAutologousBC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar11ActionPerformed(evt);
+                txtAutologousBCActionPerformed(evt);
             }
         });
 
-        txtSugar12.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar12.addActionListener(new java.awt.event.ActionListener() {
+        txtUrineBeforeCPB.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtUrineBeforeCPB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar12ActionPerformed(evt);
+                txtUrineBeforeCPBActionPerformed(evt);
             }
         });
 
@@ -2613,10 +2613,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel102.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel102.setText("Urine During CPB :");
 
-        txtSugar15.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar15.addActionListener(new java.awt.event.ActionListener() {
+        txtUrineDuringCPB.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtUrineDuringCPB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar15ActionPerformed(evt);
+                txtUrineDuringCPBActionPerformed(evt);
             }
         });
 
@@ -2625,10 +2625,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel103.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel103.setText("Urine After CPB :");
 
-        txtSugar16.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar16.addActionListener(new java.awt.event.ActionListener() {
+        txtUrineAfterCPB.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtUrineAfterCPB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar16ActionPerformed(evt);
+                txtUrineAfterCPBActionPerformed(evt);
             }
         });
 
@@ -2637,10 +2637,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel104.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel104.setText("MU Filtration :");
 
-        txtSugar17.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar17.addActionListener(new java.awt.event.ActionListener() {
+        txtMUFiltration.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtMUFiltration.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar17ActionPerformed(evt);
+                txtMUFiltrationActionPerformed(evt);
             }
         });
 
@@ -2649,10 +2649,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel105.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel105.setText("Hemofilterate :");
 
-        txtSugar18.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar18.addActionListener(new java.awt.event.ActionListener() {
+        txtHemofilterate.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtHemofilterate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar18ActionPerformed(evt);
+                txtHemofilterateActionPerformed(evt);
             }
         });
 
@@ -2667,9 +2667,9 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                     .addComponent(jLabel102, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtSugar11, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
-                    .addComponent(txtSugar12)
-                    .addComponent(txtSugar15))
+                    .addComponent(txtAutologousBC, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                    .addComponent(txtUrineBeforeCPB)
+                    .addComponent(txtUrineDuringCPB))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel104, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2677,29 +2677,29 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                     .addComponent(jLabel103, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtSugar17, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
-                    .addComponent(txtSugar18)
-                    .addComponent(txtSugar16)))
+                    .addComponent(txtMUFiltration, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                    .addComponent(txtHemofilterate)
+                    .addComponent(txtUrineAfterCPB)))
         );
         jPanel24Layout.setVerticalGroup(
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel24Layout.createSequentialGroup()
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel92, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSugar11, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAutologousBC, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel104, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSugar17, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMUFiltration, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSugar12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUrineBeforeCPB, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel101, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel105, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSugar18, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtHemofilterate, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(3, 3, 3)
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSugar15, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUrineDuringCPB, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel102, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSugar16, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUrineAfterCPB, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel103, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5))
         );
@@ -2808,10 +2808,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel110.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel110.setText("Residual Prime Bagged : ");
 
-        txtSugar23.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar23.addActionListener(new java.awt.event.ActionListener() {
+        txtResidualPrimeBagged.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtResidualPrimeBagged.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar23ActionPerformed(evt);
+                txtResidualPrimeBaggedActionPerformed(evt);
             }
         });
 
@@ -2820,10 +2820,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel111.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel111.setText("Fluid Left in the Circuit : ");
 
-        txtSugar24.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSugar24.addActionListener(new java.awt.event.ActionListener() {
+        txtFluidLeftIntheCircuit.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtFluidLeftIntheCircuit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSugar24ActionPerformed(evt);
+                txtFluidLeftIntheCircuitActionPerformed(evt);
             }
         });
 
@@ -2835,9 +2835,9 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                 .addGap(5, 5, 5)
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel111, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtSugar23)
+                    .addComponent(txtResidualPrimeBagged)
                     .addComponent(jLabel110, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtSugar24))
+                    .addComponent(txtFluidLeftIntheCircuit))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel23Layout.setVerticalGroup(
@@ -2845,11 +2845,11 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
             .addGroup(jPanel23Layout.createSequentialGroup()
                 .addComponent(jLabel110, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSugar23, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtResidualPrimeBagged, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel111, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
-                .addComponent(txtSugar24, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtFluidLeftIntheCircuit, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -2857,8 +2857,8 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jPanel30.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Blood Conservation", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 12), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel30.setForeground(new java.awt.Color(102, 0, 0));
 
-        tblPatientInfo1.setBackground(java.awt.SystemColor.activeCaption);
-        tblPatientInfo1.setModel(new javax.swing.table.DefaultTableModel(
+        tblBloodConservation.setBackground(java.awt.SystemColor.activeCaption);
+        tblBloodConservation.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null}
             },
@@ -2866,28 +2866,28 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                 "Sr.", "Id", "Description", "Select"
             }
         ));
-        tblPatientInfo1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblBloodConservation.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblPatientInfo1MouseClicked(evt);
+                tblBloodConservationMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                tblPatientInfo1MouseEntered(evt);
+                tblBloodConservationMouseEntered(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                tblPatientInfo1MouseReleased(evt);
+                tblBloodConservationMouseReleased(evt);
             }
         });
-        tblPatientInfo1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        tblBloodConservation.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                tblPatientInfo1PropertyChange(evt);
+                tblBloodConservationPropertyChange(evt);
             }
         });
-        tblPatientInfo1.addKeyListener(new java.awt.event.KeyAdapter() {
+        tblBloodConservation.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                tblPatientInfo1KeyReleased(evt);
+                tblBloodConservationKeyReleased(evt);
             }
         });
-        jScrollPane33.setViewportView(tblPatientInfo1);
+        jScrollPane33.setViewportView(tblBloodConservation);
 
         javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
         jPanel30.setLayout(jPanel30Layout);
@@ -3469,33 +3469,33 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tblGraphKeyReleased
 
-    private void txtSugar13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar13ActionPerformed
+    private void txtMedicineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMedicineActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar13ActionPerformed
+    }//GEN-LAST:event_txtMedicineActionPerformed
 
-    private void txtSugar14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar14ActionPerformed
+    private void txtMedDoseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMedDoseActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar14ActionPerformed
+    }//GEN-LAST:event_txtMedDoseActionPerformed
 
-    private void tblPatientInfo3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientInfo3MouseClicked
+    private void tblMedicationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMedicationMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPatientInfo3MouseClicked
+    }//GEN-LAST:event_tblMedicationMouseClicked
 
-    private void tblPatientInfo3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientInfo3MouseEntered
+    private void tblMedicationMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMedicationMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPatientInfo3MouseEntered
+    }//GEN-LAST:event_tblMedicationMouseEntered
 
-    private void tblPatientInfo3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientInfo3MouseReleased
+    private void tblMedicationMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMedicationMouseReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPatientInfo3MouseReleased
+    }//GEN-LAST:event_tblMedicationMouseReleased
 
-    private void tblPatientInfo3PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblPatientInfo3PropertyChange
+    private void tblMedicationPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblMedicationPropertyChange
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPatientInfo3PropertyChange
+    }//GEN-LAST:event_tblMedicationPropertyChange
 
-    private void tblPatientInfo3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblPatientInfo3KeyReleased
+    private void tblMedicationKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblMedicationKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPatientInfo3KeyReleased
+    }//GEN-LAST:event_tblMedicationKeyReleased
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
@@ -3546,29 +3546,29 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         txtSurgeon.requestFocus();
     }//GEN-LAST:event_txtIabCatheterTimeActionPerformed
 
-    private void txtSugar11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar11ActionPerformed
+    private void txtAutologousBCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAutologousBCActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar11ActionPerformed
+    }//GEN-LAST:event_txtAutologousBCActionPerformed
 
-    private void txtSugar12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar12ActionPerformed
+    private void txtUrineBeforeCPBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUrineBeforeCPBActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar12ActionPerformed
+    }//GEN-LAST:event_txtUrineBeforeCPBActionPerformed
 
-    private void txtSugar15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar15ActionPerformed
+    private void txtUrineDuringCPBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUrineDuringCPBActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar15ActionPerformed
+    }//GEN-LAST:event_txtUrineDuringCPBActionPerformed
 
-    private void txtSugar16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar16ActionPerformed
+    private void txtUrineAfterCPBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUrineAfterCPBActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar16ActionPerformed
+    }//GEN-LAST:event_txtUrineAfterCPBActionPerformed
 
-    private void txtSugar17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar17ActionPerformed
+    private void txtMUFiltrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMUFiltrationActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar17ActionPerformed
+    }//GEN-LAST:event_txtMUFiltrationActionPerformed
 
-    private void txtSugar18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar18ActionPerformed
+    private void txtHemofilterateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHemofilterateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar18ActionPerformed
+    }//GEN-LAST:event_txtHemofilterateActionPerformed
 
     private void txtSugar19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar19ActionPerformed
         // TODO add your handling code here:
@@ -3586,13 +3586,13 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSugar22ActionPerformed
 
-    private void txtSugar23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar23ActionPerformed
+    private void txtResidualPrimeBaggedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtResidualPrimeBaggedActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar23ActionPerformed
+    }//GEN-LAST:event_txtResidualPrimeBaggedActionPerformed
 
-    private void txtSugar24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar24ActionPerformed
+    private void txtFluidLeftIntheCircuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFluidLeftIntheCircuitActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar24ActionPerformed
+    }//GEN-LAST:event_txtFluidLeftIntheCircuitActionPerformed
 
     private void txtBFlowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBFlowActionPerformed
         // TODO add your handling code here:
@@ -3757,8 +3757,14 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
 
     private void txtValveInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValveInfoActionPerformed
         // TODO add your handling code here:
+        if (cboValve.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Please Select an Option Before Add.");
+            cboValve.requestFocus();
+            return;
+        }
         lov.LOVDefinitionSelection(DefinitionTypes.statusAsset, txtValveInfo.getText().trim(), this);
 
+        objValve.setCardiacId(cardiacId);
         objValve.setValveId(Constants.lovID);
         objValve.setActionId(String.valueOf(cboValve.getSelectedIndex()));
         if (ctlPerfusionist.insertValveInformation(objValve)) {
@@ -3775,73 +3781,73 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         savePerfusionTime();
     }//GEN-LAST:event_txtTimeTemperatureActionPerformed
 
-    private void txtSugar25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar25ActionPerformed
+    private void txtCardioplegiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCardioplegiaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar25ActionPerformed
+    }//GEN-LAST:event_txtCardioplegiaActionPerformed
 
-    private void txtSugar26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar26ActionPerformed
+    private void txtPleagiaTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPleagiaTypeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar26ActionPerformed
+    }//GEN-LAST:event_txtPleagiaTypeActionPerformed
 
-    private void txtSugar27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar27ActionPerformed
+    private void txtInfusionModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInfusionModeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar27ActionPerformed
+    }//GEN-LAST:event_txtInfusionModeActionPerformed
 
     private void txtSugar28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar28ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSugar28ActionPerformed
 
-    private void txtSugar29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar29ActionPerformed
+    private void txtPlegiaTempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPlegiaTempActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar29ActionPerformed
+    }//GEN-LAST:event_txtPlegiaTempActionPerformed
 
-    private void txtSugar30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar30ActionPerformed
+    private void txtNoPlegiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNoPlegiaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar30ActionPerformed
+    }//GEN-LAST:event_txtNoPlegiaActionPerformed
 
-    private void txtSugar31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar31ActionPerformed
+    private void txtCardiacVentingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCardiacVentingActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar31ActionPerformed
+    }//GEN-LAST:event_txtCardiacVentingActionPerformed
 
-    private void txtSugar32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar32ActionPerformed
+    private void txtIABPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIABPActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar32ActionPerformed
+    }//GEN-LAST:event_txtIABPActionPerformed
 
-    private void txtSugar33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar33ActionPerformed
+    private void txtVADActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVADActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar33ActionPerformed
+    }//GEN-LAST:event_txtVADActionPerformed
 
-    private void txtSugar34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar34ActionPerformed
+    private void txtInotropesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInotropesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar34ActionPerformed
+    }//GEN-LAST:event_txtInotropesActionPerformed
 
-    private void txtSugar35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar35ActionPerformed
+    private void txtCardioversionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCardioversionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar35ActionPerformed
+    }//GEN-LAST:event_txtCardioversionActionPerformed
 
-    private void txtSugar36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar36ActionPerformed
+    private void txtAntiarrythmicsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAntiarrythmicsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSugar36ActionPerformed
+    }//GEN-LAST:event_txtAntiarrythmicsActionPerformed
 
-    private void tblPatientInfo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientInfo1MouseClicked
+    private void tblBloodConservationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBloodConservationMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPatientInfo1MouseClicked
+    }//GEN-LAST:event_tblBloodConservationMouseClicked
 
-    private void tblPatientInfo1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientInfo1MouseEntered
+    private void tblBloodConservationMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBloodConservationMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPatientInfo1MouseEntered
+    }//GEN-LAST:event_tblBloodConservationMouseEntered
 
-    private void tblPatientInfo1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientInfo1MouseReleased
+    private void tblBloodConservationMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBloodConservationMouseReleased
 
-    }//GEN-LAST:event_tblPatientInfo1MouseReleased
+    }//GEN-LAST:event_tblBloodConservationMouseReleased
 
-    private void tblPatientInfo1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblPatientInfo1PropertyChange
+    private void tblBloodConservationPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblBloodConservationPropertyChange
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPatientInfo1PropertyChange
+    }//GEN-LAST:event_tblBloodConservationPropertyChange
 
-    private void tblPatientInfo1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblPatientInfo1KeyReleased
+    private void tblBloodConservationKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblBloodConservationKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPatientInfo1KeyReleased
+    }//GEN-LAST:event_tblBloodConservationKeyReleased
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
@@ -3855,6 +3861,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
 
     private void cboValveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboValveActionPerformed
         // TODO add your handling code here:
+        selectValveInformation(cboValve.getSelectedIndex());
     }//GEN-LAST:event_cboValveActionPerformed
 
 
@@ -4000,25 +4007,25 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane32;
     private javax.swing.JScrollPane jScrollPane33;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
     private javax.swing.JLabel lblPacsLink;
     private javax.swing.JPanel pnlPL;
+    private javax.swing.JTable tblBloodConservation;
     private javax.swing.JTable tblBloodGases;
     private javax.swing.JTable tblCheckList;
     private javax.swing.JTable tblDrugs;
     private javax.swing.JTable tblGraph;
-    private javax.swing.JTable tblPatientInfo1;
-    private javax.swing.JTable tblPatientInfo3;
+    private javax.swing.JTable tblMedication;
     private javax.swing.JTable tblTimeManagement;
     private javax.swing.JTable tblValeInfo;
     private javax.swing.JTextField txtAct;
     private javax.swing.JTextField txtAllergies;
     private javax.swing.JTextField txtAnesthetist;
     private javax.swing.JTextField txtAntegrade;
+    private javax.swing.JTextField txtAntiarrythmics;
     private javax.swing.JTextField txtAortic;
     private javax.swing.JTextField txtAsstPerfusionist;
     private javax.swing.JTextField txtAsstSurgeon;
+    private javax.swing.JTextField txtAutologousBC;
     private javax.swing.JTextField txtBE;
     private javax.swing.JTextField txtBFlow;
     private javax.swing.JTextField txtBGTime;
@@ -4026,11 +4033,16 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtBloodGroup;
     private javax.swing.JTextField txtBloodRbc;
     private javax.swing.JTextField txtCA;
+    private javax.swing.JTextField txtCardiacVenting;
+    private javax.swing.JTextField txtCardioplegia;
+    private javax.swing.JTextField txtCardioversion;
+    private javax.swing.JTextArea txtComments;
     private javax.swing.JTextField txtCpgSystem;
     private javax.swing.JTextField txtCreatinine;
     private javax.swing.JTextField txtDiabetic;
     private javax.swing.JTextField txtEF;
     private javax.swing.JTextField txtFio2;
+    private javax.swing.JTextField txtFluidLeftIntheCircuit;
     private javax.swing.JTextField txtGflow;
     private javax.swing.JTextField txtHB;
     private javax.swing.JTextField txtHBsAntiHcv;
@@ -4039,19 +4051,27 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtHco2;
     private javax.swing.JTextField txtHeight;
     private javax.swing.JTextField txtHemofilter;
+    private javax.swing.JTextField txtHemofilterate;
     private javax.swing.JTextField txtHeparin;
     private javax.swing.JTextField txtHeparinKU;
     private javax.swing.JTextField txtHeparinized;
+    private javax.swing.JTextField txtIABP;
     private javax.swing.JTextField txtIabCatheterTime;
+    private javax.swing.JTextField txtInfusionMode;
+    private javax.swing.JTextField txtInotropes;
     private javax.swing.JTextField txtK;
     private javax.swing.JTextField txtLMS;
     private javax.swing.JTextField txtLac;
+    private javax.swing.JTextField txtMUFiltration;
     private javax.swing.JTextField txtMannitol;
+    private javax.swing.JTextField txtMedDose;
+    private javax.swing.JTextField txtMedicine;
     private javax.swing.JTextField txtMemberId;
     private javax.swing.JTextField txtMemberId1;
     private javax.swing.JTextField txtMemberId2;
     private javax.swing.JTextField txtMitral;
     private javax.swing.JTextField txtNa;
+    private javax.swing.JTextField txtNoPlegia;
     private javax.swing.JTextField txtO2;
     private javax.swing.JTextField txtOffTime;
     private javax.swing.JTextField txtOnTime;
@@ -4061,39 +4081,22 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtPH;
     private javax.swing.JTextField txtPco2;
     private javax.swing.JTextField txtPerfusionist;
+    private javax.swing.JTextField txtPleagiaType;
+    private javax.swing.JTextField txtPlegiaTemp;
     private javax.swing.JTextField txtPo2;
     private javax.swing.JTextField txtPressure;
+    private javax.swing.JTextArea txtProsthesisData;
     private javax.swing.JTextField txtPulmonary;
     private javax.swing.JTextField txtQuantity;
+    private javax.swing.JTextField txtResidualPrimeBagged;
     private javax.swing.JTextField txtRetrograde;
     private javax.swing.JTextField txtSelectDrug;
     private javax.swing.JTextField txtSugar;
-    private javax.swing.JTextField txtSugar11;
-    private javax.swing.JTextField txtSugar12;
-    private javax.swing.JTextField txtSugar13;
-    private javax.swing.JTextField txtSugar14;
-    private javax.swing.JTextField txtSugar15;
-    private javax.swing.JTextField txtSugar16;
-    private javax.swing.JTextField txtSugar17;
-    private javax.swing.JTextField txtSugar18;
     private javax.swing.JTextField txtSugar19;
     private javax.swing.JTextField txtSugar20;
     private javax.swing.JTextField txtSugar21;
     private javax.swing.JTextField txtSugar22;
-    private javax.swing.JTextField txtSugar23;
-    private javax.swing.JTextField txtSugar24;
-    private javax.swing.JTextField txtSugar25;
-    private javax.swing.JTextField txtSugar26;
-    private javax.swing.JTextField txtSugar27;
     private javax.swing.JTextField txtSugar28;
-    private javax.swing.JTextField txtSugar29;
-    private javax.swing.JTextField txtSugar30;
-    private javax.swing.JTextField txtSugar31;
-    private javax.swing.JTextField txtSugar32;
-    private javax.swing.JTextField txtSugar33;
-    private javax.swing.JTextField txtSugar34;
-    private javax.swing.JTextField txtSugar35;
-    private javax.swing.JTextField txtSugar36;
     private javax.swing.JTextField txtSumpVent;
     private javax.swing.JTextField txtSurArea;
     private javax.swing.JTextField txtSurgeon;
@@ -4102,6 +4105,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtTime;
     private javax.swing.JTextField txtTimeTemperature;
     private javax.swing.JTextField txtUrea;
+    private javax.swing.JTextField txtUrineAfterCPB;
+    private javax.swing.JTextField txtUrineBeforeCPB;
+    private javax.swing.JTextField txtUrineDuringCPB;
+    private javax.swing.JTextField txtVAD;
     private javax.swing.JTextField txtValve;
     private javax.swing.JTextField txtValveInfo;
     private javax.swing.JTextField txtWeight;
@@ -4579,11 +4586,19 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     }
 
     private void savePerfusionTime() {
+        if (cboTimeManag.getSelectedIndex() == 3
+                && txtTimeTemperature.getText().trim().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Please Enter Temperature. Prior "
+                    + "to Save Rewarming Time.");
+            txtTimeTemperature.requestFocus();
+            return;
+        }
         setOntime();
         setOffTime();
         objPerTime.setCardiacId(cardiacId);
         objPerTime.setTemperature(txtTimeTemperature.getText().trim());
         objPerTime.setActionId(String.valueOf(cboTimeManag.getSelectedIndex()));
+
         if (ctlPerfusionist.insertPerfusionTime(objPerTime)) {
             selectPerTimeInfo(cboTimeManag.getSelectedIndex());
         } else {
