@@ -7,6 +7,7 @@ import CardiacRegistry.TableModel.PerfusionBloodGasesTableModel;
 import CardiacRegistry.TableModel.PerfusionCheckListTableModel;
 import CardiacRegistry.TableModel.PerfusionGraphTableModel;
 import CardiacRegistry.TableModel.PerfusionTimeTableModel;
+import CardiacRegistry.TableModel.ValveInfromationTableModel;
 import java.awt.event.KeyEvent;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -36,6 +37,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     List<PerfusionistBO> listPerGraph = new ArrayList();
     List<PerfusionistBO> listPerCheckList = new ArrayList();
     List<PerfusionistBO> listPerTime = new ArrayList();
+    List<PerfusionistBO> listValveInfo = new ArrayList();
 
     public PerfusionistForm() {
 
@@ -65,6 +67,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     PerfusionistBO perfusionInfo = new PerfusionistBO();
     PerfusionistBO objPerfusionist = new PerfusionistBO();
     PerfusionistBO objPerTime = new PerfusionistBO();
+    PerfusionistBO objValve = new PerfusionistBO();
     BloodGasses bloodGasses = new BloodGasses();
     PerfusionistController ctlPerfusionist = new PerfusionistController();
 
@@ -166,9 +169,9 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         txtAllergies = new javax.swing.JTextField();
         jPanel18 = new javax.swing.JPanel();
         jScrollPane31 = new javax.swing.JScrollPane();
-        tblPatientInfo = new javax.swing.JTable();
-        txtSumpVent1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        tblValeInfo = new javax.swing.JTable();
+        txtValveInfo = new javax.swing.JTextField();
+        cboValve = new javax.swing.JComboBox<>();
         jLabel34 = new javax.swing.JLabel();
         jPanel15 = new javax.swing.JPanel();
         jPanel17 = new javax.swing.JPanel();
@@ -1236,8 +1239,8 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(102, 0, 0))); // NOI18N
         jPanel18.setForeground(new java.awt.Color(102, 0, 0));
 
-        tblPatientInfo.setBackground(java.awt.SystemColor.activeCaption);
-        tblPatientInfo.setModel(new javax.swing.table.DefaultTableModel(
+        tblValeInfo.setBackground(java.awt.SystemColor.activeCaption);
+        tblValeInfo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null}
             },
@@ -1245,40 +1248,40 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                 "Sr.", "ID", "Description"
             }
         ));
-        tblPatientInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblValeInfo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblPatientInfoMouseClicked(evt);
+                tblValeInfoMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                tblPatientInfoMouseEntered(evt);
+                tblValeInfoMouseEntered(evt);
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
-                tblPatientInfoMouseReleased(evt);
+                tblValeInfoMouseReleased(evt);
             }
         });
-        tblPatientInfo.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        tblValeInfo.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                tblPatientInfoPropertyChange(evt);
+                tblValeInfoPropertyChange(evt);
             }
         });
-        tblPatientInfo.addKeyListener(new java.awt.event.KeyAdapter() {
+        tblValeInfo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                tblPatientInfoKeyReleased(evt);
+                tblValeInfoKeyReleased(evt);
             }
         });
-        jScrollPane31.setViewportView(tblPatientInfo);
+        jScrollPane31.setViewportView(tblValeInfo);
 
-        txtSumpVent1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtSumpVent1.addActionListener(new java.awt.event.ActionListener() {
+        txtValveInfo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtValveInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSumpVent1ActionPerformed(evt);
+                txtValveInfoActionPerformed(evt);
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Venous", "Aortic", "Connectors"}));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cboValve.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "Venous", "Aortic", "Connectors"}));
+        cboValve.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cboValveActionPerformed(evt);
             }
         });
 
@@ -1295,17 +1298,17 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
             .addGroup(jPanel18Layout.createSequentialGroup()
                 .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSumpVent1)
+                .addComponent(txtValveInfo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cboValve, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSumpVent1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtValveInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboValve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane31, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
@@ -3082,7 +3085,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         lov.LOVDefinitionSelection(DefinitionTypes.cardiacSurgery,
                 txtOperation.getText().trim(), this);
-        if(Constants.lovID.equalsIgnoreCase("ID")){
+        if (Constants.lovID.equalsIgnoreCase("ID")) {
             return;
         }
         operationId = Constants.lovID;
@@ -3171,7 +3174,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         lov.LOVDefinitionSelection(DefinitionTypes.bloodGroup,
                 txtBloodGroup.getText().trim(), this);
-        if(Constants.lovID.equalsIgnoreCase("ID")){
+        if (Constants.lovID.equalsIgnoreCase("ID")) {
             return;
         }
         bloodGroupId = Constants.lovID;
@@ -3732,30 +3735,40 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_cboBGTypeActionPerformed
 
-    private void tblPatientInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientInfoMouseClicked
+    private void tblValeInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblValeInfoMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPatientInfoMouseClicked
+    }//GEN-LAST:event_tblValeInfoMouseClicked
 
-    private void tblPatientInfoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientInfoMouseEntered
+    private void tblValeInfoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblValeInfoMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPatientInfoMouseEntered
+    }//GEN-LAST:event_tblValeInfoMouseEntered
 
-    private void tblPatientInfoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPatientInfoMouseReleased
+    private void tblValeInfoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblValeInfoMouseReleased
 
-    }//GEN-LAST:event_tblPatientInfoMouseReleased
+    }//GEN-LAST:event_tblValeInfoMouseReleased
 
-    private void tblPatientInfoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblPatientInfoPropertyChange
+    private void tblValeInfoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tblValeInfoPropertyChange
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPatientInfoPropertyChange
+    }//GEN-LAST:event_tblValeInfoPropertyChange
 
-    private void tblPatientInfoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblPatientInfoKeyReleased
+    private void tblValeInfoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblValeInfoKeyReleased
         // TODO add your handling code here:
-    }//GEN-LAST:event_tblPatientInfoKeyReleased
+    }//GEN-LAST:event_tblValeInfoKeyReleased
 
-    private void txtSumpVent1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSumpVent1ActionPerformed
+    private void txtValveInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValveInfoActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_txtSumpVent1ActionPerformed
+        lov.LOVDefinitionSelection(title, txtValveInfo.getText().trim(), this);
+
+        objValve.setValveId(Constants.lovID);
+        objValve.setActionId(String.valueOf(cboValve.getSelectedIndex()));
+        if (ctlPerfusionist.insertValveInformation(objValve)) {
+            selectValveInformation(cboValve.getSelectedIndex());
+        } else {
+            JOptionPane.showMessageDialog(null, "Unable tot save Infromation.\n"
+                    + "Please Contact Support Team.");
+        }
+
+    }//GEN-LAST:event_txtValveInfoActionPerformed
 
     private void txtTimeTemperatureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimeTemperatureActionPerformed
         // TODO add your handling code here:
@@ -3840,9 +3853,9 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         selectPerTimeInfo(cboTimeManag.getSelectedIndex());
     }//GEN-LAST:event_cboTimeManagActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cboValveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboValveActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cboValveActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -3855,7 +3868,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cboIabCatheter;
     private javax.swing.JComboBox<String> cboRedo;
     private javax.swing.JComboBox<String> cboTimeManag;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cboValve;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel100;
     private javax.swing.JLabel jLabel101;
@@ -3995,10 +4008,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private javax.swing.JTable tblCheckList;
     private javax.swing.JTable tblDrugs;
     private javax.swing.JTable tblGraph;
-    private javax.swing.JTable tblPatientInfo;
     private javax.swing.JTable tblPatientInfo1;
     private javax.swing.JTable tblPatientInfo3;
     private javax.swing.JTable tblTimeManagement;
+    private javax.swing.JTable tblValeInfo;
     private javax.swing.JTextField txtAct;
     private javax.swing.JTextField txtAllergies;
     private javax.swing.JTextField txtAnesthetist;
@@ -4082,7 +4095,6 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtSugar35;
     private javax.swing.JTextField txtSugar36;
     private javax.swing.JTextField txtSumpVent;
-    private javax.swing.JTextField txtSumpVent1;
     private javax.swing.JTextField txtSurArea;
     private javax.swing.JTextField txtSurgeon;
     private javax.swing.JTextField txtTco2;
@@ -4091,6 +4103,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtTimeTemperature;
     private javax.swing.JTextField txtUrea;
     private javax.swing.JTextField txtValve;
+    private javax.swing.JTextField txtValveInfo;
     private javax.swing.JTextField txtWeight;
     // End of variables declaration//GEN-END:variables
 
@@ -4556,7 +4569,8 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private void setOntime() {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy "
                 + txtOnTime.getText().trim());
-        objPerTime.setStartTime(dateFormat.format(date));}
+        objPerTime.setStartTime(dateFormat.format(date));
+    }
 
     private void setOffTime() {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy "
@@ -4575,6 +4589,36 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Unable to Save Information.\n"
                     + "Please Contact Support Person.");
+        }
+    }
+
+    private void selectValveInformation(int actionId) {
+        listValveInfo = ctlPerfusionist.selectValveInformation(cardiacId, actionId);
+        if (listValveInfo.isEmpty()) {
+            List<PerfusionistBO> listValveInfo = new ArrayList<>();
+            listValveInfo.add(new PerfusionistBO());
+            tblValeInfo.setModel(new ValveInfromationTableModel(listValveInfo));
+            return;
+        }
+        tblValeInfo.setModel(new ValveInfromationTableModel(listValveInfo));
+        ListSelectionModel selectionModel = tblValeInfo.getSelectionModel();
+        tblValeInfo.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        setValveInfoColumnsWidths();
+        selectionModel.setSelectionInterval(0, 0);
+        Constants.tablelook.setJTableEnvironment(tblValeInfo);
+    }
+
+    private void setValveInfoColumnsWidths() {
+        TableColumn column = null;
+        for (int i = 0; i < tblValeInfo.getColumnCount(); i++) {
+            column = tblValeInfo.getColumnModel().getColumn(i);
+            if (i == 0) {
+                column.setPreferredWidth(25);
+            } else if (i == 1) {
+                column.setPreferredWidth(120);
+            } else if (i == 2) {
+                column.setPreferredWidth(60);
+            }
         }
     }
 }

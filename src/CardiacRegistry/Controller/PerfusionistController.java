@@ -110,12 +110,11 @@ public class PerfusionistController {
     }
 
     // Perfusionist Time
-    
     public List<PerfusionistBO> selectPerfusionTime(String cardiacId, int actionId) {
         return hdlPerfusionist.selectPerfusionTime(cardiacId, actionId);
     }
-    
-    public boolean insertPerfusionTime(PerfusionistBO perTime) { 
+
+    public boolean insertPerfusionTime(PerfusionistBO perTime) {
         perTime.setPerTimePk(key.generatePrimaryKey(Keys.perfusionTimePK, true));
         boolean ret = hdlPerfusionist.insertPerfusionTime(perTime);
         if (ret) {
@@ -126,4 +125,20 @@ public class PerfusionistController {
         }
         return ret;
     }
+
+    public List<PerfusionistBO> selectValveInformation(String cardiacId, int actionId) {
+        return hdlPerfusionist.selectValveInformation(cardiacId, actionId);
+    }
+
+    public boolean insertValveInformation(PerfusionistBO perTime) {
+        boolean ret = hdlPerfusionist.insertValveInformation(perTime);
+        if (ret) {
+            Constants.dao.commitTransaction();
+        }
+        if (!ret) {
+            Constants.dao.rollBack();
+        }
+        return ret;
+    }
+
 }

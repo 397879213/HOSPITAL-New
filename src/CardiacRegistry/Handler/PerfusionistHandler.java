@@ -612,7 +612,7 @@ public class PerfusionistHandler {
             objData.setValveDescription(map.get("VALVE_DESC").toString());
             objData.setActionId(map.get("ACTION_ID").toString());
             objData.setCrtdBy(map.get("CRTD_BY").toString());
-            objData.setCrtdBy(map.get("NAME").toString());
+            objData.setCrtdByName(map.get("NAME").toString());
             objData.setCrtdDate(map.get("CRTD_DATE").toString());
             lisPatient.add(objData);
         }
