@@ -415,35 +415,35 @@ public class PerfusionistHandler {
     }
 
     public boolean insertBloodGases(BloodGasses bloodGasses) {
-        String[] columns = {Database.DCMS.perfusionBloodGases, "ID", 
-            "CARDIAC_ID", "TIME","ON_VENT_DB", "B_FLOW", "TEMPERATURE", "FIO2", 
+        String[] columns = {Database.DCMS.perfusionBloodGases, "ID",
+            "CARDIAC_ID", "TIME", "ON_VENT_DB", "B_FLOW", "TEMPERATURE", "FIO2",
             "G_FLOW", "PH", "PCO2", "HCO2", "BE", "O2_SAT", "TCO2", "NA",
             "K", "CA", "LAC", "HB", "SUGAR", "ACT", "HEPARIN", "CRTD_BY",
             "CRTD_DATE", "CRTD_TERMINAL_ID"};
 
         HashMap map = new HashMap();
         map.put("ID", bloodGasses.getBloodGasesId());
-        map.put("CARDIAC_ID", "'" +  bloodGasses.getCardiacId()+ "'");
-        map.put("TIME", "TO_DATE('" +  bloodGasses.getTime()+ "', 'DD-MM-YY HH24:MI:SS')");
-        map.put("ON_VENT_DB", "'" +  bloodGasses.getOnVentDBP()+ "'");
-        map.put("B_FLOW", "'" +  bloodGasses.getBloodFlow()+ "'");
-        map.put("TEMPERATURE", "'" +  bloodGasses.getTemperature()+ "'");
-        map.put("FIO2", "'" +  bloodGasses.getFIO2()+ "'");
-        map.put("G_FLOW", "'" +  bloodGasses.getGFlow()+ "'");
-        map.put("PH", "'" +  bloodGasses.getPH()+ "'");
-        map.put("PCO2", "'" +  bloodGasses.getPCO2()+ "'");
-        map.put("HCO2", "'" +  bloodGasses.getHCO2()+ "'");
-        map.put("BE", "'" +  bloodGasses.getBE()+ "'");
-        map.put("O2_SAT", "'" +  bloodGasses.getO2Sat()+ "'");
-        map.put("TCO2", "'" +  bloodGasses.getTCO2()+ "'");
-        map.put("NA", "'" +  bloodGasses.getNA()+ "'");
-        map.put("K", "'" +  bloodGasses.getK()+ "'");
-        map.put("CA", "'" +  bloodGasses.getCA() + "'");
-        map.put("LAC", "'" +  bloodGasses.getLAC()+ "'");
-        map.put("HB", "'" +  bloodGasses.getHB() + "'");
-        map.put("SUGAR", "'" +  bloodGasses.getSugar()+ "'");
-        map.put("ACT", "'" +  bloodGasses.getACT()+ "'");
-        map.put("HEPARIN", "'" +  bloodGasses.getHeparin()+ "'");
+        map.put("CARDIAC_ID", "'" + bloodGasses.getCardiacId() + "'");
+        map.put("TIME", "TO_DATE('" + bloodGasses.getTime() + "', 'DD-MM-YY HH24:MI:SS')");
+        map.put("ON_VENT_DB", "'" + bloodGasses.getOnVentDBP() + "'");
+        map.put("B_FLOW", "'" + bloodGasses.getBloodFlow() + "'");
+        map.put("TEMPERATURE", "'" + bloodGasses.getTemperature() + "'");
+        map.put("FIO2", "'" + bloodGasses.getFIO2() + "'");
+        map.put("G_FLOW", "'" + bloodGasses.getGFlow() + "'");
+        map.put("PH", "'" + bloodGasses.getPH() + "'");
+        map.put("PCO2", "'" + bloodGasses.getPCO2() + "'");
+        map.put("HCO2", "'" + bloodGasses.getHCO2() + "'");
+        map.put("BE", "'" + bloodGasses.getBE() + "'");
+        map.put("O2_SAT", "'" + bloodGasses.getO2Sat() + "'");
+        map.put("TCO2", "'" + bloodGasses.getTCO2() + "'");
+        map.put("NA", "'" + bloodGasses.getNA() + "'");
+        map.put("K", "'" + bloodGasses.getK() + "'");
+        map.put("CA", "'" + bloodGasses.getCA() + "'");
+        map.put("LAC", "'" + bloodGasses.getLAC() + "'");
+        map.put("HB", "'" + bloodGasses.getHB() + "'");
+        map.put("SUGAR", "'" + bloodGasses.getSugar() + "'");
+        map.put("ACT", "'" + bloodGasses.getACT() + "'");
+        map.put("HEPARIN", "'" + bloodGasses.getHeparin() + "'");
         map.put("CRTD_BY", "'" + Constants.userId + "'");
         map.put("CRTD_DATE", Constants.today);
         map.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
@@ -505,18 +505,18 @@ public class PerfusionistHandler {
         }
         return lisPatient;
     }
-    
+
     public boolean insertPerfusionTime(PerfusionistBO perTime) {
-        String[] columns = {Database.DCMS.perfusionTime, "ID", 
-            "START_TIME", "END_TIME","ACTION_ID", "TEMPERATURE", "CRTD_BY",
+        String[] columns = {Database.DCMS.perfusionTime, "ID",
+            "START_TIME", "END_TIME", "ACTION_ID", "TEMPERATURE", "CRTD_BY",
             "CRTD_DATE", "CRTD_TERMINAL_ID"};
 
         HashMap map = new HashMap();
         map.put("ID", perTime.getPerTimePk());
-        map.put("START_TIME", "TO_DATE('" +  perTime.getStartTime()+ "', 'DD-MM-YY HH24:MI:SS')");
-        map.put("END_TIME", "TO_DATE('" +  perTime.getEndTime()+ "', 'DD-MM-YY HH24:MI:SS')");
-        map.put("ACTION_ID", "'" +  perTime.getActionId()+ "'");
-        map.put("TEMPERATURE", "'" +  perTime.getTemperature()+ "'");
+        map.put("START_TIME", "TO_DATE('" + perTime.getStartTime() + "', 'DD-MM-YY HH24:MI:SS')");
+        map.put("END_TIME", "TO_DATE('" + perTime.getEndTime() + "', 'DD-MM-YY HH24:MI:SS')");
+        map.put("ACTION_ID", "'" + perTime.getActionId() + "'");
+        map.put("TEMPERATURE", "'" + perTime.getTemperature() + "'");
         map.put("CRTD_BY", "'" + Constants.userId + "'");
         map.put("CRTD_DATE", Constants.today);
         map.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
@@ -524,5 +524,55 @@ public class PerfusionistHandler {
         List InsertEmp = new ArrayList();
         InsertEmp.add(map);
         return Constants.dao.insertData(InsertEmp, columns);
+    }
+
+    public List<BloodGasses> selectPerfusionTime(String cardiacId, String actionId) {
+
+        String columns[] = {"-", "ID", "START_TIME", "END_TIME", "ACTION_ID",
+            "TEMPERATURE", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
+
+        String query
+                = "SELECT PT.ID, PT.CARDIAC_ID, PT.ACTION_ID, PT.TEMPERATURE"
+                + "TO_CHAR(PT.START_TIME, 'HH24:MI:SS') START_TIME, "
+                + "TO_CHAR(PT.END_TIME, 'HH24:MI:SS') END_TIME, "
+                + "\n PT.CRTD_BY, PT.CRTD_DATE "
+                + "\n FROM " + Database.DCMS.perfusionBloodGases + " PT"
+                + "\n WHERE PT.CARDIAC_ID = " + cardiacId
+                + "\n AND PT.ACTION_ID = " + actionId;
+
+        List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
+        List<BloodGasses> lisPatient = new ArrayList();
+        for (int i = 0; i < listmap.size(); i++) {
+
+            HashMap map = (HashMap) listmap.get(i);
+            BloodGasses objData = new BloodGasses();
+
+            objData.setBloodGasesId(map.get("ID").toString());
+            objData.setCardiacId(map.get("CARDIAC_ID").toString());
+            objData.setTime(map.get("TIME").toString());
+            objData.setOnVentDBP(map.get("ON_VENT_DB").toString());
+            objData.setBloodFlow(map.get("B_FLOW").toString());
+            objData.setTemperature(map.get("TEMPERATURE").toString());
+            objData.setFIO2(map.get("FIO2").toString());
+            objData.setGFlow(map.get("G_FLOW").toString());
+            objData.setPH(map.get("PH").toString());
+            objData.setPCO2(map.get("PCO2").toString());
+            objData.setHCO2(map.get("HCO2").toString());
+            objData.setBE(map.get("BE").toString());
+            objData.setO2Sat(map.get("O2_SAT").toString());
+            objData.setTCO2(map.get("TCO2").toString());
+            objData.setNA(map.get("NA").toString());
+            objData.setK(map.get("K").toString());
+            objData.setCA(map.get("CA").toString());
+            objData.setLAC(map.get("LAC").toString());
+            objData.setHB(map.get("HB").toString());
+            objData.setSugar(map.get("SUGAR").toString());
+            objData.setACT(map.get("ACT").toString());
+            objData.setHeparin(map.get("HEPARIN").toString());
+            objData.setCrtdBy(map.get("CRTD_BY").toString());
+            objData.setCrtdDate(map.get("CRTD_DATE").toString());
+            lisPatient.add(objData);
+        }
+        return lisPatient;
     }
 }
