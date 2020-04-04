@@ -51,11 +51,11 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         txtOnTime.setText(dateFormat.format(date));
         txtOffTime.setText(dateFormat.format(date));
 
-        selectPerfusionGraph();
+//        selectPerfusionGraph();
         selectPerfusionInfo();
         selectPerfusionCheckList();
-        selectBloodGases();
-        selectPerTimeInfo(cboTimeManag.getSelectedIndex());
+//        selectBloodGases();
+//        selectPerTimeInfo(cboTimeManag.getSelectedIndex());
     }
 
     Date date = new Date();
@@ -1288,11 +1288,11 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jPanel18.setLayout(jPanel18Layout);
         jPanel18Layout.setHorizontalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane31, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane31, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
             .addGroup(jPanel18Layout.createSequentialGroup()
                 .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtSumpVent1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtSumpVent1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -1324,7 +1324,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                     .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1638,8 +1638,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Sr.", "Grade", "Grade Description", "Child Above 12", "Child Under 12", "Spouse",
-                "Parents", "Self", "Class"
+                "Sr.", "Pressure", "Time"
 
             }
         ));
@@ -1671,18 +1670,16 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel16Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel65)
-                        .addGap(4, 4, 4)
-                        .addComponent(txtPressure, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTime, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
-                    .addComponent(jScrollPane30, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel65)
+                .addGap(4, 4, 4)
+                .addComponent(txtPressure, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtTime, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
                 .addContainerGap())
+            .addComponent(jScrollPane30, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3052,6 +3049,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         if (Constants.lovDescription.equalsIgnoreCase("DESCRIPTION")) {
             txtPerfusionist.setText("");
             perfusionistId = "";
+            return;
         }
         txtPerfusionist.setText(Constants.lovDescription);
         perfusionistId = Constants.lovID;
@@ -3065,6 +3063,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         if (Constants.lovDescription.equalsIgnoreCase("DESCRIPTION")) {
             txtAsstPerfusionist.setText("");
             asstPerfusionistId = "";
+            return;
         }
         txtAsstPerfusionist.setText(Constants.lovDescription);
         asstPerfusionistId = Constants.lovID;
@@ -3080,6 +3079,9 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         lov.LOVDefinitionSelection(DefinitionTypes.cardiacSurgery,
                 txtOperation.getText().trim(), this);
+        if(Constants.lovID.equalsIgnoreCase("ID")){
+            return;
+        }
         operationId = Constants.lovID;
         txtOperation.setText(Constants.lovDescription);
         txtOxygenator.requestFocus();
@@ -3102,6 +3104,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         if (Constants.lovDescription.equalsIgnoreCase("DESCRIPTION")) {
             txtSurgeon.setText("");
             surgeonId = "";
+            return;
         }
         txtSurgeon.setText(Constants.lovDescription);
         surgeonId = Constants.lovID;
@@ -3115,6 +3118,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         if (Constants.lovDescription.equalsIgnoreCase("DESCRIPTION")) {
             txtAsstSurgeon.setText("");
             asstSurgeonId = "";
+            return;
         }
         txtAsstSurgeon.setText(Constants.lovDescription);
         asstSurgeonId = Constants.lovID;
@@ -3128,6 +3132,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         if (Constants.lovDescription.equalsIgnoreCase("DESCRIPTION")) {
             txtAnesthetist.setText("");
             anesthetistId = "";
+            return;
         }
         txtAnesthetist.setText(Constants.lovDescription);
         anesthetistId = Constants.lovID;
@@ -3163,6 +3168,9 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         lov.LOVDefinitionSelection(DefinitionTypes.bloodGroup,
                 txtBloodGroup.getText().trim(), this);
+        if(Constants.lovID.equalsIgnoreCase("ID")){
+            return;
+        }
         bloodGroupId = Constants.lovID;
         txtBloodGroup.setText(Constants.lovDescription);
 //        txtVenous.requestFocus();
@@ -3743,6 +3751,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
 
     private void txtSumpVent1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSumpVent1ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtSumpVent1ActionPerformed
 
     private void txtTimeTemperatureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimeTemperatureActionPerformed

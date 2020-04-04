@@ -297,7 +297,7 @@ public class DefinitionTypes {
     //public static String OPDVisitCaseCategory = "370";// 
     public static String category = "154";
 //    public static String CardiacPerformingPhysician = "465";
-    public static String cardiacPhysician = "465";
+    public static String cardiacPhysician = "490";
     public static String cardiacSurgery = "462";
     public static String cardiacIntervention = "461";
     public static String cardiacInstitutes = "464";
