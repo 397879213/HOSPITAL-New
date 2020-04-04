@@ -56,6 +56,7 @@ public class Database {
         public static final String perfusionCheckList = DAO.username + ".PERFUSIONIST_CHECK_LIST ";
         public static final String perfusionBloodGases = DAO.username + ".BLOOD_GASES ";
         public static final String perfusionTime = DAO.username + ".PERFUSION_TIME ";
+        public static final String valveInformation = DAO.username + ".VALVE_INFORMATION ";
 
         public static final String member = DAO.usernameEmr + ".MEMBER   ";
         public static final String bookIssueDetail = DAO.usernameEmr + ".BOOK_ISSUE_DETAIL   ";

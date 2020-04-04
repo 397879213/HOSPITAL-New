@@ -529,7 +529,7 @@ public class PerfusionistHandler {
 
     public List<PerfusionistBO> selectPerfusionTime(String cardiacId, int actionId) {
 
-        String columns[] = {"-", "ID", "CARDIAC_ID","START_TIME", "END_TIME", 
+        String columns[] = {"-", "ID", "CARDIAC_ID", "START_TIME", "END_TIME",
             "TOTAL_TIME", "ACTION_ID", "TEMPERATURE", "CRTD_BY", "CRTD_DATE"};
 
         String query
@@ -538,7 +538,7 @@ public class PerfusionistHandler {
                 + "\n TO_CHAR(PT.START_TIME, 'HH24:MI:SS') START_TIME, "
                 + "\n TO_CHAR(PT.END_TIME, 'HH24:MI:SS') END_TIME,  PT.CRTD_BY,"
                 + "\n SUBSTR(TO_CHAR(((END_TIME - START_TIME) * 1440)), 0, 2) TOTAL_TIME," //24 * 60 = 1440
-                + "\n TO_CHAR(PT.CRTD_DATE, 'DD-MON-YY HH24:MI:SS') CRTD_DATE"  //24 hours in a day * 60 minutes in an hour
+                + "\n TO_CHAR(PT.CRTD_DATE, 'DD-MON-YY HH24:MI:SS') CRTD_DATE" //24 hours in a day * 60 minutes in an hour
                 + "\n FROM " + Database.DCMS.perfusionTime + " PT"
                 + "\n WHERE PT.CARDIAC_ID = " + cardiacId
                 + "\n AND PT.ACTION_ID = " + actionId;
@@ -558,6 +558,61 @@ public class PerfusionistHandler {
             objData.setActionId(map.get("ACTION_ID").toString());
             objData.setTemperature(map.get("TEMPERATURE").toString());
             objData.setCrtdBy(map.get("CRTD_BY").toString());
+            objData.setCrtdDate(map.get("CRTD_DATE").toString());
+            lisPatient.add(objData);
+        }
+        return lisPatient;
+    }
+
+    public boolean insertValveInformation(PerfusionistBO perTime) {
+        String[] columns = {Database.DCMS.valveInformation, "ID", "CARDIAC_ID",
+            "VALVE_ID", "ACTION_ID", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
+
+        HashMap map = new HashMap();
+        map.put("ID", perTime.getValvePk());
+        map.put("CARDIAC_ID", perTime.getCardiacId());
+        map.put("VALVE_ID", "'" + perTime.getValveId() + "'");
+        map.put("ACTION_ID", "'" + perTime.getActionId() + "'");
+        map.put("CRTD_BY", "'" + Constants.userId + "'");
+        map.put("CRTD_DATE", Constants.today);
+        map.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
+
+        List InsertEmp = new ArrayList();
+        InsertEmp.add(map);
+        return Constants.dao.insertData(InsertEmp, columns);
+    }
+
+    public List<PerfusionistBO> selectValveInformation(String cardiacId, int actionId) {
+
+        String columns[] = {"-", "ID", "CARDIAC_ID", "VALVE_ID", "VALVE_DESC",
+            "ACTION_ID", "CRTD_BY", "CRTD_DATE", "NAME"};
+
+        String query
+                = "SELECT PT.ID, PT.CARDIAC_ID, PT.VALVE_ID, VLI.DESCRIPTION VALVE_DESC,"
+                + "\n PT.ACTION_ID, PT.CRTD_BY, USR.NAME,"
+                + "\n TO_CHAR(PT.CRTD_DATE, 'DD-MON-YY HH24:MI:SS') CRTD_DATE"
+                + "\n FROM " + Database.DCMS.valveInformation + " PT,"
+                + "\n FROM " + Database.DCMS.definitionTypeDetail + " VLI,"
+                + "\n FROM " + Database.DCMS.users + " USR"
+                + "\n WHERE PT.CARDIAC_ID = " + cardiacId
+                + "\n AND PT.ACTION_ID = " + actionId
+                + "\n AND PT.VALVE_ID = VLI.ID"
+                + "\n AND PT.CRTD_BY = USR.USER_NAME";
+
+        List<HashMap> listmap = Constants.dao.selectDatainList(query, columns);
+        List<PerfusionistBO> lisPatient = new ArrayList();
+        for (int i = 0; i < listmap.size(); i++) {
+
+            HashMap map = (HashMap) listmap.get(i);
+            PerfusionistBO objData = new PerfusionistBO();
+
+            objData.setValvePk(map.get("ID").toString());
+            objData.setCardiacId(map.get("CARDIAC_ID").toString());
+            objData.setValveId(map.get("VALVE_ID").toString());
+            objData.setValveDescription(map.get("VALVE_DESC").toString());
+            objData.setActionId(map.get("ACTION_ID").toString());
+            objData.setCrtdBy(map.get("CRTD_BY").toString());
+            objData.setCrtdBy(map.get("NAME").toString());
             objData.setCrtdDate(map.get("CRTD_DATE").toString());
             lisPatient.add(objData);
         }

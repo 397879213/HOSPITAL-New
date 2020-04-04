@@ -63,6 +63,7 @@ public class PerfusionistBO {
     private String HBsAntiHcv = "";
     private String OtherPerfusion = "";
     private String crtdBy = "";
+    private String crtdByName = "";
     private String crtdDate = "";
     private String crtdTerminalId = "";
     private String isFinal = "";
@@ -88,6 +89,35 @@ public class PerfusionistBO {
     private String totalTime = "";
     private String temperature = "";
     private String actionId = "";
+    
+    // Valve Information
+    private String valvePk = "";
+    private String valveId = "";
+    private String valveDescription = "";
+
+    public String getValvePk() {
+        return valvePk;
+    }
+
+    public void setValvePk(String valvePk) {
+        this.valvePk = valvePk;
+    }
+
+    public String getValveId() {
+        return valveId;
+    }
+
+    public void setValveId(String valveId) {
+        this.valveId = valveId;
+    }
+
+    public String getValveDescription() {
+        return valveDescription;
+    }
+
+    public void setValveDescription(String valveDescription) {
+        this.valveDescription = valveDescription;
+    }
 
     public String getPerTimePk() {
         return perTimePk;
@@ -231,6 +261,14 @@ public class PerfusionistBO {
 
     public void setCrtdBy(String crtdBy) {
         this.crtdBy = crtdBy;
+    }
+
+    public String getCrtdByName() {
+        return crtdByName;
+    }
+
+    public void setCrtdByName(String crtdByName) {
+        this.crtdByName = crtdByName;
     }
 
     public String getCrtdDate() {
