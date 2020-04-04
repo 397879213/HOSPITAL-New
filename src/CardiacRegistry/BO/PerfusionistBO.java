@@ -81,6 +81,62 @@ public class PerfusionistBO {
     private String perPressure = "";
     private String timeMin = "";
 
+    //PerfusionTime
+    private String perTimePk = "";
+    private String startTime = "";
+    private String endTime = "";
+    private String totalTime = "";
+    private String temperature = "";
+    private String actionId = "";
+
+    public String getPerTimePk() {
+        return perTimePk;
+    }
+
+    public void setPerTimePk(String perTimePk) {
+        this.perTimePk = perTimePk;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+    public String getTotalTime() {
+        return totalTime;
+    }
+
+    public void setTotalTime(String totalTime) {
+        this.totalTime = totalTime;
+    }
+
+    public String getTemperature() {
+        return temperature;
+    }
+
+    public void setTemperature(String temperature) {
+        this.temperature = temperature;
+    }
+
+    public String getActionId() {
+        return actionId;
+    }
+
+    public void setActionId(String actionId) {
+        this.actionId = actionId;
+    }
+    
     public String getPatientId() {
         return patientId;
     }

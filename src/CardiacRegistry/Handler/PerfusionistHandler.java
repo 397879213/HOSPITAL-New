@@ -505,4 +505,24 @@ public class PerfusionistHandler {
         }
         return lisPatient;
     }
+    
+    public boolean insertPerfusionTime(PerfusionistBO perTime) {
+        String[] columns = {Database.DCMS.perfusionTime, "ID", 
+            "START_TIME", "END_TIME","ACTION_ID", "TEMPERATURE", "CRTD_BY",
+            "CRTD_DATE", "CRTD_TERMINAL_ID"};
+
+        HashMap map = new HashMap();
+        map.put("ID", perTime.getPerTimePk());
+        map.put("START_TIME", "TO_DATE('" +  perTime.getStartTime()+ "', 'DD-MM-YY HH24:MI:SS')");
+        map.put("END_TIME", "TO_DATE('" +  perTime.getEndTime()+ "', 'DD-MM-YY HH24:MI:SS')");
+        map.put("ACTION_ID", "'" +  perTime.getActionId()+ "'");
+        map.put("TEMPERATURE", "'" +  perTime.getTemperature()+ "'");
+        map.put("CRTD_BY", "'" + Constants.userId + "'");
+        map.put("CRTD_DATE", Constants.today);
+        map.put("CRTD_TERMINAL_ID", "'" + Constants.terminalId + "'");
+
+        List InsertEmp = new ArrayList();
+        InsertEmp.add(map);
+        return Constants.dao.insertData(InsertEmp, columns);
+    }
 }

@@ -34,6 +34,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     List<BloodGasses> listBG = new ArrayList();
     List<PerfusionistBO> listPerGraph = new ArrayList();
     List<PerfusionistBO> listPerCheckList = new ArrayList();
+    List<PerfusionistBO> listPerTime = new ArrayList();
 
     public PerfusionistForm() {
 
@@ -59,6 +60,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     PerfusionistBO objPerfusionGraph = new PerfusionistBO();
     PerfusionistBO perfusionInfo = new PerfusionistBO();
     PerfusionistBO objPerfusionist = new PerfusionistBO();
+    PerfusionistBO objPerTime = new PerfusionistBO();
     BloodGasses bloodGasses = new BloodGasses();
     PerfusionistController ctlPerfusionist = new PerfusionistController();
 
@@ -183,7 +185,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         jLabel64 = new javax.swing.JLabel();
         txtOffTime = new javax.swing.JTextField();
         cboTimeManag = new javax.swing.JComboBox<>();
-        txtOffTime1 = new javax.swing.JTextField();
+        txtTimeTemperature = new javax.swing.JTextField();
         jLabel67 = new javax.swing.JLabel();
         jPanel16 = new javax.swing.JPanel();
         jLabel65 = new javax.swing.JLabel();
@@ -1545,10 +1547,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
 
         cboTimeManag.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bypass Time", "X-Clamp time", "Circ. Arrest Time", "Rewarming Time" }));
 
-        txtOffTime1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        txtOffTime1.addActionListener(new java.awt.event.ActionListener() {
+        txtTimeTemperature.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtTimeTemperature.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtOffTime1ActionPerformed(evt);
+                txtTimeTemperatureActionPerformed(evt);
             }
         });
 
@@ -1576,7 +1578,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel67, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtOffTime1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTimeTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel22Layout.setVerticalGroup(
@@ -1588,7 +1590,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                     .addComponent(jLabel64, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtOffTime, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboTimeManag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtOffTime1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTimeTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel67, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane29, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
@@ -3261,7 +3263,16 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
 
     private void txtOffTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOffTimeActionPerformed
         // TODO add your handling code here:
-        
+        objPerTime.setStartTime(txtOnTime.getText().trim());
+        objPerTime.setEndTime(txtOffTime.getText().trim());
+        objPerTime.setTemperature(txtTimeTemperature.getText().trim());
+        objPerTime.setActionId(String.valueOf(cboTimeManag.getSelectedIndex()));
+        if (ctlPerfusionist.insertPerfusionTime(objPerTime)) {
+            selectPerTimeInfo();
+        }else{
+            JOptionPane.showMessageDialog(null, "Unable to Save Information.\n"
+                    + "Please Contact Support Person.");
+        }
     }//GEN-LAST:event_txtOffTimeActionPerformed
 
     private void txtSelectDrugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSelectDrugActionPerformed
@@ -3733,9 +3744,9 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSumpVent1ActionPerformed
 
-    private void txtOffTime1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOffTime1ActionPerformed
+    private void txtTimeTemperatureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimeTemperatureActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtOffTime1ActionPerformed
+    }//GEN-LAST:event_txtTimeTemperatureActionPerformed
 
     private void txtSugar25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSugar25ActionPerformed
         // TODO add your handling code here:
@@ -4007,7 +4018,6 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtNa;
     private javax.swing.JTextField txtO2;
     private javax.swing.JTextField txtOffTime;
-    private javax.swing.JTextField txtOffTime1;
     private javax.swing.JTextField txtOnTime;
     private javax.swing.JTextField txtOperation;
     private javax.swing.JTextField txtOtherPer;
@@ -4055,6 +4065,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtTco2;
     private javax.swing.JTextField txtTemperature;
     private javax.swing.JTextField txtTime;
+    private javax.swing.JTextField txtTimeTemperature;
     private javax.swing.JTextField txtUrea;
     private javax.swing.JTextField txtValve;
     private javax.swing.JTextField txtWeight;
@@ -4485,5 +4496,9 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                 column.setPreferredWidth(60);
             }
         }
+    }
+
+    private void selectPerTimeInfo() {
+        s
     }
 }

@@ -2048,7 +2048,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel67" min="-2" pref="54" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtOffTime1" min="-2" pref="48" max="-2" attributes="3"/>
+                          <Component id="txtTimeTemperature" min="-2" pref="48" max="-2" attributes="3"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -2062,7 +2062,7 @@
                               <Component id="jLabel64" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="txtOffTime" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="cboTimeManag" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtOffTime1" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
+                              <Component id="txtTimeTemperature" alignment="3" min="-2" pref="20" max="-2" attributes="1"/>
                               <Component id="jLabel67" alignment="3" min="-2" pref="21" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -2152,14 +2152,14 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtOffTime1">
+                <Component class="javax.swing.JTextField" name="txtTimeTemperature">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtOffTime1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtTimeTemperatureActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel67">
