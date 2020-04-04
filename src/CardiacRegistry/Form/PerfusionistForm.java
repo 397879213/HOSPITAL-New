@@ -46,9 +46,10 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         btnSave.setMnemonic(KeyEvent.VK_S);
         btnFinal.setMnemonic(KeyEvent.VK_F);
         btnGraph.setMnemonic(KeyEvent.VK_G);
-        DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");// yyyy/MM/dd HH:mm:ss
-        Date date = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
         txtBGTime.setText(dateFormat.format(date));
+        txtOnTime.setText(dateFormat.format(date));
+        txtOffTime.setText(dateFormat.format(date));
 
         selectPerfusionGraph();
         selectPerfusionInfo();
@@ -56,6 +57,7 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         selectBloodGases();
     }
 
+    Date date = new Date();
     DisplayLOV lov = new DisplayLOV();
     PerfusionistBO objCheckList = new PerfusionistBO();
     PerfusionistBO objPerfusionGraph = new PerfusionistBO();
@@ -3264,12 +3266,13 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
 
     private void txtOffTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOffTimeActionPerformed
         // TODO add your handling code here:
-        objPerTime.setStartTime(txtOnTime.getText().trim());
-        objPerTime.setEndTime(txtOffTime.getText().trim());
+        setOntime();
+        setOffTime();
+        objPerTime.setCardiacId(cardiacId);
         objPerTime.setTemperature(txtTimeTemperature.getText().trim());
         objPerTime.setActionId(String.valueOf(cboTimeManag.getSelectedIndex()));
         if (ctlPerfusionist.insertPerfusionTime(objPerTime)) {
-            selectPerTimeInfo();
+            selectPerTimeInfo(cboTimeManag.getSelectedIndex());
         } else {
             JOptionPane.showMessageDialog(null, "Unable to Save Information.\n"
                     + "Please Contact Support Person.");
@@ -4499,8 +4502,8 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
         }
     }
 
-    private void selectPerTimeInfo() {
-        listPerTime = ctlPerfusionist.selectPerfusionTime(cardiacId, patientId);
+    private void selectPerTimeInfo(int actionId) {
+        listPerTime = ctlPerfusionist.selectPerfusionTime(cardiacId, actionId);
         if (listPerTime.isEmpty()) {
             List<PerfusionistBO> listPerTime = new ArrayList<>();
             listPerTime.add(new PerfusionistBO());
@@ -4529,5 +4532,16 @@ public class PerfusionistForm extends javax.swing.JInternalFrame {
                 column.setPreferredWidth(60);
             }
         }
+    }
+
+    private void setOntime() {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy "
+                + txtOnTime.getText().trim());
+        objPerTime.setStartTime(dateFormat.format(date));}
+
+    private void setOffTime() {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yy "
+                + txtOffTime.getText().trim());
+        objPerTime.setEndTime(dateFormat.format(date));
     }
 }

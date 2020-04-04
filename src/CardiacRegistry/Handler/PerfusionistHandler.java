@@ -507,12 +507,13 @@ public class PerfusionistHandler {
     }
 
     public boolean insertPerfusionTime(PerfusionistBO perTime) {
-        String[] columns = {Database.DCMS.perfusionTime, "ID",
+        String[] columns = {Database.DCMS.perfusionTime, "ID", "CARDIAC_ID",
             "START_TIME", "END_TIME", "ACTION_ID", "TEMPERATURE", "CRTD_BY",
             "CRTD_DATE", "CRTD_TERMINAL_ID"};
 
         HashMap map = new HashMap();
         map.put("ID", perTime.getPerTimePk());
+        map.put("CARDIAC_ID", perTime.getCardiacId());
         map.put("START_TIME", "TO_DATE('" + perTime.getStartTime() + "', 'DD-MM-YY HH24:MI:SS')");
         map.put("END_TIME", "TO_DATE('" + perTime.getEndTime() + "', 'DD-MM-YY HH24:MI:SS')");
         map.put("ACTION_ID", "'" + perTime.getActionId() + "'");
@@ -526,17 +527,17 @@ public class PerfusionistHandler {
         return Constants.dao.insertData(InsertEmp, columns);
     }
 
-    public List<PerfusionistBO> selectPerfusionTime(String cardiacId, String actionId) {
+    public List<PerfusionistBO> selectPerfusionTime(String cardiacId, int actionId) {
 
-        String columns[] = {"-", "ID", "START_TIME", "END_TIME", "ACTION_ID",
-            "TEMPERATURE", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
+        String columns[] = {"-", "ID", "CARDIAC_ID","START_TIME", "END_TIME", 
+            "ACTION_ID", "TEMPERATURE", "CRTD_BY", "CRTD_DATE", "CRTD_TERMINAL_ID"};
 
         String query
-                = "SELECT PT.ID, PT.CARDIAC_ID, PT.ACTION_ID, PT.TEMPERATURE"
-                + "TO_CHAR(PT.START_TIME, 'HH24:MI:SS') START_TIME, "
-                + "TO_CHAR(PT.END_TIME, 'HH24:MI:SS') END_TIME, "
+                = "SELECT PT.ID, PT.CARDIAC_ID, PT.ACTION_ID, PT.TEMPERATURE,"
+                + "\n TO_CHAR(PT.START_TIME, 'HH24:MI:SS') START_TIME, "
+                + "\n TO_CHAR(PT.END_TIME, 'HH24:MI:SS') END_TIME, "
                 + "\n PT.CRTD_BY, PT.CRTD_DATE "
-                + "\n FROM " + Database.DCMS.perfusionBloodGases + " PT"
+                + "\n FROM " + Database.DCMS.perfusionTime + " PT"
                 + "\n WHERE PT.CARDIAC_ID = " + cardiacId
                 + "\n AND PT.ACTION_ID = " + actionId;
 

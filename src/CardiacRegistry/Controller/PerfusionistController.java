@@ -111,7 +111,7 @@ public class PerfusionistController {
 
     // Perfusionist Time
     
-    public List<PerfusionistBO> selectPerfusionTime(String cardiacId, String actionId) {
+    public List<PerfusionistBO> selectPerfusionTime(String cardiacId, int actionId) {
         return hdlPerfusionist.selectPerfusionTime(cardiacId, actionId);
     }
     
